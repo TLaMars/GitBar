@@ -16,25 +16,28 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "assets/*": ["./src/ui/assets/*"],
-      "components/*": ["./src/ui/components/*"],
-      "constants/*": ["./src/core/constants/*"],
-      "context/*": ["./src/ui/context/*"],
-      "gql/*": ["src/core/gql/*"],
-      "hooks/*": ["./src/ui/hooks/*"],
-      "locales/*": ["./src/ui/assets/locales/*"],
-      "navigation/*": ["./src/ui/navigation/*"],
-      "models/*": ["./src/core/models/*"],
-      "repositories/*": ["./src/core/repositories/*"],
-      "screens/*": ["./src/ui/screens/*"],
-      "services/*": ["./src/core/services/*"],
-      "store/*": ["./src/core/store/*"],
-      "transforms/*": ["./src/core/transforms/*"],
+      "app/*": ["./app/*"],
+      "assets/*": ["./src/assets/*"],
+      "components/*": ["./src/components/*"],
+      "constants/*": ["./src/constants/*"],
+      "contexts/*": ["./src/contexts/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "models/*": ["./src/models/*"],
+      "pages/*": ["./src/pages/*"],
       "utils/*": ["./src/utils/*"]
     }
   },
   "extends": "@react-native/typescript-config/tsconfig.json",
-  "exclude": ["node_modules", "test-automation"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "**.js",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts"
+  ],
+  "exclude": ["node_modules"]
 }

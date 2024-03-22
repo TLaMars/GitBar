@@ -1,3 +1,40 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "React Native",
+  "_version": "2.0.0",
+  "compilerOptions": {
+    "target": "esnext",
+    "types": ["react-native", "jest", "node"],
+    "lib": ["es2019"],
+    "allowJs": false,
+    "jsx": "react-native",
+    "noEmit": true,
+    "isolatedModules": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "assets/*": ["./src/ui/assets/*"],
+      "components/*": ["./src/ui/components/*"],
+      "constants/*": ["./src/core/constants/*"],
+      "context/*": ["./src/ui/context/*"],
+      "gql/*": ["src/core/gql/*"],
+      "hooks/*": ["./src/ui/hooks/*"],
+      "locales/*": ["./src/ui/assets/locales/*"],
+      "navigation/*": ["./src/ui/navigation/*"],
+      "models/*": ["./src/core/models/*"],
+      "repositories/*": ["./src/core/repositories/*"],
+      "screens/*": ["./src/ui/screens/*"],
+      "services/*": ["./src/core/services/*"],
+      "store/*": ["./src/core/store/*"],
+      "transforms/*": ["./src/core/transforms/*"],
+      "utils/*": ["./src/utils/*"]
+    }
+  },
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "exclude": ["node_modules", "test-automation"]
 }

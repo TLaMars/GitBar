@@ -1,21 +1,66 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import { useEffect, type PropsWithChildren } from "react";
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  useColorScheme,
+  useWindowDimensions,
+  View,
+} from "react-native";
+import {
+  Colors,
+  DebugInstructions,
+  Header,
+  LearnMoreLinks,
+  ReloadInstructions,
+} from "react-native/Libraries/NewAppScreen";
 
-import React from "react";
+type SectionProps = PropsWithChildren<{
+  title: string;
+}>;
 
-import Body from "components/body/body";
-import Heading from "components/heading/heading";
-import ThemeProvider from "contexts/theme";
+function Section({ children, title }: SectionProps): React.JSX.Element {
+  const isDarkMode = useColorScheme() === "dark";
+  return (
+    <View>
+      <Text>{title}</Text>
+      <Text>{children}</Text>
+    </View>
+  );
+}
 
-const App: React.FC = () => (
-  <ThemeProvider>
-    <Heading>Open up App.tsx to start working on your app!</Heading>
-    <Body>Hello World</Body>
-  </ThemeProvider>
-);
+function App(): React.JSX.Element {
+  const isDarkMode = useColorScheme() === "dark";
+
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
+
+  const dimensions = useWindowDimensions();
+  console.log(dimensions);
+
+  return (
+    // <SafeAreaView>
+    <ScrollView>
+      <Section title="Step One">
+        Edit <Text>App.tsx</Text> to change this screen and then come back to
+        see your edits.
+      </Section>
+      <Section title="See Your Changes">
+        <ReloadInstructions />
+      </Section>
+      <Section title="Debug">
+        <DebugInstructions />
+      </Section>
+      <Section title="Learn More">
+        Read the docs to discover what to do next:
+      </Section>
+      {/* <LearnMoreLinks /> */}
+    </ScrollView>
+    // </SafeAreaView>
+  );
+}
 
 export default App;

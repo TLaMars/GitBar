@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "514201482437B4B30078DB4F"
                BuildableName = "gitbar.app"
-               BlueprintName = "gitbar"
+               BlueprintName = "gitbar-macOS"
                ReferencedContainer = "container:gitbar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,7 +31,7 @@
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -46,7 +46,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "514201482437B4B30078DB4F"
             BuildableName = "gitbar.app"
-            BlueprintName = "gitbar"
+            BlueprintName = "gitbar-macOS"
             ReferencedContainer = "container:gitbar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -63,7 +63,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "514201482437B4B30078DB4F"
             BuildableName = "gitbar.app"
-            BlueprintName = "gitbar"
+            BlueprintName = "gitbar-macOS"
             ReferencedContainer = "container:gitbar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

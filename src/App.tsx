@@ -1,14 +1,13 @@
-import { ScrollView } from "react-native";
-
-import Body from "components/body/body";
+import Test from "components/test/test";
+import IntlProvider from "contexts/intl";
 import ThemeProvider from "contexts/theme";
 
 function App(): React.JSX.Element {
   return (
     <ThemeProvider>
-      <ScrollView>
-        <Body />
-      </ScrollView>
+      <IntlProvider>
+        <Test />
+      </IntlProvider>
     </ThemeProvider>
   );
 }

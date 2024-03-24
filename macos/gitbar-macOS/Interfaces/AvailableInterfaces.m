@@ -8,6 +8,6 @@
 #import "React/RCTBridgeModule.h"
 
 
-@interface RCT_EXTERN_MODULE(NotificationManager, NSObject)
+// @interface RCT_EXTERN_MODULE(NotificationManager, NSObject)
 
-@end
+// @end

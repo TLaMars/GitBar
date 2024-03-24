@@ -4,7 +4,7 @@ import { StyleSheet, Text as ReactNativeText, TextProps } from "react-native";
 
 import useFontStyle from "hooks/use-font-style";
 
-import useStyles from "./Text.styles";
+import useStyles from "./text.styles";
 
 const Text: React.FC<TextProps> = ({ children, style, ...rest }) => {
   const $ = useStyles();

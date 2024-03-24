@@ -32,7 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     popover = NSPopover()
 
-    popover.contentSize = NSSize(width: 700, height: 800)
+    popover.contentSize = NSSize(width: 600, height: 400)
     popover.animates = true
     popover.behavior = .transient
     popover.contentViewController = rootViewController
@@ -50,10 +50,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     eventMonitor?.start()
-  }
-  
-  func fallBackUrlProvider() {
-    
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {

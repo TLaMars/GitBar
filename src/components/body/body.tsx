@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import { TextProps, TextStyle } from "react-native";
 
-import Text from "components/Text/Text";
+import Text from "components/text/text";
 import useTheme from "hooks/use-theme";
 import { ThemeColor, ThemeFontSizes } from "models/theme";
 

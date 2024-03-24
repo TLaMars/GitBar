@@ -16,10 +16,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var eventMonitor: EventMonitor?
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
-    let jsCodeLocation: URL
+    var jsCodeLocation: URL
 
-    #if DEBUG
-      jsCodeLocation = RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
+    #if !DEBUG
+      let fallbackURLProvider: () -> URL? = {
+          return URL(string: "http://localhost:8081")
+      }
+      jsCodeLocation = RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackURLProvider: fallbackURLProvider)
     #else
       jsCodeLocation = Bundle.main.url(forResource: "main", withExtension: "jsbundle")!
     #endif
@@ -47,6 +50,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     eventMonitor?.start()
+  }
+  
+  func fallBackUrlProvider() {
+    
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {

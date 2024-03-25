@@ -1,7 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 
-import Heading from "components/heading/heading";
+import SidebarItem from "components/sidebar-item/sidebar-item";
 
 import useStyles from "./sidebar.styles";
 
@@ -10,7 +10,13 @@ const Sidebar: React.FC = () => {
 
   return (
     <View style={$.container}>
-      <Heading size="x2s">Menu</Heading>
+      <View style={$.section}>
+        <SidebarItem icon="PullRequest" label="PullRequests" active />
+      </View>
+      <View style={$.section}>
+        <SidebarItem icon="Settings" label="Settings" />
+        <SidebarItem icon="PowerOff" label="Quit" />
+      </View>
     </View>
   );
 };

@@ -5,8 +5,13 @@ const useStyles = () =>
     container: {
       backgroundColor: colors.backgroundSurface,
       borderRadius: borderRadiuses.sidebar,
-      padding: spacing(1),
+      padding: spacing(2),
       width: 48,
+      gap: spacing(1),
+      justifyContent: "space-between",
+    },
+    section: {
+      gap: spacing(1),
     },
   }));
 export default useStyles;

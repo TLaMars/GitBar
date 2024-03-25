@@ -84,6 +84,7 @@ export const THEME_BORDER_RADIUSES = {
   round: BORDER_RADIUSES.full,
   sheet: BORDER_RADIUSES.x7l,
   sidebar: BORDER_RADIUSES.xl,
+  item: BORDER_RADIUSES.m,
 } as const satisfies Record<string, number>;
 
 export const THEME_FONT_SIZES = {
@@ -147,11 +148,13 @@ export const THEME_FONT_WEIGHTS = {
 export const THEME_COLORS_LIGHT = {
   text: "#111317",
   backgroundSurface: "rgba(224, 231, 235, 0.6)",
+  backgroundActive: "rgba(17, 19, 23, 0.2)",
 } as const satisfies Record<string, string>;
 
 export const THEME_COLORS_DARK = {
   text: "#E7ECEF",
   backgroundSurface: "rgba(17, 19, 23, 0.6)",
+  backgroundActive: "rgba(224, 231, 235, 0.2)",
 } as const satisfies Record<string, string>;
 
 export const THEME = {

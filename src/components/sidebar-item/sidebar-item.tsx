@@ -8,16 +8,20 @@ import useStyles from "./sidebar-item.styles";
 type Props = {
   active?: boolean;
   icon: IconName;
-  label: string;
+  onPress: () => void;
 };
 
-const SidebarItem: React.FC<Props> = ({ active = false, icon, label }) => {
+const SidebarItem: React.FC<Props> = ({ active = false, icon, onPress }) => {
   const $ = useStyles();
+  const [hovered, setHovered] = React.useState(false);
 
   return (
     <Pressable
-      style={[$.button, active && $.active]}
+      style={[$.button, active && $.active, hovered && $.hover]}
+      onPress={onPress}
       accessibilityRole="button"
+      onHoverIn={() => setHovered(true)}
+      onHoverOut={() => setHovered(false)}
     >
       <Icon name={icon} size={20} />
     </Pressable>

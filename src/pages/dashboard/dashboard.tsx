@@ -5,7 +5,7 @@ import DefaultLayout from "src/layouts/default-layout/default-layout";
 
 const Dashboard: React.FC = () => (
   <DefaultLayout>
-    <Heading>Dashboard</Heading>
+    <Heading size="s">Pull Requests</Heading>
   </DefaultLayout>
 );
 

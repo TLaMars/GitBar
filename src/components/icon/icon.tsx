@@ -13,7 +13,7 @@ type Props = {
   size?: number;
 };
 
-const Icon: React.FC<Props> = ({ color = "text", name, size = 24 }) => {
+const Icon: React.FC<Props> = ({ color = "icon", name, size = 24 }) => {
   const { colors } = useTheme();
   const IconComponent = iconImportMap[name];
 

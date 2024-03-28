@@ -1,6 +1,8 @@
 export type RootStackParamList = {
   Dashboard: undefined;
-  Settings: undefined;
+  RegisterGitHub: {
+    code: string;
+  };
 };
 
 declare global {

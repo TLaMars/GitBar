@@ -18,14 +18,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationDidFinishLaunching(_ aNotification: Notification) {
     var jsCodeLocation: URL
     
-#if !DEBUG
-    let fallbackURLProvider: () -> URL? = {
-      return URL(string: "http://localhost:8081")
-    }
-    jsCodeLocation = RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackURLProvider: fallbackURLProvider)
-#else
-    jsCodeLocation = Bundle.main.url(forResource: "main", withExtension: "jsbundle")!
-#endif
+    #if DEBUG
+      let fallbackURLProvider: () -> URL? = {
+        return URL(string: "http://localhost:8081")
+      }
+      jsCodeLocation = RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackURLProvider: fallbackURLProvider)
+    #else
+      jsCodeLocation = Bundle.main.url(forResource: "main", withExtension: "jsbundle")!
+    #endif
+
     let rootView = RCTRootView(bundleURL: jsCodeLocation, moduleName: "gitbar", initialProperties: nil, launchOptions: nil)
     let rootViewController = NSViewController()
     rootViewController.view = rootView
@@ -52,7 +53,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     eventMonitor?.start()
   
-    var em = NSAppleEventManager.shared()
+    let em = NSAppleEventManager.shared()
       em.setEventHandler(self, andSelector: #selector(self.getUrl(_:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
   }
 
@@ -87,4 +88,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     return RCTLinkingManager.getUrlEventHandler(event, withReplyEvent: reply)
   }
+  
 }

@@ -2,13 +2,12 @@ const MODULE_RESOLVER = [
   "module-resolver",
   {
     alias: {
-      app: "./app",
       assets: "./src/assets",
       components: "./src/components",
-      constants: "./src/constants",
+      constants: "./src/core/constants",
       contexts: "./src/contexts",
       hooks: "./src/hooks",
-      models: "./src/models",
+      models: "./src/core/models",
       pages: "./src/pages",
       utils: "./src/utils",
     },
@@ -19,5 +18,5 @@ const MODULE_RESOLVER = [
 
 module.exports = {
   presets: ["module:@react-native/babel-preset"],
-  plugins: [MODULE_RESOLVER],
+  plugins: [MODULE_RESOLVER, "module:react-native-dotenv"],
 };

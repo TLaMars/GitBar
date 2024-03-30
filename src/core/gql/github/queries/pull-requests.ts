@@ -31,6 +31,16 @@ const QueryGetGithubPullRequests = graphql(`
           }
           createdAt
           url
+          baseRef {
+            branchProtectionRule {
+              requiredApprovingReviewCount
+            }
+          }
+          reviewDecision
+          totalCommentsCount
+          reviews(first: 100, states: APPROVED) {
+            totalCount
+          }
         }
       }
     }

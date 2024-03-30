@@ -6,17 +6,27 @@ const useStyles = () =>
       backgroundColor: colors.backgroundSurface,
       padding: spacing(3),
       borderRadius: borderRadiuses.sidebar,
-      flexDirection: "row",
-    },
-    left: {
       flexDirection: "column",
-      justifyContent: "center",
       gap: spacing(2),
     },
     footer: {
       flexDirection: "row",
+      flex: 1,
+      justifyContent: "space-between",
+    },
+    left: {
+      flexDirection: "row",
       alignItems: "flex-end",
     },
-    right: {},
+    right: {
+      flexDirection: "row",
+      gap: spacing(2),
+    },
+    info: {
+      flexDirection: "row",
+      gap: spacing(1.5),
+      marginLeft: spacing(5),
+      alignItems: "center",
+    },
   }));
 export default useStyles;

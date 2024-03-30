@@ -47,6 +47,10 @@ const transformGithubPullRequest = (
             ) ?? [],
           createdAt: pr.createdAt,
           url: pr.url,
+          amountOfComments: pr.totalCommentsCount ?? 0,
+          amountOfApprovals: pr.reviews?.totalCount ?? 0,
+          amountOfRequiredApprovals:
+            pr.baseRef?.branchProtectionRule?.requiredApprovingReviewCount ?? 0,
         },
       ];
     }, []) ?? []

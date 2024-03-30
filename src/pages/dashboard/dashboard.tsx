@@ -29,6 +29,9 @@ const Dashboard: React.FC = () => {
               reviewers={item.reviewers}
               createdAt={item.createdAt}
               url={item.url}
+              amountOfComments={item.amountOfComments}
+              amountOfApprovals={item.amountOfApprovals}
+              amountOfRequiredApprovals={item.amountOfRequiredApprovals}
             />
           )}
           keyExtractor={(item) => item.id}

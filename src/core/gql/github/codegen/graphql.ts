@@ -29657,6 +29657,8 @@ export type GetGithubPullRequestsQuery = {
           title: string;
           createdAt: any;
           url: any;
+          reviewDecision?: PullRequestReviewDecision | null;
+          totalCommentsCount?: number | null;
           author?:
             | { __typename?: "Bot"; avatarUrl: any; login: string }
             | {
@@ -29685,6 +29687,17 @@ export type GetGithubPullRequestsQuery = {
                   }
                 | null;
             } | null> | null;
+          } | null;
+          baseRef?: {
+            __typename?: "Ref";
+            branchProtectionRule?: {
+              __typename?: "BranchProtectionRule";
+              requiredApprovingReviewCount?: number | null;
+            } | null;
+          } | null;
+          reviews?: {
+            __typename?: "PullRequestReviewConnection";
+            totalCount: number;
           } | null;
         }
       | { __typename?: "Repository" }
@@ -29880,6 +29893,74 @@ export const GetGithubPullRequestsDocument = {
                             {
                               kind: "Field",
                               name: { kind: "Name", value: "url" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "baseRef" },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: {
+                                      kind: "Name",
+                                      value: "branchProtectionRule",
+                                    },
+                                    selectionSet: {
+                                      kind: "SelectionSet",
+                                      selections: [
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value:
+                                              "requiredApprovingReviewCount",
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                ],
+                              },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "reviewDecision" },
+                            },
+                            {
+                              kind: "Field",
+                              name: {
+                                kind: "Name",
+                                value: "totalCommentsCount",
+                              },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "reviews" },
+                              arguments: [
+                                {
+                                  kind: "Argument",
+                                  name: { kind: "Name", value: "first" },
+                                  value: { kind: "IntValue", value: "100" },
+                                },
+                                {
+                                  kind: "Argument",
+                                  name: { kind: "Name", value: "states" },
+                                  value: {
+                                    kind: "EnumValue",
+                                    value: "APPROVED",
+                                  },
+                                },
+                              ],
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "totalCount" },
+                                  },
+                                ],
+                              },
                             },
                           ],
                         },

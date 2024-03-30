@@ -6,7 +6,8 @@ type Account = {
   accountId: string;
   type: AccountType;
   userName: string;
-  avatarUrl?: string;
+  name?: string;
+  avatarUrl: string;
 
   accessToken: string;
 };

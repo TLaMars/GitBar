@@ -1,4 +1,4 @@
-type ThemeSpacingScale =
+export type ThemeSpacingScale =
   | 0
   | 0.25
   | 0.5
@@ -151,6 +151,9 @@ export const THEME_COLORS_LIGHT = {
   backgroundSurface: "rgba(17, 19, 23, 0.12)",
   backgroundActive: "rgba(224, 231, 235, 0.8)",
   backgroundHover: "rgba(224, 231, 235, 0.4)",
+  button: "rgb(150, 181, 255)",
+  buttonHover: "rgb(167,194, 255)",
+  buttonText: "#111317",
 } as const satisfies Record<string, string>;
 
 export const THEME_COLORS_DARK = {
@@ -159,6 +162,9 @@ export const THEME_COLORS_DARK = {
   backgroundSurface: "rgba(17, 19, 23, 0.6)",
   backgroundActive: "rgba(224, 231, 235, 0.2)",
   backgroundHover: "rgba(224, 231, 235, 0.1)",
+  button: "rgb(49, 102, 221)",
+  buttonHover: "rgb(39, 97, 221)",
+  buttonText: "#E7ECEF",
 } as const satisfies Record<string, string>;
 
 export const THEME = {

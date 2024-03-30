@@ -22,16 +22,7 @@ const DefaultLayout: React.FC<PropsWithChildren> = ({ children }) => {
             active={route.name === "Dashboard"}
           />
         }
-        bottomContainer={
-          <>
-            <SidebarItem
-              icon="Settings"
-              onPress={() => navigate("Settings")}
-              active={route.name === "Settings"}
-            />
-            <SidebarItem icon="PowerOff" onPress={() => {}} />
-          </>
-        }
+        bottomContainer={<SidebarItem icon="PowerOff" onPress={() => {}} />}
       />
       {children}
     </View>

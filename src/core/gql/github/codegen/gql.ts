@@ -15,7 +15,7 @@ import { TypedDocumentNode as DocumentNode } from "@graphql-typed-document-node/
 const documents = {
   '\n  query GetGithubPullRequests {\n    search(\n      first: 100\n      query: "type:pr involves:@me is:open archived:false"\n      type: ISSUE\n    ) {\n      nodes {\n        ... on PullRequest {\n          title\n          author {\n            avatarUrl\n            login\n          }\n          repository {\n            nameWithOwner\n          }\n          reviewRequests(first: 5) {\n            nodes {\n              requestedReviewer {\n                ... on User {\n                  name\n                  login\n                  avatarUrl\n                }\n              }\n            }\n          }\n          createdAt\n          url\n        }\n      }\n    }\n  }\n':
     types.GetGithubPullRequestsDocument,
-  "\n  query GetViewer {\n    viewer {\n      id\n      avatarUrl\n      login\n    }\n  }\n":
+  "\n  query GetViewer {\n    viewer {\n      id\n      avatarUrl\n      login\n      name\n    }\n  }\n":
     types.GetViewerDocument,
 };
 
@@ -43,8 +43,8 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  query GetViewer {\n    viewer {\n      id\n      avatarUrl\n      login\n    }\n  }\n",
-): (typeof documents)["\n  query GetViewer {\n    viewer {\n      id\n      avatarUrl\n      login\n    }\n  }\n"];
+  source: "\n  query GetViewer {\n    viewer {\n      id\n      avatarUrl\n      login\n      name\n    }\n  }\n",
+): (typeof documents)["\n  query GetViewer {\n    viewer {\n      id\n      avatarUrl\n      login\n      name\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

@@ -6,6 +6,7 @@ const QueryGetViewer = graphql(`
       id
       avatarUrl
       login
+      name
     }
   }
 `);

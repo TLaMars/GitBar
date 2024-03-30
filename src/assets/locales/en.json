@@ -1,4 +1,10 @@
 {
   "Home/Heading/Label": "Home",
-  "Details/Heading/Label": "Details"
+  "Details/Heading/Label": "Details",
+  "RegisteredLayout/Heading/Added": "Added your {type} account!",
+  "RegisteredLayout/Label/Redirect": "Going back to pull requests in {seconds}",
+  "RegisteredLayout/Heading/Error": "Whoops",
+  "RegisteredLayout/Body/Error": "We couldn't add your {type} account, please try again.",
+  "RegisteredLayout/Button/Retry": "Try again!",
+  "RegisteredLayout/Button/GoToPullRequests": "Go now!"
 }

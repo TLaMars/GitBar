@@ -1,22 +1,22 @@
 import { useLazyQuery } from "@apollo/client";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
+import { Linking } from "react-native";
 
-import Body from "components/body/body";
-import Heading from "components/heading/heading";
+import GITHUB_OAUTH_AUTHORIZE from "constants/github-oauth";
 import useDispatch from "hooks/use-dispatch";
 import { AccountType } from "models/account";
 import { RootStackParamList } from "models/root-stack-param-list";
 import QueryGetViewer from "src/core/gql/github/queries/viewer";
 import gitHubOauthApi from "src/core/services/api/github/api";
 import { upsertOneAccount } from "src/core/store/slices/accounts";
-import DefaultLayout from "src/layouts/default-layout/default-layout";
+import RegisteredLayout from "src/layouts/registered-layout/registered-layout";
 
 const RegisterGithub: React.FC = () => {
   const dispatch = useDispatch();
   const [fetchViewer, { data }] = useLazyQuery(QueryGetViewer);
   const [token, setToken] = useState<string>();
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<string>();
 
   const {
     params: { code },
@@ -39,7 +39,7 @@ const RegisterGithub: React.FC = () => {
           },
         )
         .catch((err) => {
-          setError(true);
+          setError("Failed to fetch token");
           console.error(err);
         });
 
@@ -64,6 +64,7 @@ const RegisterGithub: React.FC = () => {
         upsertOneAccount({
           accountId: data.viewer.id,
           type: AccountType.GitHub,
+          name: data.viewer.name ?? undefined,
           userName: data.viewer.login,
           avatarUrl: data.viewer.avatarUrl,
           accessToken: token,
@@ -73,10 +74,15 @@ const RegisterGithub: React.FC = () => {
   }, [data, dispatch, token]);
 
   return (
-    <DefaultLayout>
-      <Heading>GitHub Account Added</Heading>
-      {error && <Body>There was an error adding your GitHub account</Body>}
-    </DefaultLayout>
+    <RegisteredLayout
+      avatarUrl={data?.viewer.avatarUrl}
+      error={error}
+      name={data?.viewer.login ?? ""}
+      type={AccountType.GitHub}
+      onRetryPress={() => {
+        void Linking.openURL(GITHUB_OAUTH_AUTHORIZE);
+      }}
+    />
   );
 };
 

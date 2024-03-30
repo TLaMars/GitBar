@@ -1,7 +1,13 @@
+export enum AccountType {
+  GitHub = "github",
+}
+
 type Account = {
-  type: "github";
-  name: string;
+  accountId: string;
+  type: AccountType;
+  userName: string;
   avatarUrl?: string;
+
   accessToken: string;
 };
 

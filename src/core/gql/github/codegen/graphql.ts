@@ -29697,7 +29697,7 @@ export type GetViewerQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetViewerQuery = {
   __typename?: "Query";
-  viewer: { __typename?: "User"; avatarUrl: any; login: string };
+  viewer: { __typename?: "User"; id: string; avatarUrl: any; login: string };
 };
 
 export const GetGithubPullRequestsDocument = {
@@ -29903,6 +29903,7 @@ export const GetViewerDocument = {
             selectionSet: {
               kind: "SelectionSet",
               selections: [
+                { kind: "Field", name: { kind: "Name", value: "id" } },
                 { kind: "Field", name: { kind: "Name", value: "avatarUrl" } },
                 { kind: "Field", name: { kind: "Name", value: "login" } },
               ],

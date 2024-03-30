@@ -23,6 +23,7 @@ export type Props = {
   capitalize?: boolean;
   color?: ThemeColor;
   size?: HeadingSize;
+  fontSizeIsLineHeight?: boolean;
 } & PropsWithChildren &
   Pick<TextProps, "testID" | "numberOfLines" | "onTextLayout"> &
   StyleProps;
@@ -45,6 +46,7 @@ const Heading: React.FC<Props> = ({
   textAlign,
   numberOfLines,
   onTextLayout,
+  fontSizeIsLineHeight,
 }) => {
   const { fontSizes, fontWeights, lineHeights, colors } = useTheme();
   const sizeKey = sizeMapping[size];
@@ -64,7 +66,7 @@ const Heading: React.FC<Props> = ({
         {
           fontSize,
           fontWeight: fontWeights.bold,
-          lineHeight,
+          lineHeight: fontSizeIsLineHeight ? fontSize : lineHeight,
           textAlign,
           textTransform,
           color,

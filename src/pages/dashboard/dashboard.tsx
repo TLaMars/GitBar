@@ -1,33 +1,39 @@
 import React from "react";
-import { Linking, Pressable } from "react-native";
+import { FlatList, View } from "react-native";
 
-import Avatar from "components/avatar/avatar";
-import Body from "components/body/body";
 import Heading from "components/heading/heading";
-import GITHUB_OAUTH_AUTHORIZE from "constants/github-oauth";
-import useSelector from "hooks/use-selector";
-import { selectAccounts } from "src/core/store/selectors/accounts";
+import PullRequestCard from "components/pull-request-card/pull-request-card";
+import usePullRequests from "hooks/use-pull-requests";
+import useTranslation from "hooks/use-translation";
 import DefaultLayout from "src/layouts/default-layout/default-layout";
 
+import useStyles from "./dashboard.styles";
+
 const Dashboard: React.FC = () => {
-  const accounts = useSelector(selectAccounts);
+  const $ = useStyles();
+  const { t } = useTranslation();
+  const { pullRequests } = usePullRequests();
 
   return (
     <DefaultLayout>
-      <Heading size="s">Pull Requests</Heading>
-      <Pressable
-        accessibilityRole="button"
-        onPress={() => Linking.openURL(GITHUB_OAUTH_AUTHORIZE)}
-      >
-        <Body>Add Github</Body>
-      </Pressable>
-      {accounts.map((account) => (
-        <Avatar
-          key={account.accountId}
-          imageUrl={account.avatarUrl}
-          size={100}
+      <View style={$.container}>
+        <Heading size="s">Pull Requests</Heading>
+        <FlatList
+          contentContainerStyle={$.list}
+          data={pullRequests}
+          renderItem={({ item }) => (
+            <PullRequestCard
+              title={item.title}
+              author={item.author}
+              repoName={item.repoName}
+              reviewers={item.reviewers}
+              createdAt={item.createdAt}
+              url={item.url}
+            />
+          )}
+          keyExtractor={(item) => item.id}
         />
-      ))}
+      </View>
     </DefaultLayout>
   );
 };

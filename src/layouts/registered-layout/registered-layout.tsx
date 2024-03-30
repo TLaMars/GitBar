@@ -2,7 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 
-import Avatar from "components/avatar/avatar";
+import Avatar from "components/attendee/attendee";
 import Body from "components/body/body";
 import Button from "components/button/button";
 import Heading from "components/heading/heading";

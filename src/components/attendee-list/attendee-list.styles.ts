@@ -1,0 +1,30 @@
+import useMemoizedStyles from "hooks/use-memoized-styles";
+
+const useStyles = (size: number) =>
+  useMemoizedStyles(
+    ({ borderRadiuses, colors, spacing }) => ({
+      stack: {
+        flexDirection: "row",
+        marginRight: spacing(2),
+        alignItems: "center",
+        overflow: "hidden",
+        height: size,
+      },
+      container: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginLeft: -1 * (size - spacing(2)),
+      },
+      seperator: {
+        backgroundColor: colors.backgroundSurface,
+        borderRadius: borderRadiuses.round,
+        width: size + 2,
+        height: size + 2,
+      },
+      icon: {
+        marginLeft: -1 * size,
+      },
+    }),
+    [size],
+  );
+export default useStyles;

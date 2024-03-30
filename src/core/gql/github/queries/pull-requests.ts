@@ -9,6 +9,7 @@ const QueryGetGithubPullRequests = graphql(`
     ) {
       nodes {
         ... on PullRequest {
+          id
           title
           author {
             avatarUrl

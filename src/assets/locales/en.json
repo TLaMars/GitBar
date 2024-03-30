@@ -6,5 +6,7 @@
   "RegisteredLayout/Heading/Error": "Whoops",
   "RegisteredLayout/Body/Error": "We couldn't add your {type} account, please try again.",
   "RegisteredLayout/Button/Retry": "Try again!",
-  "RegisteredLayout/Button/GoToPullRequests": "Go now!"
+  "RegisteredLayout/Button/GoToPullRequests": "Go now!",
+  "PullRequestCard/Body/Author": "Author:",
+  "PullRequestCard/Body/Assignees": "Assignees:"
 }

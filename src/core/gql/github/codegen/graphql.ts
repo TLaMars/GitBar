@@ -29653,6 +29653,7 @@ export type GetGithubPullRequestsQuery = {
       | { __typename?: "Organization" }
       | {
           __typename?: "PullRequest";
+          id: string;
           title: string;
           createdAt: any;
           url: any;
@@ -29758,6 +29759,10 @@ export const GetGithubPullRequestsDocument = {
                         selectionSet: {
                           kind: "SelectionSet",
                           selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "id" },
+                            },
                             {
                               kind: "Field",
                               name: { kind: "Name", value: "title" },

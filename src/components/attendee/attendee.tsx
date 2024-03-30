@@ -3,11 +3,11 @@ import { Image } from "react-native";
 
 type Props = {
   size?: number;
-  imageUrl: string;
+  avatarUrl: string;
 };
 
-const Avatar: React.FC<Props> = ({ size = 80, imageUrl }) => {
-  const avatarStyle = [
+const Attendee: React.FC<Props> = ({ size = 80, avatarUrl }) => {
+  const attendeeStyle = [
     {
       width: size,
       height: size,
@@ -18,10 +18,10 @@ const Avatar: React.FC<Props> = ({ size = 80, imageUrl }) => {
   return (
     <Image
       accessibilityIgnoresInvertColors
-      style={avatarStyle}
-      source={{ uri: imageUrl }}
+      style={attendeeStyle}
+      source={{ uri: avatarUrl }}
     />
   );
 };
 
-export default Avatar;
+export default Attendee;

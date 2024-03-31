@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { ScrollView, View } from "react-native";
 
@@ -13,9 +14,13 @@ import DefaultLayout from "src/layouts/default-layout/default-layout";
 const Settings: React.FC = () => {
   const dispatch = useDispatch();
   const accounts = useSelector(selectAccounts);
+  const { navigate } = useNavigation();
 
   const deleteAccount = (accountId: string) => {
     dispatch(removeOneAccount(accountId));
+    if (accounts.length === 1) {
+      navigate("OnboardingWelcome");
+    }
   };
 
   return (

@@ -88,8 +88,8 @@ export const THEME_BORDER_RADIUSES = {
 } as const satisfies Record<string, number>;
 
 export const THEME_FONT_SIZES = {
-  buttonXS: FONT_SIZES.s,
-  buttonS: FONT_SIZES.m,
+  buttonXS: FONT_SIZES.xs,
+  buttonS: FONT_SIZES.s,
   buttonM: FONT_SIZES.m,
   buttonL: FONT_SIZES.l,
   headingXL: FONT_SIZES.x4l,
@@ -146,9 +146,9 @@ export const THEME_FONT_WEIGHTS = {
 } as const satisfies Record<string, string>;
 
 export const THEME_COLORS_LIGHT = {
-  text: "#111317",
-  icon: "#111317",
-  background: "#E7ECEF",
+  text: "rgb(17, 19, 23)",
+  icon: "rgb(17, 19, 23)",
+  background: "rgb(231, 236, 239)",
   backgroundSurface: "rgba(17, 19, 23, 0.12)",
   backgroundActive: "rgba(224, 231, 235, 0.8)",
   backgroundHover: "rgba(224, 231, 235, 0.4)",
@@ -156,13 +156,14 @@ export const THEME_COLORS_LIGHT = {
   buttonHover: "rgb(167,194, 255)",
   buttonDanger: "rgb(255, 117, 117)",
   buttonDangerHover: "rgb(255, 132, 132)",
-  buttonText: "#111317",
+  buttonSecondary: "rgb(17, 19, 23)",
+  buttonText: "rgb(17, 19, 23)",
 } as const satisfies Record<string, string>;
 
 export const THEME_COLORS_DARK = {
-  text: "#E7ECEF",
-  icon: "#E7ECEF",
-  background: "#111317",
+  text: "rgb(231, 236, 239)",
+  icon: "rgb(231, 236, 239)",
+  background: "rgb(17, 19, 23)",
   backgroundSurface: "rgba(17, 19, 23, 0.6)",
   backgroundActive: "rgba(224, 231, 235, 0.2)",
   backgroundHover: "rgba(224, 231, 235, 0.1)",
@@ -170,7 +171,8 @@ export const THEME_COLORS_DARK = {
   buttonHover: "rgb(39, 97, 221)",
   buttonDanger: "rgb(221, 49, 49)",
   buttonDangerHover: "rgb(221, 29, 29)",
-  buttonText: "#E7ECEF",
+  buttonSecondary: "rgb(17, 19, 23)",
+  buttonText: "rgb(231, 236, 239)",
 } as const satisfies Record<string, string>;
 
 export const THEME = {

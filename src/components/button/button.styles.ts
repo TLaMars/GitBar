@@ -33,6 +33,15 @@ const useStyles = () =>
           paddingHorizontal: spacing(5),
           paddingVertical: spacing(3.5),
         },
+        neutral: {
+          backgroundColor: colors.button,
+        },
+        danger: {
+          backgroundColor: colors.buttonDanger,
+        },
+        secondary: {
+          backgroundColor: colors.buttonSecondary,
+        },
       },
       disabled: {
         opacity: 0.5,

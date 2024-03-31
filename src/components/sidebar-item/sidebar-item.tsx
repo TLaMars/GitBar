@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable } from "react-native";
+import { Pressable } from "react-native-macos";
 
 import Icon, { IconName } from "components/icon/icon";
 
@@ -17,6 +17,7 @@ const SidebarItem: React.FC<Props> = ({ active = false, icon, onPress }) => {
 
   return (
     <Pressable
+      hitSlop={10}
       style={[$.button, active && $.active, hovered && $.hover]}
       onPress={onPress}
       accessibilityRole="button"

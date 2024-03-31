@@ -9,5 +9,9 @@
   "RegisteredLayout/Button/GoToPullRequests": "Go now!",
   "PullRequestCard/Body/Author": "Author:",
   "PullRequestCard/Body/Assignees": "Assignees:",
-  "Dashboard/Heading/PullRequests": "Pull Requests"
+  "Dashboard/Heading/PullRequests": "Pull Requests",
+  "Onboarding/Heading/Welcome": "Welcome to GitBar",
+  "Onboarding/Button/AddAccount": "Add account",
+  "Onboarding/Heading/AddAccount": "Add an account",
+  "Onboarding/Button/GitHub": "Add GitHub account"
 }

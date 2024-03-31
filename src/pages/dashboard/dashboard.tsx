@@ -25,9 +25,7 @@ const Dashboard: React.FC = () => {
             <PullRequestCard
               title={item.title}
               author={item.author}
-              repoName={item.repoName}
               reviewers={item.reviewers}
-              createdAt={item.createdAt}
               url={item.url}
               amountOfComments={item.amountOfComments}
               amountOfApprovals={item.amountOfApprovals}

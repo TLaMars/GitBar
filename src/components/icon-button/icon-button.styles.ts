@@ -6,11 +6,16 @@ const useStyles = () =>
       justifyContent: "center",
       aspectRatio: 1,
       alignItems: "center",
-      backgroundColor: colors.button,
       borderRadius: borderRadiuses.item,
     },
     danger: {
-      backgroundColor: colors.buttonDanger,
+      backgroundColor: colors.backgroundCtaDanger,
+    },
+    secondary: {
+      backgroundColor: colors.backgroundCtaSecondary,
+    },
+    neutral: {
+      backgroundColor: colors.backgroundCta,
     },
   }));
 export default useStyles;

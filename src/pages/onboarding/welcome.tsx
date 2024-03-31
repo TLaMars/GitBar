@@ -1,9 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Image } from "react-native";
+import { Image, View } from "react-native";
 
 import Logo from "assets/illustrations/logo.png";
-import BlobBackground from "components/blob-background/blob-background";
 import Button from "components/button/button";
 import Heading from "components/heading/heading";
 import Spacer from "components/spacer/spacer";
@@ -17,7 +16,7 @@ const OnboardingWelcome: React.FC = () => {
   const { navigate } = useNavigation();
 
   return (
-    <BlobBackground style={$.container}>
+    <View style={$.container}>
       <Image accessibilityIgnoresInvertColors source={Logo} style={$.logo} />
       <Spacer mt={2} />
       <Heading size="l">{t("Onboarding/Heading/Welcome")}</Heading>
@@ -27,7 +26,7 @@ const OnboardingWelcome: React.FC = () => {
         label={t("Onboarding/Button/AddAccount")}
         onPress={() => navigate("OnboardingAddAccount")}
       />
-    </BlobBackground>
+    </View>
   );
 };
 

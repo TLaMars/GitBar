@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable, PressableProps } from "react-native";
+import { TouchableOpacity, TouchableOpacityProps } from "react-native";
 
 import Text from "components/text/text";
 import { AnyFunction } from "utils/generics";
@@ -13,10 +13,10 @@ type Props = {
   label: string;
   alignmentLeft?: boolean;
   onPress?: AnyFunction;
-} & PressableProps;
+} & TouchableOpacityProps;
 
 const Button: React.FC<Props> = ({
-  type = "primary",
+  type = "neutral",
   boldText = true,
   disabled,
   label,
@@ -32,11 +32,14 @@ const Button: React.FC<Props> = ({
     size === "m" && $.text.m,
     size === "s" && $.text.s,
     size === "xs" && $.text.xs,
+    type === "secondary" && $.text.secondary,
+    type === "danger" && $.text.danger,
+    type === "neutral" && $.text.neutral,
     boldText && $.bold,
   ];
 
   return (
-    <Pressable
+    <TouchableOpacity
       style={[
         $.button,
         size === "l" && $.button.l,
@@ -58,7 +61,7 @@ const Button: React.FC<Props> = ({
       {...rest}
     >
       <Text style={textStyle}>{label}</Text>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 

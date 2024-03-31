@@ -11,10 +11,7 @@ const useStyles = () =>
       padding: spacing(2),
     },
     active: {
-      backgroundColor: colors.backgroundActive,
-    },
-    hover: {
-      backgroundColor: colors.backgroundHover,
+      backgroundColor: colors.backgroundSecondary,
     },
   }));
 export default useStyles;

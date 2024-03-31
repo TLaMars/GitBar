@@ -16,7 +16,7 @@ const useStyles = (size: number) =>
         marginLeft: -1 * (size - spacing(2)),
       },
       seperator: {
-        backgroundColor: colors.backgroundSurface,
+        backgroundColor: colors.backgroundSecondary,
         borderRadius: borderRadiuses.round,
         width: size + 2,
         height: size + 2,

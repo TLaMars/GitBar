@@ -57,7 +57,7 @@ const RegisteredLayout: React.FC<Props> = ({
               {t("RegisteredLayout/Heading/Added", { type })}
             </Heading>
             <Spacer mt={4} />
-            <Avatar imageUrl={avatarUrl} size={100} />
+            <Avatar avatarUrl={avatarUrl} size={100} />
             <Spacer mt={2} />
             <Heading>{name}</Heading>
             <Spacer mt={4} />

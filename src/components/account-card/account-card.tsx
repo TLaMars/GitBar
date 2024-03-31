@@ -36,9 +36,9 @@ const AccountCard: React.FC<Props> = ({
     <View style={[$.card, border && $.border]}>
       <View>
         <Attendee avatarUrl={avatarUrl} size={36} />
-        {/* <View style={$.type}>
+        <View style={$.type}>
           <Icon name={typeIcon} size={18} />
-        </View> */}
+        </View>
       </View>
       <View style={$.info}>
         <Heading size="x2s">{userName}</Heading>

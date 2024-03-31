@@ -1,5 +1,5 @@
 import React from "react";
-import { Linking, Pressable, View } from "react-native";
+import { Linking, TouchableOpacity, View } from "react-native";
 
 import Attendee from "components/attendee/attendee";
 import AttendeeList from "components/attendee-list/attendee-list";
@@ -15,9 +15,7 @@ import useStyles from "./pull-request-card.styles";
 type Props = {
   title: string;
   author: AttendeeType;
-  repoName: string;
   reviewers: AttendeeType[];
-  createdAt: string;
   url: string;
   amountOfComments: number;
   amountOfApprovals: number;
@@ -27,9 +25,7 @@ type Props = {
 const PullRequestCard: React.FC<Props> = ({
   title,
   author,
-  repoName,
   reviewers,
-  createdAt,
   url,
   amountOfComments,
   amountOfApprovals,
@@ -45,7 +41,11 @@ const PullRequestCard: React.FC<Props> = ({
   };
 
   return (
-    <Pressable accessibilityRole="button" style={$.card} onPress={onPress}>
+    <TouchableOpacity
+      accessibilityRole="button"
+      style={$.card}
+      onPress={onPress}
+    >
       <Heading numberOfLines={1} size="xs" fontSizeIsLineHeight>
         {title}
       </Heading>
@@ -77,7 +77,7 @@ const PullRequestCard: React.FC<Props> = ({
           <Icon name="UserCheck" size={20} />
         </View>
       </View>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 

@@ -15,7 +15,6 @@ const useStyles = () =>
         justifyContent: "center",
         flexDirection: "row",
         borderRadius: borderRadiuses.button,
-        backgroundColor: colors.button,
         // Button Sizes
         xs: {
           paddingHorizontal: spacing(3),
@@ -34,20 +33,19 @@ const useStyles = () =>
           paddingVertical: spacing(3.5),
         },
         neutral: {
-          backgroundColor: colors.button,
+          backgroundColor: colors.backgroundCta,
         },
         danger: {
-          backgroundColor: colors.buttonDanger,
+          backgroundColor: colors.backgroundCtaDanger,
         },
         secondary: {
-          backgroundColor: colors.buttonSecondary,
+          backgroundColor: colors.backgroundCtaSecondary,
         },
       },
       disabled: {
         opacity: 0.5,
       },
       text: {
-        color: colors.buttonText,
         textAlign: "center",
         // Button Sizes
         xs: {
@@ -65,6 +63,15 @@ const useStyles = () =>
         l: {
           fontSize: fontSizes.buttonL,
           lineHeight: lineHeights.buttonL,
+        },
+        neutral: {
+          color: colors.textOnCta,
+        },
+        danger: {
+          color: colors.textOnCtaDanger,
+        },
+        secondary: {
+          color: colors.textOnCtaSecondary,
         },
       },
       bold: {

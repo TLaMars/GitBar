@@ -14,7 +14,7 @@ const BlobBackground: React.FC<Props> = ({ children, style }) => {
   const $ = useStyles();
 
   return (
-    <View style={style}>
+    <View style={[style, $.wrapper]}>
       <Image
         source={BlobOne}
         accessibilityIgnoresInvertColors

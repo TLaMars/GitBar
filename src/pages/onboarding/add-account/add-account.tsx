@@ -15,7 +15,7 @@ const OnboardingAddAccount: React.FC = () => {
   const $ = useStyles();
 
   return (
-    <DefaultLayout blobBackground sideBarHidden>
+    <DefaultLayout sideBarHidden>
       <View style={$.container}>
         <Heading size="m">{t("Onboarding/Heading/AddAccount")}</Heading>
         <Spacer mt={2} />

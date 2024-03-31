@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable } from "react-native-macos";
+import { TouchableOpacity } from "react-native";
 
 import Icon, { IconName } from "components/icon/icon";
 
@@ -13,19 +13,16 @@ type Props = {
 
 const SidebarItem: React.FC<Props> = ({ active = false, icon, onPress }) => {
   const $ = useStyles();
-  const [hovered, setHovered] = React.useState(false);
 
   return (
-    <Pressable
+    <TouchableOpacity
       hitSlop={10}
-      style={[$.button, active && $.active, hovered && $.hover]}
+      style={[$.button, active && $.active]}
       onPress={onPress}
       accessibilityRole="button"
-      onHoverIn={() => setHovered(true)}
-      onHoverOut={() => setHovered(false)}
     >
       <Icon name={icon} size={20} />
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 

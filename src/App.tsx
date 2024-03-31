@@ -1,6 +1,7 @@
 import { ApolloProvider } from "@apollo/client";
 import { NavigationContainer } from "@react-navigation/native";
 
+import BlobBackground from "components/blob-background/blob-background";
 import linkingConfig from "constants/linking-config";
 import IntlProvider from "contexts/intl";
 import ReduxProvider from "contexts/redux-provider";
@@ -14,23 +15,25 @@ const App: React.FC = () => (
     <ReduxProvider>
       <ThemeProvider>
         <IntlProvider>
-          <NavigationContainer
-            linking={linkingConfig}
-            theme={{
-              // Override the default theme
-              dark: false,
-              colors: {
-                notification: "transparent",
-                background: "transparent",
-                border: "transparent",
-                card: "transparent",
-                primary: "transparent",
-                text: "transparent",
-              },
-            }}
-          >
-            <RootStack />
-          </NavigationContainer>
+          <BlobBackground>
+            <NavigationContainer
+              linking={linkingConfig}
+              theme={{
+                // Override the default theme
+                dark: false,
+                colors: {
+                  notification: "transparent",
+                  background: "transparent",
+                  border: "transparent",
+                  card: "transparent",
+                  primary: "transparent",
+                  text: "transparent",
+                },
+              }}
+            >
+              <RootStack />
+            </NavigationContainer>
+          </BlobBackground>
         </IntlProvider>
       </ThemeProvider>
     </ReduxProvider>

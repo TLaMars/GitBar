@@ -10,22 +10,18 @@ import useStyles from "./default-layout.styles";
 
 type Props = {
   sideBarHidden?: boolean;
-  blobBackground?: boolean;
 } & PropsWithChildren;
 
 const DefaultLayout: React.FC<Props> = ({
   children,
   sideBarHidden = false,
-  blobBackground = false,
 }) => {
   const $ = useStyles();
   const { navigate } = useNavigation();
   const route = useRoute();
 
-  const Background = blobBackground ? BlobBackground : View;
-
   return (
-    <Background style={$.container}>
+    <View style={$.container}>
       {!sideBarHidden && (
         <Sidebar
           topContainer={
@@ -48,7 +44,7 @@ const DefaultLayout: React.FC<Props> = ({
         />
       )}
       {children}
-    </Background>
+    </View>
   );
 };
 

@@ -22,6 +22,7 @@ const Button: React.FC<Props> = ({
   label,
   size = "m",
   onPress,
+  style,
   ...rest
 }) => {
   const $ = useStyles();
@@ -50,6 +51,7 @@ const Button: React.FC<Props> = ({
         type === "danger" && $.button.danger,
         type === "neutral" && $.button.neutral,
         disabled && $.disabled,
+        style,
       ]}
       disabled={disabled}
       onPress={(event) => {

@@ -21,6 +21,30 @@ const config: CodegenConfig = {
         fragmentMasking: { unmaskFunctionName: "getFragmentData" },
       },
     },
+    "./src/core/gql/gitlab/codegen/": {
+      preset: "client",
+      schema: {
+        "https://gitlab.com/api/graphql": {
+          method: "GET",
+          headers: {
+            Authorization: `bearer KEY`,
+            "user-agent": "My-User-Agent",
+          },
+        },
+      },
+      documents: ["./src/core/gql/gitlab/queries/**/*.ts"],
+      plugins: [
+        {
+          add: {
+            // Add a comment to the top of each generated file
+            content: "// @ts-nocheck\n",
+          },
+        },
+      ],
+      presetConfig: {
+        fragmentMasking: { unmaskFunctionName: "getFragmentData" },
+      },
+    },
   },
 };
 

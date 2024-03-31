@@ -3,7 +3,9 @@ import { RouteProp, useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { Linking } from "react-native";
 
-import GITHUB_OAUTH_AUTHORIZE from "constants/github-oauth";
+import GITHUB_OAUTH_AUTHORIZE, {
+  GITHUB_GRAPHQL_ENDPOINT,
+} from "constants/github";
 import useDispatch from "hooks/use-dispatch";
 import { AccountType } from "models/account";
 import { RootStackParamList } from "models/root-stack-param-list";
@@ -47,6 +49,7 @@ const RegisterGithub: React.FC = () => {
         setToken(response.access_token);
         await fetchViewer({
           context: {
+            uri: GITHUB_GRAPHQL_ENDPOINT,
             headers: {
               Authorization: `bearer ${response.access_token}`,
             },
@@ -68,6 +71,7 @@ const RegisterGithub: React.FC = () => {
           userName: data.viewer.login,
           avatarUrl: data.viewer.avatarUrl,
           accessToken: token,
+          domain: GITHUB_GRAPHQL_ENDPOINT,
         }),
       );
     }

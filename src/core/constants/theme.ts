@@ -106,7 +106,7 @@ export const THEME_FONT_SIZES = {
   bodyXS: FONT_SIZES.xs,
   bodyX2S: FONT_SIZES.x2s,
   helper: FONT_SIZES.xs,
-  input: FONT_SIZES.m,
+  input: FONT_SIZES.s,
   label: FONT_SIZES.s,
   tabBar: FONT_SIZES.x2s,
   text: FONT_SIZES.m,
@@ -170,9 +170,10 @@ export const THEME_COLORS_LIGHT = {
   iconOnCta: COLORS.lightGray100,
   iconOnCtaDanger: COLORS.lightGray100,
   iconOnCtaSecondary: COLORS.black,
-  border: COLORS.lightGray200,
+  border: COLORS.lightGray100,
   icon: COLORS.black,
   text: COLORS.black,
+  textSecondary: COLORS.darkGray200,
 } as const satisfies Record<string, string>;
 
 export const THEME_COLORS_DARK = {
@@ -191,6 +192,7 @@ export const THEME_COLORS_DARK = {
   border: COLORS.darkGray200,
   icon: COLORS.lightGray100,
   text: COLORS.lightGray100,
+  textSecondary: COLORS.lightGray300,
 } as const satisfies Record<string, string>;
 
 export const THEME = {

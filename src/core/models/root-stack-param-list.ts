@@ -5,6 +5,7 @@ export type RootStackParamList = {
   RegisterGitHub: {
     code: string;
   };
+  RegisterGitLab: undefined;
   Settings: undefined;
 };
 

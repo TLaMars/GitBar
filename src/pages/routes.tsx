@@ -5,6 +5,7 @@ import useSelector from "hooks/use-selector";
 import { selectAccounts } from "src/core/store/selectors/accounts";
 
 import RegisterGithub from "./auth/register/github";
+import RegisterGitLab from "./auth/register/gitlab";
 import Dashboard from "./dashboard/dashboard";
 import OnboardingAddAccount from "./onboarding/add-account/add-account";
 import OnboardingWelcome from "./onboarding/welcome/welcome";
@@ -23,6 +24,10 @@ const RootStack: React.FC = () => {
       }}
     >
       <RootStackNavigator.Screen name="Dashboard" component={Dashboard} />
+      <RootStackNavigator.Screen
+        name="RegisterGitLab"
+        component={RegisterGitLab}
+      />
       <RootStackNavigator.Screen
         name="RegisterGitHub"
         component={RegisterGithub}

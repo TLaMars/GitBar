@@ -1,10 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Linking, View } from "react-native";
 
 import Button from "components/button/button";
 import Heading from "components/heading/heading";
 import Spacer from "components/spacer/spacer";
-import GITHUB_OAUTH_AUTHORIZE from "constants/github-oauth";
+import GITHUB_OAUTH_AUTHORIZE from "constants/github";
 import useTranslation from "hooks/use-translation";
 import DefaultLayout from "src/layouts/default-layout/default-layout";
 
@@ -13,6 +14,7 @@ import useStyles from "./add-account.styles";
 const OnboardingAddAccount: React.FC = () => {
   const { t } = useTranslation();
   const $ = useStyles();
+  const { navigate } = useNavigation();
 
   return (
     <DefaultLayout sideBarHidden>
@@ -25,6 +27,15 @@ const OnboardingAddAccount: React.FC = () => {
           type="secondary"
           label={t("Onboarding/Button/GitHub")}
           onPress={() => Linking.openURL(GITHUB_OAUTH_AUTHORIZE)}
+        />
+        <Button
+          boldText={false}
+          size="xs"
+          type="secondary"
+          label={t("Onboarding/Button/GitLab")}
+          onPress={() => {
+            navigate("RegisterGitLab");
+          }}
         />
       </View>
     </DefaultLayout>

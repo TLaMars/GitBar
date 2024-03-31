@@ -11,6 +11,7 @@ type Account = {
   avatarUrl: string;
 
   accessToken: string;
+  domain: string;
 };
 
 export default Account;

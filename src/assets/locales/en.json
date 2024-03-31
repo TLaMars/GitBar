@@ -13,5 +13,10 @@
   "Onboarding/Heading/Welcome": "Welcome to GitBar",
   "Onboarding/Button/AddAccount": "Add account",
   "Onboarding/Heading/AddAccount": "Add an account",
-  "Onboarding/Button/GitHub": "Add GitHub account"
+  "Onboarding/Button/GitHub": "Add GitHub account",
+  "Onboarding/Button/GitLab": "Add GitLab account",
+  "General/Button/Back": "Back",
+  "General/Button/Continue": "Continue",
+  "AddGitLab/Label/Host": "GitLab Domain / Host",
+  "AddGitLab/Label/Token": "Private Token"
 }

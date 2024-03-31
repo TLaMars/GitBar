@@ -1,5 +1,6 @@
 import Cross from "assets/svgs/cross.svg";
 import GitHub from "assets/svgs/github.svg";
+import GitLab from "assets/svgs/gitlab.svg";
 import Notification from "assets/svgs/notification.svg";
 import PowerOff from "assets/svgs/power-off.svg";
 import PullRequest from "assets/svgs/pull-request.svg";
@@ -10,6 +11,7 @@ import User from "assets/svgs/user.svg";
 export default {
   Cross,
   GitHub,
+  GitLab,
   Notification,
   PowerOff,
   PullRequest,

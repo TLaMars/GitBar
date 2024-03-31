@@ -38,11 +38,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     popover.behavior = .transient
     popover.contentViewController = rootViewController
     
+    
     statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     if let button = self.statusBarItem.button {
+      let image = NSImage(named: "PullRequest")
+      image?.size = NSSize(width: 20, height: 20)
+      image?.isTemplate = true
+      image?.prefersColorMatch = true
       button.action = #selector(togglePopover(_:))
-      button.title = "GitBar"
+      button.image = image
     }
     
     // Monitor to watch if user clicks outside popup
@@ -54,7 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     eventMonitor?.start()
   
     let em = NSAppleEventManager.shared()
-      em.setEventHandler(self, andSelector: #selector(self.getUrl(_:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+    em.setEventHandler(self, andSelector: #selector(self.getUrl(_:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {
@@ -70,6 +75,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func showPopover(_ sender: Any?) {
     if let button = statusBarItem.button {
       popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+      popover.contentViewController?.view.window?.makeKey()
     }
     eventMonitor?.start()
   }

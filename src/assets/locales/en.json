@@ -8,5 +8,6 @@
   "RegisteredLayout/Button/Retry": "Try again!",
   "RegisteredLayout/Button/GoToPullRequests": "Go now!",
   "PullRequestCard/Body/Author": "Author:",
-  "PullRequestCard/Body/Assignees": "Assignees:"
+  "PullRequestCard/Body/Assignees": "Assignees:",
+  "Dashboard/Heading/PullRequests": "Pull Requests"
 }

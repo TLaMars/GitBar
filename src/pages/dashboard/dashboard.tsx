@@ -1,5 +1,6 @@
+import { useIsFocused } from "@react-navigation/native";
 import React from "react";
-import { FlatList, View } from "react-native";
+import { AppState, FlatList, View } from "react-native";
 
 import Heading from "components/heading/heading";
 import PullRequestCard from "components/pull-request-card/pull-request-card";
@@ -17,7 +18,7 @@ const Dashboard: React.FC = () => {
   return (
     <DefaultLayout>
       <View style={$.container}>
-        <Heading size="s">Pull Requests</Heading>
+        <Heading size="s">{t("Dashboard/Heading/PullRequests")}</Heading>
         <FlatList
           contentContainerStyle={$.list}
           data={pullRequests}

@@ -8,7 +8,7 @@ import Heading from "components/heading/heading";
 import Spacer from "components/spacer/spacer";
 import useTranslation from "hooks/use-translation";
 
-import useStyles from "./onboarding.styles";
+import useStyles from "./welcome.styles";
 
 const OnboardingWelcome: React.FC = () => {
   const { t } = useTranslation();

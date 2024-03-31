@@ -2,7 +2,6 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { PropsWithChildren } from "react";
 import { View } from "react-native";
 
-import BlobBackground from "components/blob-background/blob-background";
 import Sidebar from "components/sidebar/sidebar";
 import SidebarItem from "components/sidebar-item/sidebar-item";
 

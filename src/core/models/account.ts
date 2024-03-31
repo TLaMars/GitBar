@@ -1,5 +1,6 @@
 export enum AccountType {
   GitHub = "GitHub",
+  GitLab = "GitLab",
 }
 
 type Account = {

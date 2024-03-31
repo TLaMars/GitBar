@@ -7,7 +7,7 @@ import { selectAccounts } from "src/core/store/selectors/accounts";
 import RegisterGithub from "./auth/register/github";
 import Dashboard from "./dashboard/dashboard";
 import OnboardingAddAccount from "./onboarding/add-account/add-account";
-import OnboardingWelcome from "./onboarding/welcome";
+import OnboardingWelcome from "./onboarding/welcome/welcome";
 import Settings from "./settings/settings";
 
 const RootStackNavigator = createStackNavigator();

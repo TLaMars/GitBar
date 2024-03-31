@@ -1,6 +1,5 @@
-import { useIsFocused } from "@react-navigation/native";
 import React from "react";
-import { AppState, FlatList, View } from "react-native";
+import { FlatList, View } from "react-native";
 
 import Heading from "components/heading/heading";
 import PullRequestCard from "components/pull-request-card/pull-request-card";

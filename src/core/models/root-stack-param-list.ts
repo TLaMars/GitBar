@@ -3,6 +3,7 @@ export type RootStackParamList = {
   RegisterGitHub: {
     code: string;
   };
+  Settings: undefined;
 };
 
 declare global {

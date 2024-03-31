@@ -148,22 +148,28 @@ export const THEME_FONT_WEIGHTS = {
 export const THEME_COLORS_LIGHT = {
   text: "#111317",
   icon: "#111317",
+  background: "#E7ECEF",
   backgroundSurface: "rgba(17, 19, 23, 0.12)",
   backgroundActive: "rgba(224, 231, 235, 0.8)",
   backgroundHover: "rgba(224, 231, 235, 0.4)",
   button: "rgb(150, 181, 255)",
   buttonHover: "rgb(167,194, 255)",
+  buttonDanger: "rgb(255, 117, 117)",
+  buttonDangerHover: "rgb(255, 132, 132)",
   buttonText: "#111317",
 } as const satisfies Record<string, string>;
 
 export const THEME_COLORS_DARK = {
   text: "#E7ECEF",
   icon: "#E7ECEF",
+  background: "#111317",
   backgroundSurface: "rgba(17, 19, 23, 0.6)",
   backgroundActive: "rgba(224, 231, 235, 0.2)",
   backgroundHover: "rgba(224, 231, 235, 0.1)",
   button: "rgb(49, 102, 221)",
   buttonHover: "rgb(39, 97, 221)",
+  buttonDanger: "rgb(221, 49, 49)",
+  buttonDangerHover: "rgb(221, 29, 29)",
   buttonText: "#E7ECEF",
 } as const satisfies Record<string, string>;
 

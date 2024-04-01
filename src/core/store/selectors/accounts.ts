@@ -1,5 +1,5 @@
-import { RootState } from "../configure";
-import { accountsAdapter } from "../slices/accounts";
+import { RootState } from "store/configure";
+import { accountsAdapter } from "store/slices/accounts";
 
 export const accountsSelectors = accountsAdapter.getSelectors(
   (state: RootState) => state.accounts,

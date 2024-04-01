@@ -1,8 +1,7 @@
 /* eslint-disable no-underscore-dangle */
+import { GetGithubPullRequestsQuery } from "gql/github/codegen/graphql";
 import { Attendee } from "models/attendee";
 import { PullRequest } from "models/pull-request";
-
-import { GetGithubPullRequestsQuery } from "../gql/github/codegen/graphql";
 
 const transformGithubPullRequest = (
   data?: GetGithubPullRequestsQuery,

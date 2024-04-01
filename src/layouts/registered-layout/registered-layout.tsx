@@ -8,8 +8,8 @@ import Button from "components/button/button";
 import Heading from "components/heading/heading";
 import Spacer from "components/spacer/spacer";
 import useTranslation from "hooks/use-translation";
+import DefaultLayout from "layouts/default-layout/default-layout";
 import { AccountType } from "models/account";
-import DefaultLayout from "src/layouts/default-layout/default-layout";
 
 import useStyles from "./registered-layout.styles";
 

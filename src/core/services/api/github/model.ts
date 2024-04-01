@@ -1,4 +1,4 @@
-import { Config } from "../api-wrapper";
+import { Config } from "services/api/api-wrapper";
 
 export type GitHubOAuthPostApiRequest = {
   "/access_token": {

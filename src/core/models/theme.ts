@@ -7,7 +7,7 @@ import {
   THEME_FONT_FAMILIES,
   THEME_FONT_SIZES,
   THEME_FONT_WEIGHTS,
-} from "src/core/constants/theme";
+} from "constants/theme";
 
 type ThemeColors = typeof THEME_COLORS_DARK | typeof THEME_COLORS_LIGHT;
 

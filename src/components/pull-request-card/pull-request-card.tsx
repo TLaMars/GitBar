@@ -57,7 +57,7 @@ const PullRequestCard: React.FC<Props> = ({
           <Spacer ml={3} />
           {reviewers.length > 0 && (
             <>
-              <Body size="s">{t("PullRequestCard/Body/Assignees")}</Body>
+              <Body size="s">{t("PullRequestCard/Body/Reviewers")}</Body>
               <Spacer ml={1.5} />
               <AttendeeList attendees={reviewers} profileIconSize={24} />
             </>

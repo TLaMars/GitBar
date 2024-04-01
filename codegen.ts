@@ -32,7 +32,10 @@ const config: CodegenConfig = {
           },
         },
       },
-      documents: ["./src/core/gql/gitlab/queries/**/*.ts"],
+      documents: [
+        "./src/core/gql/gitlab/queries/**/*.ts",
+        "./src/core/gql/gitlab/fragments/**/*.ts",
+      ],
       plugins: [
         {
           add: {

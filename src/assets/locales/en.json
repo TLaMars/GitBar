@@ -8,7 +8,7 @@
   "RegisteredLayout/Button/Retry": "Try again!",
   "RegisteredLayout/Button/GoToPullRequests": "Go now!",
   "PullRequestCard/Body/Author": "Author:",
-  "PullRequestCard/Body/Assignees": "Assignees:",
+  "PullRequestCard/Body/Reviewers": "Reviewers:",
   "Dashboard/Heading/PullRequests": "Pull Requests",
   "Onboarding/Heading/Welcome": "Welcome to GitBar",
   "Onboarding/Button/AddAccount": "Add account",

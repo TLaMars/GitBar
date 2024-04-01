@@ -3,16 +3,15 @@ import { RouteProp, useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { Linking } from "react-native";
 
-import GITHUB_OAUTH_AUTHORIZE, {
-  GITHUB_GRAPHQL_ENDPOINT,
-} from "constants/github";
+import DOMAINS from "constants/domains";
+import URI_PATHS from "constants/uri-paths";
+import QueryGetViewer from "gql/github/queries/viewer";
 import useDispatch from "hooks/use-dispatch";
+import RegisteredLayout from "layouts/registered-layout/registered-layout";
 import { AccountType } from "models/account";
 import { RootStackParamList } from "models/root-stack-param-list";
-import QueryGetViewer from "src/core/gql/github/queries/viewer";
-import gitHubOauthApi from "src/core/services/api/github/api";
-import { upsertOneAccount } from "src/core/store/slices/accounts";
-import RegisteredLayout from "src/layouts/registered-layout/registered-layout";
+import gitHubOauthApi from "services/api/github/api";
+import { upsertOneAccount } from "store/slices/accounts";
 
 const RegisterGithub: React.FC = () => {
   const dispatch = useDispatch();
@@ -49,7 +48,7 @@ const RegisterGithub: React.FC = () => {
         setToken(response.access_token);
         await fetchViewer({
           context: {
-            uri: GITHUB_GRAPHQL_ENDPOINT,
+            uri: `${DOMAINS.githubApi}${URI_PATHS.githubGql}`,
             headers: {
               Authorization: `bearer ${response.access_token}`,
             },
@@ -71,7 +70,8 @@ const RegisterGithub: React.FC = () => {
           userName: data.viewer.login,
           avatarUrl: data.viewer.avatarUrl,
           accessToken: token,
-          domain: GITHUB_GRAPHQL_ENDPOINT,
+          domain: DOMAINS.github,
+          endpoint: `${DOMAINS.githubApi}${URI_PATHS.githubGql}`,
         }),
       );
     }
@@ -84,7 +84,9 @@ const RegisterGithub: React.FC = () => {
       name={data?.viewer.login ?? ""}
       type={AccountType.GitHub}
       onRetryPress={() => {
-        void Linking.openURL(GITHUB_OAUTH_AUTHORIZE);
+        void Linking.openURL(
+          `${DOMAINS.github}${URI_PATHS.githubOauthAuthorize}`,
+        );
       }}
     />
   );

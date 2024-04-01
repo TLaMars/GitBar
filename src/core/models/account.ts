@@ -12,6 +12,7 @@ type Account = {
 
   accessToken: string;
   domain: string;
+  endpoint: string;
 };
 
 export default Account;

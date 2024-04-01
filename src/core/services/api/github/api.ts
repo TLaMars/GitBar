@@ -1,7 +1,10 @@
-import { GitHubApi as GitHubApiType } from "./model";
-import apiWrapper from "../api-wrapper";
+import DOMAINS from "constants/domains";
+import URI_PATHS from "constants/uri-paths";
+import apiWrapper from "services/api/api-wrapper";
 
-const endpoint = "https://github.com/login/oauth";
+import { GitHubApi as GitHubApiType } from "./model";
+
+const endpoint = `${DOMAINS.github}${URI_PATHS.githubOauth}`;
 
 const gitHubOauthApi: GitHubApiType = {
   post: async (path, data, config) =>

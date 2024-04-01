@@ -40963,6 +40963,34 @@ export type IterationCreatePayload = {
   iteration?: Maybe<Iteration>;
 };
 
+export type GitLabPullRequestFragment = {
+  __typename?: "MergeRequestConnection";
+  nodes?: Array<{
+    __typename?: "MergeRequest";
+    title: string;
+    id: string;
+    approvalsRequired?: number | null;
+    approvalsLeft?: number | null;
+    webUrl?: string | null;
+    userNotesCount?: number | null;
+    createdAt: any;
+    author?: {
+      __typename?: "MergeRequestAuthor";
+      name: string;
+      avatarUrl?: string | null;
+    } | null;
+    reviewers?: {
+      __typename?: "MergeRequestReviewerConnection";
+      nodes?: Array<{
+        __typename?: "MergeRequestReviewer";
+        name: string;
+        avatarUrl?: string | null;
+      } | null> | null;
+    } | null;
+    sourceProject?: { __typename?: "Project"; name: string } | null;
+  } | null> | null;
+} & { " $fragmentName"?: "GitLabPullRequestFragment" };
+
 export type GetCurrentUserQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetCurrentUserQuery = {
@@ -40976,6 +41004,131 @@ export type GetCurrentUserQuery = {
   } | null;
 };
 
+export type GetGitLabPullRequestsQueryVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type GetGitLabPullRequestsQuery = {
+  __typename?: "Query";
+  currentUser?: {
+    __typename?: "CurrentUser";
+    assignedMergeRequests?:
+      | ({ __typename?: "MergeRequestConnection" } & {
+          " $fragmentRefs"?: {
+            GitLabPullRequestFragment: GitLabPullRequestFragment;
+          };
+        })
+      | null;
+    authoredMergeRequests?:
+      | ({ __typename?: "MergeRequestConnection" } & {
+          " $fragmentRefs"?: {
+            GitLabPullRequestFragment: GitLabPullRequestFragment;
+          };
+        })
+      | null;
+    reviewRequestedMergeRequests?:
+      | ({ __typename?: "MergeRequestConnection" } & {
+          " $fragmentRefs"?: {
+            GitLabPullRequestFragment: GitLabPullRequestFragment;
+          };
+        })
+      | null;
+  } | null;
+};
+
+export const GitLabPullRequestFragmentDoc = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "FragmentDefinition",
+      name: { kind: "Name", value: "GitLabPullRequest" },
+      typeCondition: {
+        kind: "NamedType",
+        name: { kind: "Name", value: "MergeRequestConnection" },
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "nodes" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "title" } },
+                { kind: "Field", name: { kind: "Name", value: "id" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "approvalsRequired" },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "approvalsLeft" },
+                },
+                { kind: "Field", name: { kind: "Name", value: "webUrl" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "author" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "avatarUrl" },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "reviewers" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "nodes" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "name" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "avatarUrl" },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "sourceProject" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "userNotesCount" },
+                },
+                { kind: "Field", name: { kind: "Name", value: "createdAt" } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GitLabPullRequestFragment, unknown>;
 export const GetCurrentUserDocument = {
   kind: "Document",
   definitions: [
@@ -41004,3 +41157,178 @@ export const GetCurrentUserDocument = {
     },
   ],
 } as unknown as DocumentNode<GetCurrentUserQuery, GetCurrentUserQueryVariables>;
+export const GetGitLabPullRequestsDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "GetGitLabPullRequests" },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "currentUser" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "assignedMergeRequests" },
+                  arguments: [
+                    {
+                      kind: "Argument",
+                      name: { kind: "Name", value: "state" },
+                      value: { kind: "EnumValue", value: "opened" },
+                    },
+                  ],
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "FragmentSpread",
+                        name: { kind: "Name", value: "GitLabPullRequest" },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "authoredMergeRequests" },
+                  arguments: [
+                    {
+                      kind: "Argument",
+                      name: { kind: "Name", value: "state" },
+                      value: { kind: "EnumValue", value: "opened" },
+                    },
+                  ],
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "FragmentSpread",
+                        name: { kind: "Name", value: "GitLabPullRequest" },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "reviewRequestedMergeRequests" },
+                  arguments: [
+                    {
+                      kind: "Argument",
+                      name: { kind: "Name", value: "state" },
+                      value: { kind: "EnumValue", value: "opened" },
+                    },
+                  ],
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "FragmentSpread",
+                        name: { kind: "Name", value: "GitLabPullRequest" },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    {
+      kind: "FragmentDefinition",
+      name: { kind: "Name", value: "GitLabPullRequest" },
+      typeCondition: {
+        kind: "NamedType",
+        name: { kind: "Name", value: "MergeRequestConnection" },
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "nodes" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "title" } },
+                { kind: "Field", name: { kind: "Name", value: "id" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "approvalsRequired" },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "approvalsLeft" },
+                },
+                { kind: "Field", name: { kind: "Name", value: "webUrl" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "author" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "avatarUrl" },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "reviewers" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "nodes" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "name" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "avatarUrl" },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "sourceProject" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "userNotesCount" },
+                },
+                { kind: "Field", name: { kind: "Name", value: "createdAt" } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetGitLabPullRequestsQuery,
+  GetGitLabPullRequestsQueryVariables
+>;

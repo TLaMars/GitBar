@@ -7,12 +7,13 @@ import GitLabLogo from "assets/illustrations/gitlab.svg";
 import Button from "components/button/button";
 import Spacer from "components/spacer/spacer";
 import TextInput from "components/text-input/text-input";
+import URI_PATHS from "constants/uri-paths";
+import QueryGetGitLabCurrentUser from "gql/gitlab/queries/current-user";
 import useDispatch from "hooks/use-dispatch";
 import useTranslation from "hooks/use-translation";
+import RegisteredLayout from "layouts/registered-layout/registered-layout";
 import { AccountType } from "models/account";
-import QueryGetGitLabCurrentUser from "src/core/gql/gitlab/queries/current-user";
-import { upsertOneAccount } from "src/core/store/slices/accounts";
-import RegisteredLayout from "src/layouts/registered-layout/registered-layout";
+import { upsertOneAccount } from "store/slices/accounts";
 
 import useStyles from "./register.styles";
 
@@ -28,7 +29,7 @@ const RegisterGitLab: React.FC = () => {
     try {
       await fetchUser({
         context: {
-          uri: `${domain}/api/graphql`,
+          uri: `${domain}${URI_PATHS.gitlabGql}`,
           headers: {
             "Private-Token": token,
           },
@@ -44,7 +45,8 @@ const RegisterGitLab: React.FC = () => {
       dispatch(
         upsertOneAccount({
           type: AccountType.GitLab,
-          domain: `${domain}/api/graphql`,
+          domain: `${domain}`,
+          endpoint: `${domain}${URI_PATHS.gitlabGql}`,
           accessToken: token,
           accountId: data.currentUser?.id ?? "",
           avatarUrl: `${domain}${data.currentUser?.avatarUrl}`,

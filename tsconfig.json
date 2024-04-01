@@ -18,15 +18,19 @@
     "skipLibCheck": true,
     "baseUrl": "./",
     "paths": {
-      "app/*": ["./app/*"],
       "assets/*": ["./src/assets/*"],
       "components/*": ["./src/components/*"],
       "constants/*": ["src/core/constants/*"],
       "contexts/*": ["./src/contexts/*"],
+      "gql/*": ["./src/core/gql/*"],
       "hooks/*": ["./src/hooks/*"],
+      "layouts/*": ["./src/layouts/*"],
       "models/*": ["src/core/models/*"],
       "pages/*": ["./src/pages/*"],
-      "utils/*": ["./src/utils/*"]
+      "utils/*": ["./src/utils/*"],
+      "services/*": ["./src/core/services/*"],
+      "store/*": ["./src/core/store/*"],
+      "transformers/*": ["./src/core/transformers/*"]
     }
   },
   "extends": "@react-native/typescript-config/tsconfig.json",

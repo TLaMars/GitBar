@@ -4,14 +4,20 @@ import { ScrollView, View } from "react-native";
 
 import AccountCard from "components/account-card/account-card";
 import Heading from "components/heading/heading";
+import Link from "components/link/link";
 import Spacer from "components/spacer/spacer";
 import useDispatch from "hooks/use-dispatch";
 import useSelector from "hooks/use-selector";
-import { selectAccounts } from "src/core/store/selectors/accounts";
-import { removeOneAccount } from "src/core/store/slices/accounts";
-import DefaultLayout from "src/layouts/default-layout/default-layout";
+import useTranslation from "hooks/use-translation";
+import DefaultLayout from "layouts/default-layout/default-layout";
+import { selectAccounts } from "store/selectors/accounts";
+import { removeOneAccount } from "store/slices/accounts";
+
+import useStyles from "./settings.styles";
 
 const Settings: React.FC = () => {
+  const $ = useStyles();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const accounts = useSelector(selectAccounts);
   const { navigate } = useNavigation();
@@ -26,9 +32,19 @@ const Settings: React.FC = () => {
   return (
     <DefaultLayout>
       <ScrollView>
-        <Heading size="s">Settings</Heading>
+        <Heading size="s">{t("Settings/Heading/Settings")}</Heading>
         <Spacer mt={2} />
-        <Heading size="x2s">Accounts</Heading>
+        <View style={$.sectionHeader}>
+          <Heading size="x2s">{t("Settings/SectionHeading/Accounts")}</Heading>
+          <Link
+            label={t("Settings/Link/AddAccount")}
+            onPress={() =>
+              navigate("OnboardingAddAccount", {
+                showBackButton: true,
+              })
+            }
+          />
+        </View>
         <Spacer mt={1} />
         {accounts.map((account, index) => (
           <View key={account.accountId}>

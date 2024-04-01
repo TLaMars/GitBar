@@ -1,4 +1,4 @@
-import { useNavigation } from "@react-navigation/native";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import React from "react";
 import { Linking, View } from "react-native";
 
@@ -9,11 +9,14 @@ import DOMAINS from "constants/domains";
 import URI_PATHS from "constants/uri-paths";
 import useTranslation from "hooks/use-translation";
 import DefaultLayout from "layouts/default-layout/default-layout";
+import { RootStackParamList } from "models/root-stack-param-list";
 
 import useStyles from "./add-account.styles";
 
 const OnboardingAddAccount: React.FC = () => {
   const { t } = useTranslation();
+  const { params } =
+    useRoute<RouteProp<RootStackParamList, "OnboardingAddAccount">>();
   const $ = useStyles();
   const { navigate } = useNavigation();
 
@@ -42,6 +45,15 @@ const OnboardingAddAccount: React.FC = () => {
             navigate("RegisterGitLab");
           }}
         />
+        {params?.showBackButton && (
+          <Button
+            boldText={false}
+            size="xs"
+            type="neutral"
+            label={t("General/Button/Back")}
+            onPress={() => navigate("Settings")}
+          />
+        )}
       </View>
     </DefaultLayout>
   );

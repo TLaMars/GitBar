@@ -173,6 +173,7 @@ export const THEME_COLORS_LIGHT = {
   border: COLORS.lightGray100,
   icon: COLORS.black,
   text: COLORS.black,
+  textLink: COLORS.blue,
   textSecondary: COLORS.darkGray200,
 } as const satisfies Record<string, string>;
 
@@ -192,6 +193,7 @@ export const THEME_COLORS_DARK = {
   border: COLORS.darkGray200,
   icon: COLORS.lightGray100,
   text: COLORS.lightGray100,
+  textLink: COLORS.blue,
   textSecondary: COLORS.lightGray300,
 } as const satisfies Record<string, string>;
 

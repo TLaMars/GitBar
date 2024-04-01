@@ -1,3 +1,4 @@
+import ChevronRight from "assets/svgs/chevron-right.svg";
 import Cross from "assets/svgs/cross.svg";
 import GitHub from "assets/svgs/github.svg";
 import GitLab from "assets/svgs/gitlab.svg";
@@ -9,6 +10,7 @@ import UserCheck from "assets/svgs/user-check.svg";
 import User from "assets/svgs/user.svg";
 
 export default {
+  ChevronRight,
   Cross,
   GitHub,
   GitLab,

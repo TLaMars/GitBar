@@ -18,5 +18,8 @@
   "General/Button/Back": "Back",
   "General/Button/Continue": "Continue",
   "AddGitLab/Label/Host": "GitLab Domain / Host",
-  "AddGitLab/Label/Token": "Private Token"
+  "AddGitLab/Label/Token": "Private Token",
+  "Settings/SectionHeading/Accounts": "Accounts",
+  "Settings/Heading/Settings": "Settings",
+  "Settings/Link/AddAccount": "Add new account"
 }

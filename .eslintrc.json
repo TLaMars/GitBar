@@ -9,6 +9,7 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": { "project": "./tsconfig.json" },
   "rules": {
+    "jsx-a11y/anchor-is-valid": "off",
     // Allow void in async functions
     "no-void": "off",
     "no-restricted-imports": [

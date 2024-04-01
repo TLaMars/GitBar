@@ -1,7 +1,9 @@
 export type RootStackParamList = {
   Dashboard: undefined;
   OnboardingWelcome: undefined;
-  OnboardingAddAccount: undefined;
+  OnboardingAddAccount?: {
+    showBackButton: boolean;
+  };
   RegisterGitHub: {
     code: string;
   };

@@ -40,7 +40,9 @@ const transformGitLabPullRequest = ({
         title: pr.title,
         author: {
           name: pr.author?.name ?? "",
-          avatarUrl: `${domain}${pr.author?.avatarUrl}`,
+          avatarUrl: pr.author?.avatarUrl?.includes("https")
+            ? pr.author.avatarUrl
+            : `${domain}${pr.author?.avatarUrl}`,
         },
         repoName: pr.sourceProject?.name ?? "",
         reviewers:
@@ -51,7 +53,9 @@ const transformGitLabPullRequest = ({
               ...reviewerAcc,
               {
                 name: reviewer.name,
-                avatarUrl: `${domain}${reviewer.avatarUrl}`,
+                avatarUrl: reviewer.avatarUrl?.includes("http")
+                  ? reviewer.avatarUrl
+                  : `${domain}${reviewer.avatarUrl}`,
               },
             ];
           }, []) ?? [],

@@ -73,8 +73,8 @@ const PullRequestCard: React.FC<Props> = ({
             <Body size="s">
               {amountOfApprovals} / {amountOfRequiredApprovals}
             </Body>
+            <Icon name="UserCheck" size={20} />
           </View>
-          <Icon name="UserCheck" size={20} />
         </View>
       </View>
     </TouchableOpacity>

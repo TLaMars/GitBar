@@ -13,14 +13,16 @@ const useStyles = () =>
       flexDirection: "row",
       flex: 1,
       justifyContent: "space-between",
+      alignItems: "center",
     },
     left: {
       flexDirection: "row",
-      alignItems: "flex-end",
+      alignItems: "center",
     },
     right: {
       flexDirection: "row",
       gap: spacing(2),
+      alignItems: "center",
     },
     info: {
       flexDirection: "row",

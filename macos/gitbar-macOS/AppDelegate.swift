@@ -16,6 +16,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var eventMonitor: EventMonitor?
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
+    // Register fonts because they are not installed
+    registerFonts(withFilenames: fontFilenames)
+
     var jsCodeLocation: URL
     
     #if DEBUG

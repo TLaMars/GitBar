@@ -135,8 +135,8 @@ export const THEME_LINE_HEIGHTS = {
 } as const satisfies Record<string, number>;
 
 export const THEME_FONT_FAMILIES = {
-  primary: "Rubik",
-  secondary: "Rubik",
+  primary: "Lato",
+  secondary: "Lato",
 } as const satisfies Record<string, string>;
 
 export const THEME_FONT_WEIGHTS = {

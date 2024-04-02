@@ -1,4 +1,4 @@
-export type FontFamily = "Rubik";
+export type FontFamily = "Lato";
 
 export type FontWeight =
   | "100"

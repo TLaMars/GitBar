@@ -3,20 +3,16 @@ import { FontFamily, FontStyles } from "models/font";
 /* All fonts mapped to their resource */
 export const FONT_RESOURCES = {
   /* eslint-disable global-require */
-  "Rubik-Light": require("assets/fonts/Rubik-Light.ttf"),
-  "Rubik-LightItalic": require("assets/fonts/Rubik-LightItalic.ttf"),
-  "Rubik-Regular": require("assets/fonts/Rubik-Regular.ttf"),
-  "Rubik-RegularItalic": require("assets/fonts/Rubik-RegularItalic.ttf"),
-  "Rubik-Medium": require("assets/fonts/Rubik-Medium.ttf"),
-  "Rubik-MediumItalic": require("assets/fonts/Rubik-MediumItalic.ttf"),
-  "Rubik-SemiBold": require("assets/fonts/Rubik-SemiBold.ttf"),
-  "Rubik-SemiBoldItalic": require("assets/fonts/Rubik-SemiBoldItalic.ttf"),
-  "Rubik-Bold": require("assets/fonts/Rubik-Bold.ttf"),
-  "Rubik-BoldItalic": require("assets/fonts/Rubik-BoldItalic.ttf"),
-  "Rubik-ExtraBold": require("assets/fonts/Rubik-ExtraBold.ttf"),
-  "Rubik-ExtraBoldItalic": require("assets/fonts/Rubik-ExtraBoldItalic.ttf"),
-  "Rubik-Black": require("assets/fonts/Rubik-Black.ttf"),
-  "Rubik-BlackItalic": require("assets/fonts/Rubik-BlackItalic.ttf"),
+  "Lato-Regular": require("assets/fonts/Lato-Regular.ttf"),
+  "Lato-Italic": require("assets/fonts/Lato-Italic.ttf"),
+  "Lato-Bold": require("assets/fonts/Lato-Bold.ttf"),
+  "Lato-BoldItalic": require("assets/fonts/Lato-BoldItalic.ttf"),
+  "Lato-Black": require("assets/fonts/Lato-Black.ttf"),
+  "Lato-BlackItalic": require("assets/fonts/Lato-BlackItalic.ttf"),
+  "Lato-Light": require("assets/fonts/Lato-Light.ttf"),
+  "Lato-LightItalic": require("assets/fonts/Lato-LightItalic.ttf"),
+  "Lato-Hairline": require("assets/fonts/Lato-Hairline.ttf"),
+  "Lato-HairlineItalic": require("assets/fonts/Lato-HairlineItalic.ttf"),
   /* eslint-enable global-require */
 } as const;
 
@@ -25,24 +21,20 @@ export const FONT_MAPPING: Record<
   FontFamily,
   FontStyles<keyof typeof FONT_RESOURCES>
 > = {
-  Rubik: {
+  Lato: {
     normal: {
-      300: "Rubik-Light",
-      400: "Rubik-Regular",
-      500: "Rubik-Medium",
-      600: "Rubik-SemiBold",
-      700: "Rubik-Bold",
-      800: "Rubik-ExtraBold",
-      900: "Rubik-Black",
+      100: "Lato-Hairline",
+      300: "Lato-Light",
+      400: "Lato-Regular",
+      700: "Lato-Bold",
+      900: "Lato-Black",
     },
     italic: {
-      300: "Rubik-LightItalic",
-      400: "Rubik-RegularItalic",
-      500: "Rubik-MediumItalic",
-      600: "Rubik-SemiBoldItalic",
-      700: "Rubik-BoldItalic",
-      800: "Rubik-ExtraBoldItalic",
-      900: "Rubik-BlackItalic",
+      100: "Lato-HairlineItalic",
+      300: "Lato-LightItalic",
+      400: "Lato-Italic",
+      700: "Lato-BoldItalic",
+      900: "Lato-BlackItalic",
     },
   },
 };

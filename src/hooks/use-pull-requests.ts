@@ -3,17 +3,16 @@ import { useCallback, useEffect, useState } from "react";
 
 import QueryGetGithubPullRequests from "gql/github/queries/pull-requests";
 import QueryGetGitLabPullRequests from "gql/gitlab/queries/pull-requests";
-import { AccountType } from "models/account";
 import { PullRequest } from "models/pull-request";
-import { selectAccounts } from "store/selectors/accounts";
 import transformGithubPullRequest from "transformers/github-pull-request";
 import transformGitLabPullRequest from "transformers/gitlab-pull-request";
+import { gitHubContext, gitLabContext } from "utils/apollo-contexts";
 
-import useSelector from "./use-selector";
+import useAccountsByType from "./use-accounts-by-type";
 
 const usePullRequests = () => {
   const client = useApolloClient();
-  const accounts = useSelector(selectAccounts);
+  const { gitHubAccounts, gitLabAccounts } = useAccountsByType();
   const [pullRequests, setPullRequests] = useState<PullRequest[]>();
   const [loading, setLoading] = useState(false);
 
@@ -21,21 +20,14 @@ const usePullRequests = () => {
     setLoading(true);
     const githubPullRequests = (
       await Promise.all(
-        [...accounts, ...accounts]
-          .filter(({ type }) => type === AccountType.GitHub)
-          .map(async (account) => {
-            const { data } = await client.query({
-              query: QueryGetGithubPullRequests,
-              context: {
-                uri: account.endpoint,
-                headers: {
-                  Authorization: `bearer ${account.accessToken}`,
-                },
-              },
-            });
+        gitHubAccounts.map(async (account) => {
+          const { data } = await client.query({
+            query: QueryGetGithubPullRequests,
+            context: gitHubContext(account.accessToken),
+          });
 
-            return data;
-          }),
+          return data;
+        }),
       )
     )
       .map(transformGithubPullRequest)
@@ -47,24 +39,17 @@ const usePullRequests = () => {
 
     const gitlabPullRequests = (
       await Promise.all(
-        accounts
-          .filter(({ type }) => type === AccountType.GitLab)
-          .map(async (account) => {
-            const { data } = await client.query({
-              query: QueryGetGitLabPullRequests,
-              context: {
-                uri: account.endpoint,
-                headers: {
-                  "Private-Token": account.accessToken,
-                },
-              },
-            });
+        gitLabAccounts.map(async (account) => {
+          const { data } = await client.query({
+            query: QueryGetGitLabPullRequests,
+            context: gitLabContext(account.privateToken, account.domain),
+          });
 
-            return {
-              domain: account.domain,
-              data,
-            };
-          }),
+          return {
+            domain: account.domain,
+            data,
+          };
+        }),
       )
     )
       .map(transformGitLabPullRequest)
@@ -86,7 +71,7 @@ const usePullRequests = () => {
         return 0;
       }),
     );
-  }, [accounts, client]);
+  }, [gitHubAccounts, gitLabAccounts, client]);
 
   useEffect(() => {
     void fetchPullRequests();

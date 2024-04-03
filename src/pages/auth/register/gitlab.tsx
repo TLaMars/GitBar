@@ -46,8 +46,7 @@ const RegisterGitLab: React.FC = () => {
         upsertOneAccount({
           type: AccountType.GitLab,
           domain: `${domain}`,
-          endpoint: `${domain}${URI_PATHS.gitlabGql}`,
-          accessToken: token,
+          privateToken: token,
           accountId: data.currentUser?.id ?? "",
           avatarUrl: `${domain}${data.currentUser?.avatarUrl}`,
           name: data.currentUser?.name ?? "",

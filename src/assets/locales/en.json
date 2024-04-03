@@ -21,5 +21,7 @@
   "AddGitLab/Label/Token": "Private Token",
   "Settings/SectionHeading/Accounts": "Accounts",
   "Settings/Heading/Settings": "Settings",
-  "Settings/Link/AddAccount": "Add new account"
+  "Settings/Link/AddAccount": "Add new account",
+  "Onboarding/Button/Azure": "Add Azure account",
+  "RegisterAzure/Label/Organization": "Organization / Tenant"
 }

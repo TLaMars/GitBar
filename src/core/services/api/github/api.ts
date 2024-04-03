@@ -2,7 +2,7 @@ import DOMAINS from "constants/domains";
 import URI_PATHS from "constants/uri-paths";
 import apiWrapper from "services/api/api-wrapper";
 
-import { GitHubApi as GitHubApiType } from "./model";
+import { GitHubApi as GitHubApiType } from "./api-model";
 
 const endpoint = `${DOMAINS.github}${URI_PATHS.githubOauth}`;
 

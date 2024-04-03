@@ -70,8 +70,6 @@ const RegisterGithub: React.FC = () => {
           userName: data.viewer.login,
           avatarUrl: data.viewer.avatarUrl,
           accessToken: token,
-          domain: DOMAINS.github,
-          endpoint: `${DOMAINS.githubApi}${URI_PATHS.githubGql}`,
         }),
       );
     }

@@ -53,7 +53,7 @@ const PullRequestCard: React.FC<Props> = ({
         <View style={$.left}>
           <Body size="s">{t("PullRequestCard/Body/Author")}</Body>
           <Spacer ml={1.5} />
-          <Attendee size={24} avatarUrl={author.avatarUrl} />
+          <Attendee name={author.name} size={24} avatarUrl={author.avatarUrl} />
           <Spacer ml={3} />
           {reviewers.length > 0 && (
             <>

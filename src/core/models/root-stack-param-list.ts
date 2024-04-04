@@ -8,6 +8,7 @@ export type RootStackParamList = {
     code: string;
   };
   RegisterGitLab: undefined;
+  RegisterAzure: undefined;
   Settings: undefined;
 };
 

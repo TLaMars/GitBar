@@ -63,17 +63,17 @@ const RegisterGitLab: React.FC = () => {
           <GitLabLogo width={60} height={60} />
           <Spacer mt={4} />
           <TextInput
-            accessibilityHint="GitLab Domain URL"
-            accessibilityLabel="GitLab domain input field"
-            label={t("AddGitLab/Label/Host")}
+            accessibilityHint={t("RegisterGitLab/Label/Host")}
+            accessibilityLabel={t("RegisterGitLab/Label/Host")}
+            label={t("RegisterGitLab/Label/Host")}
             placeholder="https://gitlab.com"
             onChangeText={setDomain}
           />
           <Spacer mt={1} />
           <TextInput
-            accessibilityHint="GitLab token"
-            accessibilityLabel="GitLab token input field"
-            label={t("AddGitLab/Label/Token")}
+            accessibilityHint={t("RegisterGitLab/Label/Token")}
+            accessibilityLabel={t("RegisterGitLab/Label/Token")}
+            label={t("RegisterGitLab/Label/Token")}
             placeholder="Enter your GitLab token"
             onChangeText={setToken}
           />

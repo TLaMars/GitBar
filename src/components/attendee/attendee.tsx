@@ -1,12 +1,21 @@
 import React from "react";
-import { Image } from "react-native";
+import { Image, View } from "react-native";
+
+import Text from "components/text/text";
+import getInitials from "utils/get-initials";
+
+import useStyles from "./attendee.styles";
 
 type Props = {
+  name: string;
   size?: number;
-  avatarUrl: string;
+  avatarUrl?: string;
 };
 
-const Attendee: React.FC<Props> = ({ size = 80, avatarUrl }) => {
+const Attendee: React.FC<Props> = ({ avatarUrl, name, size = 80 }) => {
+  const $ = useStyles();
+
+  const initials = getInitials(name);
   const attendeeStyle = [
     {
       width: size,
@@ -15,12 +24,30 @@ const Attendee: React.FC<Props> = ({ size = 80, avatarUrl }) => {
     },
   ];
 
+  if (avatarUrl) {
+    return (
+      <Image
+        accessibilityIgnoresInvertColors
+        style={attendeeStyle}
+        source={{ uri: avatarUrl }}
+      />
+    );
+  }
+
   return (
-    <Image
-      accessibilityIgnoresInvertColors
-      style={attendeeStyle}
-      source={{ uri: avatarUrl }}
-    />
+    <View style={[attendeeStyle, $.attendee]}>
+      <Text
+        style={[
+          $.initials,
+          {
+            fontSize: size / 3 > 24 ? 24 : size / 3,
+            lineHeight: (size / 3) * 1.3,
+          },
+        ]}
+      >
+        {initials}
+      </Text>
+    </View>
   );
 };
 

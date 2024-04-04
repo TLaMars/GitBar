@@ -2,7 +2,7 @@ import useMemoizedStyles from "hooks/use-memoized-styles";
 
 const useStyles = (size: number) =>
   useMemoizedStyles(
-    ({ borderRadiuses, colors, spacing }) => ({
+    ({ borderRadiuses, spacing }) => ({
       stack: {
         flexDirection: "row",
         marginRight: spacing(2),
@@ -13,10 +13,9 @@ const useStyles = (size: number) =>
       container: {
         flexDirection: "row",
         alignItems: "center",
-        marginLeft: -1 * (size - spacing(2)),
+        marginLeft: -1 * (size - spacing(2.5)),
       },
       seperator: {
-        backgroundColor: colors.backgroundSecondary,
         borderRadius: borderRadiuses.round,
         width: size + 2,
         height: size + 2,

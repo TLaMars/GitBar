@@ -1,3 +1,4 @@
+import AzureDevOps from "assets/svgs/azure-devops.svg";
 import ChevronRight from "assets/svgs/chevron-right.svg";
 import Cross from "assets/svgs/cross.svg";
 import GitHub from "assets/svgs/github.svg";
@@ -10,6 +11,7 @@ import UserCheck from "assets/svgs/user-check.svg";
 import User from "assets/svgs/user.svg";
 
 export default {
+  AzureDevOps,
   ChevronRight,
   Cross,
   GitHub,

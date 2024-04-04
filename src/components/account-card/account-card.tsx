@@ -14,9 +14,10 @@ import useStyles from "./account-card.styles";
 type Props = {
   type: AccountType;
   userName: string;
-  avatarUrl: string;
+  avatarUrl?: string;
   name?: string;
   border?: boolean;
+  aditionalInfo?: string;
   onDeletePress: () => void;
 };
 
@@ -26,6 +27,7 @@ const AccountCard: React.FC<Props> = ({
   avatarUrl,
   name,
   border = true,
+  aditionalInfo,
   onDeletePress,
 }) => {
   const $ = useStyles();
@@ -35,7 +37,7 @@ const AccountCard: React.FC<Props> = ({
   return (
     <View style={[$.card, border && $.border]}>
       <View>
-        <Attendee avatarUrl={avatarUrl} size={36} />
+        <Attendee name={name ?? userName} avatarUrl={avatarUrl} size={36} />
         <View style={$.type}>
           <Icon name={typeIcon} size={18} />
         </View>
@@ -45,6 +47,7 @@ const AccountCard: React.FC<Props> = ({
         {name && <Body size="xs">{name}</Body>}
       </View>
       <View style={$.right}>
+        {aditionalInfo && <Body size="xs">{aditionalInfo}</Body>}
         <IconButton
           icon="Cross"
           spacing={4}

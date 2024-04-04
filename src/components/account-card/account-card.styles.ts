@@ -1,7 +1,7 @@
 import useMemoizedStyles from "hooks/use-memoized-styles";
 
 const useStyles = () =>
-  useMemoizedStyles(({ borderRadiuses, colors, spacing }) => ({
+  useMemoizedStyles(({ colors, spacing }) => ({
     card: {
       position: "relative",
       paddingVertical: spacing(2),
@@ -23,12 +23,10 @@ const useStyles = () =>
       alignItems: "center",
     },
     type: {
-      backgroundColor: colors.background,
       bottom: -4,
       right: -4,
       zIndex: 1,
       position: "absolute",
-      borderRadius: borderRadiuses.round,
     },
   }));
 export default useStyles;

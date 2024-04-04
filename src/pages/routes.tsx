@@ -2,14 +2,14 @@ import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 
 import useSelector from "hooks/use-selector";
-import { selectAccounts } from "src/core/store/selectors/accounts";
-
-import RegisterGithub from "./auth/register/github";
-import RegisterGitLab from "./auth/register/gitlab";
-import Dashboard from "./dashboard/dashboard";
-import OnboardingAddAccount from "./onboarding/add-account/add-account";
-import OnboardingWelcome from "./onboarding/welcome/welcome";
-import Settings from "./settings/settings";
+import RegisterAzure from "pages/auth/register/azure";
+import RegisterGithub from "pages/auth/register/github";
+import RegisterGitLab from "pages/auth/register/gitlab";
+import Dashboard from "pages/dashboard/dashboard";
+import OnboardingAddAccount from "pages/onboarding/add-account/add-account";
+import OnboardingWelcome from "pages/onboarding/welcome/welcome";
+import Settings from "pages/settings/settings";
+import { selectAccounts } from "store/selectors/accounts";
 
 const RootStackNavigator = createStackNavigator();
 
@@ -24,6 +24,10 @@ const RootStack: React.FC = () => {
       }}
     >
       <RootStackNavigator.Screen name="Dashboard" component={Dashboard} />
+      <RootStackNavigator.Screen
+        name="RegisterAzure"
+        component={RegisterAzure}
+      />
       <RootStackNavigator.Screen
         name="RegisterGitLab"
         component={RegisterGitLab}

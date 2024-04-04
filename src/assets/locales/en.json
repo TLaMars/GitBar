@@ -17,11 +17,13 @@
   "Onboarding/Button/GitLab": "Add GitLab account",
   "General/Button/Back": "Back",
   "General/Button/Continue": "Continue",
-  "AddGitLab/Label/Host": "GitLab Domain / Host",
-  "AddGitLab/Label/Token": "Private Token",
+  "RegisterGitLab/Label/Host": "GitLab Domain / Host",
+  "RegisterGitLab/Label/Token": "Private Token",
   "Settings/SectionHeading/Accounts": "Accounts",
   "Settings/Heading/Settings": "Settings",
   "Settings/Link/AddAccount": "Add new account",
   "Onboarding/Button/Azure": "Add Azure account",
-  "RegisterAzure/Label/Organization": "Organization / Tenant"
+  "RegisterAzure/Label/Organization": "Organization / Tenant",
+  "RegisterAzure/Label/Token": "Private Token",
+  "RegisterAzure/Placeholder/Token": "Enter your Azure token"
 }

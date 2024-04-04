@@ -19,7 +19,11 @@ const AttendeeList: React.FC<Props> = ({ attendees, profileIconSize = 20 }) => {
         <View style={[index > 0 && $.container]} key={name}>
           {index > 0 && <View style={$.seperator} />}
           <View style={[index > 0 && $.icon]}>
-            <Attendee avatarUrl={avatarUrl} size={profileIconSize} />
+            <Attendee
+              name={name}
+              avatarUrl={avatarUrl}
+              size={profileIconSize}
+            />
           </View>
         </View>
       ))}

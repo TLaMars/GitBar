@@ -9,6 +9,10 @@ const useStyles = () =>
       gap: spacing(1),
       flex: 1,
     },
+    buttonGroup: {
+      flexDirection: "column",
+      gap: spacing(1),
+    },
   }));
 
 export default useStyles;

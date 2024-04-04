@@ -10,6 +10,7 @@ import useDispatch from "hooks/use-dispatch";
 import useSelector from "hooks/use-selector";
 import useTranslation from "hooks/use-translation";
 import DefaultLayout from "layouts/default-layout/default-layout";
+import { AccountType } from "models/account";
 import { selectAccounts } from "store/selectors/accounts";
 import { removeOneAccount } from "store/slices/accounts";
 
@@ -55,6 +56,11 @@ const Settings: React.FC = () => {
               name={account.name}
               border={index !== accounts.length - 1}
               onDeletePress={() => deleteAccount(account.accountId)}
+              aditionalInfo={
+                account.type === AccountType.Azure
+                  ? account.organization
+                  : undefined
+              }
             />
           </View>
         ))}

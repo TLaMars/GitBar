@@ -25,35 +25,46 @@ const OnboardingAddAccount: React.FC = () => {
       <View style={$.container}>
         <Heading size="m">{t("Onboarding/Heading/AddAccount")}</Heading>
         <Spacer mt={2} />
-        <Button
-          boldText={false}
-          size="xs"
-          type="secondary"
-          label={t("Onboarding/Button/GitHub")}
-          onPress={() =>
-            Linking.openURL(
-              `${DOMAINS.github}${URI_PATHS.githubOauthAuthorize}`,
-            )
-          }
-        />
-        <Button
-          boldText={false}
-          size="xs"
-          type="secondary"
-          label={t("Onboarding/Button/GitLab")}
-          onPress={() => {
-            navigate("RegisterGitLab");
-          }}
-        />
-        {params?.showBackButton && (
+        <View style={$.buttonGroup}>
           <Button
             boldText={false}
             size="xs"
-            type="neutral"
-            label={t("General/Button/Back")}
-            onPress={() => navigate("Settings")}
+            type="secondary"
+            label={t("Onboarding/Button/GitHub")}
+            onPress={() =>
+              Linking.openURL(
+                `${DOMAINS.github}${URI_PATHS.githubOauthAuthorize}`,
+              )
+            }
           />
-        )}
+          <Button
+            boldText={false}
+            size="xs"
+            type="secondary"
+            label={t("Onboarding/Button/GitLab")}
+            onPress={() => {
+              navigate("RegisterGitLab");
+            }}
+          />
+          <Button
+            boldText={false}
+            size="xs"
+            type="secondary"
+            label={t("Onboarding/Button/Azure")}
+            onPress={() => {
+              navigate("RegisterAzure");
+            }}
+          />
+          {params?.showBackButton && (
+            <Button
+              boldText={false}
+              size="xs"
+              type="neutral"
+              label={t("General/Button/Back")}
+              onPress={() => navigate("Settings")}
+            />
+          )}
+        </View>
       </View>
     </DefaultLayout>
   );

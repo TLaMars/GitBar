@@ -27,7 +27,6 @@ const RegisterAzure: React.FC = () => {
   const [data, setData] = useState<ProfileResponse>();
 
   const getAzureUser = React.useCallback(async () => {
-    const encodedToken = encode(`gition:${token}`);
     const responseData = await azureApi.get(
       "/:organization/_apis/profile/profiles/me",
       {
@@ -35,7 +34,7 @@ const RegisterAzure: React.FC = () => {
           organization,
         },
         headers: {
-          Authorization: `Basic ${encodedToken}`,
+          Authorization: `Basic ${token}`,
         },
       },
     );
@@ -76,7 +75,7 @@ const RegisterAzure: React.FC = () => {
             accessibilityLabel={t("RegisterAzure/Label/Token")}
             label={t("RegisterAzure/Label/Token")}
             placeholder={t("RegisterAzure/Placeholder/Token")}
-            onChangeText={setToken}
+            onChangeText={(text) => setToken(encode(`gition:${text}`))}
           />
           <Spacer mt={1} />
           <View style={$.buttonGroup}>

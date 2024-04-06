@@ -1,9 +1,9 @@
 export type PullRequestsResponse = {
   count: number;
-  value: PullRequest[];
+  value: AzurePullRequest[];
 };
 
-type PullRequest = {
+export type AzurePullRequest = {
   repository: Repository;
   pullRequestId: number;
   codeReviewId: number;

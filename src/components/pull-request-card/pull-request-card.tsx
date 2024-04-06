@@ -46,7 +46,7 @@ const PullRequestCard: React.FC<Props> = ({
       style={$.card}
       onPress={onPress}
     >
-      <Heading numberOfLines={1} size="xs" fontSizeIsLineHeight>
+      <Heading numberOfLines={1} size="x2s" fontSizeIsLineHeight>
         {title}
       </Heading>
       <View style={$.footer}>

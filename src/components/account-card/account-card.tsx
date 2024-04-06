@@ -4,9 +4,9 @@ import { View } from "react-native";
 import Attendee from "components/attendee/attendee";
 import Body from "components/body/body";
 import Heading from "components/heading/heading";
-import Icon from "components/icon/icon";
 import IconButton from "components/icon-button/icon-button";
 import AccountMap from "constants/account-map";
+import useTheme from "hooks/use-theme";
 import { AccountType } from "models/account";
 
 import useStyles from "./account-card.styles";
@@ -31,15 +31,16 @@ const AccountCard: React.FC<Props> = ({
   onDeletePress,
 }) => {
   const $ = useStyles();
+  const { colors } = useTheme();
 
-  const typeIcon = AccountMap[type];
+  const TypeIcon = AccountMap[type];
 
   return (
     <View style={[$.card, border && $.border]}>
       <View>
         <Attendee name={name ?? userName} avatarUrl={avatarUrl} size={36} />
         <View style={$.type}>
-          <Icon name={typeIcon} size={18} />
+          <TypeIcon width={18} height={18} color={colors.text} />
         </View>
       </View>
       <View style={$.info}>

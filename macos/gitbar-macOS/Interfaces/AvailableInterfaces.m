@@ -7,7 +7,7 @@
 
 #import "React/RCTBridgeModule.h"
 
-
-// @interface RCT_EXTERN_MODULE(NotificationManager, NSObject)
-
-// @end
+@interface RCT_EXTERN_MODULE(AppManager, NSObject)
+  RCT_EXTERN_METHOD(closeApp)
+  RCT_EXTERN_METHOD(setStatusBarText:(NSString *)token)
+@end

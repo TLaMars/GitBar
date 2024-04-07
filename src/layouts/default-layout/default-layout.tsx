@@ -4,6 +4,7 @@ import { View } from "react-native";
 
 import Sidebar from "components/sidebar/sidebar";
 import SidebarItem from "components/sidebar-item/sidebar-item";
+import Bridges from "services/bridges/bridges";
 
 import useStyles from "./default-layout.styles";
 
@@ -37,7 +38,12 @@ const DefaultLayout: React.FC<Props> = ({
                 onPress={() => navigate("Settings")}
                 active={route.name === "Settings"}
               />
-              <SidebarItem icon="PowerOff" onPress={() => {}} />
+              <SidebarItem
+                icon="PowerOff"
+                onPress={() => {
+                  Bridges.App.closeApp();
+                }}
+              />
             </>
           }
         />

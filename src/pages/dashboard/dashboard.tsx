@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ActivityIndicator, FlatList, View } from "react-native";
 
 import Heading from "components/heading/heading";
 import PullRequestCard from "components/pull-request-card/pull-request-card";
 import usePullRequests from "hooks/use-pull-requests";
 import useTranslation from "hooks/use-translation";
+import Bridges from "services/bridges/bridges";
 import DefaultLayout from "src/layouts/default-layout/default-layout";
 
 import useStyles from "./dashboard.styles";
@@ -13,6 +14,12 @@ const Dashboard: React.FC = () => {
   const $ = useStyles();
   const { t } = useTranslation();
   const { pullRequests, loading } = usePullRequests();
+
+  useEffect(() => {
+    if (pullRequests.length > 0) {
+      Bridges.App.setStatusBarText(pullRequests.length.toString());
+    }
+  }, [pullRequests]);
 
   return (
     <DefaultLayout>

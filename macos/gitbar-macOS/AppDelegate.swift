@@ -16,6 +16,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var eventMonitor: EventMonitor?
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
+    // Set storage location for MMKV
+    setStorageLocation()
+
     // Register fonts because they are not installed
     registerFonts(withFilenames: fontFilenames)
 
@@ -40,7 +43,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     popover.animates = true
     popover.behavior = .transient
     popover.contentViewController = rootViewController
-    
     
     statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
@@ -83,7 +85,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     eventMonitor?.start()
   }
 
-  @objc func togglePopover(_ sender: Any?) {
+  @objc
+  func togglePopover(_ sender: Any?) {
     if popover.isShown {
       closePopover(sender)
     } else {
@@ -91,11 +94,39 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
   }
   
-  @objc public func getUrl(_ event: NSAppleEventDescriptor, withReplyEvent reply: NSAppleEventDescriptor) -> Void {
+  @objc 
+  public func getUrl(_ event: NSAppleEventDescriptor, withReplyEvent reply: NSAppleEventDescriptor) -> Void {
     if let button = statusBarItem.button {
       popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
     }
     return RCTLinkingManager.getUrlEventHandler(event, withReplyEvent: reply)
+  }
+  
+  func setStorageLocation() -> Void {
+    // Get the bundle identifier
+    guard let bundleIdentifier = Bundle.main.bundleIdentifier else {
+        fatalError("Unable to retrieve bundle identifier")
+    }
+
+    // Get the Application Support directory path
+    let paths = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)
+    guard let applicationSupportDirectory = paths.first else {
+        fatalError("Unable to locate Application Support directory")
+    }
+    
+    // Create a folder for your app within Application Support
+    let appSupportSubfolder = (applicationSupportDirectory as NSString).appendingPathComponent(bundleIdentifier)
+    
+    // Ensure the directory exists
+    let fileManager = FileManager.default
+    if !fileManager.fileExists(atPath: appSupportSubfolder) {
+        try? fileManager.createDirectory(atPath: appSupportSubfolder, withIntermediateDirectories: true, attributes: nil)
+    }
+    
+    // Initialize MMKV with custom storage path
+    let storagePath = (appSupportSubfolder as NSString).appendingPathComponent("mmkv")
+    MMKV.initialize(rootDir: storagePath)
+            
   }
   
 }

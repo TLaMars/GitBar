@@ -12,7 +12,7 @@ const useStyles = () =>
       color: colors.text,
     },
     wrapper: {
-      width: 200,
+      minWidth: 200,
       gap: spacing(0.5),
     },
   }));

@@ -28,8 +28,9 @@ export type Props = {
   color?: ThemeColor;
   size?: BodySize;
   underline?: boolean;
+  zIndex?: number;
 } & PropsWithChildren &
-  Pick<TextProps, "testID" | "numberOfLines" | "onTextLayout"> &
+  Pick<TextProps, "testID" | "numberOfLines" | "onTextLayout" | "onPress"> &
   StyleProps;
 
 const Body: React.FC<Props> = ({
@@ -42,6 +43,8 @@ const Body: React.FC<Props> = ({
   testID,
   textAlign = "left",
   underline = false,
+  zIndex,
+  onPress,
   onTextLayout,
 }) => {
   const { fontSizes, fontWeights, lineHeights, colors } = useTheme();
@@ -65,9 +68,11 @@ const Body: React.FC<Props> = ({
         textAlign,
         textTransform,
         textDecorationLine,
+        zIndex,
       }}
       onTextLayout={onTextLayout}
       numberOfLines={numberOfLines}
+      onPress={onPress}
     >
       {children}
     </Text>

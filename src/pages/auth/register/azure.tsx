@@ -1,12 +1,16 @@
 import { useNavigation } from "@react-navigation/native";
 import { encode } from "js-base64";
 import React, { useEffect, useState } from "react";
-import { View } from "react-native";
+import { FormattedMessage } from "react-intl";
+import { Alert, Linking, View } from "react-native";
 
 import AzureDevOpsLogo from "assets/illustrations/azure-devops.svg";
+import Body from "components/body/body";
 import Button from "components/button/button";
 import Spacer from "components/spacer/spacer";
 import TextInput from "components/text-input/text-input";
+import DOMAINS from "constants/domains";
+import URI_PATHS from "constants/uri-paths";
 import useDispatch from "hooks/use-dispatch";
 import useTranslation from "hooks/use-translation";
 import RegisteredLayout from "layouts/registered-layout/registered-layout";
@@ -56,27 +60,87 @@ const RegisterAzure: React.FC = () => {
     }
   }, [data, dispatch, organization, token]);
 
+  const onTokenPress = async () => {
+    if (!organization) {
+      Alert.alert(
+        t("RegisterAzure/Alert/Organization"),
+        t("RegisterAzure/Alert/OrganizationDescription"),
+      );
+      return;
+    }
+
+    await Linking.openURL(
+      `${DOMAINS.devAzure}/${organization}${URI_PATHS.azureAccessToken}`,
+    );
+  };
+
   return (
     <>
       {!data && (
         <View style={$.container}>
           <AzureDevOpsLogo width={60} height={60} />
           <Spacer mt={4} />
-          <TextInput
-            accessibilityHint={t("RegisterAzure/Label/Organization")}
-            accessibilityLabel={t("RegisterAzure/Label/Organization")}
-            label={t("RegisterAzure/Label/Organization")}
-            placeholder="Organization"
-            onChangeText={setOrganization}
-          />
+          <View>
+            <TextInput
+              style={$.input}
+              accessibilityHint={t("RegisterAzure/Label/Organization")}
+              accessibilityLabel={t("RegisterAzure/Label/Organization")}
+              label={t("RegisterAzure/Label/Organization")}
+              placeholder="Organization"
+              onChangeText={setOrganization}
+            />
+            <Spacer mt={0.5} />
+            <Body size="x2s" textAlign="left" color="textSecondary">
+              <FormattedMessage
+                id="register.organization"
+                defaultMessage={t("RegisterAzure/Helper/OrganizationExample")}
+                values={{
+                  organization: (
+                    <Body size="x2s" bold>
+                      {organization.length > 3
+                        ? organization
+                        : t("RegisterAzure/Helper/Organization")}
+                    </Body>
+                  ),
+                }}
+              />
+            </Body>
+          </View>
           <Spacer mt={1} />
-          <TextInput
-            accessibilityHint={t("RegisterAzure/Label/Token")}
-            accessibilityLabel={t("RegisterAzure/Label/Token")}
-            label={t("RegisterAzure/Label/Token")}
-            placeholder={t("RegisterAzure/Placeholder/Token")}
-            onChangeText={(text) => setToken(encode(`gition:${text}`))}
-          />
+          <View>
+            <TextInput
+              style={$.input}
+              accessibilityHint={t("RegisterAzure/Label/Token")}
+              accessibilityLabel={t("RegisterAzure/Label/Token")}
+              label={t("RegisterAzure/Label/Token")}
+              placeholder={t("RegisterAzure/Placeholder/Token")}
+              onChangeText={(text) => setToken(encode(`gition:${text}`))}
+            />
+            <Spacer mt={0.5} />
+            <Body size="x2s" textAlign="left" color="textSecondary">
+              <FormattedMessage
+                id="register.token"
+                defaultMessage={t("Register/Helper/TokenDescription")}
+                values={{
+                  token: (
+                    <Body
+                      size="x2s"
+                      bold
+                      color="textLink"
+                      onPress={onTokenPress}
+                    >
+                      {t("Register/Helper/Token")}
+                    </Body>
+                  ),
+                  scopes: (
+                    <Body size="x2s" bold>
+                      {t("RegisterAzure/Helper/Scopes")}
+                    </Body>
+                  ),
+                }}
+              />
+            </Body>
+          </View>
           <Spacer mt={1} />
           <View style={$.buttonGroup}>
             <Button

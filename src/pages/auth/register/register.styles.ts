@@ -10,9 +10,12 @@ const useStyles = () =>
       flex: 1,
     },
     buttonGroup: {
-      maxWidth: 200,
+      maxWidth: 350,
       flexDirection: "row",
       gap: spacing(1),
+    },
+    input: {
+      width: 350,
     },
   }));
 

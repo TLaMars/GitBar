@@ -11,7 +11,7 @@ type Props = {
   label: string;
 } & TextInputProps;
 
-const TextInput: React.FC<Props> = ({ label, ...restProps }) => {
+const TextInput: React.FC<Props> = ({ label, style, ...restProps }) => {
   const $ = useStyles();
   const { fontFamilies, fontWeights, colors } = useTheme();
 
@@ -26,8 +26,9 @@ const TextInput: React.FC<Props> = ({ label, ...restProps }) => {
       <RNTextInput
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...restProps}
+        numberOfLines={1}
         placeholderTextColor={colors.textSecondary}
-        style={[$.input, fontStyle]}
+        style={[$.input, fontStyle, style]}
       />
     </View>
   );

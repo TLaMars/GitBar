@@ -1,5 +1,5 @@
 import { useApolloClient } from "@apollo/client";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
 import QueryGetGithubPullRequests from "gql/github/queries/pull-requests";
 import QueryGetGitLabPullRequests from "gql/gitlab/queries/pull-requests";
@@ -91,10 +91,6 @@ const usePullRequests = () => {
       ),
     );
   }, [gitHubAccounts, gitLabAccounts, client, azureAccounts]);
-
-  useEffect(() => {
-    void fetchPullRequests();
-  }, [fetchPullRequests]);
 
   return {
     pullRequests,

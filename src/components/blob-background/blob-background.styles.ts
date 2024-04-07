@@ -13,8 +13,8 @@ const useStyles = () =>
       width: 500,
       height: 500,
       opacity: 0.7,
-      left: 300,
-      top: 100,
+      left: 350,
+      top: 200,
     },
     blobTwo: {
       width: 500,

@@ -9,7 +9,7 @@
   "RegisteredLayout/Button/GoToPullRequests": "Go now!",
   "PullRequestCard/Body/Author": "Author:",
   "PullRequestCard/Body/Reviewers": "Reviewers:",
-  "Dashboard/Heading/PullRequests": "Pull Requests",
+  "Dashboard/Heading/PullRequests": "PR's",
   "Onboarding/Heading/Welcome": "Welcome to GitBar",
   "Onboarding/Button/AddAccount": "Add account",
   "Onboarding/Heading/AddAccount": "Add an account",
@@ -26,5 +26,6 @@
   "RegisterAzure/Label/Organization": "Organization / Tenant",
   "RegisterAzure/Label/Token": "Private Token",
   "RegisterAzure/Placeholder/Token": "Enter your Azure token",
-  "PullRequestCard/Body/ApprovalsTooltip": "You see a \"?\" because we currently don't know the amount of approvals needed"
+  "PullRequestCard/Body/ApprovalsTooltip": "You see a \"?\" because we currently don't know the amount of approvals needed",
+  "Dashboard/Body/LastUpdated": "{minutesAgo}m ago"
 }

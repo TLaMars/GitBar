@@ -10,5 +10,15 @@ const useStyles = () =>
     list: {
       gap: spacing(2),
     },
+    header: {
+      flexDirection: "row",
+      alignItems: "flex-end",
+    },
+    poller: {
+      marginLeft: spacing(2),
+      flexDirection: "row",
+      alignItems: "center",
+      gap: spacing(1),
+    },
   }));
 export default useStyles;

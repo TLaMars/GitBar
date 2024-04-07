@@ -3,7 +3,7 @@ import { encode } from "js-base64";
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 
-import GitLabLogo from "assets/illustrations/gitlab.svg";
+import AzureDevOpsLogo from "assets/illustrations/azure-devops.svg";
 import Button from "components/button/button";
 import Spacer from "components/spacer/spacer";
 import TextInput from "components/text-input/text-input";
@@ -60,7 +60,7 @@ const RegisterAzure: React.FC = () => {
     <>
       {!data && (
         <View style={$.container}>
-          <GitLabLogo width={60} height={60} />
+          <AzureDevOpsLogo width={60} height={60} />
           <Spacer mt={4} />
           <TextInput
             accessibilityHint={t("RegisterAzure/Label/Organization")}

@@ -1,5 +1,8 @@
 import { PullRequest } from "models/pull-request";
-import { AzurePullRequest } from "services/api/azure/models/pull-requests-response";
+import {
+  AzurePullRequest,
+  ReviewerVote,
+} from "services/api/azure/models/pull-requests-response";
 
 const transformAzurePullRequest = (data: AzurePullRequest): PullRequest => {
   const match = /^(https:\/\/dev\.azure\.com\/[^/]+\/)/.exec(
@@ -27,7 +30,9 @@ const transformAzurePullRequest = (data: AzurePullRequest): PullRequest => {
     })),
     createdAt: data.creationDate,
     amountOfComments: undefined,
-    amountOfApprovals: 0,
+    amountOfApprovals: data.reviewers.filter(
+      (reviewer) => reviewer.vote === ReviewerVote.Approved,
+    ).length,
     amountOfRequiredApprovals: undefined,
   };
 };

@@ -3,6 +3,14 @@ export type PullRequestsResponse = {
   value: AzurePullRequest[];
 };
 
+export enum ReviewerVote {
+  Approved = 10,
+  ApprovedWithSuggestions = 5,
+  NoVote = 0,
+  Rejected = -10,
+  WaitingForAuthor = -5,
+}
+
 export type AzurePullRequest = {
   repository: Repository;
   pullRequestId: number;
@@ -62,7 +70,7 @@ export type LastMergeCommit = {
 
 export type Reviewer = {
   reviewerUrl: string;
-  vote: number;
+  vote: ReviewerVote;
   id: string;
   displayName: string;
   uniqueName: string;

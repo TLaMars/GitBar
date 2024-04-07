@@ -1,5 +1,6 @@
-import React from "react";
-import { Linking, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
+import { Linking, TouchableOpacity } from "react-native";
+import { View } from "react-native-macos";
 
 import Attendee from "components/attendee/attendee";
 import AttendeeList from "components/attendee-list/attendee-list";
@@ -17,9 +18,9 @@ type Props = {
   author: AttendeeType;
   reviewers: AttendeeType[];
   url: string;
-  amountOfComments: number;
+  amountOfComments?: number;
   amountOfApprovals: number;
-  amountOfRequiredApprovals: number;
+  amountOfRequiredApprovals?: number;
 };
 
 const PullRequestCard: React.FC<Props> = ({
@@ -33,6 +34,7 @@ const PullRequestCard: React.FC<Props> = ({
 }) => {
   const $ = useStyles();
   const { t } = useTranslation();
+  const [toolTip, setToolTip] = useState(false);
 
   const onPress = async () => {
     if (await Linking.canOpenURL(url)) {
@@ -64,19 +66,38 @@ const PullRequestCard: React.FC<Props> = ({
           )}
         </View>
         <View style={$.right}>
-          <View style={$.info}>
-            <Body size="s">{amountOfComments}</Body>
-            <Icon name="Notification" size={20} />
-          </View>
+          {amountOfComments !== undefined && (
+            <View style={$.info}>
+              <Body size="s">{amountOfComments}</Body>
+              <Icon name="Notification" size={20} />
+            </View>
+          )}
 
-          <View style={$.info}>
+          <View
+            style={$.info}
+            onMouseEnter={() => {
+              if (amountOfRequiredApprovals === undefined) {
+                setToolTip(true);
+              }
+            }}
+            onMouseLeave={() => {
+              if (amountOfRequiredApprovals === undefined) {
+                setToolTip(false);
+              }
+            }}
+          >
             <Body size="s">
-              {amountOfApprovals} / {amountOfRequiredApprovals}
+              {amountOfApprovals} / {amountOfRequiredApprovals ?? "?"}
             </Body>
             <Icon name="UserCheck" size={20} />
           </View>
         </View>
       </View>
+      {toolTip && (
+        <View style={$.helper}>
+          <Body size="x2s">{t("PullRequestCard/Body/ApprovalsTooltip")}</Body>
+        </View>
+      )}
     </TouchableOpacity>
   );
 };

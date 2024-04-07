@@ -30,5 +30,15 @@ const useStyles = () =>
       marginLeft: spacing(5),
       alignItems: "center",
     },
+    helper: {
+      backgroundColor: colors.backgroundSecondary,
+      color: colors.textSecondary,
+      position: "absolute",
+      width: 200,
+      top: 2,
+      right: 2,
+      padding: spacing(1.5),
+      borderRadius: borderRadiuses.sidebar,
+    },
   }));
 export default useStyles;

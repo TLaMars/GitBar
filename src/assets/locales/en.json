@@ -25,5 +25,6 @@
   "Onboarding/Button/Azure": "Add Azure account",
   "RegisterAzure/Label/Organization": "Organization / Tenant",
   "RegisterAzure/Label/Token": "Private Token",
-  "RegisterAzure/Placeholder/Token": "Enter your Azure token"
+  "RegisterAzure/Placeholder/Token": "Enter your Azure token",
+  "PullRequestCard/Body/ApprovalsTooltip": "You see a \"?\" because we currently don't know the amount of approvals needed"
 }

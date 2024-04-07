@@ -14,7 +14,7 @@ import useAccountsByType from "./use-accounts-by-type";
 const usePullRequests = () => {
   const client = useApolloClient();
   const { gitHubAccounts, gitLabAccounts, azureAccounts } = useAccountsByType();
-  const [pullRequests, setPullRequests] = useState<PullRequest[]>();
+  const [pullRequests, setPullRequests] = useState<PullRequest[]>([]);
   const [loading, setLoading] = useState(false);
 
   const fetchPullRequests = useCallback(async () => {

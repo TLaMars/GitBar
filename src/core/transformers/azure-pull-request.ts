@@ -26,9 +26,9 @@ const transformAzurePullRequest = (data: AzurePullRequest): PullRequest => {
       avatarUrl: "",
     })),
     createdAt: data.creationDate,
-    amountOfComments: 0,
+    amountOfComments: undefined,
     amountOfApprovals: 0,
-    amountOfRequiredApprovals: 0,
+    amountOfRequiredApprovals: undefined,
   };
 };
 

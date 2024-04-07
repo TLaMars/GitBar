@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, View } from "react-native";
+import { ActivityIndicator, FlatList, View } from "react-native";
 
 import Heading from "components/heading/heading";
 import PullRequestCard from "components/pull-request-card/pull-request-card";
@@ -12,28 +12,31 @@ import useStyles from "./dashboard.styles";
 const Dashboard: React.FC = () => {
   const $ = useStyles();
   const { t } = useTranslation();
-  const { pullRequests } = usePullRequests();
+  const { pullRequests, loading } = usePullRequests();
 
   return (
     <DefaultLayout>
       <View style={$.container}>
         <Heading size="s">{t("Dashboard/Heading/PullRequests")}</Heading>
-        <FlatList
-          contentContainerStyle={$.list}
-          data={pullRequests}
-          renderItem={({ item }) => (
-            <PullRequestCard
-              title={item.title}
-              author={item.author}
-              reviewers={item.reviewers}
-              url={item.url}
-              amountOfComments={item.amountOfComments}
-              amountOfApprovals={item.amountOfApprovals}
-              amountOfRequiredApprovals={item.amountOfRequiredApprovals}
-            />
-          )}
-          keyExtractor={(item) => item.id}
-        />
+        {loading && <ActivityIndicator />}
+        {pullRequests.length > 0 && (
+          <FlatList
+            contentContainerStyle={$.list}
+            data={pullRequests}
+            renderItem={({ item }) => (
+              <PullRequestCard
+                title={item.title}
+                author={item.author}
+                reviewers={item.reviewers}
+                url={item.url}
+                amountOfComments={item.amountOfComments}
+                amountOfApprovals={item.amountOfApprovals}
+                amountOfRequiredApprovals={item.amountOfRequiredApprovals}
+              />
+            )}
+            keyExtractor={(item) => item.id}
+          />
+        )}
       </View>
     </DefaultLayout>
   );

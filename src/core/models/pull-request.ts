@@ -8,7 +8,7 @@ export type PullRequest = {
   reviewers: Attendee[];
   createdAt: string;
   url: string;
-  amountOfComments: number;
+  amountOfComments?: number;
   amountOfApprovals: number;
-  amountOfRequiredApprovals: number;
+  amountOfRequiredApprovals?: number;
 };

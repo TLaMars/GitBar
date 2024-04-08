@@ -11,6 +11,12 @@ const useStyles = () =>
       fontSize: fontSizes.input,
       color: colors.text,
     },
+    error: {
+      borderColor: colors.borderDanger,
+    },
+    valid: {
+      borderColor: colors.borderValid,
+    },
     wrapper: {
       minWidth: 200,
       gap: spacing(0.5),

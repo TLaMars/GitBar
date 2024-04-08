@@ -45,12 +45,12 @@ const RegisterGithub: React.FC = () => {
         });
 
       if (response) {
-        setToken(response.access_token);
+        setToken(response.data.access_token);
         await fetchViewer({
           context: {
             uri: `${DOMAINS.githubApi}${URI_PATHS.githubGql}`,
             headers: {
-              Authorization: `bearer ${response.access_token}`,
+              Authorization: `bearer ${response.data.access_token}`,
             },
           },
         });

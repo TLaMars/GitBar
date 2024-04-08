@@ -26,24 +26,44 @@ const RegisterAzure: React.FC = () => {
   const dispatch = useDispatch();
   const $ = useStyles();
   const { goBack } = useNavigation();
+  const [loading, setLoading] = useState(false);
   const [organization, setOrganization] = useState("");
   const [token, setToken] = useState("");
   const [data, setData] = useState<ProfileResponse>();
+  const [error, setError] = useState<"organization" | "token">();
 
   const getAzureUser = React.useCallback(async () => {
-    const responseData = await azureApi.get(
-      "/:organization/_apis/profile/profiles/me",
-      {
+    setLoading(true);
+    const responseData = await azureApi
+      .get("/:organization/_apis/profile/profiles/me", {
         params: {
           organization,
         },
         headers: {
           Authorization: `Basic ${token}`,
         },
-      },
-    );
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.error(err.message);
+        if (err.statusCode === 404) {
+          setError("organization");
+        } else {
+          setError("token");
+        }
+      });
 
-    setData(responseData);
+    setLoading(false);
+
+    if (responseData?.status === 203) {
+      setError("token");
+      return;
+    }
+
+    if (responseData?.data) {
+      setError(undefined);
+      setData(responseData.data);
+    }
   }, [organization, token]);
 
   useEffect(() => {
@@ -88,6 +108,12 @@ const RegisterAzure: React.FC = () => {
               label={t("RegisterAzure/Label/Organization")}
               placeholder="Organization"
               onChangeText={setOrganization}
+              state={error === "organization" ? "error" : "neutral"}
+              message={
+                error === "organization"
+                  ? t("RegisterAzure/Message/Organization")
+                  : undefined
+              }
             />
             <Spacer mt={0.5} />
             <Body size="x2s" textAlign="left" color="textSecondary">
@@ -115,6 +141,10 @@ const RegisterAzure: React.FC = () => {
               label={t("RegisterAzure/Label/Token")}
               placeholder={t("RegisterAzure/Placeholder/Token")}
               onChangeText={(text) => setToken(encode(`gition:${text}`))}
+              state={error === "token" ? "error" : "neutral"}
+              message={
+                error === "token" ? t("RegisterAzure/Message/Token") : undefined
+              }
             />
             <Spacer mt={0.5} />
             <Body size="x2s" textAlign="left" color="textSecondary">
@@ -157,6 +187,9 @@ const RegisterAzure: React.FC = () => {
               label={t("General/Button/Continue")}
               onPress={getAzureUser}
               style={{ flex: 1 }}
+              disabled={
+                loading || !(organization.length > 5 && token.length > 5)
+              }
             />
           </View>
         </View>

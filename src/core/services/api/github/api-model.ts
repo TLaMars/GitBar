@@ -21,5 +21,9 @@ export type GitHubApi = {
     path: T,
     data: GitHubOAuthPostApiRequest[T],
     config?: Config,
-  ) => Promise<GitHubOAuthPostApiResponse[T]>;
+  ) => Promise<{
+    data: GitHubOAuthPostApiResponse[T];
+    status: number;
+    redirected: boolean;
+  }>;
 };

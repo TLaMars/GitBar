@@ -155,6 +155,7 @@ const COLORS = {
   blue: "#3166DD",
   green: "#0DD8BE",
   red: "#DD1D1D",
+  lightRed: "#FF5757",
 };
 
 export const THEME_COLORS_LIGHT = {
@@ -171,10 +172,13 @@ export const THEME_COLORS_LIGHT = {
   iconOnCtaDanger: COLORS.lightGray100,
   iconOnCtaSecondary: COLORS.black,
   border: COLORS.lightGray100,
+  borderDanger: COLORS.red,
+  borderValid: COLORS.green,
   icon: COLORS.black,
   text: COLORS.black,
   textLink: COLORS.blue,
   textSecondary: COLORS.darkGray200,
+  textDanger: COLORS.red,
 } as const satisfies Record<string, string>;
 
 export const THEME_COLORS_DARK = {
@@ -191,10 +195,13 @@ export const THEME_COLORS_DARK = {
   iconOnCtaDanger: COLORS.lightGray100,
   iconOnCtaSecondary: COLORS.lightGray100,
   border: COLORS.darkGray200,
+  borderDanger: COLORS.lightRed,
+  borderValid: COLORS.green,
   icon: COLORS.lightGray100,
   text: COLORS.lightGray100,
   textLink: COLORS.blue,
   textSecondary: COLORS.lightGray300,
+  textDanger: COLORS.lightRed,
 } as const satisfies Record<string, string>;
 
 export const THEME = {

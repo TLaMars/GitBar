@@ -13,7 +13,11 @@ async function apiWrapper(
   method: RequestInit["method"],
   path: string,
   config: Config,
-): Promise<any> {
+): Promise<{
+  data: any;
+  status: number;
+  redirected: boolean;
+}> {
   // eslint-disable-next-line prefer-const
   let { params, ...init } = config;
   params = params || {};
@@ -84,7 +88,11 @@ async function apiWrapper(
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  return data;
+  return {
+    data,
+    status: response.status,
+    redirected: response.redirected,
+  };
 }
 
 export default apiWrapper;

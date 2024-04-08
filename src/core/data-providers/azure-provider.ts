@@ -17,7 +17,7 @@ class AzureProvider {
 
   async projects() {
     try {
-      const projects = await azureApi.get(
+      const { data } = await azureApi.get(
         "/:organization/_apis/projects",
         azureConfig(
           {
@@ -27,7 +27,7 @@ class AzureProvider {
         ),
       );
 
-      return projects.value;
+      return data.value;
     } catch (e) {
       console.error(e);
 
@@ -39,7 +39,7 @@ class AzureProvider {
     const projects = await this.projects();
     const pullRequests = await Promise.all(
       projects.map(async (project) => {
-        const { value } = await azureApi.get(
+        const { data } = await azureApi.get(
           "/:organization/:projectId/_apis/git/pullrequests",
           azureConfig(
             {
@@ -49,7 +49,7 @@ class AzureProvider {
             this.token,
           ),
         );
-        return value;
+        return data.value;
       }),
     );
 

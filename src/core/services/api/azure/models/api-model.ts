@@ -21,5 +21,9 @@ export type AzureApi = {
   get: <T extends keyof AzureGetApiRequest>(
     path: T,
     config?: Config,
-  ) => Promise<AzureGetApiRequest[T]>;
+  ) => Promise<{
+    data: AzureGetApiRequest[T];
+    status: number;
+    redirected: boolean;
+  }>;
 };

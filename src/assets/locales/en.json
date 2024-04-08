@@ -39,5 +39,7 @@
   "RegisterGitLab/Placeholder/Token": "Enter your GitLab token",
   "Settings/Heading/Settings": "Settings",
   "Settings/Link/AddAccount": "Add new account",
-  "Settings/SectionHeading/Accounts": "Accounts"
+  "Settings/SectionHeading/Accounts": "Accounts",
+  "RegisterAzure/Message/Token": "The token is incorrect, and/or has the incorrect scopes.",
+  "RegisterAzure/Message/Organization": "The organization doesn't exist"
 }

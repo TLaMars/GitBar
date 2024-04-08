@@ -25,6 +25,7 @@ const usePullRequests = () => {
           const { data } = await client.query({
             query: QueryGetGithubPullRequests,
             context: gitHubContext(account.accessToken),
+            fetchPolicy: "no-cache",
           });
 
           return data;
@@ -44,6 +45,7 @@ const usePullRequests = () => {
           const { data } = await client.query({
             query: QueryGetGitLabPullRequests,
             context: gitLabContext(account.privateToken, account.domain),
+            fetchPolicy: "no-cache",
           });
 
           return {

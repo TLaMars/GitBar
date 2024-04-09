@@ -18,6 +18,7 @@ import useTranslation from "hooks/use-translation";
 import RegisteredLayout from "layouts/registered-layout/registered-layout";
 import { AccountType } from "models/account";
 import { upsertOneAccount } from "store/slices/accounts";
+import { gitLabContext } from "utils/apollo-contexts";
 import formatDomain from "utils/format-domain";
 import validateDomain from "utils/validate-domain";
 
@@ -46,19 +47,10 @@ const RegisterGitLab: React.FC = () => {
     }
 
     await fetchUser({
-      context: {
-        uri: `${gitlabDomain}${URI_PATHS.gitlabGql}`,
-        headers: {
-          "Private-Token": token,
-        },
-      },
+      context: gitLabContext(token, `${gitlabDomain}${URI_PATHS.gitlabGql}`),
       fetchPolicy: "network-only",
       onError: ({ networkError }) => {
-        if (
-          networkError &&
-          (networkError as ServerError).statusCode &&
-          (networkError as ServerError).statusCode === 401
-        ) {
+        if ((networkError as ServerError).statusCode === 401) {
           setError("token");
         } else {
           setError("domain");

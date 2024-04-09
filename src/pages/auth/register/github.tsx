@@ -16,7 +16,7 @@ import { upsertOneAccount } from "store/slices/accounts";
 const RegisterGithub: React.FC = () => {
   const dispatch = useDispatch();
   const [fetchViewer, { data }] = useLazyQuery(QueryGetViewer);
-  const [token, setToken] = useState<string>();
+  const [token, setToken] = useState<string>("");
   const [error, setError] = useState<string>();
 
   const {

@@ -1,4 +1,4 @@
-import { useLazyQuery } from "@apollo/client";
+import { ServerError, useLazyQuery } from "@apollo/client";
 import { useNavigation } from "@react-navigation/native";
 import React, { useCallback, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
@@ -18,6 +18,8 @@ import useTranslation from "hooks/use-translation";
 import RegisteredLayout from "layouts/registered-layout/registered-layout";
 import { AccountType } from "models/account";
 import { upsertOneAccount } from "store/slices/accounts";
+import formatDomain from "utils/format-domain";
+import validateDomain from "utils/validate-domain";
 
 import useStyles from "./register.styles";
 
@@ -28,36 +30,61 @@ const RegisterGitLab: React.FC = () => {
   const { goBack } = useNavigation();
   const [domain, setDomain] = React.useState("");
   const [token, setToken] = React.useState("");
+  const [error, setError] = React.useState<"domain" | "token">();
   const [fetchUser, { data }] = useLazyQuery(QueryGetGitLabCurrentUser);
+
   const getGitLabUser = useCallback(async () => {
-    try {
-      await fetchUser({
-        context: {
-          uri: `${domain}${URI_PATHS.gitlabGql}`,
-          headers: {
-            "Private-Token": token,
-          },
-        },
-      });
-    } catch (error) {
-      console.error(error);
+    let gitlabDomain = DOMAINS.gitlabDefault;
+
+    if (domain && domain.length > 0) {
+      if (!validateDomain(domain)) {
+        setError("domain");
+        return;
+      }
+      gitlabDomain = formatDomain(domain);
+      setDomain(gitlabDomain);
     }
+
+    await fetchUser({
+      context: {
+        uri: `${gitlabDomain}${URI_PATHS.gitlabGql}`,
+        headers: {
+          "Private-Token": token,
+        },
+      },
+      fetchPolicy: "network-only",
+      onError: ({ networkError }) => {
+        if (
+          networkError &&
+          (networkError as ServerError).statusCode &&
+          (networkError as ServerError).statusCode === 401
+        ) {
+          setError("token");
+        } else {
+          setError("domain");
+        }
+      },
+    });
   }, [domain, fetchUser, token]);
 
   useEffect(() => {
-    if (data) {
-      dispatch(
-        upsertOneAccount({
-          type: AccountType.GitLab,
-          domain: `${domain}`,
-          privateToken: token,
-          accountId: data.currentUser?.id ?? "",
-          avatarUrl: `${domain}${data.currentUser?.avatarUrl}`,
-          name: data.currentUser?.name ?? "",
-          userName: data.currentUser?.username ?? "",
-        }),
-      );
+    if (!data) return;
+    if (data.currentUser === null) {
+      setError("token");
+      return;
     }
+
+    dispatch(
+      upsertOneAccount({
+        type: AccountType.GitLab,
+        domain: `${domain}`,
+        privateToken: token,
+        accountId: data.currentUser?.id ?? "",
+        avatarUrl: `${domain}${data.currentUser?.avatarUrl}`,
+        name: data.currentUser?.name ?? "",
+        userName: data.currentUser?.username ?? "",
+      }),
+    );
   }, [data, dispatch, domain, token]);
 
   const onPersonalAccessTokenPress = async () => {
@@ -74,7 +101,7 @@ const RegisterGitLab: React.FC = () => {
               domain: DOMAINS.gitlabDefault,
             }),
             onPress: () =>
-              Linking.openURL(
+              void Linking.openURL(
                 DOMAINS.gitlabDefault + URI_PATHS.gitlabAccessToken,
               ),
           },
@@ -87,7 +114,7 @@ const RegisterGitLab: React.FC = () => {
 
   return (
     <>
-      {!data && (
+      {!data?.currentUser && (
         <View style={$.container}>
           <GitLabLogo width={60} height={60} />
           <Spacer mt={4} />
@@ -98,6 +125,13 @@ const RegisterGitLab: React.FC = () => {
             label={t("RegisterGitLab/Label/Host")}
             placeholder={DOMAINS.gitlabDefault}
             onChangeText={setDomain}
+            value={domain}
+            state={error === "domain" ? "error" : "neutral"}
+            message={
+              error === "domain"
+                ? t("RegisterGitLab/Message/Domain")
+                : undefined
+            }
           />
           <Spacer mt={1} />
           <View>
@@ -108,6 +142,12 @@ const RegisterGitLab: React.FC = () => {
               label={t("RegisterGitLab/Label/Token")}
               placeholder={t("RegisterGitLab/Placeholder/Token")}
               onChangeText={setToken}
+              state={error === "token" ? "error" : "neutral"}
+              message={
+                error === "token"
+                  ? t("RegisterGitLab/Message/Token")
+                  : undefined
+              }
             />
             <Spacer mt={0.5} />
             <Body size="x2s" textAlign="left" color="textSecondary">
@@ -154,10 +194,10 @@ const RegisterGitLab: React.FC = () => {
           </View>
         </View>
       )}
-      {data && (
+      {data?.currentUser && (
         <RegisteredLayout
-          avatarUrl={`${domain}${data.currentUser?.avatarUrl}`}
-          name={data.currentUser?.name ?? ""}
+          avatarUrl={`${domain}${data.currentUser.avatarUrl}`}
+          name={data.currentUser.name}
           type={AccountType.GitLab}
           onRetryPress={getGitLabUser}
         />

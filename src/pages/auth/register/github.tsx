@@ -47,6 +47,7 @@ const RegisterGithub: React.FC = () => {
       if (response) {
         setToken(response.data.access_token);
         await fetchViewer({
+          fetchPolicy: "network-only",
           context: {
             uri: `${DOMAINS.githubApi}${URI_PATHS.githubGql}`,
             headers: {

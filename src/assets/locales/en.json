@@ -41,5 +41,7 @@
   "Settings/Link/AddAccount": "Add new account",
   "Settings/SectionHeading/Accounts": "Accounts",
   "RegisterAzure/Message/Token": "The token is incorrect, and/or has the incorrect scopes.",
-  "RegisterAzure/Message/Organization": "The organization doesn't exist"
+  "RegisterAzure/Message/Organization": "The organization doesn't exist",
+  "RegisterGitLab/Message/Domain": "The domain is incorrect",
+  "RegisterGitLab/Message/Token": "The token is incorrect, and/or has the incorrect scopes."
 }

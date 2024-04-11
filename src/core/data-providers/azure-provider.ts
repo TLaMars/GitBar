@@ -2,7 +2,9 @@ import azureApi from "services/api/azure/api";
 import transformAzurePullRequest from "transformers/azure-pull-request";
 import azureConfig from "utils/api-config";
 
-class AzureProvider {
+import Provider from "./provider";
+
+class AzureProvider implements Provider {
   name: string;
 
   organization: string;

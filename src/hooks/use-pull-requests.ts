@@ -1,98 +1,33 @@
-import { useApolloClient } from "@apollo/client";
-import { useCallback, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 
-import QueryGetGithubPullRequests from "gql/github/queries/pull-requests";
-import QueryGetGitLabPullRequests from "gql/gitlab/queries/pull-requests";
+import { AccountsContext } from "contexts/accounts";
 import { PullRequest } from "models/pull-request";
-import AzureProvider from "src/core/data-providers/azure-provider";
-import transformGithubPullRequest from "transformers/github-pull-request";
-import transformGitLabPullRequest from "transformers/gitlab-pull-request";
-import { gitHubContext, gitLabContext } from "utils/apollo-contexts";
-
-import useAccountsByType from "./use-accounts-by-type";
 
 const usePullRequests = () => {
-  const client = useApolloClient();
-  const { gitHubAccounts, gitLabAccounts, azureAccounts } = useAccountsByType();
+  const accounts = useContext(AccountsContext);
   const [pullRequests, setPullRequests] = useState<PullRequest[]>([]);
   const [loading, setLoading] = useState(false);
 
   const fetchPullRequests = useCallback(async () => {
     setLoading(true);
-    const githubPullRequests = (
-      await Promise.all(
-        gitHubAccounts.map(async (account) => {
-          const { data } = await client.query({
-            query: QueryGetGithubPullRequests,
-            context: gitHubContext(account.accessToken),
-            fetchPolicy: "no-cache",
-          });
 
-          return data;
-        }),
-      )
-    )
-      .map(transformGithubPullRequest)
-      .flat()
-      .filter(
-        (pullRequest, index, self) =>
-          index === self.findIndex((p) => p.id === pullRequest.id),
-      );
-
-    const gitlabPullRequests = (
-      await Promise.all(
-        gitLabAccounts.map(async (account) => {
-          const { data } = await client.query({
-            query: QueryGetGitLabPullRequests,
-            context: gitLabContext(account.privateToken, account.domain),
-            fetchPolicy: "no-cache",
-          });
-
-          return {
-            domain: account.domain,
-            data,
-          };
-        }),
-      )
-    )
-      .map(transformGitLabPullRequest)
-      .flat()
-      .filter(
-        (pullRequest, index, self) =>
-          index === self.findIndex((p) => p.id === pullRequest.id),
-      );
-
-    const azureProviders = azureAccounts.map(
-      ({ organization, token, userName }) =>
-        new AzureProvider(organization, token, userName),
+    const result = await Promise.all(
+      accounts.map(async (account) => account.pullRequests()),
     );
 
-    const azurePullRequests = (
-      await Promise.all(
-        azureProviders.map(async (provider) => provider.pullRequests()),
-      )
-    )
-      .flat()
-      .filter(
-        (pullRequest, index, self) =>
-          index === self.findIndex((p) => p.id === pullRequest.id),
-      );
+    const sortedResult = result.flat().sort((a, b) => {
+      if (a.createdAt < b.createdAt) {
+        return 1;
+      }
+      if (a.createdAt > b.createdAt) {
+        return -1;
+      }
+      return 0;
+    });
 
+    setPullRequests(sortedResult);
     setLoading(false);
-    setPullRequests(
-      [...githubPullRequests, ...gitlabPullRequests, ...azurePullRequests].sort(
-        (a, b) => {
-          if (a.createdAt < b.createdAt) {
-            return 1;
-          }
-          if (a.createdAt > b.createdAt) {
-            return -1;
-          }
-          return 0;
-        },
-      ),
-    );
-  }, [gitHubAccounts, gitLabAccounts, client, azureAccounts]);
+  }, [accounts]);
 
   return {
     pullRequests,

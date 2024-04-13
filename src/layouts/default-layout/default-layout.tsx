@@ -24,6 +24,7 @@ const DefaultLayout: React.FC<Props> = ({
     <View style={$.container}>
       {!sideBarHidden && (
         <Sidebar
+          marginVertical={2.5}
           topContainer={
             <SidebarItem
               icon="PullRequest"

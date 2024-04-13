@@ -6,7 +6,7 @@ const useStyles = () =>
       flex: 1,
       flexDirection: "row",
       gap: spacing(3),
-      padding: spacing(2.5),
+      paddingHorizontal: spacing(2.5),
     },
   }));
 export default useStyles;

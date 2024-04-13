@@ -1,17 +1,16 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { ScrollView, View } from "react-native";
 
 import AccountCard from "components/account-card/account-card";
 import Heading from "components/heading/heading";
 import Link from "components/link/link";
 import Spacer from "components/spacer/spacer";
+import { AccountsContext } from "contexts/accounts";
 import useDispatch from "hooks/use-dispatch";
-import useSelector from "hooks/use-selector";
+import useProfiles from "hooks/use-profiles";
 import useTranslation from "hooks/use-translation";
 import DefaultLayout from "layouts/default-layout/default-layout";
-import { AccountType } from "models/account";
-import { selectAccounts } from "store/selectors/accounts";
 import { removeOneAccount } from "store/slices/accounts";
 
 import useStyles from "./settings.styles";
@@ -20,8 +19,13 @@ const Settings: React.FC = () => {
   const $ = useStyles();
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const accounts = useSelector(selectAccounts);
+  const accounts = useContext(AccountsContext);
+  const { profiles, fetchProfiles } = useProfiles();
   const { navigate } = useNavigation();
+
+  useEffect(() => {
+    void fetchProfiles();
+  }, [fetchProfiles]);
 
   const deleteAccount = (accountId: string) => {
     dispatch(removeOneAccount(accountId));
@@ -47,20 +51,15 @@ const Settings: React.FC = () => {
           />
         </View>
         <Spacer mt={1} />
-        {accounts.map((account, index) => (
-          <View key={account.accountId}>
+        {profiles.map((profile, index) => (
+          <View key={profile.id}>
             <AccountCard
-              type={account.type}
-              userName={account.userName}
-              avatarUrl={account.avatarUrl}
-              name={account.name}
+              type={profile.type}
+              userName={profile.userName ?? ""}
+              avatarUrl={profile.avatarUrl}
+              name={profile.name}
               border={index !== accounts.length - 1}
-              onDeletePress={() => deleteAccount(account.accountId)}
-              aditionalInfo={
-                account.type === AccountType.Azure
-                  ? account.organization
-                  : undefined
-              }
+              onDeletePress={() => deleteAccount(profile.id)}
             />
           </View>
         ))}

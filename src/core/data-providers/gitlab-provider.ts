@@ -1,40 +1,61 @@
-import { ApolloClient } from "@apollo/client";
+import { ApolloClient, DefaultContext } from "@apollo/client";
 
+import QueryGetGitLabCurrentUser from "gql/gitlab/queries/current-user";
 import QueryGetGitLabPullRequests from "gql/gitlab/queries/pull-requests";
+import { AccountType } from "models/account";
+import { GitLabAuth } from "models/auth";
+import Profile from "models/profile";
 import transformGitLabPullRequest from "transformers/gitlab-pull-request";
 import { gitLabContext } from "utils/apollo-contexts";
 
 import Provider from "./provider";
 
 class GitLabProvider implements Provider {
-  name: string;
-
-  privateToken: string;
-
-  domain: string;
+  auth: GitLabAuth;
 
   client: ApolloClient<object>;
 
-  constructor(
-    name: string,
-    privateToken: string,
-    domain: string,
-    client: ApolloClient<object>,
-  ) {
-    this.name = name;
-    this.privateToken = privateToken;
-    this.domain = domain;
+  #context: DefaultContext;
+
+  #profile?: Profile;
+
+  constructor(auth: GitLabAuth, client: ApolloClient<object>) {
+    this.auth = auth;
     this.client = client;
+    this.#context = gitLabContext(auth.privateToken, auth.domain);
+  }
+
+  async profile() {
+    if (!this.#profile) {
+      const { data } = await this.client.query({
+        query: QueryGetGitLabCurrentUser,
+        context: this.#context,
+        fetchPolicy: "no-cache",
+      });
+
+      this.#profile = {
+        id: data.currentUser?.id ?? "",
+        avatarUrl: `${this.auth.domain}${data.currentUser?.avatarUrl}`,
+        userName: data.currentUser?.username ?? "",
+        name: data.currentUser?.name ?? "",
+        type: AccountType.GitLab,
+      };
+    }
+
+    return this.#profile;
   }
 
   async pullRequests() {
     const { data } = await this.client.query({
       query: QueryGetGitLabPullRequests,
-      context: gitLabContext(this.privateToken, this.domain),
+      context: this.#context,
       fetchPolicy: "no-cache",
     });
 
-    return transformGitLabPullRequest({ domain: this.domain, data }).filter(
+    return transformGitLabPullRequest({
+      domain: this.auth.domain,
+      data,
+    }).filter(
       (pullRequest, index, self) =>
         index === self.findIndex((p) => p.id === pullRequest.id),
     );

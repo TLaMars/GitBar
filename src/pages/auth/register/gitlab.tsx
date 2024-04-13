@@ -43,11 +43,11 @@ const RegisterGitLab: React.FC = () => {
         return;
       }
       gitlabDomain = formatDomain(domain);
-      setDomain(gitlabDomain);
     }
+    setDomain(gitlabDomain);
 
     await fetchUser({
-      context: gitLabContext(token, `${gitlabDomain}${URI_PATHS.gitlabGql}`),
+      context: gitLabContext(token, gitlabDomain),
       fetchPolicy: "network-only",
       onError: ({ networkError }) => {
         if ((networkError as ServerError).statusCode === 401) {
@@ -68,13 +68,12 @@ const RegisterGitLab: React.FC = () => {
 
     dispatch(
       upsertOneAccount({
+        id: data.currentUser?.id ?? "",
         type: AccountType.GitLab,
-        domain: `${domain}`,
-        privateToken: token,
-        accountId: data.currentUser?.id ?? "",
-        avatarUrl: `${domain}${data.currentUser?.avatarUrl}`,
-        name: data.currentUser?.name ?? "",
-        userName: data.currentUser?.username ?? "",
+        auth: {
+          domain,
+          privateToken: token,
+        },
       }),
     );
   }, [data, dispatch, domain, token]);

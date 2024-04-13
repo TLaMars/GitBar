@@ -1,3 +1,5 @@
+import { AzureAuth, GitHubAuth, GitLabAuth } from "./auth";
+
 export enum AccountType {
   Azure = "Azure",
   GitHub = "GitHub",
@@ -5,30 +7,25 @@ export enum AccountType {
 }
 
 type DefaultAccount = {
-  accountId: string;
+  id: string;
   type: AccountType;
-  userName: string;
-  name?: string;
-  avatarUrl?: string;
-};
-
-export type GitHubAccount = DefaultAccount & {
-  type: AccountType.GitHub;
-  accessToken: string;
-};
-
-export type GitLabAccount = DefaultAccount & {
-  type: AccountType.GitLab;
-  privateToken: string;
-  domain: string;
 };
 
 export type AzureAccount = DefaultAccount & {
   type: AccountType.Azure;
-  token: string;
-  organization: string;
+  auth: AzureAuth;
 };
 
-type Account = GitHubAccount | GitLabAccount | AzureAccount;
+export type GitHubAccount = DefaultAccount & {
+  type: AccountType.GitHub;
+  auth: GitHubAuth;
+};
+
+export type GitLabAccount = DefaultAccount & {
+  type: AccountType.GitLab;
+  auth: GitLabAuth;
+};
+
+type Account = AzureAccount | GitHubAccount | GitLabAccount;
 
 export default Account;

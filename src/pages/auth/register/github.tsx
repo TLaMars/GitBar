@@ -65,12 +65,11 @@ const RegisterGithub: React.FC = () => {
     if (data && token) {
       dispatch(
         upsertOneAccount({
-          accountId: data.viewer.id,
+          id: data.viewer.id,
           type: AccountType.GitHub,
-          name: data.viewer.name ?? undefined,
-          userName: data.viewer.login,
-          avatarUrl: data.viewer.avatarUrl,
-          accessToken: token,
+          auth: {
+            accessToken: token,
+          },
         }),
       );
     }

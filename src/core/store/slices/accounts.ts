@@ -4,7 +4,7 @@ import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import Account from "models/account";
 
 export const accountsAdapter = createEntityAdapter({
-  selectId: (account: Account) => account.accountId,
+  selectId: (account: Account) => account.id,
 });
 
 const initialState = accountsAdapter.getInitialState();

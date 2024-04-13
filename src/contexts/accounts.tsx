@@ -20,24 +20,11 @@ const AccountsProvider: React.FC<PropsWithChildren> = ({ children }) => {
       accounts.map((account) => {
         switch (account.type) {
           case AccountType.Azure:
-            return new AzureProvider(
-              account.organization,
-              account.token,
-              account.userName,
-            );
+            return new AzureProvider(account.auth);
           case AccountType.GitHub:
-            return new GitHubProvider(
-              account.userName,
-              account.accessToken,
-              client,
-            );
+            return new GitHubProvider(account.auth, client);
           case AccountType.GitLab:
-            return new GitLabProvider(
-              account.userName,
-              account.privateToken,
-              account.domain,
-              client,
-            );
+            return new GitLabProvider(account.auth, client);
           default:
             throw new Error(`Unknown account: ${account}`);
         }

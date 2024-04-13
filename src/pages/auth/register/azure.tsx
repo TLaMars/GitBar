@@ -70,11 +70,12 @@ const RegisterAzure: React.FC = () => {
     if (data) {
       dispatch(
         upsertOneAccount({
+          id: data.id,
           type: AccountType.Azure,
-          organization,
-          token,
-          accountId: data.id,
-          userName: data.displayName,
+          auth: {
+            organization,
+            token,
+          },
         }),
       );
     }

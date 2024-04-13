@@ -1,3 +1,7 @@
+import { AccountType } from "models/account";
+import { AzureAuth } from "models/auth";
+import Profile from "models/profile";
+import { Config } from "services/api/api-wrapper";
 import azureApi from "services/api/azure/api";
 import transformAzurePullRequest from "transformers/azure-pull-request";
 import azureConfig from "utils/api-config";
@@ -5,28 +9,46 @@ import azureConfig from "utils/api-config";
 import Provider from "./provider";
 
 class AzureProvider implements Provider {
-  name: string;
+  auth: AzureAuth;
 
-  organization: string;
+  #profile?: Profile;
 
-  token: string;
+  #config: Config;
 
-  constructor(organization: string, token: string, name: string) {
-    this.name = name;
-    this.organization = organization;
-    this.token = token;
+  constructor(auth: AzureAuth) {
+    this.auth = auth;
+    this.#config = azureConfig(
+      {
+        organization: this.auth.organization,
+      },
+      this.auth.token,
+    );
+  }
+
+  async profile() {
+    if (!this.#profile) {
+      const { data } = await azureApi.get(
+        "/:organization/_apis/profile/profiles/me",
+        this.#config,
+      );
+
+      this.#profile = {
+        id: data.id,
+        avatarUrl: "",
+        userName: data.displayName,
+        name: data.displayName,
+        type: AccountType.Azure,
+      };
+    }
+
+    return this.#profile;
   }
 
   async projects() {
     try {
       const { data } = await azureApi.get(
         "/:organization/_apis/projects",
-        azureConfig(
-          {
-            organization: this.organization,
-          },
-          this.token,
-        ),
+        this.#config,
       );
 
       return data.value;
@@ -38,6 +60,7 @@ class AzureProvider implements Provider {
   }
 
   async pullRequests() {
+    const profile = await this.profile();
     const projects = await this.projects();
     const pullRequests = await Promise.all(
       projects.map(async (project) => {
@@ -45,10 +68,10 @@ class AzureProvider implements Provider {
           "/:organization/:projectId/_apis/git/pullrequests",
           azureConfig(
             {
-              organization: this.organization,
+              organization: this.auth.organization,
               projectId: project.id,
             },
-            this.token,
+            this.auth.token,
           ),
         );
         return data.value;
@@ -60,8 +83,8 @@ class AzureProvider implements Provider {
       .map(transformAzurePullRequest)
       .filter(
         (pr) =>
-          pr.author.name === this.name ||
-          pr.reviewers.some((reviewer) => reviewer.name === this.name),
+          pr.author.name === profile.name ||
+          pr.reviewers.some((reviewer) => reviewer.name === profile.name),
       );
   }
 }

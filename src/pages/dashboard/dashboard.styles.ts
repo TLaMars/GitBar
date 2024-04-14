@@ -10,7 +10,7 @@ const useStyles = () =>
     },
     list: {
       gap: spacing(2),
-      paddingBottom: spacing(2.5),
+      paddingBottom: spacing(0.5),
     },
     header: {
       flexDirection: "row",

@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, View } from "react-native";
+import { ActivityIndicator, SectionList, View } from "react-native";
 
 import Body from "components/body/body";
 import Heading from "components/heading/heading";
@@ -22,7 +22,12 @@ const Dashboard: React.FC = () => {
   const { t } = useTranslation();
   const [previousPollingTime, setPreviousPollingTime] = useState<number>(0);
   const [minutesAgo, setMinutesAgo] = useState<number>(0);
-  const { pullRequests, loading, fetchPullRequests } = usePullRequests();
+  const {
+    pullRequests,
+    loading,
+    fetchPullRequests,
+    sections: pullRequestSections,
+  } = usePullRequests();
 
   // TEMP: Delete accounts on first load that don't have auth object
   const accounts = useSelector(selectAccounts);
@@ -84,9 +89,9 @@ const Dashboard: React.FC = () => {
         </View>
         {loading && <ActivityIndicator />}
         {pullRequests.length > 0 && (
-          <FlatList
+          <SectionList
             contentContainerStyle={$.list}
-            data={pullRequests}
+            sections={pullRequestSections}
             renderItem={({ item }) => (
               <PullRequestCard
                 title={item.title}
@@ -99,6 +104,11 @@ const Dashboard: React.FC = () => {
               />
             )}
             keyExtractor={(item) => item.id}
+            renderSectionHeader={({ section: { title } }) => (
+              <Body bold size="xs">
+                {title}
+              </Body>
+            )}
           />
         )}
       </View>

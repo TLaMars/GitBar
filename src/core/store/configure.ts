@@ -12,6 +12,7 @@ import {
 import persistReducer from "redux-persist/es/persistReducer";
 
 import accounts from "./slices/accounts";
+import settings from "./slices/settings";
 
 const storage = new MMKV();
 
@@ -36,9 +37,11 @@ const persistConfig = {
 };
 
 const persistedAccount = persistReducer(persistConfig, accounts);
+const persistedSettings = persistReducer(persistConfig, settings);
 
 const reducers = {
   accounts: persistedAccount,
+  settings: persistedSettings,
 };
 
 export const store = configureStore({

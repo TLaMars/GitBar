@@ -104,11 +104,13 @@ const Dashboard: React.FC = () => {
               />
             )}
             keyExtractor={(item) => item.id}
-            renderSectionHeader={({ section: { title } }) => (
-              <Body bold size="xs">
-                {title}
-              </Body>
-            )}
+            renderSectionHeader={({ section: { title, hideTitle } }) =>
+              hideTitle ? null : (
+                <Body bold size="xs">
+                  {title}
+                </Body>
+              )
+            }
           />
         )}
       </View>

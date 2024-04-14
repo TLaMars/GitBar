@@ -9,7 +9,7 @@ const useStyles = () =>
       alignItems: "center",
     },
     border: {
-      borderBottomColor: colors.backgroundSurface,
+      borderBottomColor: colors.border,
       borderBottomWidth: 1,
     },
     info: {

@@ -1,0 +1,27 @@
+import React from "react";
+import { View } from "react-native";
+import { Switch } from "react-native-macos";
+
+import Body from "components/body/body";
+
+import useStyles from "./list-item.styles";
+
+type Props = {
+  label: string;
+  onToggle: (value: boolean) => void;
+  value: boolean;
+  border?: boolean;
+};
+
+const ListItem: React.FC<Props> = ({ label, onToggle, value, border }) => {
+  const $ = useStyles();
+
+  return (
+    <View style={[$.container, border && $.border]}>
+      <Body size="s">{label}</Body>
+      <Switch onValueChange={onToggle} value={value} />
+    </View>
+  );
+};
+
+export default ListItem;

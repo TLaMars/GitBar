@@ -5,13 +5,21 @@ import { ScrollView, View } from "react-native";
 import AccountCard from "components/account-card/account-card";
 import Heading from "components/heading/heading";
 import Link from "components/link/link";
+import ListItem from "components/list-item/list-item";
 import Spacer from "components/spacer/spacer";
 import { AccountsContext } from "contexts/accounts";
 import useDispatch from "hooks/use-dispatch";
 import useProfiles from "hooks/use-profiles";
+import useSelector from "hooks/use-selector";
 import useTranslation from "hooks/use-translation";
 import DefaultLayout from "layouts/default-layout/default-layout";
+import { GroupPullRequestsBy } from "models/pull-request";
+import {
+  selectGroupPRsBy,
+  selectHidePRsAfterTwoMonths,
+} from "store/selectors/settings";
 import { removeOneAccount } from "store/slices/accounts";
+import { setGroupPRsBy, setHidePRsAfterTwoMonths } from "store/slices/settings";
 
 import useStyles from "./settings.styles";
 
@@ -22,6 +30,8 @@ const Settings: React.FC = () => {
   const accounts = useContext(AccountsContext);
   const { profiles, fetchProfiles } = useProfiles();
   const { navigate } = useNavigation();
+  const hidePRsAfterTwoMonths = useSelector(selectHidePRsAfterTwoMonths);
+  const groupPRsBy = useSelector(selectGroupPRsBy);
 
   useEffect(() => {
     void fetchProfiles();
@@ -63,6 +73,40 @@ const Settings: React.FC = () => {
             />
           </View>
         ))}
+        <Spacer mt={4} />
+        <Heading size="x2s">
+          {t("Settings/SectionHeading/PullRequests")}
+        </Heading>
+        <Spacer mt={1} />
+        <ListItem
+          label="Group PR's per project"
+          border
+          value={groupPRsBy === GroupPullRequestsBy.REPO}
+          onToggle={(value) => {
+            if (value) {
+              dispatch(setGroupPRsBy(GroupPullRequestsBy.REPO));
+            } else {
+              dispatch(setGroupPRsBy(GroupPullRequestsBy.NONE));
+            }
+          }}
+        />
+        <ListItem
+          label="Group PR's per date"
+          border
+          value={groupPRsBy === GroupPullRequestsBy.DATE}
+          onToggle={(value) => {
+            if (value) {
+              dispatch(setGroupPRsBy(GroupPullRequestsBy.DATE));
+            } else {
+              dispatch(setGroupPRsBy(GroupPullRequestsBy.NONE));
+            }
+          }}
+        />
+        <ListItem
+          label="Hide PR's after 2 months"
+          value={hidePRsAfterTwoMonths}
+          onToggle={(value) => dispatch(setHidePRsAfterTwoMonths(value))}
+        />
       </ScrollView>
     </DefaultLayout>
   );

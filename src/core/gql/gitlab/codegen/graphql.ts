@@ -120,6 +120,12 @@ export type Scalars = {
    */
   AuditEventsGoogleCloudLoggingConfigurationID: { input: any; output: any };
   /**
+   * A `AuditEventsGroupExternalStreamingDestinationID` is a global ID. It is encoded as a string.
+   *
+   * An example `AuditEventsGroupExternalStreamingDestinationID` is: `"gid://gitlab/AuditEvents::Group::ExternalStreamingDestination/1"`.
+   */
+  AuditEventsGroupExternalStreamingDestinationID: { input: any; output: any };
+  /**
    * A `AuditEventsInstanceAmazonS3ConfigurationID` is a global ID. It is encoded as a string.
    *
    * An example `AuditEventsInstanceAmazonS3ConfigurationID` is: `"gid://gitlab/AuditEvents::Instance::AmazonS3Configuration/1"`.
@@ -131,6 +137,15 @@ export type Scalars = {
    * An example `AuditEventsInstanceExternalAuditEventDestinationID` is: `"gid://gitlab/AuditEvents::InstanceExternalAuditEventDestination/1"`.
    */
   AuditEventsInstanceExternalAuditEventDestinationID: {
+    input: any;
+    output: any;
+  };
+  /**
+   * A `AuditEventsInstanceExternalStreamingDestinationID` is a global ID. It is encoded as a string.
+   *
+   * An example `AuditEventsInstanceExternalStreamingDestinationID` is: `"gid://gitlab/AuditEvents::Instance::ExternalStreamingDestination/1"`.
+   */
+  AuditEventsInstanceExternalStreamingDestinationID: {
     input: any;
     output: any;
   };
@@ -666,6 +681,12 @@ export type Scalars = {
    */
   NoteableID: { input: any; output: any };
   /**
+   * A `OperationsFeatureFlagID` is a global ID. It is encoded as a string.
+   *
+   * An example `OperationsFeatureFlagID` is: `"gid://gitlab/Operations::FeatureFlag/1"`.
+   */
+  OperationsFeatureFlagID: { input: any; output: any };
+  /**
    * A `OrganizationsOrganizationID` is a global ID. It is encoded as a string.
    *
    * An example `OrganizationsOrganizationID` is: `"gid://gitlab/Organizations::Organization/1"`.
@@ -763,6 +784,12 @@ export type Scalars = {
    * An example `ProjectsBranchRuleID` is: `"gid://gitlab/Projects::BranchRule/1"`.
    */
   ProjectsBranchRuleID: { input: any; output: any };
+  /**
+   * A `ProjectsSavedReplyID` is a global ID. It is encoded as a string.
+   *
+   * An example `ProjectsSavedReplyID` is: `"gid://gitlab/Projects::SavedReply/1"`.
+   */
+  ProjectsSavedReplyID: { input: any; output: any };
   /**
    * A `ReleaseID` is a global ID. It is encoded as a string.
    *
@@ -1911,6 +1938,8 @@ export type AiChatInput = {
   agentVersionId?: InputMaybe<Scalars["AiAgentVersionID"]["input"]>;
   /** Content of the message. */
   content: Scalars["String"]["input"];
+  /** Information about currently selected text which can be passed for additional context. */
+  currentFile?: InputMaybe<AiCurrentFileInput>;
   /** Global ID of the namespace the user is acting on. */
   namespaceId?: InputMaybe<Scalars["NamespaceID"]["input"]>;
   /** Global ID of the resource to mutate. */
@@ -2056,6 +2085,12 @@ export enum AiMessageType {
   /** Tool selection message. */
   Tool = "TOOL",
 }
+
+export type AiMetrics = {
+  __typename?: "AiMetrics";
+  /** Percentage of contributors who used GitLab Duo Code Suggestions features. */
+  codeSuggestionsUsageRate: Scalars["Float"]["output"];
+};
 
 export type AiResolveVulnerabilityInput = {
   /** Global ID of the resource to mutate. */
@@ -2679,10 +2714,7 @@ export type ApprovalPolicy = OrchestrationPolicy & {
   groupApprovers?: Maybe<Array<Group>>;
   /** Name of the policy. */
   name: Scalars["String"]["output"];
-  /**
-   * Scope of the policy. Returns `null` if Security Policy Scope experimental feature is disabled. Introduced in GitLab 16.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
-   */
+  /** Scope of the policy */
   policyScope?: Maybe<PolicyScope>;
   /** Approvers of the role type. Users belonging to these role(s) alone will be approvers. */
   roleApprovers?: Maybe<Array<MemberAccessLevelName>>;
@@ -2964,6 +2996,17 @@ export type AuditEventDefinitionEdge = {
   cursor: Scalars["String"]["output"];
   /** The item at the end of the edge. */
   node?: Maybe<AuditEventDefinition>;
+};
+
+export type AuditEventStreamingDestinationInterface = {
+  /** Category of the external destination to send audit events to. */
+  category: Scalars["String"]["output"];
+  /** Config of the external destination. */
+  config: Scalars["JSON"]["output"];
+  /** ID of the destination. */
+  id: Scalars["ID"]["output"];
+  /** Name of the external destination to send audit events to. */
+  name: Scalars["String"]["output"];
 };
 
 /** Represents a subgroup or project filter that belongs to an external audit event streaming destination. */
@@ -6522,6 +6565,7 @@ export type CiRunnerProjectsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   membership?: InputMaybe<Scalars["Boolean"]["input"]>;
+  personal?: InputMaybe<Scalars["Boolean"]["input"]>;
   search?: InputMaybe<Scalars["String"]["input"]>;
   searchNamespaces?: InputMaybe<Scalars["Boolean"]["input"]>;
   topics?: InputMaybe<Array<Scalars["String"]["input"]>>;
@@ -8436,6 +8480,8 @@ export type ContainerRepositoryDetails = {
   lastCleanupDeletedTagsCount?: Maybe<Scalars["Int"]["output"]>;
   /** URL of the container repository. */
   location: Scalars["String"]["output"];
+  /** An image manifest from the container repository. */
+  manifest?: Maybe<Scalars["String"]["output"]>;
   /** Migration state of the container repository. */
   migrationState: Scalars["String"]["output"];
   /** Name of the container repository. */
@@ -8459,12 +8505,18 @@ export type ContainerRepositoryDetails = {
 };
 
 /** Details of a container repository */
+export type ContainerRepositoryDetailsManifestArgs = {
+  reference: Scalars["String"]["input"];
+};
+
+/** Details of a container repository */
 export type ContainerRepositoryDetailsTagsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   name?: InputMaybe<Scalars["String"]["input"]>;
+  referrerType?: InputMaybe<Scalars["String"]["input"]>;
   referrers?: InputMaybe<Scalars["Boolean"]["input"]>;
   sort?: InputMaybe<ContainerRepositoryTagSort>;
 };
@@ -11389,6 +11441,11 @@ export type Deployment = {
   updatedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Permissions for the current user on the resource */
   userPermissions: DeploymentPermissions;
+  /**
+   * Web path to the deployment page, returns `null` if the `deployment_details_page` feature flag is disabled. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  webPath?: Maybe<Scalars["String"]["output"]>;
 };
 
 /** Approval of the deployment. */
@@ -14724,6 +14781,36 @@ export type ExternalStatusCheckEdge = {
   node?: Maybe<ExternalStatusCheck>;
 };
 
+export type FeatureFlag = {
+  __typename?: "FeatureFlag";
+  /** Whether the feature flag is active. */
+  active: Scalars["Boolean"]["output"];
+  /** Global ID of the feature flag. */
+  id: Scalars["OperationsFeatureFlagID"]["output"];
+  /** Name of the feature flag. */
+  name: Scalars["String"]["output"];
+};
+
+/** The connection type for FeatureFlag. */
+export type FeatureFlagConnection = {
+  __typename?: "FeatureFlagConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<FeatureFlagEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<FeatureFlag>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type FeatureFlagEdge = {
+  __typename?: "FeatureFlagEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<FeatureFlag>;
+};
+
 export type FileUpload = {
   __typename?: "FileUpload";
   /** Global ID of the upload. */
@@ -15541,6 +15628,11 @@ export type Group = {
   addOnPurchase?: Maybe<AddOnPurchase>;
   /** Additional storage purchased for the root namespace in bytes. */
   additionalPurchasedStorageSize?: Maybe<Scalars["Float"]["output"]>;
+  /**
+   * AI-related metrics. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  aiMetrics?: Maybe<AiMetrics>;
   /** Indicates whether to regularly prune stale group runners. Defaults to false. */
   allowStaleRunnerPruning: Scalars["Boolean"]["output"];
   /** Amazon S3 configurations that receive audit events belonging to the group. */
@@ -15559,6 +15651,11 @@ export type Group = {
   board?: Maybe<Board>;
   /** Boards of the group. */
   boards?: Maybe<BoardConnection>;
+  /**
+   * Time taken for CI jobs to be picked up by this group's runners by percentile. Available to users with Maintainer role for the group. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  ciQueueingHistory?: Maybe<QueueingDelayHistory>;
   /** List of the group's CI/CD variables. */
   ciVariables?: Maybe<CiGroupVariableConnection>;
   /** Cluster agents associated with projects in the group and its subgroups. */
@@ -15656,6 +15753,11 @@ export type Group = {
   /** External locations that receive audit events belonging to the group. */
   externalAuditEventDestinations?: Maybe<ExternalAuditEventDestinationConnection>;
   /**
+   * External destinations that receive audit events belonging to the group. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  externalAuditEventStreamingDestinations?: Maybe<GroupAuditEventStreamingDestinationConnection>;
+  /**
    * Flow metrics for value stream analytics. Introduced in GitLab 15.10: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
    */
@@ -15674,6 +15776,11 @@ export type Group = {
   groupMembersCount: Scalars["Int"]["output"];
   /** ID of the namespace. */
   id: Scalars["ID"]["output"];
+  /**
+   * Indicates if delayed group deletion is enabled. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  isAdjournedDeletionEnabled: Scalars["Boolean"]["output"];
   /**
    * Status of the temporary storage increase. Deprecated in GitLab 16.7: Feature removal, will be completely removed in 17.0.
    * @deprecated Feature removal, will be completely removed in 17.0. Deprecated in GitLab 16.7.
@@ -15739,6 +15846,11 @@ export type Group = {
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
    */
   pendingMembers?: Maybe<PendingGroupMemberConnection>;
+  /**
+   * Date when group will be deleted if delayed group deletion is enabled. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  permanentDeletionDate?: Maybe<Scalars["String"]["output"]>;
   /**
    * Number of product analytics events namespace is permitted to store per cycle. Introduced in GitLab 16.9: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.9.
@@ -15885,6 +15997,11 @@ export type GroupAddOnPurchaseArgs = {
   addOnName: Scalars["String"]["input"];
 };
 
+export type GroupAiMetricsArgs = {
+  endDate?: InputMaybe<Scalars["Date"]["input"]>;
+  startDate?: InputMaybe<Scalars["Date"]["input"]>;
+};
+
 export type GroupAmazonS3ConfigurationsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -15918,6 +16035,11 @@ export type GroupBoardsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   id?: InputMaybe<Scalars["BoardID"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type GroupCiQueueingHistoryArgs = {
+  fromTime?: InputMaybe<Scalars["Time"]["input"]>;
+  toTime?: InputMaybe<Scalars["Time"]["input"]>;
 };
 
 export type GroupCiVariablesArgs = {
@@ -16123,6 +16245,13 @@ export type GroupEpicsArgs = {
 };
 
 export type GroupExternalAuditEventDestinationsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type GroupExternalAuditEventStreamingDestinationsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
@@ -16580,6 +16709,113 @@ export type GroupWorkItemsArgs = {
   state?: InputMaybe<IssuableState>;
   statusWidget?: InputMaybe<StatusFilterInput>;
   types?: InputMaybe<Array<IssueType>>;
+};
+
+/** Represents an external destination to stream group level audit events. */
+export type GroupAuditEventStreamingDestination =
+  AuditEventStreamingDestinationInterface & {
+    __typename?: "GroupAuditEventStreamingDestination";
+    /** Category of the external destination to send audit events to. */
+    category: Scalars["String"]["output"];
+    /** Config of the external destination. */
+    config: Scalars["JSON"]["output"];
+    /** Group to which the destination belongs. */
+    group: Group;
+    /** ID of the destination. */
+    id: Scalars["ID"]["output"];
+    /** Name of the external destination to send audit events to. */
+    name: Scalars["String"]["output"];
+  };
+
+/** The connection type for GroupAuditEventStreamingDestination. */
+export type GroupAuditEventStreamingDestinationConnection = {
+  __typename?: "GroupAuditEventStreamingDestinationConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<GroupAuditEventStreamingDestinationEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<GroupAuditEventStreamingDestination>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type GroupAuditEventStreamingDestinationEdge = {
+  __typename?: "GroupAuditEventStreamingDestinationEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<GroupAuditEventStreamingDestination>;
+};
+
+/** Autogenerated input type of GroupAuditEventStreamingDestinationsCreate */
+export type GroupAuditEventStreamingDestinationsCreateInput = {
+  /** Destination category. */
+  category: Scalars["String"]["input"];
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Destination config. */
+  config: Scalars["JSON"]["input"];
+  /** Group path. */
+  groupPath: Scalars["ID"]["input"];
+  /** Destination name. */
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  /** Secret token. */
+  secretToken: Scalars["String"]["input"];
+};
+
+/** Autogenerated return type of GroupAuditEventStreamingDestinationsCreate. */
+export type GroupAuditEventStreamingDestinationsCreatePayload = {
+  __typename?: "GroupAuditEventStreamingDestinationsCreatePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Destination created. */
+  externalAuditEventDestination?: Maybe<GroupAuditEventStreamingDestination>;
+};
+
+/** Autogenerated input type of GroupAuditEventStreamingDestinationsDelete */
+export type GroupAuditEventStreamingDestinationsDeleteInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** ID of the audit events external streaming destination to delete. */
+  id: Scalars["AuditEventsGroupExternalStreamingDestinationID"]["input"];
+};
+
+/** Autogenerated return type of GroupAuditEventStreamingDestinationsDelete. */
+export type GroupAuditEventStreamingDestinationsDeletePayload = {
+  __typename?: "GroupAuditEventStreamingDestinationsDeletePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+};
+
+/** Autogenerated input type of GroupAuditEventStreamingDestinationsUpdate */
+export type GroupAuditEventStreamingDestinationsUpdateInput = {
+  /** Destination category. */
+  category?: InputMaybe<Scalars["String"]["input"]>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Destination config. */
+  config?: InputMaybe<Scalars["JSON"]["input"]>;
+  /** ID of external audit event destination to update. */
+  id: Scalars["AuditEventsGroupExternalStreamingDestinationID"]["input"];
+  /** Destination name. */
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  /** Secret token. */
+  secretToken?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** Autogenerated return type of GroupAuditEventStreamingDestinationsUpdate. */
+export type GroupAuditEventStreamingDestinationsUpdatePayload = {
+  __typename?: "GroupAuditEventStreamingDestinationsUpdatePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Updated destination. */
+  externalAuditEventDestination?: Maybe<GroupAuditEventStreamingDestination>;
 };
 
 /** The connection type for Group. */
@@ -17415,6 +17651,109 @@ export type InstanceAmazonS3ConfigurationTypeEdge = {
   cursor: Scalars["String"]["output"];
   /** The item at the end of the edge. */
   node?: Maybe<InstanceAmazonS3ConfigurationType>;
+};
+
+/** Represents an external destination to stream instance level audit events. */
+export type InstanceAuditEventStreamingDestination =
+  AuditEventStreamingDestinationInterface & {
+    __typename?: "InstanceAuditEventStreamingDestination";
+    /** Category of the external destination to send audit events to. */
+    category: Scalars["String"]["output"];
+    /** Config of the external destination. */
+    config: Scalars["JSON"]["output"];
+    /** ID of the destination. */
+    id: Scalars["ID"]["output"];
+    /** Name of the external destination to send audit events to. */
+    name: Scalars["String"]["output"];
+  };
+
+/** The connection type for InstanceAuditEventStreamingDestination. */
+export type InstanceAuditEventStreamingDestinationConnection = {
+  __typename?: "InstanceAuditEventStreamingDestinationConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<InstanceAuditEventStreamingDestinationEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<InstanceAuditEventStreamingDestination>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type InstanceAuditEventStreamingDestinationEdge = {
+  __typename?: "InstanceAuditEventStreamingDestinationEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<InstanceAuditEventStreamingDestination>;
+};
+
+/** Autogenerated input type of InstanceAuditEventStreamingDestinationsCreate */
+export type InstanceAuditEventStreamingDestinationsCreateInput = {
+  /** Destination category. */
+  category: Scalars["String"]["input"];
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Destination config. */
+  config: Scalars["JSON"]["input"];
+  /** Destination name. */
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  /** Secret token. */
+  secretToken: Scalars["String"]["input"];
+};
+
+/** Autogenerated return type of InstanceAuditEventStreamingDestinationsCreate. */
+export type InstanceAuditEventStreamingDestinationsCreatePayload = {
+  __typename?: "InstanceAuditEventStreamingDestinationsCreatePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Destination created. */
+  externalAuditEventDestination?: Maybe<InstanceAuditEventStreamingDestination>;
+};
+
+/** Autogenerated input type of InstanceAuditEventStreamingDestinationsDelete */
+export type InstanceAuditEventStreamingDestinationsDeleteInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** ID of the audit events external streaming destination to delete. */
+  id: Scalars["AuditEventsInstanceExternalStreamingDestinationID"]["input"];
+};
+
+/** Autogenerated return type of InstanceAuditEventStreamingDestinationsDelete. */
+export type InstanceAuditEventStreamingDestinationsDeletePayload = {
+  __typename?: "InstanceAuditEventStreamingDestinationsDeletePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+};
+
+/** Autogenerated input type of InstanceAuditEventStreamingDestinationsUpdate */
+export type InstanceAuditEventStreamingDestinationsUpdateInput = {
+  /** Destination category. */
+  category?: InputMaybe<Scalars["String"]["input"]>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Destination config. */
+  config?: InputMaybe<Scalars["JSON"]["input"]>;
+  /** ID of external audit event destination to update. */
+  id: Scalars["AuditEventsInstanceExternalStreamingDestinationID"]["input"];
+  /** Destination name. */
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  /** Secret token. */
+  secretToken?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** Autogenerated return type of InstanceAuditEventStreamingDestinationsUpdate. */
+export type InstanceAuditEventStreamingDestinationsUpdatePayload = {
+  __typename?: "InstanceAuditEventStreamingDestinationsUpdatePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Updated destination. */
+  externalAuditEventDestination?: Maybe<InstanceAuditEventStreamingDestination>;
 };
 
 /** Represents an external resource to send instance audit events to */
@@ -19960,6 +20299,8 @@ export enum MemberRolePermission {
   ManageGroupAccessTokens = "MANAGE_GROUP_ACCESS_TOKENS",
   /** Create, read, update, and delete project access tokens. When creating a token, users with this custom permission must select a role for that token that has the same or fewer permissions as the default role used as the base for the custom role. */
   ManageProjectAccessTokens = "MANAGE_PROJECT_ACCESS_TOKENS",
+  /** Allows assigning security policy projects. */
+  ManageSecurityPolicyLink = "MANAGE_SECURITY_POLICY_LINK",
   /** Allows read-only access to the source code. */
   ReadCode = "READ_CODE",
   /** Allows read-only access to the dependencies and licenses. */
@@ -20147,11 +20488,6 @@ export type MergeRequest = CurrentUserTodos &
     detailedMergeStatus?: Maybe<DetailedMergeStatus>;
     /** Diff head SHA of the merge request. */
     diffHeadSha?: Maybe<Scalars["String"]["output"]>;
-    /**
-     * Diff summaries generated by AI Introduced in GitLab 16.1: **Status**: Experiment.
-     * @deprecated **Status**: Experiment. Introduced in GitLab 16.1.
-     */
-    diffLlmSummaries?: Maybe<MergeRequestDiffLlmSummaryConnection>;
     /** References of the base SHA, the head SHA, and the start SHA for this merge request. */
     diffRefs?: Maybe<DiffRefs>;
     /** Details about which files were changed in this merge request. */
@@ -20375,13 +20711,6 @@ export type MergeRequestCurrentUserTodosArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   state?: InputMaybe<TodoStateEnum>;
-};
-
-export type MergeRequestDiffLlmSummariesArgs = {
-  after?: InputMaybe<Scalars["String"]["input"]>;
-  before?: InputMaybe<Scalars["String"]["input"]>;
-  first?: InputMaybe<Scalars["Int"]["input"]>;
-  last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type MergeRequestDiffStatsArgs = {
@@ -21264,8 +21593,6 @@ export type MergeRequestDiff = {
   __typename?: "MergeRequestDiff";
   /** Timestamp of when the diff was created. */
   createdAt: Scalars["Time"]["output"];
-  /** Diff summary generated by AI. */
-  diffLlmSummary?: Maybe<MergeRequestDiffLlmSummary>;
   /** Review summaries generated by AI. */
   reviewLlmSummaries?: Maybe<MergeRequestReviewLlmSummaryConnection>;
   /** Timestamp of when the diff was updated. */
@@ -21298,43 +21625,6 @@ export type MergeRequestDiffEdge = {
   cursor: Scalars["String"]["output"];
   /** The item at the end of the edge. */
   node?: Maybe<MergeRequestDiff>;
-};
-
-/** A diff summary generated by AI. */
-export type MergeRequestDiffLlmSummary = {
-  __typename?: "MergeRequestDiffLlmSummary";
-  /** Content of the diff summary. */
-  content: Scalars["String"]["output"];
-  /** Timestamp of when the diff summary was created. */
-  createdAt: Scalars["Time"]["output"];
-  /** ID of the Merge Request diff associated with the diff summary. */
-  mergeRequestDiffId: Scalars["ID"]["output"];
-  /** AI provider that generated the summary. */
-  provider: Scalars["String"]["output"];
-  /** Timestamp of when the diff summary was updated. */
-  updatedAt: Scalars["Time"]["output"];
-  /** User associated with the diff summary. */
-  user?: Maybe<UserCore>;
-};
-
-/** The connection type for MergeRequestDiffLlmSummary. */
-export type MergeRequestDiffLlmSummaryConnection = {
-  __typename?: "MergeRequestDiffLlmSummaryConnection";
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<MergeRequestDiffLlmSummaryEdge>>>;
-  /** A list of nodes. */
-  nodes?: Maybe<Array<Maybe<MergeRequestDiffLlmSummary>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-};
-
-/** An edge in a connection. */
-export type MergeRequestDiffLlmSummaryEdge = {
-  __typename?: "MergeRequestDiffLlmSummaryEdge";
-  /** A cursor for use in pagination. */
-  cursor: Scalars["String"]["output"];
-  /** The item at the end of the edge. */
-  node?: Maybe<MergeRequestDiffLlmSummary>;
 };
 
 /** Represents the Geo sync and verification state of a Merge Request diff */
@@ -22539,6 +22829,8 @@ export type MergeRequestUpdateInput = {
   description?: InputMaybe<Scalars["String"]["input"]>;
   /** IID of the merge request to mutate. */
   iid: Scalars["String"]["input"];
+  /** Override all requested changes. Can only be set by users who have permissionto merge this merge request. */
+  overrideRequestedChanges?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** Project the merge request to mutate is in. */
   projectPath: Scalars["ID"]["input"];
   /** Action to perform to change the state. */
@@ -22630,6 +22922,8 @@ export enum MergeabilityCheckStatus {
   Inactive = "INACTIVE",
   /** Mergeability check has passed. */
   Success = "SUCCESS",
+  /** Mergeability check has passed with a warning. */
+  Warning = "WARNING",
 }
 
 export type Metadata = {
@@ -22684,12 +22978,16 @@ export type Milestone = TimeboxReportInterface & {
   dueDate?: Maybe<Scalars["Time"]["output"]>;
   /** Expired state of the milestone (a milestone is expired when the due date is past the current date). Defaults to `false` when due date has not been set. */
   expired: Scalars["Boolean"]["output"];
+  /** Group of the milestone. */
+  group?: Maybe<Group>;
   /** Indicates if milestone is at group level. */
   groupMilestone: Scalars["Boolean"]["output"];
   /** ID of the milestone. */
   id: Scalars["ID"]["output"];
   /** Internal ID of the milestone. */
   iid: Scalars["ID"]["output"];
+  /** Project of the milestone. */
+  project?: Maybe<Project>;
   /** Indicates if milestone is at project level. */
   projectMilestone: Scalars["Boolean"]["output"];
   /** Releases associated with this milestone. */
@@ -22706,6 +23004,8 @@ export type Milestone = TimeboxReportInterface & {
   subgroupMilestone: Scalars["Boolean"]["output"];
   /** Title of the milestone. */
   title: Scalars["String"]["output"];
+  /** Upcoming state of the milestone (a milestone is upcoming when the start date is in the future). Defaults to `false` when start date has not been set. */
+  upcoming: Scalars["Boolean"]["output"];
   /** Timestamp of last milestone update. */
   updatedAt: Scalars["Time"]["output"];
   /** Web path of the milestone. */
@@ -23334,6 +23634,12 @@ export type Mutation = {
   googleCloudLoggingConfigurationCreate?: Maybe<GoogleCloudLoggingConfigurationCreatePayload>;
   googleCloudLoggingConfigurationDestroy?: Maybe<GoogleCloudLoggingConfigurationDestroyPayload>;
   googleCloudLoggingConfigurationUpdate?: Maybe<GoogleCloudLoggingConfigurationUpdatePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 16.11. */
+  groupAuditEventStreamingDestinationsCreate?: Maybe<GroupAuditEventStreamingDestinationsCreatePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 16.11. */
+  groupAuditEventStreamingDestinationsDelete?: Maybe<GroupAuditEventStreamingDestinationsDeletePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 16.11. */
+  groupAuditEventStreamingDestinationsUpdate?: Maybe<GroupAuditEventStreamingDestinationsUpdatePayload>;
   groupMemberBulkUpdate?: Maybe<GroupMemberBulkUpdatePayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 16.10. */
   groupSavedReplyCreate?: Maybe<GroupSavedReplyCreatePayload>;
@@ -23346,6 +23652,12 @@ export type Mutation = {
   httpIntegrationDestroy?: Maybe<HttpIntegrationDestroyPayload>;
   httpIntegrationResetToken?: Maybe<HttpIntegrationResetTokenPayload>;
   httpIntegrationUpdate?: Maybe<HttpIntegrationUpdatePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 16.11. */
+  instanceAuditEventStreamingDestinationsCreate?: Maybe<InstanceAuditEventStreamingDestinationsCreatePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 16.11. */
+  instanceAuditEventStreamingDestinationsDelete?: Maybe<InstanceAuditEventStreamingDestinationsDeletePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 16.11. */
+  instanceAuditEventStreamingDestinationsUpdate?: Maybe<InstanceAuditEventStreamingDestinationsUpdatePayload>;
   instanceExternalAuditEventDestinationCreate?: Maybe<InstanceExternalAuditEventDestinationCreatePayload>;
   instanceExternalAuditEventDestinationDestroy?: Maybe<InstanceExternalAuditEventDestinationDestroyPayload>;
   instanceExternalAuditEventDestinationUpdate?: Maybe<InstanceExternalAuditEventDestinationUpdatePayload>;
@@ -23423,6 +23735,8 @@ export type Mutation = {
   mlModelDestroy?: Maybe<MlModelDestroyPayload>;
   namespaceBanDestroy?: Maybe<NamespaceBanDestroyPayload>;
   namespaceCiCdSettingsUpdate?: Maybe<NamespaceCiCdSettingsUpdatePayload>;
+  namespaceCreateRemoteDevelopmentClusterAgentMapping?: Maybe<NamespaceCreateRemoteDevelopmentClusterAgentMappingPayload>;
+  namespaceDeleteRemoteDevelopmentClusterAgentMapping?: Maybe<NamespaceDeleteRemoteDevelopmentClusterAgentMappingPayload>;
   namespaceIncreaseStorageTemporarily?: Maybe<NamespaceIncreaseStorageTemporarilyPayload>;
   oncallRotationCreate?: Maybe<OncallRotationCreatePayload>;
   oncallRotationDestroy?: Maybe<OncallRotationDestroyPayload>;
@@ -23453,6 +23767,12 @@ export type Mutation = {
   projectInitializeProductAnalytics?: Maybe<ProjectInitializeProductAnalyticsPayload>;
   /** Updates multiple members of a project. To use this mutation, you must have at least the Maintainer role. */
   projectMemberBulkUpdate?: Maybe<ProjectMemberBulkUpdatePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 16.11. */
+  projectSavedReplyCreate?: Maybe<ProjectSavedReplyCreatePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 16.11. */
+  projectSavedReplyDestroy?: Maybe<ProjectSavedReplyDestroyPayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 16.11. */
+  projectSavedReplyUpdate?: Maybe<ProjectSavedReplyUpdatePayload>;
   /** Assign (or unset) a compliance framework to a project. */
   projectSetComplianceFramework?: Maybe<ProjectSetComplianceFrameworkPayload>;
   /**
@@ -23504,6 +23824,11 @@ export type Mutation = {
   /** Unassigns the security policy project for the given project (`full_path`). */
   securityPolicyProjectUnassign?: Maybe<SecurityPolicyProjectUnassignPayload>;
   securityTrainingUpdate?: Maybe<SecurityTrainingUpdatePayload>;
+  /**
+   * Enable/disable pre-receive secret detection for the given project.
+   *
+   */
+  setPreReceiveSecretDetection?: Maybe<SetPreReceiveSecretDetectionPayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 16.7. */
   starProject?: Maybe<StarProjectPayload>;
   terraformStateDelete?: Maybe<TerraformStateDeletePayload>;
@@ -23622,6 +23947,7 @@ export type Mutation = {
    */
   valueStreamUpdate?: Maybe<ValueStreamUpdatePayload>;
   vulnerabilitiesDismiss?: Maybe<VulnerabilitiesDismissPayload>;
+  /** Remove all Vulnerabilities and related information from a given project. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/412602) in GitLab 16.7 */
   vulnerabilitiesRemoveAllFromProject?: Maybe<VulnerabilitiesRemoveAllFromProjectPayload>;
   vulnerabilityConfirm?: Maybe<VulnerabilityConfirmPayload>;
   vulnerabilityCreate?: Maybe<VulnerabilityCreatePayload>;
@@ -24290,6 +24616,18 @@ export type MutationGoogleCloudLoggingConfigurationUpdateArgs = {
   input: GoogleCloudLoggingConfigurationUpdateInput;
 };
 
+export type MutationGroupAuditEventStreamingDestinationsCreateArgs = {
+  input: GroupAuditEventStreamingDestinationsCreateInput;
+};
+
+export type MutationGroupAuditEventStreamingDestinationsDeleteArgs = {
+  input: GroupAuditEventStreamingDestinationsDeleteInput;
+};
+
+export type MutationGroupAuditEventStreamingDestinationsUpdateArgs = {
+  input: GroupAuditEventStreamingDestinationsUpdateInput;
+};
+
 export type MutationGroupMemberBulkUpdateArgs = {
   input: GroupMemberBulkUpdateInput;
 };
@@ -24324,6 +24662,18 @@ export type MutationHttpIntegrationResetTokenArgs = {
 
 export type MutationHttpIntegrationUpdateArgs = {
   input: HttpIntegrationUpdateInput;
+};
+
+export type MutationInstanceAuditEventStreamingDestinationsCreateArgs = {
+  input: InstanceAuditEventStreamingDestinationsCreateInput;
+};
+
+export type MutationInstanceAuditEventStreamingDestinationsDeleteArgs = {
+  input: InstanceAuditEventStreamingDestinationsDeleteInput;
+};
+
+export type MutationInstanceAuditEventStreamingDestinationsUpdateArgs = {
+  input: InstanceAuditEventStreamingDestinationsUpdateInput;
 };
 
 export type MutationInstanceExternalAuditEventDestinationCreateArgs = {
@@ -24558,6 +24908,14 @@ export type MutationNamespaceCiCdSettingsUpdateArgs = {
   input: NamespaceCiCdSettingsUpdateInput;
 };
 
+export type MutationNamespaceCreateRemoteDevelopmentClusterAgentMappingArgs = {
+  input: NamespaceCreateRemoteDevelopmentClusterAgentMappingInput;
+};
+
+export type MutationNamespaceDeleteRemoteDevelopmentClusterAgentMappingArgs = {
+  input: NamespaceDeleteRemoteDevelopmentClusterAgentMappingInput;
+};
+
 export type MutationNamespaceIncreaseStorageTemporarilyArgs = {
   input: NamespaceIncreaseStorageTemporarilyInput;
 };
@@ -24652,6 +25010,18 @@ export type MutationProjectInitializeProductAnalyticsArgs = {
 
 export type MutationProjectMemberBulkUpdateArgs = {
   input: ProjectMemberBulkUpdateInput;
+};
+
+export type MutationProjectSavedReplyCreateArgs = {
+  input: ProjectSavedReplyCreateInput;
+};
+
+export type MutationProjectSavedReplyDestroyArgs = {
+  input: ProjectSavedReplyDestroyInput;
+};
+
+export type MutationProjectSavedReplyUpdateArgs = {
+  input: ProjectSavedReplyUpdateInput;
 };
 
 export type MutationProjectSetComplianceFrameworkArgs = {
@@ -24800,6 +25170,10 @@ export type MutationSecurityPolicyProjectUnassignArgs = {
 
 export type MutationSecurityTrainingUpdateArgs = {
   input: SecurityTrainingUpdateInput;
+};
+
+export type MutationSetPreReceiveSecretDetectionArgs = {
+  input: SetPreReceiveSecretDetectionInput;
 };
 
 export type MutationStarProjectArgs = {
@@ -25189,6 +25563,11 @@ export type Namespace = {
   totalRepositorySizeExcess?: Maybe<Scalars["Float"]["output"]>;
   /** Visibility of the namespace. */
   visibility?: Maybe<Scalars["String"]["output"]>;
+  /**
+   * Find a work item by IID directly associated with the namespace(project or group).  Returns `null` for group level work items if the `namespace_level_work_items` feature flag is disabled. Introduced in GitLab 16.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
+   */
+  workItem?: Maybe<WorkItem>;
 };
 
 export type NamespaceAchievementsArgs = {
@@ -25271,6 +25650,10 @@ export type NamespaceTimelogCategoriesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type NamespaceWorkItemArgs = {
+  iid: Scalars["String"]["input"];
 };
 
 export type NamespaceBan = {
@@ -25374,6 +25757,44 @@ export type NamespaceConnection = {
   nodes?: Maybe<Array<Maybe<Namespace>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** Autogenerated input type of NamespaceCreateRemoteDevelopmentClusterAgentMapping */
+export type NamespaceCreateRemoteDevelopmentClusterAgentMappingInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** GlobalID of the cluster agent to be associated with the namespace. */
+  clusterAgentId: Scalars["ClustersAgentID"]["input"];
+  /** GlobalID of the namespace to be associated with the cluster agent. */
+  namespaceId: Scalars["NamespaceID"]["input"];
+};
+
+/** Autogenerated return type of NamespaceCreateRemoteDevelopmentClusterAgentMapping. */
+export type NamespaceCreateRemoteDevelopmentClusterAgentMappingPayload = {
+  __typename?: "NamespaceCreateRemoteDevelopmentClusterAgentMappingPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+};
+
+/** Autogenerated input type of NamespaceDeleteRemoteDevelopmentClusterAgentMapping */
+export type NamespaceDeleteRemoteDevelopmentClusterAgentMappingInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** GlobalID of the cluster agent to be un-associated from the namespace. */
+  clusterAgentId: Scalars["ClustersAgentID"]["input"];
+  /** GlobalID of the namespace to be un-associated from the cluster agent. */
+  namespaceId: Scalars["NamespaceID"]["input"];
+};
+
+/** Autogenerated return type of NamespaceDeleteRemoteDevelopmentClusterAgentMapping. */
+export type NamespaceDeleteRemoteDevelopmentClusterAgentMappingPayload = {
+  __typename?: "NamespaceDeleteRemoteDevelopmentClusterAgentMappingPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
 };
 
 /** An edge in a connection. */
@@ -26062,10 +26483,7 @@ export type OrchestrationPolicy = {
   enabled: Scalars["Boolean"]["output"];
   /** Name of the policy. */
   name: Scalars["String"]["output"];
-  /**
-   * Scope of the policy. Returns `null` if Security Policy Scope experimental feature is disabled. Introduced in GitLab 16.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
-   */
+  /** Scope of the policy */
   policyScope?: Maybe<PolicyScope>;
   /** Timestamp of when the policy YAML was last updated. */
   updatedAt: Scalars["Time"]["output"];
@@ -26151,6 +26569,7 @@ export type OrganizationProjectsArgs = {
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   membership?: InputMaybe<Scalars["Boolean"]["input"]>;
+  personal?: InputMaybe<Scalars["Boolean"]["input"]>;
   search?: InputMaybe<Scalars["String"]["input"]>;
   searchNamespaces?: InputMaybe<Scalars["Boolean"]["input"]>;
   sort?: InputMaybe<Scalars["String"]["input"]>;
@@ -26290,6 +26709,11 @@ export type OrganizationUpdatePayload = {
 export type OrganizationUser = {
   __typename?: "OrganizationUser";
   /**
+   * Access level of the user in the organization. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  accessLevel: OrganizationUserAccess;
+  /**
    * Badges describing the user within the organization. Introduced in GitLab 16.4: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.4.
    */
@@ -26300,11 +26724,47 @@ export type OrganizationUser = {
    */
   id: Scalars["ID"]["output"];
   /**
+   * Whether the user is the last owner of the organization. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  isLastOwner: Scalars["Boolean"]["output"];
+  /**
    * User that is associated with the organization. Introduced in GitLab 16.4: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.4.
    */
   user: UserCore;
+  /** Permissions for the current user on the resource */
+  userPermissions: OrganizationUserPermissions;
 };
+
+/** Represents the access level of a relationship between a User and Organization that it is related to */
+export type OrganizationUserAccess = {
+  __typename?: "OrganizationUserAccess";
+  /**
+   * Integer representation of access level. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  integerValue?: Maybe<Scalars["Int"]["output"]>;
+  /**
+   * String representation of access level. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  stringValue?: Maybe<OrganizationUserAccessLevel>;
+};
+
+/** Access level of an organization user */
+export enum OrganizationUserAccessLevel {
+  /**
+   * Guest access. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  Default = "DEFAULT",
+  /**
+   * Owner access. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  Owner = "OWNER",
+}
 
 /** An organization user badge. */
 export type OrganizationUserBadge = {
@@ -26335,6 +26795,12 @@ export type OrganizationUserEdge = {
   node?: Maybe<OrganizationUser>;
 };
 
+export type OrganizationUserPermissions = {
+  __typename?: "OrganizationUserPermissions";
+  /** If `true`, the user can perform `remove_user` on this resource */
+  removeUser: Scalars["Boolean"]["output"];
+};
+
 /** Represents a package with pipelines in the Package Registry */
 export type Package = {
   __typename?: "Package";
@@ -26353,6 +26819,11 @@ export type Package = {
   metadata?: Maybe<PackageMetadata>;
   /** Name of the package. */
   name: Scalars["String"]["output"];
+  /**
+   * Whether any matching package protection rule exists for this package. Available only when feature flag `packages_protected_packages` is enabled. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  packageProtectionRuleExists: Scalars["Boolean"]["output"];
   /** Package type. */
   packageType: PackageTypeEnum;
   /**
@@ -26410,6 +26881,11 @@ export type PackageBase = {
   metadata?: Maybe<PackageMetadata>;
   /** Name of the package. */
   name: Scalars["String"]["output"];
+  /**
+   * Whether any matching package protection rule exists for this package. Available only when feature flag `packages_protected_packages` is enabled. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  packageProtectionRuleExists: Scalars["Boolean"]["output"];
   /** Package type. */
   packageType: PackageTypeEnum;
   /** Project where the package is stored. */
@@ -26575,6 +27051,11 @@ export type PackageDetailsType = {
   nugetUrl?: Maybe<Scalars["String"]["output"]>;
   /** Package files. */
   packageFiles?: Maybe<PackageFileConnection>;
+  /**
+   * Whether any matching package protection rule exists for this package. Available only when feature flag `packages_protected_packages` is enabled. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  packageProtectionRuleExists: Scalars["Boolean"]["output"];
   /** Package type. */
   packageType: PackageTypeEnum;
   /**
@@ -28315,6 +28796,11 @@ export type Project = {
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.9.
    */
   aiAgents?: Maybe<AiAgentConnection>;
+  /**
+   * AI-related metrics. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  aiMetrics?: Maybe<AiMetrics>;
   /** A single Alert Management alert of the project. */
   alertManagementAlert?: Maybe<AlertManagementAlert>;
   /** Counts of alerts by status for the project. */
@@ -28708,6 +29194,16 @@ export type Project = {
   runners?: Maybe<CiRunnerConnection>;
   /** SAST CI configuration for the project. */
   sastCiConfiguration?: Maybe<SastCiConfiguration>;
+  /**
+   * Saved replies available to the project. Available only when feature flag `project_saved_replies_flag` is enabled. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  savedReplies?: Maybe<ProjectSavedReplyConnection>;
+  /**
+   * Saved reply in the project. Available only when feature flag `group_saved_replies_flag` is enabled. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  savedReply?: Maybe<ProjectSavedReply>;
   /** Scan Execution Policies of the project */
   scanExecutionPolicies?: Maybe<ScanExecutionPolicyConnection>;
   /**
@@ -28846,6 +29342,11 @@ export type ProjectAiAgentsArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type ProjectAiMetricsArgs = {
+  endDate?: InputMaybe<Scalars["Date"]["input"]>;
+  startDate?: InputMaybe<Scalars["Date"]["input"]>;
 };
 
 export type ProjectAlertManagementAlertArgs = {
@@ -29604,6 +30105,17 @@ export type ProjectRunnersArgs = {
   upgradeStatus?: InputMaybe<CiRunnerUpgradeStatus>;
 };
 
+export type ProjectSavedRepliesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type ProjectSavedReplyArgs = {
+  id: Scalars["ProjectsSavedReplyID"]["input"];
+};
+
 export type ProjectScanExecutionPoliciesArgs = {
   actionScanTypes?: InputMaybe<Array<SecurityReportTypeEnum>>;
   after?: InputMaybe<Scalars["String"]["input"]>;
@@ -30194,6 +30706,103 @@ export type ProjectRepositoryRegistryEdge = {
   node?: Maybe<ProjectRepositoryRegistry>;
 };
 
+export type ProjectSavedReply = {
+  __typename?: "ProjectSavedReply";
+  /** Content of the saved reply. */
+  content: Scalars["String"]["output"];
+  /** Global ID of the project-level saved reply. */
+  id: Scalars["ProjectsSavedReplyID"]["output"];
+  /** Name of the saved reply. */
+  name: Scalars["String"]["output"];
+};
+
+/** The connection type for ProjectSavedReply. */
+export type ProjectSavedReplyConnection = {
+  __typename?: "ProjectSavedReplyConnection";
+  /** Total count of collection. */
+  count: Scalars["Int"]["output"];
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<ProjectSavedReplyEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<ProjectSavedReply>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** Autogenerated input type of ProjectSavedReplyCreate */
+export type ProjectSavedReplyCreateInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Content of the saved reply. */
+  content: Scalars["String"]["input"];
+  /** Name of the saved reply. */
+  name: Scalars["String"]["input"];
+  /** Project for the saved reply. */
+  projectId: Scalars["ProjectID"]["input"];
+};
+
+/** Autogenerated return type of ProjectSavedReplyCreate. */
+export type ProjectSavedReplyCreatePayload = {
+  __typename?: "ProjectSavedReplyCreatePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Saved reply after mutation. */
+  savedReply?: Maybe<ProjectSavedReply>;
+};
+
+/** Autogenerated input type of ProjectSavedReplyDestroy */
+export type ProjectSavedReplyDestroyInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Global ID of the project-level saved reply. */
+  id: Scalars["ProjectsSavedReplyID"]["input"];
+};
+
+/** Autogenerated return type of ProjectSavedReplyDestroy. */
+export type ProjectSavedReplyDestroyPayload = {
+  __typename?: "ProjectSavedReplyDestroyPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Saved reply after mutation. */
+  savedReply?: Maybe<ProjectSavedReply>;
+};
+
+/** An edge in a connection. */
+export type ProjectSavedReplyEdge = {
+  __typename?: "ProjectSavedReplyEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<ProjectSavedReply>;
+};
+
+/** Autogenerated input type of ProjectSavedReplyUpdate */
+export type ProjectSavedReplyUpdateInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Content of the saved reply. */
+  content: Scalars["String"]["input"];
+  /** Global ID of the project-level saved reply. */
+  id: Scalars["ProjectsSavedReplyID"]["input"];
+  /** Name of the saved reply. */
+  name: Scalars["String"]["input"];
+};
+
+/** Autogenerated return type of ProjectSavedReplyUpdate. */
+export type ProjectSavedReplyUpdatePayload = {
+  __typename?: "ProjectSavedReplyUpdatePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Saved reply after mutation. */
+  savedReply?: Maybe<ProjectSavedReply>;
+};
+
 /** Represents the source of a security policy belonging to a project */
 export type ProjectSecurityPolicySource = {
   __typename?: "ProjectSecurityPolicySource";
@@ -30775,6 +31384,8 @@ export type ProtectedEnvironmentApprovalRuleForSummary = {
   approvals?: Maybe<Array<DeploymentApproval>>;
   /** Approved count. */
   approvedCount?: Maybe<Scalars["Int"]["output"]>;
+  /** Indicates whether a user is authorized to approve. */
+  canApprove?: Maybe<Scalars["Boolean"]["output"]>;
   /** Group details. Present if it's group specific access control. */
   group?: Maybe<Group>;
   /** Pending approval count. */
@@ -30927,6 +31538,11 @@ export type Query = {
   auditEventDefinitions: AuditEventDefinitionConnection;
   /** Instance-level Amazon S3 configurations for audit events. */
   auditEventsInstanceAmazonS3Configurations?: Maybe<InstanceAmazonS3ConfigurationTypeConnection>;
+  /**
+   * Instance-level external audit event streaming destinations. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  auditEventsInstanceStreamingDestinations?: Maybe<InstanceAuditEventStreamingDestinationConnection>;
   /** Find an issue board list. */
   boardList?: Maybe<BoardList>;
   /** CI related settings that apply to the entire instance. */
@@ -30952,7 +31568,7 @@ export type Query = {
   /** Stage belonging to a CI pipeline. */
   ciPipelineStage?: Maybe<CiStage>;
   /**
-   * Time it took for ci job to be picked up by runner in percentiles. Introduced in GitLab 16.4: **Status**: Experiment.
+   * Time taken for CI jobs to be picked up by runner by percentile. Introduced in GitLab 16.4: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.4.
    */
   ciQueueingHistory?: Maybe<QueueingDelayHistory>;
@@ -31170,6 +31786,13 @@ export type QueryAuditEventDefinitionsArgs = {
 };
 
 export type QueryAuditEventsInstanceAmazonS3ConfigurationsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type QueryAuditEventsInstanceStreamingDestinationsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
@@ -31433,6 +32056,7 @@ export type QueryProjectsArgs = {
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   membership?: InputMaybe<Scalars["Boolean"]["input"]>;
+  personal?: InputMaybe<Scalars["Boolean"]["input"]>;
   search?: InputMaybe<Scalars["String"]["input"]>;
   searchNamespaces?: InputMaybe<Scalars["Boolean"]["input"]>;
   sort?: InputMaybe<Scalars["String"]["input"]>;
@@ -32391,6 +33015,12 @@ export type RepositoryBlob = {
   size?: Maybe<Scalars["BigInt"]["output"]>;
   /** Whether the blob's content is stored externally (for instance, in LFS). */
   storedExternally?: Maybe<Scalars["Boolean"]["output"]>;
+  /**
+   * Raw content of the blob where invalid UTF-8 characters are
+   *                   escaped to unicode. Returns `null` if the `unicode_escaped_data` feature flag is disabled. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  unicodeEscapedBlob?: Maybe<Scalars["String"]["output"]>;
   /** Web path of the blob. */
   webPath?: Maybe<Scalars["String"]["output"]>;
 };
@@ -33175,10 +33805,7 @@ export type ScanExecutionPolicy = OrchestrationPolicy & {
   enabled: Scalars["Boolean"]["output"];
   /** Name of the policy. */
   name: Scalars["String"]["output"];
-  /**
-   * Scope of the policy. Returns `null` if Security Policy Scope experimental feature is disabled. Introduced in GitLab 16.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
-   */
+  /** Scope of the policy */
   policyScope?: Maybe<PolicyScope>;
   /** Source of the policy. Its fields depend on the source type. */
   source: SecurityPolicySource;
@@ -33258,10 +33885,7 @@ export type ScanResultPolicy = OrchestrationPolicy & {
   groupApprovers?: Maybe<Array<Group>>;
   /** Name of the policy. */
   name: Scalars["String"]["output"];
-  /**
-   * Scope of the policy. Returns `null` if Security Policy Scope experimental feature is disabled. Introduced in GitLab 16.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
-   */
+  /** Scope of the policy */
   policyScope?: Maybe<PolicyScope>;
   /** Approvers of the role type. Users belonging to these role(s) alone will be approvers. */
   roleApprovers?: Maybe<Array<MemberAccessLevelName>>;
@@ -33973,6 +34597,8 @@ export enum ServiceType {
   MicrosoftTeamsService = "MICROSOFT_TEAMS_SERVICE",
   /** PackagistService type */
   PackagistService = "PACKAGIST_SERVICE",
+  /** PhorgeService type */
+  PhorgeService = "PHORGE_SERVICE",
   /** PipelinesEmailService type */
   PipelinesEmailService = "PIPELINES_EMAIL_SERVICE",
   /** PivotaltrackerService type */
@@ -34004,6 +34630,27 @@ export enum ServiceType {
   /** ZentaoService type */
   ZentaoService = "ZENTAO_SERVICE",
 }
+
+/** Autogenerated input type of SetPreReceiveSecretDetection */
+export type SetPreReceiveSecretDetectionInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Desired status for pre-receive secret detection feature. */
+  enable: Scalars["Boolean"]["input"];
+  /** Full path of the namespace (project). */
+  namespacePath: Scalars["ID"]["input"];
+};
+
+/** Autogenerated return type of SetPreReceiveSecretDetection. */
+export type SetPreReceiveSecretDetectionPayload = {
+  __typename?: "SetPreReceiveSecretDetectionPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Whether the feature is enabled. */
+  preReceiveSecretDetectionEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+};
 
 /** How to format SHA strings. */
 export enum ShaFormat {
@@ -37249,6 +37896,8 @@ export enum UserCalloutFeatureNameEnum {
   CloudLicensingSubscriptionActivationBanner = "CLOUD_LICENSING_SUBSCRIPTION_ACTIVATION_BANNER",
   /** Callout feature name for cluster_security_warning. */
   ClusterSecurityWarning = "CLUSTER_SECURITY_WARNING",
+  /** Callout feature name for deployment_details_feedback. */
+  DeploymentDetailsFeedback = "DEPLOYMENT_DETAILS_FEEDBACK",
   /** Callout feature name for duo_chat_callout. */
   DuoChatCallout = "DUO_CHAT_CALLOUT",
   /** Callout feature name for duo_pro_trial_alert. */
@@ -37929,6 +38578,8 @@ export enum ValueStreamDashboardMetric {
   Pipelines = "PIPELINES",
   /** Project count. */
   Projects = "PROJECTS",
+  /** User count. */
+  Users = "USERS",
 }
 
 /** Autogenerated input type of ValueStreamDestroy */
@@ -40265,6 +40916,23 @@ export type WorkItemWidgetDesigns = WorkItemWidget & {
   type?: Maybe<WorkItemWidgetType>;
 };
 
+/** Represents a development widget */
+export type WorkItemWidgetDevelopment = WorkItemWidget & {
+  __typename?: "WorkItemWidgetDevelopment";
+  /** Feature flags associated with the work item. */
+  featureFlags?: Maybe<FeatureFlagConnection>;
+  /** Widget type. */
+  type?: Maybe<WorkItemWidgetType>;
+};
+
+/** Represents a development widget */
+export type WorkItemWidgetDevelopmentFeatureFlagsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
 /** Represents a health status widget */
 export type WorkItemWidgetHealthStatus = WorkItemWidget & {
   __typename?: "WorkItemWidgetHealthStatus";
@@ -40635,6 +41303,8 @@ export enum WorkItemWidgetType {
   Description = "DESCRIPTION",
   /** Designs widget. */
   Designs = "DESIGNS",
+  /** Development widget. */
+  Development = "DEVELOPMENT",
   /** Health Status widget. */
   HealthStatus = "HEALTH_STATUS",
   /** Hierarchy widget. */
@@ -40985,6 +41655,10 @@ export type GitLabPullRequestFragment = {
         __typename?: "MergeRequestReviewer";
         name: string;
         avatarUrl?: string | null;
+        mergeRequestInteraction?: {
+          __typename?: "UserMergeRequestInteraction";
+          approved: boolean;
+        } | null;
       } | null> | null;
     } | null;
     sourceProject?: { __typename?: "Project"; name: string } | null;
@@ -41099,6 +41773,22 @@ export const GitLabPullRequestFragmentDoc = {
                             {
                               kind: "Field",
                               name: { kind: "Name", value: "avatarUrl" },
+                            },
+                            {
+                              kind: "Field",
+                              name: {
+                                kind: "Name",
+                                value: "mergeRequestInteraction",
+                              },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "approved" },
+                                  },
+                                ],
+                              },
                             },
                           ],
                         },
@@ -41299,6 +41989,22 @@ export const GetGitLabPullRequestsDocument = {
                             {
                               kind: "Field",
                               name: { kind: "Name", value: "avatarUrl" },
+                            },
+                            {
+                              kind: "Field",
+                              name: {
+                                kind: "Name",
+                                value: "mergeRequestInteraction",
+                              },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "approved" },
+                                  },
+                                ],
+                              },
                             },
                           ],
                         },

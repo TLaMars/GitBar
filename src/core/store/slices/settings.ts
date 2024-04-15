@@ -4,8 +4,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { GroupPullRequestsBy } from "models/pull-request";
 
 const initialState = {
-  hidePRsAfterTwoMonths: false,
   groupPRsBy: GroupPullRequestsBy.REPO,
+  hidePRsApprovedByMe: false,
+  hidePRsAfterTwoMonths: false,
 };
 
 export type DebugSettingsSlice = typeof initialState;
@@ -20,9 +21,16 @@ const settings = createSlice({
     setGroupPRsBy(state, action: PayloadAction<GroupPullRequestsBy>) {
       state.groupPRsBy = action.payload;
     },
+    setHidePRsApprovedByMe(state, action: PayloadAction<boolean>) {
+      state.hidePRsApprovedByMe = action.payload;
+    },
   },
 });
 
-export const { setHidePRsAfterTwoMonths, setGroupPRsBy } = settings.actions;
+export const {
+  setHidePRsAfterTwoMonths,
+  setGroupPRsBy,
+  setHidePRsApprovedByMe,
+} = settings.actions;
 
 export default settings.reducer;

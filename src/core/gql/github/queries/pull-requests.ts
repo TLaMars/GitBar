@@ -40,6 +40,12 @@ const QueryGetGithubPullRequests = graphql(`
           totalCommentsCount
           reviews(first: 100, states: APPROVED) {
             totalCount
+            nodes {
+              author {
+                login
+              }
+              state
+            }
           }
         }
       }

@@ -16,6 +16,9 @@ const FragmentGitLabPullRequest = graphql(`
         nodes {
           name
           avatarUrl
+          mergeRequestInteraction {
+            approved
+          }
         }
       }
       sourceProject {

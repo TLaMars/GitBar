@@ -44,5 +44,9 @@
   "RegisterAzure/Message/Organization": "The organization doesn't exist",
   "RegisterGitLab/Message/Domain": "The domain is incorrect",
   "RegisterGitLab/Message/Token": "The token is incorrect, and/or has the incorrect scopes.",
-  "Settings/SectionHeading/PullRequests": "PullRequests overview"
+  "Settings/SectionHeading/PullRequests": "PullRequests overview",
+  "Settings/GroupPRsBy/Repo": "Group PRs by repo",
+  "Settings/GroupPRsBy/Date": "Group PRs by date",
+  "Settings/PullRequests/HideAfter": "Hide PRs after 2 months",
+  "Settings/PullRequests/HideApprovedByMe": "Hide PRs approved by me"
 }

@@ -1,9 +1,14 @@
 /* eslint-disable no-underscore-dangle */
-import { GetGithubPullRequestsQuery } from "gql/github/codegen/graphql";
+import {
+  GetGithubPullRequestsQuery,
+  PullRequestReviewState,
+} from "gql/github/codegen/graphql";
 import { Attendee } from "models/attendee";
+import Profile from "models/profile";
 import { PullRequest } from "models/pull-request";
 
 const transformGithubPullRequest = (
+  profile: Profile,
   data?: GetGithubPullRequestsQuery,
 ): PullRequest[] => {
   if (!data) return [];
@@ -50,6 +55,11 @@ const transformGithubPullRequest = (
           amountOfApprovals: pr.reviews?.totalCount ?? 0,
           amountOfRequiredApprovals:
             pr.baseRef?.branchProtectionRule?.requiredApprovingReviewCount ?? 0,
+          approvedByMe: pr.reviews?.nodes?.some(
+            (review) =>
+              review?.author?.login === profile.userName &&
+              review?.state === PullRequestReviewState.Approved,
+          ),
         },
       ];
     }, []) ?? []

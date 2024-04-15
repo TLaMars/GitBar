@@ -1,10 +1,14 @@
+import Profile from "models/profile";
 import { PullRequest } from "models/pull-request";
 import {
   AzurePullRequest,
   ReviewerVote,
 } from "services/api/azure/models/pull-requests-response";
 
-const transformAzurePullRequest = (data: AzurePullRequest): PullRequest => {
+const transformAzurePullRequest = (
+  profile: Profile,
+  data: AzurePullRequest,
+): PullRequest => {
   const match = /^(https:\/\/dev\.azure\.com\/[^/]+\/)/.exec(
     data.repository.url,
   );
@@ -34,6 +38,11 @@ const transformAzurePullRequest = (data: AzurePullRequest): PullRequest => {
       (reviewer) => reviewer.vote === ReviewerVote.Approved,
     ).length,
     amountOfRequiredApprovals: undefined,
+    approvedByMe: data.reviewers.some(
+      (reviewer) =>
+        reviewer.displayName === profile.name &&
+        reviewer.vote === ReviewerVote.Approved,
+    ),
   };
 };
 

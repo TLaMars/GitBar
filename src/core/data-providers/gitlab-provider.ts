@@ -46,6 +46,7 @@ class GitLabProvider implements Provider {
   }
 
   async pullRequests() {
+    const profile = await this.profile();
     const { data } = await this.client.query({
       query: QueryGetGitLabPullRequests,
       context: this.#context,
@@ -53,6 +54,7 @@ class GitLabProvider implements Provider {
     });
 
     return transformGitLabPullRequest({
+      profile,
       domain: this.auth.domain,
       data,
     }).filter(

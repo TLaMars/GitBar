@@ -5,6 +5,7 @@ import { GroupPullRequestsBy, PullRequest } from "models/pull-request";
 import {
   selectGroupPRsBy,
   selectHidePRsAfterTwoMonths,
+  selectHidePRsApprovedByMe,
 } from "store/selectors/settings";
 
 import useSelector from "./use-selector";
@@ -22,6 +23,7 @@ const usePullRequests = () => {
   const [loading, setLoading] = useState(false);
   const groupPRsBy = useSelector(selectGroupPRsBy);
   const hidePRsAfterTwoMonths = useSelector(selectHidePRsAfterTwoMonths);
+  const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
 
   const fetchPullRequests = useCallback(async () => {
     setLoading(true);
@@ -41,12 +43,20 @@ const usePullRequests = () => {
         }
         return 0;
       })
+      // Filter out PRs that are older than two months
       .filter((pr) => {
         if (hidePRsAfterTwoMonths) {
           const twoMonthsAgo = new Date();
           twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
 
           return new Date(pr.createdAt) > twoMonthsAgo;
+        }
+        return true;
+      })
+      // Filter out PRs that are approved by me
+      .filter((pr) => {
+        if (hidePRsApprovedByMe) {
+          return !pr.approvedByMe;
         }
         return true;
       });
@@ -96,7 +106,7 @@ const usePullRequests = () => {
     setPullRequests(sortedResult);
     setSections(groupedResult);
     setLoading(false);
-  }, [accounts, hidePRsAfterTwoMonths, groupPRsBy]);
+  }, [accounts, hidePRsAfterTwoMonths, groupPRsBy, hidePRsApprovedByMe]);
 
   return {
     pullRequests,

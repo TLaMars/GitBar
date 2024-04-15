@@ -2,14 +2,17 @@ import { getFragmentData } from "gql/gitlab/codegen";
 import { GetGitLabPullRequestsQuery } from "gql/gitlab/codegen/graphql";
 import FragmentGitLabPullRequest from "gql/gitlab/fragments/pull-request";
 import { Attendee } from "models/attendee";
+import Profile from "models/profile";
 import { PullRequest } from "models/pull-request";
 
 const transformGitLabPullRequest = ({
   domain,
   data,
+  profile,
 }: {
   domain: string;
   data: GetGitLabPullRequestsQuery;
+  profile: Profile;
 }): PullRequest[] => {
   const assigned = getFragmentData(
     FragmentGitLabPullRequest,
@@ -46,6 +49,7 @@ const transformGitLabPullRequest = ({
         },
         repoName: pr.sourceProject?.name ?? "",
         reviewers:
+          // TODO fix unsafe return
           pr.reviewers?.nodes?.reduce<Attendee[]>((reviewerAcc, reviewer) => {
             if (!reviewer) return reviewerAcc;
 
@@ -65,6 +69,11 @@ const transformGitLabPullRequest = ({
         amountOfApprovals:
           (pr.approvalsRequired ?? 0) - (pr.approvalsLeft ?? 0),
         amountOfRequiredApprovals: pr.approvalsRequired ?? 0,
+        approvedByMe: pr.reviewers?.nodes?.some(
+          (reviewer) =>
+            reviewer?.name === profile.name &&
+            !!reviewer?.mergeRequestInteraction?.approved,
+        ),
       },
     ];
   }, []);

@@ -80,7 +80,7 @@ class AzureProvider implements Provider {
 
     return pullRequests
       .flat()
-      .map(transformAzurePullRequest)
+      .map((pr) => transformAzurePullRequest(profile, pr))
       .filter(
         (pr) =>
           pr.author.name === profile.name ||

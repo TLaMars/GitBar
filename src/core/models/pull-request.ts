@@ -17,4 +17,5 @@ export type PullRequest = {
   amountOfComments?: number;
   amountOfApprovals: number;
   amountOfRequiredApprovals?: number;
+  approvedByMe?: boolean;
 };

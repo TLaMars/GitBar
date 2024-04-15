@@ -46,13 +46,14 @@ class GitHubProvider implements Provider {
   }
 
   async pullRequests() {
+    const profile = await this.profile();
     const { data } = await this.client.query({
       query: QueryGetGithubPullRequests,
       context: this.#context,
       fetchPolicy: "no-cache",
     });
 
-    return transformGithubPullRequest(data).filter(
+    return transformGithubPullRequest(profile, data).filter(
       (pullRequest, index, self) =>
         index === self.findIndex((p) => p.id === pullRequest.id),
     );

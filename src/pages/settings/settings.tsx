@@ -17,9 +17,14 @@ import { GroupPullRequestsBy } from "models/pull-request";
 import {
   selectGroupPRsBy,
   selectHidePRsAfterTwoMonths,
+  selectHidePRsApprovedByMe,
 } from "store/selectors/settings";
 import { removeOneAccount } from "store/slices/accounts";
-import { setGroupPRsBy, setHidePRsAfterTwoMonths } from "store/slices/settings";
+import {
+  setGroupPRsBy,
+  setHidePRsAfterTwoMonths,
+  setHidePRsApprovedByMe,
+} from "store/slices/settings";
 
 import useStyles from "./settings.styles";
 
@@ -32,6 +37,7 @@ const Settings: React.FC = () => {
   const { navigate } = useNavigation();
   const hidePRsAfterTwoMonths = useSelector(selectHidePRsAfterTwoMonths);
   const groupPRsBy = useSelector(selectGroupPRsBy);
+  const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
 
   useEffect(() => {
     void fetchProfiles();
@@ -79,7 +85,7 @@ const Settings: React.FC = () => {
         </Heading>
         <Spacer mt={1} />
         <ListItem
-          label="Group PR's per project"
+          label={t("Settings/GroupPRsBy/Repo")}
           border
           value={groupPRsBy === GroupPullRequestsBy.REPO}
           onToggle={(value) => {
@@ -91,7 +97,7 @@ const Settings: React.FC = () => {
           }}
         />
         <ListItem
-          label="Group PR's per date"
+          label={t("Settings/GroupPRsBy/Date")}
           border
           value={groupPRsBy === GroupPullRequestsBy.DATE}
           onToggle={(value) => {
@@ -103,9 +109,15 @@ const Settings: React.FC = () => {
           }}
         />
         <ListItem
-          label="Hide PR's after 2 months"
+          label={t("Settings/PullRequests/HideAfter")}
+          border
           value={hidePRsAfterTwoMonths}
           onToggle={(value) => dispatch(setHidePRsAfterTwoMonths(value))}
+        />
+        <ListItem
+          label={t("Settings/PullRequests/HideApprovedByMe")}
+          value={hidePRsApprovedByMe}
+          onToggle={(value) => dispatch(setHidePRsApprovedByMe(value))}
         />
       </ScrollView>
     </DefaultLayout>

@@ -1,7 +1,7 @@
 import { ApolloClient, DefaultContext } from "@apollo/client";
 
 import QueryGetGithubPullRequests from "gql/github/queries/pull-requests";
-import QueryGetViewer from "gql/github/queries/viewer";
+import QueryGetGitHubViewer from "gql/github/queries/viewer";
 import { AccountType } from "models/account";
 import { GitHubAuth } from "models/auth";
 import Profile from "models/profile";
@@ -28,7 +28,7 @@ class GitHubProvider implements Provider {
   async profile() {
     if (!this.#profile) {
       const { data } = await this.client.query({
-        query: QueryGetViewer,
+        query: QueryGetGitHubViewer,
         context: this.#context,
         fetchPolicy: "no-cache",
       });

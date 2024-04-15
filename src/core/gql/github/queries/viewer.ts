@@ -1,6 +1,6 @@
 import { graphql } from "../codegen";
 
-const QueryGetViewer = graphql(`
+const QueryGetGitHubViewer = graphql(`
   query GetViewer {
     viewer {
       id
@@ -11,4 +11,4 @@ const QueryGetViewer = graphql(`
   }
 `);
 
-export default QueryGetViewer;
+export default QueryGetGitHubViewer;

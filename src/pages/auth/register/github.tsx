@@ -5,7 +5,7 @@ import { Linking } from "react-native";
 
 import DOMAINS from "constants/domains";
 import URI_PATHS from "constants/uri-paths";
-import QueryGetViewer from "gql/github/queries/viewer";
+import QueryGetGitHubViewer from "gql/github/queries/viewer";
 import useDispatch from "hooks/use-dispatch";
 import RegisteredLayout from "layouts/registered-layout/registered-layout";
 import { AccountType } from "models/account";
@@ -15,7 +15,7 @@ import { upsertOneAccount } from "store/slices/accounts";
 
 const RegisterGithub: React.FC = () => {
   const dispatch = useDispatch();
-  const [fetchViewer, { data }] = useLazyQuery(QueryGetViewer);
+  const [fetchViewer, { data }] = useLazyQuery(QueryGetGitHubViewer);
   const [token, setToken] = useState<string>("");
   const [error, setError] = useState<string>();
 

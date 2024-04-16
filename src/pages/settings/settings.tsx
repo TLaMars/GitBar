@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from "react";
 import { ScrollView, View } from "react-native";
 
 import AccountCard from "components/account-card/account-card";
+import Body from "components/body/body";
 import Heading from "components/heading/heading";
 import Link from "components/link/link";
 import ListItem from "components/list-item/list-item";
@@ -108,6 +109,13 @@ const Settings: React.FC = () => {
             }
           }}
         />
+        <Spacer mt={4} />
+        <Body bold size="s">
+          {t("Settings/SectionHeading/RelevantPullRequests")}
+        </Body>
+        <Body size="xs" color="textSecondary">
+          {t("Settings/Body/RelevantPullRequests")}
+        </Body>
         <ListItem
           label={t("Settings/PullRequests/HideAfter")}
           border

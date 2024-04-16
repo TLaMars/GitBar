@@ -1,19 +1,17 @@
-import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, SectionList, View } from "react-native";
 
 import Body from "components/body/body";
+import ButtonToggle from "components/button-toggle/button-toggle";
 import Heading from "components/heading/heading";
 import Icon from "components/icon/icon";
 import PullRequestCard from "components/pull-request-card/pull-request-card";
-import useDispatch from "hooks/use-dispatch";
 import usePullRequests from "hooks/use-pull-requests";
 import useSelector from "hooks/use-selector";
 import useTranslation from "hooks/use-translation";
 import Bridges from "services/bridges/bridges";
 import DefaultLayout from "src/layouts/default-layout/default-layout";
-import { selectAccounts } from "store/selectors/accounts";
-import { removeOneAccount } from "store/slices/accounts";
+import { selectShowRelevantTab } from "store/selectors/settings";
 
 import useStyles from "./dashboard.styles";
 
@@ -22,36 +20,21 @@ const Dashboard: React.FC = () => {
   const { t } = useTranslation();
   const [previousPollingTime, setPreviousPollingTime] = useState<number>(0);
   const [minutesAgo, setMinutesAgo] = useState<number>(0);
+  const [isRelevant, setIsRelevant] = useState<boolean>(true);
   const {
     pullRequests,
     loading,
     fetchPullRequests,
-    sections: pullRequestSections,
+    relevantPullRequests,
+    relevantAmountOfPullRequests,
   } = usePullRequests();
-
-  // TEMP: Delete accounts on first load that don't have auth object
-  const accounts = useSelector(selectAccounts);
-  const dispatch = useDispatch();
-  const { navigate } = useNavigation();
-  useEffect(() => {
-    if (accounts.length === 0) {
-      navigate("OnboardingWelcome");
-      return;
-    }
-    accounts.forEach((account) => {
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      if (!account.auth) {
-        // @ts-ignore
-        dispatch(removeOneAccount(account.accountId as string));
-      }
-    });
-  }, [accounts, dispatch, navigate]);
+  const showRelevantTab = useSelector(selectShowRelevantTab);
 
   useEffect(() => {
-    if (pullRequests.length > 0) {
-      Bridges.App.setStatusBarText(pullRequests.length.toString());
+    if (relevantAmountOfPullRequests >= 0) {
+      Bridges.App.setStatusBarText(relevantAmountOfPullRequests.toString());
     }
-  }, [pullRequests]);
+  }, [relevantAmountOfPullRequests]);
 
   useEffect(() => {
     setPreviousPollingTime(Date.now());
@@ -79,40 +62,52 @@ const Dashboard: React.FC = () => {
     <DefaultLayout>
       <View style={$.container}>
         <View style={$.header}>
-          <Heading size="s">{t("Dashboard/Heading/PullRequests")}</Heading>
-          <View style={$.poller}>
-            <Icon name="Refresh" size={14} />
-            <Body size="xs" color="textSecondary">
-              {t("Dashboard/Body/LastUpdated", { minutesAgo })}
-            </Body>
+          <View style={$.headerLeft}>
+            <Heading size="s">{t("Dashboard/Heading/PullRequests")}</Heading>
+            <View style={$.poller}>
+              <Icon name="Refresh" size={14} />
+              <Body size="xs" color="textSecondary">
+                {t("Dashboard/Body/LastUpdated", { minutesAgo })}
+              </Body>
+            </View>
           </View>
+          {showRelevantTab && (
+            <View style={$.headerRight}>
+              <ButtonToggle
+                labelLeft={t("Dashboard/Button/Relevant")}
+                labelRight={t("Dashboard/Button/All")}
+                onPressLeft={() => setIsRelevant(true)}
+                onPressRight={() => setIsRelevant(false)}
+              />
+            </View>
+          )}
         </View>
         {loading && <ActivityIndicator />}
-        {pullRequests.length > 0 && (
-          <SectionList
-            contentContainerStyle={$.list}
-            sections={pullRequestSections}
-            renderItem={({ item }) => (
-              <PullRequestCard
-                title={item.title}
-                author={item.author}
-                reviewers={item.reviewers}
-                url={item.url}
-                amountOfComments={item.amountOfComments}
-                amountOfApprovals={item.amountOfApprovals}
-                amountOfRequiredApprovals={item.amountOfRequiredApprovals}
-              />
-            )}
-            keyExtractor={(item) => item.id}
-            renderSectionHeader={({ section: { title, hideTitle } }) =>
-              hideTitle ? null : (
-                <Body bold size="xs">
-                  {title}
-                </Body>
-              )
-            }
-          />
-        )}
+        <SectionList
+          contentContainerStyle={$.list}
+          sections={
+            isRelevant && showRelevantTab ? relevantPullRequests : pullRequests
+          }
+          renderItem={({ item }) => (
+            <PullRequestCard
+              title={item.title}
+              author={item.author}
+              reviewers={item.reviewers}
+              url={item.url}
+              amountOfComments={item.amountOfComments}
+              amountOfApprovals={item.amountOfApprovals}
+              amountOfRequiredApprovals={item.amountOfRequiredApprovals}
+            />
+          )}
+          keyExtractor={(item) => item.id}
+          renderSectionHeader={({ section: { title, hideTitle } }) =>
+            hideTitle ? null : (
+              <Body bold size="xs">
+                {title}
+              </Body>
+            )
+          }
+        />
       </View>
     </DefaultLayout>
   );

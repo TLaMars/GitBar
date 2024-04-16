@@ -72,7 +72,7 @@ const transformGitLabPullRequest = ({
         approvedByMe: pr.reviewers?.nodes?.some(
           (reviewer) =>
             reviewer?.name === profile.name &&
-            !!reviewer?.mergeRequestInteraction?.approved,
+            !!reviewer.mergeRequestInteraction?.approved,
         ),
       },
     ];

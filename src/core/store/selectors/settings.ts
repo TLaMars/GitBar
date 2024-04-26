@@ -1,5 +1,8 @@
 import { RootState } from "store/configure";
 
+export const selectAllowNotifications = (state: RootState) =>
+  state.settings.allowNotifications;
+
 export const selectHidePRsAfterTwoMonths = (state: RootState) =>
   state.settings.hidePRsAfterTwoMonths;
 

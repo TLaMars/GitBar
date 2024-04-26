@@ -52,5 +52,7 @@
   "Settings/SectionHeading/RelevantPullRequests": "Relevant PRs",
   "Dashboard/Button/Relevant": "Relevant",
   "Dashboard/Button/All": "All",
-  "Settings/Body/RelevantPullRequests": "Turning one of these settings on will add an All tab"
+  "Settings/Body/RelevantPullRequests": "Turning one of these settings on will add an All tab",
+  "Settings/SectionHeading/App": "Application settings",
+  "Settings/Application/Notifications": "Get notifications on PR updates"
 }

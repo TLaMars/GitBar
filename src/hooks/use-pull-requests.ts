@@ -1,7 +1,9 @@
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useContext, useRef, useState } from "react";
 
 import { AccountsContext } from "contexts/accounts";
+import { PullRequest } from "models/pull-request";
 import {
+  selectAllowNotifications,
   selectGroupPRsBy,
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
@@ -9,11 +11,13 @@ import {
 import groupPullRequestsBy, {
   PullRequestSection,
 } from "utils/group-pull-requests";
+import sendPullRequestNotification from "utils/send-pull-request-notification";
 
 import useSelector from "./use-selector";
 
 const usePullRequests = () => {
   const accounts = useContext(AccountsContext);
+  const prevPullRequestsRef = useRef<PullRequest[]>();
   const [pullRequests, setPullRequests] = useState<PullRequestSection[]>([]);
   const [relevantPullRequests, setRelevantPullRequests] = useState<
     PullRequestSection[]
@@ -24,6 +28,7 @@ const usePullRequests = () => {
   const groupPRsBy = useSelector(selectGroupPRsBy);
   const hidePRsAfterTwoMonths = useSelector(selectHidePRsAfterTwoMonths);
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
+  const sendNotifications = useSelector(selectAllowNotifications);
 
   const fetchPullRequests = useCallback(async () => {
     setLoading(true);
@@ -71,7 +76,17 @@ const usePullRequests = () => {
     setRelevantPullRequests(relevantGroupedResult);
     setRelevantAmountOfPullRequests(relevantResult.length);
     setLoading(false);
-  }, [accounts, hidePRsAfterTwoMonths, groupPRsBy, hidePRsApprovedByMe]);
+    if (sendNotifications) {
+      sendPullRequestNotification(sortedResult, prevPullRequestsRef.current);
+      prevPullRequestsRef.current = sortedResult;
+    }
+  }, [
+    accounts,
+    hidePRsAfterTwoMonths,
+    groupPRsBy,
+    hidePRsApprovedByMe,
+    sendNotifications,
+  ]);
 
   return {
     pullRequests,

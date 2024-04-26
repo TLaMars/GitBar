@@ -18,7 +18,7 @@
 		6A3594942BAF3CD80077B1D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3594932BAF3CD80077B1D7 /* AppDelegate.swift */; };
 		6A39B97F2BAF61A800DB2E85 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A39B97E2BAF61A800DB2E85 /* EventMonitor.swift */; };
 		6A96CAF72BBC6E970092B8E5 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96CAF62BBC6E970092B8E5 /* FontManager.swift */; };
-		6AE216972BB0587C0075CE62 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE216962BB0587C0075CE62 /* NotificationManager.swift */; };
+		6AA9A0FD2BD6EA2B00892B04 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA9A0FC2BD6EA2B00892B04 /* NotificationManager.swift */; };
 		6AE216992BB05B030075CE62 /* AvailableInterfaces.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE216982BB05B030075CE62 /* AvailableInterfaces.m */; };
 		6AE2169C2BB060970075CE62 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE2169B2BB060970075CE62 /* UserNotifications.framework */; };
 		6AFD5EE42BC280BB00D7D766 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFD5EE32BC280BB00D7D766 /* AppManager.swift */; };
@@ -45,7 +45,7 @@
 		6A3594932BAF3CD80077B1D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A39B97E2BAF61A800DB2E85 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		6A96CAF62BBC6E970092B8E5 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
-		6AE216962BB0587C0075CE62 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		6AA9A0FC2BD6EA2B00892B04 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		6AE216982BB05B030075CE62 /* AvailableInterfaces.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AvailableInterfaces.m; sourceTree = "<group>"; };
 		6AE2169B2BB060970075CE62 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/UserNotifications.framework; sourceTree = DEVELOPER_DIR; };
 		6AFD5EE32BC280BB00D7D766 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
@@ -110,9 +110,9 @@
 		6AE216952BB0586C0075CE62 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				6AE216962BB0587C0075CE62 /* NotificationManager.swift */,
 				6A96CAF62BBC6E970092B8E5 /* FontManager.swift */,
 				6AFD5EE32BC280BB00D7D766 /* AppManager.swift */,
+				6AA9A0FC2BD6EA2B00892B04 /* NotificationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -185,6 +185,7 @@
 				514201472437B4B30078DB4F /* Resources */,
 				381D8A6E24576A4E00465D17 /* Bundle React Native code and images */,
 				9A143B6EEFC152138654FFC7 /* [CP] Copy Pods Resources */,
+				60BBDD469A3F6FC9FE111121 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -292,6 +293,24 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native-macos/scripts/react-native-xcode.sh\n";
 		};
+		60BBDD469A3F6FC9FE111121 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-gitbar-macOS/Pods-gitbar-macOS-frameworks.sh",
+				"${PODS_ROOT}/hermes-engine/destroot/Library/Frameworks/macosx/hermes.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-gitbar-macOS/Pods-gitbar-macOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9A143B6EEFC152138654FFC7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -317,8 +336,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AA9A0FD2BD6EA2B00892B04 /* NotificationManager.swift in Sources */,
 				6A96CAF72BBC6E970092B8E5 /* FontManager.swift in Sources */,
-				6AE216972BB0587C0075CE62 /* NotificationManager.swift in Sources */,
 				6AE216992BB05B030075CE62 /* AvailableInterfaces.m in Sources */,
 				6AFD5EE42BC280BB00D7D766 /* AppManager.swift in Sources */,
 				6A3594942BAF3CD80077B1D7 /* AppDelegate.swift in Sources */,
@@ -439,6 +458,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -466,12 +486,18 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_CPLUSPLUSFLAGS = "$(inherited)";
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-DRN_FABRIC_ENABLED",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(inherited)",
+					"-DRN_FABRIC_ENABLED",
+				);
 				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
-				USE_HERMES = false;
+				USE_HERMES = true;
 			};
 			name = Debug;
 		};
@@ -509,6 +535,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -528,13 +555,19 @@
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_CPLUSPLUSFLAGS = "$(inherited)";
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-DRN_FABRIC_ENABLED",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(inherited)",
+					"-DRN_FABRIC_ENABLED",
+				);
 				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				USE_HERMES = false;
+				USE_HERMES = true;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

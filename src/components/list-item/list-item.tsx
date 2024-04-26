@@ -11,15 +11,22 @@ type Props = {
   onToggle: (value: boolean) => void;
   value: boolean;
   border?: boolean;
+  disabled?: boolean;
 };
 
-const ListItem: React.FC<Props> = ({ label, onToggle, value, border }) => {
+const ListItem: React.FC<Props> = ({
+  label,
+  onToggle,
+  value,
+  border,
+  disabled,
+}) => {
   const $ = useStyles();
 
   return (
     <View style={[$.container, border && $.border]}>
       <Body size="s">{label}</Body>
-      <Switch onValueChange={onToggle} value={value} />
+      <Switch disabled={disabled} onValueChange={onToggle} value={value} />
     </View>
   );
 };

@@ -7,15 +7,17 @@
 
 import Foundation
 import Cocoa
+import UserNotifications
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate {
   var popover: NSPopover!
   var bridge: RCTBridge!
   var statusBarItem: NSStatusItem!
   var eventMonitor: EventMonitor?
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
+    UNUserNotificationCenter.current().delegate = self
     // Set storage location for MMKV
     setStorageLocation()
 
@@ -77,7 +79,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     eventMonitor?.stop()
   }
 
-  func showPopover(_ sender: Any?) {
+  func showPopover() {
     if let button = statusBarItem.button {
       popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
       popover.contentViewController?.view.window?.makeKey()
@@ -90,7 +92,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     if popover.isShown {
       closePopover(sender)
     } else {
-      showPopover(sender)
+      showPopover()
     }
   }
   
@@ -116,17 +118,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // Create a folder for your app within Application Support
     let appSupportSubfolder = (applicationSupportDirectory as NSString).appendingPathComponent(bundleIdentifier)
-    
+
     // Ensure the directory exists
     let fileManager = FileManager.default
     if !fileManager.fileExists(atPath: appSupportSubfolder) {
         try? fileManager.createDirectory(atPath: appSupportSubfolder, withIntermediateDirectories: true, attributes: nil)
     }
-    
+
     // Initialize MMKV with custom storage path
     let storagePath = (appSupportSubfolder as NSString).appendingPathComponent("mmkv")
     MMKV.initialize(rootDir: storagePath)
-            
+  }
+  
+  func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    showPopover()
+    completionHandler()
   }
   
 }

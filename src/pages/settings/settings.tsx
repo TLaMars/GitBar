@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ScrollView, View } from "react-native";
 
 import AccountCard from "components/account-card/account-card";
@@ -15,13 +15,17 @@ import useSelector from "hooks/use-selector";
 import useTranslation from "hooks/use-translation";
 import DefaultLayout from "layouts/default-layout/default-layout";
 import { GroupPullRequestsBy } from "models/pull-request";
+import Bridges from "services/bridges/bridges";
+import { NotificationPermission } from "services/bridges/notification-manager";
 import {
+  selectAllowNotifications,
   selectGroupPRsBy,
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
 } from "store/selectors/settings";
 import { removeOneAccount } from "store/slices/accounts";
 import {
+  setAllowNotifications,
   setGroupPRsBy,
   setHidePRsAfterTwoMonths,
   setHidePRsApprovedByMe,
@@ -39,10 +43,19 @@ const Settings: React.FC = () => {
   const hidePRsAfterTwoMonths = useSelector(selectHidePRsAfterTwoMonths);
   const groupPRsBy = useSelector(selectGroupPRsBy);
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
+  const allowNotifications = useSelector(selectAllowNotifications);
+  const [notificationPermissions, setNotificationPermissions] =
+    useState<NotificationPermission>();
 
   useEffect(() => {
     void fetchProfiles();
   }, [fetchProfiles]);
+
+  useEffect(() => {
+    void Bridges.Notification.checkPermissions().then((result) => {
+      setNotificationPermissions(result);
+    });
+  }, []);
 
   const deleteAccount = (accountId: string) => {
     dispatch(removeOneAccount(accountId));
@@ -126,6 +139,20 @@ const Settings: React.FC = () => {
           label={t("Settings/PullRequests/HideApprovedByMe")}
           value={hidePRsApprovedByMe}
           onToggle={(value) => dispatch(setHidePRsApprovedByMe(value))}
+        />
+        <Spacer mt={4} />
+        <Heading size="x2s">{t("Settings/SectionHeading/App")}</Heading>
+        <Spacer mt={1} />
+        <ListItem
+          label={t("Settings/Application/Notifications")}
+          value={allowNotifications}
+          disabled={notificationPermissions === NotificationPermission.DENIED}
+          onToggle={(value) => {
+            if (value) {
+              Bridges.Notification.requestPermissions();
+            }
+            dispatch(setAllowNotifications(value));
+          }}
         />
       </ScrollView>
     </DefaultLayout>

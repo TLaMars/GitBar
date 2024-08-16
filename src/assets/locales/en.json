@@ -58,5 +58,7 @@
   "Settings/Application/Appearance": "Select appearance",
   "Settings/Appearance/Dark": "Dark",
   "Settings/Appearance/Light": "Light",
-  "Settings/Appearance/System": "System"
+  "Settings/Appearance/System": "System",
+  "Dashboard/Button/Retry": "Force retry needed, sorry 😔",
+  "Dashboard/StatusBar/Retry": "Loading!"
 }

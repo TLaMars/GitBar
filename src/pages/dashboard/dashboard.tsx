@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { ActivityIndicator, SectionList, View } from "react-native";
 
 import Body from "components/body/body";
+import Button from "components/button/button";
 import ButtonToggle from "components/button-toggle/button-toggle";
 import Heading from "components/heading/heading";
 import Icon from "components/icon/icon";
@@ -30,25 +31,36 @@ const Dashboard: React.FC = () => {
   } = usePullRequests();
   const showRelevantTab = useSelector(selectShowRelevantTab);
 
+  const showRetryButton = useMemo(
+    () => loading && (minutesAgo < 3 || minutesAgo > 3),
+    [loading, minutesAgo],
+  );
+
   useEffect(() => {
+    if (showRetryButton) {
+      Bridges.App.setStatusBarText(t("Dashboard/StatusBar/Retry"));
+      return;
+    }
     if (relevantAmountOfPullRequests >= 0) {
       Bridges.App.setStatusBarText(relevantAmountOfPullRequests.toString());
     }
-  }, [relevantAmountOfPullRequests]);
+  }, [relevantAmountOfPullRequests, showRetryButton, t]);
+
+  const pollPullRequests = useCallback(async () => {
+    await fetchPullRequests();
+    setPreviousPollingTime(Date.now());
+    setMinutesAgo(0);
+  }, [fetchPullRequests]);
 
   useEffect(() => {
     setPreviousPollingTime(Date.now());
     void fetchPullRequests();
 
     // Polling every 3 minutes
-    const pollInterval = setInterval(() => {
-      void fetchPullRequests();
-      setPreviousPollingTime(Date.now());
-      setMinutesAgo(0);
-    }, 180000);
+    const pollInterval = setInterval(pollPullRequests, 180000);
 
     return () => clearInterval(pollInterval);
-  }, [fetchPullRequests]);
+  }, [fetchPullRequests, pollPullRequests]);
 
   useEffect(() => {
     const minutesAgeInterval = setInterval(() => {
@@ -82,7 +94,15 @@ const Dashboard: React.FC = () => {
             </View>
           )}
         </View>
-        {loading && <ActivityIndicator />}
+        {loading && !showRetryButton && <ActivityIndicator />}
+        {showRetryButton && (
+          <Button
+            onPress={pollPullRequests}
+            size="s"
+            type="danger"
+            label={t("Dashboard/Button/Retry")}
+          />
+        )}
         <SectionList
           contentContainerStyle={$.list}
           sections={

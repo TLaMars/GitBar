@@ -60,5 +60,5 @@
   "Settings/Appearance/Light": "Light",
   "Settings/Appearance/System": "System",
   "Dashboard/Button/Retry": "Force retry needed, sorry 😔",
-  "Dashboard/StatusBar/Retry": "Loading!"
+  "Dashboard/StatusBar/Retry": "🚨"
 }

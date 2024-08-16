@@ -11,6 +11,8 @@ import { gitHubContext } from "utils/apollo-contexts";
 import Provider from "./provider";
 
 class GitHubProvider implements Provider {
+  id: string;
+
   auth: GitHubAuth;
 
   client: ApolloClient<object>;
@@ -19,7 +21,8 @@ class GitHubProvider implements Provider {
 
   #profile?: Profile;
 
-  constructor(auth: GitHubAuth, client: ApolloClient<object>) {
+  constructor(id: string, auth: GitHubAuth, client: ApolloClient<object>) {
+    this.id = id;
     this.auth = auth;
     this.client = client;
     this.#context = gitHubContext(this.auth.accessToken);

@@ -11,6 +11,8 @@ import { gitLabContext } from "utils/apollo-contexts";
 import Provider from "./provider";
 
 class GitLabProvider implements Provider {
+  id: string;
+
   auth: GitLabAuth;
 
   client: ApolloClient<object>;
@@ -19,7 +21,8 @@ class GitLabProvider implements Provider {
 
   #profile?: Profile;
 
-  constructor(auth: GitLabAuth, client: ApolloClient<object>) {
+  constructor(id: string, auth: GitLabAuth, client: ApolloClient<object>) {
+    this.id = id;
     this.auth = auth;
     this.client = client;
     this.#context = gitLabContext(auth.privateToken, auth.domain);

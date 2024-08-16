@@ -9,13 +9,16 @@ import azureConfig from "utils/api-config";
 import Provider from "./provider";
 
 class AzureProvider implements Provider {
+  id: string;
+
   auth: AzureAuth;
 
   #profile?: Profile;
 
   #config: Config;
 
-  constructor(auth: AzureAuth) {
+  constructor(id: string, auth: AzureAuth) {
+    this.id = id;
     this.auth = auth;
     this.#config = azureConfig(
       {

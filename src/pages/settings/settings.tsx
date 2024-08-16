@@ -6,7 +6,7 @@ import AccountCard from "components/account-card/account-card";
 import Body from "components/body/body";
 import Heading from "components/heading/heading";
 import Link from "components/link/link";
-import ListItem from "components/list-item/list-item";
+import ListItemToggle from "components/list-item/list-item-toggle";
 import Spacer from "components/spacer/spacer";
 import { AccountsContext } from "contexts/accounts";
 import useDispatch from "hooks/use-dispatch";
@@ -19,6 +19,7 @@ import Bridges from "services/bridges/bridges";
 import { NotificationPermission } from "services/bridges/notification-manager";
 import {
   selectAllowNotifications,
+  selectAppearance,
   selectGroupPRsBy,
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
@@ -98,7 +99,7 @@ const Settings: React.FC = () => {
           {t("Settings/SectionHeading/PullRequests")}
         </Heading>
         <Spacer mt={1} />
-        <ListItem
+        <ListItemToggle
           label={t("Settings/GroupPRsBy/Repo")}
           border
           value={groupPRsBy === GroupPullRequestsBy.REPO}
@@ -110,7 +111,7 @@ const Settings: React.FC = () => {
             }
           }}
         />
-        <ListItem
+        <ListItemToggle
           label={t("Settings/GroupPRsBy/Date")}
           border
           value={groupPRsBy === GroupPullRequestsBy.DATE}
@@ -129,13 +130,13 @@ const Settings: React.FC = () => {
         <Body size="xs" color="textSecondary">
           {t("Settings/Body/RelevantPullRequests")}
         </Body>
-        <ListItem
+        <ListItemToggle
           label={t("Settings/PullRequests/HideAfter")}
           border
           value={hidePRsAfterTwoMonths}
           onToggle={(value) => dispatch(setHidePRsAfterTwoMonths(value))}
         />
-        <ListItem
+        <ListItemToggle
           label={t("Settings/PullRequests/HideApprovedByMe")}
           value={hidePRsApprovedByMe}
           onToggle={(value) => dispatch(setHidePRsApprovedByMe(value))}
@@ -143,7 +144,7 @@ const Settings: React.FC = () => {
         <Spacer mt={4} />
         <Heading size="x2s">{t("Settings/SectionHeading/App")}</Heading>
         <Spacer mt={1} />
-        <ListItem
+        <ListItemToggle
           label={t("Settings/Application/Notifications")}
           value={allowNotifications}
           disabled={notificationPermissions === NotificationPermission.DENIED}
@@ -154,6 +155,20 @@ const Settings: React.FC = () => {
             dispatch(setAllowNotifications(value));
           }}
         />
+        {/* TODO: find out why the Appearance change is not working */}
+        {/* <ListItemPicker
+          label={t("Settings/Application/Appearance")}
+          disabled
+          selectedValue={appearance}
+          onValueChange={(value) =>
+            dispatch(setAppearance(value as Appearance))
+          }
+          pickerItems={[
+            { label: t("Settings/Appearance/Light"), value: Appearance.Light },
+            { label: t("Settings/Appearance/Dark"), value: Appearance.Dark },
+            { label: t("Settings/Appearance/System"), value: Appearance.Auto },
+          ]}
+        /> */}
       </ScrollView>
     </DefaultLayout>
   );

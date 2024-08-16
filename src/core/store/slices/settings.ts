@@ -1,10 +1,12 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+import Appearance from "models/appearance";
 import { GroupPullRequestsBy } from "models/pull-request";
 
 const initialState = {
   allowNotifications: false,
+  appearance: Appearance.Dark,
   groupPRsBy: GroupPullRequestsBy.REPO,
   hidePRsApprovedByMe: false,
   hidePRsAfterTwoMonths: false,
@@ -28,6 +30,9 @@ const settings = createSlice({
     setHidePRsApprovedByMe(state, action: PayloadAction<boolean>) {
       state.hidePRsApprovedByMe = action.payload;
     },
+    setAppearance(state, action: PayloadAction<Appearance>) {
+      state.appearance = action.payload;
+    },
   },
 });
 
@@ -36,6 +41,7 @@ export const {
   setHidePRsAfterTwoMonths,
   setGroupPRsBy,
   setHidePRsApprovedByMe,
+  setAppearance,
 } = settings.actions;
 
 export default settings.reducer;

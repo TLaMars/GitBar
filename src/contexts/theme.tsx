@@ -1,5 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import { StatusBar } from "react-native";
+import { Appearance } from "react-native-macos";
 
 import { THEME_DARK, THEME } from "constants/theme";
 import useAppearance from "hooks/use-appearance";
@@ -20,6 +21,7 @@ const ThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const theme = React.useMemo(() => getTheme(isDark), [isDark]);
 
   StatusBar.setBarStyle(isDark ? "light-content" : "dark-content");
+  Appearance.setColorScheme(isDark ? "dark" : "light");
 
   return (
     <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>

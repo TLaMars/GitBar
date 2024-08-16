@@ -54,5 +54,9 @@
   "Dashboard/Button/All": "All",
   "Settings/Body/RelevantPullRequests": "Turning one of these settings on will add an All tab",
   "Settings/SectionHeading/App": "Application settings",
-  "Settings/Application/Notifications": "Get notifications on PR updates"
+  "Settings/Application/Notifications": "Get notifications on PR updates",
+  "Settings/Application/Appearance": "Select appearance",
+  "Settings/Appearance/Dark": "Dark",
+  "Settings/Appearance/Light": "Light",
+  "Settings/Appearance/System": "System"
 }

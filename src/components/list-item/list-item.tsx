@@ -1,32 +1,26 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { View } from "react-native";
-import { Switch } from "react-native-macos";
 
 import Body from "components/body/body";
 
 import useStyles from "./list-item.styles";
 
-type Props = {
+export type ListItmeProps = {
   label: string;
-  onToggle: (value: boolean) => void;
-  value: boolean;
   border?: boolean;
-  disabled?: boolean;
 };
 
-const ListItem: React.FC<Props> = ({
+const ListItem: React.FC<ListItmeProps & PropsWithChildren> = ({
   label,
-  onToggle,
-  value,
   border,
-  disabled,
+  children,
 }) => {
   const $ = useStyles();
 
   return (
     <View style={[$.container, border && $.border]}>
       <Body size="s">{label}</Body>
-      <Switch disabled={disabled} onValueChange={onToggle} value={value} />
+      {children}
     </View>
   );
 };

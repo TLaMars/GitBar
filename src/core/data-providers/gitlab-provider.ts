@@ -4,7 +4,7 @@ import QueryGetGitLabCurrentUser from "gql/gitlab/queries/current-user";
 import QueryGetGitLabPullRequests from "gql/gitlab/queries/pull-requests";
 import { AccountType } from "models/account";
 import { GitLabAuth } from "models/auth";
-import Profile from "models/profile";
+import Profile, { ProfileStatus } from "models/profile";
 import transformGitLabPullRequest from "transformers/gitlab-pull-request";
 import { gitLabContext } from "utils/apollo-contexts";
 
@@ -30,11 +30,20 @@ class GitLabProvider implements Provider {
 
   async profile() {
     if (!this.#profile) {
-      const { data } = await this.client.query({
+      const { data, error } = await this.client.query({
         query: QueryGetGitLabCurrentUser,
         context: this.#context,
         fetchPolicy: "no-cache",
       });
+
+      if (data.currentUser === null || error) {
+        return {
+          id: this.id,
+          name: this.auth.userName,
+          type: AccountType.GitLab,
+          status: ProfileStatus.Invalid,
+        };
+      }
 
       this.#profile = {
         id: data.currentUser?.id ?? "",
@@ -42,6 +51,7 @@ class GitLabProvider implements Provider {
         userName: data.currentUser?.username ?? "",
         name: data.currentUser?.name ?? "",
         type: AccountType.GitLab,
+        status: data.currentUser ? ProfileStatus.Valid : ProfileStatus.Invalid,
       };
     }
 

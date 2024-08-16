@@ -19,7 +19,6 @@ import Bridges from "services/bridges/bridges";
 import { NotificationPermission } from "services/bridges/notification-manager";
 import {
   selectAllowNotifications,
-  selectAppearance,
   selectGroupPRsBy,
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
@@ -91,6 +90,7 @@ const Settings: React.FC = () => {
               name={profile.name}
               border={index !== accounts.length - 1}
               onDeletePress={() => deleteAccount(profile.id)}
+              status={profile.status}
             />
           </View>
         ))}

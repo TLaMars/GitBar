@@ -4,7 +4,7 @@ import QueryGetGithubPullRequests from "gql/github/queries/pull-requests";
 import QueryGetGitHubViewer from "gql/github/queries/viewer";
 import { AccountType } from "models/account";
 import { GitHubAuth } from "models/auth";
-import Profile from "models/profile";
+import Profile, { ProfileStatus } from "models/profile";
 import transformGithubPullRequest from "transformers/github-pull-request";
 import { gitHubContext } from "utils/apollo-contexts";
 
@@ -30,11 +30,20 @@ class GitHubProvider implements Provider {
 
   async profile() {
     if (!this.#profile) {
-      const { data } = await this.client.query({
+      const { data, error } = await this.client.query({
         query: QueryGetGitHubViewer,
         context: this.#context,
         fetchPolicy: "no-cache",
       });
+
+      if (error) {
+        return {
+          id: this.id,
+          name: this.auth.userName,
+          type: AccountType.GitHub,
+          status: ProfileStatus.Invalid,
+        };
+      }
 
       this.#profile = {
         id: data.viewer.id,
@@ -42,6 +51,7 @@ class GitHubProvider implements Provider {
         userName: data.viewer.login,
         name: data.viewer.name ?? "",
         type: AccountType.GitHub,
+        status: ProfileStatus.Valid,
       };
     }
 

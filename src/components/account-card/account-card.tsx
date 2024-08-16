@@ -7,7 +7,9 @@ import Heading from "components/heading/heading";
 import IconButton from "components/icon-button/icon-button";
 import AccountMap from "constants/account-map";
 import useTheme from "hooks/use-theme";
+import useTranslation from "hooks/use-translation";
 import { AccountType } from "models/account";
+import { ProfileStatus } from "models/profile";
 
 import useStyles from "./account-card.styles";
 
@@ -17,7 +19,7 @@ type Props = {
   avatarUrl?: string;
   name?: string;
   border?: boolean;
-  aditionalInfo?: string;
+  status?: ProfileStatus;
   onDeletePress: () => void;
 };
 
@@ -27,10 +29,11 @@ const AccountCard: React.FC<Props> = ({
   avatarUrl,
   name,
   border = true,
-  aditionalInfo,
+  status,
   onDeletePress,
 }) => {
   const $ = useStyles();
+  const { t } = useTranslation();
   const { colors } = useTheme();
 
   const TypeIcon = AccountMap[type];
@@ -44,11 +47,18 @@ const AccountCard: React.FC<Props> = ({
         </View>
       </View>
       <View style={$.info}>
-        <Heading size="x2s">{userName}</Heading>
-        {name && <Body size="xs">{name}</Body>}
+        <Heading size="x2s">{name}</Heading>
+        {userName && <Body size="xs">{userName}</Body>}
       </View>
       <View style={$.right}>
-        {aditionalInfo && <Body size="xs">{aditionalInfo}</Body>}
+        <Body
+          size="xs"
+          color={status === ProfileStatus.Valid ? "text" : "textDanger"}
+        >
+          {status === ProfileStatus.Valid
+            ? t("AccountCard/Status/Valid")
+            : t("AccountCard/Status/Invalid")}
+        </Body>
         <IconButton
           icon="Cross"
           spacing={4}

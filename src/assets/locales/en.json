@@ -60,5 +60,7 @@
   "Settings/Appearance/Light": "Light",
   "Settings/Appearance/System": "System",
   "Dashboard/Button/Retry": "Force retry needed, sorry 😔",
-  "Dashboard/StatusBar/Retry": "🚨"
+  "Dashboard/StatusBar/Retry": "🚨",
+  "AccountCard/Status/Valid": "Valid",
+  "AccountCard/Status/Invalid": "Error: Invalid Credentials or missing scopes"
 }

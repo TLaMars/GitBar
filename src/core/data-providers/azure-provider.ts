@@ -1,6 +1,6 @@
 import { AccountType } from "models/account";
 import { AzureAuth } from "models/auth";
-import Profile from "models/profile";
+import Profile, { ProfileStatus } from "models/profile";
 import { Config } from "services/api/api-wrapper";
 import azureApi from "services/api/azure/api";
 import transformAzurePullRequest from "transformers/azure-pull-request";
@@ -30,17 +30,27 @@ class AzureProvider implements Provider {
 
   async profile() {
     if (!this.#profile) {
-      const { data } = await azureApi.get(
+      const { data, status } = await azureApi.get(
         "/:organization/_apis/profile/profiles/me",
         this.#config,
       );
 
+      if (status !== 200) {
+        return {
+          id: this.id,
+          name: this.auth.organization,
+          type: AccountType.Azure,
+          status: ProfileStatus.Invalid,
+        };
+      }
+
       this.#profile = {
         id: data.id,
         avatarUrl: "",
-        userName: data.displayName,
+        userName: data.emailAddress,
         name: data.displayName,
         type: AccountType.Azure,
+        status: ProfileStatus.Valid,
       };
     }
 
@@ -48,18 +58,12 @@ class AzureProvider implements Provider {
   }
 
   async projects() {
-    try {
-      const { data } = await azureApi.get(
-        "/:organization/_apis/projects",
-        this.#config,
-      );
+    const { data } = await azureApi.get(
+      "/:organization/_apis/projects",
+      this.#config,
+    );
 
-      return data.value;
-    } catch (e) {
-      console.error(e);
-
-      return [];
-    }
+    return data.value;
   }
 
   async pullRequests() {

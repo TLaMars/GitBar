@@ -73,6 +73,7 @@ const RegisterGitLab: React.FC = () => {
         auth: {
           domain,
           privateToken: token,
+          userName: data.currentUser?.username ?? "",
         },
       }),
     );

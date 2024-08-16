@@ -68,6 +68,7 @@ const RegisterGithub: React.FC = () => {
           id: data.viewer.id,
           type: AccountType.GitHub,
           auth: {
+            userName: data.viewer.login,
             accessToken: token,
           },
         }),

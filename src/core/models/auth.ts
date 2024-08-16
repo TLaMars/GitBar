@@ -5,9 +5,11 @@ export type AzureAuth = {
 
 export type GitHubAuth = {
   accessToken: string;
+  userName: string;
 };
 
 export type GitLabAuth = {
   privateToken: string;
   domain: string;
+  userName: string;
 };

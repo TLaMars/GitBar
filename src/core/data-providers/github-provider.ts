@@ -30,13 +30,15 @@ class GitHubProvider implements Provider {
 
   async profile() {
     if (!this.#profile) {
-      const { data, error } = await this.client.query({
-        query: QueryGetGitHubViewer,
-        context: this.#context,
-        fetchPolicy: "no-cache",
-      });
+      const { data, error } = await this.client
+        .query({
+          query: QueryGetGitHubViewer,
+          context: this.#context,
+          fetchPolicy: "no-cache",
+        })
+        .catch((e) => ({ data: null, error: e }));
 
-      if (error) {
+      if (error || !data) {
         return {
           id: this.id,
           name: this.auth.userName,
@@ -60,6 +62,11 @@ class GitHubProvider implements Provider {
 
   async pullRequests() {
     const profile = await this.profile();
+
+    if (profile.status === ProfileStatus.Invalid) {
+      return [];
+    }
+
     const { data } = await this.client.query({
       query: QueryGetGithubPullRequests,
       context: this.#context,

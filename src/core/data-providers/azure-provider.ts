@@ -37,29 +37,24 @@ class AzureProvider implements Provider {
     };
 
     if (!this.#profile) {
-      try {
-        const { data, status } = await azureApi.get(
-          "/:organization/_apis/profile/profiles/me",
-          this.#config,
-        );
+      const { data, status } = await azureApi
+        .get("/:organization/_apis/profile/profiles/me", this.#config)
+        .catch((error) => ({ data: null, status: error.statusCode }));
 
-        if (status !== 200) {
-          return errorProfile;
-        }
-
-        this.#profile = {
-          id: data.id,
-          avatarUrl: "",
-          userName: data.emailAddress,
-          name: data.displayName,
-          type: AccountType.Azure,
-          status: ProfileStatus.Valid,
-        };
-
-        return this.#profile;
-      } catch (error) {
+      if (!data || status !== 200) {
         return errorProfile;
       }
+
+      this.#profile = {
+        id: data.id,
+        avatarUrl: "",
+        userName: data.emailAddress,
+        name: data.displayName,
+        type: AccountType.Azure,
+        status: ProfileStatus.Valid,
+      };
+
+      return this.#profile;
     }
 
     return this.#profile;

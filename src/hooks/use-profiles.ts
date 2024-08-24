@@ -8,13 +8,9 @@ const useProfiles = () => {
   const [profiles, setProfiles] = useState<Profile[]>([]);
 
   const fetchProfiles = useCallback(async () => {
-    const promises = await Promise.allSettled(
-      accounts.map(async (account) => account.profile()),
+    const data = await Promise.all(
+      accounts.map((account) => account.profile()),
     );
-
-    const data = promises
-      .filter((promise) => promise.status === "fulfilled")
-      .map((promise) => (promise as PromiseFulfilledResult<Profile>).value);
 
     setProfiles(data);
   }, [accounts]);

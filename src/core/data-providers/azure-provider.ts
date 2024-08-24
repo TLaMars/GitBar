@@ -29,29 +29,37 @@ class AzureProvider implements Provider {
   }
 
   async profile() {
+    const errorProfile = {
+      id: this.id,
+      name: this.auth.organization,
+      type: AccountType.Azure,
+      status: ProfileStatus.Invalid,
+    };
+
     if (!this.#profile) {
-      const { data, status } = await azureApi.get(
-        "/:organization/_apis/profile/profiles/me",
-        this.#config,
-      );
+      try {
+        const { data, status } = await azureApi.get(
+          "/:organization/_apis/profile/profiles/me",
+          this.#config,
+        );
 
-      if (status !== 200) {
-        return {
-          id: this.id,
-          name: this.auth.organization,
+        if (status !== 200) {
+          return errorProfile;
+        }
+
+        this.#profile = {
+          id: data.id,
+          avatarUrl: "",
+          userName: data.emailAddress,
+          name: data.displayName,
           type: AccountType.Azure,
-          status: ProfileStatus.Invalid,
+          status: ProfileStatus.Valid,
         };
-      }
 
-      this.#profile = {
-        id: data.id,
-        avatarUrl: "",
-        userName: data.emailAddress,
-        name: data.displayName,
-        type: AccountType.Azure,
-        status: ProfileStatus.Valid,
-      };
+        return this.#profile;
+      } catch (error) {
+        return errorProfile;
+      }
     }
 
     return this.#profile;
@@ -68,6 +76,11 @@ class AzureProvider implements Provider {
 
   async pullRequests() {
     const profile = await this.profile();
+
+    if (profile.status === ProfileStatus.Invalid) {
+      return [];
+    }
+
     const projects = await this.projects();
     const pullRequests = await Promise.all(
       projects.map(async (project) => {

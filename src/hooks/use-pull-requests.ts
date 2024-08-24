@@ -33,15 +33,9 @@ const usePullRequests = () => {
   const fetchPullRequests = useCallback(async () => {
     setLoading(true);
 
-    const promiseResult = await Promise.allSettled(
+    const result = await Promise.all(
       accounts.map(async (account) => account.pullRequests()),
     );
-
-    const result = promiseResult
-      .filter((promise) => promise.status === "fulfilled")
-      .map(
-        (promise) => (promise as PromiseFulfilledResult<PullRequest[]>).value,
-      );
 
     const sortedResult = result.flat().sort((a, b) => {
       if (a.createdAt < b.createdAt) {

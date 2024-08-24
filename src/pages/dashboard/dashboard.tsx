@@ -32,7 +32,7 @@ const Dashboard: React.FC = () => {
   const showRelevantTab = useSelector(selectShowRelevantTab);
 
   const showRetryButton = useMemo(
-    () => loading && (minutesAgo < 3 || minutesAgo > 3),
+    () => loading && minutesAgo > 5,
     [loading, minutesAgo],
   );
 

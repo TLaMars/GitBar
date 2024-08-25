@@ -10,6 +10,7 @@
 @interface RCT_EXTERN_MODULE(AppManager, NSObject)
   RCT_EXTERN_METHOD(closeApp)
   RCT_EXTERN_METHOD(setStatusBarText:(NSString *)text)
+  RCT_EXTERN_METHOD(setAppAppearance:(BOOL *)isDark)
 @end
 
 @interface RCT_EXTERN_MODULE(NotificationManager, NSObject)

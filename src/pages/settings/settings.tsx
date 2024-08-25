@@ -6,6 +6,7 @@ import AccountCard from "components/account-card/account-card";
 import Body from "components/body/body";
 import Heading from "components/heading/heading";
 import Link from "components/link/link";
+import ListItemPicker from "components/list-item/list-item-picker";
 import ListItemToggle from "components/list-item/list-item-toggle";
 import Spacer from "components/spacer/spacer";
 import { AccountsContext } from "contexts/accounts";
@@ -14,11 +15,13 @@ import useProfiles from "hooks/use-profiles";
 import useSelector from "hooks/use-selector";
 import useTranslation from "hooks/use-translation";
 import DefaultLayout from "layouts/default-layout/default-layout";
+import Appearance from "models/appearance";
 import { GroupPullRequestsBy } from "models/pull-request";
 import Bridges from "services/bridges/bridges";
 import { NotificationPermission } from "services/bridges/notification-manager";
 import {
   selectAllowNotifications,
+  selectAppearance,
   selectGroupPRsBy,
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
@@ -26,6 +29,7 @@ import {
 import { removeOneAccount } from "store/slices/accounts";
 import {
   setAllowNotifications,
+  setAppearance,
   setGroupPRsBy,
   setHidePRsAfterTwoMonths,
   setHidePRsApprovedByMe,
@@ -44,6 +48,7 @@ const Settings: React.FC = () => {
   const groupPRsBy = useSelector(selectGroupPRsBy);
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
   const allowNotifications = useSelector(selectAllowNotifications);
+  const appearance = useSelector(selectAppearance);
   const [notificationPermissions, setNotificationPermissions] =
     useState<NotificationPermission>();
 
@@ -145,6 +150,7 @@ const Settings: React.FC = () => {
         <Heading size="x2s">{t("Settings/SectionHeading/App")}</Heading>
         <Spacer mt={1} />
         <ListItemToggle
+          border
           label={t("Settings/Application/Notifications")}
           value={allowNotifications}
           disabled={notificationPermissions === NotificationPermission.DENIED}
@@ -156,7 +162,7 @@ const Settings: React.FC = () => {
           }}
         />
         {/* TODO: find out why the Appearance change is not working */}
-        {/* <ListItemPicker
+        <ListItemPicker
           label={t("Settings/Application/Appearance")}
           disabled
           selectedValue={appearance}
@@ -168,7 +174,7 @@ const Settings: React.FC = () => {
             { label: t("Settings/Appearance/Dark"), value: Appearance.Dark },
             { label: t("Settings/Appearance/System"), value: Appearance.Auto },
           ]}
-        /> */}
+        />
       </ScrollView>
     </DefaultLayout>
   );

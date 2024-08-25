@@ -32,4 +32,13 @@ class AppManager: NSObject {
       button?.title = text
     }
   }
+  
+  @objc
+  func setAppAppearance(_ isDark: Bool) {
+    DispatchQueue.main.async {
+      let appDelegate = NSApp.delegate as? AppDelegate
+      let popover = appDelegate?.popover
+      popover?.appearance = NSAppearance(named: isDark ? .darkAqua : .aqua)
+    }
+  }
 }

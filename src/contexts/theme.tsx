@@ -1,9 +1,9 @@
 import React, { PropsWithChildren } from "react";
-import { StatusBar } from "react-native";
-import { Appearance } from "react-native-macos";
 
-import { THEME_DARK, THEME } from "constants/theme";
+import { THEME, THEME_DARK } from "constants/theme";
 import useAppearance from "hooks/use-appearance";
+import Bridges from "services/bridges/bridges";
+
 /** Gets the theme based on if dark mode is enabled */
 const getTheme = (isDark?: boolean) => {
   const themeApp = isDark ? THEME_DARK : THEME;
@@ -20,8 +20,7 @@ const ThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const { isDark } = useAppearance();
   const theme = React.useMemo(() => getTheme(isDark), [isDark]);
 
-  StatusBar.setBarStyle(isDark ? "light-content" : "dark-content");
-  Appearance.setColorScheme(isDark ? "dark" : "light");
+  Bridges.App.setAppAppearance(isDark);
 
   return (
     <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>

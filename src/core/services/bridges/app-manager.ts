@@ -9,6 +9,9 @@ const App = {
   setStatusBarText: (text: string) => {
     AppManager.setStatusBarText(text);
   },
+  setAppAppearance: (isDark: boolean) => {
+    AppManager.setAppAppearance(isDark);
+  },
 };
 
 export default App;

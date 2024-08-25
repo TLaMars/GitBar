@@ -1,6 +1,6 @@
 //
 //  AppManager.swift
-//  gitbar-macOS
+//  GitBar
 //
 //  Created by Thomas Lamars on 07/04/2024.
 //

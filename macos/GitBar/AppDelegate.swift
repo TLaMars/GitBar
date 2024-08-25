@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  gitbar-macOS
+//  GitBar
 //
 //  Created by Thomas Lamars on 23/03/2024.
 //

@@ -1,6 +1,6 @@
 //
 //  FontManager.swift
-//  gitbar-macOS
+//  GitBar
 //
 //  Created by Thomas Lamars on 02/04/2024.
 //

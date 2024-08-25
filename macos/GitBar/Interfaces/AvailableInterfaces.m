@@ -1,6 +1,6 @@
 //
 //  AvailableInterfaces.m
-//  gitbar-macOS
+//  GitBar
 //
 //  Created by Thomas Lamars on 24/03/2024.
 //

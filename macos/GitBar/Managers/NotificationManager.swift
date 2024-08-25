@@ -1,6 +1,6 @@
 //
 //  NotificationManager.swift
-//  gitbar-macOS
+//  GitBar
 //
 //  Created by Thomas Lamars on 22/04/2024.
 //

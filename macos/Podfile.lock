@@ -1069,8 +1069,14 @@ PODS:
     - React-perflogger (= 0.73.34)
   - RNCPicker (2.7.7):
     - React-Core
+  - RNSentry (5.30.0):
+    - hermes-engine
+    - React-Core
+    - React-hermes
+    - Sentry/HybridSDK (= 8.34.0)
   - RNSVG (15.5.0):
     - React-Core
+  - Sentry/HybridSDK (8.34.0)
   - SocketRocket (0.7.0)
   - Yoga (1.14.0)
 
@@ -1128,6 +1134,7 @@ DEPENDENCIES:
   - React-utils (from `../node_modules/react-native-macos/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native-macos/ReactCommon`)
   - "RNCPicker (from `../node_modules/@react-native-picker/picker`)"
+  - "RNSentry (from `../node_modules/@sentry/react-native`)"
   - RNSVG (from `../node_modules/react-native-svg`)
   - SocketRocket (from `../node_modules/react-native-macos/third-party-podspecs/SocketRocket.podspec`)
   - Yoga (from `../node_modules/react-native-macos/ReactCommon/yoga`)
@@ -1137,6 +1144,7 @@ SPEC REPOS:
     - libevent
     - MMKV
     - MMKVCore
+    - Sentry
 
 EXTERNAL SOURCES:
   boost:
@@ -1240,6 +1248,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-macos/ReactCommon"
   RNCPicker:
     :path: "../node_modules/@react-native-picker/picker"
+  RNSentry:
+    :path: "../node_modules/@sentry/react-native"
   RNSVG:
     :path: "../node_modules/react-native-svg"
   SocketRocket:
@@ -1301,7 +1311,9 @@ SPEC CHECKSUMS:
   React-utils: f0bb613a2b0a7f8011bdafb8ac098e30d4825256
   ReactCommon: cd9602a38f340d44b1cca3ad06d6f13106a46dd0
   RNCPicker: b7873ba797dc586bfaf3307d737cbdc620a9ff3e
+  RNSentry: 038afe562a53fa0ec791e1cd9fb66239c77a2818
   RNSVG: b986585e367f4a49d8aa43065066cc9c290b3d9b
+  Sentry: 1183df2306eea74ff0564c4bb1c2577ccd15d054
   SocketRocket: f6c6249082c011e6de2de60ed641ef8bbe0cfac9
   Yoga: 35603207c576afc16e93625844f6d469ae6d5f03
 

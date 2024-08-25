@@ -104,29 +104,26 @@ const Settings: React.FC = () => {
           {t("Settings/SectionHeading/PullRequests")}
         </Heading>
         <Spacer mt={1} />
-        <ListItemToggle
-          label={t("Settings/GroupPRsBy/Repo")}
-          border
-          value={groupPRsBy === GroupPullRequestsBy.REPO}
-          onToggle={(value) => {
-            if (value) {
-              dispatch(setGroupPRsBy(GroupPullRequestsBy.REPO));
-            } else {
-              dispatch(setGroupPRsBy(GroupPullRequestsBy.NONE));
-            }
-          }}
-        />
-        <ListItemToggle
-          label={t("Settings/GroupPRsBy/Date")}
-          border
-          value={groupPRsBy === GroupPullRequestsBy.DATE}
-          onToggle={(value) => {
-            if (value) {
-              dispatch(setGroupPRsBy(GroupPullRequestsBy.DATE));
-            } else {
-              dispatch(setGroupPRsBy(GroupPullRequestsBy.NONE));
-            }
-          }}
+        <ListItemPicker
+          label={t("Settings/GroupPRsBy/GroupBy")}
+          selectedValue={groupPRsBy}
+          onValueChange={(value) =>
+            dispatch(setGroupPRsBy(value as GroupPullRequestsBy))
+          }
+          pickerItems={[
+            {
+              label: t("Settings/GroupPRsBy/Repo"),
+              value: GroupPullRequestsBy.REPO,
+            },
+            {
+              label: t("Settings/GroupPRsBy/Date"),
+              value: GroupPullRequestsBy.DATE,
+            },
+            {
+              label: t("Settings/GroupPRsBy/None"),
+              value: GroupPullRequestsBy.NONE,
+            },
+          ]}
         />
         <Spacer mt={4} />
         <Body bold size="s">
@@ -161,7 +158,6 @@ const Settings: React.FC = () => {
             dispatch(setAllowNotifications(value));
           }}
         />
-        {/* TODO: find out why the Appearance change is not working */}
         <ListItemPicker
           label={t("Settings/Application/Appearance")}
           disabled
@@ -172,7 +168,8 @@ const Settings: React.FC = () => {
           pickerItems={[
             { label: t("Settings/Appearance/Light"), value: Appearance.Light },
             { label: t("Settings/Appearance/Dark"), value: Appearance.Dark },
-            { label: t("Settings/Appearance/System"), value: Appearance.Auto },
+            // TODO: Implement system appearance
+            // { label: t("Settings/Appearance/System"), value: Appearance.Auto },
           ]}
         />
       </ScrollView>

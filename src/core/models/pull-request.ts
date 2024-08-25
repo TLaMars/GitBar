@@ -1,9 +1,9 @@
 import { Attendee } from "./attendee";
 
 export enum GroupPullRequestsBy {
-  REPO,
-  DATE,
-  NONE,
+  REPO = "repo",
+  DATE = "date",
+  NONE = "none",
 }
 
 export type PullRequest = {

@@ -45,8 +45,8 @@
   "RegisterGitLab/Message/Domain": "The domain is incorrect",
   "RegisterGitLab/Message/Token": "The token is incorrect, and/or has the incorrect scopes.",
   "Settings/SectionHeading/PullRequests": "PullRequests overview",
-  "Settings/GroupPRsBy/Repo": "Group PRs by repo",
-  "Settings/GroupPRsBy/Date": "Group PRs by date",
+  "Settings/GroupPRsBy/Repo": "Repository",
+  "Settings/GroupPRsBy/Date": "Creation Date",
   "Settings/PullRequests/HideAfter": "Hide PRs after 2 months",
   "Settings/PullRequests/HideApprovedByMe": "Hide PRs approved by me",
   "Settings/SectionHeading/RelevantPullRequests": "Relevant PRs",
@@ -62,5 +62,7 @@
   "Dashboard/Button/Retry": "Force retry needed, sorry 😔",
   "Dashboard/StatusBar/Retry": "🚨",
   "AccountCard/Status/Valid": "Valid",
-  "AccountCard/Status/Invalid": "Error: Invalid Credentials or missing scopes"
+  "AccountCard/Status/Invalid": "Error: Invalid Credentials or missing scopes",
+  "Settings/GroupPRsBy/GroupBy": "Group PRs by setting ",
+  "Settings/GroupPRsBy/None": "Don't Group"
 }

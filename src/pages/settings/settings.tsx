@@ -51,6 +51,7 @@ const Settings: React.FC = () => {
   const appearance = useSelector(selectAppearance);
   const [notificationPermissions, setNotificationPermissions] =
     useState<NotificationPermission>();
+  const [launchAtLogin, setLaunchAtLogin] = useState<boolean>();
 
   useEffect(() => {
     void fetchProfiles();
@@ -59,6 +60,9 @@ const Settings: React.FC = () => {
   useEffect(() => {
     void Bridges.Notification.checkPermissions().then((result) => {
       setNotificationPermissions(result);
+    });
+    void Bridges.LaunchAtLogin.checkStatus().then((result) => {
+      setLaunchAtLogin(result);
     });
   }, []);
 
@@ -160,7 +164,7 @@ const Settings: React.FC = () => {
         />
         <ListItemPicker
           label={t("Settings/Application/Appearance")}
-          disabled
+          border
           selectedValue={appearance}
           onValueChange={(value) =>
             dispatch(setAppearance(value as Appearance))
@@ -171,6 +175,14 @@ const Settings: React.FC = () => {
             // TODO: Implement system appearance
             // { label: t("Settings/Appearance/System"), value: Appearance.Auto },
           ]}
+        />
+        <ListItemToggle
+          label={t("Settings/Application/LaunchAtLogin")}
+          value={launchAtLogin ?? false}
+          onToggle={(value) => {
+            Bridges.LaunchAtLogin.setStatus(value);
+            setLaunchAtLogin(value);
+          }}
         />
       </ScrollView>
     </DefaultLayout>

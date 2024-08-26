@@ -13,7 +13,7 @@ class AppManager: NSObject {
   
   @objc
   static func requiresMainQueueSetup() -> Bool {
-      false
+    false
   }
 
   @objc

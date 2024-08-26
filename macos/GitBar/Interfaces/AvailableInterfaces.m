@@ -18,3 +18,8 @@
   RCT_EXTERN_METHOD(checkPermissions: (RCTPromiseResolveBlock *)resolve reject: (RCTPromiseRejectBlock *)reject)
   RCT_EXTERN_METHOD(sendNotification: (NSString *)title body: (NSString *)body urlString: (NSString *)urlString)
 @end
+
+@interface RCT_EXTERN_MODULE(LaunchAtLoginManager, NSObject)
+  RCT_EXTERN_METHOD(checkStatus: (RCTPromiseResolveBlock *)resolve reject: (RCTPromiseRejectBlock *)reject)
+  RCT_EXTERN_METHOD(setStatus:(BOOL *)isEnabled)
+@end

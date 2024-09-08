@@ -1,5 +1,10 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { ActivityIndicator, SectionList, View } from "react-native";
+import {
+  ActivityIndicator,
+  NativeEventEmitter,
+  SectionList,
+  View,
+} from "react-native";
 
 import Body from "components/body/body";
 import Button from "components/button/button";
@@ -11,10 +16,13 @@ import usePullRequests from "hooks/use-pull-requests";
 import useSelector from "hooks/use-selector";
 import useTranslation from "hooks/use-translation";
 import Bridges from "services/bridges/bridges";
+import { MacEvents, MacStates } from "services/bridges/mac";
 import DefaultLayout from "src/layouts/default-layout/default-layout";
 import { selectShowRelevantTab } from "store/selectors/settings";
 
 import useStyles from "./dashboard.styles";
+
+const MacEventEmitter = new NativeEventEmitter(Bridges.Mac);
 
 const Dashboard: React.FC = () => {
   const $ = useStyles();
@@ -22,6 +30,7 @@ const Dashboard: React.FC = () => {
   const [previousPollingTime, setPreviousPollingTime] = useState<number>(0);
   const [minutesAgo, setMinutesAgo] = useState<number>(0);
   const [isRelevant, setIsRelevant] = useState<boolean>(true);
+  const [macState, setMacState] = useState<MacStates>(MacStates.Unlocked);
   const {
     pullRequests,
     loading,
@@ -35,6 +44,15 @@ const Dashboard: React.FC = () => {
     () => loading && minutesAgo > 5,
     [loading, minutesAgo],
   );
+
+  useEffect(() => {
+    MacEventEmitter.addListener(
+      MacEvents.MacStateChange,
+      (state: MacStates) => {
+        setMacState(state);
+      },
+    );
+  }, []);
 
   useEffect(() => {
     if (showRetryButton) {
@@ -53,14 +71,30 @@ const Dashboard: React.FC = () => {
   }, [fetchPullRequests]);
 
   useEffect(() => {
-    setPreviousPollingTime(Date.now());
-    void fetchPullRequests();
+    let pollInterval: NodeJS.Timeout | null = null;
 
-    // Polling every 3 minutes
-    const pollInterval = setInterval(pollPullRequests, 180000);
+    const startPolling = () => {
+      void pollPullRequests();
+      pollInterval = setInterval(pollPullRequests, 180000); // Polling every 3 minutes
+    };
 
-    return () => clearInterval(pollInterval);
-  }, [fetchPullRequests, pollPullRequests]);
+    const stopPolling = () => {
+      if (pollInterval) {
+        clearInterval(pollInterval);
+        pollInterval = null;
+      }
+    };
+
+    if (macState === MacStates.Unlocked) {
+      startPolling();
+    } else {
+      stopPolling();
+    }
+
+    return () => {
+      stopPolling();
+    };
+  }, [fetchPullRequests, pollPullRequests, macState]);
 
   useEffect(() => {
     const minutesAgeInterval = setInterval(() => {

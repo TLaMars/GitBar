@@ -23,3 +23,6 @@
   RCT_EXTERN_METHOD(checkStatus: (RCTPromiseResolveBlock *)resolve reject: (RCTPromiseRejectBlock *)reject)
   RCT_EXTERN_METHOD(setStatus:(BOOL *)isEnabled)
 @end
+
+@interface RCT_EXTERN_MODULE(MacManager, NSObject)
+@end

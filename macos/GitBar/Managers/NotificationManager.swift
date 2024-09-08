@@ -9,23 +9,15 @@ import UserNotifications
 import Foundation
 import React
 
-enum NotificationEvents: String {
-  case Tapped = "TappedEvent"
-}
-
 
 @objc(NotificationManager)
-class NotificationManager: RCTEventEmitter {
-  override static func requiresMainQueueSetup() -> Bool {
-    return true
+class NotificationManager: NSObject {
+  
+  @objc
+  static func requiresMainQueueSetup() -> Bool {
+    false
   }
   
-  override func supportedEvents() -> [String]? {
-    return [
-      NotificationEvents.Tapped.rawValue
-    ]
-  }
-    
   @objc
   func requestPermissions() {
     let center = UNUserNotificationCenter.current()

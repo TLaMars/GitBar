@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import * as Sentry from "@sentry/react-native";
 
 import BlobBackground from "components/blob-background/blob-background";
+import Body from "components/body/body";
 import linkingConfig from "constants/linking-config";
 import AccountsProvider from "contexts/accounts";
 import IntlProvider from "contexts/intl";
@@ -21,35 +22,36 @@ Sentry.init({
 });
 
 const App: React.FC = () => (
-  <ApolloProvider client={client}>
-    <ReduxProvider>
-      <AccountsProvider>
-        <ThemeProvider>
-          <IntlProvider>
-            <BlobBackground>
-              <NavigationContainer
-                linking={linkingConfig}
-                theme={{
-                  // Override the default theme
-                  dark: false,
-                  colors: {
-                    notification: "transparent",
-                    background: "transparent",
-                    border: "transparent",
-                    card: "transparent",
-                    primary: "transparent",
-                    text: "transparent",
-                  },
-                }}
-              >
-                <RootStack />
-              </NavigationContainer>
-            </BlobBackground>
-          </IntlProvider>
-        </ThemeProvider>
-      </AccountsProvider>
-    </ReduxProvider>
-  </ApolloProvider>
+  <Body>Hello</Body>
+  // <ApolloProvider client={client}>
+  //   <ReduxProvider>
+  //     <AccountsProvider>
+  //       <ThemeProvider>
+  //         <IntlProvider>
+  //           <BlobBackground>
+  //             <NavigationContainer
+  //               linking={linkingConfig}
+  //               theme={{
+  //                 // Override the default theme
+  //                 dark: false,
+  //                 colors: {
+  //                   notification: "transparent",
+  //                   background: "transparent",
+  //                   border: "transparent",
+  //                   card: "transparent",
+  //                   primary: "transparent",
+  //                   text: "transparent",
+  //                 },
+  //               }}
+  //             >
+  //               <RootStack />
+  //             </NavigationContainer>
+  //           </BlobBackground>
+  //         </IntlProvider>
+  //       </ThemeProvider>
+  //     </AccountsProvider>
+  //   </ReduxProvider>
+  // </ApolloProvider>
 );
 
 export default App;

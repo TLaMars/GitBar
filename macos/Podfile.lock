@@ -1,4 +1,6 @@
 PODS:
+  - AppModule (1.0.0):
+    - ExpoModulesCore
   - boost (1.84.0)
   - DoubleConversion (1.1.6)
   - EXConstants (16.0.2):
@@ -1513,16 +1515,36 @@ PODS:
     - React-utils (= 0.75.2)
   - RNCPicker (2.7.7):
     - React-Core
-  - RNSentry (5.30.0):
+  - RNSentry (5.31.1):
+    - DoubleConversion
+    - glog
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
     - React-Core
-    - Sentry/HybridSDK (= 8.34.0)
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Sentry/HybridSDK (= 8.36.0)
+    - Yoga
   - RNSVG (15.5.0):
     - React-Core
-  - Sentry/HybridSDK (8.34.0)
+  - Sentry/HybridSDK (8.36.0)
   - SocketRocket (0.7.0)
   - Yoga (0.0.0)
 
 DEPENDENCIES:
+  - AppModule (from `../modules/app-module/ios`)
   - boost (from `../node_modules/react-native-macos/third-party-podspecs/boost.podspec`)
   - DoubleConversion (from `../node_modules/react-native-macos/third-party-podspecs/DoubleConversion.podspec`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
@@ -1605,6 +1627,8 @@ SPEC REPOS:
     - Sentry
 
 EXTERNAL SOURCES:
+  AppModule:
+    :path: "../modules/app-module/ios"
   boost:
     :podspec: "../node_modules/react-native-macos/third-party-podspecs/boost.podspec"
   DoubleConversion:
@@ -1749,6 +1773,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-macos/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  AppModule: e8ca5653265899ed844816c9999eab9cde02e153
   boost: 78c06792d4bc8e05ba232b20737af9883a947a51
   DoubleConversion: e9fd6969c78f190642ac8adbd3a5ac37995620dc
   EXConstants: 409690fbfd5afea964e5e9d6c4eb2c2b59222c59
@@ -1818,9 +1843,9 @@ SPEC CHECKSUMS:
   ReactCodegen: d45a6853dda6bbcc610db0a14e48ea20dd79f157
   ReactCommon: 4d523033c6d27e1b1c36814a3864e1e15969e2e4
   RNCPicker: b7873ba797dc586bfaf3307d737cbdc620a9ff3e
-  RNSentry: c49dff3820650bbfb47f552648a6410619c4164d
+  RNSentry: 0565397e51f4bfcc92d2e36551bae59d8e51e0ed
   RNSVG: b986585e367f4a49d8aa43065066cc9c290b3d9b
-  Sentry: 1183df2306eea74ff0564c4bb1c2577ccd15d054
+  Sentry: f8374b5415bc38dfb5645941b3ae31230fbeae57
   SocketRocket: 9ee265c4b5ae2382d18e4ee1d2dd2d7af0ff1ab5
   Yoga: 9236ddcafb7eec6ac199bb61b38299054ba4c6f7
 

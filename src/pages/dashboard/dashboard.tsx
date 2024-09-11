@@ -1,10 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import {
-  ActivityIndicator,
-  NativeEventEmitter,
-  SectionList,
-  View,
-} from "react-native";
+import { ActivityIndicator, SectionList, View } from "react-native";
 
 import Body from "components/body/body";
 import Button from "components/button/button";
@@ -15,14 +10,13 @@ import PullRequestCard from "components/pull-request-card/pull-request-card";
 import usePullRequests from "hooks/use-pull-requests";
 import useSelector from "hooks/use-selector";
 import useTranslation from "hooks/use-translation";
-import Bridges from "services/bridges/bridges";
-import { MacEvents, MacStates } from "services/bridges/mac";
+import { MacStates } from "services/bridges/mac";
 import DefaultLayout from "src/layouts/default-layout/default-layout";
 import { selectShowRelevantTab } from "store/selectors/settings";
 
 import useStyles from "./dashboard.styles";
 
-const MacEventEmitter = new NativeEventEmitter(Bridges.Mac);
+// const MacEventEmitter = new NativeEventEmitter(Bridges.Mac);
 
 const Dashboard: React.FC = () => {
   const $ = useStyles();
@@ -30,7 +24,8 @@ const Dashboard: React.FC = () => {
   const [previousPollingTime, setPreviousPollingTime] = useState<number>(0);
   const [minutesAgo, setMinutesAgo] = useState<number>(0);
   const [isRelevant, setIsRelevant] = useState<boolean>(true);
-  const [macState, setMacState] = useState<MacStates>(MacStates.Unlocked);
+  // TODO: Add setMacState to the useState
+  const [macState] = useState<MacStates>(MacStates.Unlocked);
   const {
     pullRequests,
     loading,
@@ -45,22 +40,25 @@ const Dashboard: React.FC = () => {
     [loading, minutesAgo],
   );
 
-  useEffect(() => {
-    MacEventEmitter.addListener(
-      MacEvents.MacStateChange,
-      (state: MacStates) => {
-        setMacState(state);
-      },
-    );
-  }, []);
+  // TODO: Add this to AppModule or Check if it's already there
+  // useEffect(() => {
+  //   MacEventEmitter.addListener(
+  //     MacEvents.MacStateChange,
+  //     (state: MacStates) => {
+  //       setMacState(state);
+  //     },
+  //   );
+  // }, []);
 
   useEffect(() => {
     if (showRetryButton) {
-      Bridges.App.setStatusBarText(t("Dashboard/StatusBar/Retry"));
+      // TODO: Add this to PopoverModule
+      // Bridges.App.setStatusBarText(t("Dashboard/StatusBar/Retry"));
       return;
     }
     if (relevantAmountOfPullRequests >= 0) {
-      Bridges.App.setStatusBarText(relevantAmountOfPullRequests.toString());
+      // TODO: Add this to PopoverModule
+      // Bridges.App.setStatusBarText(relevantAmountOfPullRequests.toString());
     }
   }, [relevantAmountOfPullRequests, showRetryButton, t]);
 

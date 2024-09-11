@@ -4,7 +4,7 @@ import { View } from "react-native";
 
 import Sidebar from "components/sidebar/sidebar";
 import SidebarItem from "components/sidebar-item/sidebar-item";
-import Bridges from "services/bridges/bridges";
+import AppModule from "modules/app-module";
 
 import useStyles from "./default-layout.styles";
 
@@ -42,7 +42,7 @@ const DefaultLayout: React.FC<Props> = ({
               <SidebarItem
                 icon="PowerOff"
                 onPress={() => {
-                  Bridges.App.closeApp();
+                  AppModule.closeApp();
                 }}
               />
             </>

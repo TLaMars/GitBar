@@ -2,7 +2,6 @@ import React, { PropsWithChildren } from "react";
 
 import { THEME, THEME_DARK } from "constants/theme";
 import useAppearance from "hooks/use-appearance";
-import Bridges from "services/bridges/bridges";
 
 /** Gets the theme based on if dark mode is enabled */
 const getTheme = (isDark?: boolean) => {
@@ -20,7 +19,8 @@ const ThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const { isDark } = useAppearance();
   const theme = React.useMemo(() => getTheme(isDark), [isDark]);
 
-  Bridges.App.setAppAppearance(isDark);
+  // TODO: Add this to PopoverModule
+  // Bridges.App.setAppAppearance(isDark);
 
   return (
     <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>

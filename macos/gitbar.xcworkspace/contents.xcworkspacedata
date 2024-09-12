@@ -2,12 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/thomaslamars/Developer/personal/gitbar/macos/GitBar.xcodeproj">
+      location = "group:GitBar.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:GitBar.xcodeproj">
    </FileRef>
 </Workspace>

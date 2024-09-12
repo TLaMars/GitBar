@@ -11,6 +11,7 @@
 		514201522437B4B40078DB4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 514201512437B4B40078DB4F /* Assets.xcassets */; };
 		514201552437B4B40078DB4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 514201532437B4B40078DB4F /* Main.storyboard */; };
 		532DA30C1A3C5672972A09B8 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = BD60D9C6D3E4338EF6EFC384 /* PrivacyInfo.xcprivacy */; };
+		6A0FC0DA2C92355400A74D15 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 6A0FC0D92C92355400A74D15 /* fonts */; };
 		6A87DC452C9205EE0014F3ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A87DC442C9205EE0014F3ED /* AppDelegate.swift */; };
 		B251F639C3B1D566B5066829 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731F036827B7D7037932CD5B /* ExpoModulesProvider.swift */; };
 /* End PBXBuildFile section */
@@ -21,6 +22,7 @@
 		514201542437B4B40078DB4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		514201562437B4B40078DB4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		514201592437B4B40078DB4F /* GitBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GitBar.entitlements; sourceTree = "<group>"; };
+		6A0FC0D92C92355400A74D15 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../../src/assets/fonts; sourceTree = "<group>"; };
 		6A87DC442C9205EE0014F3ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A87DC462C9206000014F3ED /* GitBar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GitBar-Bridging-Header.h"; sourceTree = "<group>"; };
 		731F036827B7D7037932CD5B /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-GitBar/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 		5142014A2437B4B30078DB4F /* GitBar */ = {
 			isa = PBXGroup;
 			children = (
+				6A0FC0D82C9234C300A74D15 /* Resources */,
 				514201512437B4B40078DB4F /* Assets.xcassets */,
 				514201532437B4B40078DB4F /* Main.storyboard */,
 				514201562437B4B40078DB4F /* Info.plist */,
@@ -81,6 +84,14 @@
 				6A87DC462C9206000014F3ED /* GitBar-Bridging-Header.h */,
 			);
 			path = GitBar;
+			sourceTree = "<group>";
+		};
+		6A0FC0D82C9234C300A74D15 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6A0FC0D92C92355400A74D15 /* fonts */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -187,6 +198,7 @@
 				514201522437B4B40078DB4F /* Assets.xcassets in Resources */,
 				514201552437B4B40078DB4F /* Main.storyboard in Resources */,
 				532DA30C1A3C5672972A09B8 /* PrivacyInfo.xcprivacy in Resources */,
+				6A0FC0DA2C92355400A74D15 /* fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,10 +445,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -499,10 +508,7 @@
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = false;

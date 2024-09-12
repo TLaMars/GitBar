@@ -1,3 +1,3 @@
-import AppModule from "./src/PopoverModule";
+import PopoverModule from "./src/PopoverModule";
 
-export default AppModule;
+export default PopoverModule;

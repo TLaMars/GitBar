@@ -10,6 +10,7 @@ const initialState = {
   groupPRsBy: GroupPullRequestsBy.REPO,
   hidePRsApprovedByMe: false,
   hidePRsAfterTwoMonths: false,
+  launchAtLogin: false,
 };
 
 export type DebugSettingsSlice = typeof initialState;
@@ -33,6 +34,9 @@ const settings = createSlice({
     setAppearance(state, action: PayloadAction<Appearance>) {
       state.appearance = action.payload;
     },
+    setLaunchAtLogin(state, action: PayloadAction<boolean>) {
+      state.launchAtLogin = action.payload;
+    },
   },
 });
 
@@ -42,6 +46,7 @@ export const {
   setGroupPRsBy,
   setHidePRsApprovedByMe,
   setAppearance,
+  setLaunchAtLogin,
 } = settings.actions;
 
 export default settings.reducer;

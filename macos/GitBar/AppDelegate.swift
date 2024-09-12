@@ -16,6 +16,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, RCTBridgeDelegate {
   var popover: NSPopover!
   
   func applicationDidFinishLaunching(_ notification: Notification) {
+    setMMKVStorageLocation()
+
     bridge = RCTBridge(delegate: self, launchOptions: nil)
     
     statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -36,6 +38,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, RCTBridgeDelegate {
     popover.contentSize = NSSize(width: 700, height: 500)
     popover.contentViewController = rootViewController
     popover.behavior = .transient
+    
+    popoverObservers()
   }
   
   func sourceURL(for bridge: RCTBridge) -> URL? {
@@ -46,6 +50,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, RCTBridgeDelegate {
     #endif
   }
   
+  @objc
   func openPopover() {
     popover.show(relativeTo: statusItem.button!.bounds, of: statusItem.button!, preferredEdge: .minY)
     popover.contentViewController?.view.window?.makeKey()
@@ -54,6 +59,36 @@ class AppDelegate: NSObject, NSApplicationDelegate, RCTBridgeDelegate {
   func closePopover() {
     popover.close()
   }
+  
+  func popoverObservers() {
+    let notificationCenter = NotificationCenter.default
+    notificationCenter.addObserver(forName: Notification.Name("GitBar-OpenPopover"), object: nil, queue: nil) { [weak self] _ in
+      self?.openPopover()
+    }
+    notificationCenter.addObserver(forName: Notification.Name("GitBar-ClosePopover"), object: nil, queue: nil) { [weak self] _ in
+      self?.closePopover()
+    }
+    notificationCenter.addObserver(self, selector: #selector(setPopoverAppearance(_:)), name: Notification.Name("GitBar-SetAppearance"), object: nil)
+    notificationCenter.addObserver(self, selector: #selector(setStatusItemText(_:)), name: Notification.Name("GitBar-SetStatusItemText"), object: nil)
+  }
+  
+  @objc
+  func setPopoverAppearance(_ notification: NSNotification) {
+      guard let userInfo = notification.userInfo as? [String: Any],
+            let isDark = userInfo["isDark"] as? Bool else { return }
+
+      popover.appearance = NSAppearance(named: isDark ? .darkAqua : .aqua)
+  }
+  
+  @objc
+  func setStatusItemText(_ notification: NSNotification) {
+      guard let userInfo = notification.userInfo as? [String: Any],
+            let text = userInfo["text"] as? String else { return }
+
+    statusItem.button?.title = text
+  }
+  
+  
   
   @objc 
   func onPressStatusItem(_ sender: Any?) {

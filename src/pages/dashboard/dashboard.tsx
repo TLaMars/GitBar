@@ -10,6 +10,7 @@ import PullRequestCard from "components/pull-request-card/pull-request-card";
 import usePullRequests from "hooks/use-pull-requests";
 import useSelector from "hooks/use-selector";
 import useTranslation from "hooks/use-translation";
+import PopoverModule from "modules/popover-module/src/PopoverModule";
 import { MacStates } from "services/bridges/mac";
 import DefaultLayout from "src/layouts/default-layout/default-layout";
 import { selectShowRelevantTab } from "store/selectors/settings";
@@ -52,13 +53,11 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     if (showRetryButton) {
-      // TODO: Add this to PopoverModule
-      // Bridges.App.setStatusBarText(t("Dashboard/StatusBar/Retry"));
+      PopoverModule.setStatusItemText(t("Dashboard/StatusBar/Retry"));
       return;
     }
     if (relevantAmountOfPullRequests >= 0) {
-      // TODO: Add this to PopoverModule
-      // Bridges.App.setStatusBarText(relevantAmountOfPullRequests.toString());
+      PopoverModule.setStatusItemText(relevantAmountOfPullRequests.toString());
     }
   }, [relevantAmountOfPullRequests, showRetryButton, t]);
 

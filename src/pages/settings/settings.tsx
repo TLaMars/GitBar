@@ -17,8 +17,10 @@ import useTranslation from "hooks/use-translation";
 import DefaultLayout from "layouts/default-layout/default-layout";
 import Appearance from "models/appearance";
 import { GroupPullRequestsBy } from "models/pull-request";
+import NotificationsModule, {
+  NotificationPermission,
+} from "modules/notifications-module";
 import Bridges from "services/bridges/bridges";
-import { NotificationPermission } from "services/bridges/notification-manager";
 import {
   selectAllowNotifications,
   selectAppearance,
@@ -58,12 +60,12 @@ const Settings: React.FC = () => {
   }, [fetchProfiles]);
 
   useEffect(() => {
-    void Bridges.Notification.checkPermissions().then((result) => {
+    void NotificationsModule.getPermissions().then((result) => {
       setNotificationPermissions(result);
     });
-    void Bridges.LaunchAtLogin.checkStatus().then((result) => {
-      setLaunchAtLogin(result);
-    });
+    // void Bridges.LaunchAtLogin.checkStatus().then((result) => {
+    //   setLaunchAtLogin(result);
+    // });
   }, []);
 
   const deleteAccount = (accountId: string) => {
@@ -155,9 +157,9 @@ const Settings: React.FC = () => {
           label={t("Settings/Application/Notifications")}
           value={allowNotifications}
           disabled={notificationPermissions === NotificationPermission.DENIED}
-          onToggle={(value) => {
+          onToggle={async (value) => {
             if (value) {
-              Bridges.Notification.requestPermissions();
+              await NotificationsModule.requestPermissions();
             }
             dispatch(setAllowNotifications(value));
           }}

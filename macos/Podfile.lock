@@ -42,6 +42,8 @@ PODS:
   - MMKV (1.3.9):
     - MMKVCore (~> 1.3.9)
   - MMKVCore (1.3.9)
+  - NotificationsModule (1.0.0):
+    - ExpoModulesCore
   - PopoverModule (1.0.0):
     - ExpoModulesCore
   - RCT-Folly (2024.01.01.00):
@@ -1558,6 +1560,7 @@ DEPENDENCIES:
   - FBLazyVector (from `../node_modules/react-native-macos/Libraries/FBLazyVector`)
   - fmt (from `../node_modules/react-native-macos/third-party-podspecs/fmt.podspec`)
   - glog (from `../node_modules/react-native-macos/third-party-podspecs/glog.podspec`)
+  - NotificationsModule (from `../modules/notifications-module/macos`)
   - PopoverModule (from `../modules/popover-module/macos`)
   - RCT-Folly (from `../node_modules/react-native-macos/third-party-podspecs/RCT-Folly.podspec`)
   - RCT-Folly/Fabric (from `../node_modules/react-native-macos/third-party-podspecs/RCT-Folly.podspec`)
@@ -1654,6 +1657,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native-macos/third-party-podspecs/fmt.podspec"
   glog:
     :podspec: "../node_modules/react-native-macos/third-party-podspecs/glog.podspec"
+  NotificationsModule:
+    :path: "../modules/notifications-module/macos"
   PopoverModule:
     :path: "../modules/popover-module/macos"
   RCT-Folly:
@@ -1792,7 +1797,8 @@ SPEC CHECKSUMS:
   glog: f12b70f4104265bf944bf5800b4f85034eba0ea7
   MMKV: 817ba1eea17421547e01e087285606eb270a8dcb
   MMKVCore: af055b00e27d88cd92fad301c5fecd1ff9b26dd9
-  PopoverModule: f222a1ea958c1907ce99167a30c92ba9945ff4a8
+  NotificationsModule: cd5db15035168922bf6231793c14ca6ea0ae3b7c
+  PopoverModule: fc03b887ea8199d7b6a547046cc3bfcbeab058b6
   RCT-Folly: 693a1865d476549c2b4a788ec924ce59dd7cb8cb
   RCTDeprecation: 34cbf122b623037ea9facad2e92e53434c5c7422
   RCTRequired: 1bce8ffb05578b8081857f590f873cc7f11ab197

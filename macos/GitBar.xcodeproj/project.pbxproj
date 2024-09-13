@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		07FF469FA0E85D01009749BA /* libPods-GitBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE61B26364896BE60907290 /* libPods-GitBar.a */; };
+		2D5E0F8A2FAA22553D43E1B1 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B599A2E6ADB47C08FB92AC5F /* PrivacyInfo.xcprivacy */; };
 		514201522437B4B40078DB4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 514201512437B4B40078DB4F /* Assets.xcassets */; };
 		514201552437B4B40078DB4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 514201532437B4B40078DB4F /* Main.storyboard */; };
 		532DA30C1A3C5672972A09B8 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = BD60D9C6D3E4338EF6EFC384 /* PrivacyInfo.xcprivacy */; };
@@ -51,6 +52,7 @@
 		6A87DC442C9205EE0014F3ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A87DC462C9206000014F3ED /* GitBar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GitBar-Bridging-Header.h"; sourceTree = "<group>"; };
 		731F036827B7D7037932CD5B /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-GitBar/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		B599A2E6ADB47C08FB92AC5F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = ../PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		BD60D9C6D3E4338EF6EFC384 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = ../PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		D94C66BB14FF792DC8A5DE90 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		DC7515AD06F0646C13A409C0 /* Pods-GitBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitBar.release.xcconfig"; path = "Target Support Files/Pods-GitBar/Pods-GitBar.release.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				6A700D112C937BF5009FE82F /* AppDelegate.swift */,
 				6A700D1A2C937BF6009FE82F /* AutoLauncher.entitlements */,
 				6A700D1E2C937C96009FE82F /* main.swift */,
+				B599A2E6ADB47C08FB92AC5F /* PrivacyInfo.xcprivacy */,
 			);
 			path = AutoLauncher;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D5E0F8A2FAA22553D43E1B1 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,7 +436,6 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.$(PRODUCT_NAME:rfc1034identifier)";
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.lamars.gitbar.debug;
 				PRODUCT_NAME = GitBar;
 				SDKROOT = macosx;
@@ -462,7 +465,6 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.$(PRODUCT_NAME:rfc1034identifier)";
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.lamars.gitbar;
 				PRODUCT_NAME = GitBar;
 				SDKROOT = macosx;
@@ -507,6 +509,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lamars.gitbar.AutoLauncher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -553,6 +556,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lamars.gitbar.AutoLauncher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;

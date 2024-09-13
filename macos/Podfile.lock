@@ -1519,7 +1519,7 @@ PODS:
     - React-utils (= 0.75.2)
   - RNCPicker (2.7.7):
     - React-Core
-  - RNSentry (5.31.1):
+  - RNSentry (5.32.0):
     - DoubleConversion
     - glog
     - RCT-Folly (= 2024.01.01.00)
@@ -1855,7 +1855,7 @@ SPEC CHECKSUMS:
   ReactCodegen: d45a6853dda6bbcc610db0a14e48ea20dd79f157
   ReactCommon: 4d523033c6d27e1b1c36814a3864e1e15969e2e4
   RNCPicker: b7873ba797dc586bfaf3307d737cbdc620a9ff3e
-  RNSentry: 0565397e51f4bfcc92d2e36551bae59d8e51e0ed
+  RNSentry: 3042010c031148ebe1aff8a4b50621b4d539347e
   RNSVG: b986585e367f4a49d8aa43065066cc9c290b3d9b
   Sentry: f8374b5415bc38dfb5645941b3ae31230fbeae57
   SocketRocket: 9ee265c4b5ae2382d18e4ee1d2dd2d7af0ff1ab5

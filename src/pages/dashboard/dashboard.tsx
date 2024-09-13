@@ -11,13 +11,10 @@ import usePullRequests from "hooks/use-pull-requests";
 import useSelector from "hooks/use-selector";
 import useTranslation from "hooks/use-translation";
 import PopoverModule from "modules/popover-module/src/PopoverModule";
-import { MacStates } from "services/bridges/mac";
 import DefaultLayout from "src/layouts/default-layout/default-layout";
 import { selectShowRelevantTab } from "store/selectors/settings";
 
 import useStyles from "./dashboard.styles";
-
-// const MacEventEmitter = new NativeEventEmitter(Bridges.Mac);
 
 const Dashboard: React.FC = () => {
   const $ = useStyles();
@@ -25,8 +22,7 @@ const Dashboard: React.FC = () => {
   const [previousPollingTime, setPreviousPollingTime] = useState<number>(0);
   const [minutesAgo, setMinutesAgo] = useState<number>(0);
   const [isRelevant, setIsRelevant] = useState<boolean>(true);
-  // TODO: Add setMacState to the useState
-  const [macState] = useState<MacStates>(MacStates.Unlocked);
+
   const {
     pullRequests,
     loading,
@@ -82,16 +78,12 @@ const Dashboard: React.FC = () => {
       }
     };
 
-    if (macState === MacStates.Unlocked) {
-      startPolling();
-    } else {
-      stopPolling();
-    }
+    startPolling();
 
     return () => {
       stopPolling();
     };
-  }, [fetchPullRequests, pollPullRequests, macState]);
+  }, [fetchPullRequests, pollPullRequests]);
 
   useEffect(() => {
     const minutesAgeInterval = setInterval(() => {

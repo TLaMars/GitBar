@@ -9,7 +9,7 @@ import Cocoa
 
 class AutoLauncherAppDelegate: NSObject, NSApplicationDelegate {
   struct Constants {
-    static let gitBarBundleId = "com.lamars.gitbar"
+    static let gitBarBundleId = "io.lamars.gitbar"
   }
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {

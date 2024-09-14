@@ -14,7 +14,10 @@
     "pre-commit": "lint-staged",
     "prepare": "husky",
     "start": "expo start",
-    "test": "jest"
+    "test": "jest",
+    "version:minor": "npm version minor --no-git-tag-version && bundle exec fastlane mac bump_version",
+    "version:major": "npm version major --no-git-tag-version && bundle exec fastlane mac bump_version",
+    "version:patch": "npm version patch --no-git-tag-version && bundle exec fastlane mac bump_version"
   },
   "dependencies": {
     "@apollo/client": "^3.9.9",

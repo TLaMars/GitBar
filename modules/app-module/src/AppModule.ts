@@ -1,7 +1,15 @@
-import { requireNativeModule } from "expo-modules-core";
+import { EventEmitter, requireNativeModule } from "expo-modules-core";
 
-import { AppModuleType } from "./AppModule.types";
+import { AppModuleType, EmitterType } from "./AppModule.types";
 
-// It loads the native module object from the JSI or falls back to
-// the bridge module (from NativeModulesProxy) if the remote debugger is on.
+const emitter = new EventEmitter(requireNativeModule("AppModule"));
+
+export const AppModuleEmitter: EmitterType = {
+  addListener: (eventType, listener) =>
+    emitter.addListener(eventType, listener),
+  removeAllListeners: (eventType) => emitter.removeAllListeners(eventType),
+  removeSubscription: (subscription) =>
+    emitter.removeSubscription(subscription),
+};
+
 export default requireNativeModule<AppModuleType>("AppModule");

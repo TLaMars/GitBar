@@ -18,7 +18,8 @@
     "changelog": "source .env && git-cliff -o --github-repo 'TLaMars/gitbar' --github-token $GITHUB_TOKEN",
     "version:minor": "npm version minor --no-git-tag-version && bundle exec fastlane mac bump_version && npm run changelog",
     "version:major": "npm version major --no-git-tag-version && bundle exec fastlane mac bump_version && npm run changelog",
-    "version:patch": "npm version patch --no-git-tag-version && bundle exec fastlane mac bump_version && npm run changelog"
+    "version:patch": "npm version patch --no-git-tag-version && bundle exec fastlane mac bump_version && npm run changelog",
+    "release:github": "node scripts/release-github-release.js"
   },
   "dependencies": {
     "@apollo/client": "^3.9.9",

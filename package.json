@@ -15,9 +15,10 @@
     "prepare": "husky",
     "start": "expo start",
     "test": "jest",
-    "version:minor": "npm version minor --no-git-tag-version && bundle exec fastlane mac bump_version",
-    "version:major": "npm version major --no-git-tag-version && bundle exec fastlane mac bump_version",
-    "version:patch": "npm version patch --no-git-tag-version && bundle exec fastlane mac bump_version"
+    "changelog": "source .env && git-cliff -o --github-repo 'TLaMars/gitbar' --github-token $GITHUB_TOKEN",
+    "version:minor": "npm version minor --no-git-tag-version && bundle exec fastlane mac bump_version && npm run changelog",
+    "version:major": "npm version major --no-git-tag-version && bundle exec fastlane mac bump_version && npm run changelog",
+    "version:patch": "npm version patch --no-git-tag-version && bundle exec fastlane mac bump_version && npm run changelog"
   },
   "dependencies": {
     "@apollo/client": "^3.9.9",
@@ -76,6 +77,7 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-native-a11y": "^3.3.0",
+    "git-cliff": "^2.5.0",
     "husky": "^9.1.6",
     "jest": "^29.6.3",
     "lint-staged": "^15.2.10",

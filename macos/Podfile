@@ -1,10 +1,14 @@
-require_relative '../node_modules/react-native-macos/scripts/react_native_pods'
-require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+require File.join(File.dirname(`node --print "require.resolve('react-native-macos/package.json')"`), "scripts/react_native_pods")
+require File.join(File.dirname(`node --print "require.resolve('expo/package.json')"`), "scripts/autolinking")
+
+# Delete the codegen build folder
+FileUtils.remove_dir("./build", true)
 
 prepare_react_native_project!
 
 target 'GitBar' do
-  platform :macos, '10.15'
+  platform :macos, '11.0'
+  use_expo_modules!
   use_native_modules!
 
   # Flags change depending on the env values.
@@ -12,10 +16,8 @@ target 'GitBar' do
 
   use_react_native!(
     :path => '../node_modules/react-native-macos',
-    :hermes_enabled => true,
+    :hermes_enabled => false,
     :fabric_enabled => true,
-    # Flipper is not compatible w/ macOS
-    :flipper_configuration => FlipperConfiguration.disabled,
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )

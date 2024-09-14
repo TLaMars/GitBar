@@ -1,5 +1,5 @@
 import { PullRequest } from "models/pull-request";
-import Bridges from "services/bridges/bridges";
+import NotificationsModule from "modules/notifications-module";
 
 const sendPullRequestNotification = (
   pullRequests: PullRequest[],
@@ -28,10 +28,9 @@ const sendPullRequestNotification = (
     }, 0);
 
     if (newPullRequests.length > 0 || newComments > 0) {
-      Bridges.Notification.sendNotification(
+      NotificationsModule.sendNotification(
         "GitBar update:",
         `You have ${newPullRequests.length} new pull requests and ${newComments} new comments`,
-        "gitbar://dashboard",
       );
     }
   }

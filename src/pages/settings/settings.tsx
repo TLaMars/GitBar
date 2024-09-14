@@ -17,14 +17,17 @@ import useTranslation from "hooks/use-translation";
 import DefaultLayout from "layouts/default-layout/default-layout";
 import Appearance from "models/appearance";
 import { GroupPullRequestsBy } from "models/pull-request";
-import Bridges from "services/bridges/bridges";
-import { NotificationPermission } from "services/bridges/notification-manager";
+import AppModule from "modules/app-module";
+import NotificationsModule, {
+  NotificationPermission,
+} from "modules/notifications-module";
 import {
   selectAllowNotifications,
   selectAppearance,
   selectGroupPRsBy,
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
+  selectLaunchAtLogin,
 } from "store/selectors/settings";
 import { removeOneAccount } from "store/slices/accounts";
 import {
@@ -33,6 +36,7 @@ import {
   setGroupPRsBy,
   setHidePRsAfterTwoMonths,
   setHidePRsApprovedByMe,
+  setLaunchAtLogin,
 } from "store/slices/settings";
 
 import useStyles from "./settings.styles";
@@ -49,20 +53,17 @@ const Settings: React.FC = () => {
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
   const allowNotifications = useSelector(selectAllowNotifications);
   const appearance = useSelector(selectAppearance);
+  const launchAtLoginEnabled = useSelector(selectLaunchAtLogin);
   const [notificationPermissions, setNotificationPermissions] =
     useState<NotificationPermission>();
-  const [launchAtLogin, setLaunchAtLogin] = useState<boolean>();
 
   useEffect(() => {
     void fetchProfiles();
   }, [fetchProfiles]);
 
   useEffect(() => {
-    void Bridges.Notification.checkPermissions().then((result) => {
+    void NotificationsModule.getPermissions().then((result) => {
       setNotificationPermissions(result);
-    });
-    void Bridges.LaunchAtLogin.checkStatus().then((result) => {
-      setLaunchAtLogin(result);
     });
   }, []);
 
@@ -155,9 +156,9 @@ const Settings: React.FC = () => {
           label={t("Settings/Application/Notifications")}
           value={allowNotifications}
           disabled={notificationPermissions === NotificationPermission.DENIED}
-          onToggle={(value) => {
+          onToggle={async (value) => {
             if (value) {
-              Bridges.Notification.requestPermissions();
+              await NotificationsModule.requestPermissions();
             }
             dispatch(setAllowNotifications(value));
           }}
@@ -178,10 +179,10 @@ const Settings: React.FC = () => {
         />
         <ListItemToggle
           label={t("Settings/Application/LaunchAtLogin")}
-          value={launchAtLogin ?? false}
-          onToggle={(value) => {
-            Bridges.LaunchAtLogin.setStatus(value);
-            setLaunchAtLogin(value);
+          value={launchAtLoginEnabled}
+          onToggle={async (value) => {
+            await AppModule.enableLaunchAtLogin(value);
+            dispatch(setLaunchAtLogin(value));
           }}
         />
       </ScrollView>

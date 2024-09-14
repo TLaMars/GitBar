@@ -2,137 +2,100 @@
 //  AppDelegate.swift
 //  GitBar
 //
-//  Created by Thomas Lamars on 23/03/2024.
+//  Created by Thomas Lamars on 11/09/2024.
 //
 
 import Foundation
 import Cocoa
-import UserNotifications
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate {
-  var popover: NSPopover!
+class AppDelegate: NSObject, NSApplicationDelegate, RCTBridgeDelegate {
+  
   var bridge: RCTBridge!
-  var statusBarItem: NSStatusItem!
-  var eventMonitor: EventMonitor?
+  var statusItem: NSStatusItem!
+  var popover: NSPopover!
+  
+  func applicationDidFinishLaunching(_ notification: Notification) {
+    setMMKVStorageLocation()
 
-  func applicationDidFinishLaunching(_ aNotification: Notification) {
-    UNUserNotificationCenter.current().delegate = self
-    // Set storage location for MMKV
-    setStorageLocation()
-
-    // Register fonts because they are not installed
-    registerFonts(withFilenames: fontFilenames)
-
-    var jsCodeLocation: URL
+    bridge = RCTBridge(delegate: self, launchOptions: nil)
     
-    #if DEBUG
-      let fallbackURLProvider: () -> URL? = {
-        return URL(string: "http://localhost:8081")
-      }
-      jsCodeLocation = RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackURLProvider: fallbackURLProvider)
-    #else
-      jsCodeLocation = Bundle.main.url(forResource: "main", withExtension: "jsbundle")!
-    #endif
-
-    let rootView = RCTRootView(bundleURL: jsCodeLocation, moduleName: "gitbar", initialProperties: nil, launchOptions: nil)
-    let rootViewController = NSViewController()
-    rootViewController.view = rootView
-    
-    popover = NSPopover()
-    
-    popover.contentSize = NSSize(width: 700, height: 500)
-    popover.animates = true
-    popover.behavior = .transient
-    popover.contentViewController = rootViewController
-    
-    statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    
-    if let button = self.statusBarItem.button {
+    statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    if let button = statusItem.button {
       let image = NSImage(named: "PullRequest")
       image?.size = NSSize(width: 20, height: 20)
       image?.isTemplate = true
       image?.prefersColorMatch = true
-      button.action = #selector(togglePopover(_:))
       button.image = image
+      button.action = #selector(onPressStatusItem(_:))
     }
     
-    // Monitor to watch if user clicks outside popup
-    eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [weak self] event in
-      if let strongSelf = self, strongSelf.popover.isShown {
-        strongSelf.closePopover(event)
-      }
-    }
-    eventMonitor?.start()
+    let rootView = RCTRootView(bridge: bridge, moduleName: "main", initialProperties: [:])
+    let rootViewController = NSViewController()
+    rootViewController.view = rootView
+    
+    popover = NSPopover()
+    popover.contentSize = NSSize(width: 700, height: 500)
+    popover.contentViewController = rootViewController
+    popover.behavior = .transient
+    
+    popoverObservers()
+  }
   
-    let em = NSAppleEventManager.shared()
-    em.setEventHandler(self, andSelector: #selector(self.getUrl(_:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+  func sourceURL(for bridge: RCTBridge) -> URL? {
+    #if DEBUG
+    return RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackExtension: nil)
+    #else
+    return Bundle.main.url(forResource: "main", withExtension: "jsbundle")
+    #endif
   }
-
-  func applicationWillTerminate(_ aNotification: Notification) {
-    // Insert code here to tear down your application
-    eventMonitor?.stop()
-  }
-
-  func closePopover(_ sender: Any?) {
-    popover.performClose(sender)
-    eventMonitor?.stop()
-  }
-
-  func showPopover() {
-    if let button = statusBarItem.button {
-      popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
-      popover.contentViewController?.view.window?.makeKey()
-    }
-    eventMonitor?.start()
-  }
-
+  
   @objc
-  func togglePopover(_ sender: Any?) {
-    if popover.isShown {
-      closePopover(sender)
-    } else {
-      showPopover()
-    }
+  func openPopover() {
+    popover.show(relativeTo: statusItem.button!.bounds, of: statusItem.button!, preferredEdge: .minY)
+    popover.contentViewController?.view.window?.makeKey()
   }
+
+  func closePopover() {
+    popover.close()
+  }
+  
+  func popoverObservers() {
+    let notificationCenter = NotificationCenter.default
+    notificationCenter.addObserver(forName: Notification.Name("GitBar-OpenPopover"), object: nil, queue: nil) { [weak self] _ in
+      self?.openPopover()
+    }
+    notificationCenter.addObserver(forName: Notification.Name("GitBar-ClosePopover"), object: nil, queue: nil) { [weak self] _ in
+      self?.closePopover()
+    }
+    notificationCenter.addObserver(self, selector: #selector(setPopoverAppearance(_:)), name: Notification.Name("GitBar-SetAppearance"), object: nil)
+    notificationCenter.addObserver(self, selector: #selector(setStatusItemText(_:)), name: Notification.Name("GitBar-SetStatusItemText"), object: nil)
+  }
+  
+  @objc
+  func setPopoverAppearance(_ notification: NSNotification) {
+      guard let userInfo = notification.userInfo as? [String: Any],
+            let isDark = userInfo["isDark"] as? Bool else { return }
+
+      popover.appearance = NSAppearance(named: isDark ? .darkAqua : .aqua)
+  }
+  
+  @objc
+  func setStatusItemText(_ notification: NSNotification) {
+      guard let userInfo = notification.userInfo as? [String: Any],
+            let text = userInfo["text"] as? String else { return }
+
+    statusItem.button?.title = text
+  }
+  
+  
   
   @objc 
-  public func getUrl(_ event: NSAppleEventDescriptor, withReplyEvent reply: NSAppleEventDescriptor) -> Void {
-    if let button = statusBarItem.button {
-      popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+  func onPressStatusItem(_ sender: Any?) {
+    if popover.isShown {
+      closePopover()
+    } else {
+      openPopover()
     }
-    return RCTLinkingManager.getUrlEventHandler(event, withReplyEvent: reply)
   }
-  
-  func setStorageLocation() -> Void {
-    // Get the bundle identifier
-    guard let bundleIdentifier = Bundle.main.bundleIdentifier else {
-        fatalError("Unable to retrieve bundle identifier")
-    }
-
-    // Get the Application Support directory path
-    let paths = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)
-    guard let applicationSupportDirectory = paths.first else {
-        fatalError("Unable to locate Application Support directory")
-    }
-    
-    // Create a folder for your app within Application Support
-    let appSupportSubfolder = (applicationSupportDirectory as NSString).appendingPathComponent(bundleIdentifier)
-
-    // Ensure the directory exists
-    let fileManager = FileManager.default
-    if !fileManager.fileExists(atPath: appSupportSubfolder) {
-        try? fileManager.createDirectory(atPath: appSupportSubfolder, withIntermediateDirectories: true, attributes: nil)
-    }
-
-    // Initialize MMKV with custom storage path
-    let storagePath = (appSupportSubfolder as NSString).appendingPathComponent("mmkv")
-    MMKV.initialize(rootDir: storagePath)
-  }
-  
-  func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-    showPopover()
-    completionHandler()
-  }
-  
 }

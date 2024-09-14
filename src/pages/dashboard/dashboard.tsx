@@ -1,10 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import {
-  ActivityIndicator,
-  NativeEventEmitter,
-  SectionList,
-  View,
-} from "react-native";
+import { ActivityIndicator, SectionList, View } from "react-native";
 
 import Body from "components/body/body";
 import Button from "components/button/button";
@@ -15,14 +10,12 @@ import PullRequestCard from "components/pull-request-card/pull-request-card";
 import usePullRequests from "hooks/use-pull-requests";
 import useSelector from "hooks/use-selector";
 import useTranslation from "hooks/use-translation";
-import Bridges from "services/bridges/bridges";
-import { MacEvents, MacStates } from "services/bridges/mac";
+import { AppModuleEmitter, MacState } from "modules/app-module";
+import PopoverModule from "modules/popover-module/src/PopoverModule";
 import DefaultLayout from "src/layouts/default-layout/default-layout";
 import { selectShowRelevantTab } from "store/selectors/settings";
 
 import useStyles from "./dashboard.styles";
-
-const MacEventEmitter = new NativeEventEmitter(Bridges.Mac);
 
 const Dashboard: React.FC = () => {
   const $ = useStyles();
@@ -30,7 +23,7 @@ const Dashboard: React.FC = () => {
   const [previousPollingTime, setPreviousPollingTime] = useState<number>(0);
   const [minutesAgo, setMinutesAgo] = useState<number>(0);
   const [isRelevant, setIsRelevant] = useState<boolean>(true);
-  const [macState, setMacState] = useState<MacStates>(MacStates.Unlocked);
+  const [macState, setMacState] = useState<MacState>(MacState.UNLOCKED);
   const {
     pullRequests,
     loading,
@@ -46,21 +39,22 @@ const Dashboard: React.FC = () => {
   );
 
   useEffect(() => {
-    MacEventEmitter.addListener(
-      MacEvents.MacStateChange,
-      (state: MacStates) => {
-        setMacState(state);
-      },
-    );
+    AppModuleEmitter.addListener("onMacStateChange", (event) => {
+      setMacState(event.state);
+    });
+
+    return () => {
+      AppModuleEmitter.removeAllListeners("onMacStateChange");
+    };
   }, []);
 
   useEffect(() => {
     if (showRetryButton) {
-      Bridges.App.setStatusBarText(t("Dashboard/StatusBar/Retry"));
+      PopoverModule.setStatusItemText(t("Dashboard/StatusBar/Retry"));
       return;
     }
     if (relevantAmountOfPullRequests >= 0) {
-      Bridges.App.setStatusBarText(relevantAmountOfPullRequests.toString());
+      PopoverModule.setStatusItemText(relevantAmountOfPullRequests.toString());
     }
   }, [relevantAmountOfPullRequests, showRetryButton, t]);
 
@@ -85,7 +79,7 @@ const Dashboard: React.FC = () => {
       }
     };
 
-    if (macState === MacStates.Unlocked) {
+    if (macState === MacState.UNLOCKED) {
       startPolling();
     } else {
       stopPolling();

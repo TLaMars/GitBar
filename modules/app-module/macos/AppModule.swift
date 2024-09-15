@@ -37,7 +37,7 @@ public class AppModule: Module {
 
     AsyncFunction("enableLaunchAtLogin") { (enabled: Bool) in
       // TODO: Implement SMAppService for macOS13+
-      guard SMLoginItemSetEnabled("com.lamars.gitbar.AutoLauncher" as CFString, enabled) else {
+      guard SMLoginItemSetEnabled("io.lamars.gitbar.AutoLauncher" as CFString, enabled) else {
           throw AppError.failedToSetLaunchAtLogin
       }
     }

@@ -1,79 +1,34 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# GitBar
 
-# Getting Started
+Your new Pull Request tool for GitHub, GitLab and Azure.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Featues
 
-## Step 1: Start the Metro Server
+- [x] GitHub
+- [x] GitLab (self-hosted and gitlab.com)
+- [x] Azure DevOps
+- [x] View Pull Requests
+- [x] Get Notifications
+- [x] Launch at Login
+- [x] Dark / Light Mode
+- [x] Amount of PRs in the menubar
+- [x] Open PRs in your browser
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+### To Do
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- [ ] Bitbucket
+- [ ] Prioritize PRs
+- [ ] Ignore Repositories
+- [ ] Filter PRs
+- [ ] Merge PRs
+- [ ] See Pipeline Status
 
-```bash
-# using npm
-npm start
+## Release Process
 
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+1. Bump the version with `npm run version:{major/minor/patch}`
+   1. This will bump the version/build number and update the `CHANGELOG.md`
+2. Commit the changes with `git commit -am "chore(release): v{x.x.x}"`
+3. Create a tag with that version `git tag v{x.x.x}` and push it to git
+4. A release on GitHub will be created automatically
+5. [TODO]: The CI will build the app and publish it to the release
+   1. Create a build locally and upload it to TestFlight

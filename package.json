@@ -16,6 +16,7 @@
     "start": "expo start",
     "test": "jest",
     "changelog": "source .env && git-cliff -o --github-repo 'TLaMars/gitbar' --github-token $GITHUB_TOKEN",
+    "bump:build_number": "bundle exec fastlane mac bump_version",
     "version:minor": "npm version minor --no-git-tag-version && bundle exec fastlane mac bump_version && npm run changelog",
     "version:major": "npm version major --no-git-tag-version && bundle exec fastlane mac bump_version && npm run changelog",
     "version:patch": "npm version patch --no-git-tag-version && bundle exec fastlane mac bump_version && npm run changelog",

@@ -47,9 +47,13 @@ class GitLabProvider implements Provider {
         };
       }
 
+      const avatarUrl = data.currentUser?.avatarUrl?.includes("https")
+        ? data.currentUser.avatarUrl
+        : `${this.auth.domain}${data.currentUser?.avatarUrl}`;
+
       this.#profile = {
         id: data.currentUser?.id ?? "",
-        avatarUrl: `${this.auth.domain}${data.currentUser?.avatarUrl}`,
+        avatarUrl,
         userName: data.currentUser?.username ?? "",
         name: data.currentUser?.name ?? "",
         type: AccountType.GitLab,

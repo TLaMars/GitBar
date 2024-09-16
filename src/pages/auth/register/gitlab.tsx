@@ -188,7 +188,11 @@ const RegisterGitLab: React.FC = () => {
       )}
       {data?.currentUser && (
         <RegisteredLayout
-          avatarUrl={`${domain}${data.currentUser.avatarUrl}`}
+          avatarUrl={
+            data.currentUser.avatarUrl?.includes("https")
+              ? data.currentUser.avatarUrl
+              : `${domain}${data.currentUser.avatarUrl}`
+          }
           name={data.currentUser.name}
           type={AccountType.GitLab}
           onRetryPress={getGitLabUser}

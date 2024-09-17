@@ -1,4 +1,8 @@
-import { ApolloClient, DefaultContext } from "@apollo/client";
+import {
+  ApolloClient,
+  DefaultContext,
+  TypedDocumentNode,
+} from "@apollo/client";
 
 import QueryGetGithubPullRequests from "gql/github/queries/pull-requests";
 import QueryGetGitHubViewer from "gql/github/queries/viewer";
@@ -28,22 +32,33 @@ class GitHubProvider implements Provider {
     this.#context = gitHubContext(this.auth.accessToken);
   }
 
+  private query = async <TData, TVariables = { [key: string]: never }>(
+    query: TypedDocumentNode<TData, TVariables>,
+  ) => {
+    const { data, error } = await this.client
+      .query<TData>({
+        query,
+        context: this.#context,
+        fetchPolicy: "no-cache",
+      })
+      .catch((e) => ({ data: null, error: e }));
+
+    return { data, error };
+  };
+
   async profile() {
     if (!this.#profile) {
-      const { data, error } = await this.client
-        .query({
-          query: QueryGetGitHubViewer,
-          context: this.#context,
-          fetchPolicy: "no-cache",
-        })
-        .catch((e) => ({ data: null, error: e }));
+      const { data, error } = await this.query(QueryGetGitHubViewer);
 
       if (error || !data) {
         return {
-          id: this.id,
-          name: this.auth.userName,
-          type: AccountType.GitHub,
-          status: ProfileStatus.Invalid,
+          error,
+          data: {
+            id: this.id,
+            name: this.auth.userName,
+            type: AccountType.GitHub,
+            status: ProfileStatus.Invalid,
+          },
         };
       }
 
@@ -57,26 +72,34 @@ class GitHubProvider implements Provider {
       };
     }
 
-    return this.#profile;
+    return { data: this.#profile };
   }
 
   async pullRequests() {
-    const profile = await this.profile();
+    const { data: profile } = await this.profile();
 
     if (profile.status === ProfileStatus.Invalid) {
-      return [];
+      return {
+        error: new Error("Account is expired"),
+        data: [],
+      };
     }
 
-    const { data } = await this.client.query({
-      query: QueryGetGithubPullRequests,
-      context: this.#context,
-      fetchPolicy: "no-cache",
-    });
+    const { data, error } = await this.query(QueryGetGithubPullRequests);
 
-    return transformGithubPullRequest(profile, data).filter(
-      (pullRequest, index, self) =>
-        index === self.findIndex((p) => p.id === pullRequest.id),
-    );
+    if (data === null || error) {
+      return {
+        error,
+        data: [],
+      };
+    }
+
+    return {
+      data: transformGithubPullRequest(profile, data).filter(
+        (pullRequest, index, self) =>
+          index === self.findIndex((p) => p.id === pullRequest.id),
+      ),
+    };
   }
 }
 

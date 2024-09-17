@@ -6,16 +6,21 @@ import Profile from "models/profile";
 const useProfiles = () => {
   const accounts = useContext(AccountsContext);
   const [profiles, setProfiles] = useState<Profile[]>([]);
+  const [errors, setErrors] = useState<Error | null>(null);
 
   const fetchProfiles = useCallback(async () => {
-    const data = await Promise.all(
+    const result = await Promise.all(
       accounts.map((account) => account.profile()),
     );
 
-    setProfiles(data);
+    const groupedProfiles = result.map(({ data }) => data);
+    const groupedErrors = result.map(({ error }) => error);
+
+    setProfiles(groupedProfiles);
+    setErrors(groupedErrors.find((error) => error !== undefined) || null);
   }, [accounts]);
 
-  return { profiles, fetchProfiles };
+  return { profiles, fetchProfiles, errors };
 };
 
 export default useProfiles;

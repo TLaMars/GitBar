@@ -42,7 +42,7 @@ class AzureProvider implements Provider {
         .catch((error) => ({ data: null, status: error.statusCode }));
 
       if (!data || status !== 200) {
-        return errorProfile;
+        return { data: errorProfile, error: new Error("Invalid profile") };
       }
 
       this.#profile = {
@@ -54,10 +54,10 @@ class AzureProvider implements Provider {
         status: ProfileStatus.Valid,
       };
 
-      return this.#profile;
+      return { data: this.#profile };
     }
 
-    return this.#profile;
+    return { data: this.#profile };
   }
 
   async projects() {
@@ -70,10 +70,10 @@ class AzureProvider implements Provider {
   }
 
   async pullRequests() {
-    const profile = await this.profile();
+    const { data: profile, error: profileError } = await this.profile();
 
     if (profile.status === ProfileStatus.Invalid) {
-      return [];
+      return { data: [], error: profileError };
     }
 
     const projects = await this.projects();
@@ -93,14 +93,16 @@ class AzureProvider implements Provider {
       }),
     );
 
-    return pullRequests
-      .flat()
-      .map((pr) => transformAzurePullRequest(profile, pr))
-      .filter(
-        (pr) =>
-          pr.author.name === profile.name ||
-          pr.reviewers.some((reviewer) => reviewer.name === profile.name),
-      );
+    return {
+      data: pullRequests
+        .flat()
+        .map((pr) => transformAzurePullRequest(profile, pr))
+        .filter(
+          (pr) =>
+            pr.author.name === profile.name ||
+            pr.reviewers.some((reviewer) => reviewer.name === profile.name),
+        ),
+    };
   }
 }
 

@@ -41,7 +41,10 @@ class GitLabProvider implements Provider {
         context: this.#context,
         fetchPolicy: "no-cache",
       })
-      .catch((e) => ({ data: null, error: e }));
+      .catch((e) => ({
+        data: null,
+        error: new Error(`GitLab ${this.auth.userName}: ${e.message}`),
+      }));
 
     return { data, error };
   };
@@ -80,11 +83,11 @@ class GitLabProvider implements Provider {
   }
 
   async pullRequests() {
-    const { data: profile } = await this.profile();
+    const { data: profile, error: profileError } = await this.profile();
 
-    if (profile.status === ProfileStatus.Invalid) {
+    if (profile.status === ProfileStatus.Invalid || profileError) {
       return {
-        error: new Error("Account is expired"),
+        error: profileError,
         data: [],
       };
     }

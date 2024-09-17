@@ -42,7 +42,10 @@ class AzureProvider implements Provider {
         .catch((error) => ({ data: null, status: error.statusCode }));
 
       if (!data || status !== 200) {
-        return { data: errorProfile, error: new Error("Invalid profile") };
+        return {
+          data: errorProfile,
+          error: new Error(`Azure ${this.auth.organization}: Invalid profile`),
+        };
       }
 
       this.#profile = {

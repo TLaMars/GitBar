@@ -4,6 +4,7 @@ import { ActivityIndicator, SectionList, View } from "react-native";
 import Body from "components/body/body";
 import Button from "components/button/button";
 import ButtonToggle from "components/button-toggle/button-toggle";
+import ErrorContainer from "components/error-container/error-container";
 import Heading from "components/heading/heading";
 import Icon from "components/icon/icon";
 import PullRequestCard from "components/pull-request-card/pull-request-card";
@@ -30,6 +31,7 @@ const Dashboard: React.FC = () => {
     fetchPullRequests,
     relevantPullRequests,
     relevantAmountOfPullRequests,
+    errors,
   } = usePullRequests();
   const showRelevantTab = useSelector(selectShowRelevantTab);
 
@@ -136,6 +138,7 @@ const Dashboard: React.FC = () => {
           sections={
             isRelevant && showRelevantTab ? relevantPullRequests : pullRequests
           }
+          ListHeaderComponent={errors && <ErrorContainer errors={errors} />}
           renderItem={({ item }) => (
             <PullRequestCard
               title={item.title}

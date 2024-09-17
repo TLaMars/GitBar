@@ -6,7 +6,7 @@ import Profile from "models/profile";
 const useProfiles = () => {
   const accounts = useContext(AccountsContext);
   const [profiles, setProfiles] = useState<Profile[]>([]);
-  const [errors, setErrors] = useState<Error | null>(null);
+  const [errors, setErrors] = useState<Error[] | null>(null);
 
   const fetchProfiles = useCallback(async () => {
     const result = await Promise.all(
@@ -17,7 +17,7 @@ const useProfiles = () => {
     const groupedErrors = result.map(({ error }) => error);
 
     setProfiles(groupedProfiles);
-    setErrors(groupedErrors.find((error) => error !== undefined) || null);
+    setErrors(groupedErrors.filter((error) => error !== undefined));
   }, [accounts]);
 
   return { profiles, fetchProfiles, errors };

@@ -29,7 +29,7 @@ const usePullRequests = () => {
   const hidePRsAfterTwoMonths = useSelector(selectHidePRsAfterTwoMonths);
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
   const sendNotifications = useSelector(selectAllowNotifications);
-  const [errors, setErrors] = useState<Error | null>(null);
+  const [errors, setErrors] = useState<Error[] | null>(null);
 
   const fetchPullRequests = useCallback(async () => {
     setLoading(true);
@@ -40,7 +40,7 @@ const usePullRequests = () => {
 
     const groupedData = result.map(({ data }) => data);
     const groupedErrors = result.map(({ error }) => error);
-    setErrors(groupedErrors.find((error) => error !== undefined) || null);
+    setErrors(groupedErrors.filter((error) => error !== undefined));
 
     const sortedResult = groupedData.flat().sort((a, b) => {
       if (a.createdAt < b.createdAt) {

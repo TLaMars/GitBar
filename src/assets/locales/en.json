@@ -65,5 +65,6 @@
   "AccountCard/Status/Invalid": "Error: Invalid Credentials or missing scopes",
   "Settings/GroupPRsBy/GroupBy": "Group PRs by setting ",
   "Settings/GroupPRsBy/None": "Don't Group",
-  "Settings/Application/LaunchAtLogin": "Launch GitBar at login"
+  "Settings/Application/LaunchAtLogin": "Launch GitBar at login",
+  "ErrorContainer/Heading/Error": "Errors"
 }

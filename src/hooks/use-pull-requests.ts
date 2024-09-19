@@ -29,7 +29,7 @@ const usePullRequests = () => {
   const hidePRsAfterTwoMonths = useSelector(selectHidePRsAfterTwoMonths);
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
   const sendNotifications = useSelector(selectAllowNotifications);
-  const [errors, setErrors] = useState<Error[] | null>(null);
+  const [errors, setErrors] = useState<Error[]>([]);
 
   const fetchPullRequests = useCallback(async () => {
     setLoading(true);

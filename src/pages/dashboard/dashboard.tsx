@@ -138,7 +138,9 @@ const Dashboard: React.FC = () => {
           sections={
             isRelevant && showRelevantTab ? relevantPullRequests : pullRequests
           }
-          ListHeaderComponent={errors && <ErrorContainer errors={errors} />}
+          ListHeaderComponent={
+            errors.length > 0 ? <ErrorContainer errors={errors} /> : undefined
+          }
           renderItem={({ item }) => (
             <PullRequestCard
               title={item.title}

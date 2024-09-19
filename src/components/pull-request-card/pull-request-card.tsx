@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-import { Linking, TouchableOpacity } from "react-native";
-import { View } from "react-native-macos";
+import { GestureResponderEvent, Linking, TouchableOpacity } from "react-native";
+import {
+  ActionSheetIOS,
+  ActionSheetIOSOptions,
+  View,
+} from "react-native-macos";
 
 import Attendee from "components/attendee/attendee";
 import AttendeeList from "components/attendee-list/attendee-list";
@@ -21,6 +25,8 @@ type Props = {
   amountOfComments?: number;
   amountOfApprovals: number;
   amountOfRequiredApprovals?: number;
+  actionSheetOptions?: ActionSheetIOSOptions;
+  actionSheetCallback?: (buttonIndex: number) => void;
 };
 
 const PullRequestCard: React.FC<Props> = ({
@@ -31,12 +37,23 @@ const PullRequestCard: React.FC<Props> = ({
   amountOfComments,
   amountOfApprovals,
   amountOfRequiredApprovals,
+  actionSheetOptions,
+  actionSheetCallback,
 }) => {
   const $ = useStyles();
   const { t } = useTranslation();
   const [toolTip, setToolTip] = useState(false);
 
-  const onPress = async () => {
+  const onPress = async (event: GestureResponderEvent) => {
+    if ("button" in event.nativeEvent && event.nativeEvent.button === 2) {
+      if (actionSheetOptions && actionSheetCallback) {
+        ActionSheetIOS.showActionSheetWithOptions(
+          actionSheetOptions,
+          actionSheetCallback,
+        );
+      }
+      return;
+    }
     if (await Linking.canOpenURL(url)) {
       await Linking.openURL(url);
     }

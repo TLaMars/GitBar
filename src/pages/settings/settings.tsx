@@ -4,6 +4,7 @@ import { ScrollView, View } from "react-native";
 
 import AccountCard from "components/account-card/account-card";
 import Body from "components/body/body";
+import Button from "components/button/button";
 import Heading from "components/heading/heading";
 import Link from "components/link/link";
 import ListItemPicker from "components/list-item/list-item-picker";
@@ -30,6 +31,7 @@ import {
   selectLaunchAtLogin,
 } from "store/selectors/settings";
 import { removeOneAccount } from "store/slices/accounts";
+import { resetHiddenPullRequests } from "store/slices/pull-requests";
 import {
   setAllowNotifications,
   setAppearance,
@@ -185,6 +187,21 @@ const Settings: React.FC = () => {
             dispatch(setLaunchAtLogin(value));
           }}
         />
+
+        {__DEV__ && (
+          <>
+            <Spacer mt={4} />
+            <Heading size="x2s">Development section</Heading>
+            <Spacer mt={1} />
+            <Button
+              size="xs"
+              label="Reset hidden PRs"
+              onPress={() => {
+                dispatch(resetHiddenPullRequests());
+              }}
+            />
+          </>
+        )}
       </ScrollView>
     </DefaultLayout>
   );

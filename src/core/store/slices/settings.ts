@@ -13,8 +13,6 @@ const initialState = {
   launchAtLogin: false,
 };
 
-export type DebugSettingsSlice = typeof initialState;
-
 const settings = createSlice({
   name: "settings",
   initialState,

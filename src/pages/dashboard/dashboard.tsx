@@ -8,6 +8,7 @@ import ErrorContainer from "components/error-container/error-container";
 import Heading from "components/heading/heading";
 import Icon from "components/icon/icon";
 import PullRequestCard from "components/pull-request-card/pull-request-card";
+import useDispatch from "hooks/use-dispatch";
 import usePullRequests from "hooks/use-pull-requests";
 import useSelector from "hooks/use-selector";
 import useTranslation from "hooks/use-translation";
@@ -15,12 +16,14 @@ import { AppModuleEmitter, MacState } from "modules/app-module";
 import PopoverModule from "modules/popover-module/src/PopoverModule";
 import DefaultLayout from "src/layouts/default-layout/default-layout";
 import { selectShowRelevantTab } from "store/selectors/settings";
+import { setPullRequestHidden } from "store/slices/pull-requests";
 
 import useStyles from "./dashboard.styles";
 
 const Dashboard: React.FC = () => {
   const $ = useStyles();
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const [previousPollingTime, setPreviousPollingTime] = useState<number>(0);
   const [minutesAgo, setMinutesAgo] = useState<number>(0);
   const [isRelevant, setIsRelevant] = useState<boolean>(true);
@@ -150,6 +153,19 @@ const Dashboard: React.FC = () => {
               amountOfComments={item.amountOfComments}
               amountOfApprovals={item.amountOfApprovals}
               amountOfRequiredApprovals={item.amountOfRequiredApprovals}
+              actionSheetOptions={{
+                options: ["Hide PullRequest"],
+              }}
+              actionSheetCallback={(buttonIndex) => {
+                if (buttonIndex === 0) {
+                  dispatch(
+                    setPullRequestHidden({
+                      id: item.id,
+                      repoName: item.repoName,
+                    }),
+                  );
+                }
+              }}
             />
           )}
           keyExtractor={(item) => item.id}

@@ -4,6 +4,7 @@ import {
   AzurePullRequest,
   ReviewerVote,
 } from "services/api/azure/models/pull-requests-response";
+import getColorForProject from "utils/get-project-color";
 
 const transformAzurePullRequest = (
   profile: Profile,
@@ -23,6 +24,7 @@ const transformAzurePullRequest = (
       // TODO: Add avatarUrl
       avatarUrl: "",
     },
+    repoId: data.repository.id,
     repoName: data.repository.name,
     url: match
       ? `${match[1]}${encodedProject}/_git/${encodedRepo}/pullrequest/${data.pullRequestId}`
@@ -43,6 +45,7 @@ const transformAzurePullRequest = (
         reviewer.displayName === profile.name &&
         reviewer.vote === ReviewerVote.Approved,
     ),
+    accentColor: getColorForProject(data.repository.id),
   };
 };
 

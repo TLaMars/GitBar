@@ -23,6 +23,7 @@ const FragmentGitLabPullRequest = graphql(`
       }
       sourceProject {
         name
+        id
       }
       userNotesCount
       createdAt

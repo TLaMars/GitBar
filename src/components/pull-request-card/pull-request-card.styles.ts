@@ -1,6 +1,7 @@
 import useMemoizedStyles from "hooks/use-memoized-styles";
+import { ThemeColor } from "models/theme";
 
-const useStyles = () =>
+const useStyles = (accentColor: ThemeColor) =>
   useMemoizedStyles(({ spacing, colors, borderRadiuses }) => ({
     card: {
       backgroundColor: colors.backgroundSurface,
@@ -8,6 +9,8 @@ const useStyles = () =>
       borderRadius: borderRadiuses.sidebar,
       flexDirection: "column",
       gap: spacing(2),
+      borderLeftWidth: 4,
+      borderLeftColor: colors[accentColor],
     },
     footer: {
       flexDirection: "row",

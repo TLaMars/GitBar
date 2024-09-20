@@ -17,6 +17,7 @@ const QueryGetGithubPullRequests = graphql(`
           }
           repository {
             nameWithOwner
+            id
           }
           reviewRequests(first: 5) {
             nodes {

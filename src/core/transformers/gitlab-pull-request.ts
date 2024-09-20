@@ -4,6 +4,7 @@ import FragmentGitLabPullRequest from "gql/gitlab/fragments/pull-request";
 import { Attendee } from "models/attendee";
 import Profile from "models/profile";
 import { PullRequest } from "models/pull-request";
+import getColorForProject from "utils/get-project-color";
 
 const transformGitLabPullRequest = ({
   domain,
@@ -47,6 +48,7 @@ const transformGitLabPullRequest = ({
             ? pr.author.avatarUrl
             : `${domain}${pr.author?.avatarUrl}`,
         },
+        repoId: pr.sourceProject?.id ?? "",
         repoName: pr.sourceProject?.name ?? "",
         reviewers:
           // TODO fix unsafe return
@@ -74,6 +76,7 @@ const transformGitLabPullRequest = ({
             reviewer?.name === profile.name &&
             !!reviewer.mergeRequestInteraction?.approved,
         ),
+        accentColor: getColorForProject(pr.sourceProject?.name ?? ""),
       },
     ];
   }, []);

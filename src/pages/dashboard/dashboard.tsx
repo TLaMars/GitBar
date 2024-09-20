@@ -181,6 +181,7 @@ const Dashboard: React.FC = () => {
                   );
                 }
               }}
+              accentColor={item.accentColor}
             />
           )}
           keyExtractor={(item) => item.id}

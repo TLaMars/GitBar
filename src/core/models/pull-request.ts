@@ -1,4 +1,5 @@
 import { Attendee } from "./attendee";
+import { ThemeColor } from "./theme";
 
 export enum GroupPullRequestsBy {
   REPO = "repo",
@@ -10,6 +11,7 @@ export type PullRequest = {
   id: string;
   title: string;
   author: Attendee;
+  repoId: string;
   repoName: string;
   reviewers: Attendee[];
   createdAt: string;
@@ -18,4 +20,6 @@ export type PullRequest = {
   amountOfApprovals: number;
   amountOfRequiredApprovals?: number;
   approvedByMe?: boolean;
+  // Accent Color for the repository
+  accentColor: ThemeColor;
 };

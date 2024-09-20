@@ -6,6 +6,7 @@ import {
 import { Attendee } from "models/attendee";
 import Profile from "models/profile";
 import { PullRequest } from "models/pull-request";
+import getColorForProject from "utils/get-project-color";
 
 const transformGithubPullRequest = (
   profile: Profile,
@@ -26,6 +27,7 @@ const transformGithubPullRequest = (
             name: pr.author?.login ?? "",
             avatarUrl: pr.author?.avatarUrl,
           },
+          repoId: pr.repository.id,
           repoName: pr.repository.nameWithOwner,
           reviewers:
             pr.reviewRequests?.nodes?.reduce<Attendee[]>(
@@ -72,6 +74,7 @@ const transformGithubPullRequest = (
               review?.author?.login === profile.userName &&
               review?.state === PullRequestReviewState.Approved,
           ),
+          accentColor: getColorForProject(pr.repository.id),
         },
       ];
     }, []) ?? []

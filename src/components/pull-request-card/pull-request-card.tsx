@@ -14,6 +14,7 @@ import Icon from "components/icon/icon";
 import Spacer from "components/spacer/spacer";
 import useTranslation from "hooks/use-translation";
 import { Attendee as AttendeeType } from "models/attendee";
+import { ThemeColor } from "models/theme";
 
 import useStyles from "./pull-request-card.styles";
 
@@ -27,6 +28,7 @@ type Props = {
   amountOfRequiredApprovals?: number;
   actionSheetOptions?: ActionSheetIOSOptions;
   actionSheetCallback?: (buttonIndex: number) => void;
+  accentColor: ThemeColor;
 };
 
 const PullRequestCard: React.FC<Props> = ({
@@ -39,8 +41,9 @@ const PullRequestCard: React.FC<Props> = ({
   amountOfRequiredApprovals,
   actionSheetOptions,
   actionSheetCallback,
+  accentColor,
 }) => {
-  const $ = useStyles();
+  const $ = useStyles(accentColor);
   const { t } = useTranslation();
   const [toolTip, setToolTip] = useState(false);
 

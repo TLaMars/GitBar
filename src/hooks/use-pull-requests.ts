@@ -52,15 +52,15 @@ const usePullRequests = () => {
       return 0;
     });
 
-    const nonHiddenResult = sortedResult.filter(
-      (pr) =>
-        !hiddenPullRequests.some(
-          (hiddenPr) =>
-            hiddenPr.id === pr.id && hiddenPr.repoName === pr.repoName,
-        ),
-    );
-
-    const relevantResult = nonHiddenResult
+    const relevantResult = sortedResult
+      // Filter out PRs that are hidden
+      .filter(
+        (pr) =>
+          !hiddenPullRequests.some(
+            (hiddenPr) =>
+              hiddenPr.id === pr.id && hiddenPr.repoName === pr.repoName,
+          ),
+      )
       // Filter out PRs that are older than two months
       .filter((pr) => {
         if (hidePRsAfterTwoMonths) {
@@ -79,7 +79,7 @@ const usePullRequests = () => {
         return true;
       });
 
-    const groupedResult = groupPullRequestsBy(nonHiddenResult, groupPRsBy);
+    const groupedResult = groupPullRequestsBy(sortedResult, groupPRsBy);
     const relevantGroupedResult = groupPullRequestsBy(
       relevantResult,
       groupPRsBy,
@@ -93,6 +93,7 @@ const usePullRequests = () => {
 
     return {
       pullRequests: groupedResult,
+      totalAmountOfPullRequests: sortedResult.length,
       relevantAmountOfPullRequests: relevantResult.length,
       relevantPullRequests: relevantGroupedResult,
       fetchPullRequests,

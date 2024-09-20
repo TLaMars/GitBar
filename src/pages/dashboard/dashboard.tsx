@@ -35,6 +35,7 @@ const Dashboard: React.FC = () => {
     relevantPullRequests,
     relevantAmountOfPullRequests,
     errors,
+    totalAmountOfPullRequests,
   } = usePullRequests();
   const showRelevantTab = useSelector(selectShowRelevantTab);
 
@@ -59,9 +60,19 @@ const Dashboard: React.FC = () => {
       return;
     }
     if (relevantAmountOfPullRequests >= 0) {
-      PopoverModule.setStatusItemText(relevantAmountOfPullRequests.toString());
+      PopoverModule.setStatusItemText(
+        showRelevantTab
+          ? relevantAmountOfPullRequests.toString()
+          : totalAmountOfPullRequests.toString(),
+      );
     }
-  }, [relevantAmountOfPullRequests, showRetryButton, t]);
+  }, [
+    relevantAmountOfPullRequests,
+    showRetryButton,
+    t,
+    totalAmountOfPullRequests,
+    showRelevantTab,
+  ]);
 
   const pollPullRequests = useCallback(async () => {
     await fetchPullRequests();
@@ -153,9 +164,13 @@ const Dashboard: React.FC = () => {
               amountOfComments={item.amountOfComments}
               amountOfApprovals={item.amountOfApprovals}
               amountOfRequiredApprovals={item.amountOfRequiredApprovals}
-              actionSheetOptions={{
-                options: ["Hide PullRequest"],
-              }}
+              actionSheetOptions={
+                isRelevant && showRelevantTab
+                  ? {
+                      options: [t("PullRequestCard/ActionSheet/Hide")],
+                    }
+                  : undefined
+              }
               actionSheetCallback={(buttonIndex) => {
                 if (buttonIndex === 0) {
                   dispatch(

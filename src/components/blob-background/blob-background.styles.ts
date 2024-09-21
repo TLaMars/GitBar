@@ -10,19 +10,17 @@ const useStyles = () =>
     },
     blobOne: {
       position: "absolute",
-      width: 500,
-      height: 500,
-      opacity: 0.7,
-      left: 350,
-      top: 200,
+      width: 1000,
+      height: 1000,
+      left: 200,
+      top: 50,
     },
     blobTwo: {
-      width: 500,
-      height: 500,
       position: "absolute",
-      opacity: 0.7,
-      top: -170,
-      left: -170,
+      width: 750,
+      height: 750,
+      top: -450,
+      left: -300,
     },
   }));
 

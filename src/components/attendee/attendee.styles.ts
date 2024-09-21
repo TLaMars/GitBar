@@ -5,10 +5,9 @@ const useStyles = () =>
     attendee: {
       alignItems: "center",
       justifyContent: "center",
-      backgroundColor: colors.backgroundCta,
+      backgroundColor: colors.backgroundCtaSecondary,
     },
     initials: {
-      color: colors.textOnCta,
       fontWeight: fontWeights.bold,
       textAlign: "center",
       alignItems: "center",

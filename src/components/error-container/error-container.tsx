@@ -2,16 +2,19 @@ import React from "react";
 import { View } from "react-native";
 
 import Body from "components/body/body";
+import Button from "components/button/button";
 import Heading from "components/heading/heading";
+import Spacer from "components/spacer/spacer";
 import useTranslation from "hooks/use-translation";
 
 import useStyles from "./error-container.styles";
 
 type Props = {
   errors: Error[];
+  onErrorRetry?: () => void;
 };
 
-const ErrorContainer: React.FC<Props> = ({ errors }) => {
+const ErrorContainer: React.FC<Props> = ({ errors, onErrorRetry }) => {
   const $ = useStyles();
   const { t } = useTranslation();
 
@@ -23,6 +26,17 @@ const ErrorContainer: React.FC<Props> = ({ errors }) => {
           ⏺︎ {error.message}
         </Body>
       ))}
+      {onErrorRetry && (
+        <>
+          <Spacer mt={2} />
+          <Button
+            onPress={onErrorRetry}
+            label={t("ErrorContainer/Button/Retry")}
+            type="secondary"
+            size="xs"
+          />
+        </>
+      )}
     </View>
   );
 };

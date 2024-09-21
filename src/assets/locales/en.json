@@ -67,5 +67,6 @@
   "Settings/GroupPRsBy/None": "Don't Group",
   "Settings/Application/LaunchAtLogin": "Launch GitBar at login",
   "ErrorContainer/Heading/Error": "Errors",
-  "PullRequestCard/ActionSheet/Hide": "Hide PullRequest from Relevant Tab"
+  "PullRequestCard/ActionSheet/Hide": "Hide PullRequest from Relevant Tab",
+  "ErrorContainer/Button/Retry": "Retry"
 }

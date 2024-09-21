@@ -85,7 +85,6 @@ const usePullRequests = () => {
       groupPRsBy,
     );
 
-    setLoading(false);
     if (sendNotifications) {
       sendPullRequestNotification(sortedResult, prevPullRequestsRef.current);
       prevPullRequestsRef.current = sortedResult;

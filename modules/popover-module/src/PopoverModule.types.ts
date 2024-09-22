@@ -1,6 +1,6 @@
 export type PopoverModuleType = {
-  show: () => void;
-  hide: () => void;
+  open: () => void;
+  close: () => void;
   setAppearance: (isDark: boolean) => void;
   setStatusItemText: (text: string) => void;
 };

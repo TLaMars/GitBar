@@ -1545,6 +1545,8 @@ PODS:
     - React-Core
   - Sentry/HybridSDK (8.36.0)
   - SocketRocket (0.7.0)
+  - WindowModule (1.0.0):
+    - ExpoModulesCore
   - Yoga (0.0.0)
 
 DEPENDENCIES:
@@ -1624,6 +1626,7 @@ DEPENDENCIES:
   - "RNSentry (from `../node_modules/@sentry/react-native`)"
   - RNSVG (from `../node_modules/react-native-svg`)
   - SocketRocket (from `../node_modules/react-native-macos/third-party-podspecs/SocketRocket.podspec`)
+  - WindowModule (from `../modules/window-module/macos`)
   - Yoga (from `../node_modules/react-native-macos/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -1779,6 +1782,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-svg"
   SocketRocket:
     :podspec: "../node_modules/react-native-macos/third-party-podspecs/SocketRocket.podspec"
+  WindowModule:
+    :path: "../modules/window-module/macos"
   Yoga:
     :path: "../node_modules/react-native-macos/ReactCommon/yoga"
 
@@ -1859,6 +1864,7 @@ SPEC CHECKSUMS:
   RNSVG: b986585e367f4a49d8aa43065066cc9c290b3d9b
   Sentry: f8374b5415bc38dfb5645941b3ae31230fbeae57
   SocketRocket: 9ee265c4b5ae2382d18e4ee1d2dd2d7af0ff1ab5
+  WindowModule: 66230c2d6c8044b45cb4a37467901a8a92350577
   Yoga: 9236ddcafb7eec6ac199bb61b38299054ba4c6f7
 
 PODFILE CHECKSUM: 573454467d0ca865d8343474f6643062dc3e9a75

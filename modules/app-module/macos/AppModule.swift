@@ -1,5 +1,4 @@
 import ExpoModulesCore
-import ServiceManagement
 
 // custom error
 enum AppError: Error {
@@ -33,13 +32,6 @@ public class AppModule: Module {
 
     Function("closeApp") {
       exit(0)
-    }
-
-    AsyncFunction("enableLaunchAtLogin") { (enabled: Bool) in
-      // TODO: Implement SMAppService for macOS13+
-      guard SMLoginItemSetEnabled("io.lamars.gitbar.AutoLauncher" as CFString, enabled) else {
-          throw AppError.failedToSetLaunchAtLogin
-      }
     }
   }
 

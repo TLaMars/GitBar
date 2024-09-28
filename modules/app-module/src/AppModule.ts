@@ -1,6 +1,12 @@
 import { EventEmitter, requireNativeModule } from "expo-modules-core";
+import { NativeModules } from "react-native";
 
-import { AppModuleType, EmitterType } from "./AppModule.types";
+import {
+  AppModule,
+  AppModuleType,
+  EmitterType,
+  LaunchAtLoginModuleType,
+} from "./AppModule.types";
 
 const emitter = new EventEmitter(requireNativeModule("AppModule"));
 
@@ -12,4 +18,12 @@ export const AppModuleEmitter: EmitterType = {
     emitter.removeSubscription(subscription),
 };
 
-export default requireNativeModule<AppModuleType>("AppModule");
+const appModule = requireNativeModule<AppModuleType>("AppModule");
+const launchAtLoginModule =
+  NativeModules.LaunchAtLoginModule as LaunchAtLoginModuleType;
+
+export default {
+  closeApp: appModule.closeApp,
+  setLaunchAtLoginStatus: launchAtLoginModule.setStatus,
+  getLaunchAtLoginStatus: launchAtLoginModule.checkStatus,
+} as AppModule;

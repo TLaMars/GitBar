@@ -2,7 +2,16 @@ import { Subscription } from "expo-modules-core";
 
 export type AppModuleType = {
   closeApp: () => void;
-  enableLaunchAtLogin: (enabled: boolean) => Promise<void>;
+};
+
+export type LaunchAtLoginModuleType = {
+  checkStatus: () => Promise<boolean>;
+  setStatus: (enabled: boolean) => Promise<void>;
+};
+
+export type AppModule = AppModuleType & {
+  getLaunchAtLoginStatus: () => Promise<boolean>;
+  setLaunchAtLoginStatus: (enabled: boolean) => Promise<void>;
 };
 
 export enum MacState {

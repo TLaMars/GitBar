@@ -15,6 +15,3 @@ export const selectShowRelevantTab = (state: RootState) =>
   state.settings.hidePRsAfterTwoMonths || state.settings.hidePRsApprovedByMe;
 
 export const selectAppearance = (state: RootState) => state.settings.appearance;
-
-export const selectLaunchAtLogin = (state: RootState) =>
-  state.settings.launchAtLogin;

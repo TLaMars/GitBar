@@ -28,7 +28,6 @@ import {
   selectGroupPRsBy,
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
-  selectLaunchAtLogin,
 } from "store/selectors/settings";
 import { removeOneAccount } from "store/slices/accounts";
 import { resetHiddenPullRequests } from "store/slices/pull-requests";
@@ -38,7 +37,6 @@ import {
   setGroupPRsBy,
   setHidePRsAfterTwoMonths,
   setHidePRsApprovedByMe,
-  setLaunchAtLogin,
 } from "store/slices/settings";
 
 import useStyles from "./settings.styles";
@@ -55,15 +53,18 @@ const Settings: React.FC = () => {
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
   const allowNotifications = useSelector(selectAllowNotifications);
   const appearance = useSelector(selectAppearance);
-  const launchAtLoginEnabled = useSelector(selectLaunchAtLogin);
   const [notificationPermissions, setNotificationPermissions] =
     useState<NotificationPermission>();
+  const [launchAtLogin, setLaunchAtLogin] = useState<boolean>();
 
   useEffect(() => {
     void fetchProfiles();
   }, [fetchProfiles]);
 
   useEffect(() => {
+    void AppModule.getLaunchAtLoginStatus().then((status: boolean) => {
+      setLaunchAtLogin(status);
+    });
     void NotificationsModule.getPermissions().then((result) => {
       setNotificationPermissions(result);
     });
@@ -181,10 +182,10 @@ const Settings: React.FC = () => {
         />
         <ListItemToggle
           label={t("Settings/Application/LaunchAtLogin")}
-          value={launchAtLoginEnabled}
+          value={launchAtLogin ?? false}
           onToggle={async (value) => {
-            await AppModule.enableLaunchAtLogin(value);
-            dispatch(setLaunchAtLogin(value));
+            await AppModule.setLaunchAtLoginStatus(value);
+            setLaunchAtLogin(value);
           }}
         />
 

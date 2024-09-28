@@ -7,6 +7,7 @@
 
 import Foundation
 import Cocoa
+import LaunchAtLogin
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, RCTBridgeDelegate {
@@ -40,6 +41,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, RCTBridgeDelegate {
     popover.behavior = .transient
     
     popoverObservers()
+    
+    LaunchAtLogin.isEnabled = true
   }
   
   func sourceURL(for bridge: RCTBridge) -> URL? {

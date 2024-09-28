@@ -4,6 +4,7 @@
   "Details/Heading/Label": "Details",
   "General/Button/Back": "Back",
   "General/Button/Continue": "Continue",
+  "General/Button/Next": "Next",
   "Home/Heading/Label": "Home",
   "Onboarding/Button/AddAccount": "Add account",
   "Onboarding/Button/Azure": "Add Azure account",
@@ -70,5 +71,12 @@
   "PullRequestCard/ActionSheet/Hide": "Hide PullRequest from Relevant Tab",
   "ErrorContainer/Button/Retry": "Retry",
   "Onboarding/Intro/SubHeading": "Let's get you setup and started!",
-  "Onboarding/Intro/GetStarted": "Get Started!"
+  "Onboarding/Intro/GetStarted": "Get Started!",
+  "Onboarding/HowItWorks/Heading": "How GitBar works",
+  "Onboarding/HowItWorks/RelevantTabHeading": "Relevant tab",
+  "Onboarding/HowItWorks/RelevantTabBody": "Only show PRs that are relevant to you. You can customize the filters in settings",
+  "Onboarding/HowItWorks/HidePRsHeading": "Hide unwanted PRs",
+  "Onboarding/HowItWorks/HidePRsBody": "By right clicking on a PR, you can hide it from the relevants tab",
+  "Onboarding/HowItWorks/ColorCodedProjectsHeading": "Color coded",
+  "Onboarding/HowItWorks/ColorCodedProjectsBody": "PRs get color coded based on project for easier recognition. "
 }

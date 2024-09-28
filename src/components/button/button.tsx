@@ -6,8 +6,10 @@ import { AnyFunction } from "utils/generics";
 
 import useStyles from "./button.styles";
 
+export type ButtonType = "neutral" | "danger" | "secondary";
+
 type Props = {
-  type?: "neutral" | "danger" | "secondary";
+  type?: ButtonType;
   boldText?: boolean;
   size?: "xs" | "s" | "m" | "l";
   label: string;

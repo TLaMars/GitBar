@@ -1,8 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import React, { useEffect } from "react";
+import React from "react";
 
 import useSelector from "hooks/use-selector";
-import PopoverModule from "modules/popover-module";
 import RegisterAzure from "pages/auth/register/azure";
 import RegisterGithub from "pages/auth/register/github";
 import RegisterGitLab from "pages/auth/register/gitlab";
@@ -16,10 +15,6 @@ const RootStackNavigator = createStackNavigator();
 
 const RootStack: React.FC = () => {
   const accounts = useSelector(selectAccounts);
-
-  useEffect(() => {
-    PopoverModule.open();
-  }, []);
 
   return (
     <RootStackNavigator.Navigator

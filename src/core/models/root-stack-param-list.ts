@@ -1,6 +1,5 @@
 export type RootStackParamList = {
   Dashboard: undefined;
-  OnboardingWelcome: undefined;
   OnboardingAddAccount?: {
     showBackButton: boolean;
   };

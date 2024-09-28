@@ -73,7 +73,7 @@ const Settings: React.FC = () => {
   const deleteAccount = (accountId: string) => {
     dispatch(removeOneAccount(accountId));
     if (accounts.length === 1) {
-      navigate("OnboardingWelcome");
+      navigate("OnboardingAddAccount");
     }
   };
 

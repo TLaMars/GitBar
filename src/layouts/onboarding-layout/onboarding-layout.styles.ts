@@ -3,17 +3,10 @@ import useMemoizedStyles from "hooks/use-memoized-styles";
 const useStyles = () =>
   useMemoizedStyles(({ spacing }) => ({
     container: {
-      gap: spacing(2),
       flex: 1,
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    logo: {
-      width: 72,
-      height: 72,
-      alignSelf: "center",
+      paddingHorizontal: spacing(9),
+      paddingTop: spacing(16),
+      paddingBottom: spacing(9),
     },
   }));
-
 export default useStyles;

@@ -2,23 +2,25 @@ import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 
 import useSelector from "hooks/use-selector";
+import { RootStackParamList } from "models/root-stack-param-list";
 import RegisterAzure from "pages/auth/register/azure";
 import RegisterGithub from "pages/auth/register/github";
 import RegisterGitLab from "pages/auth/register/gitlab";
 import Dashboard from "pages/dashboard/dashboard";
 import OnboardingAddAccount from "pages/onboarding/add-account/add-account";
-import OnboardingWelcome from "pages/onboarding/welcome/welcome";
 import Settings from "pages/settings/settings";
 import { selectAccounts } from "store/selectors/accounts";
 
-const RootStackNavigator = createStackNavigator();
+const RootStackNavigator = createStackNavigator<RootStackParamList>();
 
 const RootStack: React.FC = () => {
   const accounts = useSelector(selectAccounts);
 
   return (
     <RootStackNavigator.Navigator
-      initialRouteName={accounts.length > 0 ? "Dashboard" : "OnboardingWelcome"}
+      initialRouteName={
+        accounts.length > 0 ? "Dashboard" : "OnboardingAddAccount"
+      }
       screenOptions={{
         headerShown: false,
       }}
@@ -35,10 +37,6 @@ const RootStack: React.FC = () => {
       <RootStackNavigator.Screen
         name="RegisterGitHub"
         component={RegisterGithub}
-      />
-      <RootStackNavigator.Screen
-        name="OnboardingWelcome"
-        component={OnboardingWelcome}
       />
       <RootStackNavigator.Screen
         name="OnboardingAddAccount"

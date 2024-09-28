@@ -19,6 +19,7 @@ export type ThemeSpacingScale =
   | 12
   | 14
   | 16
+  | 18
   | 20
   | 24
   | 28

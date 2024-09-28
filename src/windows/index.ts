@@ -12,7 +12,7 @@ const WindowNavigator = createWindowsNavigator({
         mask: [WindowStyleMask.Titled, WindowStyleMask.FullSizeContentView],
         titlebarAppearsTransparent: true,
         height: 500,
-        width: 400,
+        width: 440,
       },
     },
   },

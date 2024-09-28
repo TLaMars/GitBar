@@ -82,5 +82,9 @@
   "Onboarding/LaunchAtLogin/Heading": "Launch GitBar at login",
   "Onboarding/LaunchAtLogin/Body": "To get the best out of GitBar, we recommend to start GitBar at start up of your device.",
   "General/Button/Yes": "Yes!",
-  "General/Button/Skip": "Skip"
+  "General/Button/Skip": "Skip",
+  "Onboarding/Notifications/Heading": "Get notifications from GitBar",
+  "Onboarding/Notifications/ConfirmHeading": "Confirm permissions",
+  "Onboarding/Notifications/ConfirmBody": "Accept the permissions from Apple in the top right corner (see image for reference) to start receiving notifications.",
+  "Onboarding/Notifications/Body": "By allowing notifications from GitBar you will be informed every time you receive new Pull Requests or comments are added to them."
 }

@@ -12,6 +12,7 @@ type Buttons = {
   type: ButtonType;
   label: string;
   onPress: () => void;
+  disabled?: boolean;
 }[];
 
 type Props = {
@@ -48,6 +49,7 @@ const OnboardingLayout: React.FC<Props> = ({
                 type={button.type}
                 label={button.label}
                 onPress={button.onPress}
+                disabled={button.disabled}
               />
             </Spacer>
           ))}

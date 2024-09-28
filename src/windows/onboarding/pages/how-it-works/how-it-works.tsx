@@ -15,7 +15,7 @@ import useStyles from "./how-it-works.styles";
 const HowItWorks: React.FC = () => {
   const $ = useStyles();
   const { t } = useTranslation();
-  const { navigate, goBack } =
+  const { navigate } =
     useNavigation<NavigationProp<OnboardingStackParamList>>();
 
   return (
@@ -24,14 +24,9 @@ const HowItWorks: React.FC = () => {
       titleSpacing={6}
       buttons={[
         {
-          type: "secondary",
-          label: t("General/Button/Back"),
-          onPress: () => goBack(),
-        },
-        {
           type: "neutral",
           label: t("General/Button/Next"),
-          onPress: () => navigate("Intro"),
+          onPress: () => navigate("LaunchAtLogin"),
         },
       ]}
     >

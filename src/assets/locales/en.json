@@ -78,5 +78,9 @@
   "Onboarding/HowItWorks/HidePRsHeading": "Hide unwanted PRs",
   "Onboarding/HowItWorks/HidePRsBody": "By right clicking on a PR, you can hide it from the relevants tab",
   "Onboarding/HowItWorks/ColorCodedProjectsHeading": "Color coded",
-  "Onboarding/HowItWorks/ColorCodedProjectsBody": "PRs get color coded based on project for easier recognition. "
+  "Onboarding/HowItWorks/ColorCodedProjectsBody": "PRs get color coded based on project for easier recognition. ",
+  "Onboarding/LaunchAtLogin/Heading": "Launch GitBar at login",
+  "Onboarding/LaunchAtLogin/Body": "To get the best out of GitBar, we recommend to start GitBar at start up of your device.",
+  "General/Button/Yes": "Yes!",
+  "General/Button/Skip": "Skip"
 }

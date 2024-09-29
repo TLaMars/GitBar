@@ -40,6 +40,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, RCTBridgeDelegate {
     popover.behavior = .transient
     
     popoverObservers()
+    
+    let em = NSAppleEventManager.shared()
+    em.setEventHandler(self, andSelector: #selector(self.getUrl(_:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+  }
+  
+  @objc
+  public func getUrl(_ event: NSAppleEventDescriptor, withReplyEvent reply: NSAppleEventDescriptor) -> Void {
+    if let button = statusItem.button {
+      popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+    }
+    return RCTLinkingManager.getUrlEventHandler(event, withReplyEvent: reply)
   }
   
   func sourceURL(for bridge: RCTBridge) -> URL? {
@@ -87,8 +98,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, RCTBridgeDelegate {
 
     statusItem.button?.title = text
   }
-  
-  
   
   @objc 
   func onPressStatusItem(_ sender: Any?) {

@@ -3,4 +3,5 @@ export type OnboardingStackParamList = {
   HowItWorks: undefined;
   LaunchAtLogin: undefined;
   Notifications: undefined;
+  ReadyToGo: undefined;
 };

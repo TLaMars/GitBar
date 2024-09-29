@@ -14,6 +14,7 @@ import persistReducer from "redux-persist/es/persistReducer";
 import accounts from "./slices/accounts";
 import pullRequests from "./slices/pull-requests";
 import settings from "./slices/settings";
+import user from "./slices/user";
 
 const storage = new MMKV();
 
@@ -40,11 +41,13 @@ const persistConfig = {
 const persistedAccount = persistReducer(persistConfig, accounts);
 const persistedSettings = persistReducer(persistConfig, settings);
 const persistedPullRequests = persistReducer(persistConfig, pullRequests);
+const persistedUser = persistReducer(persistConfig, user);
 
 const reducers = {
   accounts: persistedAccount,
   settings: persistedSettings,
   pullRequests: persistedPullRequests,
+  user: persistedUser,
 };
 
 export const store = configureStore({

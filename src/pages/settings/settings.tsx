@@ -38,6 +38,7 @@ import {
   setHidePRsAfterTwoMonths,
   setHidePRsApprovedByMe,
 } from "store/slices/settings";
+import { setIsOnboarded } from "store/slices/user";
 
 import useStyles from "./settings.styles";
 
@@ -199,6 +200,14 @@ const Settings: React.FC = () => {
               label="Reset hidden PRs"
               onPress={() => {
                 dispatch(resetHiddenPullRequests());
+              }}
+            />
+            <Spacer mt={1} />
+            <Button
+              size="xs"
+              label="Reset onboarding"
+              onPress={() => {
+                dispatch(setIsOnboarded(false));
               }}
             />
           </>

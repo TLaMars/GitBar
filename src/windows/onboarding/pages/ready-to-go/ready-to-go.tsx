@@ -7,7 +7,7 @@ import Body from "components/body/body";
 import Spacer from "components/spacer/spacer";
 import useTranslation from "hooks/use-translation";
 import OnboardingLayout from "layouts/onboarding-layout/onboarding-layout";
-import PopoverModule from "modules/popover-module";
+import WindowModule from "modules/window-module/src/WindowModule";
 import { setIsOnboarded } from "store/slices/user";
 
 import useStyles from "./ready-to-go.styles";
@@ -19,7 +19,8 @@ const ReadyToGo: React.FC = () => {
 
   const onPress = () => {
     dispatch(setIsOnboarded(true));
-    PopoverModule.open();
+    // TODO: fix this so it can use WindowNavigator
+    void WindowModule.closeWindow("Onboarding");
   };
 
   return (

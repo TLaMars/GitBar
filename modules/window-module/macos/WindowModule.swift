@@ -42,10 +42,8 @@ public class WindowModule: Module {
             let windowStyle = options["windowStyle"] as? [String: Any]
             let windowStyleMask: NSWindow.StyleMask = {
                 if let mask = windowStyle?["mask"] as? UInt {
-                    print(NSWindow.StyleMask(rawValue: mask))
                     return NSWindow.StyleMask(rawValue: mask)
                 } else {
-                    print("Kapot")
                     return [.titled, .closable, .resizable]
                 }
             }()
@@ -73,20 +71,10 @@ public class WindowModule: Module {
         }.runOnQueue(.main)
         
         AsyncFunction("closeWindow") { (moduleName: String) in
-            self.closeWindow(moduleName: moduleName)
-        }.runOnQueue(.main)
-    }
-    
-    private func closeWindow(moduleName: String) {
-        DispatchQueue.main.async {
             if let window = self.windowsMap[moduleName] {
                 window.close()
-                self.windowsMap.removeValue(forKey: moduleName)
-                if self.windowsMap.isEmpty {
-                    NSApp.setActivationPolicy(.accessory)
-                }
             }
-        }
+        }.runOnQueue(.main)
     }
     
     private func bringWindowToFront(window: NSWindow?) {

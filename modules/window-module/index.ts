@@ -74,7 +74,7 @@ function createWindowsNavigator<T extends WindowsConfig>(config: T) {
       );
     },
     close: async (window: keyof T) => {
-      await WindowModule.closeWindow(String(window));
+      await WindowModule.closeWindow(window.toString());
     },
   };
 }

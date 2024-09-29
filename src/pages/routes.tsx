@@ -4,11 +4,11 @@ import React, { useEffect } from "react";
 import useSelector from "hooks/use-selector";
 import { RootStackParamList } from "models/root-stack-param-list";
 import PopoverModule from "modules/popover-module";
+import AddAccount from "pages/add-account/add-account";
 import RegisterAzure from "pages/auth/register/azure";
 import RegisterGithub from "pages/auth/register/github";
 import RegisterGitLab from "pages/auth/register/gitlab";
 import Dashboard from "pages/dashboard/dashboard";
-import OnboardingAddAccount from "pages/onboarding/add-account/add-account";
 import Settings from "pages/settings/settings";
 import WindowNavigator from "src/windows";
 import { selectAccounts } from "store/selectors/accounts";
@@ -31,9 +31,7 @@ const RootStack: React.FC = () => {
 
   return (
     <RootStackNavigator.Navigator
-      initialRouteName={
-        accounts.length > 0 ? "Dashboard" : "OnboardingAddAccount"
-      }
+      initialRouteName={accounts.length > 0 ? "Dashboard" : "AddAccount"}
       screenOptions={{
         headerShown: false,
       }}
@@ -51,10 +49,7 @@ const RootStack: React.FC = () => {
         name="RegisterGitHub"
         component={RegisterGithub}
       />
-      <RootStackNavigator.Screen
-        name="OnboardingAddAccount"
-        component={OnboardingAddAccount}
-      />
+      <RootStackNavigator.Screen name="AddAccount" component={AddAccount} />
       <RootStackNavigator.Screen name="Settings" component={Settings} />
     </RootStackNavigator.Navigator>
   );

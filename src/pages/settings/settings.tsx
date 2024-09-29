@@ -74,7 +74,7 @@ const Settings: React.FC = () => {
   const deleteAccount = (accountId: string) => {
     dispatch(removeOneAccount(accountId));
     if (accounts.length === 1) {
-      navigate("OnboardingAddAccount");
+      navigate("AddAccount");
     }
   };
 
@@ -88,7 +88,7 @@ const Settings: React.FC = () => {
           <Link
             label={t("Settings/Link/AddAccount")}
             onPress={() =>
-              navigate("OnboardingAddAccount", {
+              navigate("AddAccount", {
                 showBackButton: true,
               })
             }

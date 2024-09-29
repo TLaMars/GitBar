@@ -13,10 +13,9 @@ import { RootStackParamList } from "models/root-stack-param-list";
 
 import useStyles from "./add-account.styles";
 
-const OnboardingAddAccount: React.FC = () => {
+const AddAccount: React.FC = () => {
   const { t } = useTranslation();
-  const { params } =
-    useRoute<RouteProp<RootStackParamList, "OnboardingAddAccount">>();
+  const { params } = useRoute<RouteProp<RootStackParamList, "AddAccount">>();
   const $ = useStyles();
   const { navigate } = useNavigation();
 
@@ -70,4 +69,4 @@ const OnboardingAddAccount: React.FC = () => {
   );
 };
 
-export default OnboardingAddAccount;
+export default AddAccount;

@@ -7,9 +7,10 @@
 
 import Foundation
 import Cocoa
+import UserNotifications
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, RCTBridgeDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, RCTBridgeDelegate, UNUserNotificationCenterDelegate {
   
   var bridge: RCTBridge!
   var statusItem: NSStatusItem!
@@ -106,5 +107,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, RCTBridgeDelegate {
     } else {
       openPopover()
     }
+  }
+  
+  func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    openPopover()
+    completionHandler()
   }
 }

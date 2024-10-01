@@ -10,13 +10,14 @@ import Cocoa
 import UserNotifications
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, RCTBridgeDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate, RCTBridgeDelegate {
   
   var bridge: RCTBridge!
   var statusItem: NSStatusItem!
   var popover: NSPopover!
   
   func applicationDidFinishLaunching(_ notification: Notification) {
+    UNUserNotificationCenter.current().delegate = self
     setMMKVStorageLocation()
 
     bridge = RCTBridge(delegate: self, launchOptions: nil)

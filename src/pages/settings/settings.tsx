@@ -210,6 +210,14 @@ const Settings: React.FC = () => {
                 dispatch(setIsOnboarded(false));
               }}
             />
+            <Spacer mt={1} />
+            <Button
+              size="xs"
+              label="Send notification"
+              onPress={() => {
+                NotificationsModule.sendNotification("TEST", "TEST");
+              }}
+            />
           </>
         )}
       </ScrollView>

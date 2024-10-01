@@ -39,7 +39,7 @@ public class NotificationsModule: Module {
       content.sound = .default
         
       // Add URL to notification
-      // content.userInfo = ["url": urlString]
+      content.userInfo = ["url": "gitbar://dashboard"]
         
       let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
       UNUserNotificationCenter.current().add(request) { error in

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { ActivityIndicator, SectionList, View } from "react-native";
 
 import Body from "components/body/body";
@@ -24,7 +24,6 @@ const Dashboard: React.FC = () => {
   const $ = useStyles();
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const [previousPollingTime, setPreviousPollingTime] = useState<number>(0);
   const [minutesAgo, setMinutesAgo] = useState<number>(0);
   const [isRelevant, setIsRelevant] = useState<boolean>(true);
   const [macState, setMacState] = useState<MacState>(MacState.UNLOCKED);
@@ -36,6 +35,7 @@ const Dashboard: React.FC = () => {
     relevantAmountOfPullRequests,
     errors,
     totalAmountOfPullRequests,
+    executedAt,
   } = usePullRequests();
   const showRelevantTab = useSelector(selectShowRelevantTab);
 
@@ -74,18 +74,12 @@ const Dashboard: React.FC = () => {
     showRelevantTab,
   ]);
 
-  const pollPullRequests = useCallback(async () => {
-    await fetchPullRequests();
-    setPreviousPollingTime(Date.now());
-    setMinutesAgo(0);
-  }, [fetchPullRequests]);
-
   useEffect(() => {
     let pollInterval: NodeJS.Timeout | null = null;
 
     const startPolling = () => {
-      void pollPullRequests();
-      pollInterval = setInterval(pollPullRequests, 180000); // Polling every 3 minutes
+      void fetchPullRequests();
+      pollInterval = setInterval(fetchPullRequests, 180000); // Polling every 3 minutes
     };
 
     const stopPolling = () => {
@@ -104,15 +98,15 @@ const Dashboard: React.FC = () => {
     return () => {
       stopPolling();
     };
-  }, [fetchPullRequests, pollPullRequests, macState]);
+  }, [fetchPullRequests, macState]);
 
   useEffect(() => {
     const minutesAgeInterval = setInterval(() => {
-      setMinutesAgo(Math.floor((Date.now() - previousPollingTime) / 60000));
+      setMinutesAgo(Math.floor((Date.now() - executedAt) / 60000));
     }, 20000);
 
     return () => clearInterval(minutesAgeInterval);
-  }, [previousPollingTime]);
+  }, [executedAt]);
 
   return (
     <DefaultLayout>
@@ -141,7 +135,7 @@ const Dashboard: React.FC = () => {
         {loading && !showRetryButton && <ActivityIndicator />}
         {showRetryButton && (
           <Button
-            onPress={pollPullRequests}
+            onPress={fetchPullRequests}
             size="s"
             type="danger"
             label={t("Dashboard/Button/Retry")}
@@ -154,7 +148,10 @@ const Dashboard: React.FC = () => {
           }
           ListHeaderComponent={
             errors.length > 0 ? (
-              <ErrorContainer errors={errors} onErrorRetry={pollPullRequests} />
+              <ErrorContainer
+                errors={errors}
+                onErrorRetry={fetchPullRequests}
+              />
             ) : undefined
           }
           renderItem={({ item }) => (

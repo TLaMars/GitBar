@@ -1,6 +1,10 @@
 # Changelog
 
-## [1.0.1](https://github.com/TLaMars/gitbar/releases/tag/v1.0.1) - 2024-10-07
+## [1.0.1](https://github.com/TLaMars/gitbar/releases/tag/v1.0.1) - 2024-10-08
+
+### 🐛 Bug Fixes
+
+- _(dashboard)_ Implement dashboard header[(267a1ae)](https://github.com/TLaMars/gitbar/commit/267a1ae4ec89693d76e877f37d52a86bd0eefbe8) by @TLaMars
 
 ### 🚜 Refactor
 

@@ -9,6 +9,7 @@ import {
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
 } from "store/selectors/settings";
+import compareArraysOfObjects from "utils/compare-object-arrays";
 import groupPullRequestsBy from "utils/group-pull-requests";
 import sendPullRequestNotification from "utils/send-pull-request-notification";
 
@@ -49,6 +50,13 @@ const usePullRequests = () => {
         (a, b) =>
           new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
       );
+
+    if (
+      compareArraysOfObjects(prevPullRequestsRef.current ?? [], queryResult)
+    ) {
+      setState((prevState) => ({ ...prevState, loading: false }));
+      return;
+    }
 
     setState({
       loading: false,

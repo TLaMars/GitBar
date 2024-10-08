@@ -54,7 +54,11 @@ const usePullRequests = () => {
     if (
       compareArraysOfObjects(prevPullRequestsRef.current ?? [], queryResult)
     ) {
-      setState((prevState) => ({ ...prevState, loading: false }));
+      setState((prevState) => ({
+        ...prevState,
+        loading: false,
+        execuedAt: Date.now(),
+      }));
       return;
     }
 

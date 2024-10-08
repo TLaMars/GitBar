@@ -26,6 +26,7 @@ const DashboardHeader: React.FC<Props> = ({
   const [minutesAgo, setMinutesAgo] = useState(0);
 
   useEffect(() => {
+    setMinutesAgo(calculateMinutesAgo(executedAt));
     const minutesAgeInterval = setInterval(() => {
       setMinutesAgo(calculateMinutesAgo(executedAt));
     }, 20000);

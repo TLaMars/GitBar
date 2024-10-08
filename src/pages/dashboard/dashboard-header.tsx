@@ -6,6 +6,7 @@ import ButtonToggle from "components/button-toggle/button-toggle";
 import Heading from "components/heading/heading";
 import Icon from "components/icon/icon";
 import useTranslation from "hooks/use-translation";
+import calculateMinutesAgo from "utils/calculate-minutes-ago";
 
 import useStyles from "./dashboard.styles";
 
@@ -26,7 +27,7 @@ const DashboardHeader: React.FC<Props> = ({
 
   useEffect(() => {
     const minutesAgeInterval = setInterval(() => {
-      setMinutesAgo(Math.floor((Date.now() - executedAt) / 60000));
+      setMinutesAgo(calculateMinutesAgo(executedAt));
     }, 20000);
 
     return () => clearInterval(minutesAgeInterval);

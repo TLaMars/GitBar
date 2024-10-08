@@ -1,12 +1,8 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ActivityIndicator, SectionList, View } from "react-native";
 
 import Body from "components/body/body";
-import Button from "components/button/button";
-import ButtonToggle from "components/button-toggle/button-toggle";
 import ErrorContainer from "components/error-container/error-container";
-import Heading from "components/heading/heading";
-import Icon from "components/icon/icon";
 import PullRequestCard from "components/pull-request-card/pull-request-card";
 import useDispatch from "hooks/use-dispatch";
 import usePullRequests from "hooks/use-pull-requests";
@@ -18,13 +14,13 @@ import DefaultLayout from "src/layouts/default-layout/default-layout";
 import { selectShowRelevantTab } from "store/selectors/settings";
 import { setPullRequestHidden } from "store/slices/pull-requests";
 
+import DashboardHeader from "./dashboard-header";
 import useStyles from "./dashboard.styles";
 
 const Dashboard: React.FC = () => {
   const $ = useStyles();
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const [minutesAgo, setMinutesAgo] = useState<number>(0);
   const [isRelevant, setIsRelevant] = useState<boolean>(true);
   const [macState, setMacState] = useState<MacState>(MacState.UNLOCKED);
   const {
@@ -39,11 +35,6 @@ const Dashboard: React.FC = () => {
   } = usePullRequests();
   const showRelevantTab = useSelector(selectShowRelevantTab);
 
-  const showRetryButton = useMemo(
-    () => loading && minutesAgo > 5,
-    [loading, minutesAgo],
-  );
-
   useEffect(() => {
     AppModuleEmitter.addListener("onMacStateChange", (event) => {
       setMacState(event.state);
@@ -55,10 +46,6 @@ const Dashboard: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (showRetryButton) {
-      PopoverModule.setStatusItemText(t("Dashboard/StatusBar/Retry"));
-      return;
-    }
     if (relevantAmountOfPullRequests >= 0) {
       PopoverModule.setStatusItemText(
         showRelevantTab
@@ -68,7 +55,6 @@ const Dashboard: React.FC = () => {
     }
   }, [
     relevantAmountOfPullRequests,
-    showRetryButton,
     t,
     totalAmountOfPullRequests,
     showRelevantTab,
@@ -100,47 +86,15 @@ const Dashboard: React.FC = () => {
     };
   }, [fetchPullRequests, macState]);
 
-  useEffect(() => {
-    const minutesAgeInterval = setInterval(() => {
-      setMinutesAgo(Math.floor((Date.now() - executedAt) / 60000));
-    }, 20000);
-
-    return () => clearInterval(minutesAgeInterval);
-  }, [executedAt]);
-
   return (
     <DefaultLayout>
       <View style={$.container}>
-        <View style={$.header}>
-          <View style={$.headerLeft}>
-            <Heading size="s">{t("Dashboard/Heading/PullRequests")}</Heading>
-            <View style={$.poller}>
-              <Icon name="Refresh" size={14} />
-              <Body size="xs" color="textSecondary">
-                {t("Dashboard/Body/LastUpdated", { minutesAgo })}
-              </Body>
-            </View>
-          </View>
-          {showRelevantTab && (
-            <View style={$.headerRight}>
-              <ButtonToggle
-                labelLeft={t("Dashboard/Button/Relevant")}
-                labelRight={t("Dashboard/Button/All")}
-                onPressLeft={() => setIsRelevant(true)}
-                onPressRight={() => setIsRelevant(false)}
-              />
-            </View>
-          )}
-        </View>
-        {loading && !showRetryButton && <ActivityIndicator />}
-        {showRetryButton && (
-          <Button
-            onPress={fetchPullRequests}
-            size="s"
-            type="danger"
-            label={t("Dashboard/Button/Retry")}
-          />
-        )}
+        <DashboardHeader
+          showRelevantTab={showRelevantTab}
+          setIsRelevant={setIsRelevant}
+          executedAt={executedAt}
+        />
+        {loading && <ActivityIndicator />}
         <SectionList
           contentContainerStyle={$.list}
           sections={

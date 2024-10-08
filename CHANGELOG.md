@@ -11,6 +11,7 @@
 - _(dashboard)_ Implement dashboard header[(267a1ae)](https://github.com/TLaMars/gitbar/commit/267a1ae4ec89693d76e877f37d52a86bd0eefbe8) by @TLaMars
 - _(pull-requests)_ Order correctly by date[(aa6d09e)](https://github.com/TLaMars/gitbar/commit/aa6d09e4a75ff0aff6745cbf04fee8eb216ec85a) by @TLaMars
 - _(pull-requests)_ Separate list from dashboard[(d1608e5)](https://github.com/TLaMars/gitbar/commit/d1608e583bc19ee5fefdb31df08ee51ea48e6197) by @TLaMars
+- _(pull-requests)_ No pr changes set executedAt correct[(29528e1)](https://github.com/TLaMars/gitbar/commit/29528e1a00d08b0e3982c8407786482b5fa5cb70) by @TLaMars
 
 ### 🚜 Refactor
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { GestureResponderEvent, Linking, TouchableOpacity } from "react-native";
 import {
   ActionSheetIOS,
@@ -19,15 +19,21 @@ import { ThemeColor } from "models/theme";
 import useStyles from "./pull-request-card.styles";
 
 type Props = {
+  id: string;
   title: string;
   author: AttendeeType;
   reviewers: AttendeeType[];
+  repoName: string;
   url: string;
   amountOfComments?: number;
   amountOfApprovals: number;
   amountOfRequiredApprovals?: number;
   actionSheetOptions?: ActionSheetIOSOptions;
-  actionSheetCallback?: (buttonIndex: number) => void;
+  actionSheetCallback?: (
+    buttonIndex: number,
+    id: string,
+    repoName: string,
+  ) => void;
   accentColor: ThemeColor;
 };
 
@@ -42,6 +48,8 @@ const PullRequestCard: React.FC<Props> = ({
   actionSheetOptions,
   actionSheetCallback,
   accentColor,
+  id,
+  repoName,
 }) => {
   const $ = useStyles(accentColor);
   const { t } = useTranslation();
@@ -52,7 +60,9 @@ const PullRequestCard: React.FC<Props> = ({
       if (actionSheetOptions && actionSheetCallback) {
         ActionSheetIOS.showActionSheetWithOptions(
           actionSheetOptions,
-          actionSheetCallback,
+          (buttonIndex) => {
+            actionSheetCallback(buttonIndex, id, repoName);
+          },
         );
       }
       return;
@@ -122,4 +132,4 @@ const PullRequestCard: React.FC<Props> = ({
   );
 };
 
-export default PullRequestCard;
+export default memo(PullRequestCard);

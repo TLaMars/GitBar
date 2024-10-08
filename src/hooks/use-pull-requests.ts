@@ -42,7 +42,13 @@ const usePullRequests = () => {
       .map(({ error }) => error)
       .filter((error) => error !== undefined);
 
-    const queryResult = result.map(({ data }) => data).flat();
+    const queryResult = result
+      .map(({ data }) => data)
+      .flat()
+      .sort(
+        (a, b) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+      );
 
     setState({
       loading: false,

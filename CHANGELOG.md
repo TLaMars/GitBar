@@ -2,10 +2,15 @@
 
 ## [1.0.1](https://github.com/TLaMars/gitbar/releases/tag/v1.0.1) - 2024-10-08
 
+### 🚀 Features
+
+- _(pull-requests)_ Don't update state if data is the same[(6cf1029)](https://github.com/TLaMars/gitbar/commit/6cf10293eebb84e47398ab5853220b742614daa3) by @TLaMars
+
 ### 🐛 Bug Fixes
 
 - _(dashboard)_ Implement dashboard header[(267a1ae)](https://github.com/TLaMars/gitbar/commit/267a1ae4ec89693d76e877f37d52a86bd0eefbe8) by @TLaMars
-- _(pull-requests)_ Order correctly by date[(aa6d09e)](https://github.com/TLaMars/gitbar/commit/aa6d09e4a75ff0aff6745cbf04fee8eb216ec85a)
+- _(pull-requests)_ Order correctly by date[(aa6d09e)](https://github.com/TLaMars/gitbar/commit/aa6d09e4a75ff0aff6745cbf04fee8eb216ec85a) by @TLaMars
+- _(pull-requests)_ Separate list from dashboard[(d1608e5)](https://github.com/TLaMars/gitbar/commit/d1608e583bc19ee5fefdb31df08ee51ea48e6197) by @TLaMars
 
 ### 🚜 Refactor
 

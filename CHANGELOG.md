@@ -1,22 +1,19 @@
 # Changelog
 
-## Unreleased
+## [1.1.0](https://github.com/TLaMars/gitbar/releases/tag/v1.1.0) - 2024-10-16
 
 
 ### 🚀 Features
 
-- *(hermes)* Turn on hermes[(992997f)](https://github.com/TLaMars/gitbar/commit/992997f7aa2b71bfffaf7009faf536327fa687df) by @TLaMars
+- *(relevants)* By default always show relevants tab[(bca7a88)](https://github.com/TLaMars/gitbar/commit/bca7a8878308aadaba0d1c75e891998f14c50e18) by @TLaMars
 
-### 🐛 Bug Fixes
-
-- *(quit-app)* Change location to quit the app and add label quit[(3dca642)](https://github.com/TLaMars/gitbar/commit/3dca64229a0910f3f4fa21dd46fc005c513529f8)
-
-## [1.0.1](https://github.com/TLaMars/gitbar/releases/tag/v1.0.1) - 2024-10-08
+## [1.0.1](https://github.com/TLaMars/gitbar/releases/tag/v1.0.1) - 2024-10-16
 
 
 ### 🚀 Features
 
 - *(pull-requests)* Don't update state if data is the same[(6cf1029)](https://github.com/TLaMars/gitbar/commit/6cf10293eebb84e47398ab5853220b742614daa3) by @TLaMars
+- *(hermes)* Turn on hermes[(992997f)](https://github.com/TLaMars/gitbar/commit/992997f7aa2b71bfffaf7009faf536327fa687df) by @TLaMars
 
 ### 🐛 Bug Fixes
 
@@ -24,6 +21,7 @@
 - *(pull-requests)* Order correctly by date[(aa6d09e)](https://github.com/TLaMars/gitbar/commit/aa6d09e4a75ff0aff6745cbf04fee8eb216ec85a) by @TLaMars
 - *(pull-requests)* Separate list from dashboard[(d1608e5)](https://github.com/TLaMars/gitbar/commit/d1608e583bc19ee5fefdb31df08ee51ea48e6197) by @TLaMars
 - *(pull-requests)* No pr changes set executedAt correct[(29528e1)](https://github.com/TLaMars/gitbar/commit/29528e1a00d08b0e3982c8407786482b5fa5cb70) by @TLaMars
+- *(quit-app)* Change location to quit the app and add label quit[(29c0bed)](https://github.com/TLaMars/gitbar/commit/29c0bedd6e1e32e8dc754b327e1971892d10c74e) by @TLaMars
 
 ### 🚜 Refactor
 

@@ -8,8 +8,8 @@ const initialState = {
   allowNotifications: false,
   appearance: Appearance.Dark,
   groupPRsBy: GroupPullRequestsBy.REPO,
-  hidePRsApprovedByMe: false,
-  hidePRsAfterTwoMonths: false,
+  hidePRsApprovedByMe: true,
+  hidePRsAfterTwoMonths: true,
 };
 
 const settings = createSlice({

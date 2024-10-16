@@ -138,9 +138,6 @@ const Settings: React.FC = () => {
         <Body bold size="s">
           {t("Settings/SectionHeading/RelevantPullRequests")}
         </Body>
-        <Body size="xs" color="textSecondary">
-          {t("Settings/Body/RelevantPullRequests")}
-        </Body>
         <ListItemToggle
           label={t("Settings/PullRequests/HideAfter")}
           border

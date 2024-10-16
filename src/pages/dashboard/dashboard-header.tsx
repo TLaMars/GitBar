@@ -11,16 +11,11 @@ import calculateMinutesAgo from "utils/calculate-minutes-ago";
 import useStyles from "./dashboard.styles";
 
 type Props = {
-  showRelevantTab: boolean;
   setIsRelevant: (isRelevant: boolean) => void;
   executedAt: number;
 };
 
-const DashboardHeader: React.FC<Props> = ({
-  executedAt,
-  showRelevantTab,
-  setIsRelevant,
-}) => {
+const DashboardHeader: React.FC<Props> = ({ executedAt, setIsRelevant }) => {
   const $ = useStyles();
   const { t } = useTranslation();
   const [minutesAgo, setMinutesAgo] = useState(0);
@@ -45,16 +40,14 @@ const DashboardHeader: React.FC<Props> = ({
           </Body>
         </View>
       </View>
-      {showRelevantTab && (
-        <View style={$.headerRight}>
-          <ButtonToggle
-            labelLeft={t("Dashboard/Button/Relevant")}
-            labelRight={t("Dashboard/Button/All")}
-            onPressLeft={() => setIsRelevant(true)}
-            onPressRight={() => setIsRelevant(false)}
-          />
-        </View>
-      )}
+      <View style={$.headerRight}>
+        <ButtonToggle
+          labelLeft={t("Dashboard/Button/Relevant")}
+          labelRight={t("Dashboard/Button/All")}
+          onPressLeft={() => setIsRelevant(true)}
+          onPressRight={() => setIsRelevant(false)}
+        />
+      </View>
     </View>
   );
 };

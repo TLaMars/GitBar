@@ -3,12 +3,10 @@ import { ActivityIndicator, View } from "react-native";
 
 import PullRequestList from "components/pull-request-list/pull-request-list";
 import usePullRequests from "hooks/use-pull-requests";
-import useSelector from "hooks/use-selector";
 import useTranslation from "hooks/use-translation";
 import { AppModuleEmitter, MacState } from "modules/app-module";
 import PopoverModule from "modules/popover-module/src/PopoverModule";
 import DefaultLayout from "src/layouts/default-layout/default-layout";
-import { selectShowRelevantTab } from "store/selectors/settings";
 
 import DashboardHeader from "./dashboard-header";
 import useStyles from "./dashboard.styles";
@@ -28,7 +26,6 @@ const Dashboard: React.FC = () => {
     totalAmountOfPullRequests,
     executedAt,
   } = usePullRequests();
-  const showRelevantTab = useSelector(selectShowRelevantTab);
 
   useEffect(() => {
     AppModuleEmitter.addListener("onMacStateChange", (event) => {
@@ -42,18 +39,9 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     if (relevantAmountOfPullRequests >= 0) {
-      PopoverModule.setStatusItemText(
-        showRelevantTab
-          ? relevantAmountOfPullRequests.toString()
-          : totalAmountOfPullRequests.toString(),
-      );
+      PopoverModule.setStatusItemText(relevantAmountOfPullRequests.toString());
     }
-  }, [
-    relevantAmountOfPullRequests,
-    t,
-    totalAmountOfPullRequests,
-    showRelevantTab,
-  ]);
+  }, [relevantAmountOfPullRequests, t, totalAmountOfPullRequests]);
 
   useEffect(() => {
     let pollInterval: NodeJS.Timeout | null = null;
@@ -85,7 +73,6 @@ const Dashboard: React.FC = () => {
     <DefaultLayout>
       <View style={$.container}>
         <DashboardHeader
-          showRelevantTab={showRelevantTab}
           setIsRelevant={setIsRelevant}
           executedAt={executedAt}
         />

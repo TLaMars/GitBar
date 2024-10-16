@@ -220,6 +220,14 @@ const Settings: React.FC = () => {
             />
           </>
         )}
+
+        <Spacer mt={4} />
+        <Button
+          size="xs"
+          type="danger"
+          label={t("Settings/Button/CloseApp")}
+          onPress={() => AppModule.closeApp()}
+        />
       </ScrollView>
     </DefaultLayout>
   );

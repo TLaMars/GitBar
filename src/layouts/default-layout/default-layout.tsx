@@ -4,7 +4,6 @@ import { View } from "react-native";
 
 import Sidebar from "components/sidebar/sidebar";
 import SidebarItem from "components/sidebar-item/sidebar-item";
-import AppModule from "modules/app-module";
 
 import useStyles from "./default-layout.styles";
 
@@ -33,19 +32,11 @@ const DefaultLayout: React.FC<Props> = ({
             />
           }
           bottomContainer={
-            <>
-              <SidebarItem
-                icon="Settings"
-                onPress={() => navigate("Settings")}
-                active={route.name === "Settings"}
-              />
-              <SidebarItem
-                icon="PowerOff"
-                onPress={() => {
-                  AppModule.closeApp();
-                }}
-              />
-            </>
+            <SidebarItem
+              icon="Settings"
+              onPress={() => navigate("Settings")}
+              active={route.name === "Settings"}
+            />
           }
         />
       )}

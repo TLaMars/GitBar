@@ -2,7 +2,6 @@ import React from "react";
 import { TouchableOpacity, TouchableOpacityProps } from "react-native";
 
 import Text from "components/text/text";
-import { AnyFunction } from "utils/generics";
 
 import useStyles from "./button.styles";
 
@@ -14,7 +13,6 @@ type Props = {
   size?: "xs" | "s" | "m" | "l";
   label: string;
   alignmentLeft?: boolean;
-  onPress?: AnyFunction;
 } & TouchableOpacityProps;
 
 const Button: React.FC<Props> = ({
@@ -23,7 +21,6 @@ const Button: React.FC<Props> = ({
   disabled,
   label,
   size = "m",
-  onPress,
   style,
   ...rest
 }) => {
@@ -56,11 +53,6 @@ const Button: React.FC<Props> = ({
         style,
       ]}
       disabled={disabled}
-      onPress={(event) => {
-        if (onPress) {
-          onPress(event);
-        }
-      }}
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...rest}
     >

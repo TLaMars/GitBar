@@ -33,15 +33,22 @@ export const reduxStorage: Storage = {
   },
 };
 
-const persistConfig = {
-  key: "root",
+const getPersistConfig = (key: string) => ({
+  key,
+  version: 1,
   storage: reduxStorage,
-};
+});
 
-const persistedAccount = persistReducer(persistConfig, accounts);
-const persistedSettings = persistReducer(persistConfig, settings);
-const persistedPullRequests = persistReducer(persistConfig, pullRequests);
-const persistedUser = persistReducer(persistConfig, user);
+const persistedAccount = persistReducer(getPersistConfig("accounts"), accounts);
+const persistedSettings = persistReducer(
+  getPersistConfig("settings"),
+  settings,
+);
+const persistedPullRequests = persistReducer(
+  getPersistConfig("pullRequests"),
+  pullRequests,
+);
+const persistedUser = persistReducer(getPersistConfig("user"), user);
 
 const reducers = {
   accounts: persistedAccount,

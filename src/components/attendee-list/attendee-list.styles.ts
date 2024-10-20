@@ -7,13 +7,11 @@ const useStyles = (size: number) =>
         flexDirection: "row",
         marginRight: spacing(2),
         alignItems: "center",
-        overflow: "hidden",
-        height: size,
       },
       container: {
         flexDirection: "row",
         alignItems: "center",
-        marginLeft: -1 * (size - spacing(2.5)),
+        marginLeft: -1 * (size - spacing(4)),
       },
       seperator: {
         borderRadius: borderRadiuses.round,

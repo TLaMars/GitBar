@@ -10,7 +10,7 @@ const config: CodegenConfig = {
         "https://api.github.com/graphql": {
           method: "GET",
           headers: {
-            Authorization: `bearer KEY`,
+            Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
             "user-agent": "My-User-Agent",
           },
         },
@@ -27,7 +27,7 @@ const config: CodegenConfig = {
         "https://gitlab.com/api/graphql": {
           method: "GET",
           headers: {
-            Authorization: `bearer KEY`,
+            Authorization: `bearer ${process.env.GITLAB_TOKEN}`,
             "user-agent": "My-User-Agent",
           },
         },

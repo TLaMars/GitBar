@@ -77,6 +77,7 @@ const transformGitLabPullRequest = ({
             !!reviewer.mergeRequestInteraction?.approved,
         ),
         accentColor: getColorForProject(pr.sourceProject?.name ?? ""),
+        isDraft: pr.draft,
       },
     ];
   }, []);

@@ -35,6 +35,7 @@ type Props = {
     repoName: string,
   ) => void;
   accentColor: ThemeColor;
+  isDraft: boolean;
 };
 
 const PullRequestCard: React.FC<Props> = ({
@@ -50,6 +51,7 @@ const PullRequestCard: React.FC<Props> = ({
   accentColor,
   id,
   repoName,
+  isDraft,
 }) => {
   const $ = useStyles(accentColor);
   const { t } = useTranslation();
@@ -73,62 +75,72 @@ const PullRequestCard: React.FC<Props> = ({
   };
 
   return (
-    <TouchableOpacity
-      accessibilityRole="button"
-      style={$.card}
-      onPress={onPress}
-    >
-      <Heading numberOfLines={1} size="x2s" fontSizeIsLineHeight>
-        {title}
-      </Heading>
-      <View style={$.footer}>
-        <View style={$.left}>
-          <Body size="s">{t("PullRequestCard/Body/Author")}</Body>
-          <Spacer ml={1.5} />
-          <Attendee name={author.name} size={24} avatarUrl={author.avatarUrl} />
-          <Spacer ml={3} />
-          {reviewers.length > 0 && (
-            <>
-              <Body size="s">{t("PullRequestCard/Body/Reviewers")}</Body>
-              <Spacer ml={1.5} />
-              <AttendeeList attendees={reviewers} profileIconSize={24} />
-            </>
-          )}
+    <View style={{ overflow: "hidden" }}>
+      <TouchableOpacity
+        accessibilityRole="button"
+        style={[$.card]}
+        onPress={onPress}
+      >
+        <View style={[$.borderLine, isDraft && $.draftLine]} />
+        <View style={$.header}>
+          {isDraft && <Icon name="EditPencil" size={20} />}
+          <Heading numberOfLines={1} size="x2s" fontSizeIsLineHeight>
+            {title}
+          </Heading>
         </View>
-        <View style={$.right}>
-          {amountOfComments !== undefined && (
-            <View style={$.info}>
-              <Body size="s">{amountOfComments}</Body>
-              <Icon name="Notification" size={20} />
-            </View>
-          )}
+        <View style={$.footer}>
+          <View style={$.left}>
+            <Body size="s">{t("PullRequestCard/Body/Author")}</Body>
+            <Spacer ml={1.5} />
+            <Attendee
+              name={author.name}
+              size={24}
+              avatarUrl={author.avatarUrl}
+            />
+            <Spacer ml={3} />
+            {reviewers.length > 0 && (
+              <>
+                <Body size="s">{t("PullRequestCard/Body/Reviewers")}</Body>
+                <Spacer ml={1.5} />
+                <AttendeeList attendees={reviewers} profileIconSize={24} />
+              </>
+            )}
+          </View>
+          <View style={$.right}>
+            {amountOfComments !== undefined && (
+              <View style={$.info}>
+                <Body size="s">{amountOfComments}</Body>
+                <Icon name="Notification" size={20} />
+              </View>
+            )}
 
-          <View
-            style={$.info}
-            onMouseEnter={() => {
-              if (amountOfRequiredApprovals === undefined) {
-                setToolTip(true);
-              }
-            }}
-            onMouseLeave={() => {
-              if (amountOfRequiredApprovals === undefined) {
-                setToolTip(false);
-              }
-            }}
-          >
-            <Body size="s">
-              {amountOfApprovals} / {amountOfRequiredApprovals ?? "?"}
-            </Body>
-            <Icon name="UserCheck" size={20} />
+            <View
+              style={$.info}
+              onMouseEnter={() => {
+                if (amountOfRequiredApprovals === undefined) {
+                  setToolTip(true);
+                }
+              }}
+              onMouseLeave={() => {
+                if (amountOfRequiredApprovals === undefined) {
+                  setToolTip(false);
+                }
+              }}
+            >
+              <Body size="s">
+                {amountOfApprovals} / {amountOfRequiredApprovals ?? "?"}
+              </Body>
+              <Icon name="UserCheck" size={20} />
+            </View>
           </View>
         </View>
-      </View>
-      {toolTip && (
-        <View style={$.helper}>
-          <Body size="x2s">{t("PullRequestCard/Body/ApprovalsTooltip")}</Body>
-        </View>
-      )}
-    </TouchableOpacity>
+        {toolTip && (
+          <View style={$.helper}>
+            <Body size="x2s">{t("PullRequestCard/Body/ApprovalsTooltip")}</Body>
+          </View>
+        )}
+      </TouchableOpacity>
+    </View>
   );
 };
 

@@ -30,6 +30,7 @@ export type AzurePullRequest = {
   reviewers: Reviewer[];
   url: string;
   supportsIterations: boolean;
+  isDraft: boolean;
 };
 
 type Repository = {

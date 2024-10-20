@@ -1,6 +1,7 @@
 import AzureDevOps from "assets/svgs/azure-devops.svg";
 import ChevronRight from "assets/svgs/chevron-right.svg";
 import Cross from "assets/svgs/cross.svg";
+import EditPencil from "assets/svgs/edit-pencil.svg";
 import GitHub from "assets/svgs/github.svg";
 import GitLab from "assets/svgs/gitlab.svg";
 import Notification from "assets/svgs/notification.svg";
@@ -15,6 +16,7 @@ export default {
   AzureDevOps,
   ChevronRight,
   Cross,
+  EditPencil,
   GitHub,
   GitLab,
   Notification,

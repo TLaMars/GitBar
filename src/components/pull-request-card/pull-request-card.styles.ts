@@ -4,13 +4,32 @@ import { ThemeColor } from "models/theme";
 const useStyles = (accentColor: ThemeColor) =>
   useMemoizedStyles(({ spacing, colors, borderRadiuses }) => ({
     card: {
+      overflow: "hidden",
       backgroundColor: colors.backgroundSurface,
       padding: spacing(3),
       borderRadius: borderRadiuses.sidebar,
       flexDirection: "column",
       gap: spacing(2),
-      borderLeftWidth: 4,
-      borderLeftColor: colors[accentColor],
+    },
+    borderLine: {
+      position: "absolute",
+      left: 0,
+      top: -2,
+      bottom: 0,
+      borderStyle: "solid",
+      borderWidth: 4,
+      borderColor: colors[accentColor],
+      marginLeft: -4,
+      width: 1,
+    },
+    draftLine: {
+      borderStyle: "dashed",
+    },
+    header: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: spacing(1),
+      minHeight: spacing(5),
     },
     footer: {
       flexDirection: "row",

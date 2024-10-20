@@ -30,6 +30,7 @@ const QueryGetGithubPullRequests = graphql(`
               }
             }
           }
+          isDraft
           createdAt
           url
           baseRef {

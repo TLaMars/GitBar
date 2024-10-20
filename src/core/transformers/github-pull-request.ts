@@ -74,6 +74,7 @@ const transformGithubPullRequest = (
               review?.author?.login === profile.userName &&
               review?.state === PullRequestReviewState.Approved,
           ),
+          isDraft: pr.isDraft,
           accentColor: getColorForProject(pr.repository.id),
         },
       ];

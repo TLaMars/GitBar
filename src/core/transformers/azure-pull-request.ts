@@ -46,6 +46,7 @@ const transformAzurePullRequest = (
         reviewer.vote === ReviewerVote.Approved,
     ),
     accentColor: getColorForProject(data.repository.id),
+    isDraft: data.isDraft,
   };
 };
 

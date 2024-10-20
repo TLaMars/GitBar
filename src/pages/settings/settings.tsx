@@ -26,6 +26,7 @@ import {
   selectAllowNotifications,
   selectAppearance,
   selectGroupPRsBy,
+  selectHideDraftPRs,
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
 } from "store/selectors/settings";
@@ -35,6 +36,7 @@ import {
   setAllowNotifications,
   setAppearance,
   setGroupPRsBy,
+  setHideDraftPRs,
   setHidePRsAfterTwoMonths,
   setHidePRsApprovedByMe,
 } from "store/slices/settings";
@@ -54,6 +56,7 @@ const Settings: React.FC = () => {
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
   const allowNotifications = useSelector(selectAllowNotifications);
   const appearance = useSelector(selectAppearance);
+  const hideDraftPRs = useSelector(selectHideDraftPRs);
   const [notificationPermissions, setNotificationPermissions] =
     useState<NotificationPermission>();
   const [launchAtLogin, setLaunchAtLogin] = useState<boolean>();
@@ -146,8 +149,14 @@ const Settings: React.FC = () => {
         />
         <ListItemToggle
           label={t("Settings/PullRequests/HideApprovedByMe")}
+          border
           value={hidePRsApprovedByMe}
           onToggle={(value) => dispatch(setHidePRsApprovedByMe(value))}
+        />
+        <ListItemToggle
+          label={t("Settings/PullRequests/HideDrafts")}
+          value={hideDraftPRs}
+          onToggle={(value) => dispatch(setHideDraftPRs(value))}
         />
         <Spacer mt={4} />
         <Heading size="x2s">{t("Settings/SectionHeading/App")}</Heading>

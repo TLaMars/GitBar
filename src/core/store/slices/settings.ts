@@ -10,6 +10,7 @@ const initialState = {
   groupPRsBy: GroupPullRequestsBy.REPO,
   hidePRsApprovedByMe: true,
   hidePRsAfterTwoMonths: true,
+  hideDraftPRs: false,
 };
 
 const settings = createSlice({
@@ -31,6 +32,9 @@ const settings = createSlice({
     setAppearance(state, action: PayloadAction<Appearance>) {
       state.appearance = action.payload;
     },
+    setHideDraftPRs(state, action: PayloadAction<boolean>) {
+      state.hideDraftPRs = action.payload;
+    },
   },
 });
 
@@ -40,6 +44,7 @@ export const {
   setGroupPRsBy,
   setHidePRsApprovedByMe,
   setAppearance,
+  setHideDraftPRs,
 } = settings.actions;
 
 export default settings.reducer;

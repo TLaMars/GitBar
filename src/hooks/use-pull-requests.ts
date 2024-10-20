@@ -6,6 +6,7 @@ import { selectHiddenPullRequests } from "store/selectors/pull-requests";
 import {
   selectAllowNotifications,
   selectGroupPRsBy,
+  selectHideDraftPRs,
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
 } from "store/selectors/settings";
@@ -31,6 +32,7 @@ const usePullRequests = () => {
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
   const sendNotifications = useSelector(selectAllowNotifications);
   const hiddenPullRequests = useSelector(selectHiddenPullRequests);
+  const hideDraftPRs = useSelector(selectHideDraftPRs);
 
   const fetchPullRequests = useCallback(async () => {
     setState((prevState) => ({ ...prevState, loading: true }));
@@ -88,12 +90,14 @@ const usePullRequests = () => {
           }
           return true;
         })
-        .filter((pr) => !hidePRsApprovedByMe || !pr.approvedByMe),
+        .filter((pr) => !hidePRsApprovedByMe || !pr.approvedByMe)
+        .filter((pr) => !pr.isDraft || !hideDraftPRs),
     [
       state.queryResult,
       hiddenPullRequests,
       hidePRsAfterTwoMonths,
       hidePRsApprovedByMe,
+      hideDraftPRs,
     ],
   );
 

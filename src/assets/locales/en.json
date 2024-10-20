@@ -89,5 +89,6 @@
   "Onboarding/ReadyToGo/Heading": "Ready to go!",
   "Onboarding/ReadyToGo/GetStarted": "Open GitBar",
   "Onboarding/ReadyToGo/Body": "Open GitBar through the menu bar icon",
-  "Settings/Button/CloseApp": "Quit GitBar"
+  "Settings/Button/CloseApp": "Quit GitBar",
+  "Settings/PullRequests/HideDrafts": "Hide PRs that have a draft status"
 }

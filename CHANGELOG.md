@@ -1,10 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/TLaMars/gitbar/releases/tag/v1.2.0) - 2024-10-20
+
+### 🚀 Features
+
+- _(draft)_ Show that a pr is draft in the overview[(e86ee94)](https://github.com/TLaMars/gitbar/commit/e86ee94e81d2e1fbbbbd1eb509c7185c0c53bfd9) by @TLaMars
+- _(attendees)_ Show all attendees[(7f6d4c5)](https://github.com/TLaMars/gitbar/commit/7f6d4c5926406cc143908684c1be01bdcd731b1e) by @TLaMars
+- _(draft)_ Hide drafts from relevant tab[(5253e2e)](https://github.com/TLaMars/gitbar/commit/5253e2e880fb56f94ef51ca3f2e7b22dcbdf6800) by @TLaMars
+
 ## [1.1.1](https://github.com/TLaMars/gitbar/releases/tag/v1.1.1) - 2024-10-17
 
 ### 🐛 Bug Fixes
 
-- _(storage)_ Set correct keys for persisted storage so it is not overwritten[(c4805f5)](https://github.com/TLaMars/gitbar/commit/c4805f5e610f3cad5a34f365dc5b1e1c761d5a6e)
+- _(storage)_ Set correct keys for persisted storage so it is not overwritten[(c4805f5)](https://github.com/TLaMars/gitbar/commit/c4805f5e610f3cad5a34f365dc5b1e1c761d5a6e) by @TLaMars
 
 ## [1.1.0](https://github.com/TLaMars/gitbar/releases/tag/v1.1.0) - 2024-10-16
 

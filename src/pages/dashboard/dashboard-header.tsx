@@ -42,10 +42,16 @@ const DashboardHeader: React.FC<Props> = ({ executedAt, setIsRelevant }) => {
       </View>
       <View style={$.headerRight}>
         <ButtonToggle
-          labelLeft={t("Dashboard/Button/Relevant")}
-          labelRight={t("Dashboard/Button/All")}
-          onPressLeft={() => setIsRelevant(true)}
-          onPressRight={() => setIsRelevant(false)}
+          buttons={[
+            {
+              label: t("Dashboard/Button/Relevant"),
+              onPress: () => setIsRelevant(true),
+            },
+            {
+              label: t("Dashboard/Button/All"),
+              onPress: () => setIsRelevant(false),
+            },
+          ]}
         />
       </View>
     </View>

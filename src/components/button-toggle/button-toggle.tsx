@@ -5,48 +5,36 @@ import Body from "components/body/body";
 
 import useStyles from "./button-toggle.styles";
 
-type Props = {
-  labelLeft: string;
-  labelRight: string;
-  onPressLeft: () => void;
-  onPressRight: () => void;
+type Button = {
+  label: string;
+  onPress: () => void;
 };
 
-const ButtonToggle: React.FC<Props> = ({
-  labelLeft,
-  labelRight,
-  onPressLeft,
-  onPressRight,
-}) => {
+type Props = {
+  buttons: Button[];
+};
+
+const ButtonToggle: React.FC<Props> = ({ buttons }) => {
   const $ = useStyles();
-  const [buttonOneActive, setButtonOneActive] = React.useState(true);
+  const [activeButtonIndex, setActiveButtonIndex] = React.useState(0);
 
   return (
     <View style={$.container}>
-      <Pressable
-        accessibilityRole="button"
-        style={[$.button, buttonOneActive && $.activeButton]}
-        onPress={() => {
-          setButtonOneActive(true);
-          onPressLeft();
-        }}
-      >
-        <Body textAlign="center" size="xs">
-          {labelLeft}
-        </Body>
-      </Pressable>
-      <Pressable
-        accessibilityRole="button"
-        style={[$.button, !buttonOneActive && $.activeButton]}
-        onPress={() => {
-          setButtonOneActive(false);
-          onPressRight();
-        }}
-      >
-        <Body textAlign="center" size="xs">
-          {labelRight}
-        </Body>
-      </Pressable>
+      {buttons.map((button, index) => (
+        <Pressable
+          key={`${button.label}`}
+          accessibilityRole="button"
+          style={[$.button, activeButtonIndex === index && $.activeButton]}
+          onPress={() => {
+            setActiveButtonIndex(index);
+            button.onPress();
+          }}
+        >
+          <Body textAlign="center" size="xs">
+            {button.label}
+          </Body>
+        </Pressable>
+      ))}
     </View>
   );
 };

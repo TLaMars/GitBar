@@ -40,8 +40,14 @@ const transformAzurePullRequest = (
       (reviewer) => reviewer.vote === ReviewerVote.Approved,
     ).length,
     amountOfRequiredApprovals: undefined,
+    commentedByMe: data.threads.some((thread) =>
+      thread.comments.some(
+        (comment) => comment.author.displayName === profile.name,
+      ),
+    ),
     approvedByMe: data.reviewers.some(
       (reviewer) =>
+        // TODO: Check if this is correct
         reviewer.displayName === profile.name &&
         reviewer.vote === ReviewerVote.Approved,
     ),

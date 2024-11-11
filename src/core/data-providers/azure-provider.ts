@@ -3,6 +3,7 @@ import { AzureAuth } from "models/auth";
 import Profile, { ProfileStatus } from "models/profile";
 import { Config } from "services/api/api-wrapper";
 import azureApi from "services/api/azure/api";
+import { AzurePullRequest } from "services/api/azure/models/pull-requests-response";
 import transformAzurePullRequest from "transformers/azure-pull-request";
 import azureConfig from "utils/api-config";
 
@@ -72,6 +73,27 @@ class AzureProvider implements Provider {
     return data.value;
   }
 
+  private async threads(
+    projectId: string,
+    repositoryId: string,
+    pullRequestId: string,
+  ) {
+    const { data } = await azureApi.get(
+      "/:organization/:projectId/_apis/git/repositories/:repositoryId/pullrequests/:pullRequesId/threads",
+      azureConfig(
+        {
+          organization: this.auth.organization,
+          projectId,
+          pullRequesId: pullRequestId,
+          repositoryId,
+        },
+        this.auth.token,
+      ),
+    );
+
+    return data.value;
+  }
+
   async pullRequests() {
     const { data: profile, error: profileError } = await this.profile();
 
@@ -80,21 +102,41 @@ class AzureProvider implements Provider {
     }
 
     const projects = await this.projects();
-    const pullRequests = await Promise.all(
-      projects.map(async (project) => {
-        const { data } = await azureApi.get(
-          "/:organization/:projectId/_apis/git/pullrequests",
-          azureConfig(
-            {
-              organization: this.auth.organization,
-              projectId: project.id,
-            },
-            this.auth.token,
-          ),
-        );
-        return data.value;
-      }),
-    );
+    const pullRequests: AzurePullRequest[] = (
+      await Promise.all(
+        projects.map(async (project) => {
+          const { data: pullRequestsData } = await azureApi.get(
+            "/:organization/:projectId/_apis/git/pullrequests",
+            azureConfig(
+              {
+                organization: this.auth.organization,
+                projectId: project.id,
+              },
+              this.auth.token,
+            ),
+          );
+
+          const data = pullRequestsData.value;
+
+          const pullRequestsWithComments = await Promise.all(
+            data.map(async (pr) => {
+              const threads = await this.threads(
+                project.id,
+                pr.repository.id,
+                pr.pullRequestId.toString(),
+              );
+
+              return {
+                ...pr,
+                threads,
+              };
+            }),
+          );
+
+          return pullRequestsWithComments;
+        }),
+      )
+    ).flat();
 
     return {
       data: pullRequests
@@ -103,7 +145,8 @@ class AzureProvider implements Provider {
         .filter(
           (pr) =>
             pr.author.name === profile.name ||
-            pr.reviewers.some((reviewer) => reviewer.name === profile.name),
+            pr.reviewers.some((reviewer) => reviewer.name === profile.name) ||
+            pr.commentedByMe,
         ),
     };
   }

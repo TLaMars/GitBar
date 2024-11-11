@@ -49,6 +49,13 @@ const QueryGetGithubPullRequests = graphql(`
               state
             }
           }
+          comments(first: 100) {
+            nodes {
+              author {
+                login
+              }
+            }
+          }
         }
       }
     }

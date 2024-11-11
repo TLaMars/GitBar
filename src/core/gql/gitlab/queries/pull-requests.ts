@@ -3,14 +3,13 @@ import { graphql } from "../codegen";
 const QueryGetGitLabPullRequests = graphql(`
   query GetGitLabPullRequests {
     currentUser {
-      assignedMergeRequests(state: opened) {
-        ...GitLabPullRequest
-      }
-      authoredMergeRequests(state: opened) {
-        ...GitLabPullRequest
-      }
-      reviewRequestedMergeRequests(state: opened) {
-        ...GitLabPullRequest
+      contributedProjects {
+        nodes {
+          archived
+          mergeRequests(state: opened) {
+            ...GitLabPullRequest
+          }
+        }
       }
     }
   }

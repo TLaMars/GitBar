@@ -1,3 +1,5 @@
+import { Thread } from "./thread-response";
+
 export type PullRequestsResponse = {
   count: number;
   value: AzurePullRequest[];
@@ -31,6 +33,8 @@ export type AzurePullRequest = {
   url: string;
   supportsIterations: boolean;
   isDraft: boolean;
+  // Custom added field during transformation
+  threads: Thread[];
 };
 
 type Repository = {

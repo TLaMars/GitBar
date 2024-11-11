@@ -1,4 +1,4 @@
-import { getFragmentData } from "gql/gitlab/codegen";
+import { getFragmentData } from "gql/github/codegen";
 import { GetGitLabPullRequestsQuery } from "gql/gitlab/codegen/graphql";
 import FragmentGitLabPullRequest from "gql/gitlab/fragments/pull-request";
 import { Attendee } from "models/attendee";
@@ -15,27 +15,27 @@ const transformGitLabPullRequest = ({
   data: GetGitLabPullRequestsQuery;
   profile: Profile;
 }): PullRequest[] => {
-  const assigned = getFragmentData(
-    FragmentGitLabPullRequest,
-    data.currentUser?.assignedMergeRequests,
-  );
-  const authored = getFragmentData(
-    FragmentGitLabPullRequest,
-    data.currentUser?.authoredMergeRequests,
-  );
-  const requested = getFragmentData(
-    FragmentGitLabPullRequest,
-    data.currentUser?.reviewRequestedMergeRequests,
+  const pullRequests = (data.currentUser?.contributedProjects?.nodes ?? [])
+    .filter((project) => !project?.archived)
+    .flatMap((project) => project?.mergeRequests ?? [])
+    .flatMap((fragment) =>
+      getFragmentData(FragmentGitLabPullRequest, [fragment]),
+    )
+    .flatMap((fragment) => fragment.nodes ?? []);
+
+  const relevantPullRequests = pullRequests.filter(
+    (pr) =>
+      pr?.author?.name === profile.name ||
+      pr?.reviewers?.nodes?.some(
+        (reviewer) => reviewer?.name === profile.name,
+      ) ||
+      pr?.commenters.nodes?.some(
+        (commenter) => commenter?.username === profile.userName,
+      ),
   );
 
-  const pullRequests = [
-    ...(assigned?.nodes || []),
-    ...(authored?.nodes || []),
-    ...(requested?.nodes || []),
-  ];
-
-  return pullRequests.reduce<PullRequest[]>((acc, pr) => {
-    if (!pr) return acc;
+  return relevantPullRequests.reduce<PullRequest[]>((acc, pr) => {
+    if (!pr) return acc as PullRequest[];
 
     return [
       ...acc,
@@ -75,6 +75,9 @@ const transformGitLabPullRequest = ({
           (reviewer) =>
             reviewer?.name === profile.name &&
             !!reviewer.mergeRequestInteraction?.approved,
+        ),
+        commentedByMe: pr.commenters.nodes?.some(
+          (commenter) => commenter?.username === profile.userName,
         ),
         accentColor: getColorForProject(pr.sourceProject?.name ?? ""),
         isDraft: pr.draft,

@@ -22,6 +22,11 @@ const FragmentGitLabPullRequest = graphql(`
           }
         }
       }
+      commenters {
+        nodes {
+          username
+        }
+      }
       sourceProject {
         name
         id

@@ -13,11 +13,11 @@ import { TypedDocumentNode as DocumentNode } from "@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-  "\n  fragment GitLabPullRequest on MergeRequestConnection {\n    nodes {\n      title\n      id\n      approvalsRequired\n      approvalsLeft\n      webUrl\n      draft\n      author {\n        name\n        avatarUrl\n      }\n      reviewers {\n        nodes {\n          name\n          avatarUrl\n          mergeRequestInteraction {\n            approved\n          }\n        }\n      }\n      sourceProject {\n        name\n        id\n      }\n      userNotesCount\n      createdAt\n    }\n  }\n":
+  "\n  fragment GitLabPullRequest on MergeRequestConnection {\n    nodes {\n      title\n      id\n      approvalsRequired\n      approvalsLeft\n      webUrl\n      draft\n      author {\n        name\n        avatarUrl\n      }\n      reviewers {\n        nodes {\n          name\n          avatarUrl\n          mergeRequestInteraction {\n            approved\n          }\n        }\n      }\n      commenters {\n        nodes {\n          username\n        }\n      }\n      sourceProject {\n        name\n        id\n      }\n      userNotesCount\n      createdAt\n    }\n  }\n":
     types.GitLabPullRequestFragmentDoc,
   "\n  query GetCurrentUser {\n    currentUser {\n      id\n      avatarUrl\n      username\n      name\n    }\n  }\n":
     types.GetCurrentUserDocument,
-  "\n  query GetGitLabPullRequests {\n    currentUser {\n      assignedMergeRequests(state: opened) {\n        ...GitLabPullRequest\n      }\n      authoredMergeRequests(state: opened) {\n        ...GitLabPullRequest\n      }\n      reviewRequestedMergeRequests(state: opened) {\n        ...GitLabPullRequest\n      }\n    }\n  }\n":
+  "\n  query GetGitLabPullRequests {\n    currentUser {\n      contributedProjects {\n        nodes {\n          archived\n          mergeRequests(state: opened) {\n            ...GitLabPullRequest\n          }\n        }\n      }\n    }\n  }\n":
     types.GetGitLabPullRequestsDocument,
 };
 
@@ -39,8 +39,8 @@ export function graphql(source: string): unknown;
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  fragment GitLabPullRequest on MergeRequestConnection {\n    nodes {\n      title\n      id\n      approvalsRequired\n      approvalsLeft\n      webUrl\n      draft\n      author {\n        name\n        avatarUrl\n      }\n      reviewers {\n        nodes {\n          name\n          avatarUrl\n          mergeRequestInteraction {\n            approved\n          }\n        }\n      }\n      sourceProject {\n        name\n        id\n      }\n      userNotesCount\n      createdAt\n    }\n  }\n",
-): (typeof documents)["\n  fragment GitLabPullRequest on MergeRequestConnection {\n    nodes {\n      title\n      id\n      approvalsRequired\n      approvalsLeft\n      webUrl\n      draft\n      author {\n        name\n        avatarUrl\n      }\n      reviewers {\n        nodes {\n          name\n          avatarUrl\n          mergeRequestInteraction {\n            approved\n          }\n        }\n      }\n      sourceProject {\n        name\n        id\n      }\n      userNotesCount\n      createdAt\n    }\n  }\n"];
+  source: "\n  fragment GitLabPullRequest on MergeRequestConnection {\n    nodes {\n      title\n      id\n      approvalsRequired\n      approvalsLeft\n      webUrl\n      draft\n      author {\n        name\n        avatarUrl\n      }\n      reviewers {\n        nodes {\n          name\n          avatarUrl\n          mergeRequestInteraction {\n            approved\n          }\n        }\n      }\n      commenters {\n        nodes {\n          username\n        }\n      }\n      sourceProject {\n        name\n        id\n      }\n      userNotesCount\n      createdAt\n    }\n  }\n",
+): (typeof documents)["\n  fragment GitLabPullRequest on MergeRequestConnection {\n    nodes {\n      title\n      id\n      approvalsRequired\n      approvalsLeft\n      webUrl\n      draft\n      author {\n        name\n        avatarUrl\n      }\n      reviewers {\n        nodes {\n          name\n          avatarUrl\n          mergeRequestInteraction {\n            approved\n          }\n        }\n      }\n      commenters {\n        nodes {\n          username\n        }\n      }\n      sourceProject {\n        name\n        id\n      }\n      userNotesCount\n      createdAt\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -51,8 +51,8 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  query GetGitLabPullRequests {\n    currentUser {\n      assignedMergeRequests(state: opened) {\n        ...GitLabPullRequest\n      }\n      authoredMergeRequests(state: opened) {\n        ...GitLabPullRequest\n      }\n      reviewRequestedMergeRequests(state: opened) {\n        ...GitLabPullRequest\n      }\n    }\n  }\n",
-): (typeof documents)["\n  query GetGitLabPullRequests {\n    currentUser {\n      assignedMergeRequests(state: opened) {\n        ...GitLabPullRequest\n      }\n      authoredMergeRequests(state: opened) {\n        ...GitLabPullRequest\n      }\n      reviewRequestedMergeRequests(state: opened) {\n        ...GitLabPullRequest\n      }\n    }\n  }\n"];
+  source: "\n  query GetGitLabPullRequests {\n    currentUser {\n      contributedProjects {\n        nodes {\n          archived\n          mergeRequests(state: opened) {\n            ...GitLabPullRequest\n          }\n        }\n      }\n    }\n  }\n",
+): (typeof documents)["\n  query GetGitLabPullRequests {\n    currentUser {\n      contributedProjects {\n        nodes {\n          archived\n          mergeRequests(state: opened) {\n            ...GitLabPullRequest\n          }\n        }\n      }\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

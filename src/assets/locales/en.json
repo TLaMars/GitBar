@@ -20,7 +20,7 @@
   "RegisterAzure/Alert/Organization": "Organization required",
   "RegisterAzure/Alert/OrganizationDescription": "Please enter your Organization first, before you can go to the Personal Token page.",
   "RegisterAzure/Helper/Organization": "organization",
-  "RegisterAzure/Helper/OrganizationExample": "For example https://dev.azure/com/{organization}",
+  "RegisterAzure/Helper/OrganizationExample": "For example https://dev.azure.com/{organization}",
   "RegisterAzure/Helper/Scopes": "Code (Read / Write), Graph (Read) ",
   "RegisterAzure/Label/Organization": "Organization / Tenant",
   "RegisterAzure/Label/Token": "Private Token",

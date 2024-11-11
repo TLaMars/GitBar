@@ -20,6 +20,7 @@ export type PullRequest = {
   amountOfApprovals: number;
   amountOfRequiredApprovals?: number;
   approvedByMe?: boolean;
+  commentedByMe?: boolean;
   isDraft: boolean;
   // Accent Color for the repository
   accentColor: ThemeColor;

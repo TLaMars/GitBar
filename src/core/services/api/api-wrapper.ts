@@ -46,11 +46,11 @@ async function apiWrapper(
   const duration = (Date.now() - start) / 1000;
 
   if (duration > 1) {
-    console.info(
-      `${method} ${url.substring(
-        endpoint.length,
-      )} took ${duration.toFixed(3)}s`,
-    );
+    // console.info(
+    //   `${method} ${url.substring(
+    //     endpoint.length,
+    //   )} took ${duration.toFixed(3)}s`,
+    // );
   }
 
   if (!response.ok) {

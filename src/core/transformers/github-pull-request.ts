@@ -69,6 +69,9 @@ const transformGithubPullRequest = (
             }, []).length ?? 0,
           amountOfRequiredApprovals:
             pr.baseRef?.branchProtectionRule?.requiredApprovingReviewCount ?? 0,
+          commentedByMe: pr.comments.nodes?.some(
+            (comment) => comment?.author?.login === profile.userName,
+          ),
           approvedByMe: pr.reviews?.nodes?.some(
             (review) =>
               review?.author?.login === profile.userName &&

@@ -4,6 +4,7 @@ import {
   AzurePullRequest,
   ReviewerVote,
 } from "services/api/azure/models/pull-requests-response";
+import { CommentType } from "services/api/azure/models/thread-response";
 import getColorForProject from "utils/get-project-color";
 
 const transformAzurePullRequest = (
@@ -35,6 +36,14 @@ const transformAzurePullRequest = (
     url: match
       ? `${match[1]}${encodedProject}/_git/${encodedRepo}/pullrequest/${data.pullRequestId}`
       : "",
+    amountOfComments: data.threads.reduce(
+      (acc, thread) =>
+        acc +
+        thread.comments.filter(
+          (comment) => comment.commentType === CommentType.Text,
+        ).length,
+      0,
+    ),
     amountOfApprovals: data.reviewers.filter(
       (reviewer) => reviewer.vote === ReviewerVote.Approved,
     ).length,

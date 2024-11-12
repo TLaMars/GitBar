@@ -31,7 +31,7 @@ type Comment = {
   lastContentUpdatedDate: string;
 };
 
-enum ThreadStatus {
+export enum ThreadStatus {
   Active = "active",
   ByDesign = "byDesign",
   Closed = "closed",
@@ -41,7 +41,7 @@ enum ThreadStatus {
   WontFix = "wontFix",
 }
 
-enum CommentType {
+export enum CommentType {
   System = "system",
   Text = "text",
   CodeChange = "codeChange",

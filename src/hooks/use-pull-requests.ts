@@ -90,7 +90,7 @@ const usePullRequests = () => {
           }
           return true;
         })
-        .filter((pr) => !hidePRsApprovedByMe || !pr.approvedByMe)
+        .filter((pr) => !hidePRsApprovedByMe || !pr.isApprovedByMe)
         .filter((pr) => !pr.isDraft || !hideDraftPRs),
     [
       state.queryResult,

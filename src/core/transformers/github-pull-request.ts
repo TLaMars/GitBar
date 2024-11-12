@@ -3,7 +3,6 @@ import {
   GetGithubPullRequestsQuery,
   PullRequestReviewState,
 } from "gql/github/codegen/graphql";
-import { Attendee } from "models/attendee";
 import Profile from "models/profile";
 import { PullRequest } from "models/pull-request";
 import getColorForProject from "utils/get-project-color";
@@ -18,69 +17,60 @@ const transformGithubPullRequest = (
     data.search.nodes?.reduce<PullRequest[]>((acc, pr) => {
       if (!pr || pr.__typename !== "PullRequest") return acc;
 
-      return [
-        ...acc,
-        {
-          id: pr.id,
-          title: pr.title,
-          author: {
-            name: pr.author?.login ?? "",
-            avatarUrl: pr.author?.avatarUrl,
-          },
-          repoId: pr.repository.id,
-          repoName: pr.repository.nameWithOwner,
-          reviewers:
-            pr.reviewRequests?.nodes?.reduce<Attendee[]>(
-              (reviewerAcc, reviewer) => {
-                if (
-                  !reviewer ||
-                  reviewer.__typename !== "ReviewRequest" ||
-                  reviewer.requestedReviewer?.__typename !== "User"
-                )
-                  return reviewerAcc;
-
-                return [
-                  ...reviewerAcc,
-                  {
-                    name:
-                      reviewer.requestedReviewer.name ??
-                      reviewer.requestedReviewer.login,
-                    avatarUrl: reviewer.requestedReviewer.avatarUrl ?? "",
-                  },
-                ];
-              },
-              [],
-            ) ?? [],
-          createdAt: pr.createdAt,
-          url: pr.url,
-          amountOfComments: pr.totalCommentsCount ?? 0,
-          amountOfApprovals:
-            // Get the amount of unique approvals by user
-            pr.reviews?.nodes?.reduce<string[]>((approvals, review) => {
-              if (!review || review.__typename !== "PullRequestReview")
-                return approvals;
-              if (
-                review.state === PullRequestReviewState.Approved &&
-                !approvals.includes(review.author?.login ?? "")
-              ) {
-                return [...approvals, review.author?.login ?? ""];
-              }
-              return approvals;
-            }, []).length ?? 0,
-          amountOfRequiredApprovals:
-            pr.baseRef?.branchProtectionRule?.requiredApprovingReviewCount ?? 0,
-          commentedByMe: pr.comments.nodes?.some(
-            (comment) => comment?.author?.login === profile.userName,
-          ),
-          approvedByMe: pr.reviews?.nodes?.some(
+      const pullRequest: PullRequest = {
+        id: pr.id,
+        title: pr.title,
+        author: {
+          name: pr.author?.login ?? "",
+          avatarUrl: pr.author?.avatarUrl ?? "",
+        },
+        repoId: pr.repository.id,
+        repoName: pr.repository.nameWithOwner,
+        reviewers:
+          pr.reviewRequests?.nodes?.map((reviewer) => ({
+            name:
+              reviewer?.requestedReviewer?.__typename === "User"
+                ? reviewer.requestedReviewer.login
+                : "",
+            avatarUrl:
+              reviewer?.requestedReviewer?.__typename === "User"
+                ? reviewer.requestedReviewer.avatarUrl
+                : "",
+          })) ?? [],
+        createdAt: pr.createdAt,
+        url: pr.url,
+        amountOfComments: pr.totalCommentsCount ?? 0,
+        amountOfApprovals:
+          pr.reviews?.nodes?.filter(
+            (review) =>
+              review?.__typename === "PullRequestReview" &&
+              review.state === PullRequestReviewState.Approved,
+          ).length ?? 0,
+        amountOfRequiredApprovals:
+          pr.baseRef?.branchProtectionRule?.requiredApprovingReviewCount ?? 0,
+        accentColor: getColorForProject(pr.repository.id),
+        isDraft: pr.isDraft,
+        isApprovedByMe:
+          pr.reviews?.nodes?.some(
             (review) =>
               review?.author?.login === profile.userName &&
-              review?.state === PullRequestReviewState.Approved,
-          ),
-          isDraft: pr.isDraft,
-          accentColor: getColorForProject(pr.repository.id),
-        },
-      ];
+              review?.__typename === "PullRequestReview" &&
+              review.state === PullRequestReviewState.Approved,
+          ) ?? false,
+        isCommentedByMe:
+          pr.comments.nodes?.some(
+            (comment) => comment?.author?.login === profile.userName,
+          ) ?? false,
+        isAssignedToMe:
+          pr.reviewRequests?.nodes?.some(
+            (assignee) =>
+              assignee?.requestedReviewer?.__typename === "User" &&
+              assignee.requestedReviewer.login === profile.userName,
+          ) ?? false,
+        isAuthoredByMe: pr.author?.login === profile.userName,
+      };
+
+      return [...acc, pullRequest];
     }, []) ?? []
   );
 };

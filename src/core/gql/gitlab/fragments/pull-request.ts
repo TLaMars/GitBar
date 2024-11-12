@@ -11,11 +11,13 @@ const FragmentGitLabPullRequest = graphql(`
       draft
       author {
         name
+        username
         avatarUrl
       }
       reviewers {
         nodes {
           name
+          username
           avatarUrl
           mergeRequestInteraction {
             approved

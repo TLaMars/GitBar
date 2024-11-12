@@ -23,66 +23,52 @@ const transformGitLabPullRequest = ({
     )
     .flatMap((fragment) => fragment.nodes ?? []);
 
-  const relevantPullRequests = pullRequests.filter(
-    (pr) =>
-      pr?.author?.name === profile.name ||
-      pr?.reviewers?.nodes?.some(
-        (reviewer) => reviewer?.name === profile.name,
-      ) ||
-      pr?.commenters.nodes?.some(
-        (commenter) => commenter?.username === profile.userName,
-      ),
-  );
+  return pullRequests.reduce<PullRequest[]>((acc, pr) => {
+    if (!pr) return acc;
 
-  return relevantPullRequests.reduce<PullRequest[]>((acc, pr) => {
-    if (!pr) return acc as PullRequest[];
-
-    return [
-      ...acc,
-      {
-        id: pr.id,
-        title: pr.title,
-        author: {
-          name: pr.author?.name ?? "",
-          avatarUrl: pr.author?.avatarUrl?.includes("https")
-            ? pr.author.avatarUrl
-            : `${domain}${pr.author?.avatarUrl}`,
-        },
-        repoId: pr.sourceProject?.id ?? "",
-        repoName: pr.sourceProject?.name ?? "",
-        reviewers:
-          // TODO fix unsafe return
-          pr.reviewers?.nodes?.reduce<Attendee[]>((reviewerAcc, reviewer) => {
-            if (!reviewer) return reviewerAcc;
-
-            return [
-              ...reviewerAcc,
-              {
-                name: reviewer.name,
-                avatarUrl: reviewer.avatarUrl?.includes("http")
-                  ? reviewer.avatarUrl
-                  : `${domain}${reviewer.avatarUrl}`,
-              },
-            ];
-          }, []) ?? [],
-        createdAt: pr.createdAt,
-        url: pr.webUrl ?? "",
-        amountOfComments: pr.userNotesCount ?? 0,
-        amountOfApprovals:
-          (pr.approvalsRequired ?? 0) - (pr.approvalsLeft ?? 0),
-        amountOfRequiredApprovals: pr.approvalsRequired ?? 0,
-        approvedByMe: pr.reviewers?.nodes?.some(
+    const pullRequest: PullRequest = {
+      id: pr.id,
+      title: pr.title,
+      author: {
+        name: pr.author?.name ?? "",
+        avatarUrl: pr.author?.avatarUrl?.includes("https")
+          ? pr.author.avatarUrl
+          : `${domain}${pr.author?.avatarUrl}`,
+      },
+      repoId: pr.sourceProject?.id ?? "",
+      repoName: pr.sourceProject?.name ?? "",
+      reviewers:
+        pr.reviewers?.nodes?.map<Attendee>((reviewer) => ({
+          name: reviewer?.name ?? "",
+          avatarUrl: reviewer?.avatarUrl?.includes("http")
+            ? reviewer.avatarUrl
+            : `${domain}${reviewer?.avatarUrl}`,
+        })) ?? [],
+      createdAt: pr.createdAt,
+      url: pr.webUrl ?? "",
+      amountOfComments: pr.userNotesCount ?? 0,
+      amountOfApprovals: (pr.approvalsRequired ?? 0) - (pr.approvalsLeft ?? 0),
+      amountOfRequiredApprovals: pr.approvalsRequired ?? 0,
+      accentColor: getColorForProject(pr.sourceProject?.name ?? ""),
+      isDraft: pr.draft,
+      isApprovedByMe:
+        pr.reviewers?.nodes?.some(
           (reviewer) =>
             reviewer?.name === profile.name &&
             !!reviewer.mergeRequestInteraction?.approved,
-        ),
-        commentedByMe: pr.commenters.nodes?.some(
+        ) ?? false,
+      isCommentedByMe:
+        pr.commenters.nodes?.some(
           (commenter) => commenter?.username === profile.userName,
-        ),
-        accentColor: getColorForProject(pr.sourceProject?.name ?? ""),
-        isDraft: pr.draft,
-      },
-    ];
+        ) ?? false,
+      isAssignedToMe:
+        pr.reviewers?.nodes?.some(
+          (reviewer) => reviewer?.username === profile.userName,
+        ) ?? false,
+      isAuthoredByMe: pr.author?.username === profile.userName,
+    };
+
+    return [...acc, pullRequest];
   }, []);
 };
 

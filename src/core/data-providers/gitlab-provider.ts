@@ -107,8 +107,9 @@ class GitLabProvider implements Provider {
         domain: this.auth.domain,
         data,
       }).filter(
-        (pullRequest, index, self) =>
-          index === self.findIndex((p) => p.id === pullRequest.id),
+        (pr, index, self) =>
+          (pr.isAuthoredByMe || pr.isAssignedToMe || pr.isCommentedByMe) &&
+          index === self.findIndex((p) => p.id === pr.id),
       ),
     };
   }

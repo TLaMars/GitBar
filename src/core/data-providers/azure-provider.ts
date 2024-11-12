@@ -143,10 +143,7 @@ class AzureProvider implements Provider {
         .flat()
         .map((pr) => transformAzurePullRequest(profile, pr))
         .filter(
-          (pr) =>
-            pr.author.name === profile.name ||
-            pr.reviewers.some((reviewer) => reviewer.name === profile.name) ||
-            pr.commentedByMe,
+          (pr) => pr.isAuthoredByMe || pr.isAssignedToMe || pr.isCommentedByMe,
         ),
     };
   }

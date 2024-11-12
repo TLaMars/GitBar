@@ -99,8 +99,9 @@ class GitHubProvider implements Provider {
 
     return {
       data: transformGithubPullRequest(profile, data).filter(
-        (pullRequest, index, self) =>
-          index === self.findIndex((p) => p.id === pullRequest.id),
+        (pr, index, self) =>
+          (pr.isAuthoredByMe || pr.isAssignedToMe || pr.isCommentedByMe) &&
+          index === self.findIndex((p) => p.id === pr.id),
       ),
     };
   }

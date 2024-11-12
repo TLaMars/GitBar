@@ -9220,6 +9220,8 @@ export type ComplianceFramework = {
   __typename?: "ComplianceFramework";
   /** Hexadecimal representation of compliance framework's label color. */
   color: Scalars["String"]["output"];
+  /** Compliance requirements of the compliance framework. */
+  complianceRequirements?: Maybe<ComplianceRequirementConnection>;
   /** Default compliance framework for the group. */
   default?: Maybe<Scalars["Boolean"]["output"]>;
   /** Description of the compliance framework. */
@@ -9241,6 +9243,14 @@ export type ComplianceFramework = {
   scanExecutionPolicies?: Maybe<ScanExecutionPolicyConnection>;
   /** Scan Result Policies of the compliance framework. */
   scanResultPolicies?: Maybe<ScanResultPolicyConnection>;
+};
+
+/** Represents a ComplianceFramework associated with a Project */
+export type ComplianceFrameworkComplianceRequirementsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** Represents a ComplianceFramework associated with a Project */
@@ -9334,6 +9344,26 @@ export type ComplianceRequirement = {
   id: Scalars["ID"]["output"];
   /** Name of the compliance requirement. */
   name: Scalars["String"]["output"];
+};
+
+/** The connection type for ComplianceRequirement. */
+export type ComplianceRequirementConnection = {
+  __typename?: "ComplianceRequirementConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<ComplianceRequirementEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<ComplianceRequirement>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type ComplianceRequirementEdge = {
+  __typename?: "ComplianceRequirementEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<ComplianceRequirement>;
 };
 
 export type ComplianceRequirementInput = {
@@ -39994,8 +40024,6 @@ export type SecurityReportSummarySectionScansArgs = {
 export enum SecurityReportTypeEnum {
   /** API FUZZING scan report */
   ApiFuzzing = "API_FUZZING",
-  /** BREACH AND ATTACK SIMULATION scan report */
-  BreachAndAttackSimulation = "BREACH_AND_ATTACK_SIMULATION",
   /** CLUSTER IMAGE SCANNING scan report */
   ClusterImageScanning = "CLUSTER_IMAGE_SCANNING",
   /** CONTAINER SCANNING scan report */
@@ -40020,8 +40048,6 @@ export enum SecurityReportTypeEnum {
 export enum SecurityScannerType {
   /** API Fuzzing scanner */
   ApiFuzzing = "API_FUZZING",
-  /** Breach And Attack Simulation scanner */
-  BreachAndAttackSimulation = "BREACH_AND_ATTACK_SIMULATION",
   /** Cluster Image Scanning scanner */
   ClusterImageScanning = "CLUSTER_IMAGE_SCANNING",
   /** Container Scanning scanner */
@@ -48846,6 +48872,7 @@ export type GitLabPullRequestFragment = {
     author?: {
       __typename?: "MergeRequestAuthor";
       name: string;
+      username: string;
       avatarUrl?: string | null;
     } | null;
     reviewers?: {
@@ -48853,6 +48880,7 @@ export type GitLabPullRequestFragment = {
       nodes?: Array<{
         __typename?: "MergeRequestReviewer";
         name: string;
+        username: string;
         avatarUrl?: string | null;
         mergeRequestInteraction?: {
           __typename?: "UserMergeRequestInteraction";
@@ -48949,6 +48977,10 @@ export const GitLabPullRequestFragmentDoc = {
                       { kind: "Field", name: { kind: "Name", value: "name" } },
                       {
                         kind: "Field",
+                        name: { kind: "Name", value: "username" },
+                      },
+                      {
+                        kind: "Field",
                         name: { kind: "Name", value: "avatarUrl" },
                       },
                     ],
@@ -48969,6 +49001,10 @@ export const GitLabPullRequestFragmentDoc = {
                             {
                               kind: "Field",
                               name: { kind: "Name", value: "name" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "username" },
                             },
                             {
                               kind: "Field",
@@ -49174,6 +49210,10 @@ export const GetGitLabPullRequestsDocument = {
                       { kind: "Field", name: { kind: "Name", value: "name" } },
                       {
                         kind: "Field",
+                        name: { kind: "Name", value: "username" },
+                      },
+                      {
+                        kind: "Field",
                         name: { kind: "Name", value: "avatarUrl" },
                       },
                     ],
@@ -49194,6 +49234,10 @@ export const GetGitLabPullRequestsDocument = {
                             {
                               kind: "Field",
                               name: { kind: "Name", value: "name" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "username" },
                             },
                             {
                               kind: "Field",

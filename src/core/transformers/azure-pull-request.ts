@@ -26,33 +26,31 @@ const transformAzurePullRequest = (
     },
     repoId: data.repository.id,
     repoName: data.repository.name,
-    url: match
-      ? `${match[1]}${encodedProject}/_git/${encodedRepo}/pullrequest/${data.pullRequestId}`
-      : "",
     reviewers: data.reviewers.map((reviewer) => ({
       name: reviewer.displayName,
       // TODO: Add avatarUrl
       avatarUrl: "",
     })),
     createdAt: data.creationDate,
-    amountOfComments: undefined,
+    url: match
+      ? `${match[1]}${encodedProject}/_git/${encodedRepo}/pullrequest/${data.pullRequestId}`
+      : "",
     amountOfApprovals: data.reviewers.filter(
       (reviewer) => reviewer.vote === ReviewerVote.Approved,
     ).length,
-    amountOfRequiredApprovals: undefined,
-    commentedByMe: data.threads.some((thread) =>
-      thread.comments.some(
-        (comment) => comment.author.displayName === profile.name,
-      ),
-    ),
-    approvedByMe: data.reviewers.some(
-      (reviewer) =>
-        // TODO: Check if this is correct
-        reviewer.displayName === profile.name &&
-        reviewer.vote === ReviewerVote.Approved,
-    ),
-    accentColor: getColorForProject(data.repository.id),
     isDraft: data.isDraft,
+    accentColor: getColorForProject(data.repository.id),
+    isApprovedByMe: data.reviewers.some(
+      (reviewer) =>
+        reviewer.id === profile.id && reviewer.vote === ReviewerVote.Approved,
+    ),
+    isAssignedToMe: data.reviewers.some(
+      (reviewer) => reviewer.id === profile.id,
+    ),
+    isAuthoredByMe: data.createdBy.id === profile.id,
+    isCommentedByMe: data.threads.some((thread) =>
+      thread.comments.some((comment) => comment.author.id === profile.id),
+    ),
   };
 };
 

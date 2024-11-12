@@ -2,6 +2,7 @@ import React from "react";
 import { Image, View } from "react-native";
 
 import Text from "components/text/text";
+import useTheme from "hooks/use-theme";
 import getInitials from "utils/get-initials";
 
 import useStyles from "./attendee.styles";
@@ -14,6 +15,7 @@ type Props = {
 
 const Attendee: React.FC<Props> = ({ avatarUrl, name, size = 80 }) => {
   const $ = useStyles();
+  const { fontSizes, lineHeights } = useTheme();
 
   const initials = getInitials(name);
   const attendeeStyle = [
@@ -40,8 +42,9 @@ const Attendee: React.FC<Props> = ({ avatarUrl, name, size = 80 }) => {
         style={[
           $.initials,
           {
-            fontSize: size / 3 > 24 ? 24 : size / 3,
-            lineHeight: (size / 3) * 1.3,
+            fontSize: size <= 24 ? fontSizes.bodyX3S : fontSizes.bodyS,
+            lineHeight: size <= 24 ? fontSizes.bodyX3S : lineHeights.bodyS,
+            height: size <= 24 ? fontSizes.bodyX3S - 2 : lineHeights.bodyS,
           },
         ]}
       >

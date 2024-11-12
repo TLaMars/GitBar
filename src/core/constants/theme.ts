@@ -37,6 +37,7 @@ export type ThemeSpacingScale =
   | 96;
 
 export const FONT_SIZES = {
+  x3s: 8,
   x2s: 10,
   xs: 12,
   s: 14,
@@ -49,6 +50,7 @@ export const FONT_SIZES = {
 } as const satisfies Record<string, number>;
 
 export const LINE_HEIGHTS = {
+  x3s: 10,
   x2s: 12,
   xs: 16,
   s: 20,
@@ -106,6 +108,7 @@ export const THEME_FONT_SIZES = {
   bodyS: FONT_SIZES.s,
   bodyXS: FONT_SIZES.xs,
   bodyX2S: FONT_SIZES.x2s,
+  bodyX3S: FONT_SIZES.x3s,
   helper: FONT_SIZES.xs,
   input: FONT_SIZES.s,
   label: FONT_SIZES.s,
@@ -131,6 +134,7 @@ export const THEME_LINE_HEIGHTS = {
   bodyS: LINE_HEIGHTS.s,
   bodyXS: LINE_HEIGHTS.xs,
   bodyX2S: LINE_HEIGHTS.x2s,
+  bodyX3S: LINE_HEIGHTS.x3s,
   helper: LINE_HEIGHTS.m,
   text: LINE_HEIGHTS.m,
 } as const satisfies Record<string, number>;

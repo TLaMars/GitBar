@@ -9,9 +9,10 @@ const useStyles = () =>
     },
     initials: {
       fontWeight: fontWeights.bold,
-      textAlign: "center",
       alignItems: "center",
       justifyContent: "center",
+      textAlign: "center",
+      textAlignVertical: "center",
     },
   }));
 export default useStyles;

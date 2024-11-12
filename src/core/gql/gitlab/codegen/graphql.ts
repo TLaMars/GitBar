@@ -48885,6 +48885,7 @@ export type GitLabPullRequestFragment = {
         mergeRequestInteraction?: {
           __typename?: "UserMergeRequestInteraction";
           approved: boolean;
+          reviewState?: MergeRequestReviewState | null;
         } | null;
       } | null> | null;
     } | null;
@@ -49022,6 +49023,13 @@ export const GitLabPullRequestFragmentDoc = {
                                   {
                                     kind: "Field",
                                     name: { kind: "Name", value: "approved" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: {
+                                      kind: "Name",
+                                      value: "reviewState",
+                                    },
                                   },
                                 ],
                               },
@@ -49255,6 +49263,13 @@ export const GetGitLabPullRequestsDocument = {
                                   {
                                     kind: "Field",
                                     name: { kind: "Name", value: "approved" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: {
+                                      kind: "Name",
+                                      value: "reviewState",
+                                    },
                                   },
                                 ],
                               },

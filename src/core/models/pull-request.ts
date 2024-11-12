@@ -17,8 +17,6 @@ export type PullRequest = {
   createdAt: string;
   url: string;
   amountOfComments?: number;
-  amountOfApprovals: number;
-  amountOfRequiredApprovals?: number;
   isDraft: boolean;
   // Accent Color for the repository
   accentColor: ThemeColor;

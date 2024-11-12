@@ -69,8 +69,6 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
         reviewers={item.reviewers}
         url={item.url}
         amountOfComments={item.amountOfComments}
-        amountOfApprovals={item.amountOfApprovals}
-        amountOfRequiredApprovals={item.amountOfRequiredApprovals}
         accentColor={item.accentColor}
         actionSheetOptions={actionSheetOptions}
         actionSheetCallback={actionSheetCallback}

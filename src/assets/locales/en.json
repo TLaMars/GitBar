@@ -12,7 +12,6 @@
   "Onboarding/Button/GitLab": "Add GitLab account",
   "Onboarding/Heading/AddAccount": "Add an account",
   "Onboarding/Intro/Heading": "Welcome to GitBar",
-  "PullRequestCard/Body/ApprovalsTooltip": "You see a \"?\" because we currently don't know the amount of approvals needed",
   "PullRequestCard/Body/Author": "Author:",
   "PullRequestCard/Body/Reviewers": "Reviewers:",
   "Register/Helper/Token": "Personal Token",

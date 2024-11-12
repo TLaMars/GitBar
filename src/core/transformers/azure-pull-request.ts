@@ -1,3 +1,4 @@
+import { Vote } from "models/attendee";
 import Profile from "models/profile";
 import { PullRequest } from "models/pull-request";
 import {
@@ -6,6 +7,23 @@ import {
 } from "services/api/azure/models/pull-requests-response";
 import { CommentType } from "services/api/azure/models/thread-response";
 import getColorForProject from "utils/get-project-color";
+
+const getVote = (vote: ReviewerVote): Vote => {
+  switch (vote) {
+    case ReviewerVote.Approved:
+      return Vote.Approved;
+    case ReviewerVote.ApprovedWithSuggestions:
+      return Vote.Approved;
+    case ReviewerVote.NoVote:
+      return Vote.NoVote;
+    case ReviewerVote.Rejected:
+      return Vote.Rejected;
+    case ReviewerVote.WaitingForAuthor:
+      return Vote.WaitingFor;
+    default:
+      return Vote.NoVote;
+  }
+};
 
 const transformAzurePullRequest = (
   profile: Profile,
@@ -31,6 +49,7 @@ const transformAzurePullRequest = (
       name: reviewer.displayName,
       // TODO: Add avatarUrl
       avatarUrl: "",
+      vote: getVote(reviewer.vote),
     })),
     createdAt: data.creationDate,
     url: match
@@ -44,9 +63,6 @@ const transformAzurePullRequest = (
         ).length,
       0,
     ),
-    amountOfApprovals: data.reviewers.filter(
-      (reviewer) => reviewer.vote === ReviewerVote.Approved,
-    ).length,
     isDraft: data.isDraft,
     accentColor: getColorForProject(data.repository.id),
     isApprovedByMe: data.reviewers.some(

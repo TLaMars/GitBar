@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import { GestureResponderEvent, Linking, TouchableOpacity } from "react-native";
 import {
   ActionSheetIOS,
@@ -26,8 +26,6 @@ type Props = {
   repoName: string;
   url: string;
   amountOfComments?: number;
-  amountOfApprovals: number;
-  amountOfRequiredApprovals?: number;
   actionSheetOptions?: ActionSheetIOSOptions;
   actionSheetCallback?: (
     buttonIndex: number,
@@ -44,8 +42,6 @@ const PullRequestCard: React.FC<Props> = ({
   reviewers,
   url,
   amountOfComments,
-  amountOfApprovals,
-  amountOfRequiredApprovals,
   actionSheetOptions,
   actionSheetCallback,
   accentColor,
@@ -55,7 +51,6 @@ const PullRequestCard: React.FC<Props> = ({
 }) => {
   const $ = useStyles(accentColor);
   const { t } = useTranslation();
-  const [toolTip, setToolTip] = useState(false);
 
   const onPress = async (event: GestureResponderEvent) => {
     if ("button" in event.nativeEvent && event.nativeEvent.button === 2) {
@@ -113,32 +108,8 @@ const PullRequestCard: React.FC<Props> = ({
                 <Icon name="Notification" size={20} />
               </View>
             )}
-
-            <View
-              style={$.info}
-              onMouseEnter={() => {
-                if (amountOfRequiredApprovals === undefined) {
-                  setToolTip(true);
-                }
-              }}
-              onMouseLeave={() => {
-                if (amountOfRequiredApprovals === undefined) {
-                  setToolTip(false);
-                }
-              }}
-            >
-              <Body size="s">
-                {amountOfApprovals} / {amountOfRequiredApprovals ?? "?"}
-              </Body>
-              <Icon name="UserCheck" size={20} />
-            </View>
           </View>
         </View>
-        {toolTip && (
-          <View style={$.helper}>
-            <Body size="x2s">{t("PullRequestCard/Body/ApprovalsTooltip")}</Body>
-          </View>
-        )}
       </TouchableOpacity>
     </View>
   );

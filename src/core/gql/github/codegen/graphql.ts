@@ -31136,11 +31136,15 @@ export type GetGithubPullRequestsQuery = {
               __typename?: "PullRequestReview";
               state: PullRequestReviewState;
               author?:
-                | { __typename?: "Bot"; login: string }
-                | { __typename?: "EnterpriseUserAccount"; login: string }
-                | { __typename?: "Mannequin"; login: string }
-                | { __typename?: "Organization"; login: string }
-                | { __typename?: "User"; login: string }
+                | { __typename?: "Bot"; login: string; avatarUrl: any }
+                | {
+                    __typename?: "EnterpriseUserAccount";
+                    login: string;
+                    avatarUrl: any;
+                  }
+                | { __typename?: "Mannequin"; login: string; avatarUrl: any }
+                | { __typename?: "Organization"; login: string; avatarUrl: any }
+                | { __typename?: "User"; login: string; avatarUrl: any }
                 | null;
             } | null> | null;
           } | null;
@@ -31445,6 +31449,13 @@ export const GetGithubPullRequestsDocument = {
                                                 name: {
                                                   kind: "Name",
                                                   value: "login",
+                                                },
+                                              },
+                                              {
+                                                kind: "Field",
+                                                name: {
+                                                  kind: "Name",
+                                                  value: "avatarUrl",
                                                 },
                                               },
                                             ],

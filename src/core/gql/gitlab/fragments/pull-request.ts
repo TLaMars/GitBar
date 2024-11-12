@@ -21,6 +21,7 @@ const FragmentGitLabPullRequest = graphql(`
           avatarUrl
           mergeRequestInteraction {
             approved
+            reviewState
           }
         }
       }

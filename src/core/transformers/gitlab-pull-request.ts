@@ -1,10 +1,24 @@
 import { getFragmentData } from "gql/github/codegen";
-import { GetGitLabPullRequestsQuery } from "gql/gitlab/codegen/graphql";
+import {
+  GetGitLabPullRequestsQuery,
+  MergeRequestReviewState,
+} from "gql/gitlab/codegen/graphql";
 import FragmentGitLabPullRequest from "gql/gitlab/fragments/pull-request";
-import { Attendee } from "models/attendee";
+import { Attendee, Vote } from "models/attendee";
 import Profile from "models/profile";
 import { PullRequest } from "models/pull-request";
 import getColorForProject from "utils/get-project-color";
+
+const getVote = (vote: MergeRequestReviewState | undefined | null): Vote => {
+  switch (vote) {
+    case MergeRequestReviewState.Approved:
+      return Vote.Approved;
+    case MergeRequestReviewState.RequestedChanges:
+      return Vote.WaitingFor;
+    default:
+      return Vote.NoVote;
+  }
+};
 
 const transformGitLabPullRequest = ({
   domain,
@@ -43,12 +57,11 @@ const transformGitLabPullRequest = ({
           avatarUrl: reviewer?.avatarUrl?.includes("http")
             ? reviewer.avatarUrl
             : `${domain}${reviewer?.avatarUrl}`,
+          vote: getVote(reviewer?.mergeRequestInteraction?.reviewState),
         })) ?? [],
       createdAt: pr.createdAt,
       url: pr.webUrl ?? "",
       amountOfComments: pr.userNotesCount ?? 0,
-      amountOfApprovals: (pr.approvalsRequired ?? 0) - (pr.approvalsLeft ?? 0),
-      amountOfRequiredApprovals: pr.approvalsRequired ?? 0,
       accentColor: getColorForProject(pr.sourceProject?.name ?? ""),
       isDraft: pr.draft,
       isApprovedByMe:

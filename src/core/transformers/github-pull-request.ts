@@ -40,14 +40,6 @@ const transformGithubPullRequest = (
         createdAt: pr.createdAt,
         url: pr.url,
         amountOfComments: pr.totalCommentsCount ?? 0,
-        amountOfApprovals:
-          pr.reviews?.nodes?.filter(
-            (review) =>
-              review?.__typename === "PullRequestReview" &&
-              review.state === PullRequestReviewState.Approved,
-          ).length ?? 0,
-        amountOfRequiredApprovals:
-          pr.baseRef?.branchProtectionRule?.requiredApprovingReviewCount ?? 0,
         accentColor: getColorForProject(pr.repository.id),
         isDraft: pr.isDraft,
         isApprovedByMe:

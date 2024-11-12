@@ -45,6 +45,7 @@ const QueryGetGithubPullRequests = graphql(`
             nodes {
               author {
                 login
+                avatarUrl
               }
               state
             }

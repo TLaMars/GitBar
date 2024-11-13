@@ -31,7 +31,15 @@ const AttendeeList: React.FC<Props> = ({ attendees, profileIconSize = 20 }) => {
   return (
     <View style={$.stack}>
       {sortedAttendees.map(({ avatarUrl, name, vote }, index) => (
-        <View style={[index > 0 && $.container]} key={name}>
+        <View
+          style={[
+            index > 0 && $.container,
+            {
+              zIndex: sortedAttendees.length - index,
+            },
+          ]}
+          key={name}
+        >
           {index > 0 && <View style={$.seperator} />}
           <View style={[index > 0 && $.icon]}>
             <Attendee

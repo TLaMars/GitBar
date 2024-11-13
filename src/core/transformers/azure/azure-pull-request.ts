@@ -67,14 +67,17 @@ const transformAzurePullRequest = (
     accentColor: getColorForProject(data.repository.id),
     isApprovedByMe: data.reviewers.some(
       (reviewer) =>
-        reviewer.id === profile.id && reviewer.vote === ReviewerVote.Approved,
+        reviewer.displayName === profile.name &&
+        reviewer.vote === ReviewerVote.Approved,
     ),
     isAssignedToMe: data.reviewers.some(
-      (reviewer) => reviewer.id === profile.id,
+      (reviewer) => reviewer.displayName === profile.name,
     ),
-    isAuthoredByMe: data.createdBy.id === profile.id,
+    isAuthoredByMe: data.createdBy.displayName === profile.name,
     isCommentedByMe: data.threads.some((thread) =>
-      thread.comments.some((comment) => comment.author.id === profile.id),
+      thread.comments.some(
+        (comment) => comment.author.displayName === profile.name,
+      ),
     ),
   };
 };

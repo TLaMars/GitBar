@@ -31066,6 +31066,81 @@ export type WorkflowsParametersInput = {
   workflows: Array<WorkflowFileReferenceInput>;
 };
 
+export type GitHubPullRequestFragment = {
+  __typename?: "PullRequest";
+  id: string;
+  title: string;
+  isDraft: boolean;
+  createdAt: any;
+  url: any;
+  reviewDecision?: PullRequestReviewDecision | null;
+  totalCommentsCount?: number | null;
+  author?:
+    | { __typename?: "Bot"; avatarUrl: any; login: string }
+    | { __typename?: "EnterpriseUserAccount"; avatarUrl: any; login: string }
+    | { __typename?: "Mannequin"; avatarUrl: any; login: string }
+    | { __typename?: "Organization"; avatarUrl: any; login: string }
+    | { __typename?: "User"; avatarUrl: any; login: string }
+    | null;
+  repository: { __typename?: "Repository"; nameWithOwner: string; id: string };
+  reviewRequests?: {
+    __typename?: "ReviewRequestConnection";
+    nodes?: Array<{
+      __typename?: "ReviewRequest";
+      requestedReviewer?:
+        | { __typename?: "Bot" }
+        | { __typename?: "Mannequin" }
+        | { __typename?: "Team" }
+        | {
+            __typename?: "User";
+            name?: string | null;
+            login: string;
+            avatarUrl: any;
+          }
+        | null;
+    } | null> | null;
+  } | null;
+  baseRef?: {
+    __typename?: "Ref";
+    branchProtectionRule?: {
+      __typename?: "BranchProtectionRule";
+      requiredApprovingReviewCount?: number | null;
+    } | null;
+  } | null;
+  reviews?: {
+    __typename?: "PullRequestReviewConnection";
+    totalCount: number;
+    nodes?: Array<{
+      __typename?: "PullRequestReview";
+      state: PullRequestReviewState;
+      author?:
+        | { __typename?: "Bot"; login: string; avatarUrl: any }
+        | {
+            __typename?: "EnterpriseUserAccount";
+            login: string;
+            avatarUrl: any;
+          }
+        | { __typename?: "Mannequin"; login: string; avatarUrl: any }
+        | { __typename?: "Organization"; login: string; avatarUrl: any }
+        | { __typename?: "User"; login: string; avatarUrl: any }
+        | null;
+    } | null> | null;
+  } | null;
+  comments: {
+    __typename?: "IssueCommentConnection";
+    nodes?: Array<{
+      __typename?: "IssueComment";
+      author?:
+        | { __typename?: "Bot"; login: string }
+        | { __typename?: "EnterpriseUserAccount"; login: string }
+        | { __typename?: "Mannequin"; login: string }
+        | { __typename?: "Organization"; login: string }
+        | { __typename?: "User"; login: string }
+        | null;
+    } | null> | null;
+  };
+} & { " $fragmentName"?: "GitHubPullRequestFragment" };
+
 export type GetGithubPullRequestsQueryVariables = Exact<{
   [key: string]: never;
 }>;
@@ -31080,88 +31155,11 @@ export type GetGithubPullRequestsQuery = {
       | { __typename?: "Issue" }
       | { __typename?: "MarketplaceListing" }
       | { __typename?: "Organization" }
-      | {
-          __typename?: "PullRequest";
-          id: string;
-          title: string;
-          isDraft: boolean;
-          createdAt: any;
-          url: any;
-          reviewDecision?: PullRequestReviewDecision | null;
-          totalCommentsCount?: number | null;
-          author?:
-            | { __typename?: "Bot"; avatarUrl: any; login: string }
-            | {
-                __typename?: "EnterpriseUserAccount";
-                avatarUrl: any;
-                login: string;
-              }
-            | { __typename?: "Mannequin"; avatarUrl: any; login: string }
-            | { __typename?: "Organization"; avatarUrl: any; login: string }
-            | { __typename?: "User"; avatarUrl: any; login: string }
-            | null;
-          repository: {
-            __typename?: "Repository";
-            nameWithOwner: string;
-            id: string;
+      | ({ __typename?: "PullRequest" } & {
+          " $fragmentRefs"?: {
+            GitHubPullRequestFragment: GitHubPullRequestFragment;
           };
-          reviewRequests?: {
-            __typename?: "ReviewRequestConnection";
-            nodes?: Array<{
-              __typename?: "ReviewRequest";
-              requestedReviewer?:
-                | { __typename?: "Bot" }
-                | { __typename?: "Mannequin" }
-                | { __typename?: "Team" }
-                | {
-                    __typename?: "User";
-                    name?: string | null;
-                    login: string;
-                    avatarUrl: any;
-                  }
-                | null;
-            } | null> | null;
-          } | null;
-          baseRef?: {
-            __typename?: "Ref";
-            branchProtectionRule?: {
-              __typename?: "BranchProtectionRule";
-              requiredApprovingReviewCount?: number | null;
-            } | null;
-          } | null;
-          reviews?: {
-            __typename?: "PullRequestReviewConnection";
-            totalCount: number;
-            nodes?: Array<{
-              __typename?: "PullRequestReview";
-              state: PullRequestReviewState;
-              author?:
-                | { __typename?: "Bot"; login: string; avatarUrl: any }
-                | {
-                    __typename?: "EnterpriseUserAccount";
-                    login: string;
-                    avatarUrl: any;
-                  }
-                | { __typename?: "Mannequin"; login: string; avatarUrl: any }
-                | { __typename?: "Organization"; login: string; avatarUrl: any }
-                | { __typename?: "User"; login: string; avatarUrl: any }
-                | null;
-            } | null> | null;
-          } | null;
-          comments: {
-            __typename?: "IssueCommentConnection";
-            nodes?: Array<{
-              __typename?: "IssueComment";
-              author?:
-                | { __typename?: "Bot"; login: string }
-                | { __typename?: "EnterpriseUserAccount"; login: string }
-                | { __typename?: "Mannequin"; login: string }
-                | { __typename?: "Organization"; login: string }
-                | { __typename?: "User"; login: string }
-                | null;
-            } | null> | null;
-          };
-        }
+        })
       | { __typename?: "Repository" }
       | { __typename?: "User" }
       | null
@@ -31182,6 +31180,229 @@ export type GetViewerQuery = {
   };
 };
 
+export const GitHubPullRequestFragmentDoc = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "FragmentDefinition",
+      name: { kind: "Name", value: "GitHubPullRequest" },
+      typeCondition: {
+        kind: "NamedType",
+        name: { kind: "Name", value: "PullRequest" },
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          { kind: "Field", name: { kind: "Name", value: "id" } },
+          { kind: "Field", name: { kind: "Name", value: "title" } },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "author" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "avatarUrl" } },
+                { kind: "Field", name: { kind: "Name", value: "login" } },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "repository" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nameWithOwner" },
+                },
+                { kind: "Field", name: { kind: "Name", value: "id" } },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "reviewRequests" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "first" },
+                value: { kind: "IntValue", value: "5" },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "requestedReviewer" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "InlineFragment",
+                              typeCondition: {
+                                kind: "NamedType",
+                                name: { kind: "Name", value: "User" },
+                              },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "name" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "login" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "avatarUrl" },
+                                  },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          { kind: "Field", name: { kind: "Name", value: "isDraft" } },
+          { kind: "Field", name: { kind: "Name", value: "createdAt" } },
+          { kind: "Field", name: { kind: "Name", value: "url" } },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "baseRef" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "branchProtectionRule" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: {
+                          kind: "Name",
+                          value: "requiredApprovingReviewCount",
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          { kind: "Field", name: { kind: "Name", value: "reviewDecision" } },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "totalCommentsCount" },
+          },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "reviews" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "first" },
+                value: { kind: "IntValue", value: "100" },
+              },
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "states" },
+                value: { kind: "EnumValue", value: "APPROVED" },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "totalCount" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "author" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "login" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "avatarUrl" },
+                            },
+                          ],
+                        },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "state" } },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "comments" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "first" },
+                value: { kind: "IntValue", value: "100" },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "author" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "login" },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GitHubPullRequestFragment, unknown>;
 export const GetGithubPullRequestsDocument = {
   kind: "Document",
   definitions: [
@@ -31235,288 +31456,229 @@ export const GetGithubPullRequestsDocument = {
                           kind: "SelectionSet",
                           selections: [
                             {
-                              kind: "Field",
-                              name: { kind: "Name", value: "id" },
+                              kind: "FragmentSpread",
+                              name: {
+                                kind: "Name",
+                                value: "GitHubPullRequest",
+                              },
                             },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    {
+      kind: "FragmentDefinition",
+      name: { kind: "Name", value: "GitHubPullRequest" },
+      typeCondition: {
+        kind: "NamedType",
+        name: { kind: "Name", value: "PullRequest" },
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          { kind: "Field", name: { kind: "Name", value: "id" } },
+          { kind: "Field", name: { kind: "Name", value: "title" } },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "author" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "avatarUrl" } },
+                { kind: "Field", name: { kind: "Name", value: "login" } },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "repository" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nameWithOwner" },
+                },
+                { kind: "Field", name: { kind: "Name", value: "id" } },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "reviewRequests" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "first" },
+                value: { kind: "IntValue", value: "5" },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "requestedReviewer" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
                             {
-                              kind: "Field",
-                              name: { kind: "Name", value: "title" },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "author" },
+                              kind: "InlineFragment",
+                              typeCondition: {
+                                kind: "NamedType",
+                                name: { kind: "Name", value: "User" },
+                              },
                               selectionSet: {
                                 kind: "SelectionSet",
                                 selections: [
                                   {
                                     kind: "Field",
-                                    name: { kind: "Name", value: "avatarUrl" },
+                                    name: { kind: "Name", value: "name" },
                                   },
                                   {
                                     kind: "Field",
                                     name: { kind: "Name", value: "login" },
                                   },
-                                ],
-                              },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "repository" },
-                              selectionSet: {
-                                kind: "SelectionSet",
-                                selections: [
                                   {
                                     kind: "Field",
-                                    name: {
-                                      kind: "Name",
-                                      value: "nameWithOwner",
-                                    },
-                                  },
-                                  {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "id" },
+                                    name: { kind: "Name", value: "avatarUrl" },
                                   },
                                 ],
                               },
                             },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          { kind: "Field", name: { kind: "Name", value: "isDraft" } },
+          { kind: "Field", name: { kind: "Name", value: "createdAt" } },
+          { kind: "Field", name: { kind: "Name", value: "url" } },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "baseRef" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "branchProtectionRule" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: {
+                          kind: "Name",
+                          value: "requiredApprovingReviewCount",
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          { kind: "Field", name: { kind: "Name", value: "reviewDecision" } },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "totalCommentsCount" },
+          },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "reviews" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "first" },
+                value: { kind: "IntValue", value: "100" },
+              },
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "states" },
+                value: { kind: "EnumValue", value: "APPROVED" },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "totalCount" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "author" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
                             {
                               kind: "Field",
-                              name: { kind: "Name", value: "reviewRequests" },
-                              arguments: [
-                                {
-                                  kind: "Argument",
-                                  name: { kind: "Name", value: "first" },
-                                  value: { kind: "IntValue", value: "5" },
-                                },
-                              ],
-                              selectionSet: {
-                                kind: "SelectionSet",
-                                selections: [
-                                  {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "nodes" },
-                                    selectionSet: {
-                                      kind: "SelectionSet",
-                                      selections: [
-                                        {
-                                          kind: "Field",
-                                          name: {
-                                            kind: "Name",
-                                            value: "requestedReviewer",
-                                          },
-                                          selectionSet: {
-                                            kind: "SelectionSet",
-                                            selections: [
-                                              {
-                                                kind: "InlineFragment",
-                                                typeCondition: {
-                                                  kind: "NamedType",
-                                                  name: {
-                                                    kind: "Name",
-                                                    value: "User",
-                                                  },
-                                                },
-                                                selectionSet: {
-                                                  kind: "SelectionSet",
-                                                  selections: [
-                                                    {
-                                                      kind: "Field",
-                                                      name: {
-                                                        kind: "Name",
-                                                        value: "name",
-                                                      },
-                                                    },
-                                                    {
-                                                      kind: "Field",
-                                                      name: {
-                                                        kind: "Name",
-                                                        value: "login",
-                                                      },
-                                                    },
-                                                    {
-                                                      kind: "Field",
-                                                      name: {
-                                                        kind: "Name",
-                                                        value: "avatarUrl",
-                                                      },
-                                                    },
-                                                  ],
-                                                },
-                                              },
-                                            ],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
+                              name: { kind: "Name", value: "login" },
                             },
                             {
                               kind: "Field",
-                              name: { kind: "Name", value: "isDraft" },
+                              name: { kind: "Name", value: "avatarUrl" },
                             },
+                          ],
+                        },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "state" } },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "comments" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "first" },
+                value: { kind: "IntValue", value: "100" },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "author" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
                             {
                               kind: "Field",
-                              name: { kind: "Name", value: "createdAt" },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "url" },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "baseRef" },
-                              selectionSet: {
-                                kind: "SelectionSet",
-                                selections: [
-                                  {
-                                    kind: "Field",
-                                    name: {
-                                      kind: "Name",
-                                      value: "branchProtectionRule",
-                                    },
-                                    selectionSet: {
-                                      kind: "SelectionSet",
-                                      selections: [
-                                        {
-                                          kind: "Field",
-                                          name: {
-                                            kind: "Name",
-                                            value:
-                                              "requiredApprovingReviewCount",
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "reviewDecision" },
-                            },
-                            {
-                              kind: "Field",
-                              name: {
-                                kind: "Name",
-                                value: "totalCommentsCount",
-                              },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "reviews" },
-                              arguments: [
-                                {
-                                  kind: "Argument",
-                                  name: { kind: "Name", value: "first" },
-                                  value: { kind: "IntValue", value: "100" },
-                                },
-                                {
-                                  kind: "Argument",
-                                  name: { kind: "Name", value: "states" },
-                                  value: {
-                                    kind: "EnumValue",
-                                    value: "APPROVED",
-                                  },
-                                },
-                              ],
-                              selectionSet: {
-                                kind: "SelectionSet",
-                                selections: [
-                                  {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "totalCount" },
-                                  },
-                                  {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "nodes" },
-                                    selectionSet: {
-                                      kind: "SelectionSet",
-                                      selections: [
-                                        {
-                                          kind: "Field",
-                                          name: {
-                                            kind: "Name",
-                                            value: "author",
-                                          },
-                                          selectionSet: {
-                                            kind: "SelectionSet",
-                                            selections: [
-                                              {
-                                                kind: "Field",
-                                                name: {
-                                                  kind: "Name",
-                                                  value: "login",
-                                                },
-                                              },
-                                              {
-                                                kind: "Field",
-                                                name: {
-                                                  kind: "Name",
-                                                  value: "avatarUrl",
-                                                },
-                                              },
-                                            ],
-                                          },
-                                        },
-                                        {
-                                          kind: "Field",
-                                          name: {
-                                            kind: "Name",
-                                            value: "state",
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "comments" },
-                              arguments: [
-                                {
-                                  kind: "Argument",
-                                  name: { kind: "Name", value: "first" },
-                                  value: { kind: "IntValue", value: "100" },
-                                },
-                              ],
-                              selectionSet: {
-                                kind: "SelectionSet",
-                                selections: [
-                                  {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "nodes" },
-                                    selectionSet: {
-                                      kind: "SelectionSet",
-                                      selections: [
-                                        {
-                                          kind: "Field",
-                                          name: {
-                                            kind: "Name",
-                                            value: "author",
-                                          },
-                                          selectionSet: {
-                                            kind: "SelectionSet",
-                                            selections: [
-                                              {
-                                                kind: "Field",
-                                                name: {
-                                                  kind: "Name",
-                                                  value: "login",
-                                                },
-                                              },
-                                            ],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
+                              name: { kind: "Name", value: "login" },
                             },
                           ],
                         },

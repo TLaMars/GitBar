@@ -9,7 +9,7 @@ import QueryGetGitHubViewer from "gql/github/queries/viewer";
 import { AccountType } from "models/account";
 import { GitHubAuth } from "models/auth";
 import Profile, { ProfileStatus } from "models/profile";
-import transformGithubPullRequest from "transformers/github-pull-request";
+import transformGithubPullRequest from "transformers/github/github-pull-request";
 import { gitHubContext } from "utils/apollo-contexts";
 
 import Provider from "./provider";

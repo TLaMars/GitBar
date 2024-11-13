@@ -4,7 +4,7 @@ import Profile, { ProfileStatus } from "models/profile";
 import { Config } from "services/api/api-wrapper";
 import azureApi from "services/api/azure/api";
 import { AzurePullRequest } from "services/api/azure/models/pull-requests-response";
-import transformAzurePullRequest from "transformers/azure-pull-request";
+import transformAzurePullRequest from "transformers/azure/azure-pull-request";
 import azureConfig from "utils/api-config";
 
 import Provider from "./provider";

@@ -1,11 +1,15 @@
 /* eslint-disable no-underscore-dangle */
+import { getFragmentData } from "gql/github/codegen";
 import {
   GetGithubPullRequestsQuery,
   PullRequestReviewState,
 } from "gql/github/codegen/graphql";
+import FragmentGitHubPullRequest from "gql/github/fragments/pull-request";
 import Profile from "models/profile";
 import { PullRequest } from "models/pull-request";
 import getColorForProject from "utils/get-project-color";
+
+import transformGitHubAttendees from "./github-combine-reviewers";
 
 const transformGithubPullRequest = (
   profile: Profile,
@@ -14,8 +18,12 @@ const transformGithubPullRequest = (
   if (!data) return [];
 
   return (
-    data.search.nodes?.reduce<PullRequest[]>((acc, pr) => {
-      if (!pr || pr.__typename !== "PullRequest") return acc;
+    data.search.nodes?.reduce<PullRequest[]>((acc, fragment) => {
+      if (!fragment || fragment.__typename !== "PullRequest") return acc;
+
+      const pr = getFragmentData(FragmentGitHubPullRequest, fragment);
+
+      const attendees = transformGitHubAttendees(pr.reviewRequests, pr.reviews);
 
       const pullRequest: PullRequest = {
         id: pr.id,
@@ -26,17 +34,7 @@ const transformGithubPullRequest = (
         },
         repoId: pr.repository.id,
         repoName: pr.repository.nameWithOwner,
-        reviewers:
-          pr.reviewRequests?.nodes?.map((reviewer) => ({
-            name:
-              reviewer?.requestedReviewer?.__typename === "User"
-                ? reviewer.requestedReviewer.login
-                : "",
-            avatarUrl:
-              reviewer?.requestedReviewer?.__typename === "User"
-                ? reviewer.requestedReviewer.avatarUrl
-                : "",
-          })) ?? [],
+        reviewers: attendees,
         createdAt: pr.createdAt,
         url: pr.url,
         amountOfComments: pr.totalCommentsCount ?? 0,

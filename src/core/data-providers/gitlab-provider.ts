@@ -9,7 +9,7 @@ import QueryGetGitLabPullRequests from "gql/gitlab/queries/pull-requests";
 import { AccountType } from "models/account";
 import { GitLabAuth } from "models/auth";
 import Profile, { ProfileStatus } from "models/profile";
-import transformGitLabPullRequest from "transformers/gitlab-pull-request";
+import transformGitLabPullRequest from "transformers/gitlab/gitlab-pull-request";
 import { gitLabContext } from "utils/apollo-contexts";
 
 import Provider from "./provider";

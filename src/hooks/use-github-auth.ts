@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import DOMAINS from "constants/domains";
 import URI_PATHS from "constants/uri-paths";
+import PopoverModule from "modules/popover-module";
 import SafariWebAuthModule from "modules/safari-web-auth-module";
 import { AuthSessionTypeEnum } from "modules/safari-web-auth-module/src/SafariWebAuthModule.types";
 
@@ -19,6 +20,8 @@ const useGitHubAuth = () => {
       "gitbar://github",
       { preferEphemeralSession: false },
     );
+
+    PopoverModule.open();
 
     if (type === AuthSessionTypeEnum.CANCEL) {
       setError(t("Auth/GitHub/Cancelled"));

@@ -89,5 +89,7 @@
   "Onboarding/ReadyToGo/GetStarted": "Open GitBar",
   "Onboarding/ReadyToGo/Body": "Open GitBar through the menu bar icon",
   "Settings/Button/CloseApp": "Quit GitBar",
-  "Settings/PullRequests/HideDrafts": "Hide PRs that have a draft status"
+  "Settings/PullRequests/HideDrafts": "Hide PRs that have a draft status",
+  "Auth/GitHub/Cancelled": "Something went wrong during the authentication process",
+  "Auth/GitHub/Dismissed": "You dismissed the authentication process"
 }

@@ -1,12 +1,12 @@
 import { useLazyQuery } from "@apollo/client";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { Linking } from "react-native";
 
 import DOMAINS from "constants/domains";
 import URI_PATHS from "constants/uri-paths";
 import QueryGetGitHubViewer from "gql/github/queries/viewer";
 import useDispatch from "hooks/use-dispatch";
+import useGitHubAuth from "hooks/use-github-auth";
 import RegisteredLayout from "layouts/registered-layout/registered-layout";
 import { AccountType } from "models/account";
 import { RootStackParamList } from "models/root-stack-param-list";
@@ -15,6 +15,7 @@ import { upsertOneAccount } from "store/slices/accounts";
 
 const RegisterGithub: React.FC = () => {
   const dispatch = useDispatch();
+  const { error: gitHubError, openAuthSession } = useGitHubAuth();
   const [fetchViewer, { data }] = useLazyQuery(QueryGetGitHubViewer);
   const [token, setToken] = useState<string>("");
   const [error, setError] = useState<string>();
@@ -22,6 +23,12 @@ const RegisterGithub: React.FC = () => {
   const {
     params: { code },
   } = useRoute<RouteProp<RootStackParamList, "RegisterGitHub">>();
+
+  useEffect(() => {
+    if (gitHubError) {
+      setError(gitHubError);
+    }
+  }, [gitHubError]);
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -45,6 +52,7 @@ const RegisterGithub: React.FC = () => {
         });
 
       if (response) {
+        setError(undefined);
         setToken(response.data.access_token);
         await fetchViewer({
           fetchPolicy: "network-only",
@@ -82,11 +90,7 @@ const RegisterGithub: React.FC = () => {
       error={error}
       name={data?.viewer.login ?? ""}
       type={AccountType.GitHub}
-      onRetryPress={() => {
-        void Linking.openURL(
-          `${DOMAINS.github}${URI_PATHS.githubOauthAuthorize}`,
-        );
-      }}
+      onRetryPress={openAuthSession}
     />
   );
 };

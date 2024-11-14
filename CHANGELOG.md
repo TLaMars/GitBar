@@ -8,6 +8,11 @@
 - *(auth)* Add safari web auth for github[(d114818)](https://github.com/TLaMars/gitbar/commit/d114818d2fc595169267cd7d4bd49d96f55f2a72) by @TLaMars
 - *(toasts)* Add toast implementation[(90c47cb)](https://github.com/TLaMars/gitbar/commit/90c47cbd9995e1dd9dd5b701e7095bcd128a1cdd) by @TLaMars
 
+### 🐛 Bug Fixes
+
+- *(github)* Open popover with authentication via GitHub[(9d19182)](https://github.com/TLaMars/gitbar/commit/9d19182b12c071a2dab7fbf556c688664b42120c) by @TLaMars
+- *(onboarding)* Add new promotional images[(c7eca57)](https://github.com/TLaMars/gitbar/commit/c7eca575d77dd477d70022d357b80d5d56de12ac) by @TLaMars
+
 ## [1.4.0](https://github.com/TLaMars/gitbar/releases/tag/v1.4.0) - 2024-11-13
 
 

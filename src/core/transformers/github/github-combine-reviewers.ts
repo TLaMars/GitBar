@@ -40,10 +40,12 @@ const transformGitHubAttendees = (
       vote: Vote.NoVote,
     })) ?? [];
 
-  const attendees = [...reviewers, ...requested].filter(
-    (attendee, index, self) =>
-      index === self.findIndex((a) => a.name === attendee.name),
-  );
+  const attendees = [...reviewers, ...requested]
+    .filter(
+      (attendee, index, self) =>
+        index === self.findIndex((a) => a.name === attendee.name),
+    )
+    .sort((a, b) => (a.name > b.name ? 1 : -1));
 
   return attendees;
 };

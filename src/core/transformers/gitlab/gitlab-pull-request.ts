@@ -51,14 +51,15 @@ const transformGitLabPullRequest = ({
       },
       repoId: pr.sourceProject?.id ?? "",
       repoName: pr.sourceProject?.name ?? "",
-      reviewers:
+      reviewers: (
         pr.reviewers?.nodes?.map<Attendee>((reviewer) => ({
           name: reviewer?.name ?? "",
           avatarUrl: reviewer?.avatarUrl?.includes("http")
             ? reviewer.avatarUrl
             : `${domain}${reviewer?.avatarUrl}`,
           vote: getVote(reviewer?.mergeRequestInteraction?.reviewState),
-        })) ?? [],
+        })) ?? []
+      ).sort((a, b) => (a.name > b.name ? 1 : -1)),
       createdAt: pr.createdAt,
       url: pr.webUrl ?? "",
       amountOfComments: pr.userNotesCount ?? 0,

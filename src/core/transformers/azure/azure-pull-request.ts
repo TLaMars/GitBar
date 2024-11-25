@@ -45,12 +45,14 @@ const transformAzurePullRequest = (
     },
     repoId: data.repository.id,
     repoName: data.repository.name,
-    reviewers: data.reviewers.map((reviewer) => ({
-      name: reviewer.displayName,
-      // TODO: Add avatarUrl
-      avatarUrl: "",
-      vote: getVote(reviewer.vote),
-    })),
+    reviewers: data.reviewers
+      .map((reviewer) => ({
+        name: reviewer.displayName,
+        // TODO: Add avatarUrl
+        avatarUrl: "",
+        vote: getVote(reviewer.vote),
+      }))
+      .sort((a, b) => (a.name > b.name ? 1 : -1)),
     createdAt: data.creationDate,
     url: match
       ? `${match[1]}${encodedProject}/_git/${encodedRepo}/pullrequest/${data.pullRequestId}`

@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+
+### 🐛 Bug Fixes
+
+- *(attendee)* Reordered rejected vote[(5dd4d1e)](https://github.com/TLaMars/gitbar/commit/5dd4d1ecf1e59a0adc4ac4f3f227c498b9da9c5e)
+- *(prs)* Add sorting so no unnecessary rerenders are done[(2c87e49)](https://github.com/TLaMars/gitbar/commit/2c87e497651afced427a705d3ec2bb3bf3208b17)
+
 ## [1.5.0](https://github.com/TLaMars/gitbar/releases/tag/v1.5.0) - 2024-11-14
 
 

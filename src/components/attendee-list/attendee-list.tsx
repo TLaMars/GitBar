@@ -21,8 +21,8 @@ const AttendeeList: React.FC<Props> = ({ attendees, profileIconSize = 20 }) => {
         if (b.vote === Vote.Approved) return 1;
         if (a.vote === Vote.WaitingFor) return -1;
         if (b.vote === Vote.WaitingFor) return 1;
-        if (a.vote === Vote.Rejected) return 1;
-        if (b.vote === Vote.Rejected) return -1;
+        if (a.vote === Vote.Rejected) return -1;
+        if (b.vote === Vote.Rejected) return 1;
         return 0;
       }),
     [attendees],

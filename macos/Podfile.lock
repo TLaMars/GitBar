@@ -1566,7 +1566,7 @@ PODS:
     - React-utils (= 0.75.2)
   - RNCPicker (2.7.7):
     - React-Core
-  - RNSentry (6.2.0):
+  - RNSentry (6.0.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1587,13 +1587,13 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - Sentry/HybridSDK (= 8.40.1)
+    - Sentry/HybridSDK (= 8.37.0)
     - Yoga
   - RNSVG (15.5.0):
     - React-Core
   - SafariWebAuthModule (1.0.0):
     - ExpoModulesCore
-  - Sentry/HybridSDK (8.40.1)
+  - Sentry/HybridSDK (8.37.0)
   - SocketRocket (0.7.0)
   - WindowModule (1.0.0):
     - ExpoModulesCore
@@ -1925,10 +1925,10 @@ SPEC CHECKSUMS:
   ReactCodegen: 0432222e4b8b5e3fa200a21f1d1e3aeb91e7e785
   ReactCommon: 7bf14ffa81edac9379cae681197020142c571b55
   RNCPicker: b7873ba797dc586bfaf3307d737cbdc620a9ff3e
-  RNSentry: d4d7e4e815de113d014821c81a6c06105163603b
+  RNSentry: a7660b72556d6574867d488e60c4b4b0be7422d8
   RNSVG: b986585e367f4a49d8aa43065066cc9c290b3d9b
   SafariWebAuthModule: b68ff9400b10f9407ccf2d6bad749c8de9171898
-  Sentry: e9215d7b17f7902692b4f8700e061e4f853e3521
+  Sentry: ee060c09b2f7ec1240e95c766ab44c04c7bdb052
   SocketRocket: 9ee265c4b5ae2382d18e4ee1d2dd2d7af0ff1ab5
   WindowModule: 66230c2d6c8044b45cb4a37467901a8a92350577
   Yoga: 01a222ae4189478d54e5243da830d30b38a7f923

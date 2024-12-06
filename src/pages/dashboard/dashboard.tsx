@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
+import { NativeEventEmitter, NativeModules } from "react-native-macos";
 
 import PullRequestList from "components/pull-request-list/pull-request-list";
 import usePullRequests from "hooks/use-pull-requests";
@@ -11,11 +12,15 @@ import DefaultLayout from "src/layouts/default-layout/default-layout";
 import DashboardHeader from "./dashboard-header";
 import useStyles from "./dashboard.styles";
 
+const nativeModule = NativeModules.RNEventEmitter;
+const EventEmitter = new NativeEventEmitter(nativeModule);
+
 const Dashboard: React.FC = () => {
   const $ = useStyles();
   const { t } = useTranslation();
   const [isRelevant, setIsRelevant] = useState<boolean>(true);
   const [macState, setMacState] = useState<MacState>(MacState.UNLOCKED);
+  const [popoverClosed, setPopoverClosed] = useState<boolean>(false);
   const {
     pullRequests,
     loading,
@@ -32,8 +37,13 @@ const Dashboard: React.FC = () => {
       setMacState(event.state);
     });
 
+    EventEmitter.addListener("onPopoverState", (state) => {
+      setPopoverClosed(state.closed);
+    });
+
     return () => {
       AppModuleEmitter.removeAllListeners("onMacStateChange");
+      EventEmitter.removeAllListeners("onPopoverState");
     };
   }, []);
 
@@ -69,10 +79,15 @@ const Dashboard: React.FC = () => {
     };
   }, [fetchPullRequests, macState]);
 
+  if (!popoverClosed) {
+    return null;
+  }
+
   return (
     <DefaultLayout>
       <View style={$.container}>
         <DashboardHeader
+          isRelevant={isRelevant}
           setIsRelevant={setIsRelevant}
           executedAt={executedAt}
         />

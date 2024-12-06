@@ -11,12 +11,17 @@ type Button = {
 };
 
 type Props = {
+  preActiveButtonIndex?: number;
   buttons: Button[];
 };
 
-const ButtonToggle: React.FC<Props> = ({ buttons }) => {
+const ButtonToggle: React.FC<Props> = ({
+  preActiveButtonIndex = 0,
+  buttons,
+}) => {
   const $ = useStyles();
-  const [activeButtonIndex, setActiveButtonIndex] = React.useState(0);
+  const [activeButtonIndex, setActiveButtonIndex] =
+    React.useState(preActiveButtonIndex);
 
   return (
     <View style={$.container}>

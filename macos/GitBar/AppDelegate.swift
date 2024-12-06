@@ -10,7 +10,7 @@ import Cocoa
 import UserNotifications
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate, RCTBridgeDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate, RCTBridgeDelegate, NSPopoverDelegate {
   
   var bridge: RCTBridge!
   var statusItem: NSStatusItem!
@@ -40,11 +40,24 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
     popover.contentSize = NSSize(width: 700, height: 500)
     popover.contentViewController = rootViewController
     popover.behavior = .transient
+    popover.delegate = self
     
     popoverObservers()
     
     let em = NSAppleEventManager.shared()
     em.setEventHandler(self, andSelector: #selector(self.getUrl(_:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+  }
+  
+  func popoverDidClose(_ notification: Notification) {
+    RNEventEmitter.emitter.sendEvent(withName: "onPopoverState", body: [
+      "closed": false
+    ])
+  }
+  
+  func popoverWillShow(_ notification: Notification) {
+    RNEventEmitter.emitter.sendEvent(withName: "onPopoverState", body: [
+      "closed": true
+    ])
   }
   
   @objc

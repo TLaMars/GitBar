@@ -19,6 +19,7 @@ export const AppModuleEmitter: EmitterType = {
 };
 
 const appModule = requireNativeModule<AppModuleType>("AppModule");
+// THIS IS A NATIVE MODULE IN THE macOS FOLDER
 const launchAtLoginModule =
   NativeModules.LaunchAtLoginModule as LaunchAtLoginModuleType;
 

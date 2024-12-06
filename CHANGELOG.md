@@ -1,12 +1,23 @@
 # Changelog
 
-## Unreleased
+## [1.6.0](https://github.com/TLaMars/gitbar/releases/tag/v1.6.0) - 2024-12-06
+
+
+### 🚀 Features
+
+- *(dashboard)* Don't rerender if popover is closed[(aadc9ca)](https://github.com/TLaMars/gitbar/commit/aadc9cad81f88849313d99299c8418b3d0540cd4) by @TLaMars
+
+### 🐛 Bug Fixes
+
+- *(emojis)* Emojis are no longer cut off[(7a3c4dc)](https://github.com/TLaMars/gitbar/commit/7a3c4dca2a2c96c83b5f72a10a0e0e5bfee5291f) by @TLaMars
+
+## [1.5.1](https://github.com/TLaMars/gitbar/releases/tag/v1.5.1) - 2024-11-25
 
 
 ### 🐛 Bug Fixes
 
-- *(attendee)* Reordered rejected vote[(5dd4d1e)](https://github.com/TLaMars/gitbar/commit/5dd4d1ecf1e59a0adc4ac4f3f227c498b9da9c5e)
-- *(prs)* Add sorting so no unnecessary rerenders are done[(2c87e49)](https://github.com/TLaMars/gitbar/commit/2c87e497651afced427a705d3ec2bb3bf3208b17)
+- *(attendee)* Reordered rejected vote[(5dd4d1e)](https://github.com/TLaMars/gitbar/commit/5dd4d1ecf1e59a0adc4ac4f3f227c498b9da9c5e) by @TLaMars
+- *(prs)* Add sorting so no unnecessary rerenders are done[(2c87e49)](https://github.com/TLaMars/gitbar/commit/2c87e497651afced427a705d3ec2bb3bf3208b17) by @TLaMars
 
 ## [1.5.0](https://github.com/TLaMars/gitbar/releases/tag/v1.5.0) - 2024-11-14
 

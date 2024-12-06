@@ -79,9 +79,11 @@ const PullRequestCard: React.FC<Props> = ({
         <View style={[$.borderLine, isDraft && $.draftLine]} />
         <View style={$.header}>
           {isDraft && <Icon name="EditPencil" size={20} />}
-          <Heading numberOfLines={1} size="x2s" fontSizeIsLineHeight>
-            {title}
-          </Heading>
+          <Spacer mb={isDraft ? 1 : 0}>
+            <Heading numberOfLines={1} size="x2s">
+              {title}
+            </Heading>
+          </Spacer>
         </View>
         <View style={$.footer}>
           <View style={$.left}>

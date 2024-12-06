@@ -7,6 +7,7 @@ const useStyles = (accentColor: ThemeColor) =>
       overflow: "hidden",
       backgroundColor: colors.backgroundSurface,
       padding: spacing(3),
+      paddingTop: spacing(2),
       borderRadius: borderRadiuses.sidebar,
       flexDirection: "column",
       gap: spacing(2),

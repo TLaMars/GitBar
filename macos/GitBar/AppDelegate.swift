@@ -50,13 +50,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
   
   func popoverDidClose(_ notification: Notification) {
     RNEventEmitter.emitter.sendEvent(withName: "onPopoverState", body: [
-      "closed": false
+      "state": "Closed"
     ])
   }
   
   func popoverWillShow(_ notification: Notification) {
     RNEventEmitter.emitter.sendEvent(withName: "onPopoverState", body: [
-      "closed": true
+      "state": "Opened"
     ])
   }
   

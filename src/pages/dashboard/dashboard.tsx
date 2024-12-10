@@ -1,26 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
-import { NativeEventEmitter, NativeModules } from "react-native-macos";
 
 import PullRequestList from "components/pull-request-list/pull-request-list";
+import useMacState from "hooks/use-mac-state";
+import usePopoverState, { PopoverState } from "hooks/use-popover-state";
 import usePullRequests from "hooks/use-pull-requests";
 import useTranslation from "hooks/use-translation";
-import { AppModuleEmitter, MacState } from "modules/app-module";
+import DefaultLayout from "layouts/default-layout/default-layout";
+import { MacState } from "modules/app-module";
 import PopoverModule from "modules/popover-module/src/PopoverModule";
-import DefaultLayout from "src/layouts/default-layout/default-layout";
 
 import DashboardHeader from "./dashboard-header";
 import useStyles from "./dashboard.styles";
-
-const nativeModule = NativeModules.RNEventEmitter;
-const EventEmitter = new NativeEventEmitter(nativeModule);
 
 const Dashboard: React.FC = () => {
   const $ = useStyles();
   const { t } = useTranslation();
   const [isRelevant, setIsRelevant] = useState<boolean>(true);
-  const [macState, setMacState] = useState<MacState>(MacState.UNLOCKED);
-  const [popoverClosed, setPopoverClosed] = useState<boolean>(false);
+  const macState = useMacState();
+  const popoverState = usePopoverState();
   const {
     pullRequests,
     loading,
@@ -31,21 +29,6 @@ const Dashboard: React.FC = () => {
     totalAmountOfPullRequests,
     executedAt,
   } = usePullRequests();
-
-  useEffect(() => {
-    AppModuleEmitter.addListener("onMacStateChange", (event) => {
-      setMacState(event.state);
-    });
-
-    EventEmitter.addListener("onPopoverState", (state) => {
-      setPopoverClosed(state.closed);
-    });
-
-    return () => {
-      AppModuleEmitter.removeAllListeners("onMacStateChange");
-      EventEmitter.removeAllListeners("onPopoverState");
-    };
-  }, []);
 
   useEffect(() => {
     if (relevantAmountOfPullRequests >= 0) {
@@ -79,23 +62,23 @@ const Dashboard: React.FC = () => {
     };
   }, [fetchPullRequests, macState]);
 
-  if (!popoverClosed) {
-    return null;
-  }
-
   return (
     <DefaultLayout>
       <View style={$.container}>
-        <DashboardHeader
-          isRelevant={isRelevant}
-          setIsRelevant={setIsRelevant}
-          executedAt={executedAt}
-        />
+        {popoverState === PopoverState.OPEN && (
+          <DashboardHeader
+            isRelevant={isRelevant}
+            setIsRelevant={setIsRelevant}
+            executedAt={executedAt}
+          />
+        )}
         {loading && <ActivityIndicator />}
-        <PullRequestList
-          errors={errors}
-          sections={isRelevant ? relevantPullRequests : pullRequests}
-        />
+        {popoverState === PopoverState.OPEN && (
+          <PullRequestList
+            errors={errors}
+            sections={isRelevant ? relevantPullRequests : pullRequests}
+          />
+        )}
       </View>
     </DefaultLayout>
   );

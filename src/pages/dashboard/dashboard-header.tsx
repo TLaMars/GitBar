@@ -23,7 +23,7 @@ const DashboardHeader: React.FC<Props> = ({
 }) => {
   const $ = useStyles();
   const { t } = useTranslation();
-  const [minutesAgo, setMinutesAgo] = useState(0);
+  const [minutesAgo, setMinutesAgo] = useState(Date.now());
 
   useEffect(() => {
     setMinutesAgo(calculateMinutesAgo(executedAt));

@@ -1,4 +1,3 @@
-import { ServerError, useLazyQuery } from "@apollo/client";
 import { useNavigation } from "@react-navigation/native";
 import React, { useCallback, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
@@ -12,14 +11,15 @@ import Spacer from "components/spacer/spacer";
 import TextInput from "components/text-input/text-input";
 import DOMAINS from "constants/domains";
 import URI_PATHS from "constants/uri-paths";
+import { GetCurrentUserQuery } from "gql/gitlab/codegen/graphql";
 import QueryGetGitLabCurrentUser from "gql/gitlab/queries/current-user";
 import useDispatch from "hooks/use-dispatch";
 import useTranslation from "hooks/use-translation";
 import RegisteredLayout from "layouts/registered-layout/registered-layout";
 import { AccountType } from "models/account";
 import { upsertOneAccount } from "store/slices/accounts";
-import { gitLabContext } from "utils/apollo-contexts";
 import formatDomain from "utils/format-domain";
+import { createGitLabGqlClient } from "utils/graphql-client";
 import validateDomain from "utils/validate-domain";
 
 import useStyles from "./register.styles";
@@ -32,7 +32,7 @@ const RegisterGitLab: React.FC = () => {
   const [domain, setDomain] = React.useState("");
   const [token, setToken] = React.useState("");
   const [error, setError] = React.useState<"domain" | "token">();
-  const [fetchUser, { data }] = useLazyQuery(QueryGetGitLabCurrentUser);
+  const [data, setData] = React.useState<GetCurrentUserQuery>();
 
   const getGitLabUser = useCallback(async () => {
     let gitlabDomain = DOMAINS.gitlabDefault;
@@ -46,18 +46,21 @@ const RegisterGitLab: React.FC = () => {
     }
     setDomain(gitlabDomain);
 
-    await fetchUser({
-      context: gitLabContext(token, gitlabDomain),
-      fetchPolicy: "network-only",
-      onError: ({ networkError }) => {
-        if ((networkError as ServerError).statusCode === 401) {
-          setError("token");
-        } else {
-          setError("domain");
-        }
-      },
-    });
-  }, [domain, fetchUser, token]);
+    const client = createGitLabGqlClient(gitlabDomain, token);
+
+    try {
+      const result = await client.request<GetCurrentUserQuery>(
+        QueryGetGitLabCurrentUser,
+      );
+      setData(result);
+    } catch (e: any) {
+      if (e.response.status === 401) {
+        setError("token");
+      } else {
+        setError("domain");
+      }
+    }
+  }, [domain, token]);
 
   useEffect(() => {
     if (!data) return;

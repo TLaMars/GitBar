@@ -1,9 +1,7 @@
-import { useLazyQuery } from "@apollo/client";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 
-import DOMAINS from "constants/domains";
-import URI_PATHS from "constants/uri-paths";
+import { GetViewerQuery } from "gql/github/codegen/graphql";
 import QueryGetGitHubViewer from "gql/github/queries/viewer";
 import useDispatch from "hooks/use-dispatch";
 import useGitHubAuth from "hooks/use-github-auth";
@@ -12,11 +10,12 @@ import { AccountType } from "models/account";
 import { RootStackParamList } from "models/root-stack-param-list";
 import gitHubOauthApi from "services/api/github/api";
 import { upsertOneAccount } from "store/slices/accounts";
+import { createGitHubGqlClient } from "utils/graphql-client";
 
 const RegisterGithub: React.FC = () => {
   const dispatch = useDispatch();
   const { error: gitHubError, openAuthSession } = useGitHubAuth();
-  const [fetchViewer, { data }] = useLazyQuery(QueryGetGitHubViewer);
+  const [data, setData] = useState<GetViewerQuery>();
   const [token, setToken] = useState<string>("");
   const [error, setError] = useState<string>();
 
@@ -32,6 +31,7 @@ const RegisterGithub: React.FC = () => {
 
   useEffect(() => {
     const fetchToken = async () => {
+      setToken("");
       const response = await gitHubOauthApi
         .post(
           "/access_token",
@@ -48,26 +48,35 @@ const RegisterGithub: React.FC = () => {
         )
         .catch((err) => {
           setError("Failed to fetch token");
-          console.error(err);
+          console.error("GitHub OAuth Api:", err.message);
         });
 
-      if (response) {
-        setError(undefined);
-        setToken(response.data.access_token);
-        await fetchViewer({
-          fetchPolicy: "network-only",
-          context: {
-            uri: `${DOMAINS.githubApi}${URI_PATHS.githubGql}`,
-            headers: {
-              Authorization: `bearer ${response.data.access_token}`,
-            },
-          },
-        });
+      setError(undefined);
+      setToken(response?.data.access_token ?? "");
+    };
+
+    if (!token) {
+      void fetchToken();
+    }
+  }, [code, token]);
+
+  useEffect(() => {
+    const getUser = async () => {
+      const client = createGitHubGqlClient(token);
+      try {
+        const result =
+          await client.request<GetViewerQuery>(QueryGetGitHubViewer);
+        setData(result);
+      } catch (e: any) {
+        // TODO: implement error handling
+        setError("Failed to fetch user");
       }
     };
 
-    void fetchToken();
-  }, [code, fetchViewer]);
+    if (token) {
+      void getUser();
+    }
+  }, [token]);
 
   useEffect(() => {
     if (data && token) {

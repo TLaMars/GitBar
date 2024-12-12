@@ -1,4 +1,3 @@
-import { useApolloClient } from "@apollo/client";
 import { PropsWithChildren, createContext, useMemo } from "react";
 
 import useSelector from "hooks/use-selector";
@@ -13,7 +12,6 @@ export const AccountsContext = createContext<Provider[]>([]);
 
 const AccountsProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const accounts = useSelector(selectAccounts);
-  const client = useApolloClient();
 
   const providers = useMemo(
     (): Provider[] =>
@@ -22,14 +20,14 @@ const AccountsProvider: React.FC<PropsWithChildren> = ({ children }) => {
           case AccountType.Azure:
             return new AzureProvider(account.id, account.auth);
           case AccountType.GitHub:
-            return new GitHubProvider(account.id, account.auth, client);
+            return new GitHubProvider(account.id, account.auth);
           case AccountType.GitLab:
-            return new GitLabProvider(account.id, account.auth, client);
+            return new GitLabProvider(account.id, account.auth);
           default:
             throw new Error(`Unknown account: ${account}`);
         }
       }),
-    [accounts, client],
+    [accounts],
   );
 
   return (

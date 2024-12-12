@@ -1,8 +1,5 @@
-import {
-  ApolloClient,
-  DefaultContext,
-  TypedDocumentNode,
-} from "@apollo/client";
+import { TypedDocumentNode } from "@graphql-typed-document-node/core";
+import { GraphQLClient } from "graphql-request";
 
 import QueryGetGithubPullRequests from "gql/github/queries/pull-requests";
 import QueryGetGitHubViewer from "gql/github/queries/viewer";
@@ -10,7 +7,7 @@ import { AccountType } from "models/account";
 import { GitHubAuth } from "models/auth";
 import Profile, { ProfileStatus } from "models/profile";
 import transformGithubPullRequest from "transformers/github/github-pull-request";
-import { gitHubContext } from "utils/apollo-contexts";
+import { createGitHubGqlClient } from "utils/graphql-client";
 
 import Provider from "./provider";
 
@@ -19,41 +16,35 @@ class GitHubProvider implements Provider {
 
   auth: GitHubAuth;
 
-  client: ApolloClient<object>;
-
-  #context: DefaultContext;
+  client: GraphQLClient;
 
   #profile?: Profile;
 
-  constructor(id: string, auth: GitHubAuth, client: ApolloClient<object>) {
+  constructor(id: string, auth: GitHubAuth) {
     this.id = id;
     this.auth = auth;
-    this.client = client;
-    this.#context = gitHubContext(this.auth.accessToken);
+    this.client = createGitHubGqlClient(this.auth.accessToken);
   }
 
   private query = async <TData, TVariables = { [key: string]: never }>(
     query: TypedDocumentNode<TData, TVariables>,
   ) => {
-    const { data, error } = await this.client
-      .query<TData>({
-        query,
-        context: this.#context,
-        fetchPolicy: "no-cache",
-      })
-      .catch((e) => ({
+    try {
+      const result = await this.client.request<TData>(query);
+      return { data: result, error: null };
+    } catch (e: any) {
+      return {
         data: null,
         error: new Error(`GitHub ${this.auth.userName}: ${e.message}`),
-      }));
-
-    return { data, error };
+      };
+    }
   };
 
   async profile() {
     if (!this.#profile) {
       const { data, error } = await this.query(QueryGetGitHubViewer);
 
-      if (error || !data) {
+      if (error) {
         return {
           error,
           data: {
@@ -90,7 +81,7 @@ class GitHubProvider implements Provider {
 
     const { data, error } = await this.query(QueryGetGithubPullRequests);
 
-    if (data === null || error) {
+    if (data === null) {
       return {
         error,
         data: [],

@@ -1,7 +1,9 @@
-import { useCallback, useContext, useMemo, useRef, useState } from "react";
+import { useQueries } from "@tanstack/react-query";
+import { useContext, useMemo, useRef } from "react";
 
 import { AccountsContext } from "contexts/accounts";
 import { PullRequest } from "models/pull-request";
+import { MacState } from "modules/app-module";
 import { selectHiddenPullRequests } from "store/selectors/pull-requests";
 import {
   selectAllowNotifications,
@@ -10,22 +12,16 @@ import {
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
 } from "store/selectors/settings";
-import compareArraysOfObjects from "utils/compare-object-arrays";
 import groupPullRequestsBy from "utils/group-pull-requests";
 import sendPullRequestNotification from "utils/send-pull-request-notification";
 
+import useMacState from "./use-mac-state";
 import useSelector from "./use-selector";
 
-const usePullRequests = () => {
+const usePullRequestsV2 = () => {
   const accounts = useContext(AccountsContext);
-  const prevPullRequestsRef = useRef<PullRequest[]>();
-
-  const [state, setState] = useState({
-    loading: false,
-    errors: [] as Error[],
-    queryResult: [] as PullRequest[],
-    execuedAt: Date.now(),
-  });
+  const macState = useMacState();
+  const prevPrsRef = useRef<PullRequest[]>([]);
 
   const groupPRsBy = useSelector(selectGroupPRsBy);
   const hidePRsAfterTwoMonths = useSelector(selectHidePRsAfterTwoMonths);
@@ -34,104 +30,101 @@ const usePullRequests = () => {
   const hiddenPullRequests = useSelector(selectHiddenPullRequests);
   const hideDraftPRs = useSelector(selectHideDraftPRs);
 
-  const fetchPullRequests = useCallback(async () => {
-    setState((prevState) => ({ ...prevState, loading: true }));
+  const data = useQueries({
+    queries: accounts.map((account) => ({
+      queryKey: ["pull-requests", account.id],
+      queryFn: async () => {
+        const { data: result } = await account.pullRequests();
+        return result;
+      },
+      refetchInterval: 180000,
+      enabled: macState === MacState.UNLOCKED,
+    })),
+  });
 
-    const result = await Promise.all(
-      accounts.map(async (account) => account.pullRequests()),
-    );
+  const queryInfo = useMemo(
+    () => ({
+      updatedAt:
+        data.length > 0 && data[data.length - 1].dataUpdatedAt > 0
+          ? data[data.length - 1].dataUpdatedAt
+          : Date.now(),
+      isFetching: data.some((d) => d.isFetching),
+      errors: data.reduce((acc, d) => {
+        if (d.error) {
+          return [...acc, d.error];
+        }
+        return acc;
+      }, [] as Error[]),
+    }),
+    [data],
+  );
 
-    const errors = result
-      .map(({ error }) => error)
-      .filter((error) => error !== undefined);
-
-    const queryResult = result
-      .map(({ data }) => data)
+  const {
+    pullRequests,
+    relevantPullRequests,
+    groupedAllPrs,
+    groupedRelevantPRs,
+  } = useMemo(() => {
+    const prs = data
+      .map((d) => d.data)
       .flat()
+      .filter((d) => d !== undefined)
       .sort(
         (a, b) =>
           new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
       );
 
-    if (
-      compareArraysOfObjects(prevPullRequestsRef.current ?? [], queryResult)
-    ) {
-      setState((prevState) => ({
-        ...prevState,
-        loading: false,
-        execuedAt: Date.now(),
-      }));
-      return;
-    }
+    const relevantPrs = prs
+      .filter(
+        (pr) =>
+          !hiddenPullRequests.some(
+            (hiddenPr) =>
+              hiddenPr.id === pr.id && hiddenPr.repoName === pr.repoName,
+          ),
+      )
+      .filter((pr) => {
+        if (hidePRsAfterTwoMonths) {
+          const twoMonthsAgo = new Date();
+          twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
+          return new Date(pr.createdAt) > twoMonthsAgo;
+        }
+        return true;
+      })
+      .filter((pr) => !hidePRsApprovedByMe || !pr.isApprovedByMe)
+      .filter((pr) => !pr.isDraft || !hideDraftPRs);
 
-    setState({
-      loading: false,
-      errors: errors as Error[],
-      queryResult,
-      execuedAt: Date.now(),
-    });
-  }, [accounts]);
+    const prsGrouped = groupPullRequestsBy(prs, groupPRsBy);
+    const relevantPrsGrouped = groupPullRequestsBy(relevantPrs, groupPRsBy);
 
-  const relevantPullRequests = useMemo(
-    () =>
-      state.queryResult
-        .filter(
-          (pr) =>
-            !hiddenPullRequests.some(
-              (hiddenPr) =>
-                hiddenPr.id === pr.id && hiddenPr.repoName === pr.repoName,
-            ),
-        )
-        .filter((pr) => {
-          if (hidePRsAfterTwoMonths) {
-            const twoMonthsAgo = new Date();
-            twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
-            return new Date(pr.createdAt) > twoMonthsAgo;
-          }
-          return true;
-        })
-        .filter((pr) => !hidePRsApprovedByMe || !pr.isApprovedByMe)
-        .filter((pr) => !pr.isDraft || !hideDraftPRs),
-    [
-      state.queryResult,
-      hiddenPullRequests,
-      hidePRsAfterTwoMonths,
-      hidePRsApprovedByMe,
-      hideDraftPRs,
-    ],
-  );
+    return {
+      pullRequests: prs,
+      relevantPullRequests: relevantPrs,
+      groupedAllPrs: prsGrouped,
+      groupedRelevantPRs: relevantPrsGrouped,
+    };
+  }, [
+    data,
+    hiddenPullRequests,
+    hideDraftPRs,
+    hidePRsAfterTwoMonths,
+    hidePRsApprovedByMe,
+    groupPRsBy,
+  ]);
 
-  const groupedPullRequests = useMemo(
-    () => groupPullRequestsBy(state.queryResult, groupPRsBy),
-    [state.queryResult, groupPRsBy],
-  );
-
-  const relevantGroupedPullRequests = useMemo(
-    () => groupPullRequestsBy(relevantPullRequests, groupPRsBy),
-    [relevantPullRequests, groupPRsBy],
-  );
-
-  // Memoize the notifications logic
   useMemo(() => {
-    if (sendNotifications) {
-      sendPullRequestNotification(
-        state.queryResult,
-        prevPullRequestsRef.current,
-      );
-      prevPullRequestsRef.current = state.queryResult;
+    if (sendNotifications && !queryInfo.isFetching) {
+      sendPullRequestNotification(relevantPullRequests, prevPrsRef.current);
+      prevPrsRef.current = relevantPullRequests;
     }
-  }, [sendNotifications, state.queryResult]);
+  }, [sendNotifications, relevantPullRequests, queryInfo.isFetching]);
 
   return {
-    pullRequests: groupedPullRequests,
-    totalAmountOfPullRequests: state.queryResult.length,
-    relevantAmountOfPullRequests: relevantPullRequests.length,
-    relevantPullRequests: relevantGroupedPullRequests,
-    fetchPullRequests,
-    loading: state.loading,
-    errors: state.errors,
-    executedAt: state.execuedAt,
+    pullRequests,
+    relevantPullRequests,
+    groupedAllPrs,
+    groupedRelevantPRs,
+    ...queryInfo,
   };
 };
 
-export default usePullRequests;
+export default usePullRequestsV2;

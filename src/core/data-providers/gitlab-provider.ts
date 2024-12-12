@@ -1,8 +1,5 @@
-import {
-  ApolloClient,
-  DefaultContext,
-  TypedDocumentNode,
-} from "@apollo/client";
+import { TypedDocumentNode } from "@graphql-typed-document-node/core";
+import { GraphQLClient } from "graphql-request";
 
 import QueryGetGitLabCurrentUser from "gql/gitlab/queries/current-user";
 import QueryGetGitLabPullRequests from "gql/gitlab/queries/pull-requests";
@@ -10,7 +7,7 @@ import { AccountType } from "models/account";
 import { GitLabAuth } from "models/auth";
 import Profile, { ProfileStatus } from "models/profile";
 import transformGitLabPullRequest from "transformers/gitlab/gitlab-pull-request";
-import { gitLabContext } from "utils/apollo-contexts";
+import { createGitLabGqlClient } from "utils/graphql-client";
 
 import Provider from "./provider";
 
@@ -19,41 +16,37 @@ class GitLabProvider implements Provider {
 
   auth: GitLabAuth;
 
-  client: ApolloClient<object>;
-
-  #context: DefaultContext;
+  client: GraphQLClient;
 
   #profile?: Profile;
 
-  constructor(id: string, auth: GitLabAuth, client: ApolloClient<object>) {
+  constructor(id: string, auth: GitLabAuth) {
     this.id = id;
     this.auth = auth;
-    this.client = client;
-    this.#context = gitLabContext(auth.privateToken, auth.domain);
+    this.client = createGitLabGqlClient(auth.domain, auth.privateToken);
   }
 
   private query = async <TData, TVariables = { [key: string]: never }>(
     query: TypedDocumentNode<TData, TVariables>,
   ) => {
-    const { data, error } = await this.client
-      .query<TData>({
-        query,
-        context: this.#context,
-        fetchPolicy: "no-cache",
-      })
-      .catch((e) => ({
+    try {
+      const data = await this.client.request<TData>(query);
+      return {
+        data,
+      };
+    } catch (e: any) {
+      return {
         data: null,
         error: new Error(`GitLab ${this.auth.userName}: ${e.message}`),
-      }));
-
-    return { data, error };
+      };
+    }
   };
 
   async profile() {
     if (!this.#profile) {
       const { data, error } = await this.query(QueryGetGitLabCurrentUser);
 
-      if (data === null || data.currentUser === null || error) {
+      if (data === null || data.currentUser === null) {
         return {
           data: {
             id: this.id,
@@ -94,7 +87,7 @@ class GitLabProvider implements Provider {
 
     const { data, error } = await this.query(QueryGetGitLabPullRequests);
 
-    if (data === null || error) {
+    if (data === null) {
       return {
         error,
         data: [],

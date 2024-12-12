@@ -1,11 +1,9 @@
-import { ApolloError } from "@apollo/client";
-
 import Profile from "models/profile";
 import { PullRequest } from "models/pull-request";
 
 type Response<T> = {
   data: T;
-  error?: ApolloError | Error | undefined;
+  error?: Error | undefined;
 };
 
 interface Provider {

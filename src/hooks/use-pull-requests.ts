@@ -18,10 +18,10 @@ import sendPullRequestNotification from "utils/send-pull-request-notification";
 import useMacState from "./use-mac-state";
 import useSelector from "./use-selector";
 
-const usePullRequestsV2 = () => {
+const usePullRequests = () => {
   const accounts = useContext(AccountsContext);
   const macState = useMacState();
-  const prevPrsRef = useRef<PullRequest[]>([]);
+  const prevPrsRef = useRef<PullRequest[]>();
 
   const groupPRsBy = useSelector(selectGroupPRsBy);
   const hidePRsAfterTwoMonths = useSelector(selectHidePRsAfterTwoMonths);
@@ -127,4 +127,4 @@ const usePullRequestsV2 = () => {
   };
 };
 
-export default usePullRequestsV2;
+export default usePullRequests;

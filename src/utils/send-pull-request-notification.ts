@@ -6,9 +6,9 @@ const sendPullRequestNotification = (
   prevPullRequests?: PullRequest[],
 ) => {
   if (prevPullRequests) {
-    const newPullRequests = pullRequests.filter(
-      (pr) => !prevPullRequests.some((prevPr) => prevPr.id === pr.id),
-    );
+    const newPullRequests = pullRequests
+      .filter((pr) => !prevPullRequests.some((prevPr) => prevPr.id === pr.id))
+      .filter((pr) => !pr.isAuthoredByMe);
 
     const newComments = pullRequests.reduce((acc, pr) => {
       const prevPR = prevPullRequests.find((prevPr) => prevPr.id === pr.id);

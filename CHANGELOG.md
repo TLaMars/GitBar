@@ -1,14 +1,18 @@
 # Changelog
 
-## [1.7.0](https://github.com/TLaMars/gitbar/releases/tag/v1.7.0) - 2024-12-12
+## [1.7.0](https://github.com/TLaMars/gitbar/releases/tag/v1.7.0) - 2024-12-15
 
 ### 🚀 Features
 
 - _(tanstack)_ Refactor pull requests to tanstack[(6e6985d)](https://github.com/TLaMars/gitbar/commit/6e6985db85899634d09f702cff4a275fd2a72286) by @TLaMars
+- _(notifications)_ Don't send notification on user new pr[(abb9519)](https://github.com/TLaMars/gitbar/commit/abb95194b23c23752692812e4ae7442f2e8fbd6b) by @TLaMars
+- _(expo)_ Upgraded expo to 52[(d471a2d)](https://github.com/TLaMars/gitbar/commit/d471a2d4778a0e3fbfffa99c73e5a7c3cda3baf3) by @TLaMars
+- _(picker)_ Add picker module[(23b762b)](https://github.com/TLaMars/gitbar/commit/23b762bce39a92d00d8720f805390c28cf204ef4) by @TLaMars
 
 ### 🐛 Bug Fixes
 
 - _(sentry)_ Set version of sentry 6.0.0[(30cc638)](https://github.com/TLaMars/gitbar/commit/30cc638f9f64a86949f0d497693dbfc7618b79ff) by @TLaMars
+- _(sentry)_ Set to version 6.0[(4a565a8)](https://github.com/TLaMars/gitbar/commit/4a565a8aee7718699382cc7e8b09fbb28af8d403)
 
 ### ⚙️ Miscellaneous Tasks
 

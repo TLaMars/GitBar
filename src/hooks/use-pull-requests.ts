@@ -30,33 +30,31 @@ const usePullRequests = () => {
   const hiddenPullRequests = useSelector(selectHiddenPullRequests);
   const hideDraftPRs = useSelector(selectHideDraftPRs);
 
-  const data = useQueries({
+  const result = useQueries({
     queries: accounts.map((account) => ({
       queryKey: ["pull-requests", account.id],
-      queryFn: async () => {
-        const { data: result } = await account.pullRequests();
-        return result;
-      },
+      queryFn: async () => account.pullRequests(),
       refetchInterval: 180000,
       enabled: macState === MacState.UNLOCKED,
     })),
   });
 
+  // TODO: Fix the way errors are handled
   const queryInfo = useMemo(
     () => ({
       updatedAt:
-        data.length > 0 && data[data.length - 1].dataUpdatedAt > 0
-          ? data[data.length - 1].dataUpdatedAt
+        result.length > 0 && result[result.length - 1].dataUpdatedAt > 0
+          ? result[result.length - 1].dataUpdatedAt
           : Date.now(),
-      isFetching: data.some((d) => d.isFetching),
-      errors: data.reduce((acc, d) => {
-        if (d.error) {
-          return [...acc, d.error];
+      isFetching: result.some((d) => d.isFetching),
+      errors: result.reduce((acc, d) => {
+        if (d.data?.error) {
+          return [...acc, d.data.error];
         }
         return acc;
       }, [] as Error[]),
     }),
-    [data],
+    [result],
   );
 
   const {
@@ -65,8 +63,8 @@ const usePullRequests = () => {
     groupedAllPrs,
     groupedRelevantPRs,
   } = useMemo(() => {
-    const prs = data
-      .map((d) => d.data)
+    const prs = result
+      .map((d) => d.data?.data)
       .flat()
       .filter((d) => d !== undefined)
       .sort(
@@ -103,7 +101,7 @@ const usePullRequests = () => {
       groupedRelevantPRs: relevantPrsGrouped,
     };
   }, [
-    data,
+    result,
     hiddenPullRequests,
     hideDraftPRs,
     hidePRsAfterTwoMonths,

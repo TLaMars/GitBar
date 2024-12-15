@@ -13,8 +13,9 @@
 ### 🐛 Bug Fixes
 
 - *(sentry)* Set version of sentry 6.0.0[(30cc638)](https://github.com/TLaMars/gitbar/commit/30cc638f9f64a86949f0d497693dbfc7618b79ff) by @TLaMars
-- *(sentry)* Set to version 6.0[(4a565a8)](https://github.com/TLaMars/gitbar/commit/4a565a8aee7718699382cc7e8b09fbb28af8d403)
-- *(onboarding)* Use correct launch at login method[(33767ee)](https://github.com/TLaMars/gitbar/commit/33767ee3fbc5d1522b3272b3390b6a261599da20)
+- *(sentry)* Set to version 6.0[(4a565a8)](https://github.com/TLaMars/gitbar/commit/4a565a8aee7718699382cc7e8b09fbb28af8d403) by @TLaMars
+- *(onboarding)* Use correct launch at login method[(33767ee)](https://github.com/TLaMars/gitbar/commit/33767ee3fbc5d1522b3272b3390b6a261599da20) by @TLaMars
+- *(errors)* Get error data correctly[(7630cf4)](https://github.com/TLaMars/gitbar/commit/7630cf4ad15e571daf736451505da78f4d6cf98d)
 
 ### ⚙️ Miscellaneous Tasks
 

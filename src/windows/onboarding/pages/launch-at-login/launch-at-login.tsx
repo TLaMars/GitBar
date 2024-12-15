@@ -1,13 +1,13 @@
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Image } from "react-native";
+import { Image, View } from "react-native";
 
 import LaunchAtLoginImage from "assets/illustrations/onboarding/launch-at-login.jpg";
 import Body from "components/body/body";
 import useTranslation from "hooks/use-translation";
 import OnboardingLayout from "layouts/onboarding-layout/onboarding-layout";
 import { OnboardingStackParamList } from "models/onboarding-stack-param-list";
-import AppModule from "modules/app-module";
+import LaunchAtLoginModule from "modules/app-module/src/LaunchAtLogin";
 
 import useStyles from "./launch-at-login.styles";
 
@@ -18,7 +18,7 @@ const LaunchAtLogin: React.FC = () => {
     useNavigation<NavigationProp<OnboardingStackParamList>>();
 
   const onContinue = async (accepted: boolean) => {
-    await AppModule.setLaunchAtLoginStatus(accepted);
+    await LaunchAtLoginModule.setStatus(accepted);
     navigate("Notifications");
   };
 

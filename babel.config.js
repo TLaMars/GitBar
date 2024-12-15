@@ -22,6 +22,6 @@ const MODULE_RESOLVER = [
 ];
 
 module.exports = {
-  presets: ["module:@react-native/babel-preset"],
+  presets: ["babel-preset-expo"],
   plugins: [MODULE_RESOLVER, "module:react-native-dotenv"],
 };

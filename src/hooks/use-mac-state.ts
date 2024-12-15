@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 
-import { AppModuleEmitter, MacState } from "modules/app-module";
+import { MacState, addMacStateListener } from "modules/app-module";
 
 const useMacState = () => {
   const [state, setState] = useState<MacState>(MacState.UNLOCKED);
 
   useEffect(() => {
-    AppModuleEmitter.addListener("onMacStateChange", (event) => {
+    const subscription = addMacStateListener((event) => {
       setState(event.state);
     });
 
     return () => {
-      AppModuleEmitter.removeAllListeners("onMacStateChange");
+      subscription.remove();
     };
   }, []);
 

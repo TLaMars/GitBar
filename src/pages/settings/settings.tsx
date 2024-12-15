@@ -7,6 +7,7 @@ import Body from "components/body/body";
 import Button from "components/button/button";
 import Heading from "components/heading/heading";
 import Link from "components/link/link";
+import ListItemPicker from "components/list-item/list-item-picker";
 import ListItemToggle from "components/list-item/list-item-toggle";
 import Spacer from "components/spacer/spacer";
 import { AccountsContext } from "contexts/accounts";
@@ -15,7 +16,10 @@ import useProfiles from "hooks/use-profiles";
 import useSelector from "hooks/use-selector";
 import useTranslation from "hooks/use-translation";
 import DefaultLayout from "layouts/default-layout/default-layout";
+import Appearance from "models/appearance";
+import { GroupPullRequestsBy } from "models/pull-request";
 import AppModule from "modules/app-module";
+import LaunchAtLoginModule from "modules/app-module/src/LaunchAtLogin";
 import NotificationsModule, {
   NotificationPermission,
 } from "modules/notifications-module";
@@ -31,6 +35,8 @@ import { removeOneAccount } from "store/slices/accounts";
 import { resetHiddenPullRequests } from "store/slices/pull-requests";
 import {
   setAllowNotifications,
+  setAppearance,
+  setGroupPRsBy,
   setHideDraftPRs,
   setHidePRsAfterTwoMonths,
   setHidePRsApprovedByMe,
@@ -61,7 +67,7 @@ const Settings: React.FC = () => {
   }, [fetchProfiles]);
 
   useEffect(() => {
-    void AppModule.getLaunchAtLoginStatus().then((status: boolean) => {
+    void LaunchAtLoginModule.getStatus().then((status: boolean) => {
       setLaunchAtLogin(status);
     });
     void NotificationsModule.getPermissions().then((result) => {
@@ -111,7 +117,7 @@ const Settings: React.FC = () => {
           {t("Settings/SectionHeading/PullRequests")}
         </Heading>
         <Spacer mt={1} />
-        {/* <ListItemPicker
+        <ListItemPicker
           label={t("Settings/GroupPRsBy/GroupBy")}
           selectedValue={groupPRsBy}
           onValueChange={(value) =>
@@ -131,7 +137,7 @@ const Settings: React.FC = () => {
               value: GroupPullRequestsBy.NONE,
             },
           ]}
-        /> */}
+        />
         <Spacer mt={4} />
         <Body bold size="s">
           {t("Settings/SectionHeading/RelevantPullRequests")}
@@ -168,7 +174,7 @@ const Settings: React.FC = () => {
             dispatch(setAllowNotifications(value));
           }}
         />
-        {/* <ListItemPicker
+        <ListItemPicker
           label={t("Settings/Application/Appearance")}
           border
           selectedValue={appearance}
@@ -181,12 +187,12 @@ const Settings: React.FC = () => {
             // TODO: Implement system appearance
             // { label: t("Settings/Appearance/System"), value: Appearance.Auto },
           ]}
-        /> */}
+        />
         <ListItemToggle
           label={t("Settings/Application/LaunchAtLogin")}
           value={launchAtLogin ?? false}
           onToggle={async (value) => {
-            await AppModule.setLaunchAtLoginStatus(value);
+            await LaunchAtLoginModule.setStatus(value);
             setLaunchAtLogin(value);
           }}
         />

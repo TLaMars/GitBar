@@ -49,6 +49,8 @@ PODS:
   - MMKVCore (2.0.0)
   - NotificationsModule (1.0.0):
     - ExpoModulesCore
+  - PickerModule (1.0.0):
+    - ExpoModulesCore
   - PopoverModule (1.0.0):
     - ExpoModulesCore
   - RCT-Folly (2024.01.01.00):
@@ -1576,27 +1578,6 @@ PODS:
     - React-logger (= 0.76.6)
     - React-perflogger (= 0.76.6)
     - React-utils (= 0.76.6)
-  - RNCPicker (2.10.2):
-    - DoubleConversion
-    - glog
-    - hermes-engine
-    - RCT-Folly (= 2024.01.01.00)
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Core
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-ImageManager
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-rendererdebug
-    - React-utils
-    - ReactCodegen
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - Yoga
   - RNSentry (6.3.0):
     - DoubleConversion
     - glog
@@ -1687,6 +1668,7 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native-macos/third-party-podspecs/glog.podspec`)
   - hermes-engine (from `../node_modules/react-native-macos/sdks/hermes-engine/hermes-engine.podspec`)
   - NotificationsModule (from `../modules/notifications-module/macos`)
+  - PickerModule (from `../modules/picker-module/macos`)
   - PopoverModule (from `../modules/popover-module/macos`)
   - RCT-Folly (from `../node_modules/react-native-macos/third-party-podspecs/RCT-Folly.podspec`)
   - RCT-Folly/Fabric (from `../node_modules/react-native-macos/third-party-podspecs/RCT-Folly.podspec`)
@@ -1747,7 +1729,6 @@ DEPENDENCIES:
   - React-utils (from `../node_modules/react-native-macos/ReactCommon/react/utils`)
   - ReactCodegen (from `build/generated/ios`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native-macos/ReactCommon`)
-  - "RNCPicker (from `../node_modules/@react-native-picker/picker`)"
   - "RNSentry (from `../node_modules/@sentry/react-native`)"
   - RNSVG (from `../node_modules/react-native-svg`)
   - SafariWebAuthModule (from `../modules/safari-web-auth-module/ios`)
@@ -1793,6 +1774,8 @@ EXTERNAL SOURCES:
     :tag: hermes-2024-11-12-RNv0.76.2-5b4aa20c719830dcf5684832b89a6edb95ac3d64
   NotificationsModule:
     :path: "../modules/notifications-module/macos"
+  PickerModule:
+    :path: "../modules/picker-module/macos"
   PopoverModule:
     :path: "../modules/popover-module/macos"
   RCT-Folly:
@@ -1909,8 +1892,6 @@ EXTERNAL SOURCES:
     :path: build/generated/ios
   ReactCommon:
     :path: "../node_modules/react-native-macos/ReactCommon"
-  RNCPicker:
-    :path: "../node_modules/@react-native-picker/picker"
   RNSentry:
     :path: "../node_modules/@sentry/react-native"
   RNSVG:
@@ -1942,6 +1923,7 @@ SPEC CHECKSUMS:
   MMKV: f7d1d5945c8765f97f39c3d121f353d46735d801
   MMKVCore: c04b296010fcb1d1638f2c69405096aac12f6390
   NotificationsModule: cd5db15035168922bf6231793c14ca6ea0ae3b7c
+  PickerModule: dbcedf1d51401b15c33d4b5cdb8535a546cfa83c
   PopoverModule: fc03b887ea8199d7b6a547046cc3bfcbeab058b6
   RCT-Folly: a7dc01750cc4b76a2d308fb2be04f4e3bc8dc094
   RCTDeprecation: 063fc281b30b7dc944c98fe53a7e266dab1a8706
@@ -2000,7 +1982,6 @@ SPEC CHECKSUMS:
   React-utils: b1f573a22785a7634e2c78204e814be3c7a33a15
   ReactCodegen: e82d35cc42991ec80900b73a24c29c8435af0bd6
   ReactCommon: 86e42b4a4c8fbc95a08ddc7fe20e5ef480be6147
-  RNCPicker: fa1e5c944e6fff905914b88175f4f6c8a08be4c4
   RNSentry: abde49b2d0e39b005e03f42e004d3fd444db01e9
   RNSVG: ec2e9d524612ee95db5df143a54518c5404d93f0
   SafariWebAuthModule: b68ff9400b10f9407ccf2d6bad749c8de9171898
@@ -2009,6 +1990,6 @@ SPEC CHECKSUMS:
   WindowModule: 66230c2d6c8044b45cb4a37467901a8a92350577
   Yoga: 36f52f2b244e38c5efe0877a8dad7d6d87a8f463
 
-PODFILE CHECKSUM: c9f2432e30c2cbdca4c09bb93d3c5b7bfc49bf75
+PODFILE CHECKSUM: 1edab77e901a3510c69dda89abd7e6865f2eeff0
 
 COCOAPODS: 1.14.3

@@ -1,4 +1,4 @@
-import { Picker, PickerItemProps } from "@react-native-picker/picker";
+// import { Picker, PickerItemProps } from "@react-native-picker/picker";
 import React from "react";
 
 import ListItem, { ListItmeProps } from "./list-item";
@@ -8,20 +8,21 @@ type Props = {
   selectedValue: string;
   disabled?: boolean;
   width?: number;
-  pickerItems: PickerItemProps<string>[];
+  // pickerItems: PickerItemProps<string>[];
 } & ListItmeProps;
 
+// TODO FIX
 const ListItemPicker: React.FC<Props> = ({
   label,
   onValueChange,
   selectedValue,
   border,
-  pickerItems,
+  // pickerItems,
   disabled,
   width = 150,
 }) => (
   <ListItem label={label} border={border}>
-    <Picker
+    {/* <Picker
       enabled={!disabled}
       style={{ width }}
       selectedValue={selectedValue}
@@ -30,7 +31,7 @@ const ListItemPicker: React.FC<Props> = ({
       {pickerItems.map((item) => (
         <Picker.Item key={item.value} label={item.label} value={item.value} />
       ))}
-    </Picker>
+    </Picker> */}
   </ListItem>
 );
 

@@ -8,6 +8,7 @@
 import Foundation
 import Cocoa
 import UserNotifications
+import React
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate, RCTBridgeDelegate, NSPopoverDelegate {

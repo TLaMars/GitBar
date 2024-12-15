@@ -5,6 +5,8 @@
 //  Created by Thomas Lamars on 06/12/2024.
 //
 
+import React
+
 @objc(RNEventEmitter)
 open class RNEventEmitter: RCTEventEmitter {
 

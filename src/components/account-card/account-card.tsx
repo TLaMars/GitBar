@@ -9,7 +9,7 @@ import AccountMap from "constants/account-map";
 import useTheme from "hooks/use-theme";
 import useTranslation from "hooks/use-translation";
 import { AccountType } from "models/account";
-import { ProfileStatus } from "models/profile";
+import { AccountState } from "models/profile";
 
 import useStyles from "./account-card.styles";
 
@@ -19,8 +19,8 @@ type Props = {
   avatarUrl?: string;
   name?: string;
   border?: boolean;
-  status?: ProfileStatus;
   onDeletePress: () => void;
+  state?: AccountState;
 };
 
 const AccountCard: React.FC<Props> = ({
@@ -29,7 +29,7 @@ const AccountCard: React.FC<Props> = ({
   avatarUrl,
   name,
   border = true,
-  status,
+  state = AccountState.Unknown,
   onDeletePress,
 }) => {
   const $ = useStyles();
@@ -53,9 +53,9 @@ const AccountCard: React.FC<Props> = ({
       <View style={$.right}>
         <Body
           size="xs"
-          color={status === ProfileStatus.Valid ? "text" : "textDanger"}
+          color={state === AccountState.Valid ? "text" : "textDanger"}
         >
-          {status === ProfileStatus.Valid
+          {state === AccountState.Valid
             ? t("AccountCard/Status/Valid")
             : t("AccountCard/Status/Invalid")}
         </Body>

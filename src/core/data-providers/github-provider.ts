@@ -1,11 +1,11 @@
+import { ApolloClient } from "@apollo/client";
 import { TypedDocumentNode } from "@graphql-typed-document-node/core";
-import { GraphQLClient } from "graphql-request";
 
 import QueryGetGithubPullRequests from "gql/github/queries/pull-requests";
 import QueryGetGitHubViewer from "gql/github/queries/viewer";
 import { AccountType } from "models/account";
 import { GitHubAuth } from "models/auth";
-import Profile, { ProfileStatus } from "models/profile";
+import Profile, { AccountState } from "models/profile";
 import transformGithubPullRequest from "transformers/github/github-pull-request";
 import { createGitHubGqlClient } from "utils/graphql-client";
 
@@ -16,7 +16,7 @@ class GitHubProvider implements Provider {
 
   auth: GitHubAuth;
 
-  client: GraphQLClient;
+  client: ApolloClient<object>;
 
   #profile?: Profile;
 
@@ -30,31 +30,16 @@ class GitHubProvider implements Provider {
     query: TypedDocumentNode<TData, TVariables>,
   ) => {
     try {
-      const result = await this.client.request<TData>(query);
-      return { data: result, error: null };
+      const result = await this.client.query<TData>({ query });
+      return result.data;
     } catch (e: any) {
-      return {
-        data: null,
-        error: new Error(`GitHub ${this.auth.userName}: ${e.message}`),
-      };
+      throw new Error(`GitHub ${this.auth.userName}: ${e.message}`);
     }
   };
 
-  async profile() {
+  async getProfile() {
     if (!this.#profile) {
-      const { data, error } = await this.query(QueryGetGitHubViewer);
-
-      if (error) {
-        return {
-          error,
-          data: {
-            id: this.id,
-            name: this.auth.userName,
-            type: AccountType.GitHub,
-            status: ProfileStatus.Invalid,
-          },
-        };
-      }
+      const data = await this.query(QueryGetGitHubViewer);
 
       this.#profile = {
         id: data.viewer.id,
@@ -62,39 +47,33 @@ class GitHubProvider implements Provider {
         userName: data.viewer.login,
         name: data.viewer.name ?? "",
         type: AccountType.GitHub,
-        status: ProfileStatus.Valid,
+        state: AccountState.Valid,
       };
     }
 
-    return { data: this.#profile };
+    return this.#profile;
   }
 
-  async pullRequests() {
-    const { data: profile, error: profileError } = await this.profile();
+  async getPullRequests() {
+    const profile = await this.getProfile();
+    const data = await this.query(QueryGetGithubPullRequests);
 
-    if (profile.status === ProfileStatus.Invalid) {
+    return transformGithubPullRequest(profile, data).filter(
+      (pr, index, self) => index === self.findIndex((p) => p.id === pr.id),
+    );
+  }
+
+  async getValidatedProfile() {
+    try {
+      return await this.getProfile();
+    } catch {
       return {
-        error: profileError,
-        data: [],
+        id: this.id,
+        name: this.auth.userName,
+        type: AccountType.GitHub,
+        state: AccountState.Invalid,
       };
     }
-
-    const { data, error } = await this.query(QueryGetGithubPullRequests);
-
-    if (data === null) {
-      return {
-        error,
-        data: [],
-      };
-    }
-
-    return {
-      data: transformGithubPullRequest(profile, data).filter(
-        (pr, index, self) =>
-          (pr.isAuthoredByMe || pr.isAssignedToMe || pr.isCommentedByMe) &&
-          index === self.findIndex((p) => p.id === pr.id),
-      ),
-    };
   }
 }
 

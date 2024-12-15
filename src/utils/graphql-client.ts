@@ -1,18 +1,26 @@
-import { GraphQLClient } from "graphql-request";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 import DOMAINS from "constants/domains";
 import URI_PATHS from "constants/uri-paths";
 
 export const createGitLabGqlClient = (domain: string, token: string) =>
-  new GraphQLClient(domain + URI_PATHS.gitlabGql, {
-    headers: {
-      "Private-Token": token,
+  new ApolloClient({
+    uri: domain + URI_PATHS.gitlabGql,
+    cache: new InMemoryCache(),
+    defaultContext: {
+      headers: {
+        "Private-Token": token,
+      },
     },
   });
 
 export const createGitHubGqlClient = (token: string) =>
-  new GraphQLClient(DOMAINS.githubApi + URI_PATHS.githubGql, {
-    headers: {
-      Authorization: `Bearer ${token}`,
+  new ApolloClient({
+    uri: DOMAINS.githubApi + URI_PATHS.githubGql,
+    cache: new InMemoryCache(),
+    defaultContext: {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     },
   });

@@ -17,7 +17,13 @@ Sentry.init({
   enabled: !__DEV__,
 });
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+    },
+  },
+});
 
 const App: React.FC = () => (
   <QueryClientProvider client={queryClient}>

@@ -64,9 +64,10 @@ const RegisterGithub: React.FC = () => {
     const getUser = async () => {
       const client = createGitHubGqlClient(token);
       try {
-        const result =
-          await client.request<GetViewerQuery>(QueryGetGitHubViewer);
-        setData(result);
+        const result = await client.query<GetViewerQuery>({
+          query: QueryGetGitHubViewer,
+        });
+        setData(result.data);
       } catch (e: any) {
         // TODO: implement error handling
         setError("Failed to fetch user");

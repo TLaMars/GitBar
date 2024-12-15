@@ -16,7 +16,7 @@ const Dashboard: React.FC = () => {
   const popoverState = usePopoverState();
   const {
     relevantPullRequests,
-    isFetching,
+    isLoading,
     groupedAllPrs,
     groupedRelevantPRs,
     updatedAt,
@@ -39,7 +39,7 @@ const Dashboard: React.FC = () => {
             executedAt={updatedAt}
           />
         )}
-        {isFetching && <ActivityIndicator />}
+        {isLoading && <ActivityIndicator />}
         {popoverState === PopoverState.OPEN && (
           <PullRequestList
             errors={errors}

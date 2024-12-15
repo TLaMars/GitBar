@@ -1,11 +1,11 @@
+import { ApolloClient } from "@apollo/client";
 import { TypedDocumentNode } from "@graphql-typed-document-node/core";
-import { GraphQLClient } from "graphql-request";
 
 import QueryGetGitLabCurrentUser from "gql/gitlab/queries/current-user";
 import QueryGetGitLabPullRequests from "gql/gitlab/queries/pull-requests";
 import { AccountType } from "models/account";
 import { GitLabAuth } from "models/auth";
-import Profile, { ProfileStatus } from "models/profile";
+import Profile, { AccountState } from "models/profile";
 import transformGitLabPullRequest from "transformers/gitlab/gitlab-pull-request";
 import { createGitLabGqlClient } from "utils/graphql-client";
 
@@ -16,7 +16,7 @@ class GitLabProvider implements Provider {
 
   auth: GitLabAuth;
 
-  client: GraphQLClient;
+  client: ApolloClient<object>;
 
   #profile?: Profile;
 
@@ -30,33 +30,17 @@ class GitLabProvider implements Provider {
     query: TypedDocumentNode<TData, TVariables>,
   ) => {
     try {
-      const data = await this.client.request<TData>(query);
-      return {
-        data,
-      };
+      const response = await this.client.query<TData>({ query });
+
+      return response.data;
     } catch (e: any) {
-      return {
-        data: null,
-        error: new Error(`GitLab ${this.auth.userName}: ${e.message}`),
-      };
+      throw new Error(`GitLab ${this.auth.userName}: ${e.message}`);
     }
   };
 
-  async profile() {
+  async getProfile() {
     if (!this.#profile) {
-      const { data, error } = await this.query(QueryGetGitLabCurrentUser);
-
-      if (data === null || data.currentUser === null) {
-        return {
-          data: {
-            id: this.id,
-            name: this.auth.userName,
-            type: AccountType.GitLab,
-            status: ProfileStatus.Invalid,
-          },
-          error,
-        };
-      }
+      const data = await this.query(QueryGetGitLabCurrentUser);
 
       const avatarUrl = data.currentUser?.avatarUrl?.includes("https")
         ? data.currentUser.avatarUrl
@@ -68,43 +52,37 @@ class GitLabProvider implements Provider {
         userName: data.currentUser?.username ?? "",
         name: data.currentUser?.name ?? "",
         type: AccountType.GitLab,
-        status: data.currentUser ? ProfileStatus.Valid : ProfileStatus.Invalid,
+        state: AccountState.Valid,
       };
     }
 
-    return { data: this.#profile };
+    return this.#profile;
   }
 
-  async pullRequests() {
-    const { data: profile, error: profileError } = await this.profile();
+  async getPullRequests() {
+    const profile = await this.getProfile();
+    const data = await this.query(QueryGetGitLabPullRequests);
 
-    if (profile.status === ProfileStatus.Invalid || profileError) {
+    return transformGitLabPullRequest({
+      profile,
+      domain: this.auth.domain,
+      data,
+    }).filter(
+      (pr, index, self) => index === self.findIndex((p) => p.id === pr.id),
+    );
+  }
+
+  async getValidatedProfile() {
+    try {
+      return await this.getProfile();
+    } catch {
       return {
-        error: profileError,
-        data: [],
+        id: this.id,
+        name: this.auth.userName,
+        type: AccountType.GitLab,
+        state: AccountState.Invalid,
       };
     }
-
-    const { data, error } = await this.query(QueryGetGitLabPullRequests);
-
-    if (data === null) {
-      return {
-        error,
-        data: [],
-      };
-    }
-
-    return {
-      data: transformGitLabPullRequest({
-        profile,
-        domain: this.auth.domain,
-        data,
-      }).filter(
-        (pr, index, self) =>
-          (pr.isAuthoredByMe || pr.isAssignedToMe || pr.isCommentedByMe) &&
-          index === self.findIndex((p) => p.id === pr.id),
-      ),
-    };
   }
 }
 

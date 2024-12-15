@@ -1,26 +1,24 @@
-import { useCallback, useContext, useState } from "react";
+import { useQueries } from "@tanstack/react-query";
+import { useContext, useMemo } from "react";
 
 import { AccountsContext } from "contexts/accounts";
-import Profile from "models/profile";
 
 const useProfiles = () => {
   const accounts = useContext(AccountsContext);
-  const [profiles, setProfiles] = useState<Profile[]>([]);
-  const [errors, setErrors] = useState<Error[] | null>(null);
 
-  const fetchProfiles = useCallback(async () => {
-    const result = await Promise.all(
-      accounts.map((account) => account.profile()),
-    );
+  const result = useQueries({
+    queries: accounts.map((account) => ({
+      queryKey: ["profiles", account.id],
+      queryFn: async () => account.getValidatedProfile(),
+    })),
+  });
 
-    const groupedProfiles = result.map(({ data }) => data);
-    const groupedErrors = result.map(({ error }) => error);
+  const isLoading = useMemo(() => result.some((r) => r.isLoading), [result]);
 
-    setProfiles(groupedProfiles);
-    setErrors(groupedErrors.filter((error) => error !== undefined));
-  }, [accounts]);
-
-  return { profiles, fetchProfiles, errors };
+  return {
+    profiles: result.filter((r) => !!r.data).map((r) => r.data),
+    isLoading,
+  };
 };
 
 export default useProfiles;

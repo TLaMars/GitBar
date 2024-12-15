@@ -49,10 +49,10 @@ const RegisterGitLab: React.FC = () => {
     const client = createGitLabGqlClient(gitlabDomain, token);
 
     try {
-      const result = await client.request<GetCurrentUserQuery>(
-        QueryGetGitLabCurrentUser,
-      );
-      setData(result);
+      const result = await client.query<GetCurrentUserQuery>({
+        query: QueryGetGitLabCurrentUser,
+      });
+      setData(result.data);
     } catch (e: any) {
       if (e.response.status === 401) {
         setError("token");

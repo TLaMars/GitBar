@@ -1,6 +1,6 @@
 import { AccountType } from "models/account";
 import { AzureAuth } from "models/auth";
-import Profile, { ProfileStatus } from "models/profile";
+import Profile, { AccountState } from "models/profile";
 import { Config } from "services/api/api-wrapper";
 import azureApi from "services/api/azure/api";
 import { AzurePullRequest } from "services/api/azure/models/pull-requests-response";
@@ -29,25 +29,15 @@ class AzureProvider implements Provider {
     );
   }
 
-  async profile() {
-    const errorProfile = {
-      id: this.id,
-      name: this.auth.organization,
-      type: AccountType.Azure,
-      status: ProfileStatus.Invalid,
-    };
-
+  async getProfile() {
     if (!this.#profile) {
-      const { data, status } = await azureApi
+      const { data } = await azureApi
         .get("/:organization/_apis/profile/profiles/me", this.#config)
-        .catch((error) => ({ data: null, status: error.statusCode }));
-
-      if (!data || status !== 200) {
-        return {
-          data: errorProfile,
-          error: new Error(`Azure ${this.auth.organization}: Invalid profile`),
-        };
-      }
+        .catch((error) => {
+          throw new Error(
+            `Azure ${this.auth.organization}: failed with a ${error.statusCode}`,
+          );
+        });
 
       this.#profile = {
         id: data.id,
@@ -55,16 +45,16 @@ class AzureProvider implements Provider {
         userName: data.emailAddress,
         name: data.displayName,
         type: AccountType.Azure,
-        status: ProfileStatus.Valid,
+        state: AccountState.Valid,
       };
 
-      return { data: this.#profile };
+      return this.#profile;
     }
 
-    return { data: this.#profile };
+    return this.#profile;
   }
 
-  async projects() {
+  private async projects() {
     const { data } = await azureApi.get(
       "/:organization/_apis/projects",
       this.#config,
@@ -94,13 +84,8 @@ class AzureProvider implements Provider {
     return data.value;
   }
 
-  async pullRequests() {
-    const { data: profile, error: profileError } = await this.profile();
-
-    if (profile.status === ProfileStatus.Invalid) {
-      return { data: [], error: profileError };
-    }
-
+  async getPullRequests() {
+    const profile = await this.getProfile();
     const projects = await this.projects();
     const pullRequests: AzurePullRequest[] = (
       await Promise.all(
@@ -138,14 +123,22 @@ class AzureProvider implements Provider {
       )
     ).flat();
 
-    return {
-      data: pullRequests
-        .flat()
-        .map((pr) => transformAzurePullRequest(profile, pr))
-        .filter(
-          (pr) => pr.isAuthoredByMe || pr.isAssignedToMe || pr.isCommentedByMe,
-        ),
-    };
+    return pullRequests
+      .flat()
+      .map((pr) => transformAzurePullRequest(profile, pr));
+  }
+
+  async getValidatedProfile() {
+    try {
+      return await this.getProfile();
+    } catch {
+      return {
+        id: this.id,
+        name: this.auth.organization,
+        type: AccountType.Azure,
+        state: AccountState.Invalid,
+      };
+    }
   }
 }
 

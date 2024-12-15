@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useContext, useEffect, useState } from "react";
-import { ScrollView, View } from "react-native";
+import { ActivityIndicator, ScrollView, View } from "react-native";
 
 import AccountCard from "components/account-card/account-card";
 import Body from "components/body/body";
@@ -50,7 +50,7 @@ const Settings: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const accounts = useContext(AccountsContext);
-  const { profiles, fetchProfiles } = useProfiles();
+  const { profiles, isLoading } = useProfiles();
   const { navigate } = useNavigation();
   const hidePRsAfterTwoMonths = useSelector(selectHidePRsAfterTwoMonths);
   const groupPRsBy = useSelector(selectGroupPRsBy);
@@ -61,10 +61,6 @@ const Settings: React.FC = () => {
   const [notificationPermissions, setNotificationPermissions] =
     useState<NotificationPermission>();
   const [launchAtLogin, setLaunchAtLogin] = useState<boolean>();
-
-  useEffect(() => {
-    void fetchProfiles();
-  }, [fetchProfiles]);
 
   useEffect(() => {
     void LaunchAtLoginModule.getStatus().then((status: boolean) => {
@@ -99,6 +95,7 @@ const Settings: React.FC = () => {
           />
         </View>
         <Spacer mt={1} />
+        {isLoading && <ActivityIndicator />}
         {profiles.map((profile, index) => (
           <View key={profile.id}>
             <AccountCard
@@ -108,7 +105,7 @@ const Settings: React.FC = () => {
               name={profile.name}
               border={index !== accounts.length - 1}
               onDeletePress={() => deleteAccount(profile.id)}
-              status={profile.status}
+              state={profile.state}
             />
           </View>
         ))}

@@ -33,26 +33,20 @@ const usePullRequests = () => {
   const result = useQueries({
     queries: accounts.map((account) => ({
       queryKey: ["pull-requests", account.id],
-      queryFn: async () => account.pullRequests(),
+      queryFn: async () => account.getPullRequests(),
       refetchInterval: 180000,
       enabled: macState === MacState.UNLOCKED,
     })),
   });
 
-  // TODO: Fix the way errors are handled
   const queryInfo = useMemo(
     () => ({
       updatedAt:
         result.length > 0 && result[result.length - 1].dataUpdatedAt > 0
           ? result[result.length - 1].dataUpdatedAt
           : Date.now(),
-      isFetching: result.some((d) => d.isFetching),
-      errors: result.reduce((acc, d) => {
-        if (d.data?.error) {
-          return [...acc, d.data.error];
-        }
-        return acc;
-      }, [] as Error[]),
+      isLoading: result.some((d) => d.isLoading),
+      errors: result.filter((d) => !!d.error).map((d) => d.error),
     }),
     [result],
   );
@@ -64,9 +58,12 @@ const usePullRequests = () => {
     groupedRelevantPRs,
   } = useMemo(() => {
     const prs = result
-      .map((d) => d.data?.data)
+      .map((d) => d.data)
       .flat()
       .filter((d) => d !== undefined)
+      .filter(
+        (pr) => pr.isAuthoredByMe || pr.isAssignedToMe || pr.isCommentedByMe,
+      )
       .sort(
         (a, b) =>
           new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
@@ -110,11 +107,11 @@ const usePullRequests = () => {
   ]);
 
   useMemo(() => {
-    if (sendNotifications && !queryInfo.isFetching) {
+    if (sendNotifications && !queryInfo.isLoading) {
       sendPullRequestNotification(relevantPullRequests, prevPrsRef.current);
       prevPrsRef.current = relevantPullRequests;
     }
-  }, [sendNotifications, relevantPullRequests, queryInfo.isFetching]);
+  }, [sendNotifications, relevantPullRequests, queryInfo.isLoading]);
 
   return {
     pullRequests,

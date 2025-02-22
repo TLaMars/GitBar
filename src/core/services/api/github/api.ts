@@ -1,21 +1,31 @@
-import DOMAINS from "constants/domains";
-import URI_PATHS from "constants/uri-paths";
 import apiWrapper from "services/api/api-wrapper";
 
-import { GitHubApi as GitHubApiType } from "./api-model";
+import { githubGetApiEndpoints, githubPostApiEndpoints } from "./api-endpoints";
+import { GitHubApi } from "./models/api-model";
 
-const endpoint = `${DOMAINS.github}${URI_PATHS.githubOauth}`;
+const githubApi: GitHubApi = {
+  get(path, config) {
+    const endpoint = githubGetApiEndpoints[path];
+    return apiWrapper(endpoint, "GET", `${path}`, {
+      headers: {
+        "Content-type": "application/json",
 
-const gitHubOauthApi: GitHubApiType = {
-  post: async (path, data, config) =>
-    apiWrapper(endpoint, "POST", path, {
+        ...config?.headers,
+      },
+      ...config,
+    });
+  },
+  post(path, data, config) {
+    const endpoint = githubPostApiEndpoints[path];
+    return apiWrapper(endpoint, "POST", `${path}`, {
       ...config,
       headers: {
         ...config?.headers,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    }),
+    });
+  },
 };
 
-export default gitHubOauthApi;
+export default githubApi;

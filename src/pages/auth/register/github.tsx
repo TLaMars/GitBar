@@ -8,7 +8,7 @@ import useGitHubAuth from "hooks/use-github-auth";
 import RegisteredLayout from "layouts/registered-layout/registered-layout";
 import { AccountType } from "models/account";
 import { RootStackParamList } from "models/root-stack-param-list";
-import gitHubOauthApi from "services/api/github/api";
+import githubApi from "services/api/github/api";
 import { upsertOneAccount } from "store/slices/accounts";
 import { createGitHubGqlClient } from "utils/graphql-client";
 
@@ -32,9 +32,9 @@ const RegisterGithub: React.FC = () => {
   useEffect(() => {
     const fetchToken = async () => {
       setToken("");
-      const response = await gitHubOauthApi
+      const response = await githubApi
         .post(
-          "/access_token",
+          "/login/oauth/access_token",
           {
             client_id: process.env.GITHUB_CLIENT_ID ?? "",
             code,

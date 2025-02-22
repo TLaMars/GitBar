@@ -1,6 +1,7 @@
 import AzureDevOps from "assets/svgs/azure-devops.svg";
 import ChevronRight from "assets/svgs/chevron-right.svg";
 import Clock from "assets/svgs/clock.svg";
+import Comment from "assets/svgs/comment.svg";
 import Cross from "assets/svgs/cross.svg";
 import EditPencil from "assets/svgs/edit-pencil.svg";
 import GitHub from "assets/svgs/github.svg";
@@ -18,6 +19,7 @@ export default {
   AzureDevOps,
   ChevronRight,
   Clock,
+  Comment,
   Cross,
   EditPencil,
   GitHub,
@@ -28,6 +30,6 @@ export default {
   PullRequest,
   Refresh,
   Settings,
-  UserCheck,
   User,
+  UserCheck,
 };

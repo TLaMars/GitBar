@@ -32,11 +32,18 @@ const DefaultLayout: React.FC<Props> = ({
             />
           }
           bottomContainer={
-            <SidebarItem
-              icon="Settings"
-              onPress={() => navigate("Settings")}
-              active={route.name === "Settings"}
-            />
+            <>
+              <SidebarItem
+                icon="Notification"
+                onPress={() => navigate("Notifications")}
+                active={route.name === "Notifications"}
+              />
+              <SidebarItem
+                icon="Settings"
+                onPress={() => navigate("Settings")}
+                active={route.name === "Settings"}
+              />
+            </>
           }
         />
       )}

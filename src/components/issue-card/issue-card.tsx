@@ -7,7 +7,6 @@ import Heading from "components/heading/heading";
 import Icon from "components/icon/icon";
 import Spacer from "components/spacer/spacer";
 import useTranslation from "hooks/use-translation";
-import { IssueState } from "models/issue";
 import calculateMinutesAgo from "utils/calculate-minutes-ago";
 
 import useStyles from "./issue-card.styles";
@@ -17,16 +16,9 @@ type Props = {
   projectPath: string;
   updatedAt: string;
   url: string;
-  state: IssueState;
 };
 
-const IssueCard: React.FC<Props> = ({
-  title,
-  projectPath,
-  updatedAt,
-  state,
-  url,
-}) => {
+const IssueCard: React.FC<Props> = ({ title, projectPath, updatedAt, url }) => {
   const $ = useStyles();
   const { t } = useTranslation();
 
@@ -56,11 +48,7 @@ const IssueCard: React.FC<Props> = ({
       }}
     >
       <View style={$.header}>
-        <Icon
-          name="IssueCircle"
-          size={20}
-          color={state === IssueState.Closed ? "accentRed" : "accentGreen"}
-        />
+        <Icon name="IssueCircle" size={20} color="icon" />
         <Spacer mb={0.5}>
           <Heading size="x2s">{title}</Heading>
         </Spacer>

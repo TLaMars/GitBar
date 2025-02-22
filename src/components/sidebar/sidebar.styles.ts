@@ -11,7 +11,7 @@ const useStyles = () =>
       justifyContent: "space-between",
     },
     section: {
-      gap: spacing(1),
+      gap: spacing(1.5),
     },
   }));
 export default useStyles;

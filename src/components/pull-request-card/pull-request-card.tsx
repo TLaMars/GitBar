@@ -107,7 +107,7 @@ const PullRequestCard: React.FC<Props> = ({
             {amountOfComments !== undefined && (
               <View style={$.info}>
                 <Body size="s">{amountOfComments}</Body>
-                <Icon name="Notification" size={20} />
+                <Icon name="Comment" size={20} />
               </View>
             )}
           </View>

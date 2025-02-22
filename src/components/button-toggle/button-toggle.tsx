@@ -5,23 +5,19 @@ import Body from "components/body/body";
 
 import useStyles from "./button-toggle.styles";
 
-type Button = {
+export type ButtonToggleOption = {
   label: string;
   onPress: () => void;
 };
 
 type Props = {
-  preActiveButtonIndex?: number;
-  buttons: Button[];
+  selectedIndex?: number;
+  buttons: ButtonToggleOption[];
 };
 
-const ButtonToggle: React.FC<Props> = ({
-  preActiveButtonIndex = 0,
-  buttons,
-}) => {
+const ButtonToggle: React.FC<Props> = ({ selectedIndex = 0, buttons }) => {
   const $ = useStyles();
-  const [activeButtonIndex, setActiveButtonIndex] =
-    React.useState(preActiveButtonIndex);
+  const [activeIndex, setActiveIndex] = React.useState(selectedIndex);
 
   return (
     <View style={$.container}>
@@ -29,9 +25,9 @@ const ButtonToggle: React.FC<Props> = ({
         <Pressable
           key={`${button.label}`}
           accessibilityRole="button"
-          style={[$.button, activeButtonIndex === index && $.activeButton]}
+          style={[$.button, activeIndex === index && $.activeButton]}
           onPress={() => {
-            setActiveButtonIndex(index);
+            setActiveIndex(index);
             button.onPress();
           }}
         >

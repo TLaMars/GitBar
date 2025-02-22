@@ -5,7 +5,7 @@ import { Config } from "services/api/api-wrapper";
 import azureApi from "services/api/azure/api";
 import { AzurePullRequest } from "services/api/azure/models/pull-requests-response";
 import transformAzurePullRequest from "transformers/azure/azure-pull-request";
-import azureConfig from "utils/api-config";
+import { azureConfig } from "utils/api-config";
 
 import Provider from "./provider";
 
@@ -139,6 +139,11 @@ class AzureProvider implements Provider {
         state: AccountState.Invalid,
       };
     }
+  }
+
+  // NOTE: NOT IMPLEMENTED
+  async getNotifications(): Promise<[]> {
+    return [];
   }
 }
 

@@ -1,6 +1,6 @@
-export type NotificationsResponse = Notification[];
+export type NotificationsResponse = NotificationResponse[];
 
-type Notification = {
+export type NotificationResponse = {
   id: string;
   unread: boolean;
   reason:

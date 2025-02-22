@@ -84,6 +84,11 @@ class GitLabProvider implements Provider {
       };
     }
   }
+
+  // NOTE: NOT IMPLEMENTED
+  async getNotifications(): Promise<[]> {
+    return [];
+  }
 }
 
 export default GitLabProvider;

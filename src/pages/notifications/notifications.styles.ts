@@ -8,5 +8,8 @@ const useStyles = () =>
       flex: 1,
       flexDirection: "column",
     },
+    list: {
+      gap: spacing(2),
+    },
   }));
 export default useStyles;

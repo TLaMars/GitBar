@@ -1,10 +1,22 @@
 import { Config } from "services/api/api-wrapper";
 
-const azureConfig = (params: Config["params"], token: string): Config => ({
+export const azureConfig = (
+  params: Config["params"],
+  token: string,
+): Config => ({
   params,
   headers: {
     Authorization: `Basic ${token}`,
   },
 });
 
-export default azureConfig;
+export const githubConfig = (
+  token: string,
+  params?: Config["params"],
+): Config => ({
+  params,
+  headers: {
+    Authorization: `Bearer ${token}`,
+    "X-GitHub-Api-Version": "2022-11-28",
+  },
+});

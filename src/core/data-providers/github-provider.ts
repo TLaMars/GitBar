@@ -6,7 +6,10 @@ import QueryGetGitHubViewer from "gql/github/queries/viewer";
 import { AccountType } from "models/account";
 import { GitHubAuth } from "models/auth";
 import Profile, { AccountState } from "models/profile";
+import githubApi from "services/api/github/api";
+import transformGitHubNotification from "transformers/github/github-notification";
 import transformGithubPullRequest from "transformers/github/github-pull-request";
+import { githubConfig } from "utils/api-config";
 import { createGitHubGqlClient } from "utils/graphql-client";
 
 import Provider from "./provider";
@@ -74,6 +77,17 @@ class GitHubProvider implements Provider {
         state: AccountState.Invalid,
       };
     }
+  }
+
+  async getNotifications() {
+    const data = await githubApi.get(
+      "/notifications",
+      githubConfig(this.auth.accessToken, {
+        all: "true",
+      }),
+    );
+
+    return data.data.map(transformGitHubNotification);
   }
 }
 

@@ -1,25 +1,21 @@
 import { AccountType } from "models/account";
 import { AzureAuth } from "models/auth";
-import Profile, { AccountState } from "models/profile";
+import { AccountState } from "models/profile";
 import { Config } from "services/api/api-wrapper";
 import azureApi from "services/api/azure/api";
 import { AzurePullRequest } from "services/api/azure/models/pull-requests-response";
 import transformAzurePullRequest from "transformers/azure/azure-pull-request";
 import { azureConfig } from "utils/api-config";
 
-import Provider from "./provider";
+import BaseProvider from "./base-provider";
 
-class AzureProvider implements Provider {
-  id: string;
-
+class AzureProvider extends BaseProvider {
   auth: AzureAuth;
-
-  #profile?: Profile;
 
   #config: Config;
 
   constructor(id: string, auth: AzureAuth) {
-    this.id = id;
+    super(id, auth, auth.organization, AccountType.Azure);
     this.auth = auth;
     this.#config = azureConfig(
       {
@@ -30,28 +26,26 @@ class AzureProvider implements Provider {
   }
 
   async getProfile() {
-    if (!this.#profile) {
+    if (!this.profile) {
       const { data } = await azureApi
         .get("/:organization/_apis/profile/profiles/me", this.#config)
         .catch((error) => {
           throw new Error(
-            `Azure ${this.auth.organization}: failed with a ${error.statusCode}`,
+            `${this.accountType} ${this.userIdentifier}: failed with a ${error.statusCode}`,
           );
         });
 
-      this.#profile = {
+      this.profile = {
         id: data.id,
         avatarUrl: "",
         userName: data.emailAddress,
         name: data.displayName,
-        type: AccountType.Azure,
+        type: this.accountType,
         state: AccountState.Valid,
       };
-
-      return this.#profile;
     }
 
-    return this.#profile;
+    return this.profile;
   }
 
   private async projects() {
@@ -59,7 +53,6 @@ class AzureProvider implements Provider {
       "/:organization/_apis/projects",
       this.#config,
     );
-
     return data.value;
   }
 
@@ -80,7 +73,6 @@ class AzureProvider implements Provider {
         this.auth.token,
       ),
     );
-
     return data.value;
   }
 
@@ -102,20 +94,15 @@ class AzureProvider implements Provider {
           );
 
           const data = pullRequestsData.value;
-
           const pullRequestsWithComments = await Promise.all(
-            data.map(async (pr) => {
-              const threads = await this.threads(
+            data.map(async (pr) => ({
+              ...pr,
+              threads: await this.threads(
                 project.id,
                 pr.repository.id,
                 pr.pullRequestId.toString(),
-              );
-
-              return {
-                ...pr,
-                threads,
-              };
-            }),
+              ),
+            })),
           );
 
           return pullRequestsWithComments;
@@ -126,24 +113,6 @@ class AzureProvider implements Provider {
     return pullRequests
       .flat()
       .map((pr) => transformAzurePullRequest(profile, pr));
-  }
-
-  async getValidatedProfile() {
-    try {
-      return await this.getProfile();
-    } catch {
-      return {
-        id: this.id,
-        name: this.auth.organization,
-        type: AccountType.Azure,
-        state: AccountState.Invalid,
-      };
-    }
-  }
-
-  // NOTE: NOT IMPLEMENTED
-  async getNotifications(): Promise<[]> {
-    return [];
   }
 }
 

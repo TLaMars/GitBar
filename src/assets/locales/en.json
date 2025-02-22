@@ -91,5 +91,11 @@
   "Settings/Button/CloseApp": "Quit GitBar",
   "Settings/PullRequests/HideDrafts": "Hide PRs that have a draft status",
   "Auth/GitHub/Cancelled": "Something went wrong during the authentication process",
-  "Auth/GitHub/Dismissed": "You dismissed the authentication process"
+  "Auth/GitHub/Dismissed": "You dismissed the authentication process",
+  "Issues/Heading/Title": "Issues",
+  "Issues/Heading/Subscribed": "Subscribed",
+  "General/Time/Minutes": "{count}m",
+  "General/Time/Hours": "{count}h",
+  "General/Time/Days": "{count}d",
+  "General/Time/Updated": "updated {timeAgo} ago"
 }

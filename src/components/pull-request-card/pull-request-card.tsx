@@ -73,7 +73,7 @@ const PullRequestCard: React.FC<Props> = ({
     <View style={{ overflow: "hidden" }}>
       <TouchableOpacity
         accessibilityRole="button"
-        style={[$.card]}
+        style={$.card}
         onPress={onPress}
       >
         <View style={[$.borderLine, isDraft && $.draftLine]} />

@@ -6,6 +6,7 @@ import BlobBackground from "components/blob-background/blob-background";
 import Toasts from "components/toasts/toasts";
 import linkingConfig from "constants/linking-config";
 import AccountsProvider from "contexts/accounts";
+import DataProvider from "contexts/data";
 import IntlProvider from "contexts/intl";
 import ReduxProvider from "contexts/redux-provider";
 import ThemeProvider from "contexts/theme";
@@ -32,26 +33,28 @@ const App: React.FC = () => (
         <ThemeProvider>
           <IntlProvider>
             <BlobBackground>
-              <ToastProvider>
-                <NavigationContainer
-                  linking={linkingConfig}
-                  theme={{
-                    // Override the default theme
-                    dark: false,
-                    colors: {
-                      notification: "transparent",
-                      background: "transparent",
-                      border: "transparent",
-                      card: "transparent",
-                      primary: "transparent",
-                      text: "transparent",
-                    },
-                  }}
-                >
-                  <RootStack />
-                </NavigationContainer>
-                <Toasts />
-              </ToastProvider>
+              <DataProvider>
+                <ToastProvider>
+                  <NavigationContainer
+                    linking={linkingConfig}
+                    theme={{
+                      // Override the default theme
+                      dark: false,
+                      colors: {
+                        notification: "transparent",
+                        background: "transparent",
+                        border: "transparent",
+                        card: "transparent",
+                        primary: "transparent",
+                        text: "transparent",
+                      },
+                    }}
+                  >
+                    <RootStack />
+                  </NavigationContainer>
+                  <Toasts />
+                </ToastProvider>
+              </DataProvider>
             </BlobBackground>
           </IntlProvider>
         </ThemeProvider>

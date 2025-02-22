@@ -1,43 +1,29 @@
-import { useQueries } from "@tanstack/react-query";
-import { useContext, useMemo, useRef } from "react";
+import { useContext, useMemo } from "react";
 
-import { AccountsContext } from "contexts/accounts";
-import { PullRequest } from "models/pull-request";
-import { MacState } from "modules/app-module";
+import { DataContext } from "contexts/data";
 import { selectHiddenPullRequests } from "store/selectors/pull-requests";
 import {
-  selectAllowNotifications,
   selectGroupPRsBy,
   selectHideDraftPRs,
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
 } from "store/selectors/settings";
 import groupPullRequestsBy from "utils/group-pull-requests";
-import sendPullRequestNotification from "utils/send-pull-request-notification";
+import {
+  filterPRQueryResult,
+  filterRelevantPRs,
+} from "utils/pull-request-filters";
 
-import useMacState from "./use-mac-state";
 import useSelector from "./use-selector";
 
 const usePullRequests = () => {
-  const accounts = useContext(AccountsContext);
-  const macState = useMacState();
-  const prevPrsRef = useRef<PullRequest[]>();
-
   const groupPRsBy = useSelector(selectGroupPRsBy);
   const hidePRsAfterTwoMonths = useSelector(selectHidePRsAfterTwoMonths);
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
-  const sendNotifications = useSelector(selectAllowNotifications);
   const hiddenPullRequests = useSelector(selectHiddenPullRequests);
   const hideDraftPRs = useSelector(selectHideDraftPRs);
 
-  const result = useQueries({
-    queries: accounts.map((account) => ({
-      queryKey: ["pull-requests", account.id],
-      queryFn: async () => account.getPullRequests(),
-      refetchInterval: 180000,
-      enabled: macState === MacState.UNLOCKED,
-    })),
-  });
+  const { pullRequests: result } = useContext(DataContext);
 
   const queryInfo = useMemo(
     () => ({
@@ -51,49 +37,20 @@ const usePullRequests = () => {
     [result],
   );
 
-  const {
-    pullRequests,
-    relevantPullRequests,
-    groupedAllPrs,
-    groupedRelevantPRs,
-  } = useMemo(() => {
-    const prs = result
-      .map((d) => d.data)
-      .flat()
-      .filter((d) => d !== undefined)
-      .filter(
-        (pr) => pr.isAuthoredByMe || pr.isAssignedToMe || pr.isCommentedByMe,
-      )
-      .sort(
-        (a, b) =>
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-      );
-
-    const relevantPrs = prs
-      .filter(
-        (pr) =>
-          !hiddenPullRequests.some(
-            (hiddenPr) =>
-              hiddenPr.id === pr.id && hiddenPr.repoName === pr.repoName,
-          ),
-      )
-      .filter((pr) => {
-        if (hidePRsAfterTwoMonths) {
-          const twoMonthsAgo = new Date();
-          twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
-          return new Date(pr.createdAt) > twoMonthsAgo;
-        }
-        return true;
-      })
-      .filter((pr) => !hidePRsApprovedByMe || !pr.isApprovedByMe)
-      .filter((pr) => !pr.isDraft || !hideDraftPRs);
+  const { groupedAllPrs, groupedRelevantPRs } = useMemo(() => {
+    const prs = filterPRQueryResult(result);
+    const relevantPrs = filterRelevantPRs(
+      prs,
+      hiddenPullRequests,
+      hidePRsAfterTwoMonths,
+      hidePRsApprovedByMe,
+      hideDraftPRs,
+    );
 
     const prsGrouped = groupPullRequestsBy(prs, groupPRsBy);
     const relevantPrsGrouped = groupPullRequestsBy(relevantPrs, groupPRsBy);
 
     return {
-      pullRequests: prs,
-      relevantPullRequests: relevantPrs,
       groupedAllPrs: prsGrouped,
       groupedRelevantPRs: relevantPrsGrouped,
     };
@@ -106,16 +63,7 @@ const usePullRequests = () => {
     groupPRsBy,
   ]);
 
-  useMemo(() => {
-    if (sendNotifications && !queryInfo.isLoading) {
-      sendPullRequestNotification(relevantPullRequests, prevPrsRef.current);
-      prevPrsRef.current = relevantPullRequests;
-    }
-  }, [sendNotifications, relevantPullRequests, queryInfo.isLoading]);
-
   return {
-    pullRequests,
-    relevantPullRequests,
     groupedAllPrs,
     groupedRelevantPRs,
     ...queryInfo,

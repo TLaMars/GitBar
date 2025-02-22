@@ -1,13 +1,13 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type PullRequest = {
+export type HiddenPullRequest = {
   id: string;
   repoName: string;
 };
 
 type InitialState = {
-  hidden: PullRequest[];
+  hidden: HiddenPullRequest[];
 };
 
 const initialState: InitialState = {
@@ -20,7 +20,7 @@ const settings = createSlice({
   name: "pullRequests",
   initialState,
   reducers: {
-    setPullRequestHidden(state, action: PayloadAction<PullRequest>) {
+    setPullRequestHidden(state, action: PayloadAction<HiddenPullRequest>) {
       state.hidden = [...state.hidden, action.payload];
     },
     resetHiddenPullRequests(state) {

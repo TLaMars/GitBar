@@ -17,10 +17,7 @@
     "test": "jest",
     "changelog": "source .env && git-cliff -o --github-repo 'TLaMars/gitbar' --github-token $GITHUB_TOKEN",
     "bump:build_number": "bundle exec fastlane mac bump_version",
-    "version:minor": "npm version minor --no-git-tag-version && bundle exec fastlane mac bump_version && npm run changelog",
-    "version:major": "npm version major --no-git-tag-version && bundle exec fastlane mac bump_version && npm run changelog",
-    "version:patch": "npm version patch --no-git-tag-version && bundle exec fastlane mac bump_version && npm run changelog",
-    "release:github": "node scripts/release-github-release.js"
+    "version:bump": "node scripts/bump-version.mjs"
   },
   "dependencies": {
     "@apollo/client": "^3.12.3",
@@ -89,6 +86,7 @@
     "react-native-dotenv": "^3.4.11",
     "react-native-svg-transformer": "^1.3.0",
     "react-test-renderer": "18.2.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.4.3"
   },
   "prettier": "eslint-config-triple/.prettierrc",

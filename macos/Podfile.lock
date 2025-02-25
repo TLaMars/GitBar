@@ -41,9 +41,9 @@ PODS:
   - FBLazyVector (0.76.6)
   - fmt (9.1.0)
   - glog (0.3.5)
-  - hermes-engine (0.76.5):
-    - hermes-engine/Pre-built (= 0.76.5)
-  - hermes-engine/Pre-built (0.76.5)
+  - hermes-engine (0.76.7):
+    - hermes-engine/Pre-built (= 0.76.7)
+  - hermes-engine/Pre-built (0.76.7)
   - MMKV (2.0.0):
     - MMKVCore (~> 2.0.0)
   - MMKVCore (2.0.0)
@@ -1919,7 +1919,7 @@ SPEC CHECKSUMS:
   FBLazyVector: c5f485ffd9dbfa25baaf946d4f8e71e822219374
   fmt: cca1eb84179ad528ae1ba9fdf135ed1ac49e19cb
   glog: 750f96a379703a2d724d2f1fc6cb3a3eff000817
-  hermes-engine: 06a9c6900587420b90accc394199527c64259db4
+  hermes-engine: eb4a80f6bf578536c58a44198ec93a30f6e69218
   MMKV: f7d1d5945c8765f97f39c3d121f353d46735d801
   MMKVCore: c04b296010fcb1d1638f2c69405096aac12f6390
   NotificationsModule: cd5db15035168922bf6231793c14ca6ea0ae3b7c

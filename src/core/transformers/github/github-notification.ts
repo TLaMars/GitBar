@@ -14,10 +14,10 @@ const transformGitHubNotification = (
     id: notification.id,
     title: notification.subject.title,
     type: notification.subject.type as NotificationType,
-    url: notification.subject.url,
+    url: `https://github.com/${path?.owner}/${path?.repo}/${path?.type}/${path?.id}`,
     updatedAt: notification.updated_at,
     unread: notification.unread,
-    projectPath: `/${path?.owner}/${path?.repo}/${path?.id}`,
+    projectPath: `${path?.owner}/${path?.repo}/${path?.id}`,
   };
 };
 

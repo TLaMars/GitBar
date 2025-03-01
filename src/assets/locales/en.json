@@ -97,5 +97,8 @@
   "General/Time/Minutes": "{count}m",
   "General/Time/Hours": "{count}h",
   "General/Time/Days": "{count}d",
-  "General/Time/Updated": "updated {timeAgo} ago"
+  "General/Time/Updated": "updated {timeAgo} ago",
+  "Settings/SectionHeading/Notifications": "Git Notifications",
+  "Settings/Notifications/Enable": "Enable updates on issues in GitBar",
+  "Settings/Notifications/Description": "This will show notifications on Issues from GitHub in the dedicated page."
 }

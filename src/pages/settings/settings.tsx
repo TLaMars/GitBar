@@ -30,6 +30,7 @@ import {
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
 } from "store/selectors/settings";
+import { selectIsGitNotificationsEnabled } from "store/selectors/user";
 import { removeOneAccount } from "store/slices/accounts";
 import { resetHiddenPullRequests } from "store/slices/pull-requests";
 import {
@@ -40,7 +41,10 @@ import {
   setHidePRsAfterTwoMonths,
   setHidePRsApprovedByMe,
 } from "store/slices/settings";
-import { setIsOnboarded } from "store/slices/user";
+import {
+  setIsGitNotificationsEnabled,
+  setIsOnboarded,
+} from "store/slices/user";
 
 import useStyles from "./settings.styles";
 
@@ -54,9 +58,12 @@ const Settings: React.FC = () => {
   const hidePRsAfterTwoMonths = useSelector(selectHidePRsAfterTwoMonths);
   const groupPRsBy = useSelector(selectGroupPRsBy);
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
-  const allowNotifications = useSelector(selectAllowNotifications);
+  const allowPushNotifications = useSelector(selectAllowNotifications);
   const appearance = useSelector(selectAppearance);
   const hideDraftPRs = useSelector(selectHideDraftPRs);
+  const isGitNotificationsEnabled = useSelector(
+    selectIsGitNotificationsEnabled,
+  );
   const [notificationPermissions, setNotificationPermissions] =
     useState<NotificationPermission>();
   const [launchAtLogin, setLaunchAtLogin] = useState<boolean>();
@@ -163,12 +170,25 @@ const Settings: React.FC = () => {
           onToggle={(value) => dispatch(setHideDraftPRs(value))}
         />
         <Spacer mt={4} />
+        <Heading size="x2s">
+          {t("Settings/SectionHeading/Notifications")}
+        </Heading>
+        <Spacer mt={1} />
+        <Body size="xs">{t("Settings/Notifications/Description")}</Body>
+        <ListItemToggle
+          label={t("Settings/Notifications/Enable")}
+          value={!!isGitNotificationsEnabled}
+          onToggle={async (value) => {
+            dispatch(setIsGitNotificationsEnabled(value));
+          }}
+        />
+        <Spacer mt={4} />
         <Heading size="x2s">{t("Settings/SectionHeading/App")}</Heading>
         <Spacer mt={1} />
         <ListItemToggle
           border
           label={t("Settings/Application/Notifications")}
-          value={allowNotifications}
+          value={allowPushNotifications}
           disabled={notificationPermissions === NotificationPermission.DENIED}
           onToggle={async (value) => {
             if (value) {

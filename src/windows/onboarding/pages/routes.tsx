@@ -3,6 +3,7 @@ import React from "react";
 
 import { OnboardingStackParamList } from "models/onboarding-stack-param-list";
 
+import GitNotifications from "./git-notifications/git-notifications";
 import HowItWorks from "./how-it-works/how-it-works";
 import Intro from "./intro/intro";
 import LaunchAtLogin from "./launch-at-login/launch-at-login";
@@ -28,6 +29,10 @@ const OnboardingStack: React.FC = () => (
     <OnboardingStackNavigator.Screen
       name="Notifications"
       component={Notifications}
+    />
+    <OnboardingStackNavigator.Screen
+      name="GitNotifications"
+      component={GitNotifications}
     />
     <OnboardingStackNavigator.Screen name="ReadyToGo" component={ReadyToGo} />
   </OnboardingStackNavigator.Navigator>

@@ -51,7 +51,7 @@ const Notifications: React.FC = () => {
       await NotificationsModule.requestPermissions();
     }
     dispatch(setAllowNotifications(accepted));
-    navigate("ReadyToGo");
+    navigate("GitNotifications");
   };
 
   const { image, heading, body } = PageContent[awaitingPermissions.toString()];

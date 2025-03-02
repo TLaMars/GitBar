@@ -16,7 +16,6 @@
     "start": "expo start",
     "test": "jest",
     "changelog": "source .env && git-cliff -o --github-repo 'TLaMars/gitbar' --github-token $GITHUB_TOKEN",
-    "bump:build_number": "bundle exec fastlane mac bump_version",
     "version:bump": "node scripts/bump-version.mjs"
   },
   "dependencies": {

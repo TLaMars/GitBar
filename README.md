@@ -25,10 +25,15 @@ Your new Pull Request tool for GitHub, GitLab and Azure.
 
 ## Release Process
 
-1. Bump the version with `npm run version:{major/minor/patch}`
-   1. This will bump the version/build number and update the `CHANGELOG.md`
-2. Commit the changes with `git commit -am "chore(release): v{x.x.x}"`
-3. Create a tag with that version `git tag v{x.x.x}` and push it to git
-4. A release on GitHub will be created automatically
-5. [TODO]: The CI will build the app and publish it to the release
-   1. Create a build locally and upload it to TestFlight
+1. Bump the version with `npm run version:bump {major/minor/patch}`
+   1. This will bump the version/build number.
+   2. Commit the changes.
+   3. Creates a new tag.
+   4. Pushes the changes.
+2. The tag will trigger a new build on Xcode Cloud.
+   1. This will build the app.
+   2. Upload the app to the App Store (Testflight).
+3. Triggers a new release on GitHub.
+   1. This will create a new release with the new version.
+   2. Adds the changelog to the release.
+4. Done!

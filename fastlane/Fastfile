@@ -17,10 +17,10 @@ platform :mac do
       provisioning_name: "GitBar - Production",
     )
 
-    # increment_build_number(
-    #   build_number: number_of_commits,
-    #   xcodeproj: "./macos/GitBar.xcodeproj"
-    # )
+    increment_build_number(
+      build_number: number_of_commits,
+      xcodeproj: "./macos/GitBar.xcodeproj"
+    )
 
     build_mac_app(
       workspace: "macos/gitbar.xcworkspace",

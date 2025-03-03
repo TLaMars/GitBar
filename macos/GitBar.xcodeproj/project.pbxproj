@@ -444,7 +444,7 @@
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = io.lamars.gitbar;
 				PRODUCT_NAME = GitBar;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "io.lamars.gitbar AppStore";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "GitBar - Production";
 				SDKROOT = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = "GitBar/GitBar-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

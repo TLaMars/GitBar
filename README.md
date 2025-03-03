@@ -26,14 +26,13 @@ Your new Pull Request tool for GitHub, GitLab and Azure.
 ## Release Process
 
 1. Bump the version with `npm run version:bump {major/minor/patch}`
-   1. This will bump the version/build number.
+   1. This will bump the version.
    2. Commit the changes.
    3. Creates a new tag.
    4. Pushes the changes.
-2. The tag will trigger a new build on Xcode Cloud.
+2. Triggers a new release on GitHub.
    1. This will build the app.
    2. Upload the app to the App Store (Testflight).
-3. Triggers a new release on GitHub.
-   1. This will create a new release with the new version.
-   2. Adds the changelog to the release.
-4. Done!
+   3. This will create a new release with the new version.
+   4. Adds the changelog to the release.
+3. Done!

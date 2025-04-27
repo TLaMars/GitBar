@@ -30,6 +30,7 @@ const ErrorContainer: React.FC<Props> = ({ errors, onErrorRetry }) => {
         <>
           <Spacer mt={2} />
           <Button
+            analyticsLabel="ErrorContainer/Button/Retry"
             onPress={onErrorRetry}
             label={t("ErrorContainer/Button/Retry")}
             type="secondary"

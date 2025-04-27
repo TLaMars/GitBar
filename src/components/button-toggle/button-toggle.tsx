@@ -1,3 +1,4 @@
+import { useGuavaClient } from "@guava/react-native";
 import React from "react";
 import { Pressable, View } from "react-native";
 
@@ -16,6 +17,7 @@ type Props = {
 };
 
 const ButtonToggle: React.FC<Props> = ({ selectedIndex = 0, buttons }) => {
+  const client = useGuavaClient();
   const $ = useStyles();
   const [activeIndex, setActiveIndex] = React.useState(selectedIndex);
 
@@ -29,6 +31,10 @@ const ButtonToggle: React.FC<Props> = ({ selectedIndex = 0, buttons }) => {
           onPress={() => {
             setActiveIndex(index);
             button.onPress();
+            client.trackEvent("button_toggle_clicked", {
+              button_index: index.toString(),
+              button_title: button.label,
+            });
           }}
         >
           <Body textAlign="center" size="xs">

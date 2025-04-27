@@ -1,3 +1,4 @@
+import { useGuavaClient } from "@guava/react-native";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { View, Image, ImageSourcePropType } from "react-native";
@@ -39,6 +40,7 @@ const PageContent: PageContentType = {
 
 const Notifications: React.FC = () => {
   const $ = useStyles();
+  const client = useGuavaClient();
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const { navigate } =
@@ -51,6 +53,9 @@ const Notifications: React.FC = () => {
       await NotificationsModule.requestPermissions();
     }
     dispatch(setAllowNotifications(accepted));
+    client.trackEvent("onboarding_notifications_enabled", {
+      value: accepted.toString(),
+    });
     navigate("GitNotifications");
   };
 
@@ -64,11 +69,13 @@ const Notifications: React.FC = () => {
         {
           type: "secondary",
           label: t("General/Button/Skip"),
+          analyticsLabel: "General/Button/Skip",
           onPress: () => onContinue(false),
         },
         {
           type: "neutral",
           label: t("General/Button/Yes"),
+          analyticsLabel: "General/Button/Yes",
           onPress: () => onContinue(true),
           disabled: awaitingPermissions,
         },

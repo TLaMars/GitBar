@@ -25,6 +25,7 @@ const Intro: React.FC = () => {
         {
           type: "neutral",
           label: t("Onboarding/Intro/GetStarted"),
+          analyticsLabel: "Onboarding/Intro/GetStarted",
           onPress: () => navigate("HowItWorks"),
         },
       ]}

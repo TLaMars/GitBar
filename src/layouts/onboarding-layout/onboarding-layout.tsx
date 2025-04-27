@@ -11,6 +11,7 @@ import useStyles from "./onboarding-layout.styles";
 type Buttons = {
   type: ButtonType;
   label: string;
+  analyticsLabel: string;
   onPress: () => void;
   disabled?: boolean;
 }[];
@@ -44,6 +45,7 @@ const OnboardingLayout: React.FC<Props> = ({
           {buttons.map((button) => (
             <Spacer key={button.label} mt={2}>
               <Button
+                analyticsLabel={button.analyticsLabel}
                 style={[buttons.length > 1 && $.button]}
                 size="xs"
                 type={button.type}

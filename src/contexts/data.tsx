@@ -1,5 +1,12 @@
+import { useGuavaClient } from "@guava/react-native";
 import { UseQueryResult } from "@tanstack/react-query";
-import { PropsWithChildren, createContext, useMemo, useRef } from "react";
+import {
+  PropsWithChildren,
+  createContext,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
 
 import useDataHelper from "hooks/context/use-data-context-helpers";
 import useNotificationsQueries from "hooks/queries/use-notifications-queries";
@@ -21,11 +28,20 @@ const defaultData = {
 export const DataContext = createContext<Data>(defaultData);
 
 const DataProvider: React.FC<PropsWithChildren> = ({ children }) => {
+  const client = useGuavaClient();
   const { updateMenuBarAndSendNotification } = useDataHelper();
   const oldData = useRef<Data>(defaultData);
   const pullRequests = usePullRequestsQueries();
   const notifications = useNotificationsQueries();
   const popoverState = usePopoverState();
+
+  useEffect(() => {
+    client.trackEvent(
+      popoverState === PopoverState.CLOSED
+        ? "popover_closed"
+        : "popover_opened",
+    );
+  }, [client, popoverState]);
 
   const data = useMemo(() => {
     const returnData = {

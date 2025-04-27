@@ -175,6 +175,7 @@ const RegisterAzure: React.FC = () => {
           <Spacer mt={1} />
           <View style={$.buttonGroup}>
             <Button
+              analyticsLabel="General/Button/Back"
               boldText={false}
               size="xs"
               type="secondary"
@@ -183,6 +184,7 @@ const RegisterAzure: React.FC = () => {
               style={{ flex: 1 }}
             />
             <Button
+              analyticsLabel="General/Button/Continue"
               boldText={false}
               size="xs"
               label={t("General/Button/Continue")}

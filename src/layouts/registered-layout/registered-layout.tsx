@@ -1,3 +1,4 @@
+import { useGuavaClient } from "@guava/react-native";
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
@@ -29,6 +30,7 @@ const RegisteredLayout: React.FC<Props> = ({
   onRetryPress,
 }) => {
   const $ = useStyles();
+  const client = useGuavaClient();
   const { t } = useTranslation();
   const { navigate } = useNavigation();
   const [seconds, setSeconds] = useState(5);
@@ -47,6 +49,14 @@ const RegisteredLayout: React.FC<Props> = ({
 
     return () => clearInterval(interval);
   }, [error, navigate, seconds]);
+
+  useEffect(() => {
+    if (error) {
+      client.trackEvent("account_added_error", {
+        account_type: type,
+      });
+    }
+  }, [client, type, error]);
 
   return (
     <DefaultLayout>
@@ -68,6 +78,7 @@ const RegisteredLayout: React.FC<Props> = ({
             </Body>
             <Spacer mt={6} />
             <Button
+              analyticsLabel="RegisteredLayout/Button/GoToPullRequests"
               label={t("RegisteredLayout/Button/GoToPullRequests")}
               onPress={() => navigate("Dashboard")}
             />
@@ -80,6 +91,7 @@ const RegisteredLayout: React.FC<Props> = ({
             <Body>{error}</Body>
             <Spacer mt={5} />
             <Button
+              analyticsLabel="RegisteredLayout/Button/Retry"
               label={t("RegisteredLayout/Button/Retry")}
               onPress={onRetryPress}
             />

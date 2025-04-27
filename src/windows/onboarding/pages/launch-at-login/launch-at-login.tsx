@@ -1,3 +1,4 @@
+import { useGuavaClient } from "@guava/react-native";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, View } from "react-native";
@@ -12,13 +13,19 @@ import AppModule from "modules/app-module";
 import useStyles from "./launch-at-login.styles";
 
 const LaunchAtLogin: React.FC = () => {
+  const client = useGuavaClient();
   const $ = useStyles();
   const { t } = useTranslation();
   const { navigate } =
     useNavigation<NavigationProp<OnboardingStackParamList>>();
 
   const onContinue = async (accepted: boolean) => {
-    await AppModule.setLaunchAtLoginEnabled(accepted);
+    if (accepted) {
+      await AppModule.setLaunchAtLoginEnabled(accepted);
+    }
+    client.trackEvent("onboarding_launch_at_login_enabled", {
+      value: accepted.toString(),
+    });
     navigate("Notifications");
   };
 
@@ -30,11 +37,13 @@ const LaunchAtLogin: React.FC = () => {
         {
           type: "secondary",
           label: t("General/Button/Skip"),
+          analyticsLabel: "General/Button/Skip",
           onPress: () => onContinue(false),
         },
         {
           type: "neutral",
           label: t("General/Button/Yes"),
+          analyticsLabel: "General/Button/Yes",
           onPress: () => onContinue(true),
         },
       ]}

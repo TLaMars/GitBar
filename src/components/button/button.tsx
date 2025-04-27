@@ -1,3 +1,4 @@
+import { useGuavaClient } from "@guava/react-native";
 import React from "react";
 import { TouchableOpacity, TouchableOpacityProps } from "react-native";
 
@@ -8,6 +9,7 @@ import useStyles from "./button.styles";
 export type ButtonType = "neutral" | "danger" | "secondary";
 
 type Props = {
+  analyticsLabel: string;
   type?: ButtonType;
   boldText?: boolean;
   size?: "xs" | "s" | "m" | "l";
@@ -16,15 +18,18 @@ type Props = {
 } & TouchableOpacityProps;
 
 const Button: React.FC<Props> = ({
+  analyticsLabel,
   type = "neutral",
   boldText = true,
   disabled,
   label,
   size = "m",
   style,
+  onPress,
   ...rest
 }) => {
   const $ = useStyles();
+  const client = useGuavaClient();
 
   const textStyle = [
     { textAlign: $.text.textAlign },
@@ -53,6 +58,12 @@ const Button: React.FC<Props> = ({
         style,
       ]}
       disabled={disabled}
+      onPress={(e) => {
+        onPress?.(e);
+        client.trackEvent("button_clicked", {
+          label: analyticsLabel,
+        });
+      }}
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...rest}
     >

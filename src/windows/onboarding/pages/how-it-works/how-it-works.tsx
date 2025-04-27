@@ -1,3 +1,4 @@
+import { useGuavaClient } from "@guava/react-native";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React from "react";
 import { View } from "react-native";
@@ -14,6 +15,7 @@ import AppModule from "modules/app-module";
 import useStyles from "./how-it-works.styles";
 
 const HowItWorks: React.FC = () => {
+  const client = useGuavaClient();
   const $ = useStyles();
   const { t } = useTranslation();
   const { navigate } =
@@ -22,6 +24,7 @@ const HowItWorks: React.FC = () => {
   const navigateToNextPage = async () => {
     const supported = await AppModule.isLaunchAtLoginSupported();
     if (!supported) {
+      client.trackEvent("onboarding_launch_at_login_not_supported");
       navigate("Notifications");
       return;
     }
@@ -36,6 +39,7 @@ const HowItWorks: React.FC = () => {
         {
           type: "neutral",
           label: t("General/Button/Next"),
+          analyticsLabel: "General/Button/Next",
           onPress: navigateToNextPage,
         },
       ]}

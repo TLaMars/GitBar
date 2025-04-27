@@ -31,6 +31,7 @@ const ReadyToGo: React.FC = () => {
         {
           type: "neutral",
           label: t("Onboarding/ReadyToGo/GetStarted"),
+          analyticsLabel: "Onboarding/ReadyToGo/GetStarted",
           onPress,
         },
       ]}

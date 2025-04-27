@@ -1,3 +1,4 @@
+import { useGuavaClient } from "@guava/react-native";
 import { useNavigation } from "@react-navigation/native";
 import React, { useContext, useEffect, useState } from "react";
 import { ActivityIndicator, ScrollView, View } from "react-native";
@@ -51,6 +52,7 @@ import useStyles from "./settings.styles";
 const Settings: React.FC = () => {
   const $ = useStyles();
   const { t } = useTranslation();
+  const client = useGuavaClient();
   const dispatch = useDispatch();
   const accounts = useContext(AccountsContext);
   const { profiles, isLoading } = useProfiles();
@@ -100,6 +102,7 @@ const Settings: React.FC = () => {
           <Heading size="x2s">{t("Settings/SectionHeading/Accounts")}</Heading>
           <Link
             label={t("Settings/Link/AddAccount")}
+            analyticsLabel="Settings/Link/AddAccount"
             onPress={() =>
               navigate("AddAccount", {
                 showBackButton: true,
@@ -117,7 +120,12 @@ const Settings: React.FC = () => {
               avatarUrl={profile.avatarUrl}
               name={profile.name}
               border={index !== accounts.length - 1}
-              onDeletePress={() => deleteAccount(profile.id)}
+              onDeletePress={() => {
+                deleteAccount(profile.id);
+                client.trackEvent("settings_account_deleted", {
+                  account_type: profile.type,
+                });
+              }}
               state={profile.state}
             />
           </View>
@@ -130,9 +138,12 @@ const Settings: React.FC = () => {
         <ListItemPicker
           label={t("Settings/GroupPRsBy/GroupBy")}
           selectedValue={groupPRsBy}
-          onValueChange={(value) =>
-            dispatch(setGroupPRsBy(value as GroupPullRequestsBy))
-          }
+          onValueChange={(value) => {
+            dispatch(setGroupPRsBy(value as GroupPullRequestsBy));
+            client.trackEvent("group_prs_by_changed", {
+              value,
+            });
+          }}
           pickerItems={[
             {
               label: t("Settings/GroupPRsBy/Repo"),
@@ -156,18 +167,33 @@ const Settings: React.FC = () => {
           label={t("Settings/PullRequests/HideAfter")}
           border
           value={hidePRsAfterTwoMonths}
-          onToggle={(value) => dispatch(setHidePRsAfterTwoMonths(value))}
+          onToggle={(value) => {
+            dispatch(setHidePRsAfterTwoMonths(value));
+            client.trackEvent("hide_prs_after_two_months_changed", {
+              value: value.toString(),
+            });
+          }}
         />
         <ListItemToggle
           label={t("Settings/PullRequests/HideApprovedByMe")}
           border
           value={hidePRsApprovedByMe}
-          onToggle={(value) => dispatch(setHidePRsApprovedByMe(value))}
+          onToggle={(value) => {
+            dispatch(setHidePRsApprovedByMe(value));
+            client.trackEvent("hide_prs_approved_by_me_changed", {
+              value: value.toString(),
+            });
+          }}
         />
         <ListItemToggle
           label={t("Settings/PullRequests/HideDrafts")}
           value={hideDraftPRs}
-          onToggle={(value) => dispatch(setHideDraftPRs(value))}
+          onToggle={(value) => {
+            dispatch(setHideDraftPRs(value));
+            client.trackEvent("hide_draft_prs_changed", {
+              value: value.toString(),
+            });
+          }}
         />
         <Spacer mt={4} />
         <Heading size="x2s">
@@ -180,6 +206,9 @@ const Settings: React.FC = () => {
           value={!!isGitNotificationsEnabled}
           onToggle={async (value) => {
             dispatch(setIsGitNotificationsEnabled(value));
+            client.trackEvent("git_notifications_enabled_changed", {
+              value: value.toString(),
+            });
           }}
         />
         <Spacer mt={4} />
@@ -195,15 +224,21 @@ const Settings: React.FC = () => {
               await NotificationsModule.requestPermissions();
             }
             dispatch(setAllowNotifications(value));
+            client.trackEvent("allow_push_notifications_changed", {
+              value: value.toString(),
+            });
           }}
         />
         <ListItemPicker
           label={t("Settings/Application/Appearance")}
           border
           selectedValue={appearance}
-          onValueChange={(value) =>
-            dispatch(setAppearance(value as Appearance))
-          }
+          onValueChange={(value) => {
+            dispatch(setAppearance(value as Appearance));
+            client.trackEvent("appearance_changed", {
+              value,
+            });
+          }}
           pickerItems={[
             { label: t("Settings/Appearance/Light"), value: Appearance.Light },
             { label: t("Settings/Appearance/Dark"), value: Appearance.Dark },
@@ -218,6 +253,9 @@ const Settings: React.FC = () => {
             onToggle={async (value) => {
               await AppModule.setLaunchAtLoginEnabled(value);
               setLaunchAtLogin(value);
+              client.trackEvent("launch_at_login_changed", {
+                value: value.toString(),
+              });
             }}
           />
         )}
@@ -228,6 +266,7 @@ const Settings: React.FC = () => {
             <Heading size="x2s">Development section</Heading>
             <Spacer mt={1} />
             <Button
+              analyticsLabel="Settings/Button/ResetHiddenPRs"
               size="xs"
               label="Reset hidden PRs"
               onPress={() => {
@@ -236,6 +275,7 @@ const Settings: React.FC = () => {
             />
             <Spacer mt={1} />
             <Button
+              analyticsLabel="Settings/Button/ResetOnboarding"
               size="xs"
               label="Reset onboarding"
               onPress={() => {
@@ -244,6 +284,7 @@ const Settings: React.FC = () => {
             />
             <Spacer mt={1} />
             <Button
+              analyticsLabel="Settings/Button/SendNotification"
               size="xs"
               label="Send notification"
               onPress={() => {
@@ -255,10 +296,14 @@ const Settings: React.FC = () => {
 
         <Spacer mt={4} />
         <Button
+          analyticsLabel="Settings/Button/CloseApp"
           size="xs"
           type="danger"
           label={t("Settings/Button/CloseApp")}
-          onPress={() => AppModule.closeApp()}
+          onPress={() => {
+            AppModule.closeApp();
+            client.trackEvent("close_app");
+          }}
         />
       </ScrollView>
     </DefaultLayout>

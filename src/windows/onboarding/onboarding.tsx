@@ -2,6 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 
 import BlobBackground from "components/blob-background/blob-background";
+import Guava from "contexts/guava";
 import IntlProvider from "contexts/intl";
 import ReduxProvider from "contexts/redux-provider";
 import ThemeProvider from "contexts/theme";
@@ -27,7 +28,9 @@ const Onboarding: React.FC = () => (
               },
             }}
           >
-            <OnboardingStack />
+            <Guava>
+              <OnboardingStack />
+            </Guava>
           </NavigationContainer>
         </IntlProvider>
       </BlobBackground>

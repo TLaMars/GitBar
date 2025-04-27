@@ -37,6 +37,7 @@ const AddAccount: React.FC = () => {
         <Spacer mt={2} />
         <View style={$.buttonGroup}>
           <Button
+            analyticsLabel="Onboarding/Button/GitHub"
             boldText={false}
             size="xs"
             type="secondary"
@@ -44,6 +45,7 @@ const AddAccount: React.FC = () => {
             onPress={openAuthSession}
           />
           <Button
+            analyticsLabel="Onboarding/Button/GitLab"
             boldText={false}
             size="xs"
             type="secondary"
@@ -53,6 +55,7 @@ const AddAccount: React.FC = () => {
             }}
           />
           <Button
+            analyticsLabel="Onboarding/Button/Azure"
             boldText={false}
             size="xs"
             type="secondary"
@@ -63,6 +66,7 @@ const AddAccount: React.FC = () => {
           />
           {params?.showBackButton && (
             <Button
+              analyticsLabel="General/Button/Back"
               boldText={false}
               size="xs"
               type="neutral"

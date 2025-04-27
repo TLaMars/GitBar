@@ -1,3 +1,4 @@
+import { useGuavaClient } from "@guava/react-native";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, View } from "react-native";
@@ -13,6 +14,7 @@ import { setIsGitNotificationsEnabled } from "store/slices/user";
 import useStyles from "./git-notifications.styles";
 
 const GitNotifications: React.FC = () => {
+  const client = useGuavaClient();
   const $ = useStyles();
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -21,6 +23,9 @@ const GitNotifications: React.FC = () => {
 
   const onContinue = async (accepted: boolean) => {
     dispatch(setIsGitNotificationsEnabled(accepted));
+    client.trackEvent("onboarding_git_notifications_enabled", {
+      value: accepted.toString(),
+    });
     navigate("ReadyToGo");
   };
 
@@ -31,11 +36,13 @@ const GitNotifications: React.FC = () => {
       buttons={[
         {
           type: "secondary",
+          analyticsLabel: "General/Button/Skip",
           label: t("General/Button/Skip"),
           onPress: () => onContinue(false),
         },
         {
           type: "neutral",
+          analyticsLabel: "General/Button/Yes",
           label: t("General/Button/Yes"),
           onPress: () => onContinue(true),
         },

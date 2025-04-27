@@ -48,6 +48,7 @@ const Notifications: React.FC = () => {
                 size="xs"
                 type="secondary"
                 label={t("General/Button/No")}
+                analyticsLabel="General/Button/No"
                 onPress={() => onEnable(false)}
               />
               <Button
@@ -55,6 +56,7 @@ const Notifications: React.FC = () => {
                 size="xs"
                 type="neutral"
                 label={t("General/Button/Yes")}
+                analyticsLabel="General/Button/Yes"
                 onPress={() => onEnable(true)}
               />
             </View>

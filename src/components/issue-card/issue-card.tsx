@@ -1,3 +1,4 @@
+import { useGuavaClient } from "@guava/react-native";
 import { useMemo } from "react";
 import { TouchableOpacity, View } from "react-native";
 import { Linking } from "react-native-macos";
@@ -21,6 +22,7 @@ type Props = {
 const IssueCard: React.FC<Props> = ({ title, projectPath, updatedAt, url }) => {
   const $ = useStyles();
   const { t } = useTranslation();
+  const client = useGuavaClient();
 
   const timeAgo = useMemo(() => {
     const date = new Date(updatedAt);
@@ -45,6 +47,12 @@ const IssueCard: React.FC<Props> = ({ title, projectPath, updatedAt, url }) => {
       style={$.card}
       onPress={async () => {
         await Linking.openURL(url);
+        client.trackEvent("issue_card_clicked", {
+          title,
+          project_path: projectPath,
+          updated_at: updatedAt,
+          url,
+        });
       }}
     >
       <View style={$.header}>

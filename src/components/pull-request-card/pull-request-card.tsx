@@ -1,3 +1,4 @@
+import { useGuavaClient } from "@guava/react-native";
 import React, { memo } from "react";
 import { GestureResponderEvent, Linking, TouchableOpacity } from "react-native";
 import {
@@ -49,15 +50,24 @@ const PullRequestCard: React.FC<Props> = ({
   repoName,
   isDraft,
 }) => {
+  const client = useGuavaClient();
   const $ = useStyles(accentColor);
   const { t } = useTranslation();
 
   const onPress = async (event: GestureResponderEvent) => {
-    if ("button" in event.nativeEvent && event.nativeEvent.button === 2) {
+    if ("button" in event.nativeEvent && event.nativeEvent.button !== 2) {
       if (actionSheetOptions && actionSheetCallback) {
         ActionSheetIOS.showActionSheetWithOptions(
           actionSheetOptions,
           (buttonIndex) => {
+            client.trackEvent("pull_request_card_right_clicked", {
+              button_index: buttonIndex.toString(),
+              button_title: actionSheetOptions.options[buttonIndex],
+              id,
+              accent_color: accentColor,
+              amount_of_comments: amountOfComments?.toString() ?? "0",
+              is_draft: isDraft.toString(),
+            });
             actionSheetCallback(buttonIndex, id, repoName);
           },
         );
@@ -65,6 +75,12 @@ const PullRequestCard: React.FC<Props> = ({
       return;
     }
     if (await Linking.canOpenURL(url)) {
+      client.trackEvent("pull_request_card_clicked", {
+        id,
+        accent_color: accentColor,
+        amount_of_comments: amountOfComments?.toString() ?? "0",
+        is_draft: isDraft.toString(),
+      });
       await Linking.openURL(url);
     }
   };

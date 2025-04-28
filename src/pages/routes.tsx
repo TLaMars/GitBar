@@ -1,6 +1,8 @@
+import { useGuavaClient } from "@guava/react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import React, { useEffect } from "react";
 
+import usePopoverState, { PopoverState } from "hooks/use-popover-state";
 import useSelector from "hooks/use-selector";
 import { RootStackParamList } from "models/root-stack-param-list";
 import PopoverModule from "modules/popover-module";
@@ -17,9 +19,30 @@ import { selectIsOnboarded } from "store/selectors/user";
 
 const RootStackNavigator = createStackNavigator<RootStackParamList>();
 
+let IS_STARTED_UP = false;
+
 const RootStack: React.FC = () => {
   const accounts = useSelector(selectAccounts);
   const isOnboarded = useSelector(selectIsOnboarded);
+  const client = useGuavaClient();
+
+  const popoverState = usePopoverState();
+
+  // TODO: Check if this view can be automatically tracked by Guava
+  // Currently, the view is not tracked after the first time opening the popover
+  useEffect(() => {
+    client.trackEvent(
+      popoverState === PopoverState.CLOSED
+        ? "popover_closed"
+        : "popover_opened",
+    );
+    if (IS_STARTED_UP && popoverState === PopoverState.OPEN) {
+      client.trackEvent("$view");
+    }
+    if (!IS_STARTED_UP) {
+      IS_STARTED_UP = true;
+    }
+  }, [client, popoverState]);
 
   useEffect(() => {
     if (!isOnboarded) {

@@ -55,7 +55,7 @@ const PullRequestCard: React.FC<Props> = ({
   const { t } = useTranslation();
 
   const onPress = async (event: GestureResponderEvent) => {
-    if ("button" in event.nativeEvent && event.nativeEvent.button !== 2) {
+    if ("button" in event.nativeEvent && event.nativeEvent.button === 2) {
       if (actionSheetOptions && actionSheetCallback) {
         ActionSheetIOS.showActionSheetWithOptions(
           actionSheetOptions,

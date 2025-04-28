@@ -11,6 +11,7 @@ import Link from "components/link/link";
 import ListItemPicker from "components/list-item/list-item-picker";
 import ListItemToggle from "components/list-item/list-item-toggle";
 import Spacer from "components/spacer/spacer";
+import { GIT_NOTIFICATIONS_ENABLED } from "constants/feature-flags";
 import { AccountsContext } from "contexts/accounts";
 import useDispatch from "hooks/use-dispatch";
 import useProfiles from "hooks/use-profiles";
@@ -195,22 +196,26 @@ const Settings: React.FC = () => {
             });
           }}
         />
-        <Spacer mt={4} />
-        <Heading size="x2s">
-          {t("Settings/SectionHeading/Notifications")}
-        </Heading>
-        <Spacer mt={1} />
-        <Body size="xs">{t("Settings/Notifications/Description")}</Body>
-        <ListItemToggle
-          label={t("Settings/Notifications/Enable")}
-          value={!!isGitNotificationsEnabled}
-          onToggle={async (value) => {
-            dispatch(setIsGitNotificationsEnabled(value));
-            client.trackEvent("git_notifications_enabled_changed", {
-              value: value.toString(),
-            });
-          }}
-        />
+        {!GIT_NOTIFICATIONS_ENABLED && (
+          <>
+            <Spacer mt={4} />
+            <Heading size="x2s">
+              {t("Settings/SectionHeading/Notifications")}
+            </Heading>
+            <Spacer mt={1} />
+            <Body size="xs">{t("Settings/Notifications/Description")}</Body>
+            <ListItemToggle
+              label={t("Settings/Notifications/Enable")}
+              value={!!isGitNotificationsEnabled}
+              onToggle={async (value) => {
+                dispatch(setIsGitNotificationsEnabled(value));
+                client.trackEvent("git_notifications_enabled_changed", {
+                  value: value.toString(),
+                });
+              }}
+            />
+          </>
+        )}
         <Spacer mt={4} />
         <Heading size="x2s">{t("Settings/SectionHeading/App")}</Heading>
         <Spacer mt={1} />

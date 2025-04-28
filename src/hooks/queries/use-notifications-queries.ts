@@ -1,6 +1,7 @@
 import { useQueries } from "@tanstack/react-query";
 import { useContext } from "react";
 
+import { GIT_NOTIFICATIONS_ENABLED } from "constants/feature-flags";
 import { AccountsContext } from "contexts/accounts";
 import useMacState from "hooks/use-mac-state";
 import useSelector from "hooks/use-selector";
@@ -17,7 +18,10 @@ const useNotificationsQueries = () => {
       queryKey: ["notifications", account.id],
       queryFn: async () => account.getNotifications(),
       refetchInterval: 900000, // 15 minutes
-      enabled: macState === MacState.UNLOCKED && !!notificationsEnabled,
+      enabled:
+        macState === MacState.UNLOCKED &&
+        !!notificationsEnabled &&
+        GIT_NOTIFICATIONS_ENABLED,
     })),
   });
 };

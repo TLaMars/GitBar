@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import NotificationConfirmImage from "assets/illustrations/onboarding/notification-confirmation.jpg";
 import NotificationImage from "assets/illustrations/onboarding/notification.jpg";
 import Body from "components/body/body";
+import { GIT_NOTIFICATIONS_ENABLED } from "constants/feature-flags";
 import { TranslationKey } from "contexts/intl";
 import useTranslation from "hooks/use-translation";
 import OnboardingLayout from "layouts/onboarding-layout/onboarding-layout";
@@ -56,7 +57,11 @@ const Notifications: React.FC = () => {
     client.trackEvent("onboarding_notifications_enabled", {
       value: accepted.toString(),
     });
-    navigate("GitNotifications");
+    if (GIT_NOTIFICATIONS_ENABLED) {
+      navigate("GitNotifications");
+    } else {
+      navigate("ReadyToGo");
+    }
   };
 
   const { image, heading, body } = PageContent[awaitingPermissions.toString()];

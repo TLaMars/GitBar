@@ -13,7 +13,6 @@ import PullRequest from "assets/svgs/pull-request.svg";
 import Refresh from "assets/svgs/refresh.svg";
 import Settings from "assets/svgs/settings.svg";
 import UserCheck from "assets/svgs/user-check.svg";
-import User from "assets/svgs/user.svg";
 
 export default {
   AzureDevOps,
@@ -30,6 +29,5 @@ export default {
   PullRequest,
   Refresh,
   Settings,
-  User,
   UserCheck,
 };

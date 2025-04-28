@@ -15,6 +15,20 @@ function getCurrentVersion() {
 }
 
 /**
+ * @returns {number}
+ */
+function getCurrentBuildNumber() {
+  const infoPlist = readFileSync(INFO_PLIST_PATH, "utf8");
+  const match = infoPlist.match(
+    /<key>CFBundleVersion<\/key>\s*<string>(\d+)<\/string>/,
+  );
+  if (!match) {
+    throw new Error("Could not find build number in Info.plist");
+  }
+  return parseInt(match[1], 10);
+}
+
+/**
  * @param {string} newVersion
  */
 function updatePackageJson(newVersion) {
@@ -25,8 +39,9 @@ function updatePackageJson(newVersion) {
 
 /**
  * @param {string} newVersion
+ * @param {number} newBuildNumber
  */
-function updateInfoPlist(newVersion) {
+function updateInfoPlist(newVersion, newBuildNumber) {
   let content = readFileSync(INFO_PLIST_PATH, "utf8");
 
   content = content.replace(
@@ -34,35 +49,58 @@ function updateInfoPlist(newVersion) {
     `<key>CFBundleShortVersionString</key>\n\t<string>${newVersion}</string>`,
   );
 
+  content = content.replace(
+    /<key>CFBundleVersion<\/key>\s*<string>[^<]+<\/string>/,
+    `<key>CFBundleVersion</key>\n\t<string>${newBuildNumber}</string>`,
+  );
+
   writeFileSync(INFO_PLIST_PATH, content);
 }
 
 /**
  * @param {'major' | 'minor' | 'patch'} type
- * @returns {string}
+ * @returns {{ newVersion: string, newBuildNumber: number }}
  */
 function bumpVersion(type = "patch") {
   const currentVersion = getCurrentVersion();
   const [major, minor, patch] = currentVersion.split(".").map(Number);
 
+  let newVersion;
   switch (type) {
     case "major":
-      return `${major + 1}.0.0`;
+      newVersion = `${major + 1}.0.0`;
+      break;
     case "minor":
-      return `${major}.${minor + 1}.0`;
+      newVersion = `${major}.${minor + 1}.0`;
+      break;
     case "patch":
-      return `${major}.${minor}.${patch + 1}`;
+      newVersion = `${major}.${minor}.${patch + 1}`;
+      break;
     default:
       throw new Error("Invalid version type. Use major, minor, or patch");
   }
+
+  const newBuildNumber = getCurrentBuildNumber() + 1;
+
+  return { newVersion, newBuildNumber };
+}
+
+/**
+ * @returns {{ newVersion: string, newBuildNumber: number }}
+ */
+function bumpOnlyBuildNumber() {
+  const currentVersion = getCurrentVersion();
+  const newBuildNumber = getCurrentBuildNumber() + 1;
+  return { newVersion: currentVersion, newBuildNumber };
 }
 
 /**
  * @param {string} version
+ * @param {number} buildNumber
  */
-function commitAndTag(version) {
+function commitAndTag(version, buildNumber) {
   execSync("git add package.json macos/GitBar/Info.plist");
-  execSync(`git commit -m "chore(release): v${version}"`);
+  execSync(`git commit -m "chore(release): v${version} build: ${buildNumber}"`);
   execSync(`git tag -a v${version} -m "v${version}"`);
   execSync("git push && git push --tags");
 }
@@ -71,20 +109,23 @@ function main() {
   const args = process.argv.slice(2);
   const type = args[0];
 
-  if (!["major", "minor", "patch"].includes(type)) {
-    console.error("Please specify version type: major, minor, or patch");
+  if (!["major", "minor", "patch", "build"].includes(type)) {
+    console.error("Please specify version type: major, minor, patch, or build");
     process.exit(1);
   }
 
   try {
-    const newVersion = bumpVersion(type);
+    const { newVersion, newBuildNumber } =
+      type === "build" ? bumpOnlyBuildNumber() : bumpVersion(type);
 
     updatePackageJson(newVersion);
-    updateInfoPlist(newVersion);
-    commitAndTag(newVersion);
+    updateInfoPlist(newVersion, newBuildNumber);
+    commitAndTag(newVersion, newBuildNumber);
 
     // eslint-disable-next-line no-console
-    console.log(`Successfully bumped version to ${newVersion}`);
+    console.log(
+      `Successfully bumped version to ${newVersion} (build ${newBuildNumber})`,
+    );
   } catch (error) {
     console.error(
       "Error:",

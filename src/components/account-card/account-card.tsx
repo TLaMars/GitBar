@@ -18,6 +18,7 @@ type Props = {
   userName: string;
   avatarUrl?: string;
   name?: string;
+  provider?: string;
   border?: boolean;
   onDeletePress: () => void;
   state?: AccountState;
@@ -28,6 +29,7 @@ const AccountCard: React.FC<Props> = ({
   userName,
   avatarUrl,
   name,
+  provider,
   border = true,
   state = AccountState.Unknown,
   onDeletePress,
@@ -48,7 +50,12 @@ const AccountCard: React.FC<Props> = ({
       </View>
       <View style={$.info}>
         <Heading size="x2s">{name}</Heading>
-        {userName && <Body size="xs">{userName}</Body>}
+        <View>
+          <Body size="xs">
+            {userName}
+            {provider && ` (${provider})`}
+          </Body>
+        </View>
       </View>
       <View style={$.right}>
         <Body

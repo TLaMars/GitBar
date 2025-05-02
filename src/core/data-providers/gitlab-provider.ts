@@ -32,6 +32,7 @@ class GitLabProvider extends BaseProvider {
         name: data.currentUser?.name ?? "",
         type: this.accountType,
         state: AccountState.Valid,
+        provider: this.auth.domain.replace("https://", ""),
       };
     }
 

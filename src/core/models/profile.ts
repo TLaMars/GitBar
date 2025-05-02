@@ -13,6 +13,7 @@ type Profile = {
   userName?: string;
   avatarUrl?: string;
   state: AccountState;
+  provider?: string;
 };
 
 export default Profile;

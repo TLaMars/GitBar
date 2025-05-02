@@ -120,6 +120,7 @@ const Settings: React.FC = () => {
               userName={profile.userName ?? ""}
               avatarUrl={profile.avatarUrl}
               name={profile.name}
+              provider={profile.provider}
               border={index !== accounts.length - 1}
               onDeletePress={() => {
                 deleteAccount(profile.id);

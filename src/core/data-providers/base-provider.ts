@@ -60,6 +60,8 @@ abstract class BaseProvider implements Provider {
         name: this.userIdentifier,
         type: this.accountType,
         state: AccountState.Invalid,
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+        provider: this.auth.domain ?? this.auth.organization ?? "",
       };
     }
   }

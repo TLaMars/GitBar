@@ -42,6 +42,7 @@ class AzureProvider extends BaseProvider {
         name: data.displayName,
         type: this.accountType,
         state: AccountState.Valid,
+        provider: this.auth.organization,
       };
     }
 

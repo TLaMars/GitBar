@@ -9,7 +9,12 @@ const WindowNavigator = createWindowsNavigator({
     options: {
       title: "",
       windowStyle: {
-        mask: [WindowStyleMask.Titled, WindowStyleMask.FullSizeContentView],
+        mask: [
+          WindowStyleMask.Titled,
+          WindowStyleMask.FullSizeContentView,
+          WindowStyleMask.Closable,
+          WindowStyleMask.Miniaturizable,
+        ],
         titlebarAppearsTransparent: true,
         height: 500,
         width: 440,

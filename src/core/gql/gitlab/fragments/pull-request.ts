@@ -5,8 +5,6 @@ const FragmentGitLabPullRequest = graphql(`
     nodes {
       title
       id
-      approvalsRequired
-      approvalsLeft
       webUrl
       draft
       author {

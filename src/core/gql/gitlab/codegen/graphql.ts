@@ -60,6 +60,12 @@ export type Scalars = {
    */
   AiAgentVersionID: { input: any; output: any };
   /**
+   * A `AiConversationThreadID` is a global ID. It is encoded as a string.
+   *
+   * An example `AiConversationThreadID` is: `"gid://gitlab/Ai::Conversation::Thread/1"`.
+   */
+  AiConversationThreadID: { input: any; output: any };
+  /**
    * A `AiDuoWorkflowsWorkflowID` is a global ID. It is encoded as a string.
    *
    * An example `AiDuoWorkflowsWorkflowID` is: `"gid://gitlab/Ai::DuoWorkflows::Workflow/1"`.
@@ -107,6 +113,12 @@ export type Scalars = {
    * An example `AnalyticsDevopsAdoptionEnabledNamespaceID` is: `"gid://gitlab/Analytics::DevopsAdoption::EnabledNamespace/1"`.
    */
   AnalyticsDevopsAdoptionEnabledNamespaceID: { input: any; output: any };
+  /**
+   * A `AntiAbuseReportsLabelID` is a global ID. It is encoded as a string.
+   *
+   * An example `AntiAbuseReportsLabelID` is: `"gid://gitlab/AntiAbuse::Reports::Label/1"`.
+   */
+  AntiAbuseReportsLabelID: { input: any; output: any };
   /**
    * A `AntiAbuseReportsNoteID` is a global ID. It is encoded as a string.
    *
@@ -213,6 +225,12 @@ export type Scalars = {
    */
   AuditEventsStreamingInstanceHeaderID: { input: any; output: any };
   /**
+   * A `AuthzLdapAdminRoleLinkID` is a global ID. It is encoded as a string.
+   *
+   * An example `AuthzLdapAdminRoleLinkID` is: `"gid://gitlab/Authz::LdapAdminRoleLink/1"`.
+   */
+  AuthzLdapAdminRoleLinkID: { input: any; output: any };
+  /**
    * A `AwardableID` is a global ID. It is encoded as a string.
    *
    * An example `AwardableID` is: `"gid://gitlab/Awardable/1"`.
@@ -262,6 +280,8 @@ export type Scalars = {
    * An example `CiCatalogResourcesVersionID` is: `"gid://gitlab/Ci::Catalog::Resources::Version/1"`.
    */
   CiCatalogResourcesVersionID: { input: any; output: any };
+  /** Value for a CI input. Can be a string, array, number, or boolean. */
+  CiInputsValue: { input: any; output: any };
   /**
    * A `CiJobArtifactID` is a global ID. It is encoded as a string.
    *
@@ -354,6 +374,24 @@ export type Scalars = {
    */
   Color: { input: any; output: any };
   /**
+   * A `ComplianceManagementComplianceFrameworkComplianceRequirementID` is a global ID. It is encoded as a string.
+   *
+   * An example `ComplianceManagementComplianceFrameworkComplianceRequirementID` is: `"gid://gitlab/ComplianceManagement::ComplianceFramework::ComplianceRequirement/1"`.
+   */
+  ComplianceManagementComplianceFrameworkComplianceRequirementID: {
+    input: any;
+    output: any;
+  };
+  /**
+   * A `ComplianceManagementComplianceFrameworkComplianceRequirementsControlID` is a global ID. It is encoded as a string.
+   *
+   * An example `ComplianceManagementComplianceFrameworkComplianceRequirementsControlID` is: `"gid://gitlab/ComplianceManagement::ComplianceFramework::ComplianceRequirementsControl/1"`.
+   */
+  ComplianceManagementComplianceFrameworkComplianceRequirementsControlID: {
+    input: any;
+    output: any;
+  };
+  /**
    * A `ComplianceManagementFrameworkID` is a global ID. It is encoded as a string.
    *
    * An example `ComplianceManagementFrameworkID` is: `"gid://gitlab/ComplianceManagement::Framework/1"`.
@@ -365,6 +403,12 @@ export type Scalars = {
    * An example `ContainerRegistryProtectionRuleID` is: `"gid://gitlab/ContainerRegistry::Protection::Rule/1"`.
    */
   ContainerRegistryProtectionRuleID: { input: any; output: any };
+  /**
+   * A `ContainerRegistryProtectionTagRuleID` is a global ID. It is encoded as a string.
+   *
+   * An example `ContainerRegistryProtectionTagRuleID` is: `"gid://gitlab/ContainerRegistry::Protection::TagRule/1"`.
+   */
+  ContainerRegistryProtectionTagRuleID: { input: any; output: any };
   /**
    * A `ContainerRepositoryID` is a global ID. It is encoded as a string.
    *
@@ -751,6 +795,12 @@ export type Scalars = {
    */
   MlCandidateParamID: { input: any; output: any };
   /**
+   * A `MlExperimentID` is a global ID. It is encoded as a string.
+   *
+   * An example `MlExperimentID` is: `"gid://gitlab/Ml::Experiment/1"`.
+   */
+  MlExperimentID: { input: any; output: any };
+  /**
    * A `MlModelID` is a global ID. It is encoded as a string.
    *
    * An example `MlModelID` is: `"gid://gitlab/Ml::Model/1"`.
@@ -933,17 +983,23 @@ export type Scalars = {
    */
   ReleasesLinkID: { input: any; output: any };
   /**
-   * A `RemoteDevelopmentRemoteDevelopmentAgentConfigID` is a global ID. It is encoded as a string.
+   * A `RemoteDevelopmentNamespaceClusterAgentMappingID` is a global ID. It is encoded as a string.
    *
-   * An example `RemoteDevelopmentRemoteDevelopmentAgentConfigID` is: `"gid://gitlab/RemoteDevelopment::RemoteDevelopmentAgentConfig/1"`.
+   * An example `RemoteDevelopmentNamespaceClusterAgentMappingID` is: `"gid://gitlab/RemoteDevelopment::NamespaceClusterAgentMapping/1"`.
    */
-  RemoteDevelopmentRemoteDevelopmentAgentConfigID: { input: any; output: any };
+  RemoteDevelopmentNamespaceClusterAgentMappingID: { input: any; output: any };
   /**
    * A `RemoteDevelopmentWorkspaceID` is a global ID. It is encoded as a string.
    *
    * An example `RemoteDevelopmentWorkspaceID` is: `"gid://gitlab/RemoteDevelopment::Workspace/1"`.
    */
   RemoteDevelopmentWorkspaceID: { input: any; output: any };
+  /**
+   * A `RemoteDevelopmentWorkspaceVariableID` is a global ID. It is encoded as a string.
+   *
+   * An example `RemoteDevelopmentWorkspaceVariableID` is: `"gid://gitlab/RemoteDevelopment::WorkspaceVariable/1"`.
+   */
+  RemoteDevelopmentWorkspaceVariableID: { input: any; output: any };
   /**
    * A `RemoteDevelopmentWorkspacesAgentConfigID` is a global ID. It is encoded as a string.
    *
@@ -956,6 +1012,18 @@ export type Scalars = {
    * An example `SbomComponentID` is: `"gid://gitlab/Sbom::Component/1"`.
    */
   SbomComponentID: { input: any; output: any };
+  /**
+   * A `SbomComponentVersionID` is a global ID. It is encoded as a string.
+   *
+   * An example `SbomComponentVersionID` is: `"gid://gitlab/Sbom::ComponentVersion/1"`.
+   */
+  SbomComponentVersionID: { input: any; output: any };
+  /**
+   * A `SbomOccurrenceID` is a global ID. It is encoded as a string.
+   *
+   * An example `SbomOccurrenceID` is: `"gid://gitlab/Sbom::Occurrence/1"`.
+   */
+  SbomOccurrenceID: { input: any; output: any };
   /**
    * A `SecurityProjectSecurityExclusionID` is a global ID. It is encoded as a string.
    *
@@ -1087,6 +1155,12 @@ export type Scalars = {
    */
   WorkItemsRelatedWorkItemLinkID: { input: any; output: any };
   /**
+   * A `WorkItemsStatusesStatusID` is a global ID. It is encoded as a string.
+   *
+   * An example `WorkItemsStatusesStatusID` is: `"gid://gitlab/WorkItems::Statuses::Status/1"`.
+   */
+  WorkItemsStatusesStatusID: { input: any; output: any };
+  /**
    * A `WorkItemsTypeID` is a global ID. It is encoded as a string.
    *
    * An example `WorkItemsTypeID` is: `"gid://gitlab/WorkItems::Type/1"`.
@@ -1102,7 +1176,7 @@ export type AbuseReport = {
   /** Global ID of the abuse report. */
   id: Scalars["AbuseReportID"]["output"];
   /** Labels of the abuse report. */
-  labels?: Maybe<LabelConnection>;
+  labels?: Maybe<AbuseReportLabelConnection>;
   /** All notes on the noteable. */
   notes: AbuseReportNoteConnection;
 };
@@ -1191,14 +1265,27 @@ export type AbuseReportLabel = LabelInterface & {
   description?: Maybe<Scalars["String"]["output"]>;
   /** GitLab Flavored Markdown rendering of `description` */
   descriptionHtml?: Maybe<Scalars["String"]["output"]>;
-  /** Label ID. */
-  id: Scalars["ID"]["output"];
+  /** Global ID of the abuse report label. */
+  id: Scalars["AntiAbuseReportsLabelID"]["output"];
   /** Text color of the label. */
   textColor: Scalars["String"]["output"];
   /** Content of the label. */
   title: Scalars["String"]["output"];
   /** When the label was last updated. */
   updatedAt: Scalars["Time"]["output"];
+};
+
+/** The connection type for AbuseReportLabel. */
+export type AbuseReportLabelConnection = {
+  __typename?: "AbuseReportLabelConnection";
+  /** Total count of collection. */
+  count: Scalars["Int"]["output"];
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<AbuseReportLabelEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<AbuseReportLabel>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
 };
 
 /** Autogenerated input type of AbuseReportLabelCreate */
@@ -1224,6 +1311,15 @@ export type AbuseReportLabelCreatePayload = {
   errors: Array<Scalars["String"]["output"]>;
   /** Label after mutation. */
   label?: Maybe<AbuseReportLabel>;
+};
+
+/** An edge in a connection. */
+export type AbuseReportLabelEdge = {
+  __typename?: "AbuseReportLabelEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<AbuseReportLabel>;
 };
 
 export type AbuseReportNote = BaseNoteInterface &
@@ -1350,6 +1446,8 @@ export enum AccessLevelEnum {
   NoAccess = "NO_ACCESS",
   /** Owner access. */
   Owner = "OWNER",
+  /** Planner access. */
+  Planner = "PLANNER",
   /** Reporter access. */
   Reporter = "REPORTER",
 }
@@ -1367,6 +1465,24 @@ export type AccessLevelGroup = {
   parent?: Maybe<AccessLevelGroup>;
   /** Web URL of the group. */
   webUrl: Scalars["String"]["output"];
+};
+
+export type AccessLevelInterface = {
+  /**
+   * Returns true when tag rule is for tag immutability. Otherwise, false. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  immutable: Scalars["Boolean"]["output"];
+  /**
+   * Minimum GitLab access level required to delete container image tags from the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, no access level can delete tags. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  minimumAccessLevelForDelete?: Maybe<ContainerProtectionTagRuleAccessLevel>;
+  /**
+   * Minimum GitLab access level required to push container image tags to the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, no access level can push tags. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  minimumAccessLevelForPush?: Maybe<ContainerProtectionTagRuleAccessLevel>;
 };
 
 /** Representation of a GitLab user. */
@@ -1553,6 +1669,25 @@ export type AchievementsUpdatePayload = {
   errors: Array<Scalars["String"]["output"]>;
 };
 
+/** Activity streams associated with a user */
+export type ActivityStream = {
+  __typename?: "ActivityStream";
+  /**
+   * Activity from users followed by the current user. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  followedUsersActivity?: Maybe<EventConnection>;
+};
+
+/** Activity streams associated with a user */
+export type ActivityStreamFollowedUsersActivityArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  target?: EventTarget;
+};
+
 /** Represents AddOn purchase for Namespace */
 export type AddOnPurchase = {
   __typename?: "AddOnPurchase";
@@ -1567,127 +1702,132 @@ export type AddOnPurchase = {
 };
 
 /** A user with add-on data */
-export type AddOnUser = User & {
-  __typename?: "AddOnUser";
-  /** Indicates if the user is active. */
-  active?: Maybe<Scalars["Boolean"]["output"]>;
-  /**
-   * Add-on purchase assignments for the user. Introduced in GitLab 16.4: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.4.
-   */
-  addOnAssignments?: Maybe<UserAddOnAssignmentConnection>;
-  /** Merge requests assigned to the user. */
-  assignedMergeRequests?: Maybe<MergeRequestConnection>;
-  /** Merge requests authored by the user. */
-  authoredMergeRequests?: Maybe<MergeRequestConnection>;
-  /** URL of the user's avatar. */
-  avatarUrl?: Maybe<Scalars["String"]["output"]>;
-  /** Bio of the user. */
-  bio?: Maybe<Scalars["String"]["output"]>;
-  /** Indicates if the user is a bot. */
-  bot: Scalars["Boolean"]["output"];
-  /** User callouts that belong to the user. */
-  callouts?: Maybe<UserCalloutConnection>;
-  /** User's default commit email. */
-  commitEmail?: Maybe<Scalars["String"]["output"]>;
-  /** Projects the user has contributed to. */
-  contributedProjects?: Maybe<ProjectConnection>;
-  /** Timestamp of when the user was created. */
-  createdAt?: Maybe<Scalars["Time"]["output"]>;
-  /** Discord ID of the user. */
-  discord?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * User email. Deprecated in GitLab 13.7: This was renamed.
-   * @deprecated This was renamed. Please use `User.publicEmail`. Deprecated in GitLab 13.7.
-   */
-  email?: Maybe<Scalars["String"]["output"]>;
-  /** User's email addresses. */
-  emails?: Maybe<EmailConnection>;
-  /** Whether Gitpod is enabled at the user level. */
-  gitpodEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Group count for the user. */
-  groupCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Group memberships of the user. */
-  groupMemberships?: Maybe<GroupMemberConnection>;
-  /** Groups where the user has access. */
-  groups?: Maybe<GroupConnection>;
-  /** Indicates if the user is a regular user. */
-  human?: Maybe<Scalars["Boolean"]["output"]>;
-  /** ID of the user. */
-  id: Scalars["ID"]["output"];
-  /** IDE settings. */
-  ide?: Maybe<Ide>;
-  /** Job title of the user. */
-  jobTitle?: Maybe<Scalars["String"]["output"]>;
-  /** Date the user last performed any actions. */
-  lastActivityOn?: Maybe<Scalars["Date"]["output"]>;
-  /** Timestamp of the last sign in. */
-  lastLoginAt?: Maybe<Scalars["Time"]["output"]>;
-  /** LinkedIn profile name of the user. */
-  linkedin?: Maybe<Scalars["String"]["output"]>;
-  /** Location of the user. */
-  location?: Maybe<Scalars["String"]["output"]>;
-  /** Human-readable name of the user. Returns `****` if the user is a project bot and the requester does not have permission to view the project. */
-  name: Scalars["String"]["output"];
-  /** Personal namespace of the user. */
-  namespace?: Maybe<Namespace>;
-  /** User's custom namespace commit emails. */
-  namespaceCommitEmails?: Maybe<NamespaceCommitEmailConnection>;
-  /** Who the user represents or works for. */
-  organization?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Organizations where the user has access. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
-  organizations?: Maybe<OrganizationConnection>;
-  /** Web path to the Gitpod section within user preferences. */
-  preferencesGitpodPath?: Maybe<Scalars["String"]["output"]>;
-  /** Web path to enable Gitpod for the user. */
-  profileEnableGitpodPath?: Maybe<Scalars["String"]["output"]>;
-  /** Project memberships of the user. */
-  projectMemberships?: Maybe<ProjectMemberConnection>;
-  /** Pronouns of the user. */
-  pronouns?: Maybe<Scalars["String"]["output"]>;
-  /** User's public email. */
-  publicEmail?: Maybe<Scalars["String"]["output"]>;
-  /** Merge requests assigned to the user for review. */
-  reviewRequestedMergeRequests?: Maybe<MergeRequestConnection>;
-  /** Saved replies authored by the user. */
-  savedReplies?: Maybe<SavedReplyConnection>;
-  /** Saved reply authored by the user. */
-  savedReply?: Maybe<SavedReply>;
-  /** Snippets authored by the user. */
-  snippets?: Maybe<SnippetConnection>;
-  /** Projects starred by the user. */
-  starredProjects?: Maybe<ProjectConnection>;
-  /** State of the user. */
-  state: UserState;
-  /** User status. */
-  status?: Maybe<UserStatus>;
-  /** Time logged by the user. */
-  timelogs?: Maybe<TimelogConnection>;
-  /** To-do items of the user. */
-  todos?: Maybe<TodoConnection>;
-  /** X (formerly Twitter) username of the user. */
-  twitter?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled. Introduced in GitLab 15.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
-   */
-  userAchievements?: Maybe<UserAchievementConnection>;
-  /** Permissions for the current user on the resource. */
-  userPermissions: UserPermissions;
-  /** Preferences for the user. */
-  userPreferences?: Maybe<UserPreferences>;
-  /** Username of the user. Unique within this instance of GitLab. */
-  username: Scalars["String"]["output"];
-  /** Web path of the user. */
-  webPath: Scalars["String"]["output"];
-  /** Web URL of the user. */
-  webUrl: Scalars["String"]["output"];
-  /** Workspaces owned by the current user. */
-  workspaces?: Maybe<WorkspaceConnection>;
-};
+export type AddOnUser = Todoable &
+  User & {
+    __typename?: "AddOnUser";
+    /** Indicates if the user is active. */
+    active?: Maybe<Scalars["Boolean"]["output"]>;
+    /**
+     * Add-on purchase assignments for the user. Introduced in GitLab 16.4: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.4.
+     */
+    addOnAssignments?: Maybe<UserAddOnAssignmentConnection>;
+    /** Merge requests assigned to the user. */
+    assignedMergeRequests?: Maybe<MergeRequestConnection>;
+    /** Merge requests authored by the user. */
+    authoredMergeRequests?: Maybe<MergeRequestConnection>;
+    /** URL of the user's avatar. */
+    avatarUrl?: Maybe<Scalars["String"]["output"]>;
+    /** Bio of the user. */
+    bio?: Maybe<Scalars["String"]["output"]>;
+    /** Indicates if the user is a bot. */
+    bot: Scalars["Boolean"]["output"];
+    /** User callouts that belong to the user. */
+    callouts?: Maybe<UserCalloutConnection>;
+    /** User's default commit email. */
+    commitEmail?: Maybe<Scalars["String"]["output"]>;
+    /** Projects the user has contributed to. */
+    contributedProjects?: Maybe<ProjectConnection>;
+    /** Timestamp of when the user was created. */
+    createdAt?: Maybe<Scalars["Time"]["output"]>;
+    /** Discord ID of the user. */
+    discord?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * User email. Deprecated in GitLab 13.7: This was renamed.
+     * @deprecated This was renamed. Please use `User.publicEmail`. Deprecated in GitLab 13.7.
+     */
+    email?: Maybe<Scalars["String"]["output"]>;
+    /** User's email addresses. */
+    emails?: Maybe<EmailConnection>;
+    /** Whether Gitpod is enabled at the user level. */
+    gitpodEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Group count for the user. */
+    groupCount?: Maybe<Scalars["Int"]["output"]>;
+    /** Group memberships of the user. */
+    groupMemberships?: Maybe<GroupMemberConnection>;
+    /** Groups where the user has access. */
+    groups?: Maybe<GroupConnection>;
+    /** Indicates if the user is a regular user. */
+    human?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Global ID of the user. */
+    id: Scalars["UserID"]["output"];
+    /** IDE settings. */
+    ide?: Maybe<Ide>;
+    /** Job title of the user. */
+    jobTitle?: Maybe<Scalars["String"]["output"]>;
+    /** Date the user last performed any actions. */
+    lastActivityOn?: Maybe<Scalars["Date"]["output"]>;
+    /** Date of the last Duo activity of the user. Refreshed on any GitLab Duo activity. */
+    lastDuoActivityOn?: Maybe<Scalars["Date"]["output"]>;
+    /** Timestamp of the last sign in. */
+    lastLoginAt?: Maybe<Scalars["Time"]["output"]>;
+    /** LinkedIn profile name of the user. */
+    linkedin?: Maybe<Scalars["String"]["output"]>;
+    /** Location of the user. */
+    location?: Maybe<Scalars["String"]["output"]>;
+    /** Human-readable name of the user. Returns `****` if the user is a project bot and the requester does not have permission to view the project. */
+    name: Scalars["String"]["output"];
+    /** Personal namespace of the user. */
+    namespace?: Maybe<Namespace>;
+    /** User's custom namespace commit emails. */
+    namespaceCommitEmails?: Maybe<NamespaceCommitEmailConnection>;
+    /** Who the user represents or works for. */
+    organization?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * Organizations where the user has access. Introduced in GitLab 16.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
+     */
+    organizations?: Maybe<OrganizationConnection>;
+    /** Web path to the Gitpod section within user preferences. */
+    preferencesGitpodPath?: Maybe<Scalars["String"]["output"]>;
+    /** Web path to enable Gitpod for the user. */
+    profileEnableGitpodPath?: Maybe<Scalars["String"]["output"]>;
+    /** Project memberships of the user. */
+    projectMemberships?: Maybe<ProjectMemberConnection>;
+    /** Pronouns of the user. */
+    pronouns?: Maybe<Scalars["String"]["output"]>;
+    /** User's public email. */
+    publicEmail?: Maybe<Scalars["String"]["output"]>;
+    /** Merge requests assigned to the user for review. */
+    reviewRequestedMergeRequests?: Maybe<MergeRequestConnection>;
+    /** Saved replies authored by the user. */
+    savedReplies?: Maybe<SavedReplyConnection>;
+    /** Saved reply authored by the user. */
+    savedReply?: Maybe<SavedReply>;
+    /** Snippets authored by the user. */
+    snippets?: Maybe<SnippetConnection>;
+    /** Projects starred by the user. */
+    starredProjects?: Maybe<ProjectConnection>;
+    /** State of the user. */
+    state: UserState;
+    /** User status. */
+    status?: Maybe<UserStatus>;
+    /** Time logged by the user. */
+    timelogs?: Maybe<TimelogConnection>;
+    /** To-do items of the user. */
+    todos?: Maybe<TodoConnection>;
+    /** X (formerly Twitter) username of the user. */
+    twitter?: Maybe<Scalars["String"]["output"]>;
+    /** Type of the user. */
+    type: UserType;
+    /**
+     * Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled. Introduced in GitLab 15.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
+     */
+    userAchievements?: Maybe<UserAchievementConnection>;
+    /** Permissions for the current user on the resource. */
+    userPermissions: UserPermissions;
+    /** Preferences for the user. */
+    userPreferences?: Maybe<UserPreferences>;
+    /** Username of the user. Unique within the instance of GitLab. */
+    username: Scalars["String"]["output"];
+    /** Web path of the user. */
+    webPath: Scalars["String"]["output"];
+    /** Web URL of the user. */
+    webUrl: Scalars["String"]["output"];
+    /** Workspaces owned by the current user. */
+    workspaces?: Maybe<WorkspaceConnection>;
+  };
 
 /** A user with add-on data */
 export type AddOnUserAddOnAssignmentsArgs = {
@@ -1718,6 +1858,7 @@ export type AddOnUserAssignedMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -1728,14 +1869,17 @@ export type AddOnUserAssignedMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -1748,6 +1892,7 @@ export type AddOnUserAuthoredMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   createdAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -1760,7 +1905,9 @@ export type AddOnUserAuthoredMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
+  includeAssigned?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   mergedAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -1770,14 +1917,17 @@ export type AddOnUserAuthoredMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -1828,6 +1978,7 @@ export type AddOnUserGroupsArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
   permissionScope?: InputMaybe<GroupPermission>;
   search?: InputMaybe<Scalars["String"]["input"]>;
+  sort?: InputMaybe<GroupSort>;
 };
 
 /** A user with add-on data */
@@ -1863,6 +2014,7 @@ export type AddOnUserReviewRequestedMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   authorUsername?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -1876,6 +2028,7 @@ export type AddOnUserReviewRequestedMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -1886,12 +2039,15 @@ export type AddOnUserReviewRequestedMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -1957,6 +2113,7 @@ export type AddOnUserTodosArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  isSnoozed?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   projectId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   sort?: InputMaybe<TodoSort>;
@@ -2026,6 +2183,89 @@ export type AddProjectToSecurityDashboardPayload = {
   project?: Maybe<Project>;
 };
 
+/** Represents an admin member role */
+export type AdminMemberRole = RoleInterface & {
+  __typename?: "AdminMemberRole";
+  /** Timestamp of when the member role was created. */
+  createdAt: Scalars["Time"]["output"];
+  /** Role description. */
+  description?: Maybe<Scalars["String"]["output"]>;
+  /**
+   * URL path to the role details webpage. Introduced in GitLab 17.4: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
+   */
+  detailsPath?: Maybe<Scalars["String"]["output"]>;
+  /**
+   * Web UI path to edit the custom role. Introduced in GitLab 16.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+   */
+  editPath: Scalars["String"]["output"];
+  /**
+   * Array of all permissions enabled for the custom role. Introduced in GitLab 17.7: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.7.
+   */
+  enabledPermissions: CustomizableAdminPermissionConnection;
+  /** Role ID. */
+  id: Scalars["ID"]["output"];
+  /**
+   * Number of times the role has been directly assigned to a group or project member. Introduced in GitLab 17.3: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.3.
+   */
+  membersCount?: Maybe<Scalars["Int"]["output"]>;
+  /** Role name. */
+  name?: Maybe<Scalars["String"]["output"]>;
+  /**
+   * Number of users who have been directly assigned the role in at least one group or project. Introduced in GitLab 17.5: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
+   */
+  usersCount?: Maybe<Scalars["Int"]["output"]>;
+};
+
+/** Represents an admin member role */
+export type AdminMemberRoleEnabledPermissionsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** The connection type for AdminMemberRole. */
+export type AdminMemberRoleConnection = {
+  __typename?: "AdminMemberRoleConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<AdminMemberRoleEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<AdminMemberRole>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type AdminMemberRoleEdge = {
+  __typename?: "AdminMemberRoleEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<AdminMemberRole>;
+};
+
+/** Autogenerated input type of AdminRolesLdapSync */
+export type AdminRolesLdapSyncInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** Autogenerated return type of AdminRolesLdapSync. */
+export type AdminRolesLdapSyncPayload = {
+  __typename?: "AdminRolesLdapSyncPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during operation. */
+  errors?: Maybe<Array<Scalars["String"]["output"]>>;
+  /** Whether the sync was successfully enqueued. */
+  success?: Maybe<Scalars["Boolean"]["output"]>;
+};
+
 /** Autogenerated input type of AdminSidekiqQueuesDeleteJobs */
 export type AdminSidekiqQueuesDeleteJobsInput = {
   /** Delete jobs matching ai_resource in the context metadata. */
@@ -2068,6 +2308,10 @@ export type AdminSidekiqQueuesDeleteJobsInput = {
   rootCallerId?: InputMaybe<Scalars["String"]["input"]>;
   /** Delete jobs matching root_namespace in the context metadata. */
   rootNamespace?: InputMaybe<Scalars["String"]["input"]>;
+  /** Delete jobs matching scoped_user in the context metadata. */
+  scopedUser?: InputMaybe<Scalars["String"]["input"]>;
+  /** Delete jobs matching scoped_user_id in the context metadata. */
+  scopedUserId?: InputMaybe<Scalars["String"]["input"]>;
   /** Delete jobs matching sidekiq_destination_shard_redis in the context metadata. */
   sidekiqDestinationShardRedis?: InputMaybe<Scalars["String"]["input"]>;
   /** Delete jobs matching subscription_plan in the context metadata. */
@@ -2139,6 +2383,22 @@ export enum AgentTokenStatus {
   Revoked = "REVOKED",
 }
 
+/** Version-related warning for a connected Agent */
+export type AgentVersionWarning = {
+  __typename?: "AgentVersionWarning";
+  /** Warning message related to the version. */
+  message?: Maybe<Scalars["String"]["output"]>;
+  /** Warning type related to the version. */
+  type?: Maybe<Scalars["String"]["output"]>;
+};
+
+/** Warning object for a connected Agent */
+export type AgentWarning = {
+  __typename?: "AgentWarning";
+  /** Agent warning related to the version. */
+  version?: Maybe<AgentVersionWarning>;
+};
+
 export type AggregationStatus = {
   __typename?: "AggregationStatus";
   /** Whether background aggregation is enabled or disabled. For downgraded, non-licensed groups and projects the field is `false`. */
@@ -2167,6 +2427,8 @@ export enum AiAcceptedSelfHostedModels {
   Llama3 = "LLAMA3",
   /** Mistral: Suitable for code suggestions and duo chat. */
   Mistral = "MISTRAL",
+  /** Mixtral: Suitable for code suggestions and duo chat. */
+  Mixtral = "MIXTRAL",
 }
 
 /** Action to subscribe to. */
@@ -2183,8 +2445,10 @@ export type AiActionInput = {
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
   /** Client generated ID that can be subscribed to, to receive a response for the mutation. */
   clientSubscriptionId?: InputMaybe<Scalars["String"]["input"]>;
-  /** Input for explain_code AI action. */
-  explainCode?: InputMaybe<AiExplainCodeInput>;
+  /** Conversation type of the thread. */
+  conversationType?: InputMaybe<AiConversationsThreadsConversationType>;
+  /** Input for description_composer AI action. */
+  descriptionComposer?: InputMaybe<AiDescriptionComposerInput>;
   /** Input for explain_vulnerability AI action. */
   explainVulnerability?: InputMaybe<AiExplainVulnerabilityInput>;
   /** Input for generate_commit_message AI action. */
@@ -2193,6 +2457,8 @@ export type AiActionInput = {
   generateCubeQuery?: InputMaybe<AiGenerateCubeQueryInput>;
   /** Input for generate_description AI action. */
   generateDescription?: InputMaybe<AiGenerateDescriptionInput>;
+  /** Input for measure_comment_temperature AI action. */
+  measureCommentTemperature?: InputMaybe<AiMeasureCommentTemperatureInput>;
   /** Specifies the origin platform of the request. */
   platformOrigin?: InputMaybe<Scalars["String"]["input"]>;
   /** Global ID of the project the user is acting on. */
@@ -2205,6 +2471,8 @@ export type AiActionInput = {
   summarizeNewMergeRequest?: InputMaybe<AiSummarizeNewMergeRequestInput>;
   /** Input for summarize_review AI action. */
   summarizeReview?: InputMaybe<AiSummarizeReviewInput>;
+  /** Global Id of the existing thread to continue the conversation. If it is not specified, a new thread will be created for the specified conversation_type. */
+  threadId?: InputMaybe<Scalars["AiConversationThreadID"]["input"]>;
 };
 
 /** Autogenerated return type of AiAction. */
@@ -2216,6 +2484,8 @@ export type AiActionPayload = {
   errors: Array<Scalars["String"]["output"]>;
   /** ID of the request. */
   requestId?: Maybe<Scalars["String"]["output"]>;
+  /** Global Id of the thread. */
+  threadId?: Maybe<Scalars["AiConversationThreadID"]["output"]>;
 };
 
 /** Additional context for AI message. */
@@ -2239,10 +2509,14 @@ export enum AiAdditionalContextCategory {
   File = "FILE",
   /** Issue content category. */
   Issue = "ISSUE",
+  /** Local_git content category. */
+  LocalGit = "LOCAL_GIT",
   /** Merge_request content category. */
   MergeRequest = "MERGE_REQUEST",
   /** Snippet content category. */
   Snippet = "SNIPPET",
+  /** Terminal content category. */
+  Terminal = "TERMINAL",
 }
 
 export type AiAdditionalContextInput = {
@@ -2392,6 +2666,53 @@ export type AiChatInput = {
   resourceId?: InputMaybe<Scalars["AiModelID"]["input"]>;
 };
 
+/** Conversation thread of the AI feature */
+export type AiConversationsThread = {
+  __typename?: "AiConversationsThread";
+  /** Conversation type of the thread. */
+  conversationType: AiConversationsThreadsConversationType;
+  /** Created date of the thread. */
+  createdAt: Scalars["Time"]["output"];
+  /** ID of the thread. */
+  id: Scalars["ID"]["output"];
+  /** Last updated date of the thread. */
+  lastUpdatedAt: Scalars["Time"]["output"];
+  /** Title of the thread. */
+  title?: Maybe<Scalars["String"]["output"]>;
+};
+
+/** The connection type for AiConversationsThread. */
+export type AiConversationsThreadConnection = {
+  __typename?: "AiConversationsThreadConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<AiConversationsThreadEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<AiConversationsThread>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type AiConversationsThreadEdge = {
+  __typename?: "AiConversationsThreadEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<AiConversationsThread>;
+};
+
+/** Conversation type of the thread. */
+export enum AiConversationsThreadsConversationType {
+  /** duo_chat thread. */
+  DuoChat = "DUO_CHAT",
+  /** duo_chat_legacy thread. */
+  DuoChatLegacy = "DUO_CHAT_LEGACY",
+  /** duo_code_review thread. */
+  DuoCodeReview = "DUO_CODE_REVIEW",
+  /** duo_quick_chat thread. */
+  DuoQuickChat = "DUO_QUICK_CHAT",
+}
+
 export type AiCurrentFileInput = {
   /** Content above cursor. */
   contentAboveCursor?: InputMaybe<Scalars["String"]["input"]>;
@@ -2403,18 +2724,21 @@ export type AiCurrentFileInput = {
   selectedText: Scalars["String"]["input"];
 };
 
-export type AiExplainCodeInput = {
-  /** Code messages that is passed to be explained by AI. */
-  messages: Array<AiExplainCodeMessageInput>;
+export type AiDescriptionComposerInput = {
+  /** Current description. */
+  description: Scalars["String"]["input"];
   /** Global ID of the resource to mutate. */
   resourceId: Scalars["AiModelID"]["input"];
-};
-
-export type AiExplainCodeMessageInput = {
-  /** Content of the message. */
-  content: Scalars["String"]["input"];
-  /** Role of the message (system, user, assistant). */
-  role: Scalars["String"]["input"];
+  /** Source branch of the changes. */
+  sourceBranch?: InputMaybe<Scalars["String"]["input"]>;
+  /** ID of the project where the changes are from. */
+  sourceProjectId?: InputMaybe<Scalars["ID"]["input"]>;
+  /** Target branch of where the changes will be merged into. */
+  targetBranch?: InputMaybe<Scalars["String"]["input"]>;
+  /** Current merge request title. */
+  title: Scalars["String"]["input"];
+  /** Prompt from user. */
+  userPrompt: Scalars["String"]["input"];
 };
 
 export type AiExplainVulnerabilityInput = {
@@ -2485,12 +2809,12 @@ export type AiFeatureSettingEdge = {
 
 /** Autogenerated input type of AiFeatureSettingUpdate */
 export type AiFeatureSettingUpdateInput = {
-  /** Global ID of the self-hosted model provide the AI setting. */
+  /** Global ID of the self-hosted model providing the AI setting. */
   aiSelfHostedModelId?: InputMaybe<Scalars["AiSelfHostedModelID"]["input"]>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
-  /** AI feature being configured. */
-  feature: AiFeatures;
+  /** Array of AI features being configured (for single or batch update). */
+  features: Array<AiFeatures>;
   /** Provider for AI setting. */
   provider: AiFeatureProviders;
 };
@@ -2498,22 +2822,46 @@ export type AiFeatureSettingUpdateInput = {
 /** Autogenerated return type of AiFeatureSettingUpdate. */
 export type AiFeatureSettingUpdatePayload = {
   __typename?: "AiFeatureSettingUpdatePayload";
-  /** AI feature setting after mutation. */
-  aiFeatureSetting?: Maybe<AiFeatureSetting>;
+  /** List of AI feature settings after mutation. */
+  aiFeatureSettings: Array<AiFeatureSetting>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
 };
 
-/** AI features that can be configured in the settings. */
+/** AI features that can be configured through the Duo self-hosted feature settings. */
 export enum AiFeatures {
   /** Code completion feature setting */
   CodeCompletions = "CODE_COMPLETIONS",
   /** Code generation feature setting */
   CodeGenerations = "CODE_GENERATIONS",
-  /** Duo chat feature setting */
+  /** Duo Chat feature setting */
   DuoChat = "DUO_CHAT",
+  /** Duo chat explain code feature setting */
+  DuoChatExplainCode = "DUO_CHAT_EXPLAIN_CODE",
+  /** Duo chat explain vulnerability feature setting */
+  DuoChatExplainVulnerability = "DUO_CHAT_EXPLAIN_VULNERABILITY",
+  /** Duo chat fix code feature setting */
+  DuoChatFixCode = "DUO_CHAT_FIX_CODE",
+  /** Duo chat refactor code feature setting */
+  DuoChatRefactorCode = "DUO_CHAT_REFACTOR_CODE",
+  /** Duo chat summarize comment feature setting */
+  DuoChatSummarizeComments = "DUO_CHAT_SUMMARIZE_COMMENTS",
+  /** Duo chat troubleshoot job feature setting */
+  DuoChatTroubleshootJob = "DUO_CHAT_TROUBLESHOOT_JOB",
+  /** Duo chat write test feature setting */
+  DuoChatWriteTests = "DUO_CHAT_WRITE_TESTS",
+  /** Generate commit message feature setting */
+  GenerateCommitMessage = "GENERATE_COMMIT_MESSAGE",
+  /** Glab ask git command feature setting */
+  GlabAskGitCommand = "GLAB_ASK_GIT_COMMAND",
+  /** Resolve vulnerability feature setting */
+  ResolveVulnerability = "RESOLVE_VULNERABILITY",
+  /** Summarize new merge request feature setting */
+  SummarizeNewMergeRequest = "SUMMARIZE_NEW_MERGE_REQUEST",
+  /** Summarize review feature setting */
+  SummarizeReview = "SUMMARIZE_REVIEW",
 }
 
 export type AiGenerateCommitMessageInput = {
@@ -2533,6 +2881,13 @@ export type AiGenerateDescriptionInput = {
   content: Scalars["String"]["input"];
   /** Name of the description template to use to generate message off of. */
   descriptionTemplateName?: InputMaybe<Scalars["String"]["input"]>;
+  /** Global ID of the resource to mutate. */
+  resourceId: Scalars["AiModelID"]["input"];
+};
+
+export type AiMeasureCommentTemperatureInput = {
+  /** Content of the message. */
+  content: Scalars["String"]["input"];
   /** Global ID of the resource to mutate. */
   resourceId: Scalars["AiModelID"]["input"];
 };
@@ -2558,6 +2913,8 @@ export type AiMessage = {
   requestId?: Maybe<Scalars["String"]["output"]>;
   /** Message owner role. */
   role: AiMessageRole;
+  /** Global ID of the existing thread for the Chat conversation. */
+  threadId?: Maybe<Scalars["AiConversationThreadID"]["output"]>;
   /** Message creation timestamp. */
   timestamp: Scalars["Time"]["output"];
   /** Message type. */
@@ -2611,39 +2968,55 @@ export enum AiMessageType {
   Tool = "TOOL",
 }
 
+/** Requires ClickHouse. Premium and Ultimate with GitLab Duo Pro and Enterprise only. */
 export type AiMetrics = {
   __typename?: "AiMetrics";
   /** Number of code contributors. */
   codeContributorsCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Total count of code suggestions accepted by code contributors. */
+  /** Code suggestions metrics. */
+  codeSuggestions?: Maybe<CodeSuggestionMetrics>;
+  /**
+   * Total count of code suggestions accepted by code contributors. Deprecated in GitLab 18.0: moved to codeSuggestions field.
+   * @deprecated moved to codeSuggestions field. Deprecated in GitLab 18.0.
+   */
   codeSuggestionsAcceptedCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Number of code contributors who used GitLab Duo Code Suggestions features. */
+  /**
+   * Number of code contributors who used GitLab Duo Code Suggestions features. Deprecated in GitLab 18.0: moved to codeSuggestions field.
+   * @deprecated moved to codeSuggestions field. Deprecated in GitLab 18.0.
+   */
   codeSuggestionsContributorsCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Total count of code suggestions shown to code contributors. */
+  /**
+   * Total count of code suggestions shown to code contributors. Deprecated in GitLab 18.0: moved to codeSuggestions field.
+   * @deprecated moved to codeSuggestions field. Deprecated in GitLab 18.0.
+   */
   codeSuggestionsShownCount?: Maybe<Scalars["Int"]["output"]>;
   /** Total assigned Duo Pro and Enterprise seats. Ignores time period filter. Returns current data. */
   duoAssignedUsersCount?: Maybe<Scalars["Int"]["output"]>;
   /** Number of contributors who used GitLab Duo Chat features. */
   duoChatContributorsCount?: Maybe<Scalars["Int"]["output"]>;
-  /**
-   * Number of assigned Duo Pro and Enterprise seats. Ignores time period filter. Deprecated in GitLab 17.6: use duoAssignedUsersCount for the same behavior.
-   * @deprecated use duoAssignedUsersCount for the same behavior. Deprecated in GitLab 17.6.
-   */
-  duoProAssignedUsersCount?: Maybe<Scalars["Int"]["output"]>;
   /** Number of contributors who used any GitLab Duo feature. */
   duoUsedCount?: Maybe<Scalars["Int"]["output"]>;
+  /** Number of users using troubleshoot within a failed pipeline. */
+  rootCauseAnalysisUsersCount?: Maybe<Scalars["Int"]["output"]>;
+};
+
+/** Requires ClickHouse. Premium and Ultimate with GitLab Duo Pro and Enterprise only. */
+export type AiMetricsCodeSuggestionsArgs = {
+  languages?: InputMaybe<Array<Scalars["String"]["input"]>>;
 };
 
 export type AiResolveVulnerabilityInput = {
   /** Global ID of the resource to mutate. */
   resourceId: Scalars["AiModelID"]["input"];
-  /** Global ID of the merge request where resolution will be provided as a suggestion. */
-  suggestionMergeRequestId?: InputMaybe<Scalars["MergeRequestID"]["input"]>;
+  /** Global ID of the merge request which the merge request containing the vulnerability resolution will target. */
+  vulnerableMergeRequestId?: InputMaybe<Scalars["MergeRequestID"]["input"]>;
 };
 
 /** Self-hosted LLM servers */
 export type AiSelfHostedModel = {
   __typename?: "AiSelfHostedModel";
+  /** Optional API key for the self-hosted model server. */
+  apiToken?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp of creation. */
   createdAt: Scalars["Time"]["output"];
   /** Endpoint of the self-hosted model server. */
@@ -2658,8 +3031,12 @@ export type AiSelfHostedModel = {
   identifier?: Maybe<Scalars["String"]["output"]>;
   /** AI model deployed. */
   model: Scalars["String"]["output"];
+  /** Display name of the AI model deployed. */
+  modelDisplayName: Scalars["String"]["output"];
   /** Deployment name of the self-hosted model. */
   name: Scalars["String"]["output"];
+  /** GitLab release status of the model. */
+  releaseState: AiSelfHostedModelReleaseState;
   /** Timestamp of last update. */
   updatedAt?: Maybe<Scalars["Time"]["output"]>;
 };
@@ -2681,6 +3058,33 @@ export type AiSelfHostedModelConnection = {
   nodes?: Maybe<Array<Maybe<AiSelfHostedModel>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** Autogenerated input type of AiSelfHostedModelConnectionCheck */
+export type AiSelfHostedModelConnectionCheckInput = {
+  /** API token to access the self-hosted model, if any. */
+  apiToken?: InputMaybe<Scalars["String"]["input"]>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Endpoint of the self-hosted model. */
+  endpoint: Scalars["String"]["input"];
+  /** Identifier for 3rd party model provider. */
+  identifier?: InputMaybe<Scalars["String"]["input"]>;
+  /** AI model deployed. */
+  model: AiAcceptedSelfHostedModels;
+  /** Deployment name of the self-hosted model. */
+  name: Scalars["String"]["input"];
+};
+
+/** Autogenerated return type of AiSelfHostedModelConnectionCheck. */
+export type AiSelfHostedModelConnectionCheckPayload = {
+  __typename?: "AiSelfHostedModelConnectionCheckPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Self-hosted hosted connection check result. */
+  result?: Maybe<CloudConnectorProbeResult>;
 };
 
 /** Autogenerated input type of AiSelfHostedModelCreate */
@@ -2725,8 +3129,6 @@ export type AiSelfHostedModelDeletePayload = {
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
-  /** Self-hosted model after mutation. */
-  selfHostedModel?: Maybe<AiSelfHostedModel>;
 };
 
 /** An edge in a connection. */
@@ -2737,6 +3139,16 @@ export type AiSelfHostedModelEdge = {
   /** The item at the end of the edge. */
   node?: Maybe<AiSelfHostedModel>;
 };
+
+/** GitLab release state of the model */
+export enum AiSelfHostedModelReleaseState {
+  /** Beta status. */
+  Beta = "BETA",
+  /** Experimental status. */
+  Experimental = "EXPERIMENTAL",
+  /** GA status. */
+  Ga = "GA",
+}
 
 /** Autogenerated input type of AiSelfHostedModelUpdate */
 export type AiSelfHostedModelUpdateInput = {
@@ -2799,12 +3211,14 @@ export enum AiUsageCodeSuggestionEvent {
   CodeSuggestionShownInIde = "CODE_SUGGESTION_SHOWN_IN_IDE",
 }
 
+/** Usage data for events stored in the default PostgreSQL database. Data retained for three months. Requires a personal access token. Endpoint works only on the top-level group. Ultimate with GitLab Duo Enterprise only. */
 export type AiUsageData = {
   __typename?: "AiUsageData";
-  /** Events related to code suggestions feature. */
+  /** Events related to code suggestions. */
   codeSuggestionEvents?: Maybe<CodeSuggestionEventConnection>;
 };
 
+/** Usage data for events stored in the default PostgreSQL database. Data retained for three months. Requires a personal access token. Endpoint works only on the top-level group. Ultimate with GitLab Duo Enterprise only. */
 export type AiUsageDataCodeSuggestionEventsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -2812,14 +3226,15 @@ export type AiUsageDataCodeSuggestionEventsArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
+/** Pre-aggregated per-user metrics for GitLab Code Suggestions and GitLab Duo Chat. Require ClickHouse to be enabled and GitLab Ultimate with the Duo Enterprise add-on. */
 export type AiUserMetrics = {
   __typename?: "AiUserMetrics";
   /** Total count of code suggestions accepted by the user. */
   codeSuggestionsAcceptedCount?: Maybe<Scalars["Int"]["output"]>;
   /** Number of user interactions with GitLab Duo Chat. */
   duoChatInteractionsCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Metrics user. */
-  user: UserCore;
+  /** User associated with metrics. */
+  user: AddOnUser;
 };
 
 /** The connection type for AiUserMetrics. */
@@ -2842,13 +3257,39 @@ export type AiUserMetricsEdge = {
   node?: Maybe<AiUserMetrics>;
 };
 
+export type AiXrayReport = {
+  __typename?: "AiXrayReport";
+  /** Language of the x-ray report. */
+  language: Scalars["String"]["output"];
+};
+
+/** The connection type for AiXrayReport. */
+export type AiXrayReportConnection = {
+  __typename?: "AiXrayReportConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<AiXrayReportEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<AiXrayReport>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type AiXrayReportEdge = {
+  __typename?: "AiXrayReportEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<AiXrayReport>;
+};
+
 /** Describes an alert from the project's Alert Management */
 export type AlertManagementAlert = NoteableInterface &
   Todoable & {
     __typename?: "AlertManagementAlert";
     /** Assignees of the alert. */
     assignees?: Maybe<UserCoreConnection>;
-    /** All commenters on this noteable. */
+    /** All commenters on the noteable. */
     commenters: UserCoreConnection;
     /** Timestamp the alert was created. */
     createdAt?: Maybe<Scalars["Time"]["output"]>;
@@ -2858,7 +3299,7 @@ export type AlertManagementAlert = NoteableInterface &
     details?: Maybe<Scalars["JSON"]["output"]>;
     /** URL of the alert detail page. */
     detailsUrl: Scalars["String"]["output"];
-    /** All discussions on this noteable. */
+    /** All discussions on the noteable. */
     discussions: DiscussionConnection;
     /** Timestamp the alert ended. */
     endedAt?: Maybe<Scalars["Time"]["output"]>;
@@ -2886,7 +3327,7 @@ export type AlertManagementAlert = NoteableInterface &
     metricsDashboardUrl?: Maybe<Scalars["String"]["output"]>;
     /** Monitoring tool the alert came from. */
     monitoringTool?: Maybe<Scalars["String"]["output"]>;
-    /** Name or title of this object. */
+    /** Name or title of the object. */
     name?: Maybe<Scalars["String"]["output"]>;
     /** All notes on this noteable. */
     notes: NoteConnection;
@@ -2956,6 +3397,7 @@ export type AlertManagementAlertTodosArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  isSnoozed?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   projectId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   sort?: InputMaybe<TodoSort>;
@@ -3387,6 +3829,23 @@ export type AmazonS3ConfigurationTypeEdge = {
   node?: Maybe<AmazonS3ConfigurationType>;
 };
 
+export enum AnalyticsAggregationPeriod {
+  /** Daily aggregation. */
+  Day = "DAY",
+  /** Monthly aggregation. */
+  Month = "MONTH",
+  /** Weekly aggregation. */
+  Week = "WEEK",
+}
+
+export type AncestorType = {
+  __typename?: "AncestorType";
+  /** Name of the ancestor. */
+  name?: Maybe<Scalars["String"]["output"]>;
+  /** Version of the ancestor. */
+  version?: Maybe<Scalars["String"]["output"]>;
+};
+
 /** Data associated with configuring API fuzzing scans in GitLab CI */
 export type ApiFuzzingCiConfiguration = {
   __typename?: "ApiFuzzingCiConfiguration";
@@ -3424,6 +3883,8 @@ export type ApprovalPolicy = OrchestrationPolicy & {
   actionApprovers?: Maybe<Array<PolicyApproversType>>;
   /** All potential approvers of the group type, including groups inaccessible to the user. */
   allGroupApprovers?: Maybe<Array<PolicyApprovalGroup>>;
+  /** Approvers of the custom role type. Users belonging to these role(s) alone will be approvers. */
+  customRoles?: Maybe<Array<MemberRole>>;
   /**
    * All deprecated properties in the policy. Introduced in GitLab 16.10: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
@@ -3433,11 +3894,11 @@ export type ApprovalPolicy = OrchestrationPolicy & {
   description: Scalars["String"]["output"];
   /** URL of policy edit page. */
   editPath: Scalars["String"]["output"];
-  /** Indicates whether this policy is enabled. */
+  /** Indicates whether the policy is enabled. */
   enabled: Scalars["Boolean"]["output"];
   /** Name of the policy. */
   name: Scalars["String"]["output"];
-  /** Scope of the policy */
+  /** Scope of the policy. */
   policyScope?: Maybe<PolicyScope>;
   /** Approvers of the role type. Users belonging to these role(s) alone will be approvers. */
   roleApprovers?: Maybe<Array<MemberAccessLevelName>>;
@@ -3476,7 +3937,7 @@ export type ApprovalProjectRule = {
   __typename?: "ApprovalProjectRule";
   /** Number of required approvals. */
   approvalsRequired?: Maybe<Scalars["Int"]["output"]>;
-  /** List of users eligible to approve merge requests for this approval rule. */
+  /** List of users eligible to approve merge requests for the approval rule. */
   eligibleApprovers?: Maybe<UserCoreConnection>;
   /** ID of the rule. */
   id: Scalars["GlobalID"]["output"];
@@ -4371,123 +4832,134 @@ export type AuditEventsStreamingInstanceHeadersUpdatePayload = {
   header?: Maybe<AuditEventsStreamingInstanceHeader>;
 };
 
+/** Auto stop setting. */
+export enum AutoStopSetting {
+  /** Always */
+  Always = "ALWAYS",
+  /** With Action */
+  WithAction = "WITH_ACTION",
+}
+
 /** Core representation of a GitLab user. */
-export type AutocompletedUser = User & {
-  __typename?: "AutocompletedUser";
-  /** Indicates if the user is active. */
-  active?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Merge requests assigned to the user. */
-  assignedMergeRequests?: Maybe<MergeRequestConnection>;
-  /** Merge requests authored by the user. */
-  authoredMergeRequests?: Maybe<MergeRequestConnection>;
-  /** URL of the user's avatar. */
-  avatarUrl?: Maybe<Scalars["String"]["output"]>;
-  /** Bio of the user. */
-  bio?: Maybe<Scalars["String"]["output"]>;
-  /** Indicates if the user is a bot. */
-  bot: Scalars["Boolean"]["output"];
-  /** User callouts that belong to the user. */
-  callouts?: Maybe<UserCalloutConnection>;
-  /** User's default commit email. */
-  commitEmail?: Maybe<Scalars["String"]["output"]>;
-  /** Projects the user has contributed to. */
-  contributedProjects?: Maybe<ProjectConnection>;
-  /** Timestamp of when the user was created. */
-  createdAt?: Maybe<Scalars["Time"]["output"]>;
-  /** Discord ID of the user. */
-  discord?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * User email. Deprecated in GitLab 13.7: This was renamed.
-   * @deprecated This was renamed. Please use `User.publicEmail`. Deprecated in GitLab 13.7.
-   */
-  email?: Maybe<Scalars["String"]["output"]>;
-  /** User's email addresses. */
-  emails?: Maybe<EmailConnection>;
-  /** Whether Gitpod is enabled at the user level. */
-  gitpodEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Group count for the user. */
-  groupCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Group memberships of the user. */
-  groupMemberships?: Maybe<GroupMemberConnection>;
-  /** Groups where the user has access. */
-  groups?: Maybe<GroupConnection>;
-  /** Indicates if the user is a regular user. */
-  human?: Maybe<Scalars["Boolean"]["output"]>;
-  /** ID of the user. */
-  id: Scalars["ID"]["output"];
-  /** IDE settings. */
-  ide?: Maybe<Ide>;
-  /** Job title of the user. */
-  jobTitle?: Maybe<Scalars["String"]["output"]>;
-  /** Date the user last performed any actions. */
-  lastActivityOn?: Maybe<Scalars["Date"]["output"]>;
-  /** LinkedIn profile name of the user. */
-  linkedin?: Maybe<Scalars["String"]["output"]>;
-  /** Location of the user. */
-  location?: Maybe<Scalars["String"]["output"]>;
-  /** Merge request state related to the user. */
-  mergeRequestInteraction?: Maybe<UserMergeRequestInteraction>;
-  /** Human-readable name of the user. Returns `****` if the user is a project bot and the requester does not have permission to view the project. */
-  name: Scalars["String"]["output"];
-  /** Personal namespace of the user. */
-  namespace?: Maybe<Namespace>;
-  /** User's custom namespace commit emails. */
-  namespaceCommitEmails?: Maybe<NamespaceCommitEmailConnection>;
-  /** Who the user represents or works for. */
-  organization?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Organizations where the user has access. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
-  organizations?: Maybe<OrganizationConnection>;
-  /** Web path to the Gitpod section within user preferences. */
-  preferencesGitpodPath?: Maybe<Scalars["String"]["output"]>;
-  /** Web path to enable Gitpod for the user. */
-  profileEnableGitpodPath?: Maybe<Scalars["String"]["output"]>;
-  /** Project memberships of the user. */
-  projectMemberships?: Maybe<ProjectMemberConnection>;
-  /** Pronouns of the user. */
-  pronouns?: Maybe<Scalars["String"]["output"]>;
-  /** User's public email. */
-  publicEmail?: Maybe<Scalars["String"]["output"]>;
-  /** Merge requests assigned to the user for review. */
-  reviewRequestedMergeRequests?: Maybe<MergeRequestConnection>;
-  /** Saved replies authored by the user. */
-  savedReplies?: Maybe<SavedReplyConnection>;
-  /** Saved reply authored by the user. */
-  savedReply?: Maybe<SavedReply>;
-  /** Snippets authored by the user. */
-  snippets?: Maybe<SnippetConnection>;
-  /** Projects starred by the user. */
-  starredProjects?: Maybe<ProjectConnection>;
-  /** State of the user. */
-  state: UserState;
-  /** User status. */
-  status?: Maybe<UserStatus>;
-  /** Time logged by the user. */
-  timelogs?: Maybe<TimelogConnection>;
-  /** To-do items of the user. */
-  todos?: Maybe<TodoConnection>;
-  /** X (formerly Twitter) username of the user. */
-  twitter?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled. Introduced in GitLab 15.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
-   */
-  userAchievements?: Maybe<UserAchievementConnection>;
-  /** Permissions for the current user on the resource. */
-  userPermissions: UserPermissions;
-  /** Preferences for the user. */
-  userPreferences?: Maybe<UserPreferences>;
-  /** Username of the user. Unique within this instance of GitLab. */
-  username: Scalars["String"]["output"];
-  /** Web path of the user. */
-  webPath: Scalars["String"]["output"];
-  /** Web URL of the user. */
-  webUrl: Scalars["String"]["output"];
-  /** Workspaces owned by the current user. */
-  workspaces?: Maybe<WorkspaceConnection>;
-};
+export type AutocompletedUser = Todoable &
+  User & {
+    __typename?: "AutocompletedUser";
+    /** Indicates if the user is active. */
+    active?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Merge requests assigned to the user. */
+    assignedMergeRequests?: Maybe<MergeRequestConnection>;
+    /** Merge requests authored by the user. */
+    authoredMergeRequests?: Maybe<MergeRequestConnection>;
+    /** URL of the user's avatar. */
+    avatarUrl?: Maybe<Scalars["String"]["output"]>;
+    /** Bio of the user. */
+    bio?: Maybe<Scalars["String"]["output"]>;
+    /** Indicates if the user is a bot. */
+    bot: Scalars["Boolean"]["output"];
+    /** User callouts that belong to the user. */
+    callouts?: Maybe<UserCalloutConnection>;
+    /** User's default commit email. */
+    commitEmail?: Maybe<Scalars["String"]["output"]>;
+    /** Projects the user has contributed to. */
+    contributedProjects?: Maybe<ProjectConnection>;
+    /** Timestamp of when the user was created. */
+    createdAt?: Maybe<Scalars["Time"]["output"]>;
+    /** Discord ID of the user. */
+    discord?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * User email. Deprecated in GitLab 13.7: This was renamed.
+     * @deprecated This was renamed. Please use `User.publicEmail`. Deprecated in GitLab 13.7.
+     */
+    email?: Maybe<Scalars["String"]["output"]>;
+    /** User's email addresses. */
+    emails?: Maybe<EmailConnection>;
+    /** Whether Gitpod is enabled at the user level. */
+    gitpodEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Group count for the user. */
+    groupCount?: Maybe<Scalars["Int"]["output"]>;
+    /** Group memberships of the user. */
+    groupMemberships?: Maybe<GroupMemberConnection>;
+    /** Groups where the user has access. */
+    groups?: Maybe<GroupConnection>;
+    /** Indicates if the user is a regular user. */
+    human?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Global ID of the user. */
+    id: Scalars["UserID"]["output"];
+    /** IDE settings. */
+    ide?: Maybe<Ide>;
+    /** Job title of the user. */
+    jobTitle?: Maybe<Scalars["String"]["output"]>;
+    /** Date the user last performed any actions. */
+    lastActivityOn?: Maybe<Scalars["Date"]["output"]>;
+    /** LinkedIn profile name of the user. */
+    linkedin?: Maybe<Scalars["String"]["output"]>;
+    /** Location of the user. */
+    location?: Maybe<Scalars["String"]["output"]>;
+    /** Merge request state related to the user. */
+    mergeRequestInteraction?: Maybe<UserMergeRequestInteraction>;
+    /** Human-readable name of the user. Returns `****` if the user is a project bot and the requester does not have permission to view the project. */
+    name: Scalars["String"]["output"];
+    /** Personal namespace of the user. */
+    namespace?: Maybe<Namespace>;
+    /** User's custom namespace commit emails. */
+    namespaceCommitEmails?: Maybe<NamespaceCommitEmailConnection>;
+    /** Who the user represents or works for. */
+    organization?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * Organizations where the user has access. Introduced in GitLab 16.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
+     */
+    organizations?: Maybe<OrganizationConnection>;
+    /** Web path to the Gitpod section within user preferences. */
+    preferencesGitpodPath?: Maybe<Scalars["String"]["output"]>;
+    /** Web path to enable Gitpod for the user. */
+    profileEnableGitpodPath?: Maybe<Scalars["String"]["output"]>;
+    /** Project memberships of the user. */
+    projectMemberships?: Maybe<ProjectMemberConnection>;
+    /** Pronouns of the user. */
+    pronouns?: Maybe<Scalars["String"]["output"]>;
+    /** User's public email. */
+    publicEmail?: Maybe<Scalars["String"]["output"]>;
+    /** Merge requests assigned to the user for review. */
+    reviewRequestedMergeRequests?: Maybe<MergeRequestConnection>;
+    /** Saved replies authored by the user. */
+    savedReplies?: Maybe<SavedReplyConnection>;
+    /** Saved reply authored by the user. */
+    savedReply?: Maybe<SavedReply>;
+    /** Snippets authored by the user. */
+    snippets?: Maybe<SnippetConnection>;
+    /** Projects starred by the user. */
+    starredProjects?: Maybe<ProjectConnection>;
+    /** State of the user. */
+    state: UserState;
+    /** User status. */
+    status?: Maybe<UserStatus>;
+    /** Time logged by the user. */
+    timelogs?: Maybe<TimelogConnection>;
+    /** To-do items of the user. */
+    todos?: Maybe<TodoConnection>;
+    /** X (formerly Twitter) username of the user. */
+    twitter?: Maybe<Scalars["String"]["output"]>;
+    /** Type of the user. */
+    type: UserType;
+    /**
+     * Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled. Introduced in GitLab 15.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
+     */
+    userAchievements?: Maybe<UserAchievementConnection>;
+    /** Permissions for the current user on the resource. */
+    userPermissions: UserPermissions;
+    /** Preferences for the user. */
+    userPreferences?: Maybe<UserPreferences>;
+    /** Username of the user. Unique within the instance of GitLab. */
+    username: Scalars["String"]["output"];
+    /** Web path of the user. */
+    webPath: Scalars["String"]["output"];
+    /** Web URL of the user. */
+    webUrl: Scalars["String"]["output"];
+    /** Workspaces owned by the current user. */
+    workspaces?: Maybe<WorkspaceConnection>;
+  };
 
 /** Core representation of a GitLab user. */
 export type AutocompletedUserAssignedMergeRequestsArgs = {
@@ -4507,6 +4979,7 @@ export type AutocompletedUserAssignedMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -4517,14 +4990,17 @@ export type AutocompletedUserAssignedMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -4537,6 +5013,7 @@ export type AutocompletedUserAuthoredMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   createdAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -4549,7 +5026,9 @@ export type AutocompletedUserAuthoredMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
+  includeAssigned?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   mergedAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -4559,14 +5038,17 @@ export type AutocompletedUserAuthoredMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -4617,6 +5099,7 @@ export type AutocompletedUserGroupsArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
   permissionScope?: InputMaybe<GroupPermission>;
   search?: InputMaybe<Scalars["String"]["input"]>;
+  sort?: InputMaybe<GroupSort>;
 };
 
 /** Core representation of a GitLab user. */
@@ -4657,6 +5140,7 @@ export type AutocompletedUserReviewRequestedMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   authorUsername?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -4670,6 +5154,7 @@ export type AutocompletedUserReviewRequestedMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -4680,12 +5165,15 @@ export type AutocompletedUserReviewRequestedMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -4751,6 +5239,7 @@ export type AutocompletedUserTodosArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  isSnoozed?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   projectId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   sort?: InputMaybe<TodoSort>;
@@ -4789,20 +5278,56 @@ export enum AvailabilityEnum {
 
 /** Available fields to be exported as CSV */
 export enum AvailableExportFields {
-  /** Author name. */
+  /** Assignee(s) name of the work item. */
+  Assignee = "ASSIGNEE",
+  /** Assignee(s) username of the work item. */
+  AssigneeUsername = "ASSIGNEE_USERNAME",
+  /** Author name of the work item. */
   Author = "AUTHOR",
-  /** Author username. */
+  /** Author username of the work item. */
   AuthorUsername = "AUTHOR_USERNAME",
-  /** Date of creation. */
+  /** Closed at (UTC) date of the work item. */
+  ClosedAt = "CLOSED_AT",
+  /** Confidentiality flag of the work item. */
+  Confidential = "CONFIDENTIAL",
+  /** Crated at (UTC) date of the work item. */
   CreatedAt = "CREATED_AT",
-  /** Description. */
+  /** Description of the work item. */
   Description = "DESCRIPTION",
-  /** Unique identifier. */
+  /** Due date (UTC) of the work item. */
+  DueDate = "DUE_DATE",
+  /** Unique identifier of the work item. */
   Id = "ID",
-  /** Title. */
+  /** IID identifier of the work item. */
+  Iid = "IID",
+  /** Locked discussions flag of the work item. */
+  Locked = "LOCKED",
+  /** Milestone of the work item. */
+  Milestone = "MILESTONE",
+  /** Parent ID of the work item. */
+  ParentId = "PARENT_ID",
+  /** Parent IID of the work item. */
+  ParentIid = "PARENT_IID",
+  /** Parent title of the work item. */
+  ParentTitle = "PARENT_TITLE",
+  /** Start date (UTC) of the work item. */
+  StartDate = "START_DATE",
+  /** State of the work item. */
+  State = "STATE",
+  /** Time estimate of the work item. */
+  TimeEstimate = "TIME_ESTIMATE",
+  /** Time spent of the work item. */
+  TimeSpent = "TIME_SPENT",
+  /** Title of the work item. */
   Title = "TITLE",
   /** Type of the work item. */
   Type = "TYPE",
+  /** Updated at (UTC) date of the work item. */
+  UpdatedAt = "UPDATED_AT",
+  /** Web URL to the work item. */
+  Url = "URL",
+  /** Weight of the work item. */
+  Weight = "WEIGHT",
 }
 
 /** An emoji awarded by a user */
@@ -5208,19 +5733,19 @@ export type BoardEpic = CurrentUserTodos &
     awardEmoji?: Maybe<AwardEmojiConnection>;
     /** Indicates the epic is blocked. */
     blocked?: Maybe<Scalars["Boolean"]["output"]>;
-    /** Count of epics blocking this epic. */
+    /** Count of epics blocking the epic. */
     blockedByCount?: Maybe<Scalars["Int"]["output"]>;
-    /** Epics blocking this epic. */
+    /** Epics blocking the epic. */
     blockedByEpics?: Maybe<EpicConnection>;
-    /** Count of epics that this epic is blocking. */
+    /** Count of epics that the epic is blocking. */
     blockingCount?: Maybe<Scalars["Int"]["output"]>;
     /** Children (sub-epics) of the epic. */
     children?: Maybe<EpicConnection>;
     /** Timestamp of when the epic was closed. */
     closedAt?: Maybe<Scalars["Time"]["output"]>;
-    /** Color of the epic. Returns `null` if `epic_color_highlight` feature flag is disabled. */
+    /** Color of the epic. */
     color?: Maybe<Scalars["String"]["output"]>;
-    /** All commenters on this noteable. */
+    /** All commenters on the noteable. */
     commenters: UserCoreConnection;
     /** Indicates if the epic is confidential. */
     confidential?: Maybe<Scalars["Boolean"]["output"]>;
@@ -5238,7 +5763,7 @@ export type BoardEpic = CurrentUserTodos &
     description?: Maybe<Scalars["String"]["output"]>;
     /** GitLab Flavored Markdown rendering of `description` */
     descriptionHtml?: Maybe<Scalars["String"]["output"]>;
-    /** All discussions on this noteable. */
+    /** All discussions on the noteable. */
     discussions: DiscussionConnection;
     /** Number of downvotes the epic has received. */
     downvotes: Scalars["Int"]["output"];
@@ -5274,7 +5799,9 @@ export type BoardEpic = CurrentUserTodos &
     issues?: Maybe<EpicIssueConnection>;
     /** Labels assigned to the epic. */
     labels?: Maybe<LabelConnection>;
-    /** Name or title of this object. */
+    /** Work items linked to the epic. */
+    linkedWorkItems?: Maybe<LinkedWorkItemTypeConnection>;
+    /** Name or title of the object. */
     name?: Maybe<Scalars["String"]["output"]>;
     /** All notes on this noteable. */
     notes: NoteConnection;
@@ -5302,7 +5829,7 @@ export type BoardEpic = CurrentUserTodos &
     state: EpicState;
     /** Indicates the currently logged in user is subscribed to the epic. */
     subscribed: Scalars["Boolean"]["output"];
-    /** Text color generated for the epic. Returns `null` if `epic_color_highlight` feature flag is disabled. */
+    /** Text color generated for the epic. */
     textColor?: Maybe<Scalars["String"]["output"]>;
     /** Title of the epic. */
     title?: Maybe<Scalars["String"]["output"]>;
@@ -5350,6 +5877,7 @@ export type BoardEpicAncestorsArgs = {
   search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<EpicSort>;
   state?: InputMaybe<EpicState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   timeframe?: InputMaybe<Timeframe>;
   topLevelHierarchyOnly?: InputMaybe<Scalars["Boolean"]["input"]>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -5396,6 +5924,7 @@ export type BoardEpicChildrenArgs = {
   search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<EpicSort>;
   state?: InputMaybe<EpicState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   timeframe?: InputMaybe<Timeframe>;
   topLevelHierarchyOnly?: InputMaybe<Scalars["Boolean"]["input"]>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -5447,6 +5976,15 @@ export type BoardEpicIssuesArgs = {
 export type BoardEpicLabelsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** Represents an epic on an issue board */
+export type BoardEpicLinkedWorkItemsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  filter?: InputMaybe<WorkItemRelatedLinkType>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
 };
@@ -5696,12 +6234,44 @@ export type BoardListUpdateLimitMetricsPayload = {
   list?: Maybe<BoardList>;
 };
 
+/** an expression with a boolean value. */
+export type BooleanExpression = ExpressionInterface & {
+  __typename?: "BooleanExpression";
+  /** Field the expression applies to. */
+  field: Scalars["String"]["output"];
+  /** Operator of the expression. */
+  operator: Scalars["String"]["output"];
+  /** Boolean value of the expression. */
+  value: Scalars["Boolean"]["output"];
+};
+
 export type Branch = {
   __typename?: "Branch";
   /** Commit for the branch. */
   commit?: Maybe<Commit>;
   /** Name of the branch. */
   name: Scalars["String"]["output"];
+};
+
+/** Autogenerated input type of BranchDelete */
+export type BranchDeleteInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Name of the branch. */
+  name: Scalars["String"]["input"];
+  /** Project full path the branch is associated with. */
+  projectPath: Scalars["ID"]["input"];
+};
+
+/** Autogenerated return type of BranchDelete. */
+export type BranchDeletePayload = {
+  __typename?: "BranchDeletePayload";
+  /** Branch after mutation. */
+  branch?: Maybe<Branch>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
 };
 
 /** Branch protection details for a branch rule. */
@@ -5715,7 +6285,7 @@ export type BranchProtection = {
   mergeAccessLevels?: Maybe<MergeAccessLevelConnection>;
   /** Details about who can push when the branch is the source branch. */
   pushAccessLevels?: Maybe<PushAccessLevelConnection>;
-  /** Details about who can unprotect this branch. */
+  /** Details about who can unprotect the branch. */
   unprotectAccessLevels?: Maybe<UnprotectAccessLevelConnection>;
 };
 
@@ -5757,24 +6327,29 @@ export type BranchProtectionInput = {
 /** Branch rules configured for a rule target. */
 export type BranchRule = {
   __typename?: "BranchRule";
-  /** Merge request approval rules configured for this branch rule. */
+  /** Merge request approval rules configured for the branch rule. */
   approvalRules?: Maybe<ApprovalProjectRuleConnection>;
-  /** Branch protections configured for this branch rule. */
+  /** Branch protections configured for the branch rule. */
   branchProtection?: Maybe<BranchProtection>;
   /** Timestamp of when the branch rule was created. */
   createdAt?: Maybe<Scalars["Time"]["output"]>;
-  /** External status checks configured for this branch rule. */
+  /** External status checks configured for the branch rule. */
   externalStatusChecks?: Maybe<ExternalStatusCheckConnection>;
   /** ID of the branch rule. */
   id?: Maybe<Scalars["ProjectsBranchRuleID"]["output"]>;
-  /** Check if this branch rule protects the project's default branch. */
+  /** Check if the branch rule protects the project's default branch. */
   isDefault: Scalars["Boolean"]["output"];
-  /** Check if this branch rule protects access for the branch. */
+  /** Check if the branch rule protects access for the branch. */
   isProtected: Scalars["Boolean"]["output"];
-  /** Number of existing branches that match this branch rule. */
+  /** Number of existing branches that match the branch rule. */
   matchingBranchesCount: Scalars["Int"]["output"];
   /** Name of the branch rule target. Includes wildcards. */
   name: Scalars["String"]["output"];
+  /**
+   * Default behavior for squashing in merge requests. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  squashOption?: Maybe<SquashOption>;
   /** Timestamp of when the branch rule was last updated. */
   updatedAt?: Maybe<Scalars["Time"]["output"]>;
 };
@@ -5922,6 +6497,44 @@ export type BranchRuleExternalStatusCheckUpdatePayload = {
   externalStatusCheck?: Maybe<ExternalStatusCheck>;
 };
 
+/** Autogenerated input type of BranchRuleSquashOptionDelete */
+export type BranchRuleSquashOptionDeleteInput = {
+  /** Global ID of the branch rule. */
+  branchRuleId: Scalars["ProjectsBranchRuleID"]["input"];
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** Autogenerated return type of BranchRuleSquashOptionDelete. */
+export type BranchRuleSquashOptionDeletePayload = {
+  __typename?: "BranchRuleSquashOptionDeletePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+};
+
+/** Autogenerated input type of BranchRuleSquashOptionUpdate */
+export type BranchRuleSquashOptionUpdateInput = {
+  /** Global ID of the branch rule. */
+  branchRuleId: Scalars["ProjectsBranchRuleID"]["input"];
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Squash option after mutation. */
+  squashOption: SquashOptionSetting;
+};
+
+/** Autogenerated return type of BranchRuleSquashOptionUpdate. */
+export type BranchRuleSquashOptionUpdatePayload = {
+  __typename?: "BranchRuleSquashOptionUpdatePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Updated squash option after mutation. */
+  squashOption?: Maybe<SquashOption>;
+};
+
 /** Autogenerated input type of BranchRuleUpdate */
 export type BranchRuleUpdateInput = {
   /** Branch protections configured for the branch rule. */
@@ -5943,29 +6556,6 @@ export type BranchRuleUpdatePayload = {
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
-};
-
-/** Autogenerated input type of BuildForecast */
-export type BuildForecastInput = {
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
-  /** Global ID of the context for the forecast to pick an appropriate model. */
-  contextId: Scalars["GlobalID"]["input"];
-  /** Number of data points to forecast. */
-  horizon: Scalars["Int"]["input"];
-  /** Type of the forecast. */
-  type: Scalars["String"]["input"];
-};
-
-/** Autogenerated return type of BuildForecast. */
-export type BuildForecastPayload = {
-  __typename?: "BuildForecastPayload";
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars["String"]["output"]>;
-  /** Errors encountered during execution of the mutation. */
-  errors: Array<Scalars["String"]["output"]>;
-  /** Created forecast. */
-  forecast: Forecast;
 };
 
 /** Autogenerated input type of BulkDestroyJobArtifacts */
@@ -6036,15 +6626,15 @@ export type BulkRunnerDeletePayload = {
 /** Represents the total number of issues and their weights for a particular day */
 export type BurnupChartDailyTotals = {
   __typename?: "BurnupChartDailyTotals";
-  /** Number of closed issues as of this day. */
+  /** Number of closed issues as of the day. */
   completedCount: Scalars["Int"]["output"];
-  /** Total weight of closed issues as of this day. */
+  /** Total weight of closed issues as of the day. */
   completedWeight: Scalars["Int"]["output"];
   /** Date for burnup totals. */
   date: Scalars["ISO8601Date"]["output"];
-  /** Number of issues as of this day. */
+  /** Number of issues as of the day. */
   scopeCount: Scalars["Int"]["output"];
-  /** Total weight of issues as of this day. */
+  /** Total weight of issues as of the day. */
   scopeWeight: Scalars["Int"]["output"];
 };
 
@@ -6168,6 +6758,8 @@ export type CiCatalogResource = {
   starCount: Scalars["Int"]["output"];
   /** Relative path to the starrers page for the catalog resource project. */
   starrersPath?: Maybe<Scalars["String"]["output"]>;
+  /** Topics for the catalog resource. */
+  topics?: Maybe<Array<Scalars["String"]["output"]>>;
   /** Verification level of the catalog resource. */
   verificationLevel?: Maybe<CiCatalogResourceVerificationLevel>;
   /** Versions of the catalog resource. This field can only be resolved for one catalog resource in any single request. */
@@ -6196,7 +6788,7 @@ export type CiCatalogResourceComponent = {
   /** Path used to include the component. */
   includePath?: Maybe<Scalars["String"]["output"]>;
   /** Inputs for the component. */
-  inputs?: Maybe<Array<CiCatalogResourceComponentInput>>;
+  inputs?: Maybe<Array<CiInputsSpec>>;
   /** Name of the component. */
   name?: Maybe<Scalars["String"]["output"]>;
 };
@@ -6221,33 +6813,36 @@ export type CiCatalogResourceComponentEdge = {
   node?: Maybe<CiCatalogResourceComponent>;
 };
 
-export type CiCatalogResourceComponentInput = {
-  __typename?: "CiCatalogResourceComponentInput";
-  /** Default value for the input. */
-  default?: Maybe<Scalars["String"]["output"]>;
-  /** Description of the input. */
-  description?: Maybe<Scalars["String"]["output"]>;
-  /** Name of the input. */
+/** Represents a component usage in a project */
+export type CiCatalogResourceComponentUsage = {
+  __typename?: "CiCatalogResourceComponentUsage";
+  /** When the component was last used. */
+  lastUsedDate?: Maybe<Scalars["ISO8601Date"]["output"]>;
+  /** Name of the component. */
   name?: Maybe<Scalars["String"]["output"]>;
-  /** Pattern that the input value must match. Only applicable to string inputs. */
-  regex?: Maybe<Scalars["String"]["output"]>;
-  /** Indicates if an input is required. */
-  required?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Type of the input. */
-  type?: Maybe<CiCatalogResourceComponentInputType>;
+  /** Version of the component. */
+  version?: Maybe<Scalars["String"]["output"]>;
 };
 
-/** Available input types */
-export enum CiCatalogResourceComponentInputType {
-  /** Array input */
-  Array = "ARRAY",
-  /** Boolean input */
-  Boolean = "BOOLEAN",
-  /** Number input */
-  Number = "NUMBER",
-  /** String input */
-  String = "STRING",
-}
+/** The connection type for CiCatalogResourceComponentUsage. */
+export type CiCatalogResourceComponentUsageConnection = {
+  __typename?: "CiCatalogResourceComponentUsageConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<CiCatalogResourceComponentUsageEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<CiCatalogResourceComponentUsage>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type CiCatalogResourceComponentUsageEdge = {
+  __typename?: "CiCatalogResourceComponentUsageEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<CiCatalogResourceComponentUsage>;
+};
 
 /** The connection type for CiCatalogResource. */
 export type CiCatalogResourceConnection = {
@@ -6368,6 +6963,12 @@ export type CiCatalogResourceVersionEdge = {
   cursor: Scalars["String"]["output"];
   /** The item at the end of the edge. */
   node?: Maybe<CiCatalogResourceVersion>;
+};
+
+export type CiCdSettings = {
+  __typename?: "CiCdSettings";
+  /** Indicates the default minimum role required to override pipeline variables in the namespace. */
+  pipelineVariablesDefaultRole?: Maybe<Scalars["String"]["output"]>;
 };
 
 export type CiConfig = {
@@ -6607,6 +7208,102 @@ export type CiConfigVariable = {
   valueOptions?: Maybe<Array<Scalars["String"]["output"]>>;
 };
 
+/** Filter options available for GitLab Dedicated runner usage data. */
+export type CiDedicatedHostedRunnerFilters = {
+  __typename?: "CiDedicatedHostedRunnerFilters";
+  /** List of runner IDs from usage data without associated runner records. */
+  deletedRunners?: Maybe<CiDeletedRunnerConnection>;
+  /** List of unique runners with usage data. */
+  runners?: Maybe<CiRunnerConnection>;
+  /** List of years with available usage data. */
+  years?: Maybe<Array<Scalars["Int"]["output"]>>;
+};
+
+/** Filter options available for GitLab Dedicated runner usage data. */
+export type CiDedicatedHostedRunnerFiltersDeletedRunnersArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** Filter options available for GitLab Dedicated runner usage data. */
+export type CiDedicatedHostedRunnerFiltersRunnersArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** Compute usage data for hosted runners on GitLab Dedicated. */
+export type CiDedicatedHostedRunnerUsage = {
+  __typename?: "CiDedicatedHostedRunnerUsage";
+  /** Month of the usage data. */
+  billingMonth: Scalars["String"]["output"];
+  /** Timestamp of the billing month in ISO 8601 format. */
+  billingMonthIso8601: Scalars["ISO8601Date"]["output"];
+  /** Total compute minutes used across all namespaces. */
+  computeMinutes: Scalars["Int"]["output"];
+  /** Total duration in seconds of runner usage. */
+  durationSeconds: Scalars["Int"]["output"];
+  /** Namespace associated with the usage data. Null for instance aggregate data. */
+  rootNamespace?: Maybe<NamespaceUnion>;
+};
+
+/** The connection type for CiDedicatedHostedRunnerUsage. */
+export type CiDedicatedHostedRunnerUsageConnection = {
+  __typename?: "CiDedicatedHostedRunnerUsageConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<CiDedicatedHostedRunnerUsageEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<CiDedicatedHostedRunnerUsage>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type CiDedicatedHostedRunnerUsageEdge = {
+  __typename?: "CiDedicatedHostedRunnerUsageEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<CiDedicatedHostedRunnerUsage>;
+};
+
+/** Reference to a namespace that no longer exists */
+export type CiDeletedNamespace = {
+  __typename?: "CiDeletedNamespace";
+  /** ID of the deleted namespace. */
+  id?: Maybe<Scalars["NamespaceID"]["output"]>;
+};
+
+/** Reference to a deleted runner */
+export type CiDeletedRunner = {
+  __typename?: "CiDeletedRunner";
+  /** Global ID of the deleted runner. */
+  id: Scalars["CiRunnerID"]["output"];
+};
+
+/** The connection type for CiDeletedRunner. */
+export type CiDeletedRunnerConnection = {
+  __typename?: "CiDeletedRunnerConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<CiDeletedRunnerEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<CiDeletedRunner>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type CiDeletedRunnerEdge = {
+  __typename?: "CiDeletedRunnerEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<CiDeletedRunner>;
+};
+
 /** Histogram of durations for a group of CI/CD jobs or pipelines. */
 export type CiDurationStatistics = {
   __typename?: "CiDurationStatistics";
@@ -6789,6 +7486,76 @@ export enum CiGroupVariablesSort {
   KeyDesc = "KEY_DESC",
 }
 
+/** CI input saved for a pipeline schedule */
+export type CiInputsField = {
+  __typename?: "CiInputsField";
+  /** Name of the input. */
+  name: Scalars["String"]["output"];
+  /** Value of the input. */
+  value?: Maybe<Scalars["CiInputsValue"]["output"]>;
+};
+
+/** The connection type for CiInputsField. */
+export type CiInputsFieldConnection = {
+  __typename?: "CiInputsFieldConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<CiInputsFieldEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<CiInputsField>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type CiInputsFieldEdge = {
+  __typename?: "CiInputsFieldEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<CiInputsField>;
+};
+
+/** Attributes for defining an input. */
+export type CiInputsInput = {
+  /** Set to `true` to delete the input. */
+  destroy?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Name of the input. */
+  name: Scalars["String"]["input"];
+  /** Value of the input. */
+  value: Scalars["CiInputsValue"]["input"];
+};
+
+/** Input for pipeline creation */
+export type CiInputsSpec = {
+  __typename?: "CiInputsSpec";
+  /** Default value for the input, if provided. */
+  default?: Maybe<Scalars["CiInputsValue"]["output"]>;
+  /** Description of the input. */
+  description?: Maybe<Scalars["String"]["output"]>;
+  /** Name of the input. */
+  name: Scalars["String"]["output"];
+  /** Possible values that the input can take, if provided. */
+  options?: Maybe<Scalars["CiInputsValue"]["output"]>;
+  /** Regular expression pattern that the input value must match if provided. */
+  regex?: Maybe<Scalars["String"]["output"]>;
+  /** Indicates whether the input is required. */
+  required: Scalars["Boolean"]["output"];
+  /** Input data type. */
+  type: CiInputsType;
+};
+
+/** Available input types */
+export enum CiInputsType {
+  /** Array input */
+  Array = "ARRAY",
+  /** Boolean input */
+  Boolean = "BOOLEAN",
+  /** Number input */
+  Number = "NUMBER",
+  /** String input */
+  String = "STRING",
+}
+
 /** CI/CD variables for a GitLab instance. */
 export type CiInstanceVariable = CiVariable & {
   __typename?: "CiInstanceVariable";
@@ -6835,7 +7602,7 @@ export type CiInstanceVariableEdge = {
   node?: Maybe<CiInstanceVariable>;
 };
 
-export type CiJob = {
+export type CiJob = CiJobInterface & {
   __typename?: "CiJob";
   /** Indicates the job is active. */
   active: Scalars["Boolean"]["output"];
@@ -6865,6 +7632,8 @@ export type CiJob = {
   duration?: Maybe<Scalars["Int"]["output"]>;
   /** When the job was erased. */
   erasedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Exit code of the job. Available for jobs that started after upgrading to GitLab 16.10 and failed with an exit code. */
+  exitCode?: Maybe<Scalars["Int"]["output"]>;
   /** Message on why the job failed. */
   failureMessage?: Maybe<Scalars["String"]["output"]>;
   /** When a job has finished running. */
@@ -6882,7 +7651,7 @@ export type CiJob = {
   /** References to builds that must complete before the jobs run. */
   needs?: Maybe<CiBuildNeedConnection>;
   /** Pipeline the job belongs to. */
-  pipeline?: Maybe<Pipeline>;
+  pipeline?: Maybe<PipelineInterface>;
   /** Play path of the job. */
   playPath?: Maybe<Scalars["String"]["output"]>;
   /** Indicates the job can be played. */
@@ -7117,11 +7886,284 @@ export enum CiJobFailureReason {
   UserBlocked = "USER_BLOCKED",
 }
 
+export type CiJobInterface = {
+  /** Indicates the job is active. */
+  active?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Whether the job is allowed to fail. */
+  allowFailure?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Artifacts generated by the job. */
+  artifacts?: Maybe<CiJobArtifactConnection>;
+  /** URL for browsing the artifact's archive. */
+  browseArtifactsPath?: Maybe<Scalars["String"]["output"]>;
+  /** Indicates whether the current user can play the job. */
+  canPlayJob?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Indicates the job can be canceled. */
+  cancelable?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Path to the commit that triggered the job. */
+  commitPath?: Maybe<Scalars["String"]["output"]>;
+  /** Coverage level of the job. */
+  coverage?: Maybe<Scalars["Float"]["output"]>;
+  /** When the job was created. */
+  createdAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Whether the job was created by a tag. */
+  createdByTag?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Detailed status of the job. */
+  detailedStatus?: Maybe<DetailedStatus>;
+  /** Duration of the job in seconds. */
+  duration?: Maybe<Scalars["Int"]["output"]>;
+  /** When the job was erased. */
+  erasedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Exit code of the job. Available for jobs that started after upgrading to GitLab 16.10 and failed with an exit code. */
+  exitCode?: Maybe<Scalars["Int"]["output"]>;
+  /** Message on why the job failed. */
+  failureMessage?: Maybe<Scalars["String"]["output"]>;
+  /** When a job has finished running. */
+  finishedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** ID of the job. */
+  id?: Maybe<Scalars["JobID"]["output"]>;
+  /** Indicates the type of job. */
+  kind?: Maybe<CiJobKind>;
+  /** Whether the job has a manual action. */
+  manualJob?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Name of the job. */
+  name?: Maybe<Scalars["String"]["output"]>;
+  /** Pipeline the job belongs to. */
+  pipeline?: Maybe<PipelineInterface>;
+  /** Play path of the job. */
+  playPath?: Maybe<Scalars["String"]["output"]>;
+  /** Indicates the job can be played. */
+  playable?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Project that the job belongs to. */
+  project?: Maybe<ProjectInterface>;
+  /** When the job was enqueued and marked as pending. */
+  queuedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** How long the job was enqueued before starting. */
+  queuedDuration?: Maybe<Scalars["Duration"]["output"]>;
+  /** Ref name of the job. */
+  refName?: Maybe<Scalars["String"]["output"]>;
+  /** Path to the ref. */
+  refPath?: Maybe<Scalars["String"]["output"]>;
+  /** Indicates that the job has been retried. */
+  retried?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Indicates the job can be retried. */
+  retryable?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Runner assigned to execute the job. */
+  runner?: Maybe<CiRunner>;
+  /** Indicates the job is scheduled. */
+  scheduled?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Schedule for the build. */
+  scheduledAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Type of job scheduling. Value is `dag` if the job uses the `needs` keyword, and `stage` otherwise. */
+  schedulingType?: Maybe<Scalars["String"]["output"]>;
+  /** Short SHA1 ID of the commit. */
+  shortSha?: Maybe<Scalars["String"]["output"]>;
+  /** Policy or action that initiated the job. If not set, the value is inherited from the pipeline. */
+  source?: Maybe<Scalars["String"]["output"]>;
+  /** Stage of the job. */
+  stage?: Maybe<CiStage>;
+  /** When the job was started. */
+  startedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Status of the job. */
+  status?: Maybe<CiJobStatus>;
+  /** Indicates the job is stuck. */
+  stuck?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Tags for the current job. */
+  tags?: Maybe<Array<Scalars["String"]["output"]>>;
+  /** Trace generated by the job. */
+  trace?: Maybe<CiJobTrace>;
+  /** Whether the job was triggered. */
+  triggered?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Permissions for the current user on the job. */
+  userPermissions?: Maybe<JobPermissions>;
+  /** Web path of the job. */
+  webPath?: Maybe<Scalars["String"]["output"]>;
+};
+
+export type CiJobInterfaceArtifactsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** The connection type for CiJobInterface. */
+export type CiJobInterfaceConnection = {
+  __typename?: "CiJobInterfaceConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<CiJobInterfaceEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<CiJobInterface>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** The connection type for CiJobInterface. */
+export type CiJobInterfaceConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** An edge in a connection. */
+export type CiJobInterfaceEdge = {
+  __typename?: "CiJobInterfaceEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<CiJobInterface>;
+};
+
 export enum CiJobKind {
   /** Bridge CI job connecting a parent and child pipeline. */
   Bridge = "BRIDGE",
   /** Standard CI job. */
   Build = "BUILD",
+}
+
+export type CiJobMinimalAccess = CiJobInterface & {
+  __typename?: "CiJobMinimalAccess";
+  /** Indicates the job is active. */
+  active: Scalars["Boolean"]["output"];
+  /** Whether the job is allowed to fail. */
+  allowFailure: Scalars["Boolean"]["output"];
+  /** Artifacts generated by the job. */
+  artifacts?: Maybe<CiJobArtifactConnection>;
+  /** URL for browsing the artifact's archive. */
+  browseArtifactsPath?: Maybe<Scalars["String"]["output"]>;
+  /** Indicates whether the current user can play the job. */
+  canPlayJob?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Indicates the job can be canceled. */
+  cancelable?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Path to the commit that triggered the job. */
+  commitPath?: Maybe<Scalars["String"]["output"]>;
+  /** Coverage level of the job. */
+  coverage?: Maybe<Scalars["Float"]["output"]>;
+  /** When the job was created. */
+  createdAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Whether the job was created by a tag. */
+  createdByTag: Scalars["Boolean"]["output"];
+  /** Detailed status of the job. */
+  detailedStatus?: Maybe<DetailedStatus>;
+  /** Duration of the job in seconds. */
+  duration?: Maybe<Scalars["Int"]["output"]>;
+  /** When the job was erased. */
+  erasedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Exit code of the job. Available for jobs that started after upgrading to GitLab 16.10 and failed with an exit code. */
+  exitCode?: Maybe<Scalars["Int"]["output"]>;
+  /** Message on why the job failed. */
+  failureMessage?: Maybe<Scalars["String"]["output"]>;
+  /** When a job has finished running. */
+  finishedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** ID of the job. */
+  id?: Maybe<Scalars["JobID"]["output"]>;
+  /** Indicates the type of job. */
+  kind?: Maybe<CiJobKind>;
+  /** Whether the job has a manual action. */
+  manualJob?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Name of the job. */
+  name?: Maybe<Scalars["String"]["output"]>;
+  /** Pipeline the job belongs to. */
+  pipeline?: Maybe<PipelineInterface>;
+  /** Play path of the job. */
+  playPath?: Maybe<Scalars["String"]["output"]>;
+  /** Indicates the job can be played. */
+  playable?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Project that the job belongs to. */
+  project?: Maybe<ProjectInterface>;
+  /** When the job was enqueued and marked as pending. */
+  queuedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** How long the job was enqueued before starting. */
+  queuedDuration?: Maybe<Scalars["Duration"]["output"]>;
+  /** Ref name of the job. */
+  refName?: Maybe<Scalars["String"]["output"]>;
+  /** Path to the ref. */
+  refPath?: Maybe<Scalars["String"]["output"]>;
+  /** Indicates that the job has been retried. */
+  retried?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Indicates the job can be retried. */
+  retryable?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Runner assigned to execute the job. */
+  runner?: Maybe<CiRunner>;
+  /** Indicates the job is scheduled. */
+  scheduled?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Schedule for the build. */
+  scheduledAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Type of job scheduling. Value is `dag` if the job uses the `needs` keyword, and `stage` otherwise. */
+  schedulingType?: Maybe<Scalars["String"]["output"]>;
+  /** Short SHA1 ID of the commit. */
+  shortSha: Scalars["String"]["output"];
+  /** Policy or action that initiated the job. If not set, the value is inherited from the pipeline. */
+  source?: Maybe<Scalars["String"]["output"]>;
+  /** Stage of the job. */
+  stage?: Maybe<CiStage>;
+  /** When the job was started. */
+  startedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Status of the job. */
+  status?: Maybe<CiJobStatus>;
+  /** Indicates the job is stuck. */
+  stuck: Scalars["Boolean"]["output"];
+  /** Tags for the current job. */
+  tags?: Maybe<Array<Scalars["String"]["output"]>>;
+  /** Trace generated by the job. */
+  trace?: Maybe<CiJobTrace>;
+  /** Whether the job was triggered. */
+  triggered?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Permissions for the current user on the job. */
+  userPermissions?: Maybe<JobPermissions>;
+  /** Web path of the job. */
+  webPath?: Maybe<Scalars["String"]["output"]>;
+};
+
+export type CiJobMinimalAccessArtifactsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export enum CiJobSource {
+  /** A job initiated by api. */
+  Api = "API",
+  /** A job initiated by chat. */
+  Chat = "CHAT",
+  /** A job initiated by container registry push. */
+  ContainerRegistryPush = "CONTAINER_REGISTRY_PUSH",
+  /** A job initiated by duo workflow. */
+  DuoWorkflow = "DUO_WORKFLOW",
+  /** A job initiated by external. */
+  External = "EXTERNAL",
+  /** A job initiated by external pull request event. */
+  ExternalPullRequestEvent = "EXTERNAL_PULL_REQUEST_EVENT",
+  /** A job initiated by merge request event. */
+  MergeRequestEvent = "MERGE_REQUEST_EVENT",
+  /** A job initiated by ondemand dast scan. */
+  OndemandDastScan = "ONDEMAND_DAST_SCAN",
+  /** A job initiated by ondemand dast validation. */
+  OndemandDastValidation = "ONDEMAND_DAST_VALIDATION",
+  /** A job initiated by parent pipeline. */
+  ParentPipeline = "PARENT_PIPELINE",
+  /** A job initiated by pipeline. */
+  Pipeline = "PIPELINE",
+  /** A job initiated by pipeline execution policy. */
+  PipelineExecutionPolicy = "PIPELINE_EXECUTION_POLICY",
+  /** A job initiated by pipeline execution policy schedule. */
+  PipelineExecutionPolicySchedule = "PIPELINE_EXECUTION_POLICY_SCHEDULE",
+  /** A job initiated by push. */
+  Push = "PUSH",
+  /** A job initiated by scan execution policy. */
+  ScanExecutionPolicy = "SCAN_EXECUTION_POLICY",
+  /** A job initiated by schedule. */
+  Schedule = "SCHEDULE",
+  /** A job initiated by security orchestration policy. */
+  SecurityOrchestrationPolicy = "SECURITY_ORCHESTRATION_POLICY",
+  /** A job initiated by trigger. */
+  Trigger = "TRIGGER",
+  /** A job initiated by unknown. */
+  Unknown = "UNKNOWN",
+  /** A job initiated by web. */
+  Web = "WEB",
+  /** A job initiated by webide. */
+  Webide = "WEBIDE",
 }
 
 export enum CiJobStatus {
@@ -7153,6 +8195,80 @@ export enum CiJobStatus {
   WaitingForResource = "WAITING_FOR_RESOURCE",
 }
 
+/** Group that can access the current project by authenticating with a CI/CD job token. */
+export type CiJobTokenAccessibleGroup = {
+  __typename?: "CiJobTokenAccessibleGroup";
+  /** Avatar URL of the group. */
+  avatarUrl?: Maybe<Scalars["String"]["output"]>;
+  /** Full path of the group. */
+  fullPath: Scalars["ID"]["output"];
+  /** ID of the group. */
+  id: Scalars["ID"]["output"];
+  /** Name of the group. */
+  name: Scalars["String"]["output"];
+  /** Path of the group. */
+  path: Scalars["String"]["output"];
+  /** Web URL of the group. */
+  webUrl?: Maybe<Scalars["String"]["output"]>;
+};
+
+/** The connection type for CiJobTokenAccessibleGroup. */
+export type CiJobTokenAccessibleGroupConnection = {
+  __typename?: "CiJobTokenAccessibleGroupConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<CiJobTokenAccessibleGroupEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<CiJobTokenAccessibleGroup>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type CiJobTokenAccessibleGroupEdge = {
+  __typename?: "CiJobTokenAccessibleGroupEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<CiJobTokenAccessibleGroup>;
+};
+
+/** Project that can access the current project by authenticating with a CI/CD job token. */
+export type CiJobTokenAccessibleProject = {
+  __typename?: "CiJobTokenAccessibleProject";
+  /** URL to avatar image file of the project. */
+  avatarUrl?: Maybe<Scalars["String"]["output"]>;
+  /** Full path of the project. */
+  fullPath: Scalars["ID"]["output"];
+  /** ID of the project. */
+  id: Scalars["ID"]["output"];
+  /** Name of the project (without namespace). */
+  name: Scalars["String"]["output"];
+  /** Path of the project. */
+  path: Scalars["String"]["output"];
+  /** Web URL of the project. */
+  webUrl?: Maybe<Scalars["String"]["output"]>;
+};
+
+/** The connection type for CiJobTokenAccessibleProject. */
+export type CiJobTokenAccessibleProjectConnection = {
+  __typename?: "CiJobTokenAccessibleProjectConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<CiJobTokenAccessibleProjectEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<CiJobTokenAccessibleProject>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type CiJobTokenAccessibleProjectEdge = {
+  __typename?: "CiJobTokenAccessibleProjectEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<CiJobTokenAccessibleProject>;
+};
+
 export type CiJobTokenAuthLog = {
   __typename?: "CiJobTokenAuthLog";
   /**
@@ -7164,7 +8280,7 @@ export type CiJobTokenAuthLog = {
    * Origin project. Introduced in GitLab 17.6: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
    */
-  originProject: Project;
+  originProject: CiJobTokenAccessibleProject;
 };
 
 /** The connection type for CiJobTokenAuthLog. */
@@ -7204,6 +8320,11 @@ export type CiJobTokenScopeAddGroupOrProjectPayload = {
   __typename?: "CiJobTokenScopeAddGroupOrProjectPayload";
   /** CI job token's access scope. */
   ciJobTokenScope?: Maybe<CiJobTokenScopeType>;
+  /**
+   * Allowlist entry for the CI job token's access scope. Introduced in GitLab 17.6: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+   */
+  ciJobTokenScopeAllowlistEntry?: Maybe<CiJobTokenScopeAllowlistEntry>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Errors encountered during execution of the mutation. */
@@ -7225,10 +8346,124 @@ export type CiJobTokenScopeAddProjectPayload = {
   __typename?: "CiJobTokenScopeAddProjectPayload";
   /** CI job token's access scope. */
   ciJobTokenScope?: Maybe<CiJobTokenScopeType>;
+  /**
+   * Allowlist entry for the CI job token's access scope. Introduced in GitLab 17.6: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+   */
+  ciJobTokenScopeAllowlistEntry?: Maybe<CiJobTokenScopeAllowlistEntry>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
+};
+
+export type CiJobTokenScopeAllowlist = {
+  __typename?: "CiJobTokenScopeAllowlist";
+  /** Allowlist of groups that can access the current project by authenticating with a CI/CD job token. */
+  groupsAllowlist?: Maybe<CiJobTokenScopeAllowlistEntryConnection>;
+  /** Allowlist of projects that can access the current project by authenticating with a CI/CD job token. */
+  projectsAllowlist?: Maybe<CiJobTokenScopeAllowlistEntryConnection>;
+};
+
+export type CiJobTokenScopeAllowlistGroupsAllowlistArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type CiJobTokenScopeAllowlistProjectsAllowlistArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** Represents an allowlist entry for the CI_JOB_TOKEN */
+export type CiJobTokenScopeAllowlistEntry = {
+  __typename?: "CiJobTokenScopeAllowlistEntry";
+  /** User that added the entry. */
+  addedBy?: Maybe<UserCore>;
+  /** Indicates whether the entry is created by the autopopulation process. */
+  autopopulated?: Maybe<Scalars["Boolean"]["output"]>;
+  /** When the entry was created. */
+  createdAt: Scalars["Time"]["output"];
+  /** Indicates whether default permissions are enabled (true) or fine-grained permissions are enabled (false). */
+  defaultPermissions?: Maybe<Scalars["Boolean"]["output"]>;
+  /**
+   * Direction of access. Defaults to INBOUND. Deprecated in GitLab 18.0: Outbound job token scope is being removed. This field can only be INBOUND.
+   * @deprecated Outbound job token scope is being removed. This field can only be INBOUND. Deprecated in GitLab 18.0.
+   */
+  direction?: Maybe<Scalars["String"]["output"]>;
+  /**
+   * List of policies for the entry. Introduced in GitLab 17.5: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
+   */
+  jobTokenPolicies?: Maybe<Array<CiJobTokenScopePolicies>>;
+  /** Project that owns the allowlist entry. */
+  sourceProject: Project;
+  /** Group or project allowed by the entry. */
+  target?: Maybe<CiJobTokenScopeTarget>;
+};
+
+/** The connection type for CiJobTokenScopeAllowlistEntry. */
+export type CiJobTokenScopeAllowlistEntryConnection = {
+  __typename?: "CiJobTokenScopeAllowlistEntryConnection";
+  /** Total count of collection. */
+  count: Scalars["Int"]["output"];
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<CiJobTokenScopeAllowlistEntryEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<CiJobTokenScopeAllowlistEntry>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type CiJobTokenScopeAllowlistEntryEdge = {
+  __typename?: "CiJobTokenScopeAllowlistEntryEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<CiJobTokenScopeAllowlistEntry>;
+};
+
+/** Autogenerated input type of CiJobTokenScopeAutopopulateAllowlist */
+export type CiJobTokenScopeAutopopulateAllowlistInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Project in which to autopopulate the allowlist. */
+  projectPath: Scalars["ID"]["input"];
+};
+
+/** Autogenerated return type of CiJobTokenScopeAutopopulateAllowlist. */
+export type CiJobTokenScopeAutopopulateAllowlistPayload = {
+  __typename?: "CiJobTokenScopeAutopopulateAllowlistPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Status of the autopopulation process. */
+  status: Scalars["String"]["output"];
+};
+
+/** Autogenerated input type of CiJobTokenScopeClearAllowlistAutopopulations */
+export type CiJobTokenScopeClearAllowlistAutopopulationsInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Project in which to autopopulate the allowlist. */
+  projectPath: Scalars["ID"]["input"];
+};
+
+/** Autogenerated return type of CiJobTokenScopeClearAllowlistAutopopulations. */
+export type CiJobTokenScopeClearAllowlistAutopopulationsPayload = {
+  __typename?: "CiJobTokenScopeClearAllowlistAutopopulationsPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Status of the autopopulation process. */
+  status: Scalars["String"]["output"];
 };
 
 /** Direction of access. */
@@ -7241,76 +8476,38 @@ export enum CiJobTokenScopeDirection {
 
 /** CI_JOB_TOKEN policy */
 export enum CiJobTokenScopePolicies {
-  /** Admin Container Image */
-  AdminContainerImage = "ADMIN_CONTAINER_IMAGE",
+  /** Admin Deployments */
+  AdminDeployments = "ADMIN_DEPLOYMENTS",
+  /** Admin Environments */
+  AdminEnvironments = "ADMIN_ENVIRONMENTS",
+  /** Admin Jobs */
+  AdminJobs = "ADMIN_JOBS",
+  /** Admin Packages */
+  AdminPackages = "ADMIN_PACKAGES",
+  /** Admin Pipelines */
+  AdminPipelines = "ADMIN_PIPELINES",
+  /** Admin Releases */
+  AdminReleases = "ADMIN_RELEASES",
   /** Admin Secure Files */
   AdminSecureFiles = "ADMIN_SECURE_FILES",
   /** Admin Terraform State */
   AdminTerraformState = "ADMIN_TERRAFORM_STATE",
-  /** Build Create Container Image */
-  BuildCreateContainerImage = "BUILD_CREATE_CONTAINER_IMAGE",
-  /** Build Destroy Container Image */
-  BuildDestroyContainerImage = "BUILD_DESTROY_CONTAINER_IMAGE",
-  /** Build Download Code */
-  BuildDownloadCode = "BUILD_DOWNLOAD_CODE",
-  /** Build Push Code */
-  BuildPushCode = "BUILD_PUSH_CODE",
-  /** Build Read Container Image */
-  BuildReadContainerImage = "BUILD_READ_CONTAINER_IMAGE",
-  /** Create Deployment */
-  CreateDeployment = "CREATE_DEPLOYMENT",
-  /** Create Environment */
-  CreateEnvironment = "CREATE_ENVIRONMENT",
-  /** Create On Demand Dast Scan */
-  CreateOnDemandDastScan = "CREATE_ON_DEMAND_DAST_SCAN",
-  /** Create Package */
-  CreatePackage = "CREATE_PACKAGE",
-  /** Create Release */
-  CreateRelease = "CREATE_RELEASE",
-  /** Destroy Container Image */
-  DestroyContainerImage = "DESTROY_CONTAINER_IMAGE",
-  /** Destroy Deployment */
-  DestroyDeployment = "DESTROY_DEPLOYMENT",
-  /** Destroy Environment */
-  DestroyEnvironment = "DESTROY_ENVIRONMENT",
-  /** Destroy Package */
-  DestroyPackage = "DESTROY_PACKAGE",
-  /** Destroy Release */
-  DestroyRelease = "DESTROY_RELEASE",
-  /** Read Build */
-  ReadBuild = "READ_BUILD",
-  /** Read Container Image */
-  ReadContainerImage = "READ_CONTAINER_IMAGE",
-  /** Read Deployment */
-  ReadDeployment = "READ_DEPLOYMENT",
-  /** Read Environment */
-  ReadEnvironment = "READ_ENVIRONMENT",
-  /** Read Group */
-  ReadGroup = "READ_GROUP",
-  /** Read Job Artifacts */
-  ReadJobArtifacts = "READ_JOB_ARTIFACTS",
-  /** Read Package */
-  ReadPackage = "READ_PACKAGE",
-  /** Read Pipeline */
-  ReadPipeline = "READ_PIPELINE",
-  /** Read Project */
-  ReadProject = "READ_PROJECT",
-  /** Read Release */
-  ReadRelease = "READ_RELEASE",
+  /** Read Deployments */
+  ReadDeployments = "READ_DEPLOYMENTS",
+  /** Read Environments */
+  ReadEnvironments = "READ_ENVIRONMENTS",
+  /** Read Jobs */
+  ReadJobs = "READ_JOBS",
+  /** Read Packages */
+  ReadPackages = "READ_PACKAGES",
+  /** Read Pipelines */
+  ReadPipelines = "READ_PIPELINES",
+  /** Read Releases */
+  ReadReleases = "READ_RELEASES",
   /** Read Secure Files */
   ReadSecureFiles = "READ_SECURE_FILES",
   /** Read Terraform State */
   ReadTerraformState = "READ_TERRAFORM_STATE",
-  /** Stop Environment */
-  StopEnvironment = "STOP_ENVIRONMENT",
-  /** Update Deployment */
-  UpdateDeployment = "UPDATE_DEPLOYMENT",
-  /** Update Environment */
-  UpdateEnvironment = "UPDATE_ENVIRONMENT",
-  /** Update Pipeline */
-  UpdatePipeline = "UPDATE_PIPELINE",
-  /** Update Release */
-  UpdateRelease = "UPDATE_RELEASE",
 }
 
 /** Autogenerated input type of CiJobTokenScopeRemoveGroup */
@@ -7328,6 +8525,11 @@ export type CiJobTokenScopeRemoveGroupPayload = {
   __typename?: "CiJobTokenScopeRemoveGroupPayload";
   /** CI job token's access scope. */
   ciJobTokenScope?: Maybe<CiJobTokenScopeType>;
+  /**
+   * Allowlist entry for the CI job token's access scope. Introduced in GitLab 17.6: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+   */
+  ciJobTokenScopeAllowlistEntry?: Maybe<CiJobTokenScopeAllowlistEntry>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Errors encountered during execution of the mutation. */
@@ -7347,25 +8549,42 @@ export type CiJobTokenScopeRemoveProjectInput = {
 /** Autogenerated return type of CiJobTokenScopeRemoveProject. */
 export type CiJobTokenScopeRemoveProjectPayload = {
   __typename?: "CiJobTokenScopeRemoveProjectPayload";
-  /** CI job token's scope of access. */
+  /** CI job token's access scope. */
   ciJobTokenScope?: Maybe<CiJobTokenScopeType>;
+  /**
+   * Allowlist entry for the CI job token's access scope. Introduced in GitLab 17.6: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+   */
+  ciJobTokenScopeAllowlistEntry?: Maybe<CiJobTokenScopeAllowlistEntry>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
 };
 
+/** Represents an object that is the target of a CI_JOB_TOKEN allowlist entry */
+export type CiJobTokenScopeTarget =
+  | CiJobTokenAccessibleGroup
+  | CiJobTokenAccessibleProject;
+
 export type CiJobTokenScopeType = {
   __typename?: "CiJobTokenScopeType";
+  /** List of IDs of groups which have been created by the  autopopulation process. */
+  groupAllowlistAutopopulatedIds: Array<Scalars["GroupID"]["output"]>;
   /** Allowlist of groups that can access the current project by authenticating with a CI/CD job token. */
-  groupsAllowlist: GroupConnection;
+  groupsAllowlist: CiJobTokenAccessibleGroupConnection;
   /** Count of groups that can access the current project by authenticating with a CI/CD job token. The count does not include subgroups. */
   groupsAllowlistCount: Scalars["Int"]["output"];
   /** Allowlist of projects that can access the current project by authenticating with a CI/CD job token. */
-  inboundAllowlist: ProjectConnection;
+  inboundAllowlist: CiJobTokenAccessibleProjectConnection;
+  /** List of IDs of projects which have been created by the  autopopulation process. */
+  inboundAllowlistAutopopulatedIds: Array<Scalars["ProjectID"]["output"]>;
   /** Count of projects that can access the current project by authenticating with a CI/CD job token. The count does not include nested projects. */
   inboundAllowlistCount: Scalars["Int"]["output"];
-  /** Allow list of projects that are accessible using the current project's CI Job tokens. */
+  /**
+   * Allow list of projects that are accessible using the current project's CI Job tokens. Deprecated in GitLab 18.0: Outbound job token scope is being removed. Only inbound allowlist is supported.
+   * @deprecated Outbound job token scope is being removed. Only inbound allowlist is supported. Deprecated in GitLab 18.0.
+   */
   outboundAllowlist: ProjectConnection;
   /**
    * Allow list of projects that can be accessed by CI Job tokens created by the project. Deprecated in GitLab 15.9: The `projects` attribute is being deprecated. Use `outbound_allowlist`.
@@ -7406,6 +8625,8 @@ export type CiJobTokenScopeTypeProjectsArgs = {
 export type CiJobTokenScopeUpdatePoliciesInput = {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Indicates whether default permissions are enabled (true) or fine-grained permissions are enabled (false). */
+  defaultPermissions: Scalars["Boolean"]["input"];
   /** List of policies added to the CI job token scope. */
   jobTokenPolicies: Array<CiJobTokenScopePolicies>;
   /** Project that the CI job token scope belongs to. */
@@ -7417,8 +8638,11 @@ export type CiJobTokenScopeUpdatePoliciesInput = {
 /** Autogenerated return type of CiJobTokenScopeUpdatePolicies. */
 export type CiJobTokenScopeUpdatePoliciesPayload = {
   __typename?: "CiJobTokenScopeUpdatePoliciesPayload";
-  /** Updated CI job token access scope. */
-  ciJobTokenScope?: Maybe<CiJobTokenScopeType>;
+  /**
+   * Allowlist entry for the CI job token's access scope. Introduced in GitLab 17.6: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+   */
+  ciJobTokenScopeAllowlistEntry?: Maybe<CiJobTokenScopeAllowlistEntry>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Errors encountered during execution of the mutation. */
@@ -7530,11 +8754,6 @@ export type CiMinutesProjectMonthlyUsage = {
   __typename?: "CiMinutesProjectMonthlyUsage";
   /** Number of compute minutes used by the project in the month. */
   minutes?: Maybe<Scalars["Int"]["output"]>;
-  /**
-   * Name of the project. Deprecated in GitLab 15.6: Use `project.name`.
-   * @deprecated Use `project.name`. Deprecated in GitLab 15.6.
-   */
-  name?: Maybe<Scalars["String"]["output"]>;
   /** Project having the recorded usage. */
   project?: Maybe<Project>;
   /** Total duration (in seconds) of shared runners use by the project for the month. */
@@ -7560,6 +8779,69 @@ export type CiMinutesProjectMonthlyUsageEdge = {
   /** The item at the end of the edge. */
   node?: Maybe<CiMinutesProjectMonthlyUsage>;
 };
+
+/** Information about an asynchronous pipeline creation request */
+export type CiPipelineCreationRequest = {
+  __typename?: "CiPipelineCreationRequest";
+  /** Error message if pipeline creation failed. */
+  error?: Maybe<Scalars["String"]["output"]>;
+  /** ID of the created pipeline if creation was successful. */
+  pipelineId?: Maybe<Scalars["CiPipelineID"]["output"]>;
+  /** Current status of the pipeline creation. */
+  status: CiPipelineCreationStatus;
+};
+
+/** The status of a pipeline creation */
+export enum CiPipelineCreationStatus {
+  /** The pipeline creation is failed */
+  Failed = "FAILED",
+  /** The pipeline creation is in progress */
+  InProgress = "IN_PROGRESS",
+  /** The pipeline creation is succeeded */
+  Succeeded = "SUCCEEDED",
+}
+
+/** Ci Pipeline sources enum */
+export enum CiPipelineSources {
+  /** Pipeline created by an API event */
+  Api = "API",
+  /** Pipeline created by a chat event */
+  Chat = "CHAT",
+  /** Pipeline created by a container registry push event */
+  ContainerRegistryPush = "CONTAINER_REGISTRY_PUSH",
+  /** Pipeline created by a duo workflow event */
+  DuoWorkflow = "DUO_WORKFLOW",
+  /** Pipeline created by an external event */
+  External = "EXTERNAL",
+  /** Pipeline created by an external pull request event */
+  ExternalPullRequestEvent = "EXTERNAL_PULL_REQUEST_EVENT",
+  /** Pipeline created by a merge request event */
+  MergeRequestEvent = "MERGE_REQUEST_EVENT",
+  /** Pipeline created by an ondemand dast scan event */
+  OndemandDastScan = "ONDEMAND_DAST_SCAN",
+  /** Pipeline created by an ondemand dast validation event */
+  OndemandDastValidation = "ONDEMAND_DAST_VALIDATION",
+  /** Pipeline created by a parent pipeline event */
+  ParentPipeline = "PARENT_PIPELINE",
+  /** Pipeline created by a pipeline event */
+  Pipeline = "PIPELINE",
+  /** Pipeline created by a pipeline execution policy schedule event */
+  PipelineExecutionPolicySchedule = "PIPELINE_EXECUTION_POLICY_SCHEDULE",
+  /** Pipeline created by a push event */
+  Push = "PUSH",
+  /** Pipeline created by a schedule event */
+  Schedule = "SCHEDULE",
+  /** Pipeline created by a security orchestration policy event */
+  SecurityOrchestrationPolicy = "SECURITY_ORCHESTRATION_POLICY",
+  /** Pipeline created by a trigger event */
+  Trigger = "TRIGGER",
+  /** Pipeline created by an unknown event */
+  Unknown = "UNKNOWN",
+  /** Pipeline created by a web event */
+  Web = "WEB",
+  /** Pipeline created by a webide event */
+  Webide = "WEBIDE",
+}
 
 export type CiProjectSubscription = {
   __typename?: "CiProjectSubscription";
@@ -7664,6 +8946,11 @@ export type CiRunner = {
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.0.
    */
   creationMethod?: Maybe<CiRunnerCreationMethod>;
+  /**
+   * Runner creation state. Used to determine if a runner has been registered and has contacted the GitLab instance. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  creationState?: Maybe<CiRunnerCreationState>;
   /** Description of the runner. */
   description?: Maybe<Scalars["String"]["output"]>;
   /** Admin form URL of the runner. Only available for administrators. */
@@ -7679,7 +8966,7 @@ export type CiRunner = {
    */
   ephemeralRegisterUrl?: Maybe<Scalars["String"]["output"]>;
   /** Groups the runner is associated with. For group runners only. */
-  groups?: Maybe<GroupConnection>;
+  groups?: Maybe<GroupInterfaceConnection>;
   /** ID of the runner. */
   id: Scalars["CiRunnerID"]["output"];
   /**
@@ -7693,7 +8980,7 @@ export type CiRunner = {
    */
   jobExecutionStatus?: Maybe<CiRunnerJobExecutionStatus>;
   /** Jobs assigned to the runner. This field can only be resolved for one runner in any single request. */
-  jobs?: Maybe<CiJobConnection>;
+  jobs?: Maybe<CiJobInterfaceConnection>;
   /** Indicates the runner is locked. */
   locked?: Maybe<Scalars["Boolean"]["output"]>;
   /** Runner's maintenance notes. */
@@ -7705,7 +8992,7 @@ export type CiRunner = {
   /** Maximum timeout (in seconds) for jobs processed by the runner. */
   maximumTimeout?: Maybe<Scalars["Int"]["output"]>;
   /** Project that owns the runner. For project runners only. */
-  ownerProject?: Maybe<Project>;
+  ownerProject?: Maybe<ProjectInterface>;
   /** Indicates the runner is paused and not available to run jobs. */
   paused: Scalars["Boolean"]["output"];
   /** Private projects' "compute cost factor" associated with the runner (GitLab.com only). */
@@ -7827,6 +9114,13 @@ export enum CiRunnerCreationMethod {
   AuthenticatedUser = "AUTHENTICATED_USER",
   /** Applies to a runner that was created by a runner registration token. */
   RegistrationToken = "REGISTRATION_TOKEN",
+}
+
+export enum CiRunnerCreationState {
+  /** Applies to a runner that has been registered and has polled for CI/CD jobs at least once. */
+  Finished = "FINISHED",
+  /** Applies to a runner that has been created, but is not yet registered and running. */
+  Started = "STARTED",
 }
 
 /** An edge in a connection. */
@@ -8057,16 +9351,27 @@ export type CiRunnerUsageByProject = {
 /** Represents the Geo replication and verification state of a ci_secure_file. */
 export type CiSecureFileRegistry = {
   __typename?: "CiSecureFileRegistry";
+  /** Indicate if the checksums of the CiSecureFileRegistry do not match on the primary and secondary. */
+  checksumMismatch?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the Ci Secure File. */
   ciSecureFileId: Scalars["ID"]["output"];
   /** Timestamp when the CiSecureFileRegistry was created */
   createdAt?: Maybe<Scalars["Time"]["output"]>;
+  /**
+   * Indicate if a forced redownload is to be performed. Deprecated in GitLab 17.10: Removed from registry tables in the database in favor of the newer reusable framework.
+   * @deprecated Removed from registry tables in the database in favor of the newer reusable framework. Deprecated in GitLab 17.10.
+   */
+  forceToRedownload?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the CiSecureFileRegistry */
   id: Scalars["ID"]["output"];
   /** Error message during sync of the CiSecureFileRegistry */
   lastSyncFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp of the most recent successful sync of the CiSecureFileRegistry */
   lastSyncedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Indicate if the CiSecureFileRegistry is missing on primary. */
+  missingOnPrimary?: Maybe<Scalars["Boolean"]["output"]>;
+  /** ID of the CiSecureFileRegistry's model record. */
+  modelRecordId?: Maybe<Scalars["Int"]["output"]>;
   /** Timestamp after which the CiSecureFileRegistry is resynced */
   retryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed sync attempts of the CiSecureFileRegistry */
@@ -8075,13 +9380,15 @@ export type CiSecureFileRegistry = {
   state?: Maybe<RegistryState>;
   /** The local checksum of the CiSecureFileRegistry */
   verificationChecksum?: Maybe<Scalars["String"]["output"]>;
+  /** The expected checksum of the CiSecureFileRegistry in case of mismatch. */
+  verificationChecksumMismatched?: Maybe<Scalars["String"]["output"]>;
   /** Error message during verification of the CiSecureFileRegistry */
   verificationFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp after which the CiSecureFileRegistry is reverified */
   verificationRetryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed verification attempts of the CiSecureFileRegistry */
   verificationRetryCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Timestamp when the verification started of CiSecureFileRegistry */
+  /** Timestamp when the verification of CiSecureFileRegistry started */
   verificationStartedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Verification state of the CiSecureFileRegistry */
   verificationState?: Maybe<VerificationStateEnum>;
@@ -8092,12 +9399,19 @@ export type CiSecureFileRegistry = {
 /** The connection type for CiSecureFileRegistry. */
 export type CiSecureFileRegistryConnection = {
   __typename?: "CiSecureFileRegistryConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<CiSecureFileRegistryEdge>>>;
   /** A list of nodes. */
   nodes?: Maybe<Array<Maybe<CiSecureFileRegistry>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** The connection type for CiSecureFileRegistry. */
+export type CiSecureFileRegistryConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** An edge in a connection. */
@@ -8241,6 +9555,8 @@ export type CiVariableInput = {
   key: Scalars["String"]["input"];
   /** Value of the variable. */
   value: Scalars["String"]["input"];
+  /** Type of variable. */
+  variableType?: InputMaybe<CiVariableType>;
 };
 
 /** Values for sorting variables */
@@ -8298,11 +9614,6 @@ export type ClusterAgent = {
   name?: Maybe<Scalars["String"]["output"]>;
   /** Project the cluster agent is associated with. */
   project?: Maybe<Project>;
-  /**
-   * Remote development agent config for the cluster agent. Introduced in GitLab 17.4: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
-   */
-  remoteDevelopmentAgentConfig?: Maybe<RemoteDevelopmentAgentConfig>;
   /** Tokens associated with the cluster agent. */
   tokens?: Maybe<ClusterAgentTokenConnection>;
   /** Timestamp the cluster agent was updated. */
@@ -8807,11 +10118,11 @@ export type CodeSuggestionEvent = {
   id: Scalars["ID"]["output"];
   /** Programming language in the context of the suggestion. */
   language?: Maybe<Scalars["String"]["output"]>;
-  /** Size of the code suggestion. */
+  /** Size of the code suggestion measured in lines of code. */
   suggestionSize?: Maybe<Scalars["String"]["output"]>;
   /** When the event happened. */
   timestamp: Scalars["Time"]["output"];
-  /** Unique tracking number. */
+  /** Unique tracking number of sequence of events for one suggestion. */
   uniqueTrackingId?: Maybe<Scalars["String"]["output"]>;
   /** User associated with the event. */
   user: UserCore;
@@ -8943,7 +10254,7 @@ export type Commit = Todoable & {
   id: Scalars["ID"]["output"];
   /** Raw commit message. */
   message?: Maybe<Scalars["String"]["output"]>;
-  /** Name or title of this object. */
+  /** Name or title of the object. */
   name?: Maybe<Scalars["String"]["output"]>;
   /** Pipelines of the commit ordered latest first. */
   pipelines?: Maybe<PipelineConnection>;
@@ -9226,6 +10537,8 @@ export type ComplianceFramework = {
   default?: Maybe<Scalars["Boolean"]["output"]>;
   /** Description of the compliance framework. */
   description: Scalars["String"]["output"];
+  /** Web UI path to edit the compliance framework. */
+  editPath: Scalars["String"]["output"];
   /** Compliance framework ID. */
   id: Scalars["ID"]["output"];
   /** Name of the compliance framework. */
@@ -9237,12 +10550,16 @@ export type ComplianceFramework = {
   pipelineConfigurationFullPath?: Maybe<Scalars["String"]["output"]>;
   /** Pipeline Execution Policies of the compliance framework. */
   pipelineExecutionPolicies?: Maybe<PipelineExecutionPolicyConnection>;
+  /** Pipeline Execution Schedule Policies of the compliance framework. */
+  pipelineExecutionSchedulePolicies?: Maybe<PipelineExecutionSchedulePolicyConnection>;
   /** Projects associated with the compliance framework. */
   projects?: Maybe<ProjectConnection>;
   /** Scan Execution Policies of the compliance framework. */
   scanExecutionPolicies?: Maybe<ScanExecutionPolicyConnection>;
   /** Scan Result Policies of the compliance framework. */
   scanResultPolicies?: Maybe<ScanResultPolicyConnection>;
+  /** Vulnerability Management Policies of the compliance framework. */
+  vulnerabilityManagementPolicies?: Maybe<VulnerabilityManagementPolicyConnection>;
 };
 
 /** Represents a ComplianceFramework associated with a Project */
@@ -9259,6 +10576,16 @@ export type ComplianceFrameworkPipelineExecutionPoliciesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** Represents a ComplianceFramework associated with a Project */
+export type ComplianceFrameworkPipelineExecutionSchedulePoliciesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  includeUnscoped?: InputMaybe<Scalars["Boolean"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  relationship?: InputMaybe<SecurityPolicyRelationType>;
 };
 
 /** Represents a ComplianceFramework associated with a Project */
@@ -9279,6 +10606,14 @@ export type ComplianceFrameworkScanExecutionPoliciesArgs = {
 
 /** Represents a ComplianceFramework associated with a Project */
 export type ComplianceFrameworkScanResultPoliciesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** Represents a ComplianceFramework associated with a Project */
+export type ComplianceFrameworkVulnerabilityManagementPoliciesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
@@ -9319,12 +10654,14 @@ export type ComplianceFrameworkFilters = {
 export type ComplianceFrameworkInput = {
   /** New color representation of the compliance framework in hex format. e.g. #FCA121. */
   color?: InputMaybe<Scalars["String"]["input"]>;
-  /** Set this compliance framework as the default framework for the group. */
+  /** Set the compliance framework as the default framework for the group. */
   default?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** New description for the compliance framework. */
   description?: InputMaybe<Scalars["String"]["input"]>;
   /** New name for the compliance framework. */
   name?: InputMaybe<Scalars["String"]["input"]>;
+  /** Projects to add or remove from the compliance framework. */
+  projects?: InputMaybe<ComplianceFrameworkProjectInput>;
 };
 
 /** ComplianceFramework of a project for filtering */
@@ -9335,15 +10672,32 @@ export enum ComplianceFrameworkPresenceFilter {
   None = "NONE",
 }
 
+export type ComplianceFrameworkProjectInput = {
+  /** IDs of the projects to add to the compliance framework. */
+  addProjects: Array<Scalars["Int"]["input"]>;
+  /** IDs of the projects to remove from the compliance framework. */
+  removeProjects: Array<Scalars["Int"]["input"]>;
+};
+
 /** Represents a ComplianceRequirement associated with a ComplianceFramework */
 export type ComplianceRequirement = {
   __typename?: "ComplianceRequirement";
+  /** Compliance controls of the compliance requirement. */
+  complianceRequirementsControls?: Maybe<ComplianceRequirementsControlConnection>;
   /** Description of the compliance requirement. */
   description: Scalars["String"]["output"];
   /** Compliance requirement ID. */
   id: Scalars["ID"]["output"];
   /** Name of the compliance requirement. */
   name: Scalars["String"]["output"];
+};
+
+/** Represents a ComplianceRequirement associated with a ComplianceFramework */
+export type ComplianceRequirementComplianceRequirementsControlsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** The connection type for ComplianceRequirement. */
@@ -9357,6 +10711,13 @@ export type ComplianceRequirementConnection = {
   pageInfo: PageInfo;
 };
 
+/** Lists down all the possible types of requirement controls. */
+export type ComplianceRequirementControl = {
+  __typename?: "ComplianceRequirementControl";
+  /** List of requirement controls. */
+  controlExpressions: Array<ControlExpression>;
+};
+
 /** An edge in a connection. */
 export type ComplianceRequirementEdge = {
   __typename?: "ComplianceRequirementEdge";
@@ -9367,10 +10728,62 @@ export type ComplianceRequirementEdge = {
 };
 
 export type ComplianceRequirementInput = {
+  /** Compliance controls of the compliance requirement. */
+  complianceRequirementsControls?: InputMaybe<
+    Array<ComplianceRequirementsControlInput>
+  >;
   /** New description for the compliance requirement. */
   description?: InputMaybe<Scalars["String"]["input"]>;
   /** New name for the compliance requirement. */
   name?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** Represents a ComplianceRequirementsControl associated with a ComplianceRequirement */
+export type ComplianceRequirementsControl = {
+  __typename?: "ComplianceRequirementsControl";
+  /** Type of the compliance control. */
+  controlType: Scalars["String"]["output"];
+  /** Expression of the compliance control. */
+  expression?: Maybe<Scalars["String"]["output"]>;
+  /** URL of the external control. */
+  externalUrl?: Maybe<Scalars["String"]["output"]>;
+  /** Compliance requirements control ID. */
+  id: Scalars["ID"]["output"];
+  /** Name of the compliance control. */
+  name: Scalars["String"]["output"];
+};
+
+/** The connection type for ComplianceRequirementsControl. */
+export type ComplianceRequirementsControlConnection = {
+  __typename?: "ComplianceRequirementsControlConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<ComplianceRequirementsControlEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<ComplianceRequirementsControl>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type ComplianceRequirementsControlEdge = {
+  __typename?: "ComplianceRequirementsControlEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<ComplianceRequirementsControl>;
+};
+
+export type ComplianceRequirementsControlInput = {
+  /** Type of the compliance control. */
+  controlType?: InputMaybe<Scalars["String"]["input"]>;
+  /** Expression of the compliance control. */
+  expression?: InputMaybe<Scalars["String"]["input"]>;
+  /** URL of the external control. */
+  externalUrl?: InputMaybe<Scalars["String"]["input"]>;
+  /** New name for the compliance requirement control. */
+  name: Scalars["String"]["input"];
+  /** Secret token for an external control. */
+  secretToken?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 /** Compliance standards adherence for a project. */
@@ -9566,6 +10979,35 @@ export type Component = {
   name: Scalars["String"]["output"];
 };
 
+/** A software dependency version used by a project */
+export type ComponentVersion = {
+  __typename?: "ComponentVersion";
+  /** ID of the dependency version. */
+  id: Scalars["SbomComponentVersionID"]["output"];
+  /** Version of the dependency. */
+  version: Scalars["String"]["output"];
+};
+
+/** The connection type for ComponentVersion. */
+export type ComponentVersionConnection = {
+  __typename?: "ComponentVersionConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<ComponentVersionEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<ComponentVersion>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type ComponentVersionEdge = {
+  __typename?: "ComponentVersionEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<ComponentVersion>;
+};
+
 /** Composer metadata */
 export type ComposerMetadata = {
   __typename?: "ComposerMetadata";
@@ -9737,6 +11179,8 @@ export type ConnectedAgent = {
   connectionId?: Maybe<Scalars["BigInt"]["output"]>;
   /** Information about the Agent. */
   metadata?: Maybe<AgentMetadata>;
+  /** Agent warnings list. */
+  warnings?: Maybe<Array<AgentWarning>>;
 };
 
 /** The connection type for ConnectedAgent. */
@@ -9890,68 +11334,144 @@ export enum ContainerExpirationPolicyOlderThanEnum {
   ThirtyDays = "THIRTY_DAYS",
 }
 
-/** A container registry protection rule designed to prevent users with a certain access level or lower from altering the container registry. */
-export type ContainerRegistryProtectionRule = {
-  __typename?: "ContainerRegistryProtectionRule";
+/** Represents the most restrictive permissions for a container image tag */
+export type ContainerProtectionAccessLevel = AccessLevelInterface & {
+  __typename?: "ContainerProtectionAccessLevel";
   /**
-   * ID of the container registry protection rule. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
+   * Returns true when tag rule is for tag immutability. Otherwise, false. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
    */
+  immutable: Scalars["Boolean"]["output"];
+  /**
+   * Minimum GitLab access level required to delete container image tags from the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, no access level can delete tags. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  minimumAccessLevelForDelete?: Maybe<ContainerProtectionTagRuleAccessLevel>;
+  /**
+   * Minimum GitLab access level required to push container image tags to the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, no access level can push tags. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  minimumAccessLevelForPush?: Maybe<ContainerProtectionTagRuleAccessLevel>;
+};
+
+/** A container repository protection rule designed to prevent users with a certain access level or lower from altering the container registry. */
+export type ContainerProtectionRepositoryRule = {
+  __typename?: "ContainerProtectionRepositoryRule";
+  /** ID of the container repository protection rule. */
   id: Scalars["ContainerRegistryProtectionRuleID"]["output"];
-  /**
-   * Minimum GitLab access level to allow to delete container images from the container registry. For example, `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the minimum access level for delete is ignored. Users with at least the Developer role are allowed to delete container images. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
-  minimumAccessLevelForDelete?: Maybe<ContainerRegistryProtectionRuleAccessLevel>;
-  /**
-   * Minimum GitLab access level to allow to push container images to the container registry. For example, `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the minimum access level for push is ignored. Users with at least the Developer role are allowed to push container images. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
-  minimumAccessLevelForPush?: Maybe<ContainerRegistryProtectionRuleAccessLevel>;
-  /**
-   * Container repository path pattern protected by the protection rule. For example, `my-project/my-container-*`. Wildcard character `*` allowed. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
+  /** Minimum GitLab access level required to delete container images from the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the default minimum access level is `DEVELOPER`. */
+  minimumAccessLevelForDelete?: Maybe<ContainerProtectionRepositoryRuleAccessLevel>;
+  /** Minimum GitLab access level required to push container images to the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the default minimum access level is `DEVELOPER`. */
+  minimumAccessLevelForPush?: Maybe<ContainerProtectionRepositoryRuleAccessLevel>;
+  /** Container repository path pattern protected by the protection rule. Must start with the project’s full path. For example: `my-project/*-prod-*`. Wildcard character `*` is allowed anywhere after the project’s full path. */
   repositoryPathPattern: Scalars["String"]["output"];
 };
 
-/** Access level of a container registry protection rule resource */
-export enum ContainerRegistryProtectionRuleAccessLevel {
-  /**
-   * Admin access. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
+/** Access level for a container repository protection rule resource */
+export enum ContainerProtectionRepositoryRuleAccessLevel {
+  /** Admin access. */
   Admin = "ADMIN",
-  /**
-   * Maintainer access. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
+  /** Maintainer access. */
   Maintainer = "MAINTAINER",
-  /**
-   * Owner access. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
+  /** Owner access. */
   Owner = "OWNER",
 }
 
-/** The connection type for ContainerRegistryProtectionRule. */
-export type ContainerRegistryProtectionRuleConnection = {
-  __typename?: "ContainerRegistryProtectionRuleConnection";
+/** The connection type for ContainerProtectionRepositoryRule. */
+export type ContainerProtectionRepositoryRuleConnection = {
+  __typename?: "ContainerProtectionRepositoryRuleConnection";
   /** A list of edges. */
-  edges?: Maybe<Array<Maybe<ContainerRegistryProtectionRuleEdge>>>;
+  edges?: Maybe<Array<Maybe<ContainerProtectionRepositoryRuleEdge>>>;
   /** A list of nodes. */
-  nodes?: Maybe<Array<Maybe<ContainerRegistryProtectionRule>>>;
+  nodes?: Maybe<Array<Maybe<ContainerProtectionRepositoryRule>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
 };
 
 /** An edge in a connection. */
-export type ContainerRegistryProtectionRuleEdge = {
-  __typename?: "ContainerRegistryProtectionRuleEdge";
+export type ContainerProtectionRepositoryRuleEdge = {
+  __typename?: "ContainerProtectionRepositoryRuleEdge";
   /** A cursor for use in pagination. */
   cursor: Scalars["String"]["output"];
   /** The item at the end of the edge. */
-  node?: Maybe<ContainerRegistryProtectionRule>;
+  node?: Maybe<ContainerProtectionRepositoryRule>;
+};
+
+/** A container repository tag protection rule designed to prevent users with a certain access level or lower from altering the container registry. */
+export type ContainerProtectionTagRule = AccessLevelInterface & {
+  __typename?: "ContainerProtectionTagRule";
+  /**
+   * ID of the container repository tag protection rule. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  id: Scalars["ContainerRegistryProtectionTagRuleID"]["output"];
+  /**
+   * Returns true when tag rule is for tag immutability. Otherwise, false. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  immutable: Scalars["Boolean"]["output"];
+  /**
+   * Minimum GitLab access level required to delete container image tags from the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, no access level can delete tags. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  minimumAccessLevelForDelete?: Maybe<ContainerProtectionTagRuleAccessLevel>;
+  /**
+   * Minimum GitLab access level required to push container image tags to the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, no access level can push tags. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  minimumAccessLevelForPush?: Maybe<ContainerProtectionTagRuleAccessLevel>;
+  /**
+   * The pattern that matches container image tags to protect. For example, `v1.*`. Wildcard character `*` allowed. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  tagNamePattern: Scalars["String"]["output"];
+  /** Permissions for the current user on the resource */
+  userPermissions: ContainerRegistryProtectionTagRulePermissions;
+};
+
+/** Access level of a container registry tag protection rule resource */
+export enum ContainerProtectionTagRuleAccessLevel {
+  /**
+   * Admin access. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  Admin = "ADMIN",
+  /**
+   * Maintainer access. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  Maintainer = "MAINTAINER",
+  /**
+   * Owner access. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  Owner = "OWNER",
+}
+
+/** The connection type for ContainerProtectionTagRule. */
+export type ContainerProtectionTagRuleConnection = {
+  __typename?: "ContainerProtectionTagRuleConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<ContainerProtectionTagRuleEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<ContainerProtectionTagRule>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type ContainerProtectionTagRuleEdge = {
+  __typename?: "ContainerProtectionTagRuleEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<ContainerProtectionTagRule>;
+};
+
+export type ContainerRegistryProtectionTagRulePermissions = {
+  __typename?: "ContainerRegistryProtectionTagRulePermissions";
+  /** If `true`, the user can perform `destroy_container_registry_protection_tag_rule` on this resource */
+  destroyContainerRegistryProtectionTagRule: Scalars["Boolean"]["output"];
 };
 
 /** A container repository */
@@ -9980,14 +11500,11 @@ export type ContainerRepository = {
   path: Scalars["String"]["output"];
   /** Project of the container registry. */
   project: Project;
-  /**
-   * Whether any matching container protection rule exists for this container. Available only when feature flag `container_registry_protected_containers` is enabled. Introduced in GitLab 17.2: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.2.
-   */
+  /** Whether any matching container protection rule exists for the container repository. */
   protectionRuleExists: Scalars["Boolean"]["output"];
   /** Status of the container repository. */
   status?: Maybe<ContainerRepositoryStatus>;
-  /** Number of tags associated with this image. */
+  /** Number of tags associated with the image. */
   tagsCount: Scalars["Int"]["output"];
   /** Timestamp when the container repository was updated. */
   updatedAt: Scalars["Time"]["output"];
@@ -10048,10 +11565,7 @@ export type ContainerRepositoryDetails = {
   path: Scalars["String"]["output"];
   /** Project of the container registry. */
   project: Project;
-  /**
-   * Whether any matching container protection rule exists for this container. Available only when feature flag `container_registry_protected_containers` is enabled. Introduced in GitLab 17.2: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.2.
-   */
+  /** Whether any matching container protection rule exists for the container repository. */
   protectionRuleExists: Scalars["Boolean"]["output"];
   /** Deduplicated size of the image repository in bytes. This is only available on GitLab.com for repositories created after `2021-11-04`. */
   size?: Maybe<Scalars["Float"]["output"]>;
@@ -10059,7 +11573,7 @@ export type ContainerRepositoryDetails = {
   status?: Maybe<ContainerRepositoryStatus>;
   /** Tags of the container repository. */
   tags?: Maybe<ContainerRepositoryTagConnection>;
-  /** Number of tags associated with this image. */
+  /** Number of tags associated with the image. */
   tagsCount: Scalars["Int"]["output"];
   /** Timestamp when the container repository was updated. */
   updatedAt: Scalars["Time"]["output"];
@@ -10113,16 +11627,27 @@ export type ContainerRepositoryReferrer = {
 /** Represents the Geo replication and verification state of an Container Repository. */
 export type ContainerRepositoryRegistry = {
   __typename?: "ContainerRepositoryRegistry";
+  /** Indicate if the checksums of the ContainerRepositoryRegistry do not match on the primary and secondary. */
+  checksumMismatch?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the ContainerRepository. */
   containerRepositoryId: Scalars["ID"]["output"];
   /** Timestamp when the ContainerRepositoryRegistry was created */
   createdAt?: Maybe<Scalars["Time"]["output"]>;
+  /**
+   * Indicate if a forced redownload is to be performed. Deprecated in GitLab 17.10: Removed from registry tables in the database in favor of the newer reusable framework.
+   * @deprecated Removed from registry tables in the database in favor of the newer reusable framework. Deprecated in GitLab 17.10.
+   */
+  forceToRedownload?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the ContainerRepositoryRegistry */
   id: Scalars["ID"]["output"];
   /** Error message during sync of the ContainerRepositoryRegistry */
   lastSyncFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp of the most recent successful sync of the ContainerRepositoryRegistry */
   lastSyncedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Indicate if the ContainerRepositoryRegistry is missing on primary. */
+  missingOnPrimary?: Maybe<Scalars["Boolean"]["output"]>;
+  /** ID of the ContainerRepositoryRegistry's model record. */
+  modelRecordId?: Maybe<Scalars["Int"]["output"]>;
   /** Timestamp after which the ContainerRepositoryRegistry is resynced */
   retryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed sync attempts of the ContainerRepositoryRegistry */
@@ -10131,13 +11656,15 @@ export type ContainerRepositoryRegistry = {
   state?: Maybe<RegistryState>;
   /** The local checksum of the ContainerRepositoryRegistry */
   verificationChecksum?: Maybe<Scalars["String"]["output"]>;
+  /** The expected checksum of the ContainerRepositoryRegistry in case of mismatch. */
+  verificationChecksumMismatched?: Maybe<Scalars["String"]["output"]>;
   /** Error message during verification of the ContainerRepositoryRegistry */
   verificationFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp after which the ContainerRepositoryRegistry is reverified */
   verificationRetryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed verification attempts of the ContainerRepositoryRegistry */
   verificationRetryCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Timestamp when the verification started of ContainerRepositoryRegistry */
+  /** Timestamp when the verification of ContainerRepositoryRegistry started */
   verificationStartedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Verification state of the ContainerRepositoryRegistry */
   verificationState?: Maybe<VerificationStateEnum>;
@@ -10148,12 +11675,19 @@ export type ContainerRepositoryRegistry = {
 /** The connection type for ContainerRepositoryRegistry. */
 export type ContainerRepositoryRegistryConnection = {
   __typename?: "ContainerRepositoryRegistryConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<ContainerRepositoryRegistryEdge>>>;
   /** A list of nodes. */
   nodes?: Maybe<Array<Maybe<ContainerRepositoryRegistry>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** The connection type for ContainerRepositoryRegistry. */
+export type ContainerRepositoryRegistryConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** An edge in a connection. */
@@ -10226,6 +11760,11 @@ export type ContainerRepositoryTag = {
   name: Scalars["String"]["output"];
   /** Path of the tag. */
   path: Scalars["String"]["output"];
+  /**
+   * Minimum GitLab access level required to push and delete container image tags. If the value is `nil`, no minimum access level is enforced. Users with the Developer role or higher can push tags by default. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  protection?: Maybe<ContainerProtectionAccessLevel>;
   /** Timestamp when the tag was published. */
   publishedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Referrers for the tag. */
@@ -10262,7 +11801,7 @@ export type ContainerRepositoryTagEdge = {
 
 export type ContainerRepositoryTagPermissions = {
   __typename?: "ContainerRepositoryTagPermissions";
-  /** If `true`, the user can perform `destroy_container_image` on this resource */
+  /** If `true`, the user can perform `destroy_container_image_tag` on this resource */
   destroyContainerRepositoryTag: Scalars["Boolean"]["output"];
 };
 
@@ -10299,6 +11838,13 @@ export type ContainerTagsExpirationPolicy = {
   olderThan?: Maybe<ContainerExpirationPolicyOlderThanEnum>;
   /** Timestamp of when the container expiration policy was updated. */
   updatedAt?: Maybe<Scalars["Time"]["output"]>;
+};
+
+/** Presets for GitLab Duo Chat window based on current context */
+export type ContextPreset = {
+  __typename?: "ContextPreset";
+  /** Array of questions that the user can ask GitLab Duo Chat from the current page. */
+  questions?: Maybe<Array<Scalars["String"]["output"]>>;
 };
 
 /** Represents the contributions of a user. */
@@ -10342,6 +11888,17 @@ export type ContributionAnalyticsContributionEdge = {
   cursor: Scalars["String"]["output"];
   /** The item at the end of the edge. */
   node?: Maybe<ContributionAnalyticsContribution>;
+};
+
+/** Represents a control expression. */
+export type ControlExpression = {
+  __typename?: "ControlExpression";
+  /** Expression details for the control. */
+  expression: ExpressionValue;
+  /** ID for the control. */
+  id: Scalars["ID"]["output"];
+  /** Name of the control. */
+  name: Scalars["String"]["output"];
 };
 
 /** Autogenerated input type of CorpusCreate */
@@ -10581,6 +12138,8 @@ export type CreateComplianceRequirementInput = {
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
   /** Global ID of the compliance framework of the new requirement. */
   complianceFrameworkId: Scalars["ComplianceManagementFrameworkID"]["input"];
+  /** Controls to add to the compliance requirement. */
+  controls?: InputMaybe<Array<ComplianceRequirementsControlInput>>;
   /** Parameters to update the compliance requirement with. */
   params: ComplianceRequirementInput;
 };
@@ -10596,30 +12155,48 @@ export type CreateComplianceRequirementPayload = {
   requirement?: Maybe<ComplianceRequirement>;
 };
 
-/** Autogenerated input type of CreateContainerRegistryProtectionRule */
-export type CreateContainerRegistryProtectionRuleInput = {
+/** Autogenerated input type of CreateComplianceRequirementsControl */
+export type CreateComplianceRequirementsControlInput = {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
-  /** Minimum GitLab access level to allow to delete container images from the container registry. For example, `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the minimum access level for delete is ignored. Users with at least the Developer role are allowed to delete container images. Introduced in GitLab 16.6: **Status**: Experiment. */
-  minimumAccessLevelForDelete?: InputMaybe<ContainerRegistryProtectionRuleAccessLevel>;
-  /** Minimum GitLab access level to allow to push container images to the container registry. For example, `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the minimum access level for push is ignored. Users with at least the Developer role are allowed to push container images. Introduced in GitLab 16.6: **Status**: Experiment. */
-  minimumAccessLevelForPush?: InputMaybe<ContainerRegistryProtectionRuleAccessLevel>;
+  /** Global ID of the compliance requirement of the new control. */
+  complianceRequirementId: Scalars["ComplianceManagementComplianceFrameworkComplianceRequirementID"]["input"];
+  /** Parameters to create the compliance requirement control. */
+  params: ComplianceRequirementsControlInput;
+};
+
+/** Autogenerated return type of CreateComplianceRequirementsControl. */
+export type CreateComplianceRequirementsControlPayload = {
+  __typename?: "CreateComplianceRequirementsControlPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Created compliance requirements control. */
+  requirementsControl?: Maybe<ComplianceRequirementsControl>;
+};
+
+/** Autogenerated input type of CreateContainerProtectionRepositoryRule */
+export type CreateContainerProtectionRepositoryRuleInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Minimum GitLab access level required to delete container images from the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the default minimum access level is `DEVELOPER`. */
+  minimumAccessLevelForDelete?: InputMaybe<ContainerProtectionRepositoryRuleAccessLevel>;
+  /** Minimum GitLab access level required to push container images to the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the default minimum access level is `DEVELOPER`. */
+  minimumAccessLevelForPush?: InputMaybe<ContainerProtectionRepositoryRuleAccessLevel>;
   /** Full path of the project where a protection rule is located. */
   projectPath: Scalars["ID"]["input"];
-  /** Container repository path pattern protected by the protection rule. For example, `my-project/my-container-*`. Wildcard character `*` allowed. Introduced in GitLab 16.6: **Status**: Experiment. */
+  /** Container repository path pattern protected by the protection rule. Must start with the project’s full path. For example: `my-project/*-prod-*`. Wildcard character `*` is allowed anywhere after the project’s full path. */
   repositoryPathPattern: Scalars["String"]["input"];
 };
 
-/** Autogenerated return type of CreateContainerRegistryProtectionRule. */
-export type CreateContainerRegistryProtectionRulePayload = {
-  __typename?: "CreateContainerRegistryProtectionRulePayload";
+/** Autogenerated return type of CreateContainerProtectionRepositoryRule. */
+export type CreateContainerProtectionRepositoryRulePayload = {
+  __typename?: "CreateContainerProtectionRepositoryRulePayload";
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Container registry protection rule after mutation. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
-  containerRegistryProtectionRule?: Maybe<ContainerRegistryProtectionRule>;
+  /** Container repository protection rule after mutation. */
+  containerProtectionRepositoryRule?: Maybe<ContainerProtectionRepositoryRule>;
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
 };
@@ -10670,6 +12247,8 @@ export type CreateDiffNotePayload = {
   errors: Array<Scalars["String"]["output"]>;
   /** Note after mutation. */
   note?: Maybe<Note>;
+  /** Status of quick actions after mutation. */
+  quickActionsStatus?: Maybe<QuickActionsStatus>;
 };
 
 /** Autogenerated input type of CreateDiscussion */
@@ -10693,6 +12272,8 @@ export type CreateDiscussionPayload = {
   errors: Array<Scalars["String"]["output"]>;
   /** Note after mutation. */
   note?: Maybe<Note>;
+  /** Status of quick actions after mutation. */
+  quickActionsStatus?: Maybe<QuickActionsStatus>;
 };
 
 /** Autogenerated input type of CreateEpic */
@@ -10703,7 +12284,7 @@ export type CreateEpicInput = {
   addLabels?: InputMaybe<Array<Scalars["String"]["input"]>>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
-  /** Color of the epic. Available only when feature flag `epic_color_highlight` is enabled. This flag is disabled by default, because the feature is experimental and is subject to change without notice. */
+  /** Color of the epic. */
   color?: InputMaybe<Scalars["Color"]["input"]>;
   /** Indicates if the epic is confidential. */
   confidential?: InputMaybe<Scalars["Boolean"]["input"]>;
@@ -10759,6 +12340,8 @@ export type CreateImageDiffNotePayload = {
   errors: Array<Scalars["String"]["output"]>;
   /** Note after mutation. */
   note?: Maybe<Note>;
+  /** Status of quick actions after mutation. */
+  quickActionsStatus?: Maybe<QuickActionsStatus>;
 };
 
 /** Autogenerated input type of CreateIssue */
@@ -10880,17 +12463,19 @@ export type CreateNotePayload = {
   errors: Array<Scalars["String"]["output"]>;
   /** Note after mutation. */
   note?: Maybe<Note>;
+  /** Status of quick actions after mutation. */
+  quickActionsStatus?: Maybe<QuickActionsStatus>;
 };
 
 /** Autogenerated input type of CreatePackagesProtectionRule */
 export type CreatePackagesProtectionRuleInput = {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
-  /** Minimum GitLab access required to push packages to the package registry. For example, `MAINTAINER`, `OWNER`, or `ADMIN`. Introduced in GitLab 16.5: **Status**: Experiment. */
-  minimumAccessLevelForPush: PackagesProtectionRuleAccessLevel;
-  /** Package name protected by the protection rule. For example `@my-scope/my-package-*`. Wildcard character `*` allowed. */
+  /** Minimum GitLab access required to push packages to the package registry. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the default minimum access level is `DEVELOPER`. */
+  minimumAccessLevelForPush?: InputMaybe<PackagesProtectionRuleAccessLevel>;
+  /** Package name protected by the protection rule. For example, `@my-scope/my-package-*`. Wildcard character `*` allowed. */
   packageNamePattern: Scalars["String"]["input"];
-  /** Package type protected by the protection rule. For example `NPM`. */
+  /** Package type protected by the protection rule. For example, `NPM`, `PYPI`. */
   packageType: PackagesProtectionRulePackageType;
   /** Full path of the project where a protection rule is located. */
   projectPath: Scalars["ID"]["input"];
@@ -10903,10 +12488,7 @@ export type CreatePackagesProtectionRulePayload = {
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
-  /**
-   * Packages protection rule after mutation. Introduced in GitLab 16.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.5.
-   */
+  /** Packages protection rule after mutation. */
   packageProtectionRule?: Maybe<PackagesProtectionRule>;
 };
 
@@ -11029,140 +12611,173 @@ export type CurrentLicense = {
 };
 
 /** The currently authenticated GitLab user. */
-export type CurrentUser = User & {
-  __typename?: "CurrentUser";
-  /** Indicates if the user is active. */
-  active?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Merge requests assigned to the user. */
-  assignedMergeRequests?: Maybe<MergeRequestConnection>;
-  /**
-   * Merge requests the current user is an assignee or a reviewer of.Ignored if `merge_request_dashboard` feature flag is disabled. Introduced in GitLab 17.4: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
-   */
-  assigneeOrReviewerMergeRequests?: Maybe<MergeRequestConnection>;
-  /** Merge requests authored by the user. */
-  authoredMergeRequests?: Maybe<MergeRequestConnection>;
-  /** URL of the user's avatar. */
-  avatarUrl?: Maybe<Scalars["String"]["output"]>;
-  /** Bio of the user. */
-  bio?: Maybe<Scalars["String"]["output"]>;
-  /** Indicates if the user is a bot. */
-  bot: Scalars["Boolean"]["output"];
-  /** User callouts that belong to the user. */
-  callouts?: Maybe<UserCalloutConnection>;
-  /** User's default commit email. */
-  commitEmail?: Maybe<Scalars["String"]["output"]>;
-  /** Projects the user has contributed to. */
-  contributedProjects?: Maybe<ProjectConnection>;
-  /** Timestamp of when the user was created. */
-  createdAt?: Maybe<Scalars["Time"]["output"]>;
-  /** Discord ID of the user. */
-  discord?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * User access to AI chat feature. Introduced in GitLab 16.8: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.8.
-   */
-  duoChatAvailable: Scalars["Boolean"]["output"];
-  /**
-   * List of available features for AI chat. Introduced in GitLab 17.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
-   */
-  duoChatAvailableFeatures: Array<Scalars["String"]["output"]>;
-  /**
-   * User access to code suggestions feature. Introduced in GitLab 16.8: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.8.
-   */
-  duoCodeSuggestionsAvailable: Scalars["Boolean"]["output"];
-  /**
-   * User email. Deprecated in GitLab 13.7: This was renamed.
-   * @deprecated This was renamed. Please use `User.publicEmail`. Deprecated in GitLab 13.7.
-   */
-  email?: Maybe<Scalars["String"]["output"]>;
-  /** User's email addresses. */
-  emails?: Maybe<EmailConnection>;
-  /** Whether Gitpod is enabled at the user level. */
-  gitpodEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Group count for the user. */
-  groupCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Group memberships of the user. */
-  groupMemberships?: Maybe<GroupMemberConnection>;
-  /** Groups where the user has access. */
-  groups?: Maybe<GroupConnection>;
-  /** Indicates if the user is a regular user. */
-  human?: Maybe<Scalars["Boolean"]["output"]>;
-  /** ID of the user. */
-  id: Scalars["ID"]["output"];
-  /** IDE settings. */
-  ide?: Maybe<Ide>;
-  /** Job title of the user. */
-  jobTitle?: Maybe<Scalars["String"]["output"]>;
-  /** Date the user last performed any actions. */
-  lastActivityOn?: Maybe<Scalars["Date"]["output"]>;
-  /** LinkedIn profile name of the user. */
-  linkedin?: Maybe<Scalars["String"]["output"]>;
-  /** Location of the user. */
-  location?: Maybe<Scalars["String"]["output"]>;
-  /** Human-readable name of the user. Returns `****` if the user is a project bot and the requester does not have permission to view the project. */
-  name: Scalars["String"]["output"];
-  /** Personal namespace of the user. */
-  namespace?: Maybe<Namespace>;
-  /** User's custom namespace commit emails. */
-  namespaceCommitEmails?: Maybe<NamespaceCommitEmailConnection>;
-  /** Who the user represents or works for. */
-  organization?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Organizations where the user has access. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
-  organizations?: Maybe<OrganizationConnection>;
-  /** Web path to the Gitpod section within user preferences. */
-  preferencesGitpodPath?: Maybe<Scalars["String"]["output"]>;
-  /** Web path to enable Gitpod for the user. */
-  profileEnableGitpodPath?: Maybe<Scalars["String"]["output"]>;
-  /** Project memberships of the user. */
-  projectMemberships?: Maybe<ProjectMemberConnection>;
-  /** Pronouns of the user. */
-  pronouns?: Maybe<Scalars["String"]["output"]>;
-  /** User's public email. */
-  publicEmail?: Maybe<Scalars["String"]["output"]>;
-  /** Merge requests assigned to the user for review. */
-  reviewRequestedMergeRequests?: Maybe<MergeRequestConnection>;
-  /** Saved replies authored by the user. */
-  savedReplies?: Maybe<SavedReplyConnection>;
-  /** Saved reply authored by the user. */
-  savedReply?: Maybe<SavedReply>;
-  /** Snippets authored by the user. */
-  snippets?: Maybe<SnippetConnection>;
-  /** Projects starred by the user. */
-  starredProjects?: Maybe<ProjectConnection>;
-  /** State of the user. */
-  state: UserState;
-  /** User status. */
-  status?: Maybe<UserStatus>;
-  /** Time logged by the user. */
-  timelogs?: Maybe<TimelogConnection>;
-  /** To-do items of the user. */
-  todos?: Maybe<TodoConnection>;
-  /** X (formerly Twitter) username of the user. */
-  twitter?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled. Introduced in GitLab 15.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
-   */
-  userAchievements?: Maybe<UserAchievementConnection>;
-  /** Permissions for the current user on the resource. */
-  userPermissions: UserPermissions;
-  /** Preferences for the user. */
-  userPreferences?: Maybe<UserPreferences>;
-  /** Username of the user. Unique within this instance of GitLab. */
-  username: Scalars["String"]["output"];
-  /** Web path of the user. */
-  webPath: Scalars["String"]["output"];
-  /** Web URL of the user. */
-  webUrl: Scalars["String"]["output"];
-  /** Workspaces owned by the current user. */
-  workspaces?: Maybe<WorkspaceConnection>;
-};
+export type CurrentUser = Todoable &
+  User & {
+    __typename?: "CurrentUser";
+    /** Indicates if the user is active. */
+    active?: Maybe<Scalars["Boolean"]["output"]>;
+    /**
+     * Recent user activity. Introduced in GitLab 17.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+     */
+    activity?: Maybe<ActivityStream>;
+    /** Merge requests assigned to the user. */
+    assignedMergeRequests?: Maybe<MergeRequestConnection>;
+    /**
+     * Merge requests the current user is an assignee or a reviewer of.Ignored if `merge_request_dashboard` feature flag is disabled. Introduced in GitLab 17.4: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
+     */
+    assigneeOrReviewerMergeRequests?: Maybe<MergeRequestConnection>;
+    /** Merge requests authored by the user. */
+    authoredMergeRequests?: Maybe<MergeRequestConnection>;
+    /** URL of the user's avatar. */
+    avatarUrl?: Maybe<Scalars["String"]["output"]>;
+    /** Bio of the user. */
+    bio?: Maybe<Scalars["String"]["output"]>;
+    /** Indicates if the user is a bot. */
+    bot: Scalars["Boolean"]["output"];
+    /** User callouts that belong to the user. */
+    callouts?: Maybe<UserCalloutConnection>;
+    /**
+     * List of additional contexts enabled for Code Suggestions. Introduced in GitLab 17.9: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+     */
+    codeSuggestionsContexts: Array<Scalars["String"]["output"]>;
+    /** User's default commit email. */
+    commitEmail?: Maybe<Scalars["String"]["output"]>;
+    /** Projects the user has contributed to. */
+    contributedProjects?: Maybe<ProjectConnection>;
+    /** Timestamp of when the user was created. */
+    createdAt?: Maybe<Scalars["Time"]["output"]>;
+    /** Discord ID of the user. */
+    discord?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * User access to AI chat feature. Introduced in GitLab 16.8: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.8.
+     */
+    duoChatAvailable: Scalars["Boolean"]["output"];
+    /**
+     * List of available features for AI chat. Introduced in GitLab 17.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+     */
+    duoChatAvailableFeatures: Array<Scalars["String"]["output"]>;
+    /**
+     * User access to code suggestions feature. Introduced in GitLab 16.8: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.8.
+     */
+    duoCodeSuggestionsAvailable: Scalars["Boolean"]["output"];
+    /**
+     * User email. Deprecated in GitLab 13.7: This was renamed.
+     * @deprecated This was renamed. Please use `User.publicEmail`. Deprecated in GitLab 13.7.
+     */
+    email?: Maybe<Scalars["String"]["output"]>;
+    /** User's email addresses. */
+    emails?: Maybe<EmailConnection>;
+    /** Whether Gitpod is enabled at the user level. */
+    gitpodEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Group count for the user. */
+    groupCount?: Maybe<Scalars["Int"]["output"]>;
+    /** Group memberships of the user. */
+    groupMemberships?: Maybe<GroupMemberConnection>;
+    /** Groups where the user has access. */
+    groups?: Maybe<GroupConnection>;
+    /** Indicates if the user is a regular user. */
+    human?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Global ID of the user. */
+    id: Scalars["UserID"]["output"];
+    /** IDE settings. */
+    ide?: Maybe<Ide>;
+    /** Job title of the user. */
+    jobTitle?: Maybe<Scalars["String"]["output"]>;
+    /** Date the user last performed any actions. */
+    lastActivityOn?: Maybe<Scalars["Date"]["output"]>;
+    /** LinkedIn profile name of the user. */
+    linkedin?: Maybe<Scalars["String"]["output"]>;
+    /** Location of the user. */
+    location?: Maybe<Scalars["String"]["output"]>;
+    /** Human-readable name of the user. Returns `****` if the user is a project bot and the requester does not have permission to view the project. */
+    name: Scalars["String"]["output"];
+    /** Personal namespace of the user. */
+    namespace?: Maybe<Namespace>;
+    /** User's custom namespace commit emails. */
+    namespaceCommitEmails?: Maybe<NamespaceCommitEmailConnection>;
+    /** Who the user represents or works for. */
+    organization?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * Organizations where the user has access. Introduced in GitLab 16.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
+     */
+    organizations?: Maybe<OrganizationConnection>;
+    /** Web path to the Gitpod section within user preferences. */
+    preferencesGitpodPath?: Maybe<Scalars["String"]["output"]>;
+    /** Web path to enable Gitpod for the user. */
+    profileEnableGitpodPath?: Maybe<Scalars["String"]["output"]>;
+    /** Project memberships of the user. */
+    projectMemberships?: Maybe<ProjectMemberConnection>;
+    /** Pronouns of the user. */
+    pronouns?: Maybe<Scalars["String"]["output"]>;
+    /** User's public email. */
+    publicEmail?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * Most-recently viewed issues for the current user. Introduced in GitLab 17.9: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+     */
+    recentlyViewedIssues?: Maybe<Array<Issue>>;
+    /**
+     * Most-recently viewed merge requests for the current user. Introduced in GitLab 17.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+     */
+    recentlyViewedMergeRequests?: Maybe<Array<MergeRequest>>;
+    /** Merge requests assigned to the user for review. */
+    reviewRequestedMergeRequests?: Maybe<MergeRequestConnection>;
+    /** Saved replies authored by the user. */
+    savedReplies?: Maybe<SavedReplyConnection>;
+    /** Saved reply authored by the user. */
+    savedReply?: Maybe<SavedReply>;
+    /** Snippets authored by the user. */
+    snippets?: Maybe<SnippetConnection>;
+    /** Projects starred by the user. */
+    starredProjects?: Maybe<ProjectConnection>;
+    /** State of the user. */
+    state: UserState;
+    /** User status. */
+    status?: Maybe<UserStatus>;
+    /** Time logged by the user. */
+    timelogs?: Maybe<TimelogConnection>;
+    /** To-do items of the user. */
+    todos?: Maybe<TodoConnection>;
+    /** X (formerly Twitter) username of the user. */
+    twitter?: Maybe<Scalars["String"]["output"]>;
+    /** Type of the user. */
+    type: UserType;
+    /**
+     * Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled. Introduced in GitLab 15.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
+     */
+    userAchievements?: Maybe<UserAchievementConnection>;
+    /** Permissions for the current user on the resource. */
+    userPermissions: UserPermissions;
+    /** Preferences for the user. */
+    userPreferences?: Maybe<UserPreferences>;
+    /** Username of the user. Unique within the instance of GitLab. */
+    username: Scalars["String"]["output"];
+    /** Web path of the user. */
+    webPath: Scalars["String"]["output"];
+    /** Web URL of the user. */
+    webUrl: Scalars["String"]["output"];
+    /**
+     * User preferences for the given work item type and namespace. Introduced in GitLab 17.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+     */
+    workItemPreferences?: Maybe<WorkItemTypesUserPreference>;
+    /**
+     * Find work items visible to the current user. Introduced in GitLab 17.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+     */
+    workItems?: Maybe<WorkItemConnection>;
+    /** Workspaces owned by the current user. */
+    workspaces?: Maybe<WorkspaceConnection>;
+  };
 
 /** The currently authenticated GitLab user. */
 export type CurrentUserAssignedMergeRequestsArgs = {
@@ -11182,6 +12797,7 @@ export type CurrentUserAssignedMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -11192,14 +12808,17 @@ export type CurrentUserAssignedMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -11223,6 +12842,7 @@ export type CurrentUserAssigneeOrReviewerMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -11233,13 +12853,16 @@ export type CurrentUserAssigneeOrReviewerMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerReviewStates?: InputMaybe<Array<MergeRequestReviewState>>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -11252,6 +12875,7 @@ export type CurrentUserAuthoredMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   createdAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -11264,7 +12888,9 @@ export type CurrentUserAuthoredMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
+  includeAssigned?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   mergedAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -11274,14 +12900,17 @@ export type CurrentUserAuthoredMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -11332,6 +12961,7 @@ export type CurrentUserGroupsArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
   permissionScope?: InputMaybe<GroupPermission>;
   search?: InputMaybe<Scalars["String"]["input"]>;
+  sort?: InputMaybe<GroupSort>;
 };
 
 /** The currently authenticated GitLab user. */
@@ -11367,6 +12997,7 @@ export type CurrentUserReviewRequestedMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   authorUsername?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -11380,6 +13011,7 @@ export type CurrentUserReviewRequestedMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -11390,12 +13022,15 @@ export type CurrentUserReviewRequestedMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -11461,6 +13096,7 @@ export type CurrentUserTodosArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  isSnoozed?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   projectId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   sort?: InputMaybe<TodoSort>;
@@ -11475,6 +13111,45 @@ export type CurrentUserUserAchievementsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   includeHidden?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** The currently authenticated GitLab user. */
+export type CurrentUserWorkItemPreferencesArgs = {
+  namespacePath: Scalars["ID"]["input"];
+  workItemTypeId?: InputMaybe<Scalars["WorkItemsTypeID"]["input"]>;
+};
+
+/** The currently authenticated GitLab user. */
+export type CurrentUserWorkItemsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
+  authorUsername?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  closedAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  closedBefore?: InputMaybe<Scalars["Time"]["input"]>;
+  confidential?: InputMaybe<Scalars["Boolean"]["input"]>;
+  createdAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  createdBefore?: InputMaybe<Scalars["Time"]["input"]>;
+  dueAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  dueBefore?: InputMaybe<Scalars["Time"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
+  labelName?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  milestoneTitle?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
+  myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
+  not?: InputMaybe<NegatedWorkItemFilterInput>;
+  or?: InputMaybe<UnionedWorkItemFilterInput>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
+  sort?: InputMaybe<WorkItemSort>;
+  state?: InputMaybe<IssuableState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
+  types?: InputMaybe<Array<IssueType>>;
+  updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
 };
 
 /** The currently authenticated GitLab user. */
@@ -11576,6 +13251,25 @@ export type CustomField = {
   workItemTypes?: Maybe<Array<WorkItemType>>;
 };
 
+/** Autogenerated input type of CustomFieldArchive */
+export type CustomFieldArchiveInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Global ID of the custom field. */
+  id: Scalars["IssuablesCustomFieldID"]["input"];
+};
+
+/** Autogenerated return type of CustomFieldArchive. */
+export type CustomFieldArchivePayload = {
+  __typename?: "CustomFieldArchivePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Archived custom field. */
+  customField?: Maybe<CustomField>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+};
+
 /** The connection type for CustomField. */
 export type CustomFieldConnection = {
   __typename?: "CustomFieldConnection";
@@ -11601,6 +13295,8 @@ export type CustomFieldCreateInput = {
   name: Scalars["String"]["input"];
   /** Available options for a select field. */
   selectOptions?: InputMaybe<Array<CustomFieldSelectOptionInput>>;
+  /** Work item type global IDs associated to the custom field. */
+  workItemTypeIds?: InputMaybe<Array<Scalars["WorkItemsTypeID"]["input"]>>;
 };
 
 /** Autogenerated return type of CustomFieldCreate. */
@@ -11652,6 +13348,25 @@ export enum CustomFieldType {
   Text = "TEXT",
 }
 
+/** Autogenerated input type of CustomFieldUnarchive */
+export type CustomFieldUnarchiveInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Global ID of the custom field. */
+  id: Scalars["IssuablesCustomFieldID"]["input"];
+};
+
+/** Autogenerated return type of CustomFieldUnarchive. */
+export type CustomFieldUnarchivePayload = {
+  __typename?: "CustomFieldUnarchivePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Unarchived custom field. */
+  customField?: Maybe<CustomField>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+};
+
 /** Autogenerated input type of CustomFieldUpdate */
 export type CustomFieldUpdateInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -11659,9 +13374,11 @@ export type CustomFieldUpdateInput = {
   /** Global ID of the custom field. */
   id: Scalars["IssuablesCustomFieldID"]["input"];
   /** Name of the custom field. */
-  name: Scalars["String"]["input"];
+  name?: InputMaybe<Scalars["String"]["input"]>;
   /** Available options for a select field. */
   selectOptions?: InputMaybe<Array<CustomFieldSelectOptionInput>>;
+  /** Work item type global IDs associated to the custom field. */
+  workItemTypeIds?: InputMaybe<Array<Scalars["WorkItemsTypeID"]["input"]>>;
 };
 
 /** Autogenerated return type of CustomFieldUpdate. */
@@ -11895,6 +13612,38 @@ export type CustomerRelationsOrganizationUpdatePayload = {
   organization: CustomerRelationsOrganization;
 };
 
+export type CustomizableAdminPermission = {
+  __typename?: "CustomizableAdminPermission";
+  /** Description of the permission. */
+  description?: Maybe<Scalars["String"]["output"]>;
+  /** Localized name of the permission. */
+  name: Scalars["String"]["output"];
+  /** Requirements of the permission. */
+  requirements?: Maybe<Array<MemberRoleAdminPermission>>;
+  /** Value of the permission. */
+  value: MemberRoleAdminPermission;
+};
+
+/** The connection type for CustomizableAdminPermission. */
+export type CustomizableAdminPermissionConnection = {
+  __typename?: "CustomizableAdminPermissionConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<CustomizableAdminPermissionEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<CustomizableAdminPermission>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type CustomizableAdminPermissionEdge = {
+  __typename?: "CustomizableAdminPermissionEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<CustomizableAdminPermission>;
+};
+
 /** Represents a product analytics dashboard. */
 export type CustomizableDashboard = {
   __typename?: "CustomizableDashboard";
@@ -11906,6 +13655,8 @@ export type CustomizableDashboard = {
   description?: Maybe<Scalars["String"]["output"]>;
   /** Errors on yaml definition. */
   errors?: Maybe<Array<Scalars["String"]["output"]>>;
+  /** Dashboard global filters. */
+  filters?: Maybe<Scalars["JSON"]["output"]>;
   /** Panels shown on the dashboard. */
   panels?: Maybe<CustomizableDashboardPanelConnection>;
   /** Slug of the dashboard. */
@@ -12023,40 +13774,42 @@ export type CustomizableDashboardVisualizationEdge = {
   node?: Maybe<CustomizableDashboardVisualization>;
 };
 
-export type CustomizablePermission = {
-  __typename?: "CustomizablePermission";
+export type CustomizableStandardPermission = {
+  __typename?: "CustomizableStandardPermission";
   /** Objects the permission is available for. */
   availableFor: Array<Scalars["String"]["output"]>;
-  /** Access level from which the permission is available. */
-  availableFromAccessLevel?: Maybe<AccessLevel>;
   /** Description of the permission. */
   description?: Maybe<Scalars["String"]["output"]>;
+  /** Group access levels from which the permission is allowed. */
+  enabledForGroupAccessLevels?: Maybe<Array<AccessLevelEnum>>;
+  /** Project access levels from which the permission is allowed. */
+  enabledForProjectAccessLevels?: Maybe<Array<AccessLevelEnum>>;
   /** Localized name of the permission. */
   name: Scalars["String"]["output"];
   /** Requirements of the permission. */
-  requirements?: Maybe<Array<MemberRolePermission>>;
+  requirements?: Maybe<Array<MemberRoleStandardPermission>>;
   /** Value of the permission. */
-  value: MemberRolePermission;
+  value: MemberRoleStandardPermission;
 };
 
-/** The connection type for CustomizablePermission. */
-export type CustomizablePermissionConnection = {
-  __typename?: "CustomizablePermissionConnection";
+/** The connection type for CustomizableStandardPermission. */
+export type CustomizableStandardPermissionConnection = {
+  __typename?: "CustomizableStandardPermissionConnection";
   /** A list of edges. */
-  edges?: Maybe<Array<Maybe<CustomizablePermissionEdge>>>;
+  edges?: Maybe<Array<Maybe<CustomizableStandardPermissionEdge>>>;
   /** A list of nodes. */
-  nodes?: Maybe<Array<Maybe<CustomizablePermission>>>;
+  nodes?: Maybe<Array<Maybe<CustomizableStandardPermission>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
 };
 
 /** An edge in a connection. */
-export type CustomizablePermissionEdge = {
-  __typename?: "CustomizablePermissionEdge";
+export type CustomizableStandardPermissionEdge = {
+  __typename?: "CustomizableStandardPermissionEdge";
   /** A cursor for use in pagination. */
   cursor: Scalars["String"]["output"];
   /** The item at the end of the edge. */
-  node?: Maybe<CustomizablePermission>;
+  node?: Maybe<CustomizableStandardPermission>;
 };
 
 /** Represents a CVE's Enrichment (EPSS score). */
@@ -12066,6 +13819,8 @@ export type CveEnrichmentType = {
   cve: Scalars["String"]["output"];
   /** EPSS score for the CVE. */
   epssScore: Scalars["Float"]["output"];
+  /** Whether the CVE appears in the CISA KEV catalog. */
+  isKnownExploit: Scalars["Boolean"]["output"];
 };
 
 /** Values for a CVSS severity */
@@ -12568,6 +14323,8 @@ export type DastSiteProfile = {
   id: Scalars["DastSiteProfileID"]["output"];
   /** Normalized URL of the target to be scanned. */
   normalizedTargetUrl?: Maybe<Scalars["String"]["output"]>;
+  /** Optional variables that can be configured for DAST scans. */
+  optionalVariables?: Maybe<Array<Scalars["JSON"]["output"]>>;
   /** Name of the site profile. */
   profileName?: Maybe<Scalars["String"]["output"]>;
   /** List of security policy names that are referencing given project. */
@@ -12648,6 +14405,8 @@ export type DastSiteProfileCreateInput = {
   excludedUrls?: InputMaybe<Array<Scalars["String"]["input"]>>;
   /** Project the site profile belongs to. */
   fullPath: Scalars["ID"]["input"];
+  /** Optional variables that can be configured for DAST scans. */
+  optionalVariables?: InputMaybe<Array<Scalars["JSON"]["input"]>>;
   /** Name of the site profile. */
   profileName: Scalars["String"]["input"];
   /** Comma-separated list of request header names and values to be added to every request made by DAST. */
@@ -12721,6 +14480,8 @@ export type DastSiteProfileUpdateInput = {
   excludedUrls?: InputMaybe<Array<Scalars["String"]["input"]>>;
   /** ID of the site profile to be updated. */
   id: Scalars["DastSiteProfileID"]["input"];
+  /** Optional variables that can be configured for DAST scans. */
+  optionalVariables?: InputMaybe<Array<Scalars["JSON"]["input"]>>;
   /** Name of the site profile. */
   profileName: Scalars["String"]["input"];
   /** Comma-separated list of request header names and values to be added to every request made by DAST. */
@@ -12952,26 +14713,64 @@ export type DeleteAnnotationPayload = {
   errors: Array<Scalars["String"]["output"]>;
 };
 
-/** Autogenerated input type of DeleteContainerRegistryProtectionRule */
-export type DeleteContainerRegistryProtectionRuleInput = {
+/** Autogenerated input type of DeleteContainerProtectionRepositoryRule */
+export type DeleteContainerProtectionRepositoryRuleInput = {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
-  /** Global ID of the container registry protection rule to delete. */
+  /** Global ID of the container repository protection rule to delete. */
   id: Scalars["ContainerRegistryProtectionRuleID"]["input"];
 };
 
-/** Autogenerated return type of DeleteContainerRegistryProtectionRule. */
-export type DeleteContainerRegistryProtectionRulePayload = {
-  __typename?: "DeleteContainerRegistryProtectionRulePayload";
+/** Autogenerated return type of DeleteContainerProtectionRepositoryRule. */
+export type DeleteContainerProtectionRepositoryRulePayload = {
+  __typename?: "DeleteContainerProtectionRepositoryRulePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Container repository protection rule that was deleted successfully. */
+  containerProtectionRepositoryRule?: Maybe<ContainerProtectionRepositoryRule>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+};
+
+/** Autogenerated input type of DeleteContainerProtectionTagRule */
+export type DeleteContainerProtectionTagRuleInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Global ID of the tag protection rule to delete. */
+  id: Scalars["ContainerRegistryProtectionTagRuleID"]["input"];
+};
+
+/** Autogenerated return type of DeleteContainerProtectionTagRule. */
+export type DeleteContainerProtectionTagRulePayload = {
+  __typename?: "DeleteContainerProtectionTagRulePayload";
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /**
-   * Container registry protection rule that was deleted successfully. Introduced in GitLab 16.7: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.7.
+   * Deleted protection rule for container image tags. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
    */
-  containerRegistryProtectionRule?: Maybe<ContainerRegistryProtectionRule>;
+  containerProtectionTagRule?: Maybe<ContainerProtectionTagRule>;
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
+};
+
+/** Autogenerated input type of DeleteConversationThread */
+export type DeleteConversationThreadInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Global ID of the thread to delete. */
+  threadId: Scalars["AiConversationThreadID"]["input"];
+};
+
+/** Autogenerated return type of DeleteConversationThread. */
+export type DeleteConversationThreadPayload = {
+  __typename?: "DeleteConversationThreadPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** List of errors that occurred whilst trying to delete the thread. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Returns true if thread was successfully deleted. */
+  success: Scalars["Boolean"]["output"];
 };
 
 /** The response from the AdminSidekiqQueuesDeleteJobs mutation */
@@ -13000,10 +14799,7 @@ export type DeletePackagesProtectionRulePayload = {
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
-  /**
-   * Packages protection rule that was deleted successfully. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
+  /** Packages protection rule that was deleted successfully. */
   packageProtectionRule?: Maybe<PackagesProtectionRule>;
 };
 
@@ -13037,7 +14833,7 @@ export type DeletedNote = {
 };
 
 /** A software dependency used by a project */
-export type Dependency = {
+export type Dependency = DependencyInterface & {
   __typename?: "Dependency";
   /** ID of the dependency. */
   id: Scalars["GlobalID"]["output"];
@@ -13053,6 +14849,51 @@ export type Dependency = {
   reachability?: Maybe<ReachabilityType>;
   /** Version of the dependency. */
   version?: Maybe<Scalars["String"]["output"]>;
+  /** Number of vulnerabilities within the dependency. */
+  vulnerabilityCount: Scalars["Int"]["output"];
+};
+
+/** A software dependency aggregation used by a group */
+export type DependencyAggregation = DependencyInterface & {
+  __typename?: "DependencyAggregation";
+  /** ID of the dependency. */
+  id: Scalars["GlobalID"]["output"];
+  /** Licenses associated to the dependency. */
+  licenses?: Maybe<Array<License>>;
+  /** Information about where the dependency is located. */
+  location?: Maybe<Location>;
+  /** Name of the dependency. */
+  name: Scalars["String"]["output"];
+  /** Number of occurrences of the dependency across projects. */
+  occurrenceCount: Scalars["Int"]["output"];
+  /** Description of the tool used to manage the dependency. */
+  packager?: Maybe<PackageManager>;
+  /** Information about reachability of a dependency. */
+  reachability?: Maybe<ReachabilityType>;
+  /** Version of the dependency. */
+  version?: Maybe<Scalars["String"]["output"]>;
+  /** Number of vulnerabilities within the dependency. */
+  vulnerabilityCount: Scalars["Int"]["output"];
+};
+
+/** The connection type for DependencyAggregation. */
+export type DependencyAggregationConnection = {
+  __typename?: "DependencyAggregationConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<DependencyAggregationEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<DependencyAggregation>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type DependencyAggregationEdge = {
+  __typename?: "DependencyAggregationEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<DependencyAggregation>;
 };
 
 /** The connection type for Dependency. */
@@ -13075,8 +14916,47 @@ export type DependencyEdge = {
   node?: Maybe<Dependency>;
 };
 
+export type DependencyInterface = {
+  /** ID of the dependency. */
+  id: Scalars["GlobalID"]["output"];
+  /** Licenses associated to the dependency. */
+  licenses?: Maybe<Array<License>>;
+  /** Information about where the dependency is located. */
+  location?: Maybe<Location>;
+  /** Name of the dependency. */
+  name: Scalars["String"]["output"];
+  /** Description of the tool used to manage the dependency. */
+  packager?: Maybe<PackageManager>;
+  /** Information about reachability of a dependency. */
+  reachability?: Maybe<ReachabilityType>;
+  /** Version of the dependency. */
+  version?: Maybe<Scalars["String"]["output"]>;
+  /** Number of vulnerabilities within the dependency. */
+  vulnerabilityCount: Scalars["Int"]["output"];
+};
+
 /** Represents metadata associated with a dependency link */
 export type DependencyLinkMetadata = NugetDependencyLinkMetadata;
+
+/** Ancestor path of a given dependency. */
+export type DependencyPath = {
+  __typename?: "DependencyPath";
+  /** Indicates if the path is cyclic. */
+  isCyclic: Scalars["Boolean"]["output"];
+  /** Indicates if the path reached the maximum depth (20). */
+  maxDepthReached: Scalars["Boolean"]["output"];
+  /** Name of the dependency. */
+  path: Array<DependencyPathPartial>;
+};
+
+/** Ancestor path partial of a given dependency. */
+export type DependencyPathPartial = {
+  __typename?: "DependencyPathPartial";
+  /** Name of the dependency. */
+  name: Scalars["String"]["output"];
+  /** Version of the dependency. */
+  version: Scalars["String"]["output"];
+};
 
 /** Dependency proxy blob */
 export type DependencyProxyBlob = {
@@ -13114,16 +14994,27 @@ export type DependencyProxyBlobEdge = {
 /** Represents the Geo replication and verification state of a dependency_proxy_blob */
 export type DependencyProxyBlobRegistry = {
   __typename?: "DependencyProxyBlobRegistry";
+  /** Indicate if the checksums of the DependencyProxyBlobRegistry do not match on the primary and secondary. */
+  checksumMismatch?: Maybe<Scalars["Boolean"]["output"]>;
   /** Timestamp when the DependencyProxyBlobRegistry was created */
   createdAt?: Maybe<Scalars["Time"]["output"]>;
   /** ID of the Dependency Proxy Blob. */
   dependencyProxyBlobId: Scalars["ID"]["output"];
+  /**
+   * Indicate if a forced redownload is to be performed. Deprecated in GitLab 17.10: Removed from registry tables in the database in favor of the newer reusable framework.
+   * @deprecated Removed from registry tables in the database in favor of the newer reusable framework. Deprecated in GitLab 17.10.
+   */
+  forceToRedownload?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the DependencyProxyBlobRegistry */
   id: Scalars["ID"]["output"];
   /** Error message during sync of the DependencyProxyBlobRegistry */
   lastSyncFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp of the most recent successful sync of the DependencyProxyBlobRegistry */
   lastSyncedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Indicate if the DependencyProxyBlobRegistry is missing on primary. */
+  missingOnPrimary?: Maybe<Scalars["Boolean"]["output"]>;
+  /** ID of the DependencyProxyBlobRegistry's model record. */
+  modelRecordId?: Maybe<Scalars["Int"]["output"]>;
   /** Timestamp after which the DependencyProxyBlobRegistry is resynced */
   retryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed sync attempts of the DependencyProxyBlobRegistry */
@@ -13132,13 +15023,15 @@ export type DependencyProxyBlobRegistry = {
   state?: Maybe<RegistryState>;
   /** The local checksum of the DependencyProxyBlobRegistry */
   verificationChecksum?: Maybe<Scalars["String"]["output"]>;
+  /** The expected checksum of the DependencyProxyBlobRegistry in case of mismatch. */
+  verificationChecksumMismatched?: Maybe<Scalars["String"]["output"]>;
   /** Error message during verification of the DependencyProxyBlobRegistry */
   verificationFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp after which the DependencyProxyBlobRegistry is reverified */
   verificationRetryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed verification attempts of the DependencyProxyBlobRegistry */
   verificationRetryCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Timestamp when the verification started of DependencyProxyBlobRegistry */
+  /** Timestamp when the verification of DependencyProxyBlobRegistry started */
   verificationStartedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Verification state of the DependencyProxyBlobRegistry */
   verificationState?: Maybe<VerificationStateEnum>;
@@ -13149,12 +15042,19 @@ export type DependencyProxyBlobRegistry = {
 /** The connection type for DependencyProxyBlobRegistry. */
 export type DependencyProxyBlobRegistryConnection = {
   __typename?: "DependencyProxyBlobRegistryConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<DependencyProxyBlobRegistryEdge>>>;
   /** A list of nodes. */
   nodes?: Maybe<Array<Maybe<DependencyProxyBlobRegistry>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** The connection type for DependencyProxyBlobRegistry. */
+export type DependencyProxyBlobRegistryConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** An edge in a connection. */
@@ -13223,16 +15123,27 @@ export type DependencyProxyManifestEdge = {
 /** Represents the Geo replication and verification state of a dependency_proxy_manifest */
 export type DependencyProxyManifestRegistry = {
   __typename?: "DependencyProxyManifestRegistry";
+  /** Indicate if the checksums of the DependencyProxyManifestRegistry do not match on the primary and secondary. */
+  checksumMismatch?: Maybe<Scalars["Boolean"]["output"]>;
   /** Timestamp when the DependencyProxyManifestRegistry was created */
   createdAt?: Maybe<Scalars["Time"]["output"]>;
   /** ID of the Dependency Proxy Manifest. */
   dependencyProxyManifestId: Scalars["ID"]["output"];
+  /**
+   * Indicate if a forced redownload is to be performed. Deprecated in GitLab 17.10: Removed from registry tables in the database in favor of the newer reusable framework.
+   * @deprecated Removed from registry tables in the database in favor of the newer reusable framework. Deprecated in GitLab 17.10.
+   */
+  forceToRedownload?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the DependencyProxyManifestRegistry */
   id: Scalars["ID"]["output"];
   /** Error message during sync of the DependencyProxyManifestRegistry */
   lastSyncFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp of the most recent successful sync of the DependencyProxyManifestRegistry */
   lastSyncedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Indicate if the DependencyProxyManifestRegistry is missing on primary. */
+  missingOnPrimary?: Maybe<Scalars["Boolean"]["output"]>;
+  /** ID of the DependencyProxyManifestRegistry's model record. */
+  modelRecordId?: Maybe<Scalars["Int"]["output"]>;
   /** Timestamp after which the DependencyProxyManifestRegistry is resynced */
   retryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed sync attempts of the DependencyProxyManifestRegistry */
@@ -13241,13 +15152,15 @@ export type DependencyProxyManifestRegistry = {
   state?: Maybe<RegistryState>;
   /** The local checksum of the DependencyProxyManifestRegistry */
   verificationChecksum?: Maybe<Scalars["String"]["output"]>;
+  /** The expected checksum of the DependencyProxyManifestRegistry in case of mismatch. */
+  verificationChecksumMismatched?: Maybe<Scalars["String"]["output"]>;
   /** Error message during verification of the DependencyProxyManifestRegistry */
   verificationFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp after which the DependencyProxyManifestRegistry is reverified */
   verificationRetryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed verification attempts of the DependencyProxyManifestRegistry */
   verificationRetryCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Timestamp when the verification started of DependencyProxyManifestRegistry */
+  /** Timestamp when the verification of DependencyProxyManifestRegistry started */
   verificationStartedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Verification state of the DependencyProxyManifestRegistry */
   verificationState?: Maybe<VerificationStateEnum>;
@@ -13258,12 +15171,19 @@ export type DependencyProxyManifestRegistry = {
 /** The connection type for DependencyProxyManifestRegistry. */
 export type DependencyProxyManifestRegistryConnection = {
   __typename?: "DependencyProxyManifestRegistryConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<DependencyProxyManifestRegistryEdge>>>;
   /** A list of nodes. */
   nodes?: Maybe<Array<Maybe<DependencyProxyManifestRegistry>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** The connection type for DependencyProxyManifestRegistry. */
+export type DependencyProxyManifestRegistryConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** An edge in a connection. */
@@ -13302,10 +15222,16 @@ export type DependencyProxySetting = {
   __typename?: "DependencyProxySetting";
   /** Indicates whether the dependency proxy is enabled for the group. */
   enabled: Scalars["Boolean"]["output"];
+  /** Identity credential used to authenticate with Docker Hub when pulling images. Can be a username (for password or personal access token (PAT)) or organization name (for organization access token (OAT)). */
+  identity?: Maybe<Scalars["String"]["output"]>;
 };
 
 /** Values for sorting dependencies */
 export enum DependencySort {
+  /** License by ascending order. */
+  LicenseAsc = "LICENSE_ASC",
+  /** License by descending order. */
+  LicenseDesc = "LICENSE_DESC",
   /** Name by ascending order. */
   NameAsc = "NAME_ASC",
   /** Name by descending order. */
@@ -13452,11 +15378,11 @@ export enum DeploymentStatus {
 /** Tags for a given deployment */
 export type DeploymentTag = {
   __typename?: "DeploymentTag";
-  /** Name of this git tag. */
+  /** Name of the git tag. */
   name?: Maybe<Scalars["String"]["output"]>;
-  /** Path for this tag. */
+  /** Path for the tag. */
   path?: Maybe<Scalars["String"]["output"]>;
-  /** Web path for this tag. */
+  /** Web path for the tag. */
   webPath?: Maybe<Scalars["String"]["output"]>;
 };
 
@@ -13530,7 +15456,7 @@ export type Design = CurrentUserTodos &
   NoteableInterface &
   Todoable & {
     __typename?: "Design";
-    /** All commenters on this noteable. */
+    /** All commenters on the noteable. */
     commenters: UserCoreConnection;
     /** To-do items for the current user. */
     currentUserTodos: TodoConnection;
@@ -13538,17 +15464,17 @@ export type Design = CurrentUserTodos &
     description?: Maybe<Scalars["String"]["output"]>;
     /** GitLab Flavored Markdown rendering of `description` */
     descriptionHtml?: Maybe<Scalars["String"]["output"]>;
-    /** Diff refs for this design. */
+    /** Diff refs for the design. */
     diffRefs: DiffRefs;
-    /** All discussions on this noteable. */
+    /** All discussions on the noteable. */
     discussions: DiscussionConnection;
-    /** How this design was changed in the current version. */
+    /** How the design was changed in the current version. */
     event: DesignVersionEvent;
     /** Filename of the design. */
     filename: Scalars["String"]["output"];
     /** Full path to the design file. */
     fullPath: Scalars["ID"]["output"];
-    /** ID of this design. */
+    /** ID of the design. */
     id: Scalars["ID"]["output"];
     /** URL of the full-sized image. */
     image: Scalars["String"]["output"];
@@ -13560,11 +15486,11 @@ export type Design = CurrentUserTodos &
     importedFrom: ImportSource;
     /** Issue the design belongs to. */
     issue: Issue;
-    /** Name or title of this object. */
+    /** Name or title of the object. */
     name?: Maybe<Scalars["String"]["output"]>;
     /** All notes on this noteable. */
     notes: NoteConnection;
-    /** Total count of user-created notes for this design. */
+    /** Total count of user-created notes for the design. */
     notesCount: Scalars["Int"]["output"];
     /** Project the design belongs to. */
     project: Project;
@@ -13625,15 +15551,15 @@ export type DesignAtVersion = DesignFields & {
   __typename?: "DesignAtVersion";
   /** Underlying design. */
   design: Design;
-  /** Diff refs for this design. */
+  /** Diff refs for the design. */
   diffRefs: DiffRefs;
-  /** How this design was changed in the current version. */
+  /** How the design was changed in the current version. */
   event: DesignVersionEvent;
   /** Filename of the design. */
   filename: Scalars["String"]["output"];
   /** Full path to the design file. */
   fullPath: Scalars["ID"]["output"];
-  /** ID of this design. */
+  /** ID of the design. */
   id: Scalars["ID"]["output"];
   /** URL of the full-sized image. */
   image: Scalars["String"]["output"];
@@ -13641,11 +15567,11 @@ export type DesignAtVersion = DesignFields & {
   imageV432x230?: Maybe<Scalars["String"]["output"]>;
   /** Issue the design belongs to. */
   issue: Issue;
-  /** Total count of user-created notes for this design. */
+  /** Total count of user-created notes for the design. */
   notesCount: Scalars["Int"]["output"];
   /** Project the design belongs to. */
   project: Project;
-  /** Version this design-at-versions is pinned to. */
+  /** Version the design-at-versions is pinned to. */
   version: DesignVersion;
 };
 
@@ -13761,15 +15687,15 @@ export type DesignEdge = {
 };
 
 export type DesignFields = {
-  /** Diff refs for this design. */
+  /** Diff refs for the design. */
   diffRefs: DiffRefs;
-  /** How this design was changed in the current version. */
+  /** How the design was changed in the current version. */
   event: DesignVersionEvent;
   /** Filename of the design. */
   filename: Scalars["String"]["output"];
   /** Full path to the design file. */
   fullPath: Scalars["ID"]["output"];
-  /** ID of this design. */
+  /** ID of the design. */
   id: Scalars["ID"]["output"];
   /** URL of the full-sized image. */
   image: Scalars["String"]["output"];
@@ -13777,7 +15703,7 @@ export type DesignFields = {
   imageV432x230?: Maybe<Scalars["String"]["output"]>;
   /** Issue the design belongs to. */
   issue: Issue;
-  /** Total count of user-created notes for this design. */
+  /** Total count of user-created notes for the design. */
   notesCount: Scalars["Int"]["output"];
   /** Project the design belongs to. */
   project: Project;
@@ -13848,16 +15774,27 @@ export type DesignManagementMovePayload = {
 /** Represents the Geo replication and verification state of a Design Management Repository */
 export type DesignManagementRepositoryRegistry = {
   __typename?: "DesignManagementRepositoryRegistry";
+  /** Indicate if the checksums of the DesignManagementRepositoryRegistry do not match on the primary and secondary. */
+  checksumMismatch?: Maybe<Scalars["Boolean"]["output"]>;
   /** Timestamp when the DesignManagementRepositoryRegistry was created */
   createdAt?: Maybe<Scalars["Time"]["output"]>;
   /** ID of the Design Management Repository. */
   designManagementRepositoryId: Scalars["ID"]["output"];
+  /**
+   * Indicate if a forced redownload is to be performed. Deprecated in GitLab 17.10: Removed from registry tables in the database in favor of the newer reusable framework.
+   * @deprecated Removed from registry tables in the database in favor of the newer reusable framework. Deprecated in GitLab 17.10.
+   */
+  forceToRedownload?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the DesignManagementRepositoryRegistry */
   id: Scalars["ID"]["output"];
   /** Error message during sync of the DesignManagementRepositoryRegistry */
   lastSyncFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp of the most recent successful sync of the DesignManagementRepositoryRegistry */
   lastSyncedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Indicate if the DesignManagementRepositoryRegistry is missing on primary. */
+  missingOnPrimary?: Maybe<Scalars["Boolean"]["output"]>;
+  /** ID of the DesignManagementRepositoryRegistry's model record. */
+  modelRecordId?: Maybe<Scalars["Int"]["output"]>;
   /** Timestamp after which the DesignManagementRepositoryRegistry is resynced */
   retryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed sync attempts of the DesignManagementRepositoryRegistry */
@@ -13866,13 +15803,15 @@ export type DesignManagementRepositoryRegistry = {
   state?: Maybe<RegistryState>;
   /** The local checksum of the DesignManagementRepositoryRegistry */
   verificationChecksum?: Maybe<Scalars["String"]["output"]>;
+  /** The expected checksum of the DesignManagementRepositoryRegistry in case of mismatch. */
+  verificationChecksumMismatched?: Maybe<Scalars["String"]["output"]>;
   /** Error message during verification of the DesignManagementRepositoryRegistry */
   verificationFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp after which the DesignManagementRepositoryRegistry is reverified */
   verificationRetryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed verification attempts of the DesignManagementRepositoryRegistry */
   verificationRetryCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Timestamp when the verification started of DesignManagementRepositoryRegistry */
+  /** Timestamp when the verification of DesignManagementRepositoryRegistry started */
   verificationStartedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Verification state of the DesignManagementRepositoryRegistry */
   verificationState?: Maybe<VerificationStateEnum>;
@@ -13883,12 +15822,19 @@ export type DesignManagementRepositoryRegistry = {
 /** The connection type for DesignManagementRepositoryRegistry. */
 export type DesignManagementRepositoryRegistryConnection = {
   __typename?: "DesignManagementRepositoryRegistryConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<DesignManagementRepositoryRegistryEdge>>>;
   /** A list of nodes. */
   nodes?: Maybe<Array<Maybe<DesignManagementRepositoryRegistry>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** The connection type for DesignManagementRepositoryRegistry. */
+export type DesignManagementRepositoryRegistryConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** An edge in a connection. */
@@ -14077,6 +16023,40 @@ export type DestroyComplianceFrameworkPayload = {
   errors: Array<Scalars["String"]["output"]>;
 };
 
+/** Autogenerated input type of DestroyComplianceRequirement */
+export type DestroyComplianceRequirementInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Global ID of the compliance requirement to destroy. */
+  id: Scalars["ComplianceManagementComplianceFrameworkComplianceRequirementID"]["input"];
+};
+
+/** Autogenerated return type of DestroyComplianceRequirement. */
+export type DestroyComplianceRequirementPayload = {
+  __typename?: "DestroyComplianceRequirementPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+};
+
+/** Autogenerated input type of DestroyComplianceRequirementsControl */
+export type DestroyComplianceRequirementsControlInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Global ID of the compliance requirement control to destroy. */
+  id: Scalars["ComplianceManagementComplianceFrameworkComplianceRequirementsControlID"]["input"];
+};
+
+/** Autogenerated return type of DestroyComplianceRequirementsControl. */
+export type DestroyComplianceRequirementsControlPayload = {
+  __typename?: "DestroyComplianceRequirementsControlPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+};
+
 /** Autogenerated input type of DestroyContainerRepository */
 export type DestroyContainerRepositoryInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -14172,6 +16152,8 @@ export type DestroyNotePayload = {
   errors: Array<Scalars["String"]["output"]>;
   /** Note after mutation. */
   note?: Maybe<Note>;
+  /** Status of quick actions after mutation. */
+  quickActionsStatus?: Maybe<QuickActionsStatus>;
 };
 
 /** Autogenerated input type of DestroyPackageFile */
@@ -14231,7 +16213,7 @@ export type DestroyPackagePayload = {
 export type DestroyPackagesInput = {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
-  /** Global IDs of the Packages. Max 20 */
+  /** Global IDs of the Packages. Max 100 */
   ids: Array<Scalars["PackagesPackageID"]["input"]>;
 };
 
@@ -14326,6 +16308,8 @@ export enum DetailedMergeStatus {
   RequestedChanges = "REQUESTED_CHANGES",
   /** All policy rules must be satisfied. */
   SecurityPoliciesViolations = "SECURITY_POLICIES_VIOLATIONS",
+  /** Merge request title does not match required regex. */
+  TitleNotMatching = "TITLE_NOT_MATCHING",
   /** Merge status has not been checked. */
   Unchecked = "UNCHECKED",
 }
@@ -14334,6 +16318,8 @@ export type DetailedStatus = {
   __typename?: "DetailedStatus";
   /** Action information for the status. This includes method, button title, icon, path, and title. */
   action?: Maybe<StatusAction>;
+  /** Path of the deployment details for the status. */
+  deploymentDetailsPath?: Maybe<Scalars["String"]["output"]>;
   /** Path of the details for the status. */
   detailsPath?: Maybe<Scalars["String"]["output"]>;
   /** Favicon of the status. */
@@ -14577,9 +16563,9 @@ export type DiffRefs = {
 /** Changes to a single file */
 export type DiffStats = {
   __typename?: "DiffStats";
-  /** Number of lines added to this file. */
+  /** Number of lines added to the file. */
   additions: Scalars["Int"]["output"];
-  /** Number of lines deleted from this file. */
+  /** Number of lines deleted from the file. */
   deletions: Scalars["Int"]["output"];
   /** File path, relative to repository root. */
   path: Scalars["String"]["output"];
@@ -14636,6 +16622,8 @@ export type Discussion = BaseDiscussionInterface &
     resolvedAt?: Maybe<Scalars["Time"]["output"]>;
     /** User who resolved the object. */
     resolvedBy?: Maybe<UserCore>;
+    /** Permissions for the current user on the resource */
+    userPermissions: DiscussionPermissions;
   };
 
 export type DiscussionNotesArgs = {
@@ -14663,6 +16651,12 @@ export type DiscussionEdge = {
   cursor: Scalars["String"]["output"];
   /** The item at the end of the edge. */
   node?: Maybe<Discussion>;
+};
+
+export type DiscussionPermissions = {
+  __typename?: "DiscussionPermissions";
+  /** If `true`, the user can perform `resolve_note` on this resource */
+  resolveNote: Scalars["Boolean"]["output"];
 };
 
 /** Autogenerated input type of DiscussionToggleResolve */
@@ -14770,6 +16764,52 @@ export type DoraProjectFilterInput = {
   topic?: InputMaybe<Array<Scalars["String"]["input"]>>;
 };
 
+/** GitLab Duo settings */
+export type DuoSettings = {
+  __typename?: "DuoSettings";
+  /**
+   * URL for local AI gateway server. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  aiGatewayUrl?: Maybe<Scalars["String"]["output"]>;
+  /**
+   * Indicates whether GitLab Duo Core features are enabled. Introduced in GitLab 18.0: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 18.0.
+   */
+  duoCoreFeaturesEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+  /**
+   * Timestamp of last GitLab Duo setting update. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  updatedAt: Scalars["Time"]["output"];
+};
+
+/** Autogenerated input type of DuoSettingsUpdate */
+export type DuoSettingsUpdateInput = {
+  /** URL for local AI gateway server. */
+  aiGatewayUrl?: InputMaybe<Scalars["String"]["input"]>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Indicates whether GitLab Duo Core features are enabled. */
+  duoCoreFeaturesEnabled?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+/** Autogenerated return type of DuoSettingsUpdate. */
+export type DuoSettingsUpdatePayload = {
+  __typename?: "DuoSettingsUpdatePayload";
+  /** URL for local AI gateway server. */
+  aiGatewayUrl?: Maybe<Scalars["String"]["output"]>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /**
+   * Indicates whether GitLab Duo Core features are enabled. Introduced in GitLab 18.0: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 18.0.
+   */
+  duoCoreFeaturesEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+};
+
 /** Autogenerated input type of DuoUserFeedback */
 export type DuoUserFeedbackInput = {
   /** Global ID of the agent to answer the chat. */
@@ -14808,6 +16848,8 @@ export type DuoWorkflow = {
   updatedAt: Scalars["Time"]["output"];
   /** ID of the user. */
   userId: Scalars["UserID"]["output"];
+  /** Duo Workflow type based on its capabilities. */
+  workflowDefinition?: Maybe<Scalars["String"]["output"]>;
 };
 
 /** The connection type for DuoWorkflow. */
@@ -14830,6 +16872,26 @@ export type DuoWorkflowEdge = {
   node?: Maybe<DuoWorkflow>;
 };
 
+/** Duo Workflow enablement status checks. */
+export type DuoWorkflowEnablement = {
+  __typename?: "DuoWorkflowEnablement";
+  /** Enablement checks. */
+  checks?: Maybe<Array<DuoWorkflowEnablementCheck>>;
+  /** Indicates whether GitLab Duo Workflow is enabled for current user and the project. */
+  enabled: Scalars["Boolean"]["output"];
+};
+
+/** Represents single Duo Workflow enablement check. */
+export type DuoWorkflowEnablementCheck = {
+  __typename?: "DuoWorkflowEnablementCheck";
+  /** Description of status check. */
+  message?: Maybe<Scalars["String"]["output"]>;
+  /** Name of the status check. */
+  name: Scalars["String"]["output"];
+  /** Whether the check was successful or not. */
+  value: Scalars["Boolean"]["output"];
+};
+
 /** Events that describe the history and progress of a Duo Workflow */
 export type DuoWorkflowEvent = {
   __typename?: "DuoWorkflowEvent";
@@ -14837,12 +16899,19 @@ export type DuoWorkflowEvent = {
   checkpoint?: Maybe<Scalars["JsonString"]["output"]>;
   /** Message errors. */
   errors?: Maybe<Array<Scalars["String"]["output"]>>;
+  /**
+   * Granular status of workflow execution. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  executionStatus: Scalars["String"]["output"];
   /** Metadata associated with the event. */
   metadata?: Maybe<Scalars["JsonString"]["output"]>;
   /** Time of the parent event. */
   parentTimestamp?: Maybe<Scalars["Time"]["output"]>;
   /** Time of the event. */
   timestamp?: Maybe<Scalars["Time"]["output"]>;
+  /** Duo Workflow type based on its capabilities. */
+  workflowDefinition?: Maybe<Scalars["String"]["output"]>;
   /** Goal of the workflow. */
   workflowGoal?: Maybe<Scalars["String"]["output"]>;
   /** Status of the workflow. */
@@ -14877,10 +16946,18 @@ export enum DuoWorkflowStatus {
   Failed = "FAILED",
   /** The workflow is finished. */
   Finished = "FINISHED",
+  /** The workflow is input_required. */
+  InputRequired = "INPUT_REQUIRED",
   /** The workflow is paused. */
   Paused = "PAUSED",
+  /** The workflow is plan_approval_required. */
+  PlanApprovalRequired = "PLAN_APPROVAL_REQUIRED",
   /** The workflow is running. */
   Running = "RUNNING",
+  /** The workflow is stopped. */
+  Stopped = "STOPPED",
+  /** The workflow is tool_call_approval_required. */
+  ToolCallApprovalRequired = "TOOL_CALL_APPROVAL_REQUIRED",
 }
 
 /** Autogenerated input type of EchoCreate */
@@ -15053,6 +17130,8 @@ export type Environment = {
   autoDeleteAt?: Maybe<Scalars["Time"]["output"]>;
   /** When the environment is going to be stopped automatically. */
   autoStopAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Auto stop setting of the environment. */
+  autoStopSetting?: Maybe<AutoStopSetting>;
   /** Cluster agent of the environment. */
   clusterAgent?: Maybe<ClusterAgent>;
   /** When the environment was created. */
@@ -15135,6 +17214,8 @@ export type EnvironmentConnection = {
 
 /** Autogenerated input type of EnvironmentCreate */
 export type EnvironmentCreateInput = {
+  /** Auto stop setting of the environment. */
+  autoStopSetting?: InputMaybe<AutoStopSetting>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
   /** Cluster agent of the environment. */
@@ -15225,6 +17306,8 @@ export type EnvironmentStopPayload = {
 
 /** Autogenerated input type of EnvironmentUpdate */
 export type EnvironmentUpdateInput = {
+  /** Auto stop setting of the environment. */
+  autoStopSetting?: InputMaybe<AutoStopSetting>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
   /** Cluster agent of the environment. */
@@ -15287,19 +17370,19 @@ export type Epic = CurrentUserTodos &
     awardEmoji?: Maybe<AwardEmojiConnection>;
     /** Indicates the epic is blocked. */
     blocked?: Maybe<Scalars["Boolean"]["output"]>;
-    /** Count of epics blocking this epic. */
+    /** Count of epics blocking the epic. */
     blockedByCount?: Maybe<Scalars["Int"]["output"]>;
-    /** Epics blocking this epic. */
+    /** Epics blocking the epic. */
     blockedByEpics?: Maybe<EpicConnection>;
-    /** Count of epics that this epic is blocking. */
+    /** Count of epics that the epic is blocking. */
     blockingCount?: Maybe<Scalars["Int"]["output"]>;
     /** Children (sub-epics) of the epic. */
     children?: Maybe<EpicConnection>;
     /** Timestamp of when the epic was closed. */
     closedAt?: Maybe<Scalars["Time"]["output"]>;
-    /** Color of the epic. Returns `null` if `epic_color_highlight` feature flag is disabled. */
+    /** Color of the epic. */
     color?: Maybe<Scalars["String"]["output"]>;
-    /** All commenters on this noteable. */
+    /** All commenters on the noteable. */
     commenters: UserCoreConnection;
     /** Indicates if the epic is confidential. */
     confidential?: Maybe<Scalars["Boolean"]["output"]>;
@@ -15317,7 +17400,7 @@ export type Epic = CurrentUserTodos &
     description?: Maybe<Scalars["String"]["output"]>;
     /** GitLab Flavored Markdown rendering of `description` */
     descriptionHtml?: Maybe<Scalars["String"]["output"]>;
-    /** All discussions on this noteable. */
+    /** All discussions on the noteable. */
     discussions: DiscussionConnection;
     /** Number of downvotes the epic has received. */
     downvotes: Scalars["Int"]["output"];
@@ -15353,7 +17436,9 @@ export type Epic = CurrentUserTodos &
     issues?: Maybe<EpicIssueConnection>;
     /** Labels assigned to the epic. */
     labels?: Maybe<LabelConnection>;
-    /** Name or title of this object. */
+    /** Work items linked to the epic. */
+    linkedWorkItems?: Maybe<LinkedWorkItemTypeConnection>;
+    /** Name or title of the object. */
     name?: Maybe<Scalars["String"]["output"]>;
     /** All notes on this noteable. */
     notes: NoteConnection;
@@ -15381,7 +17466,7 @@ export type Epic = CurrentUserTodos &
     state: EpicState;
     /** Indicates the currently logged in user is subscribed to the epic. */
     subscribed: Scalars["Boolean"]["output"];
-    /** Text color generated for the epic. Returns `null` if `epic_color_highlight` feature flag is disabled. */
+    /** Text color generated for the epic. */
     textColor?: Maybe<Scalars["String"]["output"]>;
     /** Title of the epic. */
     title?: Maybe<Scalars["String"]["output"]>;
@@ -15427,6 +17512,7 @@ export type EpicAncestorsArgs = {
   search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<EpicSort>;
   state?: InputMaybe<EpicState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   timeframe?: InputMaybe<Timeframe>;
   topLevelHierarchyOnly?: InputMaybe<Scalars["Boolean"]["input"]>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -15473,6 +17559,7 @@ export type EpicChildrenArgs = {
   search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<EpicSort>;
   state?: InputMaybe<EpicState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   timeframe?: InputMaybe<Timeframe>;
   topLevelHierarchyOnly?: InputMaybe<Scalars["Boolean"]["input"]>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -15524,6 +17611,15 @@ export type EpicIssuesArgs = {
 export type EpicLabelsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** Represents an epic */
+export type EpicLinkedWorkItemsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  filter?: InputMaybe<WorkItemRelatedLinkType>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
 };
@@ -15633,7 +17729,7 @@ export type EpicBoardConnection = {
 export type EpicBoardCreateInput = {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
-  /** Whether or not display epic colors. Ignored unless `epic_color_highlight` flag is enabled. */
+  /** Whether or not display epic colors. */
   displayColors?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** Full path of the group with which the resource is associated. */
   groupPath?: InputMaybe<Scalars["ID"]["input"]>;
@@ -15715,7 +17811,7 @@ export type EpicBoardListDestroyPayload = {
 export type EpicBoardUpdateInput = {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
-  /** Whether or not display epic colors. Ignored unless `epic_color_highlight` flag is enabled. */
+  /** Whether or not display epic colors. */
   displayColors?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** Whether or not backlog list is hidden. */
   hideBacklogList?: InputMaybe<Scalars["Boolean"]["input"]>;
@@ -15772,7 +17868,7 @@ export type EpicDescendantCount = {
 export type EpicDescendantWeights = {
   __typename?: "EpicDescendantWeights";
   /**
-   * Total weight of completed (closed) issues in this epic, including epic descendants. Deprecated in GitLab 16.6: Use `closedIssuesTotal`.
+   * Total weight of completed (closed) issues in the epic, including epic descendants. Deprecated in GitLab 16.6: Use `closedIssuesTotal`.
    * @deprecated Use `closedIssuesTotal`. Deprecated in GitLab 16.6.
    */
   closedIssues?: Maybe<Scalars["Int"]["output"]>;
@@ -15782,11 +17878,11 @@ export type EpicDescendantWeights = {
    */
   closedIssuesTotal?: Maybe<Scalars["BigInt"]["output"]>;
   /**
-   * Total weight of opened issues in this epic, including epic descendants. Deprecated in GitLab 16.6: Use `OpenedIssuesTotal`.
+   * Total weight of opened issues in the epic, including epic descendants. Deprecated in GitLab 16.6: Use `OpenedIssuesTotal`.
    * @deprecated Use `OpenedIssuesTotal`. Deprecated in GitLab 16.6.
    */
   openedIssues?: Maybe<Scalars["Int"]["output"]>;
-  /** Total weight of opened issues in this epic, including epic descendants, encoded as a string. */
+  /** Total weight of opened issues in the epic, including epic descendants, encoded as a string. */
   openedIssuesTotal?: Maybe<Scalars["BigInt"]["output"]>;
 };
 
@@ -15833,7 +17929,7 @@ export type EpicIssue = CurrentUserTodos &
   Todoable & {
     __typename?: "EpicIssue";
     /**
-     * Alert associated to this issue. Deprecated in GitLab 15.6: Use `alert_management_alerts`.
+     * Alert associated to the issue. Deprecated in GitLab 15.6: Use `alert_management_alerts`.
      * @deprecated Use `alert_management_alerts`. Deprecated in GitLab 15.6.
      */
     alertManagementAlert?: Maybe<AlertManagementAlert>;
@@ -15845,17 +17941,17 @@ export type EpicIssue = CurrentUserTodos &
     author: UserCore;
     /** Indicates the issue is blocked. */
     blocked: Scalars["Boolean"]["output"];
-    /** Count of issues blocking this issue. */
+    /** Count of issues blocking the issue. */
     blockedByCount?: Maybe<Scalars["Int"]["output"]>;
-    /** Issues blocking this issue. */
+    /** Issues blocking the issue. */
     blockedByIssues?: Maybe<IssueConnection>;
-    /** Count of issues this issue is blocking. */
+    /** Count of issues the issue is blocking. */
     blockingCount: Scalars["Int"]["output"];
-    /** Issue this issue was closed as a duplicate of. */
+    /** Issue the issue was closed as a duplicate of. */
     closedAsDuplicateOf?: Maybe<Issue>;
     /** Timestamp of when the issue was closed. */
     closedAt?: Maybe<Scalars["Time"]["output"]>;
-    /** All commenters on this noteable. */
+    /** All commenters on the noteable. */
     commenters: UserCoreConnection;
     /** Indicates the issue is confidential. */
     confidential: Scalars["Boolean"]["output"];
@@ -15871,11 +17967,11 @@ export type EpicIssue = CurrentUserTodos &
     description?: Maybe<Scalars["String"]["output"]>;
     /** GitLab Flavored Markdown rendering of `description` */
     descriptionHtml?: Maybe<Scalars["String"]["output"]>;
-    /** Collection of design images associated with this issue. */
+    /** Collection of design images associated with the issue. */
     designCollection?: Maybe<DesignCollection>;
     /** Indicates discussion is locked on the issue. */
     discussionLocked: Scalars["Boolean"]["output"];
-    /** All discussions on this noteable. */
+    /** All discussions on the noteable. */
     discussions: DiscussionConnection;
     /** Number of downvotes the issue has received. */
     downvotes: Scalars["Int"]["output"];
@@ -15889,7 +17985,7 @@ export type EpicIssue = CurrentUserTodos &
     /** Indicates if the parent project or group has email notifications disabled: `false` if email notifications are disabled. */
     emailsEnabled: Scalars["Boolean"]["output"];
     /**
-     * Epic to which this issue belongs. Deprecated in GitLab 17.5: Replaced by WorkItem type.
+     * Epic to which the issue belongs. Deprecated in GitLab 17.5: Replaced by WorkItem type.
      * @deprecated Replaced by WorkItem type. Deprecated in GitLab 17.5.
      */
     epic?: Maybe<Epic>;
@@ -15929,6 +18025,11 @@ export type EpicIssue = CurrentUserTodos &
     iteration?: Maybe<Iteration>;
     /** Labels of the issue. */
     labels?: Maybe<LabelConnection>;
+    /**
+     * Work items linked to the issue. Introduced in GitLab 17.8: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+     */
+    linkedWorkItems?: Maybe<LinkedWorkItemTypeConnection>;
     /** Number of merge requests that close the issue on merge. */
     mergeRequestsCount: Scalars["Int"]["output"];
     /** Metric images associated to the issue. */
@@ -15939,7 +18040,7 @@ export type EpicIssue = CurrentUserTodos &
     moved?: Maybe<Scalars["Boolean"]["output"]>;
     /** Updated Issue after it got moved to another project. */
     movedTo?: Maybe<Issue>;
-    /** Name or title of this object. */
+    /** Name or title of the object. */
     name?: Maybe<Scalars["String"]["output"]>;
     /** All notes on this noteable. */
     notes: NoteConnection;
@@ -15963,6 +18064,11 @@ export type EpicIssue = CurrentUserTodos &
     slaDueAt?: Maybe<Scalars["Time"]["output"]>;
     /** State of the issue. */
     state: IssueState;
+    /**
+     * Status of the issue. Introduced in GitLab 18.0: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 18.0.
+     */
+    status?: Maybe<WorkItemStatus>;
     /** Indicates whether an issue is published to the status page. */
     statusPagePublishedIncident?: Maybe<Scalars["Boolean"]["output"]>;
     /** Indicates the currently logged in user is subscribed to the issue. */
@@ -16082,6 +18188,15 @@ export type EpicIssueLabelsArgs = {
 };
 
 /** Relationship between an epic and an issue */
+export type EpicIssueLinkedWorkItemsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  filter?: InputMaybe<WorkItemRelatedLinkType>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** Relationship between an epic and an issue */
 export type EpicIssueNotesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -16154,15 +18269,10 @@ export type EpicIssueEdge = {
 /** Represents an epic board list */
 export type EpicList = {
   __typename?: "EpicList";
-  /** Indicates if this list is collapsed for this user. */
+  /** Indicates if the list is collapsed for the user. */
   collapsed?: Maybe<Scalars["Boolean"]["output"]>;
   /** List epics. */
   epics?: Maybe<EpicConnection>;
-  /**
-   * Count of epics in the list. Deprecated in GitLab 14.9: This was renamed.
-   * @deprecated This was renamed. Please use `metadata`. Deprecated in GitLab 14.9.
-   */
-  epicsCount?: Maybe<Scalars["Int"]["output"]>;
   /** Global ID of the board list. */
   id: Scalars["BoardsEpicListID"]["output"];
   /** Label of the list. */
@@ -16396,6 +18506,57 @@ export enum EpicWildcardId {
   None = "NONE",
 }
 
+/** Represents a stack trace */
+export type ErrorTrackingStackTrace = {
+  __typename?: "ErrorTrackingStackTrace";
+  /** Absolute path of the stack trace. */
+  absolutePath?: Maybe<Scalars["String"]["output"]>;
+  /** Column number of the stack trace. */
+  columnNumber?: Maybe<Scalars["Int"]["output"]>;
+  /** Context of the stack trace. */
+  context?: Maybe<Array<WorkItemWidgetErrorTrackingStackTraceContext>>;
+  /** Filename of the stack trace. */
+  filename?: Maybe<Scalars["String"]["output"]>;
+  /** Name of the function where the error occured. */
+  function?: Maybe<Scalars["String"]["output"]>;
+  /** Line number of the stack trace. */
+  lineNumber?: Maybe<Scalars["Int"]["output"]>;
+};
+
+/** The connection type for ErrorTrackingStackTrace. */
+export type ErrorTrackingStackTraceConnection = {
+  __typename?: "ErrorTrackingStackTraceConnection";
+  /** Total count of collection. */
+  count: Scalars["Int"]["output"];
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<ErrorTrackingStackTraceEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<ErrorTrackingStackTrace>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type ErrorTrackingStackTraceEdge = {
+  __typename?: "ErrorTrackingStackTraceEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<ErrorTrackingStackTrace>;
+};
+
+/** Status of the error tracking service */
+export enum ErrorTrackingStatus {
+  /** Error tracking service respond with an error. */
+  Error = "ERROR",
+  /** Sentry issue not found. */
+  NotFound = "NOT_FOUND",
+  /** Error tracking service is not ready. */
+  Retry = "RETRY",
+  /** Successfuly fetch the stack trace. */
+  Success = "SUCCESS",
+}
+
 /** Autogenerated input type of EscalationPolicyCreate */
 export type EscalationPolicyCreateInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -16538,13 +18699,17 @@ export type Event = {
   __typename?: "Event";
   /** Action of the event. */
   action: EventAction;
-  /** Author of this event. */
+  /** Author of the event. */
   author: UserCore;
-  /** When this event was created. */
+  /** When the event was created. */
   createdAt: Scalars["Time"]["output"];
   /** ID of the event. */
   id: Scalars["ID"]["output"];
-  /** When this event was updated. */
+  /** Project of the event. */
+  project?: Maybe<Project>;
+  /** Target of the event. */
+  target?: Maybe<EventTargetType>;
+  /** When the event was updated. */
   updatedAt: Scalars["Time"]["output"];
 };
 
@@ -16595,6 +18760,40 @@ export type EventEdge = {
   /** The item at the end of the edge. */
   node?: Maybe<Event>;
 };
+
+/** Event target */
+export enum EventTarget {
+  /** All events */
+  All = "ALL",
+  /** Comments events */
+  Comments = "COMMENTS",
+  /** Designs events */
+  Designs = "DESIGNS",
+  /** Epic events */
+  Epic = "EPIC",
+  /** Issue events */
+  Issue = "ISSUE",
+  /** Merged events */
+  Merged = "MERGED",
+  /** Push events */
+  Push = "PUSH",
+  /** Team events */
+  Team = "TEAM",
+  /** Wiki events */
+  Wiki = "WIKI",
+}
+
+/** Represents an object that can be the subject of an event. */
+export type EventTargetType =
+  | Design
+  | Issue
+  | MergeRequest
+  | Milestone
+  | Note
+  | Project
+  | Snippet
+  | UserCore
+  | WikiPage;
 
 export type Eventable = {
   /** List of events associated with the object. */
@@ -16652,6 +18851,20 @@ export type ExportRequirementsPayload = {
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
 };
+
+/** Defines the common fields for all expressions. */
+export type ExpressionInterface = {
+  /** Field the expression applies to. */
+  field: Scalars["String"]["output"];
+  /** Operator of the expression. */
+  operator: Scalars["String"]["output"];
+};
+
+/** Represents possible value types for an expression. */
+export type ExpressionValue =
+  | BooleanExpression
+  | IntegerExpression
+  | StringExpression;
 
 /** Values for status of the Web IDE Extension Marketplace opt-in for the user */
 export enum ExtensionsMarketplaceOptInStatus {
@@ -16911,60 +19124,6 @@ export enum FindingReportsComparerStatus {
   Parsing = "PARSING",
 }
 
-/** Information about specific forecast created */
-export type Forecast = {
-  __typename?: "Forecast";
-  /** Status of the forecast. */
-  status: ForecastStatus;
-  /** Actual forecast values. */
-  values?: Maybe<ForecastDatapointConnection>;
-};
-
-/** Information about specific forecast created */
-export type ForecastValuesArgs = {
-  after?: InputMaybe<Scalars["String"]["input"]>;
-  before?: InputMaybe<Scalars["String"]["input"]>;
-  first?: InputMaybe<Scalars["Int"]["input"]>;
-  last?: InputMaybe<Scalars["Int"]["input"]>;
-};
-
-/** Information about specific forecast datapoint */
-export type ForecastDatapoint = {
-  __typename?: "ForecastDatapoint";
-  /** Datapoint of the forecast. Usually a date. */
-  datapoint: Scalars["String"]["output"];
-  /** Value of the given datapoint. */
-  value?: Maybe<Scalars["Float"]["output"]>;
-};
-
-/** The connection type for ForecastDatapoint. */
-export type ForecastDatapointConnection = {
-  __typename?: "ForecastDatapointConnection";
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<ForecastDatapointEdge>>>;
-  /** A list of nodes. */
-  nodes?: Maybe<Array<Maybe<ForecastDatapoint>>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-};
-
-/** An edge in a connection. */
-export type ForecastDatapointEdge = {
-  __typename?: "ForecastDatapointEdge";
-  /** A cursor for use in pagination. */
-  cursor: Scalars["String"]["output"];
-  /** The item at the end of the edge. */
-  node?: Maybe<ForecastDatapoint>;
-};
-
-/** List of statuses for forecasting model. */
-export enum ForecastStatus {
-  /** Forecast is ready. */
-  Ready = "READY",
-  /** Forecast is unavailable. */
-  Unavailable = "UNAVAILABLE",
-}
-
 /** Details of the fork project compared to its upstream project. */
 export type ForkDetails = {
   __typename?: "ForkDetails";
@@ -16982,7 +19141,7 @@ export type GeoNode = {
   __typename?: "GeoNode";
   /** Find Ci Secure File registries on this Geo node */
   ciSecureFileRegistries?: Maybe<CiSecureFileRegistryConnection>;
-  /** Maximum concurrency of container repository sync for this secondary node. */
+  /** Maximum concurrency of container repository sync for the secondary node. */
   containerRepositoriesMaxCapacity?: Maybe<Scalars["Int"]["output"]>;
   /** Find Container Repository registries on this Geo node. */
   containerRepositoryRegistries?: Maybe<ContainerRepositoryRegistryConnection>;
@@ -16998,13 +19157,13 @@ export type GeoNode = {
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.1.
    */
   designManagementRepositoryRegistries?: Maybe<DesignManagementRepositoryRegistryConnection>;
-  /** Indicates whether this Geo node is enabled. */
+  /** Indicates whether the Geo node is enabled. */
   enabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Maximum concurrency of LFS/attachment backfill for this secondary node. */
+  /** Maximum concurrency of LFS/attachment backfill for the secondary node. */
   filesMaxCapacity?: Maybe<Scalars["Int"]["output"]>;
   /** Find group wiki repository registries on this Geo node. */
   groupWikiRepositoryRegistries?: Maybe<GroupWikiRepositoryRegistryConnection>;
-  /** ID of this GeoNode. */
+  /** ID of the GeoNode. */
   id: Scalars["ID"]["output"];
   /** URL defined on the primary node secondary nodes should use to contact it. */
   internalUrl?: Maybe<Scalars["String"]["output"]>;
@@ -17016,7 +19175,7 @@ export type GeoNode = {
   mergeRequestDiffRegistries?: Maybe<MergeRequestDiffRegistryConnection>;
   /** Interval (in days) in which the repository verification is valid. After expiry, it is reverted. */
   minimumReverificationInterval?: Maybe<Scalars["Int"]["output"]>;
-  /** Unique identifier for this Geo node. */
+  /** Unique identifier for the Geo node. */
   name?: Maybe<Scalars["String"]["output"]>;
   /** Package file registries of the GeoNode. */
   packageFileRegistries?: Maybe<PackageFileRegistryConnection>;
@@ -17024,13 +19183,13 @@ export type GeoNode = {
   pagesDeploymentRegistries?: Maybe<PagesDeploymentRegistryConnection>;
   /** Find pipeline artifact registries on this Geo node. */
   pipelineArtifactRegistries?: Maybe<PipelineArtifactRegistryConnection>;
-  /** Indicates whether this Geo node is the primary. */
+  /** Indicates whether the Geo node is the primary. */
   primary?: Maybe<Scalars["Boolean"]["output"]>;
   /** Find Project registries on this Geo node. Ignored if `geo_project_repository_replication` feature flag is disabled. */
   projectRepositoryRegistries?: Maybe<ProjectRepositoryRegistryConnection>;
   /** Find Project Wiki Repository registries on this Geo node. Ignored if `geo_project_wiki_repository_replication` feature flag is disabled. */
   projectWikiRepositoryRegistries?: Maybe<ProjectWikiRepositoryRegistryConnection>;
-  /** Maximum concurrency of repository backfill for this secondary node. */
+  /** Maximum concurrency of repository backfill for the secondary node. */
   reposMaxCapacity?: Maybe<Scalars["Int"]["output"]>;
   /** Namespaces that should be synced, if `selective_sync_type` == `namespaces`. */
   selectiveSyncNamespaces?: Maybe<NamespaceConnection>;
@@ -17040,15 +19199,15 @@ export type GeoNode = {
   selectiveSyncType?: Maybe<Scalars["String"]["output"]>;
   /** Find snippet repository registries on this Geo node. */
   snippetRepositoryRegistries?: Maybe<SnippetRepositoryRegistryConnection>;
-  /** Indicates if this secondary node will replicate blobs in Object Storage. */
+  /** Indicates if the secondary node will replicate blobs in Object Storage. */
   syncObjectStorage?: Maybe<Scalars["Boolean"]["output"]>;
   /** Find terraform state version registries on this Geo node. */
   terraformStateVersionRegistries?: Maybe<TerraformStateVersionRegistryConnection>;
   /** Find Upload registries on this Geo node */
   uploadRegistries?: Maybe<UploadRegistryConnection>;
-  /** User-facing URL for this Geo node. */
+  /** User-facing URL for the Geo node. */
   url?: Maybe<Scalars["String"]["output"]>;
-  /** Maximum concurrency of repository verification for this secondary node. */
+  /** Maximum concurrency of repository verification for the secondary node. */
   verificationMaxCapacity?: Maybe<Scalars["Int"]["output"]>;
 };
 
@@ -17057,9 +19216,9 @@ export type GeoNodeCiSecureFileRegistriesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
-  keyword?: InputMaybe<Scalars["String"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   replicationState?: InputMaybe<ReplicationStateEnum>;
+  sort?: InputMaybe<GeoRegistrySort>;
   verificationState?: InputMaybe<VerificationStateEnum>;
 };
 
@@ -17068,9 +19227,9 @@ export type GeoNodeContainerRepositoryRegistriesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
-  keyword?: InputMaybe<Scalars["String"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   replicationState?: InputMaybe<ReplicationStateEnum>;
+  sort?: InputMaybe<GeoRegistrySort>;
   verificationState?: InputMaybe<VerificationStateEnum>;
 };
 
@@ -17079,9 +19238,9 @@ export type GeoNodeDependencyProxyBlobRegistriesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
-  keyword?: InputMaybe<Scalars["String"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   replicationState?: InputMaybe<ReplicationStateEnum>;
+  sort?: InputMaybe<GeoRegistrySort>;
   verificationState?: InputMaybe<VerificationStateEnum>;
 };
 
@@ -17090,9 +19249,9 @@ export type GeoNodeDependencyProxyManifestRegistriesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
-  keyword?: InputMaybe<Scalars["String"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   replicationState?: InputMaybe<ReplicationStateEnum>;
+  sort?: InputMaybe<GeoRegistrySort>;
   verificationState?: InputMaybe<VerificationStateEnum>;
 };
 
@@ -17101,9 +19260,9 @@ export type GeoNodeDesignManagementRepositoryRegistriesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
-  keyword?: InputMaybe<Scalars["String"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   replicationState?: InputMaybe<ReplicationStateEnum>;
+  sort?: InputMaybe<GeoRegistrySort>;
   verificationState?: InputMaybe<VerificationStateEnum>;
 };
 
@@ -17112,9 +19271,9 @@ export type GeoNodeGroupWikiRepositoryRegistriesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
-  keyword?: InputMaybe<Scalars["String"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   replicationState?: InputMaybe<ReplicationStateEnum>;
+  sort?: InputMaybe<GeoRegistrySort>;
   verificationState?: InputMaybe<VerificationStateEnum>;
 };
 
@@ -17123,9 +19282,9 @@ export type GeoNodeJobArtifactRegistriesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
-  keyword?: InputMaybe<Scalars["String"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   replicationState?: InputMaybe<ReplicationStateEnum>;
+  sort?: InputMaybe<GeoRegistrySort>;
   verificationState?: InputMaybe<VerificationStateEnum>;
 };
 
@@ -17134,9 +19293,9 @@ export type GeoNodeLfsObjectRegistriesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
-  keyword?: InputMaybe<Scalars["String"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   replicationState?: InputMaybe<ReplicationStateEnum>;
+  sort?: InputMaybe<GeoRegistrySort>;
   verificationState?: InputMaybe<VerificationStateEnum>;
 };
 
@@ -17145,9 +19304,9 @@ export type GeoNodeMergeRequestDiffRegistriesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
-  keyword?: InputMaybe<Scalars["String"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   replicationState?: InputMaybe<ReplicationStateEnum>;
+  sort?: InputMaybe<GeoRegistrySort>;
   verificationState?: InputMaybe<VerificationStateEnum>;
 };
 
@@ -17156,9 +19315,9 @@ export type GeoNodePackageFileRegistriesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
-  keyword?: InputMaybe<Scalars["String"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   replicationState?: InputMaybe<ReplicationStateEnum>;
+  sort?: InputMaybe<GeoRegistrySort>;
   verificationState?: InputMaybe<VerificationStateEnum>;
 };
 
@@ -17167,9 +19326,9 @@ export type GeoNodePagesDeploymentRegistriesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
-  keyword?: InputMaybe<Scalars["String"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   replicationState?: InputMaybe<ReplicationStateEnum>;
+  sort?: InputMaybe<GeoRegistrySort>;
   verificationState?: InputMaybe<VerificationStateEnum>;
 };
 
@@ -17178,9 +19337,9 @@ export type GeoNodePipelineArtifactRegistriesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
-  keyword?: InputMaybe<Scalars["String"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   replicationState?: InputMaybe<ReplicationStateEnum>;
+  sort?: InputMaybe<GeoRegistrySort>;
   verificationState?: InputMaybe<VerificationStateEnum>;
 };
 
@@ -17189,9 +19348,9 @@ export type GeoNodeProjectRepositoryRegistriesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
-  keyword?: InputMaybe<Scalars["String"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   replicationState?: InputMaybe<ReplicationStateEnum>;
+  sort?: InputMaybe<GeoRegistrySort>;
   verificationState?: InputMaybe<VerificationStateEnum>;
 };
 
@@ -17200,9 +19359,9 @@ export type GeoNodeProjectWikiRepositoryRegistriesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
-  keyword?: InputMaybe<Scalars["String"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   replicationState?: InputMaybe<ReplicationStateEnum>;
+  sort?: InputMaybe<GeoRegistrySort>;
   verificationState?: InputMaybe<VerificationStateEnum>;
 };
 
@@ -17218,9 +19377,9 @@ export type GeoNodeSnippetRepositoryRegistriesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
-  keyword?: InputMaybe<Scalars["String"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   replicationState?: InputMaybe<ReplicationStateEnum>;
+  sort?: InputMaybe<GeoRegistrySort>;
   verificationState?: InputMaybe<VerificationStateEnum>;
 };
 
@@ -17229,9 +19388,9 @@ export type GeoNodeTerraformStateVersionRegistriesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
-  keyword?: InputMaybe<Scalars["String"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   replicationState?: InputMaybe<ReplicationStateEnum>;
+  sort?: InputMaybe<GeoRegistrySort>;
   verificationState?: InputMaybe<VerificationStateEnum>;
 };
 
@@ -17240,9 +19399,9 @@ export type GeoNodeUploadRegistriesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
-  keyword?: InputMaybe<Scalars["String"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   replicationState?: InputMaybe<ReplicationStateEnum>;
+  sort?: InputMaybe<GeoRegistrySort>;
   verificationState?: InputMaybe<VerificationStateEnum>;
 };
 
@@ -17281,8 +19440,6 @@ export type GeoRegistriesUpdateInput = {
   action: GeoRegistryAction;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
-  /** Class of the Geo registry to be updated. */
-  registryClass?: InputMaybe<GeoRegistryClass>;
   /** ID of the Geo registry entry to be updated. */
   registryId: Scalars["GeoBaseRegistryID"]["input"];
 };
@@ -17342,6 +19499,22 @@ export enum GeoRegistryClass {
   TerraformStateVersionRegistry = "TERRAFORM_STATE_VERSION_REGISTRY",
   /** Geo::UploadRegistry registry class */
   UploadRegistry = "UPLOAD_REGISTRY",
+}
+
+/** Values for sorting Geo registries */
+export enum GeoRegistrySort {
+  /** ID by ascending order. */
+  IdAsc = "ID_ASC",
+  /** ID by descending order. */
+  IdDesc = "ID_DESC",
+  /** Latest sync date by ascending order. */
+  LastSyncedAtAsc = "LAST_SYNCED_AT_ASC",
+  /** Latest sync date by descending order. */
+  LastSyncedAtDesc = "LAST_SYNCED_AT_DESC",
+  /** Latest verification date by ascending order. */
+  VerifiedAtAsc = "VERIFIED_AT_ASC",
+  /** Latest verification date by descending order. */
+  VerifiedAtDesc = "VERIFIED_AT_DESC",
 }
 
 /** A feature flag for the GitLab instance. */
@@ -17415,9 +19588,16 @@ export type GitlabSubscriptionHistoryEdge = {
 
 /** Types of add-ons */
 export enum GitlabSubscriptionsAddOnType {
-  /** GitLab Duo Pro seat add-on. */
+  /** GitLab Duo Pro add-on. */
   CodeSuggestions = "CODE_SUGGESTIONS",
-  /** GitLab Duo Enterprise seat add-on. */
+  /** GitLab Duo with Amazon Q add-on. */
+  DuoAmazonQ = "DUO_AMAZON_Q",
+  /**
+   * GitLab Duo Core add-on. Introduced in GitLab 18.0: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 18.0.
+   */
+  DuoCore = "DUO_CORE",
+  /** GitLab Duo Enterprise add-on. */
   DuoEnterprise = "DUO_ENTERPRISE",
 }
 
@@ -17431,6 +19611,8 @@ export enum GitlabSubscriptionsUserRole {
   Maintainer = "MAINTAINER",
   /** Owner. */
   Owner = "OWNER",
+  /** Planner. */
+  Planner = "PLANNER",
   /** Reporter. */
   Reporter = "REPORTER",
 }
@@ -17762,449 +19944,493 @@ export type GrafanaIntegration = {
   updatedAt: Scalars["Time"]["output"];
 };
 
-export type Group = Todoable & {
-  __typename?: "Group";
-  /**
-   * Achievements for the namespace. Returns `null` if the `achievements` feature flag is disabled. Introduced in GitLab 15.8: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.8.
-   */
-  achievements?: Maybe<AchievementConnection>;
-  /**
-   * Path for the namespace's achievements. Returns `null` if the namespace is not a group, or the `achievements` feature flag is disabled. Introduced in GitLab 17.0: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.0.
-   */
-  achievementsPath?: Maybe<Scalars["String"]["output"]>;
-  /** Size limit for repositories in the namespace in bytes. This limit only applies to namespaces under Project limit enforcement. */
-  actualRepositorySizeLimit?: Maybe<Scalars["Float"]["output"]>;
-  /** The actual storage size limit (in bytes) based on the enforcement type of either repository or namespace. This limit is agnostic of enforcement type. */
-  actualSizeLimit?: Maybe<Scalars["Float"]["output"]>;
-  /**
-   * Users in the namespace hierarchy that add ons are applicable for. This only applies to root namespaces. Introduced in GitLab 16.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.5.
-   */
-  addOnEligibleUsers?: Maybe<AddOnUserConnection>;
-  /**
-   * AddOnPurchase associated with the namespace Deprecated in GitLab 17.5: Use root addOnPurchases instead.
-   * @deprecated Use root addOnPurchases instead. Deprecated in GitLab 17.5.
-   */
-  addOnPurchase?: Maybe<AddOnPurchase>;
-  /** Additional storage purchased for the root namespace in bytes. */
-  additionalPurchasedStorageSize?: Maybe<Scalars["Float"]["output"]>;
-  /**
-   * AI-related metrics. Introduced in GitLab 16.11: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
-   */
-  aiMetrics?: Maybe<AiMetrics>;
-  /**
-   * AI-related data. Introduced in GitLab 17.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
-   */
-  aiUsageData?: Maybe<AiUsageData>;
-  /**
-   * AI-related user metrics. Introduced in GitLab 17.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
-   */
-  aiUserMetrics?: Maybe<AiUserMetricsConnection>;
-  /** Indicates whether to regularly prune stale group runners. Defaults to false. */
-  allowStaleRunnerPruning: Scalars["Boolean"]["output"];
-  /** Amazon S3 configurations that receive audit events belonging to the group. */
-  amazonS3Configurations?: Maybe<AmazonS3ConfigurationTypeConnection>;
-  /** Approval Policies of the project */
-  approvalPolicies?: Maybe<ApprovalPolicyConnection>;
-  /** Indicates whether Auto DevOps is enabled for all projects within this group. */
-  autoDevopsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Search users for autocompletion */
-  autocompleteUsers?: Maybe<Array<AutocompletedUser>>;
-  /** Avatar URL of the group. */
-  avatarUrl?: Maybe<Scalars["String"]["output"]>;
-  /** Number of billable users in the group. */
-  billableMembersCount?: Maybe<Scalars["Int"]["output"]>;
-  /** A single board of the group. */
-  board?: Maybe<Board>;
-  /** Boards of the group. */
-  boards?: Maybe<BoardConnection>;
-  /**
-   * Time taken for CI jobs to be picked up by this group's runners by percentile. Available to users with Maintainer role for the group. Introduced in GitLab 16.11: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
-   */
-  ciQueueingHistory?: Maybe<QueueingDelayHistory>;
-  /** List of the group's CI/CD variables. */
-  ciVariables?: Maybe<CiGroupVariableConnection>;
-  /** Cluster agents associated with projects in the group and its subgroups. */
-  clusterAgents?: Maybe<ClusterAgentConnection>;
-  /** Represents the code coverage activity for this group. */
-  codeCoverageActivities?: Maybe<CodeCoverageActivityConnection>;
-  /** Compliance frameworks available to projects in this namespace. */
-  complianceFrameworks?: Maybe<ComplianceFrameworkConnection>;
-  /**
-   * Find software dependencies by name. Introduced in GitLab 17.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
-   */
-  components?: Maybe<Array<Component>>;
-  /** Counts of contacts by state for the group. */
-  contactStateCounts?: Maybe<ContactStateCounts>;
-  /** Find contacts of this group. */
-  contacts?: Maybe<CustomerRelationsContactConnection>;
-  /** Container repositories of the group. */
-  containerRepositories?: Maybe<ContainerRepositoryConnection>;
-  /** Number of container repositories in the group. */
-  containerRepositoriesCount: Scalars["Int"]["output"];
-  /** Includes at least one project where the repository size exceeds the limit. This only applies to namespaces under Project limit enforcement. */
-  containsLockedProjects?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Provides the aggregated contributions by users within the group and its subgroups */
-  contributions?: Maybe<ContributionAnalyticsContributionConnection>;
-  /** Timestamp of the group creation. */
-  createdAt?: Maybe<Scalars["Time"]["output"]>;
-  /** Indicates if the cross_project_pipeline feature is available for the namespace. */
-  crossProjectPipelineAvailable: Scalars["Boolean"]["output"];
-  /** Custom emoji in this namespace. */
-  customEmoji?: Maybe<CustomEmojiConnection>;
-  /**
-   * Custom fields configured for the group. Available only when feature flag `custom_fields_feature` is enabled. Introduced in GitLab 17.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
-   */
-  customFields?: Maybe<CustomFieldConnection>;
-  /** Visualizations of the group or associated configuration project. */
-  customizableDashboardVisualizations?: Maybe<CustomizableDashboardVisualizationConnection>;
-  /** Customizable dashboards for the group. */
-  customizableDashboards?: Maybe<CustomizableDashboardConnection>;
-  /** Data transfer data point for a specific period. This is mocked data under a development feature flag. */
-  dataTransfer?: Maybe<GroupDataTransfer>;
-  /** Software dependencies used by projects under this group. */
-  dependencies?: Maybe<DependencyConnection>;
-  /** Number of dependency proxy blobs cached in the group. */
-  dependencyProxyBlobCount: Scalars["Int"]["output"];
-  /** Dependency Proxy blobs. */
-  dependencyProxyBlobs?: Maybe<DependencyProxyBlobConnection>;
-  /** Number of dependency proxy images cached in the group. */
-  dependencyProxyImageCount: Scalars["Int"]["output"];
-  /** Prefix for pulling images when using the dependency proxy. */
-  dependencyProxyImagePrefix: Scalars["String"]["output"];
-  /** Dependency proxy TTL policy for the group. */
-  dependencyProxyImageTtlPolicy?: Maybe<DependencyProxyImageTtlGroupPolicy>;
-  /** Dependency Proxy manifests. */
-  dependencyProxyManifests?: Maybe<DependencyProxyManifestConnection>;
-  /** Dependency Proxy settings for the group. */
-  dependencyProxySetting?: Maybe<DependencyProxySetting>;
-  /** Total size of the dependency proxy cached images. */
-  dependencyProxyTotalSize: Scalars["String"]["output"];
-  /** Total size of the dependency proxy cached images in bytes, encoded as a string. */
-  dependencyProxyTotalSizeBytes: Scalars["BigInt"]["output"];
-  /**
-   * Total size of the dependency proxy cached images in bytes. Deprecated in GitLab 16.1: Use `dependencyProxyTotalSizeBytes`.
-   * @deprecated Use `dependencyProxyTotalSizeBytes`. Deprecated in GitLab 16.1.
-   */
-  dependencyProxyTotalSizeInBytes: Scalars["Int"]["output"];
-  /** List of descendant groups of this group. */
-  descendantGroups?: Maybe<GroupConnection>;
-  /** Count of direct descendant groups of this group. */
-  descendantGroupsCount: Scalars["Int"]["output"];
-  /** Description of the namespace. */
-  description?: Maybe<Scalars["String"]["output"]>;
-  /** GitLab Flavored Markdown rendering of `description` */
-  descriptionHtml?: Maybe<Scalars["String"]["output"]>;
-  /** Group's DORA metrics. */
-  dora?: Maybe<Dora>;
-  /** Group's DORA scores for all projects by DORA key metric for the last complete month. */
-  doraPerformanceScoreCounts?: Maybe<DoraPerformanceScoreCountConnection>;
-  /**
-   * Indicates whether GitLab Duo features are enabled for the group. Introduced in GitLab 16.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
-   */
-  duoFeaturesEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Indicates if a group has email notifications disabled. */
-  emailsDisabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Indicates if a group has email notifications enabled. */
-  emailsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Indicates whether the group has limited users for a free plan. */
-  enforceFreeUserCap?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Environment scopes of the group. */
-  environmentScopes?: Maybe<CiGroupEnvironmentScopeConnection>;
-  /**
-   * Find a single epic. Deprecated in GitLab 17.5: Replaced by WorkItem type.
-   * @deprecated Replaced by WorkItem type. Deprecated in GitLab 17.5.
-   */
-  epic?: Maybe<Epic>;
-  /**
-   * Find a single epic board. Deprecated in GitLab 17.5: Replaced by WorkItem type.
-   * @deprecated Replaced by WorkItem type. Deprecated in GitLab 17.5.
-   */
-  epicBoard?: Maybe<EpicBoard>;
-  /**
-   * Find epic boards. Deprecated in GitLab 17.5: Replaced by WorkItem type.
-   * @deprecated Replaced by WorkItem type. Deprecated in GitLab 17.5.
-   */
-  epicBoards?: Maybe<EpicBoardConnection>;
-  /**
-   * Find epics. Deprecated in GitLab 17.5: Replaced by WorkItem type.
-   * @deprecated Replaced by WorkItem type. Deprecated in GitLab 17.5.
-   */
-  epics?: Maybe<EpicConnection>;
-  /**
-   * Indicates if Epics are enabled for namespace. Deprecated in GitLab 17.5: Replaced by WorkItem type.
-   * @deprecated Replaced by WorkItem type. Deprecated in GitLab 17.5.
-   */
-  epicsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** External locations that receive audit events belonging to the group. */
-  externalAuditEventDestinations?: Maybe<ExternalAuditEventDestinationConnection>;
-  /**
-   * External destinations that receive audit events belonging to the group. Introduced in GitLab 16.11: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
-   */
-  externalAuditEventStreamingDestinations?: Maybe<GroupAuditEventStreamingDestinationConnection>;
-  /**
-   * Flow metrics for value stream analytics. Introduced in GitLab 15.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
-   */
-  flowMetrics?: Maybe<GroupValueStreamAnalyticsFlowMetrics>;
-  /** Full name of the namespace. */
-  fullName: Scalars["String"]["output"];
-  /** Full path of the namespace. */
-  fullPath: Scalars["ID"]["output"];
-  /** Preview Billable User Changes */
-  gitlabSubscriptionsPreviewBillableUserChange?: Maybe<PreviewBillableUserChange>;
-  /** Google Cloud logging configurations that receive audit events belonging to the group. */
-  googleCloudLoggingConfigurations?: Maybe<GoogleCloudLoggingConfigurationTypeConnection>;
-  /** A membership of a user within this group. */
-  groupMembers?: Maybe<GroupMemberConnection>;
-  /** Count of direct members of this group. */
-  groupMembersCount: Scalars["Int"]["output"];
-  /** ID of the namespace. */
-  id: Scalars["ID"]["output"];
-  /**
-   * Import source users of the namespace. This field can only be resolved for one namespace in any single request. Introduced in GitLab 17.2: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.2.
-   */
-  importSourceUsers?: Maybe<ImportSourceUserConnection>;
-  /**
-   * Indicates if delayed group deletion is enabled. Introduced in GitLab 16.11: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
-   */
-  isAdjournedDeletionEnabled: Scalars["Boolean"]["output"];
-  /** Indicates if group is linked to a subscription. */
-  isLinkedToSubscription?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Issues for projects in this group. */
-  issues?: Maybe<IssueConnection>;
-  /** Find iteration cadences. */
-  iterationCadences?: Maybe<IterationCadenceConnection>;
-  /** Find iterations. */
-  iterations?: Maybe<IterationConnection>;
-  /** Label available on this group. */
-  label?: Maybe<Label>;
-  /** Labels available on this group. */
-  labels?: Maybe<LabelConnection>;
-  /** Indicates if Large File Storage (LFS) is enabled for namespace. */
-  lfsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /**
-   * Indicates if the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
-   */
-  lockDuoFeaturesEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Indicates if math rendering limits are locked for all descendant groups. */
-  lockMathRenderingLimitsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /**
-   * Date when group was scheduled to be deleted. Introduced in GitLab 16.11: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
-   */
-  markedForDeletionOn?: Maybe<Scalars["Time"]["output"]>;
-  /** Indicates if math rendering limits are used for this group. */
-  mathRenderingLimitsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** The maximum access level of the current user in the group. */
-  maxAccessLevel: AccessLevel;
-  /**
-   * Custom roles available for the group. Introduced in GitLab 16.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.5.
-   */
-  memberRoles?: Maybe<MemberRoleConnection>;
-  /** Indicates if a group is disabled from getting mentioned. */
-  mentionsDisabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Compliance violations reported on merge requests merged within the group. */
-  mergeRequestViolations?: Maybe<ComplianceViolationConnection>;
-  /** Merge requests for projects in this group. */
-  mergeRequests?: Maybe<MergeRequestConnection>;
-  /** Milestones of the group. */
-  milestones?: Maybe<MilestoneConnection>;
-  /** Name of the namespace. */
-  name: Scalars["String"]["output"];
-  /**
-   * Path for editing group at the organization level. Introduced in GitLab 17.1: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.1.
-   */
-  organizationEditPath?: Maybe<Scalars["String"]["output"]>;
-  /** Counts of organizations by status for the group. */
-  organizationStateCounts?: Maybe<OrganizationStateCounts>;
-  /** Find organizations of this group. */
-  organizations?: Maybe<CustomerRelationsOrganizationConnection>;
-  /** Package settings for the namespace. */
-  packageSettings?: Maybe<PackageSettings>;
-  /** Packages of the group. This field can only be resolved for one group in any single request. */
-  packages?: Maybe<PackageConnection>;
-  /** List of the namespaces's Pages Deployments. */
-  pagesDeployments?: Maybe<PagesDeploymentConnection>;
-  /** Parent group. */
-  parent?: Maybe<Group>;
-  /** Path of the namespace. */
-  path: Scalars["String"]["output"];
-  /**
-   * Pending member promotions of the group. Introduced in GitLab 17.3: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.3.
-   */
-  pendingMemberApprovals?: Maybe<MemberApprovalConnection>;
-  /**
-   * A pending membership of a user within this group. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
-  pendingMembers?: Maybe<PendingMemberInterfaceConnection>;
-  /**
-   * Date when group will be deleted if delayed group deletion is enabled. Introduced in GitLab 16.11: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
-   */
-  permanentDeletionDate?: Maybe<Scalars["String"]["output"]>;
-  /** Pipeline Execution Policies of the namespace. */
-  pipelineExecutionPolicies?: Maybe<PipelineExecutionPolicyConnection>;
-  /**
-   * Number of product analytics events namespace is permitted to store per cycle. Introduced in GitLab 16.9: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.9.
-   */
-  productAnalyticsStoredEventsLimit?: Maybe<Scalars["Int"]["output"]>;
-  /** Compliance standards adherence for the projects in a group and its subgroups. */
-  projectComplianceStandardsAdherence?: Maybe<ComplianceStandardsAdherenceConnection>;
-  /** Permission level required to create projects in the group. */
-  projectCreationLevel?: Maybe<Scalars["String"]["output"]>;
-  /** Projects within this namespace. Returns projects from the parent group if namespace is project. */
-  projects: ProjectConnection;
-  /** Count of direct projects in this group. */
-  projectsCount: Scalars["Int"]["output"];
-  /** List of recently visited boards of the group. Maximum size is 4. */
-  recentIssueBoards?: Maybe<BoardConnection>;
-  /** Releases belonging to projects in the group. */
-  releases?: Maybe<ReleaseConnection>;
-  /** Cluster agents in the namespace with remote development capabilities */
-  remoteDevelopmentClusterAgents?: Maybe<ClusterAgentConnection>;
-  /** Number of projects in the root namespace where the repository size exceeds the limit. This only applies to namespaces under Project limit enforcement. */
-  repositorySizeExcessProjectCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Indicates if users can request access to namespace. */
-  requestAccessEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Indicates if all users in this group are required to set up two-factor authentication. */
-  requireTwoFactorAuthentication?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Aggregated storage statistics of the namespace. Only available for root namespaces. */
-  rootStorageStatistics?: Maybe<RootStorageStatistics>;
-  /**
-   * Information used for provisioning the runner on a cloud provider. Returns `null` if the GitLab instance is not a SaaS instance. Introduced in GitLab 16.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
-   */
-  runnerCloudProvisioning?: Maybe<CiRunnerCloudProvisioning>;
-  /** Find runners visible to the current user. */
-  runners?: Maybe<CiRunnerConnection>;
-  /**
-   * Saved replies available to the group. Available only when feature flag `group_saved_replies_flag` is enabled. This field can only be resolved for one group in any single request. Introduced in GitLab 16.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
-   */
-  savedReplies?: Maybe<GroupSavedReplyConnection>;
-  /**
-   * Saved reply in the group. Available only when feature flag `group_saved_replies_flag` is enabled. This field can only be resolved for one group in any single request. Introduced in GitLab 16.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
-   */
-  savedReply?: Maybe<GroupSavedReply>;
-  /** Scan Execution Policies of the namespace. */
-  scanExecutionPolicies?: Maybe<ScanExecutionPolicyConnection>;
-  /**
-   * Scan Result Policies of the project Deprecated in GitLab 16.9: Use `approvalPolicies`.
-   * @deprecated Use `approvalPolicies`. Deprecated in GitLab 16.9.
-   */
-  scanResultPolicies?: Maybe<ScanResultPolicyConnection>;
-  /** Security policy project assigned to the namespace. */
-  securityPolicyProject?: Maybe<Project>;
-  /** Security policy project suggestions */
-  securityPolicyProjectSuggestions?: Maybe<ProjectConnection>;
-  /** Indicates if sharing a project with another group within this group is prevented. */
-  shareWithGroupLock?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Shared runners availability for the namespace and its descendants. */
-  sharedRunnersSetting?: Maybe<SharedRunnersSetting>;
-  /**
-   * Data needed to render the sidebar for the namespace. Introduced in GitLab 17.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
-   */
-  sidebar?: Maybe<NamespaceSidebar>;
-  /**
-   * Finds a single default role for the group. Available only for SaaS. Introduced in GitLab 17.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
-   */
-  standardRole?: Maybe<StandardRole>;
-  /**
-   * Default roles available for the group. Available only for SaaS. Introduced in GitLab 17.4: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
-   */
-  standardRoles?: Maybe<StandardRoleConnection>;
-  /** Group statistics. */
-  stats?: Maybe<GroupStats>;
-  /** The storage limit (in bytes) included with the root namespace plan. This limit only applies to namespaces under namespace limit enforcement. */
-  storageSizeLimit?: Maybe<Scalars["Float"]["output"]>;
-  /** Permission level required to create subgroups within the group. */
-  subgroupCreationLevel?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Find subscription history records. Introduced in GitLab 17.3: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.3.
-   */
-  subscriptionHistory?: Maybe<GitlabSubscriptionHistoryConnection>;
-  /**
-   * Timelog categories for the namespace. Introduced in GitLab 15.3: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.3.
-   */
-  timelogCategories?: Maybe<TimeTrackingTimelogCategoryConnection>;
-  /** Time logged on issues and merge requests in the group and its subgroups. */
-  timelogs: TimelogConnection;
-  /** Total repository size of all projects in the root namespace in bytes. */
-  totalRepositorySize?: Maybe<Scalars["Float"]["output"]>;
-  /** Total excess repository size of all projects in the root namespace in bytes. This only applies to namespaces under Project limit enforcement. */
-  totalRepositorySizeExcess?: Maybe<Scalars["Float"]["output"]>;
-  /** Time before two-factor authentication is enforced. */
-  twoFactorGracePeriod?: Maybe<Scalars["Int"]["output"]>;
-  /** Timestamp of when the group was last updated. */
-  updatedAt?: Maybe<Scalars["Time"]["output"]>;
-  /** Permissions for the current user on the resource */
-  userPermissions: GroupPermissions;
-  /** Information about Value Stream Analytics within the group. */
-  valueStreamAnalytics?: Maybe<ValueStreamAnalytics>;
-  /**
-   * Aggregated usage counts within the group Introduced in GitLab 16.4: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.4.
-   */
-  valueStreamDashboardUsageOverview?: Maybe<ValueStreamDashboardCount>;
-  /** Value streams available to the group. */
-  valueStreams?: Maybe<ValueStreamConnection>;
-  /** Visibility of the namespace. */
-  visibility?: Maybe<Scalars["String"]["output"]>;
-  /** Vulnerabilities reported on the projects in the group and its subgroups. */
-  vulnerabilities?: Maybe<VulnerabilityConnection>;
-  /** The historical number of vulnerabilities per day for the projects in the group and its subgroups. */
-  vulnerabilitiesCountByDay?: Maybe<VulnerabilitiesCountByDayConnection>;
-  /** Represents vulnerable project counts for each grade. */
-  vulnerabilityGrades?: Maybe<Array<VulnerableProjectsByGrade>>;
-  /** Vulnerability scanners reported on the project vulnerabilities of the group and its subgroups. */
-  vulnerabilityScanners?: Maybe<VulnerabilityScannerConnection>;
-  /** Counts for each vulnerability severity in the group and its subgroups. */
-  vulnerabilitySeveritiesCount?: Maybe<VulnerabilitySeveritiesCount>;
-  /** Web URL of the group. */
-  webUrl: Scalars["String"]["output"];
-  /**
-   * Find a work item by IID directly associated with the group. Returns `null` if the `namespace_level_work_items` feature flag is disabled. Introduced in GitLab 16.4: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.4.
-   */
-  workItem?: Maybe<WorkItem>;
-  /**
-   * Counts of work items by state for the namespace. Returns `null` if the `namespace_level_work_items` feature flag is disabled. Introduced in GitLab 16.7: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.7.
-   */
-  workItemStateCounts?: Maybe<WorkItemStateCountsType>;
-  /** Work item types available to the group. */
-  workItemTypes?: Maybe<WorkItemTypeConnection>;
-  /**
-   * Work items that belong to the namespace. Introduced in GitLab 16.3: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.3.
-   */
-  workItems?: Maybe<WorkItemConnection>;
-};
+export type Group = GroupInterface &
+  Todoable & {
+    __typename?: "Group";
+    /**
+     * Achievements for the namespace. Returns `null` if the `achievements` feature flag is disabled. Introduced in GitLab 15.8: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.8.
+     */
+    achievements?: Maybe<AchievementConnection>;
+    /**
+     * Path for the namespace's achievements. Returns `null` if the namespace is not a group, or the `achievements` feature flag is disabled. Introduced in GitLab 17.0: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.0.
+     */
+    achievementsPath?: Maybe<Scalars["String"]["output"]>;
+    /** Size limit for repositories in the namespace in bytes. This limit only applies to namespaces under Project limit enforcement. */
+    actualRepositorySizeLimit?: Maybe<Scalars["Float"]["output"]>;
+    /** The actual storage size limit (in bytes) based on the enforcement type of either repository or namespace. This limit is agnostic of enforcement type. */
+    actualSizeLimit?: Maybe<Scalars["Float"]["output"]>;
+    /**
+     * Users in the namespace hierarchy that add ons are applicable for. This only applies to root namespaces. Introduced in GitLab 16.5: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.5.
+     */
+    addOnEligibleUsers?: Maybe<AddOnUserConnection>;
+    /** Additional storage purchased for the root namespace in bytes. */
+    additionalPurchasedStorageSize?: Maybe<Scalars["Float"]["output"]>;
+    /**
+     * AI-related metrics. Introduced in GitLab 16.11: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+     */
+    aiMetrics?: Maybe<AiMetrics>;
+    /**
+     * AI-related data. Introduced in GitLab 17.5: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
+     */
+    aiUsageData?: Maybe<AiUsageData>;
+    /**
+     * AI-related user metrics. Introduced in GitLab 17.5: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
+     */
+    aiUserMetrics?: Maybe<AiUserMetricsConnection>;
+    /** Indicates whether to regularly prune stale group runners. Defaults to false. */
+    allowStaleRunnerPruning: Scalars["Boolean"]["output"];
+    /** Amazon S3 configurations that receive audit events belonging to the group. */
+    amazonS3Configurations?: Maybe<AmazonS3ConfigurationTypeConnection>;
+    /** Approval Policies of the project */
+    approvalPolicies?: Maybe<ApprovalPolicyConnection>;
+    /** Indicates whether Auto DevOps is enabled for all projects within the group. */
+    autoDevopsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Search users for autocompletion */
+    autocompleteUsers?: Maybe<Array<AutocompletedUser>>;
+    /** Avatar URL of the group. */
+    avatarUrl?: Maybe<Scalars["String"]["output"]>;
+    /** Number of billable users in the group. */
+    billableMembersCount?: Maybe<Scalars["Int"]["output"]>;
+    /** A single board of the group. */
+    board?: Maybe<Board>;
+    /** Boards of the group. */
+    boards?: Maybe<BoardConnection>;
+    /**
+     * Namespace CI/CD settings for the namespace. Introduced in GitLab 17.9: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+     */
+    ciCdSettings?: Maybe<CiCdSettings>;
+    /**
+     * Time taken for CI jobs to be picked up by this group's runners by percentile. Available to users with Maintainer role for the group. Enable the ClickHouse database backend to use this query. Introduced in GitLab 16.11: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+     */
+    ciQueueingHistory?: Maybe<QueueingDelayHistory>;
+    /** List of the group's CI/CD variables. */
+    ciVariables?: Maybe<CiGroupVariableConnection>;
+    /** Cluster agents associated with projects in the group and its subgroups. */
+    clusterAgents?: Maybe<ClusterAgentConnection>;
+    /** Represents the code coverage activity for this group. */
+    codeCoverageActivities?: Maybe<CodeCoverageActivityConnection>;
+    /** Compliance frameworks available to projects in this namespace. */
+    complianceFrameworks?: Maybe<ComplianceFrameworkConnection>;
+    /**
+     * Find software dependency versions by component name. Introduced in GitLab 18.0: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 18.0.
+     */
+    componentVersions: ComponentVersionConnection;
+    /**
+     * Find software dependencies by name. Introduced in GitLab 17.5: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
+     */
+    components?: Maybe<Array<Component>>;
+    /** Counts of contacts by state for the group. */
+    contactStateCounts?: Maybe<ContactStateCounts>;
+    /** Find contacts of this group. */
+    contacts?: Maybe<CustomerRelationsContactConnection>;
+    /** Container repositories of the group. */
+    containerRepositories?: Maybe<ContainerRepositoryConnection>;
+    /** Number of container repositories in the group. */
+    containerRepositoriesCount: Scalars["Int"]["output"];
+    /** Includes at least one project where the repository size exceeds the limit. This only applies to namespaces under Project limit enforcement. */
+    containsLockedProjects?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Provides the aggregated contributions by users within the group and its subgroups */
+    contributions?: Maybe<ContributionAnalyticsContributionConnection>;
+    /** Timestamp of the group creation. */
+    createdAt?: Maybe<Scalars["Time"]["output"]>;
+    /** Indicates if the cross_project_pipeline feature is available for the namespace. */
+    crossProjectPipelineAvailable: Scalars["Boolean"]["output"];
+    /** Custom emoji in this namespace. */
+    customEmoji?: Maybe<CustomEmojiConnection>;
+    /**
+     * A custom field configured for the group. Introduced in GitLab 17.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+     */
+    customField?: Maybe<CustomField>;
+    /**
+     * Custom fields configured for the group. Introduced in GitLab 17.5: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
+     */
+    customFields?: Maybe<CustomFieldConnection>;
+    /** Visualizations of the group or associated configuration project. */
+    customizableDashboardVisualizations?: Maybe<CustomizableDashboardVisualizationConnection>;
+    /** Customizable dashboards for the group. */
+    customizableDashboards?: Maybe<CustomizableDashboardConnection>;
+    /** Data transfer data point for a specific period. This is mocked data under a development feature flag. */
+    dataTransfer?: Maybe<GroupDataTransfer>;
+    /** Software dependencies used by projects under this group. */
+    dependencies?: Maybe<DependencyConnection>;
+    /**
+     * Software dependencies used by projects under this group. Introduced in GitLab 18.0: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 18.0.
+     */
+    dependencyAggregations?: Maybe<DependencyAggregationConnection>;
+    /** Number of dependency proxy blobs cached in the group. */
+    dependencyProxyBlobCount: Scalars["Int"]["output"];
+    /** Dependency Proxy blobs. */
+    dependencyProxyBlobs?: Maybe<DependencyProxyBlobConnection>;
+    /** Number of dependency proxy images cached in the group. */
+    dependencyProxyImageCount: Scalars["Int"]["output"];
+    /** Prefix for pulling images when using the dependency proxy. */
+    dependencyProxyImagePrefix: Scalars["String"]["output"];
+    /** Dependency proxy TTL policy for the group. */
+    dependencyProxyImageTtlPolicy?: Maybe<DependencyProxyImageTtlGroupPolicy>;
+    /** Dependency Proxy manifests. */
+    dependencyProxyManifests?: Maybe<DependencyProxyManifestConnection>;
+    /** Dependency Proxy settings for the group. */
+    dependencyProxySetting?: Maybe<DependencyProxySetting>;
+    /** Total size of the dependency proxy cached images. */
+    dependencyProxyTotalSize: Scalars["String"]["output"];
+    /** Total size of the dependency proxy cached images in bytes, encoded as a string. */
+    dependencyProxyTotalSizeBytes: Scalars["BigInt"]["output"];
+    /**
+     * Total size of the dependency proxy cached images in bytes. Deprecated in GitLab 16.1: Use `dependencyProxyTotalSizeBytes`.
+     * @deprecated Use `dependencyProxyTotalSizeBytes`. Deprecated in GitLab 16.1.
+     */
+    dependencyProxyTotalSizeInBytes: Scalars["Int"]["output"];
+    /** List of descendant groups of this group. */
+    descendantGroups?: Maybe<GroupConnection>;
+    /** Count of direct descendant groups of the group. */
+    descendantGroupsCount: Scalars["Int"]["output"];
+    /** Description of the namespace. */
+    description?: Maybe<Scalars["String"]["output"]>;
+    /** GitLab Flavored Markdown rendering of `description` */
+    descriptionHtml?: Maybe<Scalars["String"]["output"]>;
+    /** Group's DORA metrics. */
+    dora?: Maybe<GroupDora>;
+    /** Group's DORA scores for all projects by DORA key metric for the last complete month. */
+    doraPerformanceScoreCounts?: Maybe<DoraPerformanceScoreCountConnection>;
+    /**
+     * Indicates whether GitLab Duo features are enabled for the group. Introduced in GitLab 16.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
+     */
+    duoFeaturesEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Indicates if a group has email notifications disabled. */
+    emailsDisabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Indicates if a group has email notifications enabled. */
+    emailsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Indicates whether the group has limited users for a free plan. */
+    enforceFreeUserCap?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Environment scopes of the group. */
+    environmentScopes?: Maybe<CiGroupEnvironmentScopeConnection>;
+    /**
+     * Find a single epic. Deprecated in GitLab 17.5: Replaced by WorkItem type.
+     * @deprecated Replaced by WorkItem type. Deprecated in GitLab 17.5.
+     */
+    epic?: Maybe<Epic>;
+    /**
+     * Find a single epic board. Deprecated in GitLab 17.5: Replaced by WorkItem type.
+     * @deprecated Replaced by WorkItem type. Deprecated in GitLab 17.5.
+     */
+    epicBoard?: Maybe<EpicBoard>;
+    /**
+     * Find epic boards. Deprecated in GitLab 17.5: Replaced by WorkItem type.
+     * @deprecated Replaced by WorkItem type. Deprecated in GitLab 17.5.
+     */
+    epicBoards?: Maybe<EpicBoardConnection>;
+    /**
+     * Find epics. Deprecated in GitLab 17.5: Replaced by WorkItem type.
+     * @deprecated Replaced by WorkItem type. Deprecated in GitLab 17.5.
+     */
+    epics?: Maybe<EpicConnection>;
+    /**
+     * Indicates if Epics are enabled for namespace. Deprecated in GitLab 17.5: Replaced by WorkItem type.
+     * @deprecated Replaced by WorkItem type. Deprecated in GitLab 17.5.
+     */
+    epicsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** External locations that receive audit events belonging to the group. */
+    externalAuditEventDestinations?: Maybe<ExternalAuditEventDestinationConnection>;
+    /**
+     * External destinations that receive audit events belonging to the group. Introduced in GitLab 16.11: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+     */
+    externalAuditEventStreamingDestinations?: Maybe<GroupAuditEventStreamingDestinationConnection>;
+    /**
+     * Flow metrics for value stream analytics. Introduced in GitLab 15.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
+     */
+    flowMetrics?: Maybe<GroupValueStreamAnalyticsFlowMetrics>;
+    /** Full name of the group. */
+    fullName?: Maybe<Scalars["String"]["output"]>;
+    /** Full path of the namespace. */
+    fullPath: Scalars["ID"]["output"];
+    /** Preview Billable User Changes */
+    gitlabSubscriptionsPreviewBillableUserChange?: Maybe<PreviewBillableUserChange>;
+    /** Google Cloud logging configurations that receive audit events belonging to the group. */
+    googleCloudLoggingConfigurations?: Maybe<GoogleCloudLoggingConfigurationTypeConnection>;
+    /** A membership of a user within this group. */
+    groupMembers?: Maybe<GroupMemberConnection>;
+    /** Count of direct members of the group. */
+    groupMembersCount: Scalars["Int"]["output"];
+    /** ID of the group. */
+    id?: Maybe<Scalars["ID"]["output"]>;
+    /**
+     * Import source users of the namespace. This field can only be resolved for one namespace in any single request. Introduced in GitLab 17.2: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.2.
+     */
+    importSourceUsers?: Maybe<ImportSourceUserConnection>;
+    /**
+     * Indicates if delayed group deletion is enabled. Introduced in GitLab 16.11: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+     */
+    isAdjournedDeletionEnabled: Scalars["Boolean"]["output"];
+    /** Indicates if group is linked to a subscription. */
+    isLinkedToSubscription?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Issues for projects in this group. */
+    issues?: Maybe<IssueConnection>;
+    /** Find iteration cadences. */
+    iterationCadences?: Maybe<IterationCadenceConnection>;
+    /** Find iterations. */
+    iterations?: Maybe<IterationConnection>;
+    /** Label available on the group. */
+    label?: Maybe<Label>;
+    /** Labels available on this group. */
+    labels?: Maybe<LabelConnection>;
+    /** Indicates if Large File Storage (LFS) is enabled for namespace. */
+    lfsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /**
+     * Indicates if the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
+     */
+    lockDuoFeaturesEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Indicates if math rendering limits are locked for all descendant groups. */
+    lockMathRenderingLimitsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /**
+     * Date when group was scheduled to be deleted. Introduced in GitLab 16.11: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+     */
+    markedForDeletionOn?: Maybe<Scalars["Time"]["output"]>;
+    /** Indicates if math rendering limits are used for the group. */
+    mathRenderingLimitsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Maximum access level of the current user in the group. */
+    maxAccessLevel: AccessLevel;
+    /**
+     * Custom roles available for the group. Introduced in GitLab 16.5: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.5.
+     */
+    memberRoles?: Maybe<MemberRoleConnection>;
+    /** Indicates if a group is disabled from getting mentioned. */
+    mentionsDisabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Compliance violations reported on merge requests merged within the group. */
+    mergeRequestViolations?: Maybe<ComplianceViolationConnection>;
+    /** Merge requests for projects in this group. */
+    mergeRequests?: Maybe<MergeRequestConnection>;
+    /** Milestones of the group. */
+    milestones?: Maybe<MilestoneConnection>;
+    /** Name of the group. */
+    name?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * Path for editing group at the organization level. Introduced in GitLab 17.1: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.1.
+     */
+    organizationEditPath?: Maybe<Scalars["String"]["output"]>;
+    /** Counts of organizations by status for the group. */
+    organizationStateCounts?: Maybe<OrganizationStateCounts>;
+    /** Find organizations of this group. */
+    organizations?: Maybe<CustomerRelationsOrganizationConnection>;
+    /** Package settings for the namespace. */
+    packageSettings?: Maybe<PackageSettings>;
+    /** Packages of the group. This field can only be resolved for one group in any single request. */
+    packages?: Maybe<PackageConnection>;
+    /** List of the namespaces's Pages Deployments. */
+    pagesDeployments?: Maybe<PagesDeploymentConnection>;
+    /** Parent group. */
+    parent?: Maybe<Group>;
+    /** Path of the namespace. */
+    path: Scalars["String"]["output"];
+    /**
+     * Pending member promotions of the group. Introduced in GitLab 17.3: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.3.
+     */
+    pendingMemberApprovals?: Maybe<MemberApprovalConnection>;
+    /**
+     * A pending membership of a user within this group. Introduced in GitLab 16.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
+     */
+    pendingMembers?: Maybe<PendingMemberInterfaceConnection>;
+    /**
+     * Date when group will be deleted if delayed group deletion is enabled. Introduced in GitLab 16.11: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+     */
+    permanentDeletionDate?: Maybe<Scalars["String"]["output"]>;
+    /** Pipeline analytics. */
+    pipelineAnalytics?: Maybe<PipelineAnalytics>;
+    /** Pipeline Execution Policies of the namespace. */
+    pipelineExecutionPolicies?: Maybe<PipelineExecutionPolicyConnection>;
+    /** Pipeline Execution Schedule Policies of the namespace. */
+    pipelineExecutionSchedulePolicies?: Maybe<PipelineExecutionSchedulePolicyConnection>;
+    /**
+     * Number of product analytics events namespace is permitted to store per cycle. Introduced in GitLab 16.9: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.9.
+     */
+    productAnalyticsStoredEventsLimit?: Maybe<Scalars["Int"]["output"]>;
+    /**
+     * Compliance statuses for the projects in a group and its subgroups. Introduced in GitLab 17.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+     */
+    projectComplianceRequirementsStatus?: Maybe<ProjectComplianceRequirementStatusConnection>;
+    /** Compliance standards adherence for the projects in a group and its subgroups. */
+    projectComplianceStandardsAdherence?: Maybe<ComplianceStandardsAdherenceConnection>;
+    /** Permission level required to create projects in the group. */
+    projectCreationLevel?: Maybe<Scalars["String"]["output"]>;
+    /** Projects within this namespace. Returns projects from the parent group if namespace is project. */
+    projects: ProjectConnection;
+    /** Count of direct projects in the group. */
+    projectsCount: Scalars["Int"]["output"];
+    /** List of recently visited boards of the group. Maximum size is 4. */
+    recentIssueBoards?: Maybe<BoardConnection>;
+    /** Releases belonging to projects in the group. */
+    releases?: Maybe<ReleaseConnection>;
+    /**
+     * Cluster agents in the namespace with remote development capabilities Deprecated in GitLab 17.8: Use `workspacesClusterAgents`.
+     * @deprecated Use `workspacesClusterAgents`. Deprecated in GitLab 17.8.
+     */
+    remoteDevelopmentClusterAgents?: Maybe<ClusterAgentConnection>;
+    /** Number of projects in the root namespace where the repository size exceeds the limit. This only applies to namespaces under Project limit enforcement. */
+    repositorySizeExcessProjectCount?: Maybe<Scalars["Int"]["output"]>;
+    /** Indicates if users can request access to namespace. */
+    requestAccessEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Indicates if all users in the group are required to set up two-factor authentication. */
+    requireTwoFactorAuthentication?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Aggregated storage statistics of the namespace. Only available for root namespaces. */
+    rootStorageStatistics?: Maybe<RootStorageStatistics>;
+    /**
+     * Information used for provisioning the runner on a cloud provider. Returns `null` if the GitLab instance is not a SaaS instance. Introduced in GitLab 16.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
+     */
+    runnerCloudProvisioning?: Maybe<CiRunnerCloudProvisioning>;
+    /** Find runners visible to the current user. */
+    runners?: Maybe<CiRunnerConnection>;
+    /** Saved replies available to the group. This field can only be resolved for one group in any single request. */
+    savedReplies?: Maybe<GroupSavedReplyConnection>;
+    /** Saved reply in the group. This field can only be resolved for one group in any single request. */
+    savedReply?: Maybe<GroupSavedReply>;
+    /** Scan Execution Policies of the namespace. */
+    scanExecutionPolicies?: Maybe<ScanExecutionPolicyConnection>;
+    /**
+     * Scan Result Policies of the project Deprecated in GitLab 16.9: Use `approvalPolicies`.
+     * @deprecated Use `approvalPolicies`. Deprecated in GitLab 16.9.
+     */
+    scanResultPolicies?: Maybe<ScanResultPolicyConnection>;
+    /** Security policy project assigned to the namespace. */
+    securityPolicyProject?: Maybe<Project>;
+    /** Security policy project suggestions */
+    securityPolicyProjectSuggestions?: Maybe<ProjectConnection>;
+    /** Indicates if sharing a project with another group within the group is prevented. */
+    shareWithGroupLock?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Shared runners availability for the namespace and its descendants. */
+    sharedRunnersSetting?: Maybe<SharedRunnersSetting>;
+    /**
+     * Data needed to render the sidebar for the namespace. Introduced in GitLab 17.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+     */
+    sidebar?: Maybe<NamespaceSidebar>;
+    /**
+     * Finds a single default role for the group. Available only for SaaS. Introduced in GitLab 17.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+     */
+    standardRole?: Maybe<StandardRole>;
+    /**
+     * Default roles available for the group. Available only for SaaS. Introduced in GitLab 17.4: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
+     */
+    standardRoles?: Maybe<StandardRoleConnection>;
+    /** Group statistics. */
+    stats?: Maybe<GroupStats>;
+    /** The storage limit (in bytes) included with the root namespace plan. This limit only applies to namespaces under namespace limit enforcement. */
+    storageSizeLimit?: Maybe<Scalars["Float"]["output"]>;
+    /** Permission level required to create subgroups within the group. */
+    subgroupCreationLevel?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * Find subscription history records. Introduced in GitLab 17.3: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.3.
+     */
+    subscriptionHistory?: Maybe<GitlabSubscriptionHistoryConnection>;
+    /**
+     * Timelog categories for the namespace. Introduced in GitLab 15.3: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.3.
+     */
+    timelogCategories?: Maybe<TimeTrackingTimelogCategoryConnection>;
+    /** Time logged on issues and merge requests in the group and its subgroups. */
+    timelogs: TimelogConnection;
+    /** Total repository size of all projects in the root namespace in bytes. */
+    totalRepositorySize?: Maybe<Scalars["Float"]["output"]>;
+    /** Total excess repository size of all projects in the root namespace in bytes. This only applies to namespaces under Project limit enforcement. */
+    totalRepositorySizeExcess?: Maybe<Scalars["Float"]["output"]>;
+    /** Time before two-factor authentication is enforced. */
+    twoFactorGracePeriod?: Maybe<Scalars["Int"]["output"]>;
+    /** Timestamp of when the group was last updated. */
+    updatedAt?: Maybe<Scalars["Time"]["output"]>;
+    /** Permissions for the current user on the resource */
+    userPermissions: GroupPermissions;
+    /** Information about Value Stream Analytics within the group. */
+    valueStreamAnalytics?: Maybe<ValueStreamAnalytics>;
+    /**
+     * Aggregated usage counts within the group Introduced in GitLab 16.4: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.4.
+     */
+    valueStreamDashboardUsageOverview?: Maybe<ValueStreamDashboardCount>;
+    /** Value streams available to the group. */
+    valueStreams?: Maybe<ValueStreamConnection>;
+    /** Visibility of the namespace. */
+    visibility?: Maybe<Scalars["String"]["output"]>;
+    /** Vulnerabilities reported on the projects in the group and its subgroups. */
+    vulnerabilities?: Maybe<VulnerabilityConnection>;
+    /** The historical number of vulnerabilities per day for the projects in the group and its subgroups. */
+    vulnerabilitiesCountByDay?: Maybe<VulnerabilitiesCountByDayConnection>;
+    /** Represents vulnerable project counts for each grade. */
+    vulnerabilityGrades?: Maybe<Array<VulnerableProjectsByGrade>>;
+    /** Search for vulnerabilities by identifier. */
+    vulnerabilityIdentifierSearch?: Maybe<Array<Scalars["String"]["output"]>>;
+    /**
+     * Vulnerability Management Policies of the project. Introduced in GitLab 17.7: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.7.
+     */
+    vulnerabilityManagementPolicies?: Maybe<VulnerabilityManagementPolicyConnection>;
+    /**
+     * Counts for each vulnerability severity in the group and its subgroups. Introduced in GitLab 18.0: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 18.0.
+     */
+    vulnerabilityNamespaceStatistic?: Maybe<VulnerabilityNamespaceStatisticType>;
+    /** Vulnerability scanners reported on the project vulnerabilities of the group and its subgroups. */
+    vulnerabilityScanners?: Maybe<VulnerabilityScannerConnection>;
+    /** Counts for each vulnerability severity in the group and its subgroups. */
+    vulnerabilitySeveritiesCount?: Maybe<VulnerabilitySeveritiesCount>;
+    /** Web URL of the group. */
+    webUrl: Scalars["String"]["output"];
+    /**
+     * Find a work item by IID directly associated with the group. Returns `null` if the `namespace_level_work_items` feature flag is disabled. Introduced in GitLab 16.4: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.4.
+     */
+    workItem?: Maybe<WorkItem>;
+    /**
+     * Work item description templates available to the namespace. Introduced in GitLab 17.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+     */
+    workItemDescriptionTemplates?: Maybe<WorkItemDescriptionTemplateConnection>;
+    /**
+     * Counts of work items by state for the namespace. Returns `null` if the `namespace_level_work_items` feature flag is disabled. Introduced in GitLab 16.7: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.7.
+     */
+    workItemStateCounts?: Maybe<WorkItemStateCountsType>;
+    /** Work item types available to the group. */
+    workItemTypes?: Maybe<WorkItemTypeConnection>;
+    /**
+     * Work items that belong to the namespace. Introduced in GitLab 16.3: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.3.
+     */
+    workItems?: Maybe<WorkItemConnection>;
+    /**
+     * Cluster agents in the namespace with workspaces capabilities Introduced in GitLab 17.8: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+     */
+    workspacesClusterAgents?: Maybe<ClusterAgentConnection>;
+  };
 
 export type GroupAchievementsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
@@ -18226,10 +20452,6 @@ export type GroupAddOnEligibleUsersArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
   search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<GitlabSubscriptionsUserSort>;
-};
-
-export type GroupAddOnPurchaseArgs = {
-  addOnName: Scalars["String"]["input"];
 };
 
 export type GroupAiMetricsArgs = {
@@ -18257,6 +20479,7 @@ export type GroupApprovalPoliciesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  includeUnscoped?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   relationship?: InputMaybe<SecurityPolicyRelationType>;
 };
@@ -18322,6 +20545,14 @@ export type GroupComplianceFrameworksArgs = {
   search?: InputMaybe<Scalars["String"]["input"]>;
 };
 
+export type GroupComponentVersionsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  componentName: Scalars["String"]["input"];
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
 export type GroupComponentsArgs = {
   name?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -18366,14 +20597,19 @@ export type GroupCustomEmojiArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
+export type GroupCustomFieldArgs = {
+  id: Scalars["IssuablesCustomFieldID"]["input"];
+};
+
 export type GroupCustomFieldsArgs = {
   active?: InputMaybe<Scalars["Boolean"]["input"]>;
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
+  fieldType?: InputMaybe<CustomFieldType>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   search?: InputMaybe<Scalars["String"]["input"]>;
-  workItemTypeIds?: InputMaybe<Array<Scalars["WorkItemsTypeID"]["input"]>>;
+  workItemTypeId?: InputMaybe<Scalars["WorkItemsTypeID"]["input"]>;
 };
 
 export type GroupCustomizableDashboardVisualizationsArgs = {
@@ -18410,6 +20646,20 @@ export type GroupDependenciesArgs = {
   sourceTypes?: InputMaybe<Array<SbomSourceType>>;
 };
 
+export type GroupDependencyAggregationsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  componentIds?: InputMaybe<Array<Scalars["SbomComponentID"]["input"]>>;
+  componentNames?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  packageManagers?: InputMaybe<Array<PackageManager>>;
+  projectCountMax?: InputMaybe<Scalars["Int"]["input"]>;
+  projectCountMin?: InputMaybe<Scalars["Int"]["input"]>;
+  sort?: InputMaybe<DependencySort>;
+  sourceTypes?: InputMaybe<Array<SbomSourceType>>;
+};
+
 export type GroupDependencyProxyBlobsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -18428,10 +20678,12 @@ export type GroupDescendantGroupsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   includeParentDescendants?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   owned?: InputMaybe<Scalars["Boolean"]["input"]>;
   search?: InputMaybe<Scalars["String"]["input"]>;
+  sort?: InputMaybe<GroupSort>;
 };
 
 export type GroupDoraPerformanceScoreCountsArgs = {
@@ -18470,6 +20722,7 @@ export type GroupEpicArgs = {
   search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<EpicSort>;
   state?: InputMaybe<EpicState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   timeframe?: InputMaybe<Timeframe>;
   topLevelHierarchyOnly?: InputMaybe<Scalars["Boolean"]["input"]>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -18510,6 +20763,7 @@ export type GroupEpicsArgs = {
   search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<EpicSort>;
   state?: InputMaybe<EpicState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   timeframe?: InputMaybe<Timeframe>;
   topLevelHierarchyOnly?: InputMaybe<Scalars["Boolean"]["input"]>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -18609,6 +20863,7 @@ export type GroupIssuesArgs = {
   search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<IssueSort>;
   state?: InputMaybe<IssuableState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   types?: InputMaybe<Array<IssueType>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -18670,6 +20925,7 @@ export type GroupMemberRolesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   id?: InputMaybe<Scalars["MemberRoleID"]["input"]>;
+  ids?: InputMaybe<Array<Scalars["MemberRoleID"]["input"]>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   orderBy?: InputMaybe<MemberRolesOrderBy>;
   sort?: InputMaybe<SortDirectionEnum>;
@@ -18690,6 +20946,7 @@ export type GroupMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   authorUsername?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -18702,6 +20959,7 @@ export type GroupMergeRequestsArgs = {
   environmentName?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   includeSubgroups?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
@@ -18713,10 +20971,15 @@ export type GroupMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
+  reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
+  reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -18795,8 +21058,27 @@ export type GroupPipelineExecutionPoliciesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  includeUnscoped?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   relationship?: InputMaybe<SecurityPolicyRelationType>;
+};
+
+export type GroupPipelineExecutionSchedulePoliciesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  includeUnscoped?: InputMaybe<Scalars["Boolean"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  relationship?: InputMaybe<SecurityPolicyRelationType>;
+};
+
+export type GroupProjectComplianceRequirementsStatusArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  filters?: InputMaybe<GroupProjectRequirementComplianceStatusInput>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  orderBy?: InputMaybe<ProjectComplianceRequirementStatusOrderBy>;
 };
 
 export type GroupProjectComplianceStandardsAdherenceArgs = {
@@ -18809,6 +21091,7 @@ export type GroupProjectComplianceStandardsAdherenceArgs = {
 
 export type GroupProjectsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
+  archivedOnly?: InputMaybe<Scalars["Boolean"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   complianceFrameworkFilters?: InputMaybe<ComplianceFrameworkFilters>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
@@ -18824,6 +21107,7 @@ export type GroupProjectsArgs = {
   sort?: InputMaybe<NamespaceProjectSort>;
   withIssuesEnabled?: InputMaybe<Scalars["Boolean"]["input"]>;
   withMergeRequestsEnabled?: InputMaybe<Scalars["Boolean"]["input"]>;
+  withNamespaceDomainPages?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
 export type GroupRecentIssueBoardsArgs = {
@@ -18887,6 +21171,7 @@ export type GroupScanExecutionPoliciesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  includeUnscoped?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   relationship?: InputMaybe<SecurityPolicyRelationType>;
 };
@@ -18895,6 +21180,7 @@ export type GroupScanResultPoliciesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  includeUnscoped?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   relationship?: InputMaybe<SecurityPolicyRelationType>;
 };
@@ -18973,6 +21259,7 @@ export type GroupVulnerabilitiesArgs = {
   hasMergeRequest?: InputMaybe<Scalars["Boolean"]["input"]>;
   hasRemediations?: InputMaybe<Scalars["Boolean"]["input"]>;
   hasResolution?: InputMaybe<Scalars["Boolean"]["input"]>;
+  identifierName?: InputMaybe<Scalars["String"]["input"]>;
   image?: InputMaybe<Array<Scalars["String"]["input"]>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   owaspTopTen?: InputMaybe<Array<VulnerabilityOwaspTop10>>;
@@ -18997,6 +21284,19 @@ export type GroupVulnerabilitiesCountByDayArgs = {
 export type GroupVulnerabilityGradesArgs = {
   includeSubgroups?: InputMaybe<Scalars["Boolean"]["input"]>;
   letterGrade?: InputMaybe<VulnerabilityGrade>;
+};
+
+export type GroupVulnerabilityIdentifierSearchArgs = {
+  name: Scalars["String"]["input"];
+};
+
+export type GroupVulnerabilityManagementPoliciesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  includeUnscoped?: InputMaybe<Scalars["Boolean"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  relationship?: InputMaybe<SecurityPolicyRelationType>;
 };
 
 export type GroupVulnerabilityScannersArgs = {
@@ -19028,11 +21328,25 @@ export type GroupWorkItemArgs = {
   iid: Scalars["String"]["input"];
 };
 
+export type GroupWorkItemDescriptionTemplatesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
 export type GroupWorkItemStateCountsArgs = {
   assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   authorUsername?: InputMaybe<Scalars["String"]["input"]>;
+  closedAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  closedBefore?: InputMaybe<Scalars["Time"]["input"]>;
   confidential?: InputMaybe<Scalars["Boolean"]["input"]>;
+  createdAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  createdBefore?: InputMaybe<Scalars["Time"]["input"]>;
+  dueAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  dueBefore?: InputMaybe<Scalars["Time"]["input"]>;
+  healthStatus?: InputMaybe<HealthStatusFilter>;
   iid?: InputMaybe<Scalars["String"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
   in?: InputMaybe<Array<IssuableSearchableField>>;
@@ -19047,8 +21361,13 @@ export type GroupWorkItemStateCountsArgs = {
   search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<WorkItemSort>;
   state?: InputMaybe<IssuableState>;
-  statusWidget?: InputMaybe<StatusFilterInput>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
+  timeframe?: InputMaybe<Timeframe>;
   types?: InputMaybe<Array<IssueType>>;
+  updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
+  verificationStatusWidget?: InputMaybe<VerificationStatusFilterInput>;
+  weight?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type GroupWorkItemTypesArgs = {
@@ -19065,8 +21384,15 @@ export type GroupWorkItemsArgs = {
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   authorUsername?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
+  closedAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  closedBefore?: InputMaybe<Scalars["Time"]["input"]>;
   confidential?: InputMaybe<Scalars["Boolean"]["input"]>;
+  createdAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  createdBefore?: InputMaybe<Scalars["Time"]["input"]>;
+  dueAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  dueBefore?: InputMaybe<Scalars["Time"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  healthStatus?: InputMaybe<HealthStatusFilter>;
   iid?: InputMaybe<Scalars["String"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
   in?: InputMaybe<Array<IssuableSearchableField>>;
@@ -19082,8 +21408,21 @@ export type GroupWorkItemsArgs = {
   search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<WorkItemSort>;
   state?: InputMaybe<IssuableState>;
-  statusWidget?: InputMaybe<StatusFilterInput>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
+  timeframe?: InputMaybe<Timeframe>;
   types?: InputMaybe<Array<IssueType>>;
+  updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
+  verificationStatusWidget?: InputMaybe<VerificationStatusFilterInput>;
+  weight?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type GroupWorkspacesClusterAgentsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  filter: NamespaceClusterAgentFilter;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** Represents a subgroup or project filter that belongs to a group level external audit event streaming destination. */
@@ -19234,6 +21573,47 @@ export type GroupDataTransferEgressNodesArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
+/** All information related to group DORA metrics. */
+export type GroupDora = {
+  __typename?: "GroupDora";
+  /** DORA metrics for the current group or project. */
+  metrics?: Maybe<Array<DoraMetric>>;
+  /** Projects within this group with at least 1 DORA metric for given period. */
+  projects: ProjectConnection;
+};
+
+/** All information related to group DORA metrics. */
+export type GroupDoraMetricsArgs = {
+  endDate?: InputMaybe<Scalars["Date"]["input"]>;
+  environmentTiers?: InputMaybe<Array<DeploymentTier>>;
+  interval?: InputMaybe<DoraMetricBucketingInterval>;
+  startDate?: InputMaybe<Scalars["Date"]["input"]>;
+};
+
+/** All information related to group DORA metrics. */
+export type GroupDoraProjectsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  archivedOnly?: InputMaybe<Scalars["Boolean"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  complianceFrameworkFilters?: InputMaybe<ComplianceFrameworkFilters>;
+  endDate: Scalars["Date"]["input"];
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  hasCodeCoverage?: InputMaybe<Scalars["Boolean"]["input"]>;
+  hasVulnerabilities?: InputMaybe<Scalars["Boolean"]["input"]>;
+  ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
+  includeSubgroups?: InputMaybe<Scalars["Boolean"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  notAimedForDeletion?: InputMaybe<Scalars["Boolean"]["input"]>;
+  sbomComponentId?: InputMaybe<Scalars["ID"]["input"]>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
+  sort?: InputMaybe<NamespaceProjectSort>;
+  startDate: Scalars["Date"]["input"];
+  withIssuesEnabled?: InputMaybe<Scalars["Boolean"]["input"]>;
+  withMergeRequestsEnabled?: InputMaybe<Scalars["Boolean"]["input"]>;
+  withNamespaceDomainPages?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
 /** An edge in a connection. */
 export type GroupEdge = {
   __typename?: "GroupEdge";
@@ -19241,6 +21621,40 @@ export type GroupEdge = {
   cursor: Scalars["String"]["output"];
   /** The item at the end of the edge. */
   node?: Maybe<Group>;
+};
+
+/** Returns either a "Group" type for users with :read_group permission, or a "GroupMinimalAccess" type for users with only :read_group_metadata permission. */
+export type GroupInterface = {
+  /** Avatar URL of the group. */
+  avatarUrl?: Maybe<Scalars["String"]["output"]>;
+  /** Full name of the group. */
+  fullName?: Maybe<Scalars["String"]["output"]>;
+  /** ID of the group. */
+  id?: Maybe<Scalars["ID"]["output"]>;
+  /** Name of the group. */
+  name?: Maybe<Scalars["String"]["output"]>;
+  /** Web URL of the group. */
+  webUrl?: Maybe<Scalars["String"]["output"]>;
+};
+
+/** The connection type for GroupInterface. */
+export type GroupInterfaceConnection = {
+  __typename?: "GroupInterfaceConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<GroupInterfaceEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<GroupInterface>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type GroupInterfaceEdge = {
+  __typename?: "GroupInterfaceEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<GroupInterface>;
 };
 
 /** Represents a Group Membership */
@@ -19267,7 +21681,7 @@ export type GroupMember = MemberInterface & {
   /** User that is associated with the member object. */
   user?: Maybe<UserCore>;
   /** Permissions for the current user on the resource */
-  userPermissions: GroupPermissions;
+  userPermissions: GroupMemberPermissions;
 };
 
 /** Represents a Group Membership */
@@ -19330,6 +21744,20 @@ export type GroupMemberEdge = {
   node?: Maybe<GroupMember>;
 };
 
+export type GroupMemberPermissions = {
+  __typename?: "GroupMemberPermissions";
+  /** If `true`, the user can perform `create_custom_emoji` on this resource */
+  createCustomEmoji: Scalars["Boolean"]["output"];
+  /** If `true`, the user can perform `create_projects` on this resource */
+  createProjects: Scalars["Boolean"]["output"];
+  /** If `true`, the user can perform `read_group` on this resource */
+  readGroup: Scalars["Boolean"]["output"];
+  /** If `true`, the user can perform `remove_group` on this resource */
+  removeGroup: Scalars["Boolean"]["output"];
+  /** If `true`, the user can perform `view_edit_page` on this resource */
+  viewEditPage: Scalars["Boolean"]["output"];
+};
+
 /** Group member relation */
 export enum GroupMemberRelation {
   /** Members in the group's subgroups. */
@@ -19361,6 +21789,21 @@ export type GroupMembersExportPayload = {
   message?: Maybe<Scalars["String"]["output"]>;
 };
 
+/** Limited group data accessible to users without full group read access (e.g. non-members with READ_ADMIN_CICD admin custom role). */
+export type GroupMinimalAccess = GroupInterface & {
+  __typename?: "GroupMinimalAccess";
+  /** Avatar URL of the group. */
+  avatarUrl?: Maybe<Scalars["String"]["output"]>;
+  /** Full name of the group. */
+  fullName: Scalars["String"]["output"];
+  /** ID of the group. */
+  id?: Maybe<Scalars["ID"]["output"]>;
+  /** Name of the group. */
+  name: Scalars["String"]["output"];
+  /** Web URL of the group. */
+  webUrl?: Maybe<Scalars["String"]["output"]>;
+};
+
 /** User permission on groups */
 export enum GroupPermission {
   /** Groups where the user can create projects. */
@@ -19373,16 +21816,31 @@ export enum GroupPermission {
 
 export type GroupPermissions = {
   __typename?: "GroupPermissions";
+  /** If `true`, the user can leave this group. */
+  canLeave: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `create_custom_emoji` on this resource */
   createCustomEmoji: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `create_projects` on this resource */
   createProjects: Scalars["Boolean"]["output"];
+  /** If `true`, the user can perform `generate_description` on this resource */
+  generateDescription: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `read_group` on this resource */
   readGroup: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `remove_group` on this resource */
   removeGroup: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `view_edit_page` on this resource */
   viewEditPage: Scalars["Boolean"]["output"];
+};
+
+export type GroupProjectRequirementComplianceStatusInput = {
+  /** Filter compliance requirement statuses by compliance framework. */
+  frameworkId?: InputMaybe<Scalars["ComplianceManagementFrameworkID"]["input"]>;
+  /** Filter compliance requirement statuses by project. */
+  projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
+  /** Filter compliance requirement statuses by compliance requirement. */
+  requirementId?: InputMaybe<
+    Scalars["ComplianceManagementComplianceFrameworkComplianceRequirementID"]["input"]
+  >;
 };
 
 /** Values for sorting releases belonging to a group */
@@ -19502,11 +21960,29 @@ export type GroupSavedReplyUpdatePayload = {
 /** Represents the source of a security policy belonging to a group */
 export type GroupSecurityPolicySource = {
   __typename?: "GroupSecurityPolicySource";
-  /** Indicates whether this policy is inherited from parent group. */
+  /** Indicates whether the policy is inherited from parent group. */
   inherited: Scalars["Boolean"]["output"];
   /** Project the policy is associated with. */
   namespace?: Maybe<Namespace>;
 };
+
+/** Values for sorting groups */
+export enum GroupSort {
+  /** Sort by ID, ascending order. */
+  IdAsc = "ID_ASC",
+  /** Sort by ID, descending order. */
+  IdDesc = "ID_DESC",
+  /** Sort by name, ascending order. */
+  NameAsc = "NAME_ASC",
+  /** Sort by name, descending order. */
+  NameDesc = "NAME_DESC",
+  /** Sort by path, ascending order. */
+  PathAsc = "PATH_ASC",
+  /** Sort by path, descending order. */
+  PathDesc = "PATH_DESC",
+  /** Most similar to the search query. */
+  Similarity = "SIMILARITY",
+}
 
 /** Contains statistics about a group */
 export type GroupStats = {
@@ -19527,9 +22003,9 @@ export type GroupUpdateInput = {
   lockDuoFeaturesEnabled?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** Indicates if math rendering limits are locked for all descendant groups. */
   lockMathRenderingLimitsEnabled?: InputMaybe<Scalars["Boolean"]["input"]>;
-  /** Indicates if math rendering limits are used for this group. */
+  /** Indicates if math rendering limits are used for the group. */
   mathRenderingLimitsEnabled?: InputMaybe<Scalars["Boolean"]["input"]>;
-  /** Name of the namespace. */
+  /** Name of the group. */
   name?: InputMaybe<Scalars["String"]["input"]>;
   /** Path of the namespace. */
   path?: InputMaybe<Scalars["String"]["input"]>;
@@ -19652,8 +22128,15 @@ export type GroupValueStreamAnalyticsFlowMetricsTimeToMergeArgs = {
 /** Represents the Geo sync and verification state of a group wiki repository */
 export type GroupWikiRepositoryRegistry = {
   __typename?: "GroupWikiRepositoryRegistry";
+  /** Indicate if the checksums of the GroupWikiRepositoryRegistry do not match on the primary and secondary. */
+  checksumMismatch?: Maybe<Scalars["Boolean"]["output"]>;
   /** Timestamp when the GroupWikiRepositoryRegistry was created */
   createdAt?: Maybe<Scalars["Time"]["output"]>;
+  /**
+   * Indicate if a forced redownload is to be performed. Deprecated in GitLab 17.10: Removed from registry tables in the database in favor of the newer reusable framework.
+   * @deprecated Removed from registry tables in the database in favor of the newer reusable framework. Deprecated in GitLab 17.10.
+   */
+  forceToRedownload?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the Group Wiki Repository. */
   groupWikiRepositoryId: Scalars["ID"]["output"];
   /** ID of the GroupWikiRepositoryRegistry */
@@ -19662,6 +22145,10 @@ export type GroupWikiRepositoryRegistry = {
   lastSyncFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp of the most recent successful sync of the GroupWikiRepositoryRegistry */
   lastSyncedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Indicate if the GroupWikiRepositoryRegistry is missing on primary. */
+  missingOnPrimary?: Maybe<Scalars["Boolean"]["output"]>;
+  /** ID of the GroupWikiRepositoryRegistry's model record. */
+  modelRecordId?: Maybe<Scalars["Int"]["output"]>;
   /** Timestamp after which the GroupWikiRepositoryRegistry is resynced */
   retryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed sync attempts of the GroupWikiRepositoryRegistry */
@@ -19670,13 +22157,15 @@ export type GroupWikiRepositoryRegistry = {
   state?: Maybe<RegistryState>;
   /** The local checksum of the GroupWikiRepositoryRegistry */
   verificationChecksum?: Maybe<Scalars["String"]["output"]>;
+  /** The expected checksum of the GroupWikiRepositoryRegistry in case of mismatch. */
+  verificationChecksumMismatched?: Maybe<Scalars["String"]["output"]>;
   /** Error message during verification of the GroupWikiRepositoryRegistry */
   verificationFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp after which the GroupWikiRepositoryRegistry is reverified */
   verificationRetryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed verification attempts of the GroupWikiRepositoryRegistry */
   verificationRetryCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Timestamp when the verification started of GroupWikiRepositoryRegistry */
+  /** Timestamp when the verification of GroupWikiRepositoryRegistry started */
   verificationStartedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Verification state of the GroupWikiRepositoryRegistry */
   verificationState?: Maybe<VerificationStateEnum>;
@@ -19687,12 +22176,19 @@ export type GroupWikiRepositoryRegistry = {
 /** The connection type for GroupWikiRepositoryRegistry. */
 export type GroupWikiRepositoryRegistryConnection = {
   __typename?: "GroupWikiRepositoryRegistryConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<GroupWikiRepositoryRegistryEdge>>>;
   /** A list of nodes. */
   nodes?: Maybe<Array<Maybe<GroupWikiRepositoryRegistry>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** The connection type for GroupWikiRepositoryRegistry. */
+export type GroupWikiRepositoryRegistryConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** An edge in a connection. */
@@ -19703,6 +22199,14 @@ export type GroupWikiRepositoryRegistryEdge = {
   /** The item at the end of the edge. */
   node?: Maybe<GroupWikiRepositoryRegistry>;
 };
+
+/** Values for grouping compute usage data. */
+export enum GroupingEnum {
+  /** Aggregate usage data across all namespaces in the instance. */
+  InstanceAggregate = "INSTANCE_AGGREGATE",
+  /** Group data by individual root namespace. */
+  PerRootNamespace = "PER_ROOT_NAMESPACE",
+}
 
 export type Groups = {
   __typename?: "Groups";
@@ -19858,6 +22362,14 @@ export type Ide = {
   codeSuggestionsEnabled: Scalars["Boolean"]["output"];
 };
 
+export type ImagePullSecrets = {
+  __typename?: "ImagePullSecrets";
+  /** Name of the Kubernetes image pull secret. */
+  name: Scalars["String"]["output"];
+  /** Namespace of the kubernetes image pull secret. */
+  namespace: Scalars["String"]["output"];
+};
+
 /** Import source */
 export enum ImportSource {
   /** Bitbucket */
@@ -19888,6 +22400,8 @@ export enum ImportSource {
 
 export type ImportSourceUser = {
   __typename?: "ImportSourceUser";
+  /** Timestamp of when the source user was created. */
+  createdAt: Scalars["Time"]["output"];
   /** Global ID of the mapping of a user on source instance to a user on destination instance. */
   id: Scalars["ImportSourceUserID"]["output"];
   /** Name of the importer. */
@@ -20669,6 +23183,17 @@ export type InstanceSecurityDashboardVulnerabilitySeveritiesCountArgs = {
   state?: InputMaybe<Array<VulnerabilityState>>;
 };
 
+/** An expression with an integer value. */
+export type IntegerExpression = ExpressionInterface & {
+  __typename?: "IntegerExpression";
+  /** Field the expression applies to. */
+  field: Scalars["String"]["output"];
+  /** Operator of the expression. */
+  operator: Scalars["String"]["output"];
+  /** Integer value of the expression. */
+  value: Scalars["Int"]["output"];
+};
+
 /** An integration to override the level settings of instance specific integrations. */
 export type IntegrationExclusion = {
   __typename?: "IntegrationExclusion";
@@ -20891,7 +23416,7 @@ export type Issue = CurrentUserTodos &
   Todoable & {
     __typename?: "Issue";
     /**
-     * Alert associated to this issue. Deprecated in GitLab 15.6: Use `alert_management_alerts`.
+     * Alert associated to the issue. Deprecated in GitLab 15.6: Use `alert_management_alerts`.
      * @deprecated Use `alert_management_alerts`. Deprecated in GitLab 15.6.
      */
     alertManagementAlert?: Maybe<AlertManagementAlert>;
@@ -20903,17 +23428,17 @@ export type Issue = CurrentUserTodos &
     author: UserCore;
     /** Indicates the issue is blocked. */
     blocked: Scalars["Boolean"]["output"];
-    /** Count of issues blocking this issue. */
+    /** Count of issues blocking the issue. */
     blockedByCount?: Maybe<Scalars["Int"]["output"]>;
-    /** Issues blocking this issue. */
+    /** Issues blocking the issue. */
     blockedByIssues?: Maybe<IssueConnection>;
-    /** Count of issues this issue is blocking. */
+    /** Count of issues the issue is blocking. */
     blockingCount: Scalars["Int"]["output"];
-    /** Issue this issue was closed as a duplicate of. */
+    /** Issue the issue was closed as a duplicate of. */
     closedAsDuplicateOf?: Maybe<Issue>;
     /** Timestamp of when the issue was closed. */
     closedAt?: Maybe<Scalars["Time"]["output"]>;
-    /** All commenters on this noteable. */
+    /** All commenters on the noteable. */
     commenters: UserCoreConnection;
     /** Indicates the issue is confidential. */
     confidential: Scalars["Boolean"]["output"];
@@ -20929,11 +23454,11 @@ export type Issue = CurrentUserTodos &
     description?: Maybe<Scalars["String"]["output"]>;
     /** GitLab Flavored Markdown rendering of `description` */
     descriptionHtml?: Maybe<Scalars["String"]["output"]>;
-    /** Collection of design images associated with this issue. */
+    /** Collection of design images associated with the issue. */
     designCollection?: Maybe<DesignCollection>;
     /** Indicates discussion is locked on the issue. */
     discussionLocked: Scalars["Boolean"]["output"];
-    /** All discussions on this noteable. */
+    /** All discussions on the noteable. */
     discussions: DiscussionConnection;
     /** Number of downvotes the issue has received. */
     downvotes: Scalars["Int"]["output"];
@@ -20947,7 +23472,7 @@ export type Issue = CurrentUserTodos &
     /** Indicates if the parent project or group has email notifications disabled: `false` if email notifications are disabled. */
     emailsEnabled: Scalars["Boolean"]["output"];
     /**
-     * Epic to which this issue belongs. Deprecated in GitLab 17.5: Replaced by WorkItem type.
+     * Epic to which the issue belongs. Deprecated in GitLab 17.5: Replaced by WorkItem type.
      * @deprecated Replaced by WorkItem type. Deprecated in GitLab 17.5.
      */
     epic?: Maybe<Epic>;
@@ -20985,6 +23510,11 @@ export type Issue = CurrentUserTodos &
     iteration?: Maybe<Iteration>;
     /** Labels of the issue. */
     labels?: Maybe<LabelConnection>;
+    /**
+     * Work items linked to the issue. Introduced in GitLab 17.8: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+     */
+    linkedWorkItems?: Maybe<LinkedWorkItemTypeConnection>;
     /** Number of merge requests that close the issue on merge. */
     mergeRequestsCount: Scalars["Int"]["output"];
     /** Metric images associated to the issue. */
@@ -20995,7 +23525,7 @@ export type Issue = CurrentUserTodos &
     moved?: Maybe<Scalars["Boolean"]["output"]>;
     /** Updated Issue after it got moved to another project. */
     movedTo?: Maybe<Issue>;
-    /** Name or title of this object. */
+    /** Name or title of the object. */
     name?: Maybe<Scalars["String"]["output"]>;
     /** All notes on this noteable. */
     notes: NoteConnection;
@@ -21017,6 +23547,11 @@ export type Issue = CurrentUserTodos &
     slaDueAt?: Maybe<Scalars["Time"]["output"]>;
     /** State of the issue. */
     state: IssueState;
+    /**
+     * Status of the issue. Introduced in GitLab 18.0: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 18.0.
+     */
+    status?: Maybe<WorkItemStatus>;
     /** Indicates whether an issue is published to the status page. */
     statusPagePublishedIncident?: Maybe<Scalars["Boolean"]["output"]>;
     /** Indicates the currently logged in user is subscribed to the issue. */
@@ -21122,6 +23657,14 @@ export type IssueIssuableResourceLinksArgs = {
 export type IssueLabelsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type IssueLinkedWorkItemsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  filter?: InputMaybe<WorkItemRelatedLinkType>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
 };
@@ -21294,12 +23837,18 @@ export type IssuePermissions = {
   adminIssue: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `admin_issue_relation` on this resource */
   adminIssueRelation: Scalars["Boolean"]["output"];
+  /** If `true`, the user can perform `clone_issue` on this resource */
+  cloneIssue: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `create_design` on this resource */
   createDesign: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `create_note` on this resource */
   createNote: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `destroy_design` on this resource */
   destroyDesign: Scalars["Boolean"]["output"];
+  /** If `true`, the user can perform `move_design` on this resource */
+  moveDesign: Scalars["Boolean"]["output"];
+  /** If `true`, the user can perform `move_issue` on this resource */
+  moveIssue: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `read_design` on this resource */
   readDesign: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `read_issue` on this resource */
@@ -21743,6 +24292,8 @@ export enum IssueType {
   Task = "TASK",
   /** Test Case issue type */
   TestCase = "TEST_CASE",
+  /** Ticket issue type */
+  Ticket = "TICKET",
 }
 
 /** Autogenerated input type of IssueUnlinkAlert */
@@ -21858,7 +24409,7 @@ export type IterationCadence = {
   automatic?: Maybe<Scalars["Boolean"]["output"]>;
   /** Description of the iteration cadence. Maximum length is 5000 characters. */
   description?: Maybe<Scalars["String"]["output"]>;
-  /** Duration in weeks of the iterations within this cadence. */
+  /** Duration in weeks of the iterations within the cadence. */
   durationInWeeks?: Maybe<Scalars["Int"]["output"]>;
   /** Global ID of the iteration cadence. */
   id: Scalars["IterationsCadenceID"]["output"];
@@ -21893,7 +24444,7 @@ export type IterationCadenceCreateInput = {
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
   /** Description of the iteration cadence. Maximum length is 5000 characters. */
   description?: InputMaybe<Scalars["String"]["input"]>;
-  /** Duration in weeks of the iterations within this cadence. */
+  /** Duration in weeks of the iterations within the cadence. */
   durationInWeeks?: InputMaybe<Scalars["Int"]["input"]>;
   /** Group where the iteration cadence is created. */
   groupPath: Scalars["ID"]["input"];
@@ -21956,7 +24507,7 @@ export type IterationCadenceUpdateInput = {
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
   /** Description of the iteration cadence. Maximum length is 5000 characters. */
   description?: InputMaybe<Scalars["String"]["input"]>;
-  /** Duration in weeks of the iterations within this cadence. */
+  /** Duration in weeks of the iterations within the cadence. */
   durationInWeeks?: InputMaybe<Scalars["Int"]["input"]>;
   /** Global ID of the iteration cadence. */
   id: Scalars["IterationsCadenceID"]["input"];
@@ -22287,14 +24838,25 @@ export type JobArtifactRegistry = {
   __typename?: "JobArtifactRegistry";
   /** ID of the Job Artifact. */
   artifactId: Scalars["ID"]["output"];
+  /** Indicate if the checksums of the JobArtifactRegistry do not match on the primary and secondary. */
+  checksumMismatch?: Maybe<Scalars["Boolean"]["output"]>;
   /** Timestamp when the JobArtifactRegistry was created */
   createdAt?: Maybe<Scalars["Time"]["output"]>;
+  /**
+   * Indicate if a forced redownload is to be performed. Deprecated in GitLab 17.10: Removed from registry tables in the database in favor of the newer reusable framework.
+   * @deprecated Removed from registry tables in the database in favor of the newer reusable framework. Deprecated in GitLab 17.10.
+   */
+  forceToRedownload?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the JobArtifactRegistry */
   id: Scalars["ID"]["output"];
   /** Error message during sync of the JobArtifactRegistry */
   lastSyncFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp of the most recent successful sync of the JobArtifactRegistry */
   lastSyncedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Indicate if the JobArtifactRegistry is missing on primary. */
+  missingOnPrimary?: Maybe<Scalars["Boolean"]["output"]>;
+  /** ID of the JobArtifactRegistry's model record. */
+  modelRecordId?: Maybe<Scalars["Int"]["output"]>;
   /** Timestamp after which the JobArtifactRegistry is resynced */
   retryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed sync attempts of the JobArtifactRegistry */
@@ -22303,13 +24865,15 @@ export type JobArtifactRegistry = {
   state?: Maybe<RegistryState>;
   /** The local checksum of the JobArtifactRegistry */
   verificationChecksum?: Maybe<Scalars["String"]["output"]>;
+  /** The expected checksum of the JobArtifactRegistry in case of mismatch. */
+  verificationChecksumMismatched?: Maybe<Scalars["String"]["output"]>;
   /** Error message during verification of the JobArtifactRegistry */
   verificationFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp after which the JobArtifactRegistry is reverified */
   verificationRetryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed verification attempts of the JobArtifactRegistry */
   verificationRetryCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Timestamp when the verification started of JobArtifactRegistry */
+  /** Timestamp when the verification of JobArtifactRegistry started */
   verificationStartedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Verification state of the JobArtifactRegistry */
   verificationState?: Maybe<VerificationStateEnum>;
@@ -22320,12 +24884,19 @@ export type JobArtifactRegistry = {
 /** The connection type for JobArtifactRegistry. */
 export type JobArtifactRegistryConnection = {
   __typename?: "JobArtifactRegistryConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<JobArtifactRegistryEdge>>>;
   /** A list of nodes. */
   nodes?: Maybe<Array<Maybe<JobArtifactRegistry>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** The connection type for JobArtifactRegistry. */
+export type JobArtifactRegistryConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** An edge in a connection. */
@@ -22476,6 +25047,8 @@ export type Kas = {
   __typename?: "Kas";
   /** Indicates whether the Kubernetes agent server is enabled. */
   enabled: Scalars["Boolean"]["output"];
+  /** URL used by the Kubernetes tooling to communicate with the KAS Kubernetes API proxy. */
+  externalK8sProxyUrl?: Maybe<Scalars["String"]["output"]>;
   /** URL used by the agents to communicate with the server. */
   externalUrl?: Maybe<Scalars["String"]["output"]>;
   /** KAS version. */
@@ -22493,11 +25066,11 @@ export type Key = Todoable & {
   id: Scalars["ID"]["output"];
   /** Public key of the key pair. */
   key: Scalars["String"]["output"];
-  /** Name or title of this object. */
+  /** Name or title of the object. */
   name?: Maybe<Scalars["String"]["output"]>;
   /** Title of the key. */
   title: Scalars["String"]["output"];
-  /** URL of this object. */
+  /** URL of the object. */
   webUrl?: Maybe<Scalars["String"]["output"]>;
 };
 
@@ -22529,8 +25102,8 @@ export type Label = LabelInterface & {
   description?: Maybe<Scalars["String"]["output"]>;
   /** GitLab Flavored Markdown rendering of `description` */
   descriptionHtml?: Maybe<Scalars["String"]["output"]>;
-  /** Label ID. */
-  id: Scalars["ID"]["output"];
+  /** Global ID of the label. */
+  id: Scalars["LabelID"]["output"];
   /** Indicates this label is locked for merge requests that have been merged. */
   lockOnMerge: Scalars["Boolean"]["output"];
   /** Text color of the label. */
@@ -22601,8 +25174,6 @@ export type LabelInterface = {
   createdAt: Scalars["Time"]["output"];
   /** Description of the label (Markdown rendered as HTML for caching). */
   description?: Maybe<Scalars["String"]["output"]>;
-  /** Label ID. */
-  id: Scalars["ID"]["output"];
   /** Text color of the label. */
   textColor: Scalars["String"]["output"];
   /** Content of the label. */
@@ -22619,11 +25190,106 @@ export enum LabelSearchFieldList {
   Title = "TITLE",
 }
 
+/** Represents an instance-level LDAP link. */
+export type LdapAdminRoleLink = {
+  __typename?: "LdapAdminRoleLink";
+  /** Custom admin member role. */
+  adminMemberRole: AdminMemberRole;
+  /** Common Name (CN) of the LDAP group. */
+  cn?: Maybe<Scalars["String"]["output"]>;
+  /** Search filter for the LDAP group. */
+  filter?: Maybe<Scalars["String"]["output"]>;
+  /** ID of the LDAP link. */
+  id: Scalars["ID"]["output"];
+  /** LDAP provider for the LDAP link. */
+  provider: LdapProvider;
+};
+
+/** The connection type for LdapAdminRoleLink. */
+export type LdapAdminRoleLinkConnection = {
+  __typename?: "LdapAdminRoleLinkConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<LdapAdminRoleLinkEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<LdapAdminRoleLink>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** Autogenerated input type of LdapAdminRoleLinkCreate */
+export type LdapAdminRoleLinkCreateInput = {
+  /** Global ID of the custom admin role to be assigned to a user. */
+  adminMemberRoleId: Scalars["MemberRoleID"]["input"];
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Common Name (CN) of the LDAP group. */
+  cn?: InputMaybe<Scalars["String"]["input"]>;
+  /** Search filter for the LDAP group. */
+  filter?: InputMaybe<Scalars["String"]["input"]>;
+  /** LDAP provider for the LDAP link. */
+  provider: Scalars["String"]["input"];
+};
+
+/** Autogenerated return type of LdapAdminRoleLinkCreate. */
+export type LdapAdminRoleLinkCreatePayload = {
+  __typename?: "LdapAdminRoleLinkCreatePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Created instance-level LDAP link. */
+  ldapAdminRoleLink?: Maybe<LdapAdminRoleLink>;
+};
+
+/** Autogenerated input type of LdapAdminRoleLinkDestroy */
+export type LdapAdminRoleLinkDestroyInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Global ID of the instance-level LDAP link to delete. */
+  id: Scalars["AuthzLdapAdminRoleLinkID"]["input"];
+};
+
+/** Autogenerated return type of LdapAdminRoleLinkDestroy. */
+export type LdapAdminRoleLinkDestroyPayload = {
+  __typename?: "LdapAdminRoleLinkDestroyPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Deleted instance-level LDAP link. */
+  ldapAdminRoleLink?: Maybe<LdapAdminRoleLink>;
+};
+
+/** An edge in a connection. */
+export type LdapAdminRoleLinkEdge = {
+  __typename?: "LdapAdminRoleLinkEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<LdapAdminRoleLink>;
+};
+
+/** Represents a LDAP provider. */
+export type LdapProvider = {
+  __typename?: "LdapProvider";
+  /** ID of the LDAP provider. */
+  id?: Maybe<Scalars["String"]["output"]>;
+  /** Display name of the LDAP provider. */
+  label?: Maybe<Scalars["String"]["output"]>;
+};
+
 /** Represents the Geo sync and verification state of an LFS object */
 export type LfsObjectRegistry = {
   __typename?: "LfsObjectRegistry";
+  /** Indicate if the checksums of the LfsObjectRegistry do not match on the primary and secondary. */
+  checksumMismatch?: Maybe<Scalars["Boolean"]["output"]>;
   /** Timestamp when the LfsObjectRegistry was created */
   createdAt?: Maybe<Scalars["Time"]["output"]>;
+  /**
+   * Indicate if a forced redownload is to be performed. Deprecated in GitLab 17.10: Removed from registry tables in the database in favor of the newer reusable framework.
+   * @deprecated Removed from registry tables in the database in favor of the newer reusable framework. Deprecated in GitLab 17.10.
+   */
+  forceToRedownload?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the LfsObjectRegistry */
   id: Scalars["ID"]["output"];
   /** Error message during sync of the LfsObjectRegistry */
@@ -22632,6 +25298,10 @@ export type LfsObjectRegistry = {
   lastSyncedAt?: Maybe<Scalars["Time"]["output"]>;
   /** ID of the LFS object. */
   lfsObjectId: Scalars["ID"]["output"];
+  /** Indicate if the LfsObjectRegistry is missing on primary. */
+  missingOnPrimary?: Maybe<Scalars["Boolean"]["output"]>;
+  /** ID of the LfsObjectRegistry's model record. */
+  modelRecordId?: Maybe<Scalars["Int"]["output"]>;
   /** Timestamp after which the LfsObjectRegistry is resynced */
   retryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed sync attempts of the LfsObjectRegistry */
@@ -22640,13 +25310,15 @@ export type LfsObjectRegistry = {
   state?: Maybe<RegistryState>;
   /** The local checksum of the LfsObjectRegistry */
   verificationChecksum?: Maybe<Scalars["String"]["output"]>;
+  /** The expected checksum of the LfsObjectRegistry in case of mismatch. */
+  verificationChecksumMismatched?: Maybe<Scalars["String"]["output"]>;
   /** Error message during verification of the LfsObjectRegistry */
   verificationFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp after which the LfsObjectRegistry is reverified */
   verificationRetryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed verification attempts of the LfsObjectRegistry */
   verificationRetryCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Timestamp when the verification started of LfsObjectRegistry */
+  /** Timestamp when the verification of LfsObjectRegistry started */
   verificationStartedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Verification state of the LfsObjectRegistry */
   verificationState?: Maybe<VerificationStateEnum>;
@@ -22657,12 +25329,19 @@ export type LfsObjectRegistry = {
 /** The connection type for LfsObjectRegistry. */
 export type LfsObjectRegistryConnection = {
   __typename?: "LfsObjectRegistryConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<LfsObjectRegistryEdge>>>;
   /** A list of nodes. */
   nodes?: Maybe<Array<Maybe<LfsObjectRegistry>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** The connection type for LfsObjectRegistry. */
+export type LfsObjectRegistryConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** An edge in a connection. */
@@ -22678,8 +25357,10 @@ export type License = {
   __typename?: "License";
   /** Name of the license. */
   name: Scalars["String"]["output"];
+  /** Name of the SPDX identifier. */
+  spdxIdentifier?: Maybe<Scalars["String"]["output"]>;
   /** License URL in relation to SPDX. */
-  url: Scalars["String"]["output"];
+  url?: Maybe<Scalars["String"]["output"]>;
 };
 
 /** Represents an entry from the Cloud License history */
@@ -22743,6 +25424,8 @@ export type LinkedWorkItemType = {
   linkUpdatedAt: Scalars["Time"]["output"];
   /** Linked work item. */
   workItem?: Maybe<WorkItem>;
+  /** State of the linked work item. */
+  workItemState: WorkItemState;
 };
 
 /** The connection type for LinkedWorkItemType. */
@@ -22777,10 +25460,14 @@ export enum ListLimitMetric {
 
 export type Location = {
   __typename?: "Location";
+  /** Ancestors of the dependency. */
+  ancestors?: Maybe<Array<AncestorType>>;
   /** HTTP URI path to view the input file in GitLab. */
   blobPath?: Maybe<Scalars["String"]["output"]>;
   /** Path, relative to the root of the repository, of the filewhich was analyzed to detect the dependency. */
   path?: Maybe<Scalars["String"]["output"]>;
+  /** Is top level dependency. */
+  topLevel?: Maybe<Scalars["Boolean"]["output"]>;
 };
 
 /** Represents links to perform actions on the candidate */
@@ -22882,8 +25569,10 @@ export enum MemberAccessLevel {
   Maintainer = "MAINTAINER",
   /** The Minimal Access role is for users who need the least amount of access into groups and projects. You can assign this role as a default, before giving a user another role with more permissions. */
   MinimalAccess = "MINIMAL_ACCESS",
-  /** The Owner role is normally assigned to the individual or team responsible for managing and maintaining the group or creating the project. This role has the highest level of administrative control, and can manage all aspects of the group or project, including managing other Owners. */
+  /** The Owner role is typically assigned to the individual or team responsible for managing and maintaining the group or creating the project. This role has the highest level of administrative control, and can manage all aspects of the group or project, including managing other Owners. */
   Owner = "OWNER",
+  /** The Planner role is suitable for team members who need to manage projects and track work items but do not need to contribute code. */
+  Planner = "PLANNER",
   /** The Reporter role is suitable for team members who need to stay informed about a project or group but do not actively contribute code. */
   Reporter = "REPORTER",
 }
@@ -22898,6 +25587,8 @@ export enum MemberAccessLevelName {
   Maintainer = "MAINTAINER",
   /** Owner access. */
   Owner = "OWNER",
+  /** Planner access. */
+  Planner = "PLANNER",
   /** Reporter access. */
   Reporter = "REPORTER",
 }
@@ -23012,6 +25703,8 @@ export type MemberRole = RoleInterface & {
   baseAccessLevel: AccessLevel;
   /** Timestamp of when the member role was created. */
   createdAt: Scalars["Time"]["output"];
+  /** Array of security policies dependent on the custom role. */
+  dependentSecurityPolicies?: Maybe<Array<ApprovalPolicy>>;
   /** Role description. */
   description?: Maybe<Scalars["String"]["output"]>;
   /**
@@ -23028,7 +25721,7 @@ export type MemberRole = RoleInterface & {
    * Array of all permissions enabled for the custom role. Introduced in GitLab 16.5: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.5.
    */
-  enabledPermissions: CustomizablePermissionConnection;
+  enabledPermissions: CustomizableStandardPermissionConnection;
   /** Role ID. */
   id: Scalars["ID"]["output"];
   /**
@@ -23053,6 +25746,102 @@ export type MemberRoleEnabledPermissionsArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
+/** Autogenerated input type of MemberRoleAdminCreate */
+export type MemberRoleAdminCreateInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Description of the member role. */
+  description?: InputMaybe<Scalars["String"]["input"]>;
+  /** Name of the member role. */
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  /** List of all customizable admin permissions. */
+  permissions?: InputMaybe<Array<MemberRoleAdminPermission>>;
+};
+
+/** Autogenerated return type of MemberRoleAdminCreate. */
+export type MemberRoleAdminCreatePayload = {
+  __typename?: "MemberRoleAdminCreatePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Member role. */
+  memberRole?: Maybe<AdminMemberRole>;
+};
+
+/** Autogenerated input type of MemberRoleAdminDelete */
+export type MemberRoleAdminDeleteInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** ID of the admin member role to delete. */
+  id: Scalars["MemberRoleID"]["input"];
+};
+
+/** Autogenerated return type of MemberRoleAdminDelete. */
+export type MemberRoleAdminDeletePayload = {
+  __typename?: "MemberRoleAdminDeletePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Deleted admin member role. */
+  memberRole?: Maybe<MemberRole>;
+};
+
+/** Member role admin permission */
+export enum MemberRoleAdminPermission {
+  /**
+   * Read CI/CD details including runners and jobs. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  ReadAdminCicd = "READ_ADMIN_CICD",
+  /**
+   * Read-only access to admin dashboard Introduced in GitLab 17.6: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+   */
+  ReadAdminDashboard = "READ_ADMIN_DASHBOARD",
+  /**
+   * Allows read access to system monitoring including system info, background migrations, health checks, audit logs, and gitaly in the Admin Area. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  ReadAdminMonitoring = "READ_ADMIN_MONITORING",
+  /**
+   * Read subscription details in the Admin area. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  ReadAdminSubscription = "READ_ADMIN_SUBSCRIPTION",
+  /**
+   * Allows read access to the user list and user details in the Admin area Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  ReadAdminUsers = "READ_ADMIN_USERS",
+}
+
+/** Autogenerated input type of MemberRoleAdminUpdate */
+export type MemberRoleAdminUpdateInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Description of the member role. */
+  description?: InputMaybe<Scalars["String"]["input"]>;
+  /** ID of the member role to mutate. */
+  id: Scalars["MemberRoleID"]["input"];
+  /** Name of the member role. */
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  /** List of all customizable admin permissions. */
+  permissions?: InputMaybe<Array<MemberRoleAdminPermission>>;
+};
+
+/** Autogenerated return type of MemberRoleAdminUpdate. */
+export type MemberRoleAdminUpdatePayload = {
+  __typename?: "MemberRoleAdminUpdatePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Member role. */
+  memberRole?: Maybe<AdminMemberRole>;
+};
+
 /** The connection type for MemberRole. */
 export type MemberRoleConnection = {
   __typename?: "MemberRoleConnection";
@@ -23067,7 +25856,7 @@ export type MemberRoleConnection = {
 /** Autogenerated input type of MemberRoleCreate */
 export type MemberRoleCreateInput = {
   /** Base access level for the custom role. */
-  baseAccessLevel: MemberAccessLevel;
+  baseAccessLevel: MemberRolesAccessLevel;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
   /** Description of the member role. */
@@ -23087,7 +25876,7 @@ export type MemberRoleCreatePayload = {
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
-  /** Updated member role. */
+  /** Member role. */
   memberRole?: Maybe<MemberRole>;
 };
 
@@ -23133,13 +25922,17 @@ export enum MemberRolePermission {
   AdminMergeRequest = "ADMIN_MERGE_REQUEST",
   /** Create, read, update, and delete protected branches for a project. */
   AdminProtectedBranch = "ADMIN_PROTECTED_BRANCH",
+  /** Create, read, update, and delete environments */
+  AdminProtectedEnvironments = "ADMIN_PROTECTED_ENVIRONMENTS",
   /** Configure push rules for repositories at the group or project level. */
   AdminPushRules = "ADMIN_PUSH_RULES",
   /** Create, view, edit, and delete group or project Runners. Includes configuring Runner settings. */
   AdminRunners = "ADMIN_RUNNERS",
+  /** Edit and manage security testing configurations and settings. */
+  AdminSecurityTesting = "ADMIN_SECURITY_TESTING",
   /** Execute terraform commands, lock/unlock terraform state files, and remove file versions. */
   AdminTerraformState = "ADMIN_TERRAFORM_STATE",
-  /** Edit the vulnerability object, including the status and linking an issue. Includes the `read_vulnerability` permission actions. */
+  /** Edit the status, linked issue, and severity of a vulnerability object. Also requires the `read_vulnerability` permission. */
   AdminVulnerability = "ADMIN_VULNERABILITY",
   /** Manage webhooks */
   AdminWebHook = "ADMIN_WEB_HOOK",
@@ -23153,10 +25946,24 @@ export enum MemberRolePermission {
   ManageMergeRequestSettings = "MANAGE_MERGE_REQUEST_SETTINGS",
   /** Create, read, update, and delete project access tokens. When creating a token, users with this custom permission must select a role for that token that has the same or fewer permissions as the default role used as the base for the custom role. */
   ManageProjectAccessTokens = "MANAGE_PROJECT_ACCESS_TOKENS",
+  /** Create, read, update, and delete protected tags. */
+  ManageProtectedTags = "MANAGE_PROTECTED_TAGS",
   /** Allows linking security policy projects. */
   ManageSecurityPolicyLink = "MANAGE_SECURITY_POLICY_LINK",
+  /** Read CI/CD details including runners and jobs. */
+  ReadAdminCicd = "READ_ADMIN_CICD",
+  /** Read-only access to admin dashboard */
+  ReadAdminDashboard = "READ_ADMIN_DASHBOARD",
+  /** Allows read access to system monitoring including system info, background migrations, health checks, audit logs, and gitaly in the Admin Area. */
+  ReadAdminMonitoring = "READ_ADMIN_MONITORING",
+  /** Read subscription details in the Admin area. */
+  ReadAdminSubscription = "READ_ADMIN_SUBSCRIPTION",
+  /** Allows read access to the user list and user details in the Admin area */
+  ReadAdminUsers = "READ_ADMIN_USERS",
   /** Allows read-only access to the source code in the user interface. Does not allow users to edit or download repository archives, clone or pull repositories, view source code in an IDE, or view merge requests for private projects. You can download individual files because read-only access inherently grants the ability to make a local copy of the file. */
   ReadCode = "READ_CODE",
+  /** Read compliance capabilities including adherence, violations, and frameworks for groups and projects. */
+  ReadComplianceDashboard = "READ_COMPLIANCE_DASHBOARD",
   /** Read CRM contact. */
   ReadCrmContact = "READ_CRM_CONTACT",
   /** Allows read-only access to the dependencies and licenses. */
@@ -23170,6 +25977,99 @@ export enum MemberRolePermission {
   /** Allows deletion of projects. */
   RemoveProject = "REMOVE_PROJECT",
 }
+
+/** Member role standard permission */
+export enum MemberRoleStandardPermission {
+  /** Create, read, update, and delete CI/CD variables. */
+  AdminCicdVariables = "ADMIN_CICD_VARIABLES",
+  /** Create, read, update, and delete compliance frameworks. Users with this permission can also assign a compliance framework label to a project, and set the default framework of a group. */
+  AdminComplianceFramework = "ADMIN_COMPLIANCE_FRAMEWORK",
+  /** Add or remove users in a group, and assign roles to users. When assigning a role, users with this custom permission must select a role that has the same or fewer permissions as the default role used as the base for their custom role. */
+  AdminGroupMember = "ADMIN_GROUP_MEMBER",
+  /** Create, read, update, and delete integrations with external applications. */
+  AdminIntegrations = "ADMIN_INTEGRATIONS",
+  /** Allows approval of merge requests. */
+  AdminMergeRequest = "ADMIN_MERGE_REQUEST",
+  /** Create, read, update, and delete protected branches for a project. */
+  AdminProtectedBranch = "ADMIN_PROTECTED_BRANCH",
+  /**
+   * Create, read, update, and delete environments Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  AdminProtectedEnvironments = "ADMIN_PROTECTED_ENVIRONMENTS",
+  /** Configure push rules for repositories at the group or project level. */
+  AdminPushRules = "ADMIN_PUSH_RULES",
+  /** Create, view, edit, and delete group or project Runners. Includes configuring Runner settings. */
+  AdminRunners = "ADMIN_RUNNERS",
+  /**
+   * Edit and manage security testing configurations and settings. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  AdminSecurityTesting = "ADMIN_SECURITY_TESTING",
+  /** Execute terraform commands, lock/unlock terraform state files, and remove file versions. */
+  AdminTerraformState = "ADMIN_TERRAFORM_STATE",
+  /** Edit the status, linked issue, and severity of a vulnerability object. Also requires the `read_vulnerability` permission. */
+  AdminVulnerability = "ADMIN_VULNERABILITY",
+  /** Manage webhooks */
+  AdminWebHook = "ADMIN_WEB_HOOK",
+  /** Allows archiving of projects. */
+  ArchiveProject = "ARCHIVE_PROJECT",
+  /** Manage deploy tokens at the group or project level. */
+  ManageDeployTokens = "MANAGE_DEPLOY_TOKENS",
+  /** Create, read, update, and delete group access tokens. When creating a token, users with this custom permission must select a role for that token that has the same or fewer permissions as the default role used as the base for the custom role. */
+  ManageGroupAccessTokens = "MANAGE_GROUP_ACCESS_TOKENS",
+  /** Configure merge request settings at the group or project level. Group actions include managing merge checks and approval settings. Project actions include managing MR configurations, approval rules and settings, and branch targets. In order to enable Suggested reviewers, the "Manage project access tokens" custom permission needs to be enabled. */
+  ManageMergeRequestSettings = "MANAGE_MERGE_REQUEST_SETTINGS",
+  /** Create, read, update, and delete project access tokens. When creating a token, users with this custom permission must select a role for that token that has the same or fewer permissions as the default role used as the base for the custom role. */
+  ManageProjectAccessTokens = "MANAGE_PROJECT_ACCESS_TOKENS",
+  /**
+   * Create, read, update, and delete protected tags. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  ManageProtectedTags = "MANAGE_PROTECTED_TAGS",
+  /** Allows linking security policy projects. */
+  ManageSecurityPolicyLink = "MANAGE_SECURITY_POLICY_LINK",
+  /** Allows read-only access to the source code in the user interface. Does not allow users to edit or download repository archives, clone or pull repositories, view source code in an IDE, or view merge requests for private projects. You can download individual files because read-only access inherently grants the ability to make a local copy of the file. */
+  ReadCode = "READ_CODE",
+  /** Read compliance capabilities including adherence, violations, and frameworks for groups and projects. */
+  ReadComplianceDashboard = "READ_COMPLIANCE_DASHBOARD",
+  /** Read CRM contact. */
+  ReadCrmContact = "READ_CRM_CONTACT",
+  /** Allows read-only access to the dependencies and licenses. */
+  ReadDependency = "READ_DEPENDENCY",
+  /** Allows read-only access to group or project runners, including the runner fleet dashboard. */
+  ReadRunners = "READ_RUNNERS",
+  /** Read vulnerability reports and security dashboards. */
+  ReadVulnerability = "READ_VULNERABILITY",
+  /** Ability to delete or restore a group. This ability does not allow deleting top-level groups. Review the Retention period settings to prevent accidental deletion. */
+  RemoveGroup = "REMOVE_GROUP",
+  /** Allows deletion of projects. */
+  RemoveProject = "REMOVE_PROJECT",
+}
+
+/** Autogenerated input type of MemberRoleToUserAssign */
+export type MemberRoleToUserAssignInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /**
+   * Global ID of the custom role to be assigned to a user.
+   *             Admin roles will be unassigned from the user if omitted or set as NULL.
+   */
+  memberRoleId?: InputMaybe<Scalars["MemberRoleID"]["input"]>;
+  /** Global ID of the user to be assigned to a custom role. */
+  userId: Scalars["UserID"]["input"];
+};
+
+/** Autogenerated return type of MemberRoleToUserAssign. */
+export type MemberRoleToUserAssignPayload = {
+  __typename?: "MemberRoleToUserAssignPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Created user member role or nil if the relation was deleted. */
+  userMemberRole?: Maybe<UserMemberRole>;
+};
 
 /** Autogenerated input type of MemberRoleUpdate */
 export type MemberRoleUpdateInput = {
@@ -23192,9 +26092,25 @@ export type MemberRoleUpdatePayload = {
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
-  /** Updated member role. */
+  /** Member role. */
   memberRole?: Maybe<MemberRole>;
 };
+
+/** Access level of a group or project member */
+export enum MemberRolesAccessLevel {
+  /** The Developer role gives users access to contribute code while restricting sensitive administrative actions. */
+  Developer = "DEVELOPER",
+  /** The Guest role is for users who need visibility into a project or group but should not have the ability to make changes, such as external stakeholders. */
+  Guest = "GUEST",
+  /** The Maintainer role is primarily used for managing code reviews, approvals, and administrative settings for projects. This role can also manage project memberships. */
+  Maintainer = "MAINTAINER",
+  /** The Minimal Access role is for users who need the least amount of access into groups and projects. You can assign this role as a default, before giving a user another role with more permissions. */
+  MinimalAccess = "MINIMAL_ACCESS",
+  /** The Planner role is suitable for team members who need to manage projects and track work items but do not need to contribute code. */
+  Planner = "PLANNER",
+  /** The Reporter role is suitable for team members who need to stay informed about a project or group but do not actively contribute code. */
+  Reporter = "REPORTER",
+}
 
 /** Values for ordering member roles by a specific field */
 export enum MemberRolesOrderBy {
@@ -23253,9 +26169,9 @@ export type MergeAccessLevel = {
   accessLevel: Scalars["Int"]["output"];
   /** Human readable representation for the access level. */
   accessLevelDescription: Scalars["String"]["output"];
-  /** Group associated with this access level. */
+  /** Group associated with the access level. */
   group?: Maybe<AccessLevelGroup>;
-  /** User associated with this access level. */
+  /** User associated with the access level. */
   user?: Maybe<AccessLevelUser>;
 };
 
@@ -23311,7 +26227,7 @@ export type MergeRequest = CurrentUserTodos &
     approvedBy?: Maybe<UserCoreConnection>;
     /** Assignees of the merge request. */
     assignees?: Maybe<MergeRequestAssigneeConnection>;
-    /** User who created this merge request. */
+    /** User who created the merge request. */
     author?: Maybe<MergeRequestAuthor>;
     /** Indicates if auto merge is enabled for the merge request. */
     autoMergeEnabled: Scalars["Boolean"]["output"];
@@ -23326,11 +26242,13 @@ export type MergeRequest = CurrentUserTodos &
      * @deprecated **Status**: Experiment. Introduced in GitLab 16.5.
      */
     blockingMergeRequests?: Maybe<BlockingMergeRequests>;
+    /** Users that have requested changes to the merge request. */
+    changeRequesters?: Maybe<UserCoreConnection>;
     /** Timestamp of when the merge request was closed, null if not closed. */
     closedAt?: Maybe<Scalars["Time"]["output"]>;
     /** Code quality reports comparison reported on the merge request. */
     codequalityReportsComparer?: Maybe<CodequalityReportsComparer>;
-    /** All commenters on this noteable. */
+    /** All commenters on the noteable. */
     commenters: UserCoreConnection;
     /** Number of commits in the merge request. */
     commitCount?: Maybe<Scalars["Int"]["output"]>;
@@ -23358,15 +26276,15 @@ export type MergeRequest = CurrentUserTodos &
     detailedMergeStatus?: Maybe<DetailedMergeStatus>;
     /** Diff head SHA of the merge request. */
     diffHeadSha?: Maybe<Scalars["String"]["output"]>;
-    /** References of the base SHA, the head SHA, and the start SHA for this merge request. */
+    /** References of the base SHA, the head SHA, and the start SHA for the merge request. */
     diffRefs?: Maybe<DiffRefs>;
-    /** Details about which files were changed in this merge request. */
+    /** Details about which files were changed in the merge request. */
     diffStats?: Maybe<Array<DiffStats>>;
-    /** Summary of which files were changed in this merge request. */
+    /** Summary of which files were changed in the merge request. */
     diffStatsSummary?: Maybe<DiffStatsSummary>;
     /** Indicates if comments on the merge request are locked to members only. */
     discussionLocked: Scalars["Boolean"]["output"];
-    /** All discussions on this noteable. */
+    /** All discussions on the noteable. */
     discussions: DiscussionConnection;
     /** Indicates if the source branch is behind the target branch. */
     divergedFromTargetBranch: Scalars["Boolean"]["output"];
@@ -23401,10 +26319,7 @@ export type MergeRequest = CurrentUserTodos &
     inProgressMergeCommitSha?: Maybe<Scalars["String"]["output"]>;
     /** Labels of the merge request. */
     labels?: Maybe<LabelConnection>;
-    /**
-     * Date after which the merge request can be merged. Introduced in GitLab 17.5: **Status**: Experiment.
-     * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
-     */
+    /** Date after which the merge request can be merged. */
     mergeAfter?: Maybe<Scalars["Time"]["output"]>;
     /** SHA of the merge request commit (set once merged). */
     mergeCommitSha?: Maybe<Scalars["String"]["output"]>;
@@ -23439,9 +26354,12 @@ export type MergeRequest = CurrentUserTodos &
      * @deprecated Use `count` from `cars` connection on `MergeTrains::TrainType` instead. Deprecated in GitLab 17.4.
      */
     mergeTrainsCount?: Maybe<Scalars["Int"]["output"]>;
-    /** User who merged this merge request or set it to auto-merge. */
+    /** User who merged the merge request or set it to auto-merge. */
     mergeUser?: Maybe<UserCore>;
-    /** Indicates if the merge has been set to auto-merge. */
+    /**
+     * Indicates if the merge has been set to auto-merge. Deprecated in GitLab 17.11: This was renamed.
+     * @deprecated This was renamed. Please use `MergeRequest.autoMergeEnabled`. Deprecated in GitLab 17.11.
+     */
     mergeWhenPipelineSucceeds?: Maybe<Scalars["Boolean"]["output"]>;
     /**
      * Status of all mergeability checks of the merge request. Introduced in GitLab 16.5: **Status**: Experiment.
@@ -23456,7 +26374,7 @@ export type MergeRequest = CurrentUserTodos &
     mergedAt?: Maybe<Scalars["Time"]["output"]>;
     /** Milestone of the merge request. */
     milestone?: Maybe<Milestone>;
-    /** Name or title of this object. */
+    /** Name or title of the object. */
     name?: Maybe<Scalars["String"]["output"]>;
     /** All notes on this noteable. */
     notes: NoteConnection;
@@ -23464,6 +26382,10 @@ export type MergeRequest = CurrentUserTodos &
     participants?: Maybe<MergeRequestParticipantConnection>;
     /** Pipelines for the merge request. Note: for performance reasons, no more than the most recent 500 pipelines will be returned. */
     pipelines?: Maybe<PipelineConnection>;
+    /** Approval settings that are overridden by the policies for the merge request. */
+    policiesOverridingApprovalSettings?: Maybe<
+      Array<PolicyApprovalSettingsOverride>
+    >;
     /** Policy violations reported on the merge request.  */
     policyViolations?: Maybe<PolicyViolationDetails>;
     /** Timestamp of when the merge request was prepared. */
@@ -23478,6 +26400,10 @@ export type MergeRequest = CurrentUserTodos &
     rebaseInProgress: Scalars["Boolean"]["output"];
     /** Internal reference of the merge request. Returned in shortened format by default. */
     reference: Scalars["String"]["output"];
+    /** Number of user discussions that are resolvable in the merge request. */
+    resolvableDiscussionsCount?: Maybe<Scalars["Int"]["output"]>;
+    /** Number of user discussions that are resolved in the merge request. */
+    resolvedDiscussionsCount?: Maybe<Scalars["Int"]["output"]>;
     /** Indicates if merge request was retargeted. */
     retargeted?: Maybe<Scalars["Boolean"]["output"]>;
     /** Users from whom a review has been requested. */
@@ -23507,9 +26433,11 @@ export type MergeRequest = CurrentUserTodos &
     squash: Scalars["Boolean"]["output"];
     /** Indicates if the merge request will be squashed when merged. */
     squashOnMerge: Scalars["Boolean"]["output"];
+    /** Indicates if `squashReadOnly` is enabled. */
+    squashReadOnly: Scalars["Boolean"]["output"];
     /** State of the merge request. */
     state: MergeRequestState;
-    /** Indicates if the currently logged in user is subscribed to this merge request. */
+    /** Indicates if the currently logged in user is subscribed to the merge request. */
     subscribed: Scalars["Boolean"]["output"];
     /** Suggested reviewers for merge request. */
     suggestedReviewers?: Maybe<SuggestedReviewersType>;
@@ -23568,6 +26496,13 @@ export type MergeRequestAssigneesArgs = {
 };
 
 export type MergeRequestAwardEmojiArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type MergeRequestChangeRequestersArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
@@ -23742,122 +26677,125 @@ export type MergeRequestApprovalStateSuggestedApproversArgs = {
 };
 
 /** A user assigned to a merge request. */
-export type MergeRequestAssignee = User & {
-  __typename?: "MergeRequestAssignee";
-  /** Indicates if the user is active. */
-  active?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Merge requests assigned to the user. */
-  assignedMergeRequests?: Maybe<MergeRequestConnection>;
-  /** Merge requests authored by the user. */
-  authoredMergeRequests?: Maybe<MergeRequestConnection>;
-  /** URL of the user's avatar. */
-  avatarUrl?: Maybe<Scalars["String"]["output"]>;
-  /** Bio of the user. */
-  bio?: Maybe<Scalars["String"]["output"]>;
-  /** Indicates if the user is a bot. */
-  bot: Scalars["Boolean"]["output"];
-  /** User callouts that belong to the user. */
-  callouts?: Maybe<UserCalloutConnection>;
-  /** User's default commit email. */
-  commitEmail?: Maybe<Scalars["String"]["output"]>;
-  /** Projects the user has contributed to. */
-  contributedProjects?: Maybe<ProjectConnection>;
-  /** Timestamp of when the user was created. */
-  createdAt?: Maybe<Scalars["Time"]["output"]>;
-  /** Discord ID of the user. */
-  discord?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * User email. Deprecated in GitLab 13.7: This was renamed.
-   * @deprecated This was renamed. Please use `User.publicEmail`. Deprecated in GitLab 13.7.
-   */
-  email?: Maybe<Scalars["String"]["output"]>;
-  /** User's email addresses. */
-  emails?: Maybe<EmailConnection>;
-  /** Whether Gitpod is enabled at the user level. */
-  gitpodEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Group count for the user. */
-  groupCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Group memberships of the user. */
-  groupMemberships?: Maybe<GroupMemberConnection>;
-  /** Groups where the user has access. */
-  groups?: Maybe<GroupConnection>;
-  /** Indicates if the user is a regular user. */
-  human?: Maybe<Scalars["Boolean"]["output"]>;
-  /** ID of the user. */
-  id: Scalars["ID"]["output"];
-  /** IDE settings. */
-  ide?: Maybe<Ide>;
-  /** Job title of the user. */
-  jobTitle?: Maybe<Scalars["String"]["output"]>;
-  /** Date the user last performed any actions. */
-  lastActivityOn?: Maybe<Scalars["Date"]["output"]>;
-  /** LinkedIn profile name of the user. */
-  linkedin?: Maybe<Scalars["String"]["output"]>;
-  /** Location of the user. */
-  location?: Maybe<Scalars["String"]["output"]>;
-  /** Details of this user's interactions with the merge request. */
-  mergeRequestInteraction?: Maybe<UserMergeRequestInteraction>;
-  /** Human-readable name of the user. Returns `****` if the user is a project bot and the requester does not have permission to view the project. */
-  name: Scalars["String"]["output"];
-  /** Personal namespace of the user. */
-  namespace?: Maybe<Namespace>;
-  /** User's custom namespace commit emails. */
-  namespaceCommitEmails?: Maybe<NamespaceCommitEmailConnection>;
-  /** Who the user represents or works for. */
-  organization?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Organizations where the user has access. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
-  organizations?: Maybe<OrganizationConnection>;
-  /** Web path to the Gitpod section within user preferences. */
-  preferencesGitpodPath?: Maybe<Scalars["String"]["output"]>;
-  /** Web path to enable Gitpod for the user. */
-  profileEnableGitpodPath?: Maybe<Scalars["String"]["output"]>;
-  /** Project memberships of the user. */
-  projectMemberships?: Maybe<ProjectMemberConnection>;
-  /** Pronouns of the user. */
-  pronouns?: Maybe<Scalars["String"]["output"]>;
-  /** User's public email. */
-  publicEmail?: Maybe<Scalars["String"]["output"]>;
-  /** Merge requests assigned to the user for review. */
-  reviewRequestedMergeRequests?: Maybe<MergeRequestConnection>;
-  /** Saved replies authored by the user. */
-  savedReplies?: Maybe<SavedReplyConnection>;
-  /** Saved reply authored by the user. */
-  savedReply?: Maybe<SavedReply>;
-  /** Snippets authored by the user. */
-  snippets?: Maybe<SnippetConnection>;
-  /** Projects starred by the user. */
-  starredProjects?: Maybe<ProjectConnection>;
-  /** State of the user. */
-  state: UserState;
-  /** User status. */
-  status?: Maybe<UserStatus>;
-  /** Time logged by the user. */
-  timelogs?: Maybe<TimelogConnection>;
-  /** To-do items of the user. */
-  todos?: Maybe<TodoConnection>;
-  /** X (formerly Twitter) username of the user. */
-  twitter?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled. Introduced in GitLab 15.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
-   */
-  userAchievements?: Maybe<UserAchievementConnection>;
-  /** Permissions for the current user on the resource. */
-  userPermissions: UserPermissions;
-  /** Preferences for the user. */
-  userPreferences?: Maybe<UserPreferences>;
-  /** Username of the user. Unique within this instance of GitLab. */
-  username: Scalars["String"]["output"];
-  /** Web path of the user. */
-  webPath: Scalars["String"]["output"];
-  /** Web URL of the user. */
-  webUrl: Scalars["String"]["output"];
-  /** Workspaces owned by the current user. */
-  workspaces?: Maybe<WorkspaceConnection>;
-};
+export type MergeRequestAssignee = Todoable &
+  User & {
+    __typename?: "MergeRequestAssignee";
+    /** Indicates if the user is active. */
+    active?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Merge requests assigned to the user. */
+    assignedMergeRequests?: Maybe<MergeRequestConnection>;
+    /** Merge requests authored by the user. */
+    authoredMergeRequests?: Maybe<MergeRequestConnection>;
+    /** URL of the user's avatar. */
+    avatarUrl?: Maybe<Scalars["String"]["output"]>;
+    /** Bio of the user. */
+    bio?: Maybe<Scalars["String"]["output"]>;
+    /** Indicates if the user is a bot. */
+    bot: Scalars["Boolean"]["output"];
+    /** User callouts that belong to the user. */
+    callouts?: Maybe<UserCalloutConnection>;
+    /** User's default commit email. */
+    commitEmail?: Maybe<Scalars["String"]["output"]>;
+    /** Projects the user has contributed to. */
+    contributedProjects?: Maybe<ProjectConnection>;
+    /** Timestamp of when the user was created. */
+    createdAt?: Maybe<Scalars["Time"]["output"]>;
+    /** Discord ID of the user. */
+    discord?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * User email. Deprecated in GitLab 13.7: This was renamed.
+     * @deprecated This was renamed. Please use `User.publicEmail`. Deprecated in GitLab 13.7.
+     */
+    email?: Maybe<Scalars["String"]["output"]>;
+    /** User's email addresses. */
+    emails?: Maybe<EmailConnection>;
+    /** Whether Gitpod is enabled at the user level. */
+    gitpodEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Group count for the user. */
+    groupCount?: Maybe<Scalars["Int"]["output"]>;
+    /** Group memberships of the user. */
+    groupMemberships?: Maybe<GroupMemberConnection>;
+    /** Groups where the user has access. */
+    groups?: Maybe<GroupConnection>;
+    /** Indicates if the user is a regular user. */
+    human?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Global ID of the user. */
+    id: Scalars["UserID"]["output"];
+    /** IDE settings. */
+    ide?: Maybe<Ide>;
+    /** Job title of the user. */
+    jobTitle?: Maybe<Scalars["String"]["output"]>;
+    /** Date the user last performed any actions. */
+    lastActivityOn?: Maybe<Scalars["Date"]["output"]>;
+    /** LinkedIn profile name of the user. */
+    linkedin?: Maybe<Scalars["String"]["output"]>;
+    /** Location of the user. */
+    location?: Maybe<Scalars["String"]["output"]>;
+    /** Details of the user's interactions with the merge request. */
+    mergeRequestInteraction?: Maybe<UserMergeRequestInteraction>;
+    /** Human-readable name of the user. Returns `****` if the user is a project bot and the requester does not have permission to view the project. */
+    name: Scalars["String"]["output"];
+    /** Personal namespace of the user. */
+    namespace?: Maybe<Namespace>;
+    /** User's custom namespace commit emails. */
+    namespaceCommitEmails?: Maybe<NamespaceCommitEmailConnection>;
+    /** Who the user represents or works for. */
+    organization?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * Organizations where the user has access. Introduced in GitLab 16.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
+     */
+    organizations?: Maybe<OrganizationConnection>;
+    /** Web path to the Gitpod section within user preferences. */
+    preferencesGitpodPath?: Maybe<Scalars["String"]["output"]>;
+    /** Web path to enable Gitpod for the user. */
+    profileEnableGitpodPath?: Maybe<Scalars["String"]["output"]>;
+    /** Project memberships of the user. */
+    projectMemberships?: Maybe<ProjectMemberConnection>;
+    /** Pronouns of the user. */
+    pronouns?: Maybe<Scalars["String"]["output"]>;
+    /** User's public email. */
+    publicEmail?: Maybe<Scalars["String"]["output"]>;
+    /** Merge requests assigned to the user for review. */
+    reviewRequestedMergeRequests?: Maybe<MergeRequestConnection>;
+    /** Saved replies authored by the user. */
+    savedReplies?: Maybe<SavedReplyConnection>;
+    /** Saved reply authored by the user. */
+    savedReply?: Maybe<SavedReply>;
+    /** Snippets authored by the user. */
+    snippets?: Maybe<SnippetConnection>;
+    /** Projects starred by the user. */
+    starredProjects?: Maybe<ProjectConnection>;
+    /** State of the user. */
+    state: UserState;
+    /** User status. */
+    status?: Maybe<UserStatus>;
+    /** Time logged by the user. */
+    timelogs?: Maybe<TimelogConnection>;
+    /** To-do items of the user. */
+    todos?: Maybe<TodoConnection>;
+    /** X (formerly Twitter) username of the user. */
+    twitter?: Maybe<Scalars["String"]["output"]>;
+    /** Type of the user. */
+    type: UserType;
+    /**
+     * Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled. Introduced in GitLab 15.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
+     */
+    userAchievements?: Maybe<UserAchievementConnection>;
+    /** Permissions for the current user on the resource. */
+    userPermissions: UserPermissions;
+    /** Preferences for the user. */
+    userPreferences?: Maybe<UserPreferences>;
+    /** Username of the user. Unique within the instance of GitLab. */
+    username: Scalars["String"]["output"];
+    /** Web path of the user. */
+    webPath: Scalars["String"]["output"];
+    /** Web URL of the user. */
+    webUrl: Scalars["String"]["output"];
+    /** Workspaces owned by the current user. */
+    workspaces?: Maybe<WorkspaceConnection>;
+  };
 
 /** A user assigned to a merge request. */
 export type MergeRequestAssigneeAssignedMergeRequestsArgs = {
@@ -23877,6 +26815,7 @@ export type MergeRequestAssigneeAssignedMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -23887,14 +26826,17 @@ export type MergeRequestAssigneeAssignedMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -23907,6 +26849,7 @@ export type MergeRequestAssigneeAuthoredMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   createdAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -23919,7 +26862,9 @@ export type MergeRequestAssigneeAuthoredMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
+  includeAssigned?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   mergedAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -23929,14 +26874,17 @@ export type MergeRequestAssigneeAuthoredMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -23987,6 +26935,7 @@ export type MergeRequestAssigneeGroupsArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
   permissionScope?: InputMaybe<GroupPermission>;
   search?: InputMaybe<Scalars["String"]["input"]>;
+  sort?: InputMaybe<GroupSort>;
 };
 
 /** A user assigned to a merge request. */
@@ -24022,6 +26971,7 @@ export type MergeRequestAssigneeReviewRequestedMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   authorUsername?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -24035,6 +26985,7 @@ export type MergeRequestAssigneeReviewRequestedMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -24045,12 +26996,15 @@ export type MergeRequestAssigneeReviewRequestedMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -24116,6 +27070,7 @@ export type MergeRequestAssigneeTodosArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  isSnoozed?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   projectId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   sort?: InputMaybe<TodoSort>;
@@ -24167,122 +27122,125 @@ export type MergeRequestAssigneeEdge = {
 };
 
 /** The author of the merge request. */
-export type MergeRequestAuthor = User & {
-  __typename?: "MergeRequestAuthor";
-  /** Indicates if the user is active. */
-  active?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Merge requests assigned to the user. */
-  assignedMergeRequests?: Maybe<MergeRequestConnection>;
-  /** Merge requests authored by the user. */
-  authoredMergeRequests?: Maybe<MergeRequestConnection>;
-  /** URL of the user's avatar. */
-  avatarUrl?: Maybe<Scalars["String"]["output"]>;
-  /** Bio of the user. */
-  bio?: Maybe<Scalars["String"]["output"]>;
-  /** Indicates if the user is a bot. */
-  bot: Scalars["Boolean"]["output"];
-  /** User callouts that belong to the user. */
-  callouts?: Maybe<UserCalloutConnection>;
-  /** User's default commit email. */
-  commitEmail?: Maybe<Scalars["String"]["output"]>;
-  /** Projects the user has contributed to. */
-  contributedProjects?: Maybe<ProjectConnection>;
-  /** Timestamp of when the user was created. */
-  createdAt?: Maybe<Scalars["Time"]["output"]>;
-  /** Discord ID of the user. */
-  discord?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * User email. Deprecated in GitLab 13.7: This was renamed.
-   * @deprecated This was renamed. Please use `User.publicEmail`. Deprecated in GitLab 13.7.
-   */
-  email?: Maybe<Scalars["String"]["output"]>;
-  /** User's email addresses. */
-  emails?: Maybe<EmailConnection>;
-  /** Whether Gitpod is enabled at the user level. */
-  gitpodEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Group count for the user. */
-  groupCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Group memberships of the user. */
-  groupMemberships?: Maybe<GroupMemberConnection>;
-  /** Groups where the user has access. */
-  groups?: Maybe<GroupConnection>;
-  /** Indicates if the user is a regular user. */
-  human?: Maybe<Scalars["Boolean"]["output"]>;
-  /** ID of the user. */
-  id: Scalars["ID"]["output"];
-  /** IDE settings. */
-  ide?: Maybe<Ide>;
-  /** Job title of the user. */
-  jobTitle?: Maybe<Scalars["String"]["output"]>;
-  /** Date the user last performed any actions. */
-  lastActivityOn?: Maybe<Scalars["Date"]["output"]>;
-  /** LinkedIn profile name of the user. */
-  linkedin?: Maybe<Scalars["String"]["output"]>;
-  /** Location of the user. */
-  location?: Maybe<Scalars["String"]["output"]>;
-  /** Details of this user's interactions with the merge request. */
-  mergeRequestInteraction?: Maybe<UserMergeRequestInteraction>;
-  /** Human-readable name of the user. Returns `****` if the user is a project bot and the requester does not have permission to view the project. */
-  name: Scalars["String"]["output"];
-  /** Personal namespace of the user. */
-  namespace?: Maybe<Namespace>;
-  /** User's custom namespace commit emails. */
-  namespaceCommitEmails?: Maybe<NamespaceCommitEmailConnection>;
-  /** Who the user represents or works for. */
-  organization?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Organizations where the user has access. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
-  organizations?: Maybe<OrganizationConnection>;
-  /** Web path to the Gitpod section within user preferences. */
-  preferencesGitpodPath?: Maybe<Scalars["String"]["output"]>;
-  /** Web path to enable Gitpod for the user. */
-  profileEnableGitpodPath?: Maybe<Scalars["String"]["output"]>;
-  /** Project memberships of the user. */
-  projectMemberships?: Maybe<ProjectMemberConnection>;
-  /** Pronouns of the user. */
-  pronouns?: Maybe<Scalars["String"]["output"]>;
-  /** User's public email. */
-  publicEmail?: Maybe<Scalars["String"]["output"]>;
-  /** Merge requests assigned to the user for review. */
-  reviewRequestedMergeRequests?: Maybe<MergeRequestConnection>;
-  /** Saved replies authored by the user. */
-  savedReplies?: Maybe<SavedReplyConnection>;
-  /** Saved reply authored by the user. */
-  savedReply?: Maybe<SavedReply>;
-  /** Snippets authored by the user. */
-  snippets?: Maybe<SnippetConnection>;
-  /** Projects starred by the user. */
-  starredProjects?: Maybe<ProjectConnection>;
-  /** State of the user. */
-  state: UserState;
-  /** User status. */
-  status?: Maybe<UserStatus>;
-  /** Time logged by the user. */
-  timelogs?: Maybe<TimelogConnection>;
-  /** To-do items of the user. */
-  todos?: Maybe<TodoConnection>;
-  /** X (formerly Twitter) username of the user. */
-  twitter?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled. Introduced in GitLab 15.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
-   */
-  userAchievements?: Maybe<UserAchievementConnection>;
-  /** Permissions for the current user on the resource. */
-  userPermissions: UserPermissions;
-  /** Preferences for the user. */
-  userPreferences?: Maybe<UserPreferences>;
-  /** Username of the user. Unique within this instance of GitLab. */
-  username: Scalars["String"]["output"];
-  /** Web path of the user. */
-  webPath: Scalars["String"]["output"];
-  /** Web URL of the user. */
-  webUrl: Scalars["String"]["output"];
-  /** Workspaces owned by the current user. */
-  workspaces?: Maybe<WorkspaceConnection>;
-};
+export type MergeRequestAuthor = Todoable &
+  User & {
+    __typename?: "MergeRequestAuthor";
+    /** Indicates if the user is active. */
+    active?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Merge requests assigned to the user. */
+    assignedMergeRequests?: Maybe<MergeRequestConnection>;
+    /** Merge requests authored by the user. */
+    authoredMergeRequests?: Maybe<MergeRequestConnection>;
+    /** URL of the user's avatar. */
+    avatarUrl?: Maybe<Scalars["String"]["output"]>;
+    /** Bio of the user. */
+    bio?: Maybe<Scalars["String"]["output"]>;
+    /** Indicates if the user is a bot. */
+    bot: Scalars["Boolean"]["output"];
+    /** User callouts that belong to the user. */
+    callouts?: Maybe<UserCalloutConnection>;
+    /** User's default commit email. */
+    commitEmail?: Maybe<Scalars["String"]["output"]>;
+    /** Projects the user has contributed to. */
+    contributedProjects?: Maybe<ProjectConnection>;
+    /** Timestamp of when the user was created. */
+    createdAt?: Maybe<Scalars["Time"]["output"]>;
+    /** Discord ID of the user. */
+    discord?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * User email. Deprecated in GitLab 13.7: This was renamed.
+     * @deprecated This was renamed. Please use `User.publicEmail`. Deprecated in GitLab 13.7.
+     */
+    email?: Maybe<Scalars["String"]["output"]>;
+    /** User's email addresses. */
+    emails?: Maybe<EmailConnection>;
+    /** Whether Gitpod is enabled at the user level. */
+    gitpodEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Group count for the user. */
+    groupCount?: Maybe<Scalars["Int"]["output"]>;
+    /** Group memberships of the user. */
+    groupMemberships?: Maybe<GroupMemberConnection>;
+    /** Groups where the user has access. */
+    groups?: Maybe<GroupConnection>;
+    /** Indicates if the user is a regular user. */
+    human?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Global ID of the user. */
+    id: Scalars["UserID"]["output"];
+    /** IDE settings. */
+    ide?: Maybe<Ide>;
+    /** Job title of the user. */
+    jobTitle?: Maybe<Scalars["String"]["output"]>;
+    /** Date the user last performed any actions. */
+    lastActivityOn?: Maybe<Scalars["Date"]["output"]>;
+    /** LinkedIn profile name of the user. */
+    linkedin?: Maybe<Scalars["String"]["output"]>;
+    /** Location of the user. */
+    location?: Maybe<Scalars["String"]["output"]>;
+    /** Details of the user's interactions with the merge request. */
+    mergeRequestInteraction?: Maybe<UserMergeRequestInteraction>;
+    /** Human-readable name of the user. Returns `****` if the user is a project bot and the requester does not have permission to view the project. */
+    name: Scalars["String"]["output"];
+    /** Personal namespace of the user. */
+    namespace?: Maybe<Namespace>;
+    /** User's custom namespace commit emails. */
+    namespaceCommitEmails?: Maybe<NamespaceCommitEmailConnection>;
+    /** Who the user represents or works for. */
+    organization?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * Organizations where the user has access. Introduced in GitLab 16.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
+     */
+    organizations?: Maybe<OrganizationConnection>;
+    /** Web path to the Gitpod section within user preferences. */
+    preferencesGitpodPath?: Maybe<Scalars["String"]["output"]>;
+    /** Web path to enable Gitpod for the user. */
+    profileEnableGitpodPath?: Maybe<Scalars["String"]["output"]>;
+    /** Project memberships of the user. */
+    projectMemberships?: Maybe<ProjectMemberConnection>;
+    /** Pronouns of the user. */
+    pronouns?: Maybe<Scalars["String"]["output"]>;
+    /** User's public email. */
+    publicEmail?: Maybe<Scalars["String"]["output"]>;
+    /** Merge requests assigned to the user for review. */
+    reviewRequestedMergeRequests?: Maybe<MergeRequestConnection>;
+    /** Saved replies authored by the user. */
+    savedReplies?: Maybe<SavedReplyConnection>;
+    /** Saved reply authored by the user. */
+    savedReply?: Maybe<SavedReply>;
+    /** Snippets authored by the user. */
+    snippets?: Maybe<SnippetConnection>;
+    /** Projects starred by the user. */
+    starredProjects?: Maybe<ProjectConnection>;
+    /** State of the user. */
+    state: UserState;
+    /** User status. */
+    status?: Maybe<UserStatus>;
+    /** Time logged by the user. */
+    timelogs?: Maybe<TimelogConnection>;
+    /** To-do items of the user. */
+    todos?: Maybe<TodoConnection>;
+    /** X (formerly Twitter) username of the user. */
+    twitter?: Maybe<Scalars["String"]["output"]>;
+    /** Type of the user. */
+    type: UserType;
+    /**
+     * Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled. Introduced in GitLab 15.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
+     */
+    userAchievements?: Maybe<UserAchievementConnection>;
+    /** Permissions for the current user on the resource. */
+    userPermissions: UserPermissions;
+    /** Preferences for the user. */
+    userPreferences?: Maybe<UserPreferences>;
+    /** Username of the user. Unique within the instance of GitLab. */
+    username: Scalars["String"]["output"];
+    /** Web path of the user. */
+    webPath: Scalars["String"]["output"];
+    /** Web URL of the user. */
+    webUrl: Scalars["String"]["output"];
+    /** Workspaces owned by the current user. */
+    workspaces?: Maybe<WorkspaceConnection>;
+  };
 
 /** The author of the merge request. */
 export type MergeRequestAuthorAssignedMergeRequestsArgs = {
@@ -24302,6 +27260,7 @@ export type MergeRequestAuthorAssignedMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -24312,14 +27271,17 @@ export type MergeRequestAuthorAssignedMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -24332,6 +27294,7 @@ export type MergeRequestAuthorAuthoredMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   createdAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -24344,7 +27307,9 @@ export type MergeRequestAuthorAuthoredMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
+  includeAssigned?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   mergedAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -24354,14 +27319,17 @@ export type MergeRequestAuthorAuthoredMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -24412,6 +27380,7 @@ export type MergeRequestAuthorGroupsArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
   permissionScope?: InputMaybe<GroupPermission>;
   search?: InputMaybe<Scalars["String"]["input"]>;
+  sort?: InputMaybe<GroupSort>;
 };
 
 /** The author of the merge request. */
@@ -24447,6 +27416,7 @@ export type MergeRequestAuthorReviewRequestedMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   authorUsername?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -24460,6 +27430,7 @@ export type MergeRequestAuthorReviewRequestedMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -24470,12 +27441,15 @@ export type MergeRequestAuthorReviewRequestedMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -24541,6 +27515,7 @@ export type MergeRequestAuthorTodosArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  isSnoozed?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   projectId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   sort?: InputMaybe<TodoSort>;
@@ -24592,6 +27567,8 @@ export type MergeRequestCreateInput = {
   description?: InputMaybe<Scalars["String"]["input"]>;
   /** Labels of the merge request. */
   labels?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  /** Date after which the merge request can be merged. */
+  mergeAfter?: InputMaybe<Scalars["Time"]["input"]>;
   /** Project full path the merge request is associated with. */
   projectPath: Scalars["ID"]["input"];
   /** Source branch of the merge request. */
@@ -24605,6 +27582,27 @@ export type MergeRequestCreateInput = {
 /** Autogenerated return type of MergeRequestCreate. */
 export type MergeRequestCreatePayload = {
   __typename?: "MergeRequestCreatePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Merge request after mutation. */
+  mergeRequest?: Maybe<MergeRequest>;
+};
+
+/** Autogenerated input type of MergeRequestDestroyRequestedChanges */
+export type MergeRequestDestroyRequestedChangesInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** IID of the merge request to mutate. */
+  iid: Scalars["String"]["input"];
+  /** Project the merge request to mutate is in. */
+  projectPath: Scalars["ID"]["input"];
+};
+
+/** Autogenerated return type of MergeRequestDestroyRequestedChanges. */
+export type MergeRequestDestroyRequestedChangesPayload = {
+  __typename?: "MergeRequestDestroyRequestedChangesPayload";
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Errors encountered during execution of the mutation. */
@@ -24645,8 +27643,15 @@ export type MergeRequestDiffEdge = {
 /** Represents the Geo sync and verification state of a Merge Request diff */
 export type MergeRequestDiffRegistry = {
   __typename?: "MergeRequestDiffRegistry";
+  /** Indicate if the checksums of the MergeRequestDiffRegistry do not match on the primary and secondary. */
+  checksumMismatch?: Maybe<Scalars["Boolean"]["output"]>;
   /** Timestamp when the MergeRequestDiffRegistry was created */
   createdAt?: Maybe<Scalars["Time"]["output"]>;
+  /**
+   * Indicate if a forced redownload is to be performed. Deprecated in GitLab 17.10: Removed from registry tables in the database in favor of the newer reusable framework.
+   * @deprecated Removed from registry tables in the database in favor of the newer reusable framework. Deprecated in GitLab 17.10.
+   */
+  forceToRedownload?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the MergeRequestDiffRegistry */
   id: Scalars["ID"]["output"];
   /** Error message during sync of the MergeRequestDiffRegistry */
@@ -24655,6 +27660,10 @@ export type MergeRequestDiffRegistry = {
   lastSyncedAt?: Maybe<Scalars["Time"]["output"]>;
   /** ID of the Merge Request diff. */
   mergeRequestDiffId: Scalars["ID"]["output"];
+  /** Indicate if the MergeRequestDiffRegistry is missing on primary. */
+  missingOnPrimary?: Maybe<Scalars["Boolean"]["output"]>;
+  /** ID of the MergeRequestDiffRegistry's model record. */
+  modelRecordId?: Maybe<Scalars["Int"]["output"]>;
   /** Timestamp after which the MergeRequestDiffRegistry is resynced */
   retryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed sync attempts of the MergeRequestDiffRegistry */
@@ -24663,13 +27672,15 @@ export type MergeRequestDiffRegistry = {
   state?: Maybe<RegistryState>;
   /** The local checksum of the MergeRequestDiffRegistry */
   verificationChecksum?: Maybe<Scalars["String"]["output"]>;
+  /** The expected checksum of the MergeRequestDiffRegistry in case of mismatch. */
+  verificationChecksumMismatched?: Maybe<Scalars["String"]["output"]>;
   /** Error message during verification of the MergeRequestDiffRegistry */
   verificationFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp after which the MergeRequestDiffRegistry is reverified */
   verificationRetryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed verification attempts of the MergeRequestDiffRegistry */
   verificationRetryCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Timestamp when the verification started of MergeRequestDiffRegistry */
+  /** Timestamp when the verification of MergeRequestDiffRegistry started */
   verificationStartedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Verification state of the MergeRequestDiffRegistry */
   verificationState?: Maybe<VerificationStateEnum>;
@@ -24680,12 +27691,19 @@ export type MergeRequestDiffRegistry = {
 /** The connection type for MergeRequestDiffRegistry. */
 export type MergeRequestDiffRegistryConnection = {
   __typename?: "MergeRequestDiffRegistryConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<MergeRequestDiffRegistryEdge>>>;
   /** A list of nodes. */
   nodes?: Maybe<Array<Maybe<MergeRequestDiffRegistry>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** The connection type for MergeRequestDiffRegistry. */
+export type MergeRequestDiffRegistryConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** An edge in a connection. */
@@ -24724,122 +27742,125 @@ export enum MergeRequestNewState {
 }
 
 /** A user participating in a merge request. */
-export type MergeRequestParticipant = User & {
-  __typename?: "MergeRequestParticipant";
-  /** Indicates if the user is active. */
-  active?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Merge requests assigned to the user. */
-  assignedMergeRequests?: Maybe<MergeRequestConnection>;
-  /** Merge requests authored by the user. */
-  authoredMergeRequests?: Maybe<MergeRequestConnection>;
-  /** URL of the user's avatar. */
-  avatarUrl?: Maybe<Scalars["String"]["output"]>;
-  /** Bio of the user. */
-  bio?: Maybe<Scalars["String"]["output"]>;
-  /** Indicates if the user is a bot. */
-  bot: Scalars["Boolean"]["output"];
-  /** User callouts that belong to the user. */
-  callouts?: Maybe<UserCalloutConnection>;
-  /** User's default commit email. */
-  commitEmail?: Maybe<Scalars["String"]["output"]>;
-  /** Projects the user has contributed to. */
-  contributedProjects?: Maybe<ProjectConnection>;
-  /** Timestamp of when the user was created. */
-  createdAt?: Maybe<Scalars["Time"]["output"]>;
-  /** Discord ID of the user. */
-  discord?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * User email. Deprecated in GitLab 13.7: This was renamed.
-   * @deprecated This was renamed. Please use `User.publicEmail`. Deprecated in GitLab 13.7.
-   */
-  email?: Maybe<Scalars["String"]["output"]>;
-  /** User's email addresses. */
-  emails?: Maybe<EmailConnection>;
-  /** Whether Gitpod is enabled at the user level. */
-  gitpodEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Group count for the user. */
-  groupCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Group memberships of the user. */
-  groupMemberships?: Maybe<GroupMemberConnection>;
-  /** Groups where the user has access. */
-  groups?: Maybe<GroupConnection>;
-  /** Indicates if the user is a regular user. */
-  human?: Maybe<Scalars["Boolean"]["output"]>;
-  /** ID of the user. */
-  id: Scalars["ID"]["output"];
-  /** IDE settings. */
-  ide?: Maybe<Ide>;
-  /** Job title of the user. */
-  jobTitle?: Maybe<Scalars["String"]["output"]>;
-  /** Date the user last performed any actions. */
-  lastActivityOn?: Maybe<Scalars["Date"]["output"]>;
-  /** LinkedIn profile name of the user. */
-  linkedin?: Maybe<Scalars["String"]["output"]>;
-  /** Location of the user. */
-  location?: Maybe<Scalars["String"]["output"]>;
-  /** Details of this user's interactions with the merge request. */
-  mergeRequestInteraction?: Maybe<UserMergeRequestInteraction>;
-  /** Human-readable name of the user. Returns `****` if the user is a project bot and the requester does not have permission to view the project. */
-  name: Scalars["String"]["output"];
-  /** Personal namespace of the user. */
-  namespace?: Maybe<Namespace>;
-  /** User's custom namespace commit emails. */
-  namespaceCommitEmails?: Maybe<NamespaceCommitEmailConnection>;
-  /** Who the user represents or works for. */
-  organization?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Organizations where the user has access. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
-  organizations?: Maybe<OrganizationConnection>;
-  /** Web path to the Gitpod section within user preferences. */
-  preferencesGitpodPath?: Maybe<Scalars["String"]["output"]>;
-  /** Web path to enable Gitpod for the user. */
-  profileEnableGitpodPath?: Maybe<Scalars["String"]["output"]>;
-  /** Project memberships of the user. */
-  projectMemberships?: Maybe<ProjectMemberConnection>;
-  /** Pronouns of the user. */
-  pronouns?: Maybe<Scalars["String"]["output"]>;
-  /** User's public email. */
-  publicEmail?: Maybe<Scalars["String"]["output"]>;
-  /** Merge requests assigned to the user for review. */
-  reviewRequestedMergeRequests?: Maybe<MergeRequestConnection>;
-  /** Saved replies authored by the user. */
-  savedReplies?: Maybe<SavedReplyConnection>;
-  /** Saved reply authored by the user. */
-  savedReply?: Maybe<SavedReply>;
-  /** Snippets authored by the user. */
-  snippets?: Maybe<SnippetConnection>;
-  /** Projects starred by the user. */
-  starredProjects?: Maybe<ProjectConnection>;
-  /** State of the user. */
-  state: UserState;
-  /** User status. */
-  status?: Maybe<UserStatus>;
-  /** Time logged by the user. */
-  timelogs?: Maybe<TimelogConnection>;
-  /** To-do items of the user. */
-  todos?: Maybe<TodoConnection>;
-  /** X (formerly Twitter) username of the user. */
-  twitter?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled. Introduced in GitLab 15.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
-   */
-  userAchievements?: Maybe<UserAchievementConnection>;
-  /** Permissions for the current user on the resource. */
-  userPermissions: UserPermissions;
-  /** Preferences for the user. */
-  userPreferences?: Maybe<UserPreferences>;
-  /** Username of the user. Unique within this instance of GitLab. */
-  username: Scalars["String"]["output"];
-  /** Web path of the user. */
-  webPath: Scalars["String"]["output"];
-  /** Web URL of the user. */
-  webUrl: Scalars["String"]["output"];
-  /** Workspaces owned by the current user. */
-  workspaces?: Maybe<WorkspaceConnection>;
-};
+export type MergeRequestParticipant = Todoable &
+  User & {
+    __typename?: "MergeRequestParticipant";
+    /** Indicates if the user is active. */
+    active?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Merge requests assigned to the user. */
+    assignedMergeRequests?: Maybe<MergeRequestConnection>;
+    /** Merge requests authored by the user. */
+    authoredMergeRequests?: Maybe<MergeRequestConnection>;
+    /** URL of the user's avatar. */
+    avatarUrl?: Maybe<Scalars["String"]["output"]>;
+    /** Bio of the user. */
+    bio?: Maybe<Scalars["String"]["output"]>;
+    /** Indicates if the user is a bot. */
+    bot: Scalars["Boolean"]["output"];
+    /** User callouts that belong to the user. */
+    callouts?: Maybe<UserCalloutConnection>;
+    /** User's default commit email. */
+    commitEmail?: Maybe<Scalars["String"]["output"]>;
+    /** Projects the user has contributed to. */
+    contributedProjects?: Maybe<ProjectConnection>;
+    /** Timestamp of when the user was created. */
+    createdAt?: Maybe<Scalars["Time"]["output"]>;
+    /** Discord ID of the user. */
+    discord?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * User email. Deprecated in GitLab 13.7: This was renamed.
+     * @deprecated This was renamed. Please use `User.publicEmail`. Deprecated in GitLab 13.7.
+     */
+    email?: Maybe<Scalars["String"]["output"]>;
+    /** User's email addresses. */
+    emails?: Maybe<EmailConnection>;
+    /** Whether Gitpod is enabled at the user level. */
+    gitpodEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Group count for the user. */
+    groupCount?: Maybe<Scalars["Int"]["output"]>;
+    /** Group memberships of the user. */
+    groupMemberships?: Maybe<GroupMemberConnection>;
+    /** Groups where the user has access. */
+    groups?: Maybe<GroupConnection>;
+    /** Indicates if the user is a regular user. */
+    human?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Global ID of the user. */
+    id: Scalars["UserID"]["output"];
+    /** IDE settings. */
+    ide?: Maybe<Ide>;
+    /** Job title of the user. */
+    jobTitle?: Maybe<Scalars["String"]["output"]>;
+    /** Date the user last performed any actions. */
+    lastActivityOn?: Maybe<Scalars["Date"]["output"]>;
+    /** LinkedIn profile name of the user. */
+    linkedin?: Maybe<Scalars["String"]["output"]>;
+    /** Location of the user. */
+    location?: Maybe<Scalars["String"]["output"]>;
+    /** Details of the user's interactions with the merge request. */
+    mergeRequestInteraction?: Maybe<UserMergeRequestInteraction>;
+    /** Human-readable name of the user. Returns `****` if the user is a project bot and the requester does not have permission to view the project. */
+    name: Scalars["String"]["output"];
+    /** Personal namespace of the user. */
+    namespace?: Maybe<Namespace>;
+    /** User's custom namespace commit emails. */
+    namespaceCommitEmails?: Maybe<NamespaceCommitEmailConnection>;
+    /** Who the user represents or works for. */
+    organization?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * Organizations where the user has access. Introduced in GitLab 16.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
+     */
+    organizations?: Maybe<OrganizationConnection>;
+    /** Web path to the Gitpod section within user preferences. */
+    preferencesGitpodPath?: Maybe<Scalars["String"]["output"]>;
+    /** Web path to enable Gitpod for the user. */
+    profileEnableGitpodPath?: Maybe<Scalars["String"]["output"]>;
+    /** Project memberships of the user. */
+    projectMemberships?: Maybe<ProjectMemberConnection>;
+    /** Pronouns of the user. */
+    pronouns?: Maybe<Scalars["String"]["output"]>;
+    /** User's public email. */
+    publicEmail?: Maybe<Scalars["String"]["output"]>;
+    /** Merge requests assigned to the user for review. */
+    reviewRequestedMergeRequests?: Maybe<MergeRequestConnection>;
+    /** Saved replies authored by the user. */
+    savedReplies?: Maybe<SavedReplyConnection>;
+    /** Saved reply authored by the user. */
+    savedReply?: Maybe<SavedReply>;
+    /** Snippets authored by the user. */
+    snippets?: Maybe<SnippetConnection>;
+    /** Projects starred by the user. */
+    starredProjects?: Maybe<ProjectConnection>;
+    /** State of the user. */
+    state: UserState;
+    /** User status. */
+    status?: Maybe<UserStatus>;
+    /** Time logged by the user. */
+    timelogs?: Maybe<TimelogConnection>;
+    /** To-do items of the user. */
+    todos?: Maybe<TodoConnection>;
+    /** X (formerly Twitter) username of the user. */
+    twitter?: Maybe<Scalars["String"]["output"]>;
+    /** Type of the user. */
+    type: UserType;
+    /**
+     * Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled. Introduced in GitLab 15.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
+     */
+    userAchievements?: Maybe<UserAchievementConnection>;
+    /** Permissions for the current user on the resource. */
+    userPermissions: UserPermissions;
+    /** Preferences for the user. */
+    userPreferences?: Maybe<UserPreferences>;
+    /** Username of the user. Unique within the instance of GitLab. */
+    username: Scalars["String"]["output"];
+    /** Web path of the user. */
+    webPath: Scalars["String"]["output"];
+    /** Web URL of the user. */
+    webUrl: Scalars["String"]["output"];
+    /** Workspaces owned by the current user. */
+    workspaces?: Maybe<WorkspaceConnection>;
+  };
 
 /** A user participating in a merge request. */
 export type MergeRequestParticipantAssignedMergeRequestsArgs = {
@@ -24859,6 +27880,7 @@ export type MergeRequestParticipantAssignedMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -24869,14 +27891,17 @@ export type MergeRequestParticipantAssignedMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -24889,6 +27914,7 @@ export type MergeRequestParticipantAuthoredMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   createdAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -24901,7 +27927,9 @@ export type MergeRequestParticipantAuthoredMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
+  includeAssigned?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   mergedAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -24911,14 +27939,17 @@ export type MergeRequestParticipantAuthoredMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -24969,6 +28000,7 @@ export type MergeRequestParticipantGroupsArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
   permissionScope?: InputMaybe<GroupPermission>;
   search?: InputMaybe<Scalars["String"]["input"]>;
+  sort?: InputMaybe<GroupSort>;
 };
 
 /** A user participating in a merge request. */
@@ -25004,6 +28036,7 @@ export type MergeRequestParticipantReviewRequestedMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   authorUsername?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -25017,6 +28050,7 @@ export type MergeRequestParticipantReviewRequestedMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -25027,12 +28061,15 @@ export type MergeRequestParticipantReviewRequestedMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -25098,6 +28135,7 @@ export type MergeRequestParticipantTodosArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  isSnoozed?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   projectId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   sort?: InputMaybe<TodoSort>;
@@ -25190,122 +28228,125 @@ export enum MergeRequestReviewState {
 }
 
 /** A user assigned to a merge request as a reviewer. */
-export type MergeRequestReviewer = User & {
-  __typename?: "MergeRequestReviewer";
-  /** Indicates if the user is active. */
-  active?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Merge requests assigned to the user. */
-  assignedMergeRequests?: Maybe<MergeRequestConnection>;
-  /** Merge requests authored by the user. */
-  authoredMergeRequests?: Maybe<MergeRequestConnection>;
-  /** URL of the user's avatar. */
-  avatarUrl?: Maybe<Scalars["String"]["output"]>;
-  /** Bio of the user. */
-  bio?: Maybe<Scalars["String"]["output"]>;
-  /** Indicates if the user is a bot. */
-  bot: Scalars["Boolean"]["output"];
-  /** User callouts that belong to the user. */
-  callouts?: Maybe<UserCalloutConnection>;
-  /** User's default commit email. */
-  commitEmail?: Maybe<Scalars["String"]["output"]>;
-  /** Projects the user has contributed to. */
-  contributedProjects?: Maybe<ProjectConnection>;
-  /** Timestamp of when the user was created. */
-  createdAt?: Maybe<Scalars["Time"]["output"]>;
-  /** Discord ID of the user. */
-  discord?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * User email. Deprecated in GitLab 13.7: This was renamed.
-   * @deprecated This was renamed. Please use `User.publicEmail`. Deprecated in GitLab 13.7.
-   */
-  email?: Maybe<Scalars["String"]["output"]>;
-  /** User's email addresses. */
-  emails?: Maybe<EmailConnection>;
-  /** Whether Gitpod is enabled at the user level. */
-  gitpodEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Group count for the user. */
-  groupCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Group memberships of the user. */
-  groupMemberships?: Maybe<GroupMemberConnection>;
-  /** Groups where the user has access. */
-  groups?: Maybe<GroupConnection>;
-  /** Indicates if the user is a regular user. */
-  human?: Maybe<Scalars["Boolean"]["output"]>;
-  /** ID of the user. */
-  id: Scalars["ID"]["output"];
-  /** IDE settings. */
-  ide?: Maybe<Ide>;
-  /** Job title of the user. */
-  jobTitle?: Maybe<Scalars["String"]["output"]>;
-  /** Date the user last performed any actions. */
-  lastActivityOn?: Maybe<Scalars["Date"]["output"]>;
-  /** LinkedIn profile name of the user. */
-  linkedin?: Maybe<Scalars["String"]["output"]>;
-  /** Location of the user. */
-  location?: Maybe<Scalars["String"]["output"]>;
-  /** Details of this user's interactions with the merge request. */
-  mergeRequestInteraction?: Maybe<UserMergeRequestInteraction>;
-  /** Human-readable name of the user. Returns `****` if the user is a project bot and the requester does not have permission to view the project. */
-  name: Scalars["String"]["output"];
-  /** Personal namespace of the user. */
-  namespace?: Maybe<Namespace>;
-  /** User's custom namespace commit emails. */
-  namespaceCommitEmails?: Maybe<NamespaceCommitEmailConnection>;
-  /** Who the user represents or works for. */
-  organization?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Organizations where the user has access. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
-  organizations?: Maybe<OrganizationConnection>;
-  /** Web path to the Gitpod section within user preferences. */
-  preferencesGitpodPath?: Maybe<Scalars["String"]["output"]>;
-  /** Web path to enable Gitpod for the user. */
-  profileEnableGitpodPath?: Maybe<Scalars["String"]["output"]>;
-  /** Project memberships of the user. */
-  projectMemberships?: Maybe<ProjectMemberConnection>;
-  /** Pronouns of the user. */
-  pronouns?: Maybe<Scalars["String"]["output"]>;
-  /** User's public email. */
-  publicEmail?: Maybe<Scalars["String"]["output"]>;
-  /** Merge requests assigned to the user for review. */
-  reviewRequestedMergeRequests?: Maybe<MergeRequestConnection>;
-  /** Saved replies authored by the user. */
-  savedReplies?: Maybe<SavedReplyConnection>;
-  /** Saved reply authored by the user. */
-  savedReply?: Maybe<SavedReply>;
-  /** Snippets authored by the user. */
-  snippets?: Maybe<SnippetConnection>;
-  /** Projects starred by the user. */
-  starredProjects?: Maybe<ProjectConnection>;
-  /** State of the user. */
-  state: UserState;
-  /** User status. */
-  status?: Maybe<UserStatus>;
-  /** Time logged by the user. */
-  timelogs?: Maybe<TimelogConnection>;
-  /** To-do items of the user. */
-  todos?: Maybe<TodoConnection>;
-  /** X (formerly Twitter) username of the user. */
-  twitter?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled. Introduced in GitLab 15.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
-   */
-  userAchievements?: Maybe<UserAchievementConnection>;
-  /** Permissions for the current user on the resource. */
-  userPermissions: UserPermissions;
-  /** Preferences for the user. */
-  userPreferences?: Maybe<UserPreferences>;
-  /** Username of the user. Unique within this instance of GitLab. */
-  username: Scalars["String"]["output"];
-  /** Web path of the user. */
-  webPath: Scalars["String"]["output"];
-  /** Web URL of the user. */
-  webUrl: Scalars["String"]["output"];
-  /** Workspaces owned by the current user. */
-  workspaces?: Maybe<WorkspaceConnection>;
-};
+export type MergeRequestReviewer = Todoable &
+  User & {
+    __typename?: "MergeRequestReviewer";
+    /** Indicates if the user is active. */
+    active?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Merge requests assigned to the user. */
+    assignedMergeRequests?: Maybe<MergeRequestConnection>;
+    /** Merge requests authored by the user. */
+    authoredMergeRequests?: Maybe<MergeRequestConnection>;
+    /** URL of the user's avatar. */
+    avatarUrl?: Maybe<Scalars["String"]["output"]>;
+    /** Bio of the user. */
+    bio?: Maybe<Scalars["String"]["output"]>;
+    /** Indicates if the user is a bot. */
+    bot: Scalars["Boolean"]["output"];
+    /** User callouts that belong to the user. */
+    callouts?: Maybe<UserCalloutConnection>;
+    /** User's default commit email. */
+    commitEmail?: Maybe<Scalars["String"]["output"]>;
+    /** Projects the user has contributed to. */
+    contributedProjects?: Maybe<ProjectConnection>;
+    /** Timestamp of when the user was created. */
+    createdAt?: Maybe<Scalars["Time"]["output"]>;
+    /** Discord ID of the user. */
+    discord?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * User email. Deprecated in GitLab 13.7: This was renamed.
+     * @deprecated This was renamed. Please use `User.publicEmail`. Deprecated in GitLab 13.7.
+     */
+    email?: Maybe<Scalars["String"]["output"]>;
+    /** User's email addresses. */
+    emails?: Maybe<EmailConnection>;
+    /** Whether Gitpod is enabled at the user level. */
+    gitpodEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Group count for the user. */
+    groupCount?: Maybe<Scalars["Int"]["output"]>;
+    /** Group memberships of the user. */
+    groupMemberships?: Maybe<GroupMemberConnection>;
+    /** Groups where the user has access. */
+    groups?: Maybe<GroupConnection>;
+    /** Indicates if the user is a regular user. */
+    human?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Global ID of the user. */
+    id: Scalars["UserID"]["output"];
+    /** IDE settings. */
+    ide?: Maybe<Ide>;
+    /** Job title of the user. */
+    jobTitle?: Maybe<Scalars["String"]["output"]>;
+    /** Date the user last performed any actions. */
+    lastActivityOn?: Maybe<Scalars["Date"]["output"]>;
+    /** LinkedIn profile name of the user. */
+    linkedin?: Maybe<Scalars["String"]["output"]>;
+    /** Location of the user. */
+    location?: Maybe<Scalars["String"]["output"]>;
+    /** Details of the user's interactions with the merge request. */
+    mergeRequestInteraction?: Maybe<UserMergeRequestInteraction>;
+    /** Human-readable name of the user. Returns `****` if the user is a project bot and the requester does not have permission to view the project. */
+    name: Scalars["String"]["output"];
+    /** Personal namespace of the user. */
+    namespace?: Maybe<Namespace>;
+    /** User's custom namespace commit emails. */
+    namespaceCommitEmails?: Maybe<NamespaceCommitEmailConnection>;
+    /** Who the user represents or works for. */
+    organization?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * Organizations where the user has access. Introduced in GitLab 16.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
+     */
+    organizations?: Maybe<OrganizationConnection>;
+    /** Web path to the Gitpod section within user preferences. */
+    preferencesGitpodPath?: Maybe<Scalars["String"]["output"]>;
+    /** Web path to enable Gitpod for the user. */
+    profileEnableGitpodPath?: Maybe<Scalars["String"]["output"]>;
+    /** Project memberships of the user. */
+    projectMemberships?: Maybe<ProjectMemberConnection>;
+    /** Pronouns of the user. */
+    pronouns?: Maybe<Scalars["String"]["output"]>;
+    /** User's public email. */
+    publicEmail?: Maybe<Scalars["String"]["output"]>;
+    /** Merge requests assigned to the user for review. */
+    reviewRequestedMergeRequests?: Maybe<MergeRequestConnection>;
+    /** Saved replies authored by the user. */
+    savedReplies?: Maybe<SavedReplyConnection>;
+    /** Saved reply authored by the user. */
+    savedReply?: Maybe<SavedReply>;
+    /** Snippets authored by the user. */
+    snippets?: Maybe<SnippetConnection>;
+    /** Projects starred by the user. */
+    starredProjects?: Maybe<ProjectConnection>;
+    /** State of the user. */
+    state: UserState;
+    /** User status. */
+    status?: Maybe<UserStatus>;
+    /** Time logged by the user. */
+    timelogs?: Maybe<TimelogConnection>;
+    /** To-do items of the user. */
+    todos?: Maybe<TodoConnection>;
+    /** X (formerly Twitter) username of the user. */
+    twitter?: Maybe<Scalars["String"]["output"]>;
+    /** Type of the user. */
+    type: UserType;
+    /**
+     * Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled. Introduced in GitLab 15.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
+     */
+    userAchievements?: Maybe<UserAchievementConnection>;
+    /** Permissions for the current user on the resource. */
+    userPermissions: UserPermissions;
+    /** Preferences for the user. */
+    userPreferences?: Maybe<UserPreferences>;
+    /** Username of the user. Unique within the instance of GitLab. */
+    username: Scalars["String"]["output"];
+    /** Web path of the user. */
+    webPath: Scalars["String"]["output"];
+    /** Web URL of the user. */
+    webUrl: Scalars["String"]["output"];
+    /** Workspaces owned by the current user. */
+    workspaces?: Maybe<WorkspaceConnection>;
+  };
 
 /** A user assigned to a merge request as a reviewer. */
 export type MergeRequestReviewerAssignedMergeRequestsArgs = {
@@ -25325,6 +28366,7 @@ export type MergeRequestReviewerAssignedMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -25335,14 +28377,17 @@ export type MergeRequestReviewerAssignedMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -25355,6 +28400,7 @@ export type MergeRequestReviewerAuthoredMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   createdAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -25367,7 +28413,9 @@ export type MergeRequestReviewerAuthoredMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
+  includeAssigned?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   mergedAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -25377,14 +28425,17 @@ export type MergeRequestReviewerAuthoredMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -25435,6 +28486,7 @@ export type MergeRequestReviewerGroupsArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
   permissionScope?: InputMaybe<GroupPermission>;
   search?: InputMaybe<Scalars["String"]["input"]>;
+  sort?: InputMaybe<GroupSort>;
 };
 
 /** A user assigned to a merge request as a reviewer. */
@@ -25470,6 +28522,7 @@ export type MergeRequestReviewerReviewRequestedMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   authorUsername?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -25483,6 +28536,7 @@ export type MergeRequestReviewerReviewRequestedMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -25493,12 +28547,15 @@ export type MergeRequestReviewerReviewRequestedMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -25564,6 +28621,7 @@ export type MergeRequestReviewerTodosArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  isSnoozed?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   projectId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   sort?: InputMaybe<TodoSort>;
@@ -25937,6 +28995,8 @@ export type MergeRequestUpdateInput = {
   description?: InputMaybe<Scalars["String"]["input"]>;
   /** IID of the merge request to mutate. */
   iid: Scalars["String"]["input"];
+  /** Date after which the merge request can be merged. */
+  mergeAfter?: InputMaybe<Scalars["Time"]["input"]>;
   /** Override all requested changes. Can only be set by users who have permissionto merge this merge request. */
   overrideRequestedChanges?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** Project the merge request to mutate is in. */
@@ -25962,6 +29022,14 @@ export type MergeRequestUpdatePayload = {
   mergeRequest?: Maybe<MergeRequest>;
 };
 
+/** Values for merge request dashboard list type */
+export enum MergeRequestsDashboardListType {
+  /** Action based list rendering. */
+  ActionBased = "ACTION_BASED",
+  /** Role based list rendering. */
+  RoleBased = "ROLE_BASED",
+}
+
 export type MergeRequestsResolverNegatedParams = {
   /** Filters merge requests to exclude any that are approved by usernames in the given array. */
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
@@ -25970,7 +29038,7 @@ export type MergeRequestsResolverNegatedParams = {
   /** Filters merge requests to exclude any that are authored by the given user. */
   authorUsername?: InputMaybe<Scalars["String"]["input"]>;
   /** Filters merge requests to exclude any that have the labels provided in the given array. */
-  labels?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  labelName?: InputMaybe<Array<Scalars["String"]["input"]>>;
   /** Filters merge requests to those not in the given milestone. */
   milestoneTitle?: InputMaybe<Scalars["String"]["input"]>;
   /** Filters merge requests to those without the given reaction from the authenticated user. */
@@ -26002,14 +29070,10 @@ export enum MergeStatus {
 export enum MergeStrategyEnum {
   /** Use the add_to_merge_train_when_checks_pass merge strategy. */
   AddToMergeTrainWhenChecksPass = "ADD_TO_MERGE_TRAIN_WHEN_CHECKS_PASS",
-  /** Use the add_to_merge_train_when_pipeline_succeeds merge strategy. */
-  AddToMergeTrainWhenPipelineSucceeds = "ADD_TO_MERGE_TRAIN_WHEN_PIPELINE_SUCCEEDS",
   /** Use the merge_train merge strategy. */
   MergeTrain = "MERGE_TRAIN",
   /** Use the merge_when_checks_pass merge strategy. */
   MergeWhenChecksPass = "MERGE_WHEN_CHECKS_PASS",
-  /** Use the merge_when_pipeline_succeeds merge strategy. */
-  MergeWhenPipelineSucceeds = "MERGE_WHEN_PIPELINE_SUCCEEDS",
 }
 
 /** Represents a set of cars/merge_requests queued for merging */
@@ -26166,6 +29230,8 @@ export enum MergeabilityCheckIdentifier {
   SecurityPolicyViolations = "SECURITY_POLICY_VIOLATIONS",
   /** Checks whether the external status checks pass */
   StatusChecksMustPass = "STATUS_CHECKS_MUST_PASS",
+  /** Checks whether the title matches the expected regex */
+  TitleRegex = "TITLE_REGEX",
 }
 
 /** Representation of whether a mergeability check passed, checking, failed or is inactive. */
@@ -26255,7 +29321,7 @@ export type Milestone = TimeboxReportInterface & {
   project?: Maybe<Project>;
   /** Indicates if milestone is at project level. */
   projectMilestone: Scalars["Boolean"]["output"];
-  /** Releases associated with this milestone. */
+  /** Releases associated with the milestone. */
   releases?: Maybe<ReleaseConnection>;
   /** Historically accurate report about the timebox. */
   report?: Maybe<TimeboxReport>;
@@ -26320,9 +29386,9 @@ export enum MilestoneSort {
   DueDateAsc = "DUE_DATE_ASC",
   /** Milestone due date by descending order. */
   DueDateDesc = "DUE_DATE_DESC",
-  /** Group milestones in this order: non-expired milestones with due dates, non-expired milestones without due dates and expired milestones then sort by due date in ascending order. */
+  /** Group milestones in the order: non-expired milestones with due dates, non-expired milestones without due dates and expired milestones then sort by due date in ascending order. */
   ExpiredLastDueDateAsc = "EXPIRED_LAST_DUE_DATE_ASC",
-  /** Group milestones in this order: non-expired milestones with due dates, non-expired milestones without due dates and expired milestones then sort by due date in descending order. */
+  /** Group milestones in the order: non-expired milestones with due dates, non-expired milestones without due dates and expired milestones then sort by due date in descending order. */
   ExpiredLastDueDateDesc = "EXPIRED_LAST_DUE_DATE_DESC",
   /** Updated at ascending order. */
   UpdatedAsc = "UPDATED_ASC",
@@ -26388,6 +29454,8 @@ export type MlCandidate = {
   ciJob?: Maybe<CiJob>;
   /** Date of creation. */
   createdAt: Scalars["Time"]["output"];
+  /** User that created the candidate. */
+  creator?: Maybe<UserCore>;
   /** MLflow uuid for the candidate. */
   eid: Scalars["String"]["output"];
   /** ID of the candidate. */
@@ -26573,6 +29641,64 @@ export type MlCandidateParamEdge = {
   node?: Maybe<MlCandidateParam>;
 };
 
+/** Machine learning experiment in model experiments */
+export type MlExperiment = {
+  __typename?: "MlExperiment";
+  /** Number of candidates in the experiment. */
+  candidateCount: Scalars["Int"]["output"];
+  /** Candidates of the experiment. */
+  candidates?: Maybe<MlCandidateConnection>;
+  /** Timestamp of when the experiment was created. */
+  createdAt: Scalars["Time"]["output"];
+  /** User who created the experiment. */
+  creator?: Maybe<UserCore>;
+  /** ID of the experiment. */
+  id: Scalars["MlExperimentID"]["output"];
+  /** ID of the model. */
+  modelId?: Maybe<Scalars["MlModelID"]["output"]>;
+  /** Name of the experiment. */
+  name: Scalars["String"]["output"];
+  /** Web URL of the experiment. */
+  path: Scalars["String"]["output"];
+  /** Timestamp of when the experiment was updated. */
+  updatedAt: Scalars["Time"]["output"];
+};
+
+/** Machine learning experiment in model experiments */
+export type MlExperimentCandidatesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** The connection type for MlExperiment. */
+export type MlExperimentConnection = {
+  __typename?: "MlExperimentConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<MlExperimentEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<MlExperiment>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** The connection type for MlExperiment. */
+export type MlExperimentConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** An edge in a connection. */
+export type MlExperimentEdge = {
+  __typename?: "MlExperimentEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<MlExperiment>;
+};
+
 /** Machine learning model in the model registry */
 export type MlModel = {
   __typename?: "MlModel";
@@ -26586,6 +29712,8 @@ export type MlModel = {
   candidates?: Maybe<MlCandidateConnection>;
   /** Date of creation. */
   createdAt: Scalars["Time"]["output"];
+  /** Path to default experiment page for the model. */
+  defaultExperimentPath?: Maybe<Scalars["String"]["output"]>;
   /** Description of the model. */
   description?: Maybe<Scalars["String"]["output"]>;
   /** GitLab Flavored Markdown rendering of `description` */
@@ -26792,6 +29920,8 @@ export type MlModelVersionConnectionCountArgs = {
 
 /** Autogenerated input type of MlModelVersionCreate */
 export type MlModelVersionCreateInput = {
+  /** Global ID of a candidate to promote optionally. */
+  candidateId?: InputMaybe<Scalars["MlCandidateID"]["input"]>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
   /** Description of the model version. */
@@ -26932,6 +30062,8 @@ export type Mutation = {
   /** @deprecated **Status**: Experiment. Introduced in GitLab 15.11. */
   achievementsUpdate?: Maybe<AchievementsUpdatePayload>;
   addProjectToSecurityDashboard?: Maybe<AddProjectToSecurityDashboardPayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 18.0. */
+  adminRolesLdapSync?: Maybe<AdminRolesLdapSyncPayload>;
   adminSidekiqQueuesDeleteJobs?: Maybe<AdminSidekiqQueuesDeleteJobsPayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 15.11. */
   aiAction?: Maybe<AiActionPayload>;
@@ -26942,10 +30074,15 @@ export type Mutation = {
   /** @deprecated **Status**: Experiment. Introduced in GitLab 16.10. */
   aiAgentUpdate?: Maybe<AiAgentUpdatePayload>;
   /**
-   * Updates or create setting for the AI feature. Introduced in GitLab 17.4: **Status**: Experiment.
+   * Updates or creates settings for AI features. Introduced in GitLab 17.4: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
    */
   aiFeatureSettingUpdate?: Maybe<AiFeatureSettingUpdatePayload>;
+  /**
+   * Checks if the AI Gateway can establish a connection with the given model configuration. Introduced in GitLab 17.7: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.7.
+   */
+  aiSelfHostedModelConnectionCheck?: Maybe<AiSelfHostedModelConnectionCheckPayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 17.1. */
   aiSelfHostedModelCreate?: Maybe<AiSelfHostedModelCreatePayload>;
   /**
@@ -27007,6 +30144,7 @@ export type Mutation = {
   boardEpicCreate?: Maybe<BoardEpicCreatePayload>;
   boardListCreate?: Maybe<BoardListCreatePayload>;
   boardListUpdateLimitMetrics?: Maybe<BoardListUpdateLimitMetricsPayload>;
+  branchDelete?: Maybe<BranchDeletePayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 16.10. */
   branchRuleApprovalProjectRuleCreate?: Maybe<BranchRuleApprovalProjectRuleCreatePayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 16.7. */
@@ -27028,10 +30166,18 @@ export type Mutation = {
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.0.
    */
   branchRuleExternalStatusCheckUpdate?: Maybe<BranchRuleExternalStatusCheckUpdatePayload>;
+  /**
+   * Delete a squash option for a branch rule Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  branchRuleSquashOptionDelete?: Maybe<BranchRuleSquashOptionDeletePayload>;
+  /**
+   * Update a squash option for a branch rule Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  branchRuleSquashOptionUpdate?: Maybe<BranchRuleSquashOptionUpdatePayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 16.7. */
   branchRuleUpdate?: Maybe<BranchRuleUpdatePayload>;
-  /** @deprecated **Status**: Experiment. Introduced in GitLab 16.0. */
-  buildForecast?: Maybe<BuildForecastPayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 15.10. */
   bulkDestroyJobArtifacts?: Maybe<BulkDestroyJobArtifactsPayload>;
   /** **Status:** Beta */
@@ -27044,6 +30190,10 @@ export type Mutation = {
   catalogResourcesDestroy?: Maybe<CatalogResourcesDestroyPayload>;
   ciJobTokenScopeAddGroupOrProject?: Maybe<CiJobTokenScopeAddGroupOrProjectPayload>;
   ciJobTokenScopeAddProject?: Maybe<CiJobTokenScopeAddProjectPayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.9. */
+  ciJobTokenScopeAutopopulateAllowlist?: Maybe<CiJobTokenScopeAutopopulateAllowlistPayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.9. */
+  ciJobTokenScopeClearAllowlistAutopopulations?: Maybe<CiJobTokenScopeClearAllowlistAutopopulationsPayload>;
   ciJobTokenScopeRemoveGroup?: Maybe<CiJobTokenScopeRemoveGroupPayload>;
   ciJobTokenScopeRemoveProject?: Maybe<CiJobTokenScopeRemoveProjectPayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 17.6. */
@@ -27103,11 +30253,15 @@ export type Mutation = {
   createComplianceFramework?: Maybe<CreateComplianceFrameworkPayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 17.6. */
   createComplianceRequirement?: Maybe<CreateComplianceRequirementPayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.9. */
+  createComplianceRequirementsControl?: Maybe<CreateComplianceRequirementsControlPayload>;
+  /** Creates a repository protection rule to restrict access to a project's container registry. */
+  createContainerProtectionRepositoryRule?: Maybe<CreateContainerProtectionRepositoryRulePayload>;
   /**
-   * Creates a protection rule to restrict access to a project's container registry. Available only when feature flag `container_registry_protected_containers` is enabled. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
+   * Creates a protection rule to control which user roles can modify container image tags matching a specified pattern. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
    */
-  createContainerRegistryProtectionRule?: Maybe<CreateContainerRegistryProtectionRulePayload>;
+  createContainerProtectionTagRule?: Maybe<CreateContainerProtectionTagRulePayload>;
   createCustomEmoji?: Maybe<CreateCustomEmojiPayload>;
   createDiffNote?: Maybe<CreateDiffNotePayload>;
   createDiscussion?: Maybe<CreateDiscussionPayload>;
@@ -27125,16 +30279,17 @@ export type Mutation = {
    *
    */
   createNote?: Maybe<CreateNotePayload>;
-  /**
-   * Creates a protection rule to restrict access to project packages. Introduced in GitLab 16.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.5.
-   */
+  /** Creates a protection rule to restrict access to project packages. */
   createPackagesProtectionRule?: Maybe<CreatePackagesProtectionRulePayload>;
   createRequirement?: Maybe<CreateRequirementPayload>;
   createSnippet?: Maybe<CreateSnippetPayload>;
   createTestCase?: Maybe<CreateTestCasePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.9. */
+  customFieldArchive?: Maybe<CustomFieldArchivePayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 17.6. */
   customFieldCreate?: Maybe<CustomFieldCreatePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.9. */
+  customFieldUnarchive?: Maybe<CustomFieldUnarchivePayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 17.6. */
   customFieldUpdate?: Maybe<CustomFieldUpdatePayload>;
   customerRelationsContactCreate?: Maybe<CustomerRelationsContactCreatePayload>;
@@ -27157,15 +30312,16 @@ export type Mutation = {
   dastSiteValidationRevoke?: Maybe<DastSiteValidationRevokePayload>;
   /** @deprecated Underlying feature was removed in 16.0. Deprecated in GitLab 16.0. */
   deleteAnnotation?: Maybe<DeleteAnnotationPayload>;
+  /** Deletes a container repository protection rule. */
+  deleteContainerProtectionRepositoryRule?: Maybe<DeleteContainerProtectionRepositoryRulePayload>;
   /**
-   * Deletes a container registry protection rule. Available only when feature flag `container_registry_protected_containers` is enabled. Introduced in GitLab 16.7: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.7.
+   * Deletes a protection rule that controls which user roles can modify container image tags matching a specified pattern. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
    */
-  deleteContainerRegistryProtectionRule?: Maybe<DeleteContainerRegistryProtectionRulePayload>;
-  /**
-   * Deletes a protection rule for packages. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
+  deleteContainerProtectionTagRule?: Maybe<DeleteContainerProtectionTagRulePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.9. */
+  deleteConversationThread?: Maybe<DeleteConversationThreadPayload>;
+  /** Deletes a protection rule for packages. */
   deletePackagesProtectionRule?: Maybe<DeletePackagesProtectionRulePayload>;
   /**
    * Deletes a Pages deployment. Introduced in GitLab 17.1: **Status**: Experiment.
@@ -27179,6 +30335,10 @@ export type Mutation = {
   destroyBoard?: Maybe<DestroyBoardPayload>;
   destroyBoardList?: Maybe<DestroyBoardListPayload>;
   destroyComplianceFramework?: Maybe<DestroyComplianceFrameworkPayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.7. */
+  destroyComplianceRequirement?: Maybe<DestroyComplianceRequirementPayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.9. */
+  destroyComplianceRequirementsControl?: Maybe<DestroyComplianceRequirementsControlPayload>;
   destroyContainerRepository?: Maybe<DestroyContainerRepositoryPayload>;
   destroyContainerRepositoryTags?: Maybe<DestroyContainerRepositoryTagsPayload>;
   destroyCustomEmoji?: Maybe<DestroyCustomEmojiPayload>;
@@ -27194,6 +30354,11 @@ export type Mutation = {
   disableDevopsAdoptionNamespace?: Maybe<DisableDevopsAdoptionNamespacePayload>;
   /** Toggles the resolved state of a discussion */
   discussionToggleResolve?: Maybe<DiscussionToggleResolvePayload>;
+  /**
+   * Updates GitLab Duo settings. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  duoSettingsUpdate?: Maybe<DuoSettingsUpdatePayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 16.10. */
   duoUserFeedback?: Maybe<DuoUserFeedbackPayload>;
   /**
@@ -27339,11 +30504,29 @@ export type Mutation = {
   jobRetry?: Maybe<JobRetryPayload>;
   jobUnschedule?: Maybe<JobUnschedulePayload>;
   labelCreate?: Maybe<LabelCreatePayload>;
+  /**
+   * Creates an instance-level custom admin role LDAP link Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  ldapAdminRoleLinkCreate?: Maybe<LdapAdminRoleLinkCreatePayload>;
+  /**
+   * Destroys an instance-level custom admin role LDAP link Introduced in GitLab 18.0: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 18.0.
+   */
+  ldapAdminRoleLinkDestroy?: Maybe<LdapAdminRoleLinkDestroyPayload>;
   markAsSpamSnippet?: Maybe<MarkAsSpamSnippetPayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.7. */
+  memberRoleAdminCreate?: Maybe<MemberRoleAdminCreatePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.10. */
+  memberRoleAdminDelete?: Maybe<MemberRoleAdminDeletePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.10. */
+  memberRoleAdminUpdate?: Maybe<MemberRoleAdminUpdatePayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 16.5. */
   memberRoleCreate?: Maybe<MemberRoleCreatePayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 16.7. */
   memberRoleDelete?: Maybe<MemberRoleDeletePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.7. */
+  memberRoleToUserAssign?: Maybe<MemberRoleToUserAssignPayload>;
   memberRoleUpdate?: Maybe<MemberRoleUpdatePayload>;
   /**
    * Accepts a merge request.
@@ -27357,6 +30540,7 @@ export type Mutation = {
    */
   mergeRequestAccept?: Maybe<MergeRequestAcceptPayload>;
   mergeRequestCreate?: Maybe<MergeRequestCreatePayload>;
+  mergeRequestDestroyRequestedChanges?: Maybe<MergeRequestDestroyRequestedChangesPayload>;
   mergeRequestReviewerRereview?: Maybe<MergeRequestReviewerRereviewPayload>;
   mergeRequestSetAssignees?: Maybe<MergeRequestSetAssigneesPayload>;
   mergeRequestSetDraft?: Maybe<MergeRequestSetDraftPayload>;
@@ -27388,6 +30572,8 @@ export type Mutation = {
   namespaceCiCdSettingsUpdate?: Maybe<NamespaceCiCdSettingsUpdatePayload>;
   namespaceCreateRemoteDevelopmentClusterAgentMapping?: Maybe<NamespaceCreateRemoteDevelopmentClusterAgentMappingPayload>;
   namespaceDeleteRemoteDevelopmentClusterAgentMapping?: Maybe<NamespaceDeleteRemoteDevelopmentClusterAgentMappingPayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.9. */
+  namespaceSettingsUpdate?: Maybe<NamespaceSettingsUpdatePayload>;
   /** Convert a standard comment to a resolvable thread. */
   noteConvertToThread?: Maybe<NoteConvertToThreadPayload>;
   oncallRotationCreate?: Maybe<OncallRotationCreatePayload>;
@@ -27398,12 +30584,17 @@ export type Mutation = {
   oncallScheduleUpdate?: Maybe<OncallScheduleUpdatePayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 16.6. */
   organizationCreate?: Maybe<OrganizationCreatePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.11. */
+  organizationCreateClusterAgentMapping?: Maybe<OrganizationCreateClusterAgentMappingPayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.11. */
+  organizationDeleteClusterAgentMapping?: Maybe<OrganizationDeleteClusterAgentMappingPayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 16.7. */
   organizationUpdate?: Maybe<OrganizationUpdatePayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 17.5. */
   organizationUserUpdate?: Maybe<OrganizationUserUpdatePayload>;
   pagesMarkOnboardingComplete?: Maybe<PagesMarkOnboardingCompletePayload>;
   pipelineCancel?: Maybe<PipelineCancelPayload>;
+  pipelineCreate?: Maybe<PipelineCreatePayload>;
   pipelineDestroy?: Maybe<PipelineDestroyPayload>;
   pipelineRetry?: Maybe<PipelineRetryPayload>;
   pipelineScheduleCreate?: Maybe<PipelineScheduleCreatePayload>;
@@ -27433,11 +30624,15 @@ export type Mutation = {
   /** @deprecated **Status**: Experiment. Introduced in GitLab 16.11. */
   projectSavedReplyUpdate?: Maybe<ProjectSavedReplyUpdatePayload>;
   projectSecretCreate?: Maybe<ProjectSecretCreatePayload>;
+  projectSecretDelete?: Maybe<ProjectSecretDeletePayload>;
   projectSecretsManagerInitialize?: Maybe<ProjectSecretsManagerInitializePayload>;
   projectSecurityExclusionCreate?: Maybe<ProjectSecurityExclusionCreatePayload>;
   projectSecurityExclusionDelete?: Maybe<ProjectSecurityExclusionDeletePayload>;
   projectSecurityExclusionUpdate?: Maybe<ProjectSecurityExclusionUpdatePayload>;
-  /** Assign (or unset) a compliance framework to a project. This mutation raises an error if the project has more than one compliance framework associated with it. */
+  /**
+   * Assign (or unset) a compliance framework to a project. This mutation raises an error if the project has more than one compliance framework associated with it. Deprecated in GitLab 17.11: Use mutation ProjectUpdateComplianceFrameworks instead of this.
+   * @deprecated Use mutation ProjectUpdateComplianceFrameworks instead of this. Deprecated in GitLab 17.11.
+   */
   projectSetComplianceFramework?: Maybe<ProjectSetComplianceFrameworkPayload>;
   /**
    * Enable/disable Continuous Vulnerability Scanning for the given project. Deprecated in GitLab 17.3: CVS has been enabled permanently. See [this epic](https://gitlab.com/groups/gitlab-org/-/epics/11474) for more information.
@@ -27477,24 +30672,30 @@ export type Mutation = {
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.1.
    */
   restorePagesDeployment?: Maybe<RestorePagesDeploymentPayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.11. */
+  runnerBulkPause?: Maybe<RunnerBulkPausePayload>;
   runnerCacheClear?: Maybe<RunnerCacheClearPayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 15.10. */
   runnerCreate?: Maybe<RunnerCreatePayload>;
   runnerDelete?: Maybe<RunnerDeletePayload>;
   runnerUpdate?: Maybe<RunnerUpdatePayload>;
   runnersExportUsage?: Maybe<RunnersExportUsagePayload>;
+  /** @deprecated Underlying feature was deprecated in 15.6 and will be removed in 18.0. Deprecated in GitLab 17.7. */
   runnersRegistrationTokenReset?: Maybe<RunnersRegistrationTokenResetPayload>;
   savedReplyCreate?: Maybe<SavedReplyCreatePayload>;
   savedReplyDestroy?: Maybe<SavedReplyDestroyPayload>;
   savedReplyUpdate?: Maybe<SavedReplyUpdatePayload>;
   /** Commits the `policy_yaml` content to the assigned security policy project for the given project (`full_path`) */
   scanExecutionPolicyCommit?: Maybe<ScanExecutionPolicyCommitPayload>;
+  secretPermissionDelete?: Maybe<SecretPermissionDeletePayload>;
+  secretPermissionUpdate?: Maybe<SecretPermissionUpdatePayload>;
   securityFindingCreateIssue?: Maybe<SecurityFindingCreateIssuePayload>;
   securityFindingCreateMergeRequest?: Maybe<SecurityFindingCreateMergeRequestPayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 17.5. */
   securityFindingCreateVulnerability?: Maybe<SecurityFindingCreateVulnerabilityPayload>;
   securityFindingDismiss?: Maybe<SecurityFindingDismissPayload>;
   securityFindingRevertToDetected?: Maybe<SecurityFindingRevertToDetectedPayload>;
+  securityFindingSeverityOverride?: Maybe<SecurityFindingSeverityOverridePayload>;
   /** Assigns the specified project(`security_policy_project_id`) as security policy project for the given project(`full_path`). If the project already has a security policy project, this reassigns the project's security policy project with the given `security_policy_project_id` */
   securityPolicyProjectAssign?: Maybe<SecurityPolicyProjectAssignPayload>;
   /** Creates and assigns a security policy project for the given project or group (`full_path`) */
@@ -27508,17 +30709,26 @@ export type Mutation = {
   securityPolicyProjectUnassign?: Maybe<SecurityPolicyProjectUnassignPayload>;
   securityTrainingUpdate?: Maybe<SecurityTrainingUpdatePayload>;
   /**
-   * Enable/disable Container Scanning on Container Registry for the given project.
+   * Enable/disable Container Scanning on container registry for the given project.
    *
    */
   setContainerScanningForRegistry?: Maybe<SetContainerScanningForRegistryPayload>;
+  /** Enable or disable Secret Push Protection for a group. */
+  setGroupSecretPushProtection?: Maybe<SetGroupSecretPushProtectionPayload>;
   /**
    * Enable/disable secret push protection for the given project.
    *
    */
   setPreReceiveSecretDetection?: Maybe<SetPreReceiveSecretDetectionPayload>;
+  /**
+   * Enable/disable secret push protection for the given project.
+   *
+   */
+  setSecretPushProtection?: Maybe<SetSecretPushProtectionPayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 16.7. */
   starProject?: Maybe<StarProjectPayload>;
+  tagCreate?: Maybe<TagCreatePayload>;
+  tagDelete?: Maybe<TagDeletePayload>;
   terraformStateDelete?: Maybe<TerraformStateDeletePayload>;
   terraformStateLock?: Maybe<TerraformStateLockPayload>;
   terraformStateUnlock?: Maybe<TerraformStateUnlockPayload>;
@@ -27531,13 +30741,23 @@ export type Mutation = {
   timelogCreate?: Maybe<TimelogCreatePayload>;
   timelogDelete?: Maybe<TimelogDeletePayload>;
   todoCreate?: Maybe<TodoCreatePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.11. */
+  todoDeleteAllDone?: Maybe<TodoDeleteAllDonePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.11. */
+  todoDeleteMany?: Maybe<TodoDeleteManyPayload>;
   todoMarkDone?: Maybe<TodoMarkDonePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.9. */
+  todoResolveMany?: Maybe<TodoResolveManyPayload>;
   todoRestore?: Maybe<TodoRestorePayload>;
   todoRestoreMany?: Maybe<TodoRestoreManyPayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 17.4. */
   todoSnooze?: Maybe<TodoSnoozePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.9. */
+  todoSnoozeMany?: Maybe<TodoSnoozeManyPayload>;
   /** @deprecated **Status**: Experiment. Introduced in GitLab 17.4. */
   todoUnSnooze?: Maybe<TodoUnSnoozePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.9. */
+  todoUnsnoozeMany?: Maybe<TodoUnsnoozeManyPayload>;
   todosMarkAllDone?: Maybe<TodosMarkAllDonePayload>;
   /**
    * Updates an abuse report Note. Introduced in GitLab 17.5: **Status**: Experiment.
@@ -27550,12 +30770,18 @@ export type Mutation = {
   updateBoardEpicUserPreferences?: Maybe<UpdateBoardEpicUserPreferencesPayload>;
   updateBoardList?: Maybe<UpdateBoardListPayload>;
   updateComplianceFramework?: Maybe<UpdateComplianceFrameworkPayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.7. */
+  updateComplianceRequirement?: Maybe<UpdateComplianceRequirementPayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.9. */
+  updateComplianceRequirementsControl?: Maybe<UpdateComplianceRequirementsControlPayload>;
   updateContainerExpirationPolicy?: Maybe<UpdateContainerExpirationPolicyPayload>;
+  /** Updates a container repository protection rule that controls who can modify container images based on user roles. */
+  updateContainerProtectionRepositoryRule?: Maybe<UpdateContainerProtectionRepositoryRulePayload>;
   /**
-   * Updates a container registry protection rule to restrict access to project containers. You can prevent users without certain roles from altering containers. Available only when feature flag `container_registry_protected_containers` is enabled. Introduced in GitLab 16.7: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.7.
+   * Updates a protection rule that controls which user roles can modify container image tags matching a specified pattern. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
    */
-  updateContainerRegistryProtectionRule?: Maybe<UpdateContainerRegistryProtectionRulePayload>;
+  updateContainerProtectionTagRule?: Maybe<UpdateContainerProtectionTagRulePayload>;
   /** These settings can be adjusted only by the group Owner. */
   updateDependencyProxyImageTtlGroupPolicy?: Maybe<UpdateDependencyProxyImageTtlGroupPolicyPayload>;
   /**
@@ -27592,10 +30818,7 @@ export type Mutation = {
    */
   updateNote?: Maybe<UpdateNotePayload>;
   updatePackagesCleanupPolicy?: Maybe<UpdatePackagesCleanupPolicyPayload>;
-  /**
-   * Updates a package protection rule to restrict access to project packages. You can prevent users without certain permissions from altering packages. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
+  /** Updates a package protection rule to restrict access to project packages. You can prevent users without certain permissions from altering packages. */
   updatePackagesProtectionRule?: Maybe<UpdatePackagesProtectionRulePayload>;
   updateRequirement?: Maybe<UpdateRequirementPayload>;
   updateSnippet?: Maybe<UpdateSnippetPayload>;
@@ -27631,9 +30854,14 @@ export type Mutation = {
   valueStreamUpdate?: Maybe<ValueStreamUpdatePayload>;
   /** Create a verified namespace and mark all child catalog resources with the passed verification level info. */
   verifiedNamespaceCreate?: Maybe<VerifiedNamespaceCreatePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.10. */
+  vulnerabilitiesArchive?: Maybe<VulnerabilitiesArchivePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 17.9. */
+  vulnerabilitiesCreateIssue?: Maybe<VulnerabilitiesCreateIssuePayload>;
   vulnerabilitiesDismiss?: Maybe<VulnerabilitiesDismissPayload>;
   /** Remove all Vulnerabilities and related information from a given project. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/412602) in GitLab 16.7 */
   vulnerabilitiesRemoveAllFromProject?: Maybe<VulnerabilitiesRemoveAllFromProjectPayload>;
+  vulnerabilitiesSeverityOverride?: Maybe<VulnerabilitiesSeverityOverridePayload>;
   vulnerabilityConfirm?: Maybe<VulnerabilityConfirmPayload>;
   vulnerabilityCreate?: Maybe<VulnerabilityCreatePayload>;
   vulnerabilityDismiss?: Maybe<VulnerabilityDismissPayload>;
@@ -27677,7 +30905,7 @@ export type Mutation = {
    * @deprecated **Status**: Experiment. Introduced in GitLab 15.1.
    */
   workItemDelete?: Maybe<WorkItemDeletePayload>;
-  /** @deprecated **Status**: Experiment. Introduced in GitLab 15.10. */
+  /** @deprecated Use WorkItemsCsvExport. Deprecated in GitLab 18.0. */
   workItemExport?: Maybe<WorkItemExportPayload>;
   /**
    * Remove items linked to the work item. Introduced in GitLab 16.3: **Status**: Experiment.
@@ -27691,6 +30919,13 @@ export type Mutation = {
    * @deprecated **Status**: Experiment. Introduced in GitLab 15.1.
    */
   workItemUpdate?: Maybe<WorkItemUpdatePayload>;
+  /**
+   * Create or Update user preferences for a work item type and namespace. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  workItemUserPreferenceUpdate?: Maybe<WorkItemUserPreferenceUpdatePayload>;
+  /** @deprecated **Status**: Experiment. Introduced in GitLab 15.10. */
+  workItemsCsvExport?: Maybe<WorkItemsCsvExportPayload>;
   /**
    * Reorder a work item in the hierarchy tree. Introduced in GitLab 17.3: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.3.
@@ -27728,6 +30963,10 @@ export type MutationAddProjectToSecurityDashboardArgs = {
   input: AddProjectToSecurityDashboardInput;
 };
 
+export type MutationAdminRolesLdapSyncArgs = {
+  input: AdminRolesLdapSyncInput;
+};
+
 export type MutationAdminSidekiqQueuesDeleteJobsArgs = {
   input: AdminSidekiqQueuesDeleteJobsInput;
 };
@@ -27750,6 +30989,10 @@ export type MutationAiAgentUpdateArgs = {
 
 export type MutationAiFeatureSettingUpdateArgs = {
   input: AiFeatureSettingUpdateInput;
+};
+
+export type MutationAiSelfHostedModelConnectionCheckArgs = {
+  input: AiSelfHostedModelConnectionCheckInput;
 };
 
 export type MutationAiSelfHostedModelCreateArgs = {
@@ -27916,6 +31159,10 @@ export type MutationBoardListUpdateLimitMetricsArgs = {
   input: BoardListUpdateLimitMetricsInput;
 };
 
+export type MutationBranchDeleteArgs = {
+  input: BranchDeleteInput;
+};
+
 export type MutationBranchRuleApprovalProjectRuleCreateArgs = {
   input: BranchRuleApprovalProjectRuleCreateInput;
 };
@@ -27940,12 +31187,16 @@ export type MutationBranchRuleExternalStatusCheckUpdateArgs = {
   input: BranchRuleExternalStatusCheckUpdateInput;
 };
 
-export type MutationBranchRuleUpdateArgs = {
-  input: BranchRuleUpdateInput;
+export type MutationBranchRuleSquashOptionDeleteArgs = {
+  input: BranchRuleSquashOptionDeleteInput;
 };
 
-export type MutationBuildForecastArgs = {
-  input: BuildForecastInput;
+export type MutationBranchRuleSquashOptionUpdateArgs = {
+  input: BranchRuleSquashOptionUpdateInput;
+};
+
+export type MutationBranchRuleUpdateArgs = {
+  input: BranchRuleUpdateInput;
 };
 
 export type MutationBulkDestroyJobArtifactsArgs = {
@@ -27974,6 +31225,14 @@ export type MutationCiJobTokenScopeAddGroupOrProjectArgs = {
 
 export type MutationCiJobTokenScopeAddProjectArgs = {
   input: CiJobTokenScopeAddProjectInput;
+};
+
+export type MutationCiJobTokenScopeAutopopulateAllowlistArgs = {
+  input: CiJobTokenScopeAutopopulateAllowlistInput;
+};
+
+export type MutationCiJobTokenScopeClearAllowlistAutopopulationsArgs = {
+  input: CiJobTokenScopeClearAllowlistAutopopulationsInput;
 };
 
 export type MutationCiJobTokenScopeRemoveGroupArgs = {
@@ -28068,8 +31327,16 @@ export type MutationCreateComplianceRequirementArgs = {
   input: CreateComplianceRequirementInput;
 };
 
-export type MutationCreateContainerRegistryProtectionRuleArgs = {
-  input: CreateContainerRegistryProtectionRuleInput;
+export type MutationCreateComplianceRequirementsControlArgs = {
+  input: CreateComplianceRequirementsControlInput;
+};
+
+export type MutationCreateContainerProtectionRepositoryRuleArgs = {
+  input: CreateContainerProtectionRepositoryRuleInput;
+};
+
+export type MutationCreateContainerProtectionTagRuleArgs = {
+  input: CreateContainerProtectionTagRuleInput;
 };
 
 export type MutationCreateCustomEmojiArgs = {
@@ -28120,8 +31387,16 @@ export type MutationCreateTestCaseArgs = {
   input: CreateTestCaseInput;
 };
 
+export type MutationCustomFieldArchiveArgs = {
+  input: CustomFieldArchiveInput;
+};
+
 export type MutationCustomFieldCreateArgs = {
   input: CustomFieldCreateInput;
+};
+
+export type MutationCustomFieldUnarchiveArgs = {
+  input: CustomFieldUnarchiveInput;
 };
 
 export type MutationCustomFieldUpdateArgs = {
@@ -28204,8 +31479,16 @@ export type MutationDeleteAnnotationArgs = {
   input: DeleteAnnotationInput;
 };
 
-export type MutationDeleteContainerRegistryProtectionRuleArgs = {
-  input: DeleteContainerRegistryProtectionRuleInput;
+export type MutationDeleteContainerProtectionRepositoryRuleArgs = {
+  input: DeleteContainerProtectionRepositoryRuleInput;
+};
+
+export type MutationDeleteContainerProtectionTagRuleArgs = {
+  input: DeleteContainerProtectionTagRuleInput;
+};
+
+export type MutationDeleteConversationThreadArgs = {
+  input: DeleteConversationThreadInput;
 };
 
 export type MutationDeletePackagesProtectionRuleArgs = {
@@ -28242,6 +31525,14 @@ export type MutationDestroyBoardListArgs = {
 
 export type MutationDestroyComplianceFrameworkArgs = {
   input: DestroyComplianceFrameworkInput;
+};
+
+export type MutationDestroyComplianceRequirementArgs = {
+  input: DestroyComplianceRequirementInput;
+};
+
+export type MutationDestroyComplianceRequirementsControlArgs = {
+  input: DestroyComplianceRequirementsControlInput;
 };
 
 export type MutationDestroyContainerRepositoryArgs = {
@@ -28290,6 +31581,10 @@ export type MutationDisableDevopsAdoptionNamespaceArgs = {
 
 export type MutationDiscussionToggleResolveArgs = {
   input: DiscussionToggleResolveInput;
+};
+
+export type MutationDuoSettingsUpdateArgs = {
+  input: DuoSettingsUpdateInput;
 };
 
 export type MutationDuoUserFeedbackArgs = {
@@ -28652,8 +31947,28 @@ export type MutationLabelCreateArgs = {
   input: LabelCreateInput;
 };
 
+export type MutationLdapAdminRoleLinkCreateArgs = {
+  input: LdapAdminRoleLinkCreateInput;
+};
+
+export type MutationLdapAdminRoleLinkDestroyArgs = {
+  input: LdapAdminRoleLinkDestroyInput;
+};
+
 export type MutationMarkAsSpamSnippetArgs = {
   input: MarkAsSpamSnippetInput;
+};
+
+export type MutationMemberRoleAdminCreateArgs = {
+  input: MemberRoleAdminCreateInput;
+};
+
+export type MutationMemberRoleAdminDeleteArgs = {
+  input: MemberRoleAdminDeleteInput;
+};
+
+export type MutationMemberRoleAdminUpdateArgs = {
+  input: MemberRoleAdminUpdateInput;
 };
 
 export type MutationMemberRoleCreateArgs = {
@@ -28662,6 +31977,10 @@ export type MutationMemberRoleCreateArgs = {
 
 export type MutationMemberRoleDeleteArgs = {
   input: MemberRoleDeleteInput;
+};
+
+export type MutationMemberRoleToUserAssignArgs = {
+  input: MemberRoleToUserAssignInput;
 };
 
 export type MutationMemberRoleUpdateArgs = {
@@ -28674,6 +31993,10 @@ export type MutationMergeRequestAcceptArgs = {
 
 export type MutationMergeRequestCreateArgs = {
   input: MergeRequestCreateInput;
+};
+
+export type MutationMergeRequestDestroyRequestedChangesArgs = {
+  input: MergeRequestDestroyRequestedChangesInput;
 };
 
 export type MutationMergeRequestReviewerRereviewArgs = {
@@ -28764,6 +32087,10 @@ export type MutationNamespaceDeleteRemoteDevelopmentClusterAgentMappingArgs = {
   input: NamespaceDeleteRemoteDevelopmentClusterAgentMappingInput;
 };
 
+export type MutationNamespaceSettingsUpdateArgs = {
+  input: NamespaceSettingsUpdateInput;
+};
+
 export type MutationNoteConvertToThreadArgs = {
   input: NoteConvertToThreadInput;
 };
@@ -28796,6 +32123,14 @@ export type MutationOrganizationCreateArgs = {
   input: OrganizationCreateInput;
 };
 
+export type MutationOrganizationCreateClusterAgentMappingArgs = {
+  input: OrganizationCreateClusterAgentMappingInput;
+};
+
+export type MutationOrganizationDeleteClusterAgentMappingArgs = {
+  input: OrganizationDeleteClusterAgentMappingInput;
+};
+
 export type MutationOrganizationUpdateArgs = {
   input: OrganizationUpdateInput;
 };
@@ -28810,6 +32145,10 @@ export type MutationPagesMarkOnboardingCompleteArgs = {
 
 export type MutationPipelineCancelArgs = {
   input: PipelineCancelInput;
+};
+
+export type MutationPipelineCreateArgs = {
+  input: PipelineCreateInput;
 };
 
 export type MutationPipelineDestroyArgs = {
@@ -28890,6 +32229,10 @@ export type MutationProjectSavedReplyUpdateArgs = {
 
 export type MutationProjectSecretCreateArgs = {
   input: ProjectSecretCreateInput;
+};
+
+export type MutationProjectSecretDeleteArgs = {
+  input: ProjectSecretDeleteInput;
 };
 
 export type MutationProjectSecretsManagerInitializeArgs = {
@@ -29008,6 +32351,10 @@ export type MutationRestorePagesDeploymentArgs = {
   input: RestorePagesDeploymentInput;
 };
 
+export type MutationRunnerBulkPauseArgs = {
+  input: RunnerBulkPauseInput;
+};
+
 export type MutationRunnerCacheClearArgs = {
   input: RunnerCacheClearInput;
 };
@@ -29048,6 +32395,14 @@ export type MutationScanExecutionPolicyCommitArgs = {
   input: ScanExecutionPolicyCommitInput;
 };
 
+export type MutationSecretPermissionDeleteArgs = {
+  input: SecretPermissionDeleteInput;
+};
+
+export type MutationSecretPermissionUpdateArgs = {
+  input: SecretPermissionUpdateInput;
+};
+
 export type MutationSecurityFindingCreateIssueArgs = {
   input: SecurityFindingCreateIssueInput;
 };
@@ -29066,6 +32421,10 @@ export type MutationSecurityFindingDismissArgs = {
 
 export type MutationSecurityFindingRevertToDetectedArgs = {
   input: SecurityFindingRevertToDetectedInput;
+};
+
+export type MutationSecurityFindingSeverityOverrideArgs = {
+  input: SecurityFindingSeverityOverrideInput;
 };
 
 export type MutationSecurityPolicyProjectAssignArgs = {
@@ -29092,12 +32451,28 @@ export type MutationSetContainerScanningForRegistryArgs = {
   input: SetContainerScanningForRegistryInput;
 };
 
+export type MutationSetGroupSecretPushProtectionArgs = {
+  input: SetGroupSecretPushProtectionInput;
+};
+
 export type MutationSetPreReceiveSecretDetectionArgs = {
   input: SetPreReceiveSecretDetectionInput;
 };
 
+export type MutationSetSecretPushProtectionArgs = {
+  input: SetSecretPushProtectionInput;
+};
+
 export type MutationStarProjectArgs = {
   input: StarProjectInput;
+};
+
+export type MutationTagCreateArgs = {
+  input: TagCreateInput;
+};
+
+export type MutationTagDeleteArgs = {
+  input: TagDeleteInput;
 };
 
 export type MutationTerraformStateDeleteArgs = {
@@ -29144,8 +32519,20 @@ export type MutationTodoCreateArgs = {
   input: TodoCreateInput;
 };
 
+export type MutationTodoDeleteAllDoneArgs = {
+  input: TodoDeleteAllDoneInput;
+};
+
+export type MutationTodoDeleteManyArgs = {
+  input: TodoDeleteManyInput;
+};
+
 export type MutationTodoMarkDoneArgs = {
   input: TodoMarkDoneInput;
+};
+
+export type MutationTodoResolveManyArgs = {
+  input: TodoResolveManyInput;
 };
 
 export type MutationTodoRestoreArgs = {
@@ -29160,8 +32547,16 @@ export type MutationTodoSnoozeArgs = {
   input: TodoSnoozeInput;
 };
 
+export type MutationTodoSnoozeManyArgs = {
+  input: TodoSnoozeManyInput;
+};
+
 export type MutationTodoUnSnoozeArgs = {
   input: TodoUnSnoozeInput;
+};
+
+export type MutationTodoUnsnoozeManyArgs = {
+  input: TodoUnsnoozeManyInput;
 };
 
 export type MutationTodosMarkAllDoneArgs = {
@@ -29192,12 +32587,24 @@ export type MutationUpdateComplianceFrameworkArgs = {
   input: UpdateComplianceFrameworkInput;
 };
 
+export type MutationUpdateComplianceRequirementArgs = {
+  input: UpdateComplianceRequirementInput;
+};
+
+export type MutationUpdateComplianceRequirementsControlArgs = {
+  input: UpdateComplianceRequirementsControlInput;
+};
+
 export type MutationUpdateContainerExpirationPolicyArgs = {
   input: UpdateContainerExpirationPolicyInput;
 };
 
-export type MutationUpdateContainerRegistryProtectionRuleArgs = {
-  input: UpdateContainerRegistryProtectionRuleInput;
+export type MutationUpdateContainerProtectionRepositoryRuleArgs = {
+  input: UpdateContainerProtectionRepositoryRuleInput;
+};
+
+export type MutationUpdateContainerProtectionTagRuleArgs = {
+  input: UpdateContainerProtectionTagRuleInput;
 };
 
 export type MutationUpdateDependencyProxyImageTtlGroupPolicyArgs = {
@@ -29316,12 +32723,24 @@ export type MutationVerifiedNamespaceCreateArgs = {
   input: VerifiedNamespaceCreateInput;
 };
 
+export type MutationVulnerabilitiesArchiveArgs = {
+  input: VulnerabilitiesArchiveInput;
+};
+
+export type MutationVulnerabilitiesCreateIssueArgs = {
+  input: VulnerabilitiesCreateIssueInput;
+};
+
 export type MutationVulnerabilitiesDismissArgs = {
   input: VulnerabilitiesDismissInput;
 };
 
 export type MutationVulnerabilitiesRemoveAllFromProjectArgs = {
   input: VulnerabilitiesRemoveAllFromProjectInput;
+};
+
+export type MutationVulnerabilitiesSeverityOverrideArgs = {
+  input: VulnerabilitiesSeverityOverrideInput;
 };
 
 export type MutationVulnerabilityConfirmArgs = {
@@ -29400,6 +32819,14 @@ export type MutationWorkItemUpdateArgs = {
   input: WorkItemUpdateInput;
 };
 
+export type MutationWorkItemUserPreferenceUpdateArgs = {
+  input: WorkItemUserPreferenceUpdateInput;
+};
+
+export type MutationWorkItemsCsvExportArgs = {
+  input: WorkItemsCsvExportInput;
+};
+
 export type MutationWorkItemsHierarchyReorderArgs = {
   input: WorkItemsHierarchyReorderInput;
 };
@@ -29443,21 +32870,28 @@ export type Namespace = Todoable & {
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.5.
    */
   addOnEligibleUsers?: Maybe<AddOnUserConnection>;
-  /**
-   * AddOnPurchase associated with the namespace Deprecated in GitLab 17.5: Use root addOnPurchases instead.
-   * @deprecated Use root addOnPurchases instead. Deprecated in GitLab 17.5.
-   */
-  addOnPurchase?: Maybe<AddOnPurchase>;
   /** Additional storage purchased for the root namespace in bytes. */
   additionalPurchasedStorageSize?: Maybe<Scalars["Float"]["output"]>;
   /** Approval Policies of the project */
   approvalPolicies?: Maybe<ApprovalPolicyConnection>;
+  /** URL to avatar image file of the namespace. */
+  avatarUrl?: Maybe<Scalars["String"]["output"]>;
+  /**
+   * Namespace CI/CD settings for the namespace. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  ciCdSettings?: Maybe<CiCdSettings>;
   /** Compliance frameworks available to projects in this namespace. */
   complianceFrameworks?: Maybe<ComplianceFrameworkConnection>;
   /** Includes at least one project where the repository size exceeds the limit. This only applies to namespaces under Project limit enforcement. */
   containsLockedProjects?: Maybe<Scalars["Boolean"]["output"]>;
   /** Indicates if the cross_project_pipeline feature is available for the namespace. */
   crossProjectPipelineAvailable: Scalars["Boolean"]["output"];
+  /**
+   * Custom fields configured for the namespace. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  customFields?: Maybe<CustomFieldConnection>;
   /** Description of the namespace. */
   description?: Maybe<Scalars["String"]["output"]>;
   /** GitLab Flavored Markdown rendering of `description` */
@@ -29485,6 +32919,8 @@ export type Namespace = Todoable & {
   path: Scalars["String"]["output"];
   /** Pipeline Execution Policies of the namespace. */
   pipelineExecutionPolicies?: Maybe<PipelineExecutionPolicyConnection>;
+  /** Pipeline Execution Schedule Policies of the namespace. */
+  pipelineExecutionSchedulePolicies?: Maybe<PipelineExecutionSchedulePolicyConnection>;
   /**
    * Number of product analytics events namespace is permitted to store per cycle. Introduced in GitLab 16.9: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.9.
@@ -29492,7 +32928,10 @@ export type Namespace = Todoable & {
   productAnalyticsStoredEventsLimit?: Maybe<Scalars["Int"]["output"]>;
   /** Projects within this namespace. Returns projects from the parent group if namespace is project. */
   projects: ProjectConnection;
-  /** Cluster agents in the namespace with remote development capabilities */
+  /**
+   * Cluster agents in the namespace with remote development capabilities Deprecated in GitLab 17.8: Use `workspacesClusterAgents`.
+   * @deprecated Use `workspacesClusterAgents`. Deprecated in GitLab 17.8.
+   */
   remoteDevelopmentClusterAgents?: Maybe<ClusterAgentConnection>;
   /** Number of projects in the root namespace where the repository size exceeds the limit. This only applies to namespaces under Project limit enforcement. */
   repositorySizeExcessProjectCount?: Maybe<Scalars["Int"]["output"]>;
@@ -29532,9 +32971,16 @@ export type Namespace = Todoable & {
   totalRepositorySize?: Maybe<Scalars["Float"]["output"]>;
   /** Total excess repository size of all projects in the root namespace in bytes. This only applies to namespaces under Project limit enforcement. */
   totalRepositorySizeExcess?: Maybe<Scalars["Float"]["output"]>;
+  /** Permissions for the current user on the resource */
+  userPermissions: NamespacePermissions;
   /** Visibility of the namespace. */
   visibility?: Maybe<Scalars["String"]["output"]>;
-  /** URL of this object. */
+  /**
+   * Vulnerability Management Policies of the project. Introduced in GitLab 17.7: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.7.
+   */
+  vulnerabilityManagementPolicies?: Maybe<VulnerabilityManagementPolicyConnection>;
+  /** URL of the object. */
   webUrl?: Maybe<Scalars["String"]["output"]>;
   /**
    * Find a work item by IID directly associated with the namespace(project or group).  Returns `null` for group level work items if the `namespace_level_work_items` feature flag is disabled. Introduced in GitLab 16.10: **Status**: Experiment.
@@ -29542,10 +32988,20 @@ export type Namespace = Todoable & {
    */
   workItem?: Maybe<WorkItem>;
   /**
+   * Work item description templates available to the namespace. Introduced in GitLab 17.6: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+   */
+  workItemDescriptionTemplates?: Maybe<WorkItemDescriptionTemplateConnection>;
+  /**
    * Work item types available to the namespace. Introduced in GitLab 17.2: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.2.
    */
   workItemTypes?: Maybe<WorkItemTypeConnection>;
+  /**
+   * Cluster agents in the namespace with workspaces capabilities Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  workspacesClusterAgents?: Maybe<ClusterAgentConnection>;
 };
 
 export type NamespaceAchievementsArgs = {
@@ -29570,14 +33026,11 @@ export type NamespaceAddOnEligibleUsersArgs = {
   sort?: InputMaybe<GitlabSubscriptionsUserSort>;
 };
 
-export type NamespaceAddOnPurchaseArgs = {
-  addOnName: Scalars["String"]["input"];
-};
-
 export type NamespaceApprovalPoliciesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  includeUnscoped?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   relationship?: InputMaybe<SecurityPolicyRelationType>;
 };
@@ -29590,6 +33043,17 @@ export type NamespaceComplianceFrameworksArgs = {
   ids?: InputMaybe<Array<Scalars["ComplianceManagementFrameworkID"]["input"]>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   search?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type NamespaceCustomFieldsArgs = {
+  active?: InputMaybe<Scalars["Boolean"]["input"]>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  fieldType?: InputMaybe<CustomFieldType>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
+  workItemTypeId?: InputMaybe<Scalars["WorkItemsTypeID"]["input"]>;
 };
 
 export type NamespaceImportSourceUsersArgs = {
@@ -29616,12 +33080,23 @@ export type NamespacePipelineExecutionPoliciesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  includeUnscoped?: InputMaybe<Scalars["Boolean"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  relationship?: InputMaybe<SecurityPolicyRelationType>;
+};
+
+export type NamespacePipelineExecutionSchedulePoliciesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  includeUnscoped?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   relationship?: InputMaybe<SecurityPolicyRelationType>;
 };
 
 export type NamespaceProjectsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
+  archivedOnly?: InputMaybe<Scalars["Boolean"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   complianceFrameworkFilters?: InputMaybe<ComplianceFrameworkFilters>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
@@ -29637,6 +33112,7 @@ export type NamespaceProjectsArgs = {
   sort?: InputMaybe<NamespaceProjectSort>;
   withIssuesEnabled?: InputMaybe<Scalars["Boolean"]["input"]>;
   withMergeRequestsEnabled?: InputMaybe<Scalars["Boolean"]["input"]>;
+  withNamespaceDomainPages?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
 export type NamespaceRemoteDevelopmentClusterAgentsArgs = {
@@ -29652,6 +33128,7 @@ export type NamespaceScanExecutionPoliciesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  includeUnscoped?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   relationship?: InputMaybe<SecurityPolicyRelationType>;
 };
@@ -29660,6 +33137,7 @@ export type NamespaceScanResultPoliciesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  includeUnscoped?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   relationship?: InputMaybe<SecurityPolicyRelationType>;
 };
@@ -29678,8 +33156,24 @@ export type NamespaceTimelogCategoriesArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
+export type NamespaceVulnerabilityManagementPoliciesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  includeUnscoped?: InputMaybe<Scalars["Boolean"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  relationship?: InputMaybe<SecurityPolicyRelationType>;
+};
+
 export type NamespaceWorkItemArgs = {
   iid: Scalars["String"]["input"];
+};
+
+export type NamespaceWorkItemDescriptionTemplatesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type NamespaceWorkItemTypesArgs = {
@@ -29688,6 +33182,14 @@ export type NamespaceWorkItemTypesArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   name?: InputMaybe<IssueType>;
+};
+
+export type NamespaceWorkspacesClusterAgentsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  filter: NamespaceClusterAgentFilter;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type NamespaceBan = {
@@ -29721,7 +33223,7 @@ export type NamespaceBanDestroyPayload = {
 
 export type NamespaceCiCdSetting = {
   __typename?: "NamespaceCiCdSetting";
-  /** Indicates if stale runners directly belonging to this namespace should be periodically pruned. */
+  /** Indicates if stale runners directly belonging to the namespace should be periodically pruned. */
   allowStaleRunnerPruning?: Maybe<Scalars["Boolean"]["output"]>;
   /** Namespace the CI/CD settings belong to. */
   namespace?: Maybe<Namespace>;
@@ -29729,7 +33231,7 @@ export type NamespaceCiCdSetting = {
 
 /** Autogenerated input type of NamespaceCiCdSettingsUpdate */
 export type NamespaceCiCdSettingsUpdateInput = {
-  /** Indicates if stale runners directly belonging to this namespace should be periodically pruned. */
+  /** Indicates if stale runners directly belonging to the namespace should be periodically pruned. */
   allowStaleRunnerPruning?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
@@ -29757,6 +33259,23 @@ export enum NamespaceClusterAgentFilter {
   /** Cluster agents within a namespace that are not directly mapped to it. */
   Unmapped = "UNMAPPED",
 }
+
+/** Represents a namespace-cluster-agent mapping. */
+export type NamespaceClusterAgentMapping = {
+  __typename?: "NamespaceClusterAgentMapping";
+  /** Global ID of the cluster agent. */
+  clusterAgentId: Scalars["ClustersAgentID"]["output"];
+  /** Timestamp when the namespace-cluster-agent mapping was created. */
+  createdAt: Scalars["Time"]["output"];
+  /** Global ID of the creator. */
+  creatorId: Scalars["UserID"]["output"];
+  /** Global ID of the namespace-cluster-agent mapping. */
+  id: Scalars["RemoteDevelopmentNamespaceClusterAgentMappingID"]["output"];
+  /** Global ID of the namespace. */
+  namespaceId: Scalars["NamespaceID"]["output"];
+  /** Timestamp when the namespace-cluster-agent mapping was last updated. */
+  updatedAt: Scalars["Time"]["output"];
+};
 
 export type NamespaceCommitEmail = {
   __typename?: "NamespaceCommitEmail";
@@ -29820,6 +33339,11 @@ export type NamespaceCreateRemoteDevelopmentClusterAgentMappingPayload = {
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
+  /**
+   * Created namespace cluster agent mapping. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  namespaceClusterAgentMapping?: Maybe<NamespaceClusterAgentMapping>;
 };
 
 /** Autogenerated input type of NamespaceDeleteRemoteDevelopmentClusterAgentMapping */
@@ -29839,6 +33363,11 @@ export type NamespaceDeleteRemoteDevelopmentClusterAgentMappingPayload = {
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
+  /**
+   * Created namespace cluster agent mapping. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  namespaceClusterAgentMapping?: Maybe<NamespaceClusterAgentMapping>;
 };
 
 /** An edge in a connection. */
@@ -29850,24 +33379,84 @@ export type NamespaceEdge = {
   node?: Maybe<Namespace>;
 };
 
+export type NamespacePermissions = {
+  __typename?: "NamespacePermissions";
+  /** If `true`, the user can perform `generate_description` on this resource */
+  generateDescription: Scalars["Boolean"]["output"];
+  /** If `true`, the user can perform `read_namespace` on this resource */
+  readNamespace: Scalars["Boolean"]["output"];
+};
+
 /** Values for sorting projects */
 export enum NamespaceProjectSort {
   /** Sort by latest activity, descending order. */
   ActivityDesc = "ACTIVITY_DESC",
+  /** Sort by total build artifact size, ascending order. */
+  BuildArtifactsSizeAsc = "BUILD_ARTIFACTS_SIZE_ASC",
+  /** Sort by total build artifact size, descending order. */
+  BuildArtifactsSizeDesc = "BUILD_ARTIFACTS_SIZE_DESC",
+  /** Sort by total container registry size, ascending order. */
+  ContainerRegistrySizeAsc = "CONTAINER_REGISTRY_SIZE_ASC",
+  /** Sort by total container registry size, descending order. */
+  ContainerRegistrySizeDesc = "CONTAINER_REGISTRY_SIZE_DESC",
   /** Sort by excess repository storage size, descending order. */
   ExcessRepoStorageSizeDesc = "EXCESS_REPO_STORAGE_SIZE_DESC",
+  /** Sort by full path, ascending order. */
+  FullPathAsc = "FULL_PATH_ASC",
+  /** Sort by full path, descending order. */
+  FullPathDesc = "FULL_PATH_DESC",
+  /** Sort by total LFS object size, ascending order. */
+  LfsObjectsSizeAsc = "LFS_OBJECTS_SIZE_ASC",
+  /** Sort by total LFS object size, descending order. */
+  LfsObjectsSizeDesc = "LFS_OBJECTS_SIZE_DESC",
+  /** Sort by total package size, ascending order. */
+  PackagesSizeAsc = "PACKAGES_SIZE_ASC",
+  /** Sort by total package size, descending order. */
+  PackagesSizeDesc = "PACKAGES_SIZE_DESC",
+  /** Sort by path, ascending order. */
+  PathAsc = "PATH_ASC",
+  /** Sort by path, descending order. */
+  PathDesc = "PATH_DESC",
+  /** Sort by total repository size, ascending order. */
+  RepositorySizeAsc = "REPOSITORY_SIZE_ASC",
+  /** Sort by total repository size, descending order. */
+  RepositorySizeDesc = "REPOSITORY_SIZE_DESC",
   /** Most similar to the search query. */
   Similarity = "SIMILARITY",
-  /**
-   * Sort by excess repository storage size, descending order. Deprecated in GitLab 16.9: Please use EXCESS_REPO_STORAGE_SIZE_DESC.
-   * @deprecated Please use EXCESS_REPO_STORAGE_SIZE_DESC. Deprecated in GitLab 16.9.
-   */
-  Storage = "STORAGE",
+  /** Sort by total snippet size, ascending order. */
+  SnippetsSizeAsc = "SNIPPETS_SIZE_ASC",
+  /** Sort by total snippet size, descending order. */
+  SnippetsSizeDesc = "SNIPPETS_SIZE_DESC",
   /** Sort by total storage size, ascending order. */
   StorageSizeAsc = "STORAGE_SIZE_ASC",
   /** Sort by total storage size, descending order. */
   StorageSizeDesc = "STORAGE_SIZE_DESC",
+  /** Sort by total wiki size, ascending order. */
+  WikiSizeAsc = "WIKI_SIZE_ASC",
+  /** Sort by total wiki size, descending order. */
+  WikiSizeDesc = "WIKI_SIZE_DESC",
 }
+
+/** Autogenerated input type of NamespaceSettingsUpdate */
+export type NamespaceSettingsUpdateInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Full path of the namespace the settings belong to. */
+  fullPath: Scalars["ID"]["input"];
+  /** Indicates the default minimum role required to override pipeline variables in the namespace. */
+  pipelineVariablesDefaultRole?: InputMaybe<PipelineVariablesDefaultRoleType>;
+};
+
+/** Autogenerated return type of NamespaceSettingsUpdate. */
+export type NamespaceSettingsUpdatePayload = {
+  __typename?: "NamespaceSettingsUpdatePayload";
+  /** Namespace CI/CD settings after mutation. */
+  ciCdSettings: CiCdSettings;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+};
 
 export type NamespaceSidebar = {
   __typename?: "NamespaceSidebar";
@@ -29878,6 +33467,9 @@ export type NamespaceSidebar = {
   /** Number of open merge requests of the namespace. */
   openMergeRequestsCount?: Maybe<Scalars["Int"]["output"]>;
 };
+
+/** Represents either a namespace or a reference to a deleted namespace */
+export type NamespaceUnion = CiDeletedNamespace | Namespace;
 
 export type NegatedBoardIssueInput = {
   /** Filter by assignee username. */
@@ -29958,9 +33550,9 @@ export type NegatedIssueFilterInput = {
   iterationId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   /** Filter by negated iteration ID wildcard. */
   iterationWildcardId?: InputMaybe<IterationWildcardId>;
-  /** Labels not applied to this issue. */
+  /** Labels not applied to the issue. */
   labelName?: InputMaybe<Array<Scalars["String"]["input"]>>;
-  /** Milestone not applied to this issue. */
+  /** Milestone not applied to the issue. */
   milestoneTitle?: InputMaybe<Array<Scalars["String"]["input"]>>;
   /** Filter by negated milestone wildcard values. */
   milestoneWildcardId?: InputMaybe<NegatedMilestoneWildcardId>;
@@ -30020,6 +33612,8 @@ export type NegatedWorkItemFilterInput = {
   milestoneWildcardId?: InputMaybe<NegatedMilestoneWildcardId>;
   /** Filter by reaction emoji not applied by the current user. */
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
+  /** Filter out work items by the given types. */
+  types?: InputMaybe<Array<IssueType>>;
 };
 
 /** Describes where code is deployed for a project organized by folder. */
@@ -30051,6 +33645,14 @@ export type NestedEnvironmentEdge = {
   cursor: Scalars["String"]["output"];
   /** The item at the end of the edge. */
   node?: Maybe<NestedEnvironment>;
+};
+
+export type NetworkPolicyEgress = {
+  __typename?: "NetworkPolicyEgress";
+  /** IP range to allow traffic from. */
+  allow: Scalars["String"]["output"];
+  /** List of IP ranges to exclude from the `allow` range. */
+  except?: Maybe<Array<Scalars["String"]["output"]>>;
 };
 
 export type Note = BaseNoteInterface &
@@ -30149,6 +33751,8 @@ export type NoteConvertToThreadPayload = {
   errors: Array<Scalars["String"]["output"]>;
   /** Note after mutation. */
   note?: Maybe<Note>;
+  /** Status of quick actions after mutation. */
+  quickActionsStatus?: Maybe<QuickActionsStatus>;
 };
 
 /** An edge in a connection. */
@@ -30177,9 +33781,9 @@ export type NotePermissions = {
 };
 
 export type NoteableInterface = {
-  /** All commenters on this noteable. */
+  /** All commenters on the noteable. */
   commenters: UserCoreConnection;
-  /** All discussions on this noteable. */
+  /** All discussions on the noteable. */
   discussions: DiscussionConnection;
   /** All notes on this noteable. */
   notes: NoteConnection;
@@ -30608,11 +34212,11 @@ export type OrchestrationPolicy = {
   description: Scalars["String"]["output"];
   /** URL of policy edit page. */
   editPath: Scalars["String"]["output"];
-  /** Indicates whether this policy is enabled. */
+  /** Indicates whether the policy is enabled. */
   enabled: Scalars["Boolean"]["output"];
   /** Name of the policy. */
   name: Scalars["String"]["output"];
-  /** Scope of the policy */
+  /** Scope of the policy. */
   policyScope?: Maybe<PolicyScope>;
   /** Timestamp of when the policy YAML was last updated. */
   updatedAt: Scalars["Time"]["output"];
@@ -30672,16 +34276,26 @@ export type Organization = {
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
    */
   webUrl: Scalars["String"]["output"];
+  /**
+   * Cluster agents in the organization with workspaces capabilities Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  workspacesClusterAgents?: Maybe<ClusterAgentConnection>;
 };
 
 export type OrganizationGroupsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
+  allAvailable?: InputMaybe<Scalars["Boolean"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   markedForDeletionOn?: InputMaybe<Scalars["Date"]["input"]>;
+  ownedOnly?: InputMaybe<Scalars["Boolean"]["input"]>;
+  parentPath?: InputMaybe<Scalars["ID"]["input"]>;
   search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<Scalars["String"]["input"]>;
+  topLevelOnly?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
 export type OrganizationOrganizationUsersArgs = {
@@ -30704,14 +34318,24 @@ export type OrganizationProjectsArgs = {
   markedForDeletionOn?: InputMaybe<Scalars["Date"]["input"]>;
   membership?: InputMaybe<Scalars["Boolean"]["input"]>;
   minAccessLevel?: InputMaybe<AccessLevelEnum>;
+  notAimedForDeletion?: InputMaybe<Scalars["Boolean"]["input"]>;
   personal?: InputMaybe<Scalars["Boolean"]["input"]>;
   programmingLanguageName?: InputMaybe<Scalars["String"]["input"]>;
   search?: InputMaybe<Scalars["String"]["input"]>;
   searchNamespaces?: InputMaybe<Scalars["Boolean"]["input"]>;
   sort?: InputMaybe<Scalars["String"]["input"]>;
   topics?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  trending?: InputMaybe<Scalars["Boolean"]["input"]>;
   withIssuesEnabled?: InputMaybe<Scalars["Boolean"]["input"]>;
   withMergeRequestsEnabled?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type OrganizationWorkspacesClusterAgentsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  filter: NamespaceClusterAgentFilter;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** The connection type for Organization. */
@@ -30725,6 +34349,25 @@ export type OrganizationConnection = {
   nodes?: Maybe<Array<Maybe<Organization>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** Autogenerated input type of OrganizationCreateClusterAgentMapping */
+export type OrganizationCreateClusterAgentMappingInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** GlobalID of the cluster agent to be associated with the organization. */
+  clusterAgentId: Scalars["ClustersAgentID"]["input"];
+  /** GlobalID of the organization to be associated with the cluster agent. */
+  organizationId: Scalars["OrganizationsOrganizationID"]["input"];
+};
+
+/** Autogenerated return type of OrganizationCreateClusterAgentMapping. */
+export type OrganizationCreateClusterAgentMappingPayload = {
+  __typename?: "OrganizationCreateClusterAgentMappingPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
 };
 
 /** Autogenerated input type of OrganizationCreate */
@@ -30750,6 +34393,25 @@ export type OrganizationCreatePayload = {
   errors: Array<Scalars["String"]["output"]>;
   /** Organization after mutation. */
   organization?: Maybe<Organization>;
+};
+
+/** Autogenerated input type of OrganizationDeleteClusterAgentMapping */
+export type OrganizationDeleteClusterAgentMappingInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** GlobalID of the cluster agent to be dissociated with the organization. */
+  clusterAgentId: Scalars["ClustersAgentID"]["input"];
+  /** GlobalID of the organization to be dissociated with the cluster agent. */
+  organizationId: Scalars["OrganizationsOrganizationID"]["input"];
+};
+
+/** Autogenerated return type of OrganizationDeleteClusterAgentMapping. */
+export type OrganizationDeleteClusterAgentMappingPayload = {
+  __typename?: "OrganizationDeleteClusterAgentMappingPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
 };
 
 /** An edge in a connection. */
@@ -31023,7 +34685,7 @@ export type OrganizationUserUpdatePayload = {
   organizationUser?: Maybe<OrganizationUser>;
 };
 
-/** Represents a package with pipelines in the Package Registry */
+/** Represents a package with pipelines in the package registry */
 export type Package = {
   __typename?: "Package";
   /** Map of links to perform actions on the package. */
@@ -31061,7 +34723,7 @@ export type Package = {
   version?: Maybe<Scalars["String"]["output"]>;
 };
 
-/** Represents a package with pipelines in the Package Registry */
+/** Represents a package with pipelines in the package registry */
 export type PackagePipelinesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -31069,7 +34731,7 @@ export type PackagePipelinesArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
-/** Represents a package with pipelines in the Package Registry */
+/** Represents a package with pipelines in the package registry */
 export type PackageTagsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -31077,7 +34739,7 @@ export type PackageTagsArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
-/** Represents a package in the Package Registry */
+/** Represents a package in the package registry */
 export type PackageBase = {
   __typename?: "PackageBase";
   /** Map of links to perform actions on the package. */
@@ -31110,7 +34772,7 @@ export type PackageBase = {
   version?: Maybe<Scalars["String"]["output"]>;
 };
 
-/** Represents a package in the Package Registry */
+/** Represents a package in the package registry */
 export type PackageBaseTagsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -31238,7 +34900,7 @@ export type PackageDetailsType = {
   dependencyLinks?: Maybe<PackageDependencyLinkConnection>;
   /** ID of the package. */
   id: Scalars["PackagesPackageID"]["output"];
-  /** Last time that a file of this package was downloaded. */
+  /** Last time that a file of the package was downloaded. */
   lastDownloadedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Url of the Maven project endpoint. */
   mavenUrl?: Maybe<Scalars["String"]["output"]>;
@@ -31390,14 +35052,25 @@ export type PackageFileMetadata = {
 /** Represents the Geo sync and verification state of a package file */
 export type PackageFileRegistry = {
   __typename?: "PackageFileRegistry";
+  /** Indicate if the checksums of the PackageFileRegistry do not match on the primary and secondary. */
+  checksumMismatch?: Maybe<Scalars["Boolean"]["output"]>;
   /** Timestamp when the PackageFileRegistry was created */
   createdAt?: Maybe<Scalars["Time"]["output"]>;
+  /**
+   * Indicate if a forced redownload is to be performed. Deprecated in GitLab 17.10: Removed from registry tables in the database in favor of the newer reusable framework.
+   * @deprecated Removed from registry tables in the database in favor of the newer reusable framework. Deprecated in GitLab 17.10.
+   */
+  forceToRedownload?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the PackageFileRegistry */
   id: Scalars["ID"]["output"];
   /** Error message during sync of the PackageFileRegistry */
   lastSyncFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp of the most recent successful sync of the PackageFileRegistry */
   lastSyncedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Indicate if the PackageFileRegistry is missing on primary. */
+  missingOnPrimary?: Maybe<Scalars["Boolean"]["output"]>;
+  /** ID of the PackageFileRegistry's model record. */
+  modelRecordId?: Maybe<Scalars["Int"]["output"]>;
   /** ID of the PackageFile. */
   packageFileId: Scalars["ID"]["output"];
   /** Timestamp after which the PackageFileRegistry is resynced */
@@ -31408,13 +35081,15 @@ export type PackageFileRegistry = {
   state?: Maybe<RegistryState>;
   /** The local checksum of the PackageFileRegistry */
   verificationChecksum?: Maybe<Scalars["String"]["output"]>;
+  /** The expected checksum of the PackageFileRegistry in case of mismatch. */
+  verificationChecksumMismatched?: Maybe<Scalars["String"]["output"]>;
   /** Error message during verification of the PackageFileRegistry */
   verificationFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp after which the PackageFileRegistry is reverified */
   verificationRetryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed verification attempts of the PackageFileRegistry */
   verificationRetryCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Timestamp when the verification started of PackageFileRegistry */
+  /** Timestamp when the verification of PackageFileRegistry started */
   verificationStartedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Verification state of the PackageFileRegistry */
   verificationState?: Maybe<VerificationStateEnum>;
@@ -31425,12 +35100,19 @@ export type PackageFileRegistry = {
 /** The connection type for PackageFileRegistry. */
 export type PackageFileRegistryConnection = {
   __typename?: "PackageFileRegistryConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<PackageFileRegistryEdge>>>;
   /** A list of nodes. */
   nodes?: Maybe<Array<Maybe<PackageFileRegistry>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** The connection type for PackageFileRegistry. */
+export type PackageFileRegistryConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** An edge in a connection. */
@@ -31550,10 +35232,14 @@ export enum PackageManager {
   Apk = "APK",
   /** Package manager: bundler. */
   Bundler = "BUNDLER",
+  /** Package manager: cargo. */
+  Cargo = "CARGO",
   /** Package manager: composer. */
   Composer = "COMPOSER",
   /** Package manager: conan. */
   Conan = "CONAN",
+  /** Package manager: conda. */
+  Conda = "CONDA",
   /** Package manager: go. */
   Go = "GO",
   /** Package manager: gradle. */
@@ -31572,6 +35258,8 @@ export enum PackageManager {
   Pnpm = "PNPM",
   /** Package manager: poetry. */
   Poetry = "POETRY",
+  /** Package manager: pub. */
+  Pub = "PUB",
   /** Package manager: sbt. */
   Sbt = "SBT",
   /** Package manager: setuptools. */
@@ -31598,9 +35286,14 @@ export type PackagePermissions = {
 /** Namespace-level Package Registry settings */
 export type PackageSettings = {
   __typename?: "PackageSettings";
+  /**
+   * Indicates whether audit events are created when publishing or deleting a package in the namespace (Premium and Ultimate only). Returns `null` if `package_registry_audit_events` feature flag is disabled. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  auditEventsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
   /** When generic_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. Otherwise, this setting has no effect. */
   genericDuplicateExceptionRegex?: Maybe<Scalars["UntrustedRegexp"]["output"]>;
-  /** Indicates whether duplicate generic packages are allowed for this namespace. */
+  /** Indicates whether duplicate generic packages are allowed for the namespace. */
   genericDuplicatesAllowed: Scalars["Boolean"]["output"];
   /** Indicates whether Maven package forwarding is locked for all descendent namespaces. */
   lockMavenPackageRequestsForwarding: Scalars["Boolean"]["output"];
@@ -31610,23 +35303,23 @@ export type PackageSettings = {
   lockPypiPackageRequestsForwarding: Scalars["Boolean"]["output"];
   /** When maven_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. Otherwise, this setting has no effect. */
   mavenDuplicateExceptionRegex?: Maybe<Scalars["UntrustedRegexp"]["output"]>;
-  /** Indicates whether duplicate Maven packages are allowed for this namespace. */
+  /** Indicates whether duplicate Maven packages are allowed for the namespace. */
   mavenDuplicatesAllowed: Scalars["Boolean"]["output"];
-  /** Indicates whether Maven package forwarding is allowed for this namespace. */
+  /** Indicates whether Maven package forwarding is allowed for the namespace. */
   mavenPackageRequestsForwarding?: Maybe<Scalars["Boolean"]["output"]>;
   /** Indicates whether Maven package forwarding settings are locked by a parent namespace. */
   mavenPackageRequestsForwardingLocked: Scalars["Boolean"]["output"];
-  /** Indicates whether npm package forwarding is allowed for this namespace. */
+  /** Indicates whether npm package forwarding is allowed for the namespace. */
   npmPackageRequestsForwarding?: Maybe<Scalars["Boolean"]["output"]>;
   /** Indicates whether npm package forwarding settings are locked by a parent namespace. */
   npmPackageRequestsForwardingLocked: Scalars["Boolean"]["output"];
   /** When nuget_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. Otherwise, this setting has no effect.  */
   nugetDuplicateExceptionRegex?: Maybe<Scalars["UntrustedRegexp"]["output"]>;
-  /** Indicates whether duplicate NuGet packages are allowed for this namespace. */
+  /** Indicates whether duplicate NuGet packages are allowed for the namespace. */
   nugetDuplicatesAllowed: Scalars["Boolean"]["output"];
-  /** Indicates wheather the NuGet symbol server is enabled for this namespace. */
+  /** Indicates whether the NuGet symbol server is enabled for the namespace. */
   nugetSymbolServerEnabled: Scalars["Boolean"]["output"];
-  /** Indicates whether PyPI package forwarding is allowed for this namespace. */
+  /** Indicates whether PyPI package forwarding is allowed for the namespace. */
   pypiPackageRequestsForwarding?: Maybe<Scalars["Boolean"]["output"]>;
   /** Indicates whether PyPI package forwarding settings are locked by a parent namespace. */
   pypiPackageRequestsForwardingLocked: Scalars["Boolean"]["output"];
@@ -31634,7 +35327,7 @@ export type PackageSettings = {
   terraformModuleDuplicateExceptionRegex?: Maybe<
     Scalars["UntrustedRegexp"]["output"]
   >;
-  /** Indicates whether duplicate Terraform packages are allowed for this namespace. */
+  /** Indicates whether duplicate Terraform packages are allowed for the namespace. */
   terraformModuleDuplicatesAllowed: Scalars["Boolean"]["output"];
 };
 
@@ -31661,6 +35354,8 @@ export enum PackageSort {
 export enum PackageStatus {
   /** Packages with a default status */
   Default = "DEFAULT",
+  /** Packages with a deprecated status */
+  Deprecated = "DEPRECATED",
   /** Packages with a error status */
   Error = "ERROR",
   /** Packages with a hidden status */
@@ -31757,51 +35452,43 @@ export type PackagesCleanupPolicy = {
   __typename?: "PackagesCleanupPolicy";
   /** Number of duplicated package files to retain. */
   keepNDuplicatedPackageFiles: PackagesCleanupKeepDuplicatedPackageFilesEnum;
-  /** Next time that this packages cleanup policy will be executed. */
+  /** Next time that the packages cleanup policy will be executed. */
   nextRunAt?: Maybe<Scalars["Time"]["output"]>;
 };
 
 /** A packages protection rule designed to protect packages from being pushed by users with a certain access level. */
 export type PackagesProtectionRule = {
   __typename?: "PackagesProtectionRule";
-  /**
-   * ID of the package protection rule. Introduced in GitLab 16.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.5.
-   */
+  /** Global ID of the package protection rule. */
   id: Scalars["PackagesProtectionRuleID"]["output"];
   /**
-   * Minimum GitLab access required to push packages to the package registry. For example, `MAINTAINER`, `OWNER`, or `ADMIN`. Introduced in GitLab 16.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.5.
+   * Minimum GitLab access required to delete packages from the package registry. Valid values include `OWNER` or `ADMIN`. If the value is `nil`, the default minimum access level is `MAINTAINER`. Available only when feature flag `packages_protected_packages_delete` is enabled. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
    */
-  minimumAccessLevelForPush: PackagesProtectionRuleAccessLevel;
-  /**
-   * Package name protected by the protection rule. For example `@my-scope/my-package-*`. Wildcard character `*` allowed. Introduced in GitLab 16.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.5.
-   */
+  minimumAccessLevelForDelete?: Maybe<PackagesProtectionRuleAccessLevelForDelete>;
+  /** Minimum GitLab access required to push packages to the package registry. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the default minimum access level is `DEVELOPER`. */
+  minimumAccessLevelForPush?: Maybe<PackagesProtectionRuleAccessLevel>;
+  /** Package name protected by the protection rule. For example, `@my-scope/my-package-*`. Wildcard character `*` allowed. */
   packageNamePattern: Scalars["String"]["output"];
-  /**
-   * Package type protected by the protection rule. For example `NPM`. Introduced in GitLab 16.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.5.
-   */
+  /** Package type protected by the protection rule. For example, `NPM`, `PYPI`. */
   packageType: PackagesProtectionRulePackageType;
 };
 
 /** Access level of a package protection rule resource */
 export enum PackagesProtectionRuleAccessLevel {
-  /**
-   * Admin access. Introduced in GitLab 16.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.5.
-   */
+  /** Admin access. */
   Admin = "ADMIN",
-  /**
-   * Maintainer access. Introduced in GitLab 16.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.5.
-   */
+  /** Maintainer access. */
   Maintainer = "MAINTAINER",
-  /**
-   * Owner access. Introduced in GitLab 16.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.5.
-   */
+  /** Owner access. */
+  Owner = "OWNER",
+}
+
+/** Access level for the deletion of a package protection rule resource. */
+export enum PackagesProtectionRuleAccessLevelForDelete {
+  /** Admin access. Available only when feature flag `packages_protected_packages_delete` is enabled. */
+  Admin = "ADMIN",
+  /** Owner access. Available only when feature flag `packages_protected_packages_delete` is enabled. */
   Owner = "OWNER",
 }
 
@@ -31827,12 +35514,18 @@ export type PackagesProtectionRuleEdge = {
 
 /** Package type of a package protection rule resource */
 export enum PackagesProtectionRulePackageType {
+  /** Packages of the Conan format. */
+  Conan = "CONAN",
+  /** Packages of the Maven format. */
+  Maven = "MAVEN",
   /** Packages of the npm format. */
   Npm = "NPM",
   /**
-   * Packages of the PyPI format. Introduced in GitLab 17.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+   * Packages of the NuGet format. Available only when feature flag `packages_protected_packages_nuget` is enabled. Introduced in GitLab 18.0: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 18.0.
    */
+  Nuget = "NUGET",
+  /** Packages of the PyPI format. */
   Pypi = "PYPI",
 }
 
@@ -31905,14 +35598,25 @@ export type PagesDeploymentEdge = {
 /** Represents the Geo replication and verification state of a pages_deployment */
 export type PagesDeploymentRegistry = {
   __typename?: "PagesDeploymentRegistry";
+  /** Indicate if the checksums of the PagesDeploymentRegistry do not match on the primary and secondary. */
+  checksumMismatch?: Maybe<Scalars["Boolean"]["output"]>;
   /** Timestamp when the PagesDeploymentRegistry was created */
   createdAt?: Maybe<Scalars["Time"]["output"]>;
+  /**
+   * Indicate if a forced redownload is to be performed. Deprecated in GitLab 17.10: Removed from registry tables in the database in favor of the newer reusable framework.
+   * @deprecated Removed from registry tables in the database in favor of the newer reusable framework. Deprecated in GitLab 17.10.
+   */
+  forceToRedownload?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the PagesDeploymentRegistry */
   id: Scalars["ID"]["output"];
   /** Error message during sync of the PagesDeploymentRegistry */
   lastSyncFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp of the most recent successful sync of the PagesDeploymentRegistry */
   lastSyncedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Indicate if the PagesDeploymentRegistry is missing on primary. */
+  missingOnPrimary?: Maybe<Scalars["Boolean"]["output"]>;
+  /** ID of the PagesDeploymentRegistry's model record. */
+  modelRecordId?: Maybe<Scalars["Int"]["output"]>;
   /** ID of the Pages Deployment. */
   pagesDeploymentId: Scalars["ID"]["output"];
   /** Timestamp after which the PagesDeploymentRegistry is resynced */
@@ -31923,13 +35627,15 @@ export type PagesDeploymentRegistry = {
   state?: Maybe<RegistryState>;
   /** The local checksum of the PagesDeploymentRegistry */
   verificationChecksum?: Maybe<Scalars["String"]["output"]>;
+  /** The expected checksum of the PagesDeploymentRegistry in case of mismatch. */
+  verificationChecksumMismatched?: Maybe<Scalars["String"]["output"]>;
   /** Error message during verification of the PagesDeploymentRegistry */
   verificationFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp after which the PagesDeploymentRegistry is reverified */
   verificationRetryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed verification attempts of the PagesDeploymentRegistry */
   verificationRetryCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Timestamp when the verification started of PagesDeploymentRegistry */
+  /** Timestamp when the verification of PagesDeploymentRegistry started */
   verificationStartedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Verification state of the PagesDeploymentRegistry */
   verificationState?: Maybe<VerificationStateEnum>;
@@ -31940,12 +35646,19 @@ export type PagesDeploymentRegistry = {
 /** The connection type for PagesDeploymentRegistry. */
 export type PagesDeploymentRegistryConnection = {
   __typename?: "PagesDeploymentRegistryConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<PagesDeploymentRegistryEdge>>>;
   /** A list of nodes. */
   nodes?: Maybe<Array<Maybe<PagesDeploymentRegistry>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** The connection type for PagesDeploymentRegistry. */
+export type PagesDeploymentRegistryConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** An edge in a connection. */
@@ -31983,8 +35696,10 @@ export type PathLock = {
   id: Scalars["PathLockID"]["output"];
   /** Locked path. */
   path?: Maybe<Scalars["String"]["output"]>;
-  /** User that has locked this path. */
+  /** User that has locked the path. */
   user?: Maybe<UserCore>;
+  /** Permissions for the current user on the resource */
+  userPermissions: PathLockPermissions;
 };
 
 /** The connection type for PathLock. */
@@ -32005,6 +35720,12 @@ export type PathLockEdge = {
   cursor: Scalars["String"]["output"];
   /** The item at the end of the edge. */
   node?: Maybe<PathLock>;
+};
+
+export type PathLockPermissions = {
+  __typename?: "PathLockPermissions";
+  /** If `true`, the user can perform `destroy_path_lock` on this resource */
+  destroyPathLock: Scalars["Boolean"]["output"];
 };
 
 /** Represents a Pending Group Membership */
@@ -32146,7 +35867,7 @@ export type PendingProjectMemberMergeRequestInteractionArgs = {
   id: Scalars["MergeRequestID"]["input"];
 };
 
-export type Pipeline = {
+export type Pipeline = PipelineInterface & {
   __typename?: "Pipeline";
   /** Indicates if the pipeline is active. */
   active: Scalars["Boolean"]["output"];
@@ -32184,6 +35905,8 @@ export type Pipeline = {
   downstream?: Maybe<PipelineConnection>;
   /** Duration of the pipeline in seconds. */
   duration?: Maybe<Scalars["Int"]["output"]>;
+  /** Pipeline error messages. */
+  errorMessages?: Maybe<PipelineMessageConnection>;
   /** Reason why the pipeline failed. */
   failureReason?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp of the pipeline's completion. */
@@ -32254,6 +35977,8 @@ export type Pipeline = {
   triggeredByPath?: Maybe<Scalars["String"]["output"]>;
   /** If the user can troubleshoot jobs of a pipeline. */
   troubleshootJobWithAi: Scalars["Boolean"]["output"];
+  /** Type of the pipeline. */
+  type: Scalars["String"]["output"];
   /** Timestamp of the pipeline's last activity. */
   updatedAt: Scalars["Time"]["output"];
   /** Pipeline that triggered the pipeline. */
@@ -32265,7 +35990,7 @@ export type Pipeline = {
   /** Indicates if the pipeline has jobs with `needs` dependencies. */
   usesNeeds?: Maybe<Scalars["Boolean"]["output"]>;
   /** Pipeline warning messages. */
-  warningMessages?: Maybe<Array<PipelineMessage>>;
+  warningMessages?: Maybe<PipelineMessageConnection>;
   /** Indicates if a pipeline has warnings. */
   warnings: Scalars["Boolean"]["output"];
   /** Pipeline YAML errors. */
@@ -32282,6 +36007,13 @@ export type PipelineCodeQualityReportsArgs = {
 };
 
 export type PipelineDownstreamArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type PipelineErrorMessagesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
@@ -32343,6 +36075,13 @@ export type PipelineTestSuiteArgs = {
   buildIds: Array<Scalars["ID"]["input"]>;
 };
 
+export type PipelineWarningMessagesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
 export type PipelineAnalytics = {
   __typename?: "PipelineAnalytics";
   /**
@@ -32350,28 +36089,37 @@ export type PipelineAnalytics = {
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
    */
   aggregate?: Maybe<PipelineAnalyticsPeriod>;
-  /** Labels for the monthly pipeline count. */
+  /** Labels for the monthly pipeline count. Only available for projects. */
   monthPipelinesLabels?: Maybe<Array<Scalars["String"]["output"]>>;
-  /** Total monthly successful pipeline count. */
+  /** Total monthly successful pipeline count. Only available for projects. */
   monthPipelinesSuccessful?: Maybe<Array<Scalars["Int"]["output"]>>;
-  /** Total monthly pipeline count. */
+  /** Total monthly pipeline count. Only available for projects. */
   monthPipelinesTotals?: Maybe<Array<Scalars["Int"]["output"]>>;
-  /** Pipeline times labels. */
+  /** Pipeline times labels. Only available for projects. */
   pipelineTimesLabels?: Maybe<Array<Scalars["String"]["output"]>>;
-  /** Pipeline times. */
+  /** Pipeline times. Only available for projects. */
   pipelineTimesValues?: Maybe<Array<Scalars["Int"]["output"]>>;
-  /** Labels for the weekly pipeline count. */
+  /**
+   * Pipeline analytics shown over time based on the specified filter. Data is aggregated in UTC, with adaptive resolution: hourly for 7-day windows or less, daily for longer periods. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  timeSeries?: Maybe<Array<PipelineAnalyticsPeriod>>;
+  /** Labels for the weekly pipeline count. Only available for projects. */
   weekPipelinesLabels?: Maybe<Array<Scalars["String"]["output"]>>;
-  /** Total weekly successful pipeline count. */
+  /** Total weekly successful pipeline count. Only available for projects. */
   weekPipelinesSuccessful?: Maybe<Array<Scalars["Int"]["output"]>>;
-  /** Total weekly pipeline count. */
+  /** Total weekly pipeline count. Only available for projects. */
   weekPipelinesTotals?: Maybe<Array<Scalars["Int"]["output"]>>;
-  /** Labels for the yearly pipeline count. */
+  /** Labels for the yearly pipeline count. Only available for projects. */
   yearPipelinesLabels?: Maybe<Array<Scalars["String"]["output"]>>;
-  /** Total yearly successful pipeline count. */
+  /** Total yearly successful pipeline count. Only available for projects. */
   yearPipelinesSuccessful?: Maybe<Array<Scalars["Int"]["output"]>>;
-  /** Total yearly pipeline count. */
+  /** Total yearly pipeline count. Only available for projects. */
   yearPipelinesTotals?: Maybe<Array<Scalars["Int"]["output"]>>;
+};
+
+export type PipelineAnalyticsTimeSeriesArgs = {
+  period: AnalyticsAggregationPeriod;
 };
 
 export enum PipelineAnalyticsJobStatus {
@@ -32398,10 +36146,10 @@ export type PipelineAnalyticsPeriod = {
    */
   durationStatistics?: Maybe<CiDurationStatistics>;
   /**
-   * Label for the data point. Introduced in GitLab 17.5: **Status**: Experiment.
+   * Data point label (UTC time). Introduced in GitLab 17.5: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
    */
-  label?: Maybe<Scalars["String"]["output"]>;
+  label?: Maybe<Scalars["Date"]["output"]>;
 };
 
 export type PipelineAnalyticsPeriodCountArgs = {
@@ -32411,14 +36159,25 @@ export type PipelineAnalyticsPeriodCountArgs = {
 /** Represents the Geo sync and verification state of a pipeline artifact */
 export type PipelineArtifactRegistry = {
   __typename?: "PipelineArtifactRegistry";
+  /** Indicate if the checksums of the PipelineArtifactRegistry do not match on the primary and secondary. */
+  checksumMismatch?: Maybe<Scalars["Boolean"]["output"]>;
   /** Timestamp when the PipelineArtifactRegistry was created */
   createdAt?: Maybe<Scalars["Time"]["output"]>;
+  /**
+   * Indicate if a forced redownload is to be performed. Deprecated in GitLab 17.10: Removed from registry tables in the database in favor of the newer reusable framework.
+   * @deprecated Removed from registry tables in the database in favor of the newer reusable framework. Deprecated in GitLab 17.10.
+   */
+  forceToRedownload?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the PipelineArtifactRegistry */
   id: Scalars["ID"]["output"];
   /** Error message during sync of the PipelineArtifactRegistry */
   lastSyncFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp of the most recent successful sync of the PipelineArtifactRegistry */
   lastSyncedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Indicate if the PipelineArtifactRegistry is missing on primary. */
+  missingOnPrimary?: Maybe<Scalars["Boolean"]["output"]>;
+  /** ID of the PipelineArtifactRegistry's model record. */
+  modelRecordId?: Maybe<Scalars["Int"]["output"]>;
   /** ID of the pipeline artifact. */
   pipelineArtifactId: Scalars["ID"]["output"];
   /** Timestamp after which the PipelineArtifactRegistry is resynced */
@@ -32429,13 +36188,15 @@ export type PipelineArtifactRegistry = {
   state?: Maybe<RegistryState>;
   /** The local checksum of the PipelineArtifactRegistry */
   verificationChecksum?: Maybe<Scalars["String"]["output"]>;
+  /** The expected checksum of the PipelineArtifactRegistry in case of mismatch. */
+  verificationChecksumMismatched?: Maybe<Scalars["String"]["output"]>;
   /** Error message during verification of the PipelineArtifactRegistry */
   verificationFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp after which the PipelineArtifactRegistry is reverified */
   verificationRetryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed verification attempts of the PipelineArtifactRegistry */
   verificationRetryCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Timestamp when the verification started of PipelineArtifactRegistry */
+  /** Timestamp when the verification of PipelineArtifactRegistry started */
   verificationStartedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Verification state of the PipelineArtifactRegistry */
   verificationState?: Maybe<VerificationStateEnum>;
@@ -32446,12 +36207,19 @@ export type PipelineArtifactRegistry = {
 /** The connection type for PipelineArtifactRegistry. */
 export type PipelineArtifactRegistryConnection = {
   __typename?: "PipelineArtifactRegistryConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<PipelineArtifactRegistryEdge>>>;
   /** A list of nodes. */
   nodes?: Maybe<Array<Maybe<PipelineArtifactRegistry>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** The connection type for PipelineArtifactRegistry. */
+export type PipelineArtifactRegistryConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** An edge in a connection. */
@@ -32479,32 +36247,6 @@ export type PipelineCancelPayload = {
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
 };
-
-/** Pipeline CI sources */
-export enum PipelineCiSources {
-  /** Pipeline created by an API event */
-  Api = "API",
-  /** Pipeline created by a chat event */
-  Chat = "CHAT",
-  /** Pipeline created by an external event */
-  External = "EXTERNAL",
-  /** Pipeline created by an external pull request event */
-  ExternalPullRequestEvent = "EXTERNAL_PULL_REQUEST_EVENT",
-  /** Pipeline created by a merge request event */
-  MergeRequestEvent = "MERGE_REQUEST_EVENT",
-  /** Pipeline created by a pipeline event */
-  Pipeline = "PIPELINE",
-  /** Pipeline created by a push event */
-  Push = "PUSH",
-  /** Pipeline created by a schedule event */
-  Schedule = "SCHEDULE",
-  /** Pipeline created by a trigger event */
-  Trigger = "TRIGGER",
-  /** Pipeline created by an unknown event */
-  Unknown = "UNKNOWN",
-  /** Pipeline created by a web event */
-  Web = "WEB",
-}
 
 export enum PipelineConfigSourceEnum {
   /** Auto DevOps source. */
@@ -32557,6 +36299,34 @@ export type PipelineCounts = {
   running?: Maybe<Scalars["Int"]["output"]>;
 };
 
+/** Autogenerated input type of PipelineCreate */
+export type PipelineCreateInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Full path of the project that is triggering the pipeline. */
+  projectPath: Scalars["ID"]["input"];
+  /** Ref on which to run the pipeline. */
+  ref: Scalars["String"]["input"];
+  /** Variables for the pipeline. */
+  variables?: InputMaybe<Array<CiVariableInput>>;
+};
+
+/** Autogenerated return type of PipelineCreate. */
+export type PipelineCreatePayload = {
+  __typename?: "PipelineCreatePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Pipeline created after mutation. Null if `async: true`. */
+  pipeline?: Maybe<Pipeline>;
+  /**
+   * ID for checking the pipeline creation status. Null if `async: false`. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  requestId?: Maybe<Scalars["String"]["output"]>;
+};
+
 /** Autogenerated input type of PipelineDestroy */
 export type PipelineDestroyInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -32590,18 +36360,20 @@ export type PipelineExecutionPolicy = OrchestrationPolicy & {
   description: Scalars["String"]["output"];
   /** URL of policy edit page. */
   editPath: Scalars["String"]["output"];
-  /** Indicates whether this policy is enabled. */
+  /** Indicates whether the policy is enabled. */
   enabled: Scalars["Boolean"]["output"];
   /** Name of the policy. */
   name: Scalars["String"]["output"];
   /** Path to the policy file in the project. */
   policyBlobFilePath: Scalars["String"]["output"];
-  /** Scope of the policy */
+  /** Scope of the policy. */
   policyScope?: Maybe<PolicyScope>;
   /** Source of the policy. Its fields depend on the source type. */
   source: SecurityPolicySource;
   /** Timestamp of when the policy YAML was last updated. */
   updatedAt: Scalars["Time"]["output"];
+  /** Warnings associated with the policy. */
+  warnings: Array<Scalars["String"]["output"]>;
   /** YAML definition of the policy. */
   yaml: Scalars["String"]["output"];
 };
@@ -32624,6 +36396,64 @@ export type PipelineExecutionPolicyEdge = {
   cursor: Scalars["String"]["output"];
   /** The item at the end of the edge. */
   node?: Maybe<PipelineExecutionPolicy>;
+};
+
+/** Represents the pipeline execution schedule policy */
+export type PipelineExecutionSchedulePolicy = OrchestrationPolicy & {
+  __typename?: "PipelineExecutionSchedulePolicy";
+  /** Description of the policy. */
+  description: Scalars["String"]["output"];
+  /** URL of policy edit page. */
+  editPath: Scalars["String"]["output"];
+  /** Indicates whether the policy is enabled. */
+  enabled: Scalars["Boolean"]["output"];
+  /** Name of the policy. */
+  name: Scalars["String"]["output"];
+  /** Path to the policy file in the project. */
+  policyBlobFilePath: Scalars["String"]["output"];
+  /** Scope of the policy. */
+  policyScope?: Maybe<PolicyScope>;
+  /** Source of the policy. Its fields depend on the source type. */
+  source: SecurityPolicySource;
+  /** Timestamp of when the policy YAML was last updated. */
+  updatedAt: Scalars["Time"]["output"];
+  /** Warnings associated with the policy. */
+  warnings: Array<Scalars["String"]["output"]>;
+  /** YAML definition of the policy. */
+  yaml: Scalars["String"]["output"];
+};
+
+/** The connection type for PipelineExecutionSchedulePolicy. */
+export type PipelineExecutionSchedulePolicyConnection = {
+  __typename?: "PipelineExecutionSchedulePolicyConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<PipelineExecutionSchedulePolicyEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<PipelineExecutionSchedulePolicy>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type PipelineExecutionSchedulePolicyEdge = {
+  __typename?: "PipelineExecutionSchedulePolicyEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<PipelineExecutionSchedulePolicy>;
+};
+
+export type PipelineInterface = {
+  /** ID of the pipeline. */
+  id?: Maybe<Scalars["ID"]["output"]>;
+  /** Internal ID of the pipeline. */
+  iid?: Maybe<Scalars["String"]["output"]>;
+  /** Relative path to the pipeline's page. */
+  path?: Maybe<Scalars["String"]["output"]>;
+  /** Project the pipeline belongs to. */
+  project?: Maybe<ProjectInterface>;
+  /** Pipeline user. */
+  user?: Maybe<UserCore>;
 };
 
 /** CI/CD variables added to a manual pipeline. */
@@ -32673,6 +36503,40 @@ export type PipelineMessage = {
   content: Scalars["String"]["output"];
   /** ID of the pipeline message. */
   id: Scalars["ID"]["output"];
+};
+
+/** The connection type for PipelineMessage. */
+export type PipelineMessageConnection = {
+  __typename?: "PipelineMessageConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<PipelineMessageEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<PipelineMessage>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type PipelineMessageEdge = {
+  __typename?: "PipelineMessageEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<PipelineMessage>;
+};
+
+export type PipelineMinimalAccess = PipelineInterface & {
+  __typename?: "PipelineMinimalAccess";
+  /** ID of the pipeline. */
+  id: Scalars["ID"]["output"];
+  /** Internal ID of the pipeline. */
+  iid?: Maybe<Scalars["String"]["output"]>;
+  /** Relative path to the pipeline's page. */
+  path?: Maybe<Scalars["String"]["output"]>;
+  /** Project the pipeline belongs to. */
+  project?: Maybe<ProjectInterface>;
+  /** Pipeline user. */
+  user?: Maybe<UserCore>;
 };
 
 export type PipelinePermissions = {
@@ -32725,6 +36589,11 @@ export type PipelineSchedule = {
   forTag: Scalars["Boolean"]["output"];
   /** ID of the pipeline schedule. */
   id: Scalars["ID"]["output"];
+  /**
+   * Inputs configured for the pipeline schedule. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  inputs?: Maybe<CiInputsFieldConnection>;
   /** Last pipeline object. */
   lastPipeline?: Maybe<Pipeline>;
   /** Time when the next pipeline will run. */
@@ -32747,6 +36616,14 @@ export type PipelineSchedule = {
   userPermissions: PipelineSchedulePermissions;
   /** Pipeline schedule variables. */
   variables?: Maybe<PipelineScheduleVariableConnection>;
+};
+
+/** Represents a pipeline schedule */
+export type PipelineScheduleInputsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** Represents a pipeline schedule */
@@ -33052,11 +36929,6 @@ export type PipelineSecurityReportFinding = {
   mergeRequest?: Maybe<MergeRequest>;
   /** Project on which the vulnerability finding was found. */
   project?: Maybe<Project>;
-  /**
-   * Same as uuid. It is strongly suggested to use the uuid field instead. Deprecated in GitLab 16.1: Use uuid instead.
-   * @deprecated Use uuid instead. Deprecated in GitLab 16.1.
-   */
-  projectFingerprint?: Maybe<Scalars["String"]["output"]>;
   /** Remediations of the security report finding. */
   remediations?: Maybe<Array<VulnerabilityRemediationType>>;
   /** Type of the security report that found the vulnerability finding. */
@@ -33065,6 +36937,8 @@ export type PipelineSecurityReportFinding = {
   scanner?: Maybe<VulnerabilityScanner>;
   /** Severity of the vulnerability finding. */
   severity?: Maybe<VulnerabilitySeverity>;
+  /** List of severity changes for the vulnerability finding. */
+  severityOverrides?: Maybe<SeverityOverrideConnection>;
   /** Solution for resolving the security report finding. */
   solution?: Maybe<Scalars["String"]["output"]>;
   /** GitLab Flavored Markdown rendering of `solution` */
@@ -33085,6 +36959,14 @@ export type PipelineSecurityReportFinding = {
 
 /** Represents vulnerability finding of a security report on the pipeline. */
 export type PipelineSecurityReportFindingIssueLinksArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** Represents vulnerability finding of a security report on the pipeline. */
+export type PipelineSecurityReportFindingSeverityOverridesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
@@ -33163,6 +37045,8 @@ export type PipelineTrigger = {
   canAccessProject: Scalars["Boolean"]["output"];
   /** Description of the pipeline trigger token. */
   description?: Maybe<Scalars["String"]["output"]>;
+  /** Timestamp of when the pipeline trigger token expires. */
+  expiresAt?: Maybe<Scalars["Time"]["output"]>;
   /** Indicates if the token is exposed. */
   hasTokenExposed: Scalars["Boolean"]["output"];
   /** ID of the pipeline trigger token. */
@@ -33194,6 +37078,8 @@ export type PipelineTriggerCreateInput = {
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
   /** Description of the pipeline trigger token. */
   description: Scalars["String"]["input"];
+  /** Timestamp of when the pipeline trigger token expires. */
+  expiresAt?: InputMaybe<Scalars["Time"]["input"]>;
   /** Full path of the project that the pipeline trigger token to mutate is in. */
   projectPath: Scalars["ID"]["input"];
 };
@@ -33256,6 +37142,18 @@ export type PipelineTriggerUpdatePayload = {
   pipelineTrigger?: Maybe<PipelineTrigger>;
 };
 
+/** Pipeline variables minimum override roles. */
+export enum PipelineVariablesDefaultRoleType {
+  /** Developer */
+  Developer = "DEVELOPER",
+  /** Maintainer */
+  Maintainer = "MAINTAINER",
+  /** No one allowed */
+  NoOneAllowed = "NO_ONE_ALLOWED",
+  /** Owner */
+  Owner = "OWNER",
+}
+
 /** Represents policy violation for `any_merge_request` report_type */
 export type PolicyAnyMergeRequestViolation = {
   __typename?: "PolicyAnyMergeRequestViolation";
@@ -33277,11 +37175,30 @@ export type PolicyApprovalGroup = {
   webUrl: Scalars["String"]["output"];
 };
 
+/** Represents the approval settings of merge request overridden by a policy. */
+export type PolicyApprovalSettingsOverride = {
+  __typename?: "PolicyApprovalSettingsOverride";
+  /**
+   * Path to edit the policy. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  editPath?: Maybe<Scalars["String"]["output"]>;
+  /**
+   * Policy name. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  name?: Maybe<Scalars["String"]["output"]>;
+  /** Overridden project approval settings. */
+  settings: Scalars["JSON"]["output"];
+};
+
 /** Multiple approvers action */
 export type PolicyApproversType = {
   __typename?: "PolicyApproversType";
   /** All potential approvers of the group type, including groups inaccessible to the user. */
   allGroups?: Maybe<Array<PolicyApprovalGroup>>;
+  /** Approvers of the custom role type. Users belonging to these role(s) alone will be approvers. */
+  customRoles?: Maybe<Array<MemberRole>>;
   /** Approvers of the role type. Users belonging to these role(s) alone will be approvers. */
   roles?: Maybe<Array<MemberAccessLevelName>>;
   /** Approvers of the user type. */
@@ -33428,6 +37345,8 @@ export type PolicyViolationDetails = {
   policies: Array<PolicyViolationInfo>;
   /** Represents the violations of `scan_finding` rules for previously existing vulnerabilities. */
   previousScanFinding: Array<PolicyScanFindingViolation>;
+  /** Total count of violations. */
+  violationsCount: Scalars["Int"]["output"];
 };
 
 export enum PolicyViolationErrorType {
@@ -33446,7 +37365,18 @@ export type PolicyViolationInfo = {
   name: Scalars["String"]["output"];
   /** Represents the report type. */
   reportType: ApprovalReportType;
+  /** Represents the status of the violated policy. */
+  status?: Maybe<PolicyViolationStatus>;
 };
+
+export enum PolicyViolationStatus {
+  /** Represents a failed policy violation. */
+  Failed = "FAILED",
+  /** Represents a running policy violation. */
+  Running = "RUNNING",
+  /** Represents a policy violation warning. */
+  Warning = "WARNING",
+}
 
 export type PreviewBillableUserChange = {
   __typename?: "PreviewBillableUserChange";
@@ -33457,6 +37387,35 @@ export type PreviewBillableUserChange = {
   /**  If the group will have an increased overage after change. */
   willIncreaseOverage?: Maybe<Scalars["Boolean"]["output"]>;
 };
+
+/** Representation of who is provided access to. For eg: User/Role/MemberRole/Group. */
+export type Principal = {
+  __typename?: "Principal";
+  /** ID of the principal (User, MemberRole, Role, Group). */
+  id: Scalars["ID"]["output"];
+  /** Name of the principal (User, MemberRole, Role, Group). */
+  type: Scalars["String"]["output"];
+};
+
+/** Representation of who is provided access to. For eg: User/Role/MemberRole/Group. */
+export type PrincipalInput = {
+  /** ID of the principal. */
+  id: Scalars["Int"]["input"];
+  /** Type of the principal. */
+  type: PrincipalType;
+};
+
+/** Types of principal that can have secret permissions */
+export enum PrincipalType {
+  /** group. */
+  Group = "GROUP",
+  /** member role. */
+  MemberRole = "MEMBER_ROLE",
+  /** predefined role. */
+  Role = "ROLE",
+  /** user. */
+  User = "USER",
+}
 
 /** Autogenerated input type of ProcessUserBillablePromotionRequest */
 export type ProcessUserBillablePromotionRequestInput = {
@@ -33543,649 +37502,729 @@ export enum ProductAnalyticsState {
   WaitingForEvents = "WAITING_FOR_EVENTS",
 }
 
-export type Project = Todoable & {
-  __typename?: "Project";
-  /** Size limit for the repository in bytes. */
-  actualRepositorySizeLimit?: Maybe<Scalars["Float"]["output"]>;
-  /** Agent configurations defined by the project */
-  agentConfigurations?: Maybe<AgentConfigurationConnection>;
-  /**
-   * Find a specific AI Agent. Introduced in GitLab 16.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
-   */
-  aiAgent?: Maybe<AiAgent>;
-  /**
-   * Ai Agents for the project. Introduced in GitLab 16.9: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.9.
-   */
-  aiAgents?: Maybe<AiAgentConnection>;
-  /**
-   * AI-related metrics. Introduced in GitLab 16.11: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
-   */
-  aiMetrics?: Maybe<AiMetrics>;
-  /**
-   * AI-related data. Introduced in GitLab 17.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
-   */
-  aiUsageData?: Maybe<AiUsageData>;
-  /**
-   * AI-related user metrics. Introduced in GitLab 17.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
-   */
-  aiUserMetrics?: Maybe<AiUserMetricsConnection>;
-  /** A single Alert Management alert of the project. */
-  alertManagementAlert?: Maybe<AlertManagementAlert>;
-  /** Counts of alerts by status for the project. */
-  alertManagementAlertStatusCounts?: Maybe<AlertManagementAlertStatusCountsType>;
-  /** Alert Management alerts of the project. */
-  alertManagementAlerts?: Maybe<AlertManagementAlertConnection>;
-  /** HTTP Integrations which can receive alerts for the project. */
-  alertManagementHttpIntegrations?: Maybe<AlertManagementHttpIntegrationConnection>;
-  /** Integrations which can receive alerts for the project. */
-  alertManagementIntegrations?: Maybe<AlertManagementIntegrationConnection>;
-  /** Extract alert fields from payload for custom mapping. */
-  alertManagementPayloadFields?: Maybe<Array<AlertManagementPayloadAlertField>>;
-  /** If `only_allow_merge_if_pipeline_succeeds` is true, indicates if merge requests of the project can also be merged with skipped jobs. */
-  allowMergeOnSkippedPipeline?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Project allows assigning multiple users to a merge request. */
-  allowsMultipleMergeRequestAssignees: Scalars["Boolean"]["output"];
-  /** Project allows assigning multiple reviewers to a merge request. */
-  allowsMultipleMergeRequestReviewers: Scalars["Boolean"]["output"];
-  /** API fuzzing configuration for the project.  */
-  apiFuzzingCiConfiguration?: Maybe<ApiFuzzingCiConfiguration>;
-  /** Approval Policies of the project */
-  approvalPolicies?: Maybe<ApprovalPolicyConnection>;
-  /** Indicates the archived status of the project. */
-  archived?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Indicates if issues referenced by merge requests and commits within the default branch are closed automatically. */
-  autocloseReferencedIssues?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Search users for autocompletion */
-  autocompleteUsers?: Maybe<Array<AutocompletedUser>>;
-  /** List of available deploy keys */
-  availableDeployKeys?: Maybe<AccessLevelDeployKeyConnection>;
-  /** URL to avatar image file of the project. */
-  avatarUrl?: Maybe<Scalars["String"]["output"]>;
-  /** A single board of the project. */
-  board?: Maybe<Board>;
-  /** Boards of the project. */
-  boards?: Maybe<BoardConnection>;
-  /** Branch rules configured for the project. */
-  branchRules?: Maybe<BranchRuleConnection>;
-  /** Authorized cluster agents for the project through ci_access keyword. */
-  ciAccessAuthorizedAgents?: Maybe<ClusterAgentAuthorizationCiAccessConnection>;
-  /** CI/CD settings for the project. */
-  ciCdSettings?: Maybe<ProjectCiCdSetting>;
-  /** Path of the CI configuration file. */
-  ciConfigPathOrDefault: Scalars["String"]["output"];
-  /**
-   * CI/CD config variable. Introduced in GitLab 15.3: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.3.
-   */
-  ciConfigVariables?: Maybe<Array<CiConfigVariable>>;
-  /**
-   * Pipeline subscriptions where this project is the upstream project.When this project's pipeline completes, a pipeline is triggered in the downstream project. Introduced in GitLab 17.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
-   */
-  ciDownstreamProjectSubscriptions?: Maybe<CiProjectSubscriptionConnection>;
-  /**
-   * The CI Job Tokens authorization logs. Introduced in GitLab 17.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
-   */
-  ciJobTokenAuthLogs?: Maybe<CiJobTokenAuthLogConnection>;
-  /** The CI Job Tokens scope of access. */
-  ciJobTokenScope?: Maybe<CiJobTokenScopeType>;
-  /**
-   * Pipeline subscriptions for projects subscribed to the project. Deprecated in GitLab 17.6: Use `ciDownstreamProjectSubscriptions`.
-   * @deprecated Use `ciDownstreamProjectSubscriptions`. Deprecated in GitLab 17.6.
-   */
-  ciSubscribedProjects?: Maybe<CiSubscriptionsProjectConnection>;
-  /**
-   * Pipeline subscriptions for the project. Deprecated in GitLab 17.6: Use `ciUpstreamProjectSubscriptions`.
-   * @deprecated Use `ciUpstreamProjectSubscriptions`. Deprecated in GitLab 17.6.
-   */
-  ciSubscriptionsProjects?: Maybe<CiSubscriptionsProjectConnection>;
-  /** Find a single CI/CD template by name. */
-  ciTemplate?: Maybe<CiTemplate>;
-  /**
-   * Pipeline subscriptions where this project is the downstream project.When an upstream project's pipeline completes, a pipeline is triggered in the downstream project (this project). Introduced in GitLab 17.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
-   */
-  ciUpstreamProjectSubscriptions?: Maybe<CiProjectSubscriptionConnection>;
-  /** List of the project's CI/CD variables. */
-  ciVariables?: Maybe<CiProjectVariableConnection>;
-  /** Find a single cluster agent by name. */
-  clusterAgent?: Maybe<ClusterAgent>;
-  /** Cluster agents associated with the project. */
-  clusterAgents?: Maybe<ClusterAgentConnection>;
-  /** Code coverage summary associated with the project. */
-  codeCoverageSummary?: Maybe<CodeCoverageSummary>;
-  /**
-   * Get tag names containing a given commit. Introduced in GitLab 16.0: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.0.
-   */
-  commitReferences?: Maybe<CommitReferences>;
-  /** Compliance frameworks associated with the project. */
-  complianceFrameworks?: Maybe<ComplianceFrameworkConnection>;
-  /** Compliance standards adherence for the project. */
-  complianceStandardsAdherence?: Maybe<ComplianceStandardsAdherenceConnection>;
-  /**
-   * Container expiration policy of the project. Deprecated in GitLab 17.5: Use `container_tags_expiration_policy`.
-   * @deprecated Use `container_tags_expiration_policy`. Deprecated in GitLab 17.5.
-   */
-  containerExpirationPolicy?: Maybe<ContainerExpirationPolicy>;
-  /** Indicates if Container Registry is enabled for the current user */
-  containerRegistryEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /**
-   * Container protection rules for the project. Introduced in GitLab 16.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
-   */
-  containerRegistryProtectionRules?: Maybe<ContainerRegistryProtectionRuleConnection>;
-  /** Container repositories of the project. */
-  containerRepositories?: Maybe<ContainerRepositoryConnection>;
-  /** Number of container repositories in the project. */
-  containerRepositoriesCount: Scalars["Int"]["output"];
-  /** Container tags expiration policy of the project. */
-  containerTagsExpirationPolicy?: Maybe<ContainerTagsExpirationPolicy>;
-  /** Find corpuses of the project. */
-  corpuses?: Maybe<CoverageFuzzingCorpusConnection>;
-  /** Timestamp of the project creation. */
-  createdAt?: Maybe<Scalars["Time"]["output"]>;
-  /**
-   * Visualizations of the project or associated configuration project. Introduced in GitLab 16.1: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.1.
-   */
-  customizableDashboardVisualizations?: Maybe<CustomizableDashboardVisualizationConnection>;
-  /**
-   * Customizable dashboards for the project. Introduced in GitLab 15.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.6.
-   */
-  customizableDashboards?: Maybe<CustomizableDashboardConnection>;
-  /** DAST Profile associated with the project. */
-  dastProfile?: Maybe<DastProfile>;
-  /** DAST Profiles associated with the project. */
-  dastProfiles?: Maybe<DastProfileConnection>;
-  /** DAST scanner profiles associated with the project. */
-  dastScannerProfiles?: Maybe<DastScannerProfileConnection>;
-  /** DAST Site Profile associated with the project. */
-  dastSiteProfile?: Maybe<DastSiteProfile>;
-  /** DAST Site Profiles associated with the project. */
-  dastSiteProfiles?: Maybe<DastSiteProfileConnection>;
-  /** DAST Site Validations associated with the project. */
-  dastSiteValidations?: Maybe<DastSiteValidationConnection>;
-  /** Data transfer data point for a specific period. This is mocked data under a development feature flag. */
-  dataTransfer?: Maybe<ProjectDataTransfer>;
-  /**
-   * Software dependencies used by the project. Introduced in GitLab 15.9: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.9.
-   */
-  dependencies?: Maybe<DependencyConnection>;
-  /** Packages Dependency Proxy settings for the project. Requires the packages and dependency proxy to be enabled in the config. Requires the packages feature to be enabled at the project level.  */
-  dependencyProxyPackagesSetting?: Maybe<DependencyProxyPackagesSetting>;
-  /** Details of the deployment of the project. */
-  deployment?: Maybe<Deployment>;
-  /** Short description of the project. */
-  description?: Maybe<Scalars["String"]["output"]>;
-  /** GitLab Flavored Markdown rendering of `description` */
-  descriptionHtml?: Maybe<Scalars["String"]["output"]>;
-  /** Detailed import status of the project. */
-  detailedImportStatus?: Maybe<DetailedImportStatus>;
-  /** Project's DORA metrics. */
-  dora?: Maybe<Dora>;
-  /**
-   * Indicates whether GitLab Duo features are enabled for the project. Introduced in GitLab 16.9: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.9.
-   */
-  duoFeaturesEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** A single environment of the project. */
-  environment?: Maybe<Environment>;
-  /** Environments of the project. This field can only be resolved for one project in any single request. */
-  environments?: Maybe<EnvironmentConnection>;
-  /**
-   * Flow metrics for value stream analytics. Introduced in GitLab 15.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
-   */
-  flowMetrics?: Maybe<ProjectValueStreamAnalyticsFlowMetrics>;
-  /**
-   * Details of the fork project compared to its upstream project. Introduced in GitLab 15.7: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.7.
-   */
-  forkDetails?: Maybe<ForkDetails>;
-  /** Namespaces in which the current user can fork the project into. */
-  forkTargets?: Maybe<NamespaceConnection>;
-  /** Access level required for forking access. */
-  forkingAccessLevel?: Maybe<ProjectFeatureAccess>;
-  /** Number of times the project has been forked. */
-  forksCount: Scalars["Int"]["output"];
-  /** Full path of the project. */
-  fullPath: Scalars["ID"]["output"];
-  /** Preview Billable User Changes */
-  gitlabSubscriptionsPreviewBillableUserChange?: Maybe<PreviewBillableUserChange>;
-  /**
-   * Google Artifact Registry repository. Returns `null` if the GitLab instance is not a SaaS instance. Introduced in GitLab 16.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
-   */
-  googleCloudArtifactRegistryRepository?: Maybe<GoogleCloudArtifactRegistryRepository>;
-  /** Grafana integration details for the project. */
-  grafanaIntegration?: Maybe<GrafanaIntegration>;
-  /** Group of the project. */
-  group?: Maybe<Group>;
-  /** Indicates whether Jira issue creation from vulnerabilities is enabled. */
-  hasJiraVulnerabilityIssueCreationEnabled: Scalars["Boolean"]["output"];
-  /** URL to connect to the project via HTTPS. */
-  httpUrlToRepo?: Maybe<Scalars["String"]["output"]>;
-  /** ID of the project. */
-  id: Scalars["ID"]["output"];
-  /** Status of import background job of the project. */
-  importStatus?: Maybe<Scalars["String"]["output"]>;
-  /** Incident Management escalation policies of the project. */
-  incidentManagementEscalationPolicies?: Maybe<EscalationPolicyTypeConnection>;
-  /** Incident Management escalation policy of the project. */
-  incidentManagementEscalationPolicy?: Maybe<EscalationPolicyType>;
-  /** Incident Management On-call schedules of the project. */
-  incidentManagementOncallSchedules?: Maybe<IncidentManagementOncallScheduleConnection>;
-  /** Incident Management Timeline event associated with the incident. */
-  incidentManagementTimelineEvent?: Maybe<TimelineEventType>;
-  /** Timeline event tags for the project. */
-  incidentManagementTimelineEventTags?: Maybe<Array<TimelineEventTagType>>;
-  /** Incident Management Timeline events associated with the incident. */
-  incidentManagementTimelineEvents?: Maybe<TimelineEventTypeConnection>;
-  /** List of CI/CD variables the project inherited from its parent group and ancestors. */
-  inheritedCiVariables?: Maybe<InheritedCiVariableConnection>;
-  /**
-   * Indicates if delayed project deletion is enabled. Introduced in GitLab 16.11: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
-   */
-  isAdjournedDeletionEnabled: Scalars["Boolean"]["output"];
-  /**
-   * Indicates if a project is a catalog resource. Introduced in GitLab 15.11: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.11.
-   */
-  isCatalogResource?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Project is forked. */
-  isForked: Scalars["Boolean"]["output"];
-  /** A single issue of the project. */
-  issue?: Maybe<Issue>;
-  /** Counts of issues by status for the project. */
-  issueStatusCounts?: Maybe<IssueStatusCountsType>;
-  /** Issues of the project. */
-  issues?: Maybe<IssueConnection>;
-  /** Access level required for issues access. */
-  issuesAccessLevel?: Maybe<ProjectFeatureAccess>;
-  /** Indicates if Issues are enabled for the current user */
-  issuesEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Find iteration cadences. */
-  iterationCadences?: Maybe<IterationCadenceConnection>;
-  /** Find iterations. */
-  iterations?: Maybe<IterationConnection>;
-  /** Status of Jira import background job of the project. */
-  jiraImportStatus?: Maybe<Scalars["String"]["output"]>;
-  /** Jira imports into the project. */
-  jiraImports?: Maybe<JiraImportConnection>;
-  /** One job belonging to the project, selected by ID. */
-  job?: Maybe<CiJob>;
-  /** Jobs of a project. This field can only be resolved for one project in any single request. */
-  jobs?: Maybe<CiJobConnection>;
-  /** Indicates if CI/CD pipeline jobs are enabled for the current user. */
-  jobsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Label available on this project. */
-  label?: Maybe<Label>;
-  /** Labels available on this project. */
-  labels?: Maybe<LabelConnection>;
-  /** Programming languages used in the project. */
-  languages?: Maybe<Array<RepositoryLanguage>>;
-  /** Timestamp of the project last activity. */
-  lastActivityAt?: Maybe<Scalars["Time"]["output"]>;
-  /** Indicates if the project has Large File Storage (LFS) enabled. */
-  lfsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /**
-   * Date when project was scheduled to be deleted. Introduced in GitLab 16.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
-   */
-  markedForDeletionOn?: Maybe<Scalars["Time"]["output"]>;
-  /** The maximum access level of the current user in the project. */
-  maxAccessLevel: AccessLevel;
-  /**
-   * Member roles available for the group. Introduced in GitLab 16.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.5.
-   */
-  memberRoles?: Maybe<MemberRoleConnection>;
-  /** Template used to create merge commit message in merge requests. */
-  mergeCommitTemplate?: Maybe<Scalars["String"]["output"]>;
-  /** A single merge request of the project. */
-  mergeRequest?: Maybe<MergeRequest>;
-  /** Compliance violations reported on merge requests merged within the project. */
-  mergeRequestViolations?: Maybe<ComplianceViolationConnection>;
-  /** Merge requests of the project. */
-  mergeRequests?: Maybe<MergeRequestConnection>;
-  /** Access level required for merge requests access. */
-  mergeRequestsAccessLevel?: Maybe<ProjectFeatureAccess>;
-  /** Indicates that committers of the given merge request cannot approve. */
-  mergeRequestsDisableCommittersApproval: Scalars["Boolean"]["output"];
-  /** Indicates if Merge requests are enabled for the current user */
-  mergeRequestsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Indicates if no merge commits should be created and all merges should instead be fast-forwarded, which means that merging is only allowed if the branch could be fast-forwarded. */
-  mergeRequestsFfOnlyEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /**
-   * Merge trains available to the project. Introduced in GitLab 17.1: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.1.
-   */
-  mergeTrains?: Maybe<MergeTrainConnection>;
-  /** Milestones of the project. */
-  milestones?: Maybe<MilestoneConnection>;
-  /**
-   * Finds machine learning models Introduced in GitLab 16.8: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.8.
-   */
-  mlModels?: Maybe<MlModelConnection>;
-  /** Name of the project (without namespace). */
-  name: Scalars["String"]["output"];
-  /** Full name of the project with its namespace. */
-  nameWithNamespace: Scalars["String"]["output"];
-  /** Namespace of the project. */
-  namespace?: Maybe<Namespace>;
-  /** Environments for this project with nested folders, can only be resolved for one project in any single request */
-  nestedEnvironments?: Maybe<NestedEnvironmentConnection>;
-  /**
-   * Logs attached to the project. Introduced in GitLab 17.4: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
-   */
-  observabilityLogsLinks?: Maybe<ObservabilityLogConnection>;
-  /**
-   * Metrics attached to the project. Introduced in GitLab 17.4: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
-   */
-  observabilityMetricsLinks?: Maybe<ObservabilityMetricConnection>;
-  /**
-   * Traces attached to the project. Introduced in GitLab 17.4: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
-   */
-  observabilityTracesLinks?: Maybe<ObservabilityTraceConnection>;
-  /** Indicates if merge requests of the project can only be merged when all the discussions are resolved. */
-  onlyAllowMergeIfAllDiscussionsAreResolved?: Maybe<
-    Scalars["Boolean"]["output"]
-  >;
-  /** Indicates that merges of merge requests should be blocked unless all status checks have passed. */
-  onlyAllowMergeIfAllStatusChecksPassed?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Indicates if merge requests of the project can only be merged with successful jobs. */
-  onlyAllowMergeIfPipelineSucceeds?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Number of open issues for the project. */
-  openIssuesCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Number of open merge requests for the project. */
-  openMergeRequestsCount?: Maybe<Scalars["Int"]["output"]>;
-  /**
-   * Path for editing project at the organization level. Introduced in GitLab 16.11: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
-   */
-  organizationEditPath?: Maybe<Scalars["String"]["output"]>;
-  /** Packages of the project. */
-  packages?: Maybe<PackageConnection>;
-  /** Packages cleanup policy for the project. */
-  packagesCleanupPolicy?: Maybe<PackagesCleanupPolicy>;
-  /**
-   * Packages protection rules for the project. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
-  packagesProtectionRules?: Maybe<PackagesProtectionRuleConnection>;
-  /** List of the project's Pages Deployments. */
-  pagesDeployments?: Maybe<PagesDeploymentConnection>;
-  /** Path of the project. */
-  path: Scalars["String"]["output"];
-  /** The project's path locks. */
-  pathLocks?: Maybe<PathLockConnection>;
-  /**
-   * Pending member promotions of the project. Introduced in GitLab 17.3: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.3.
-   */
-  pendingMemberApprovals?: Maybe<MemberApprovalConnection>;
-  /**
-   * Date when project will be deleted if delayed project deletion is enabled. Introduced in GitLab 16.11: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
-   */
-  permanentDeletionDate?: Maybe<Scalars["String"]["output"]>;
-  /** Build pipeline of the project. */
-  pipeline?: Maybe<Pipeline>;
-  /** Pipeline analytics. */
-  pipelineAnalytics?: Maybe<PipelineAnalytics>;
-  /** Build pipeline counts of the project. */
-  pipelineCounts?: Maybe<PipelineCounts>;
-  /** Pipeline Execution Policies of the project. */
-  pipelineExecutionPolicies?: Maybe<PipelineExecutionPolicyConnection>;
-  /** Pipeline schedules of the project. This field can only be resolved for one project per request. */
-  pipelineSchedules?: Maybe<PipelineScheduleConnection>;
-  /**
-   * List of pipeline trigger tokens. Introduced in GitLab 16.3: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.3.
-   */
-  pipelineTriggers?: Maybe<PipelineTriggerConnection>;
-  /** Build pipelines of the project. */
-  pipelines?: Maybe<PipelineConnection>;
-  /** Indicates if an associated issue from Jira is required. */
-  preventMergeWithoutJiraIssueEnabled: Scalars["Boolean"]["output"];
-  /** Indicates if a link to create or view a merge request should display after a push to Git repositories of the project from the command line. */
-  printingMergeRequestLinkEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /**
-   * Count of all events used, broken down by month Introduced in GitLab 16.7: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.7.
-   */
-  productAnalyticsEventsStored?: Maybe<Array<MonthlyUsage>>;
-  /**
-   * Product Analytics instrumentation key assigned to the project. Introduced in GitLab 16.0: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.0.
-   */
-  productAnalyticsInstrumentationKey?: Maybe<Scalars["String"]["output"]>;
-  /** Project-level settings for product analytics. */
-  productAnalyticsSettings?: Maybe<ProductAnalyticsProjectSettings>;
-  /**
-   * Current state of the product analytics stack for this project.Can only be called for one project in a single request Introduced in GitLab 15.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
-   */
-  productAnalyticsState?: Maybe<ProductAnalyticsState>;
-  /** Members of the project. */
-  projectMembers?: Maybe<MemberInterfaceConnection>;
-  /**
-   * Plan limits for the current project. Introduced in GitLab 16.9: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.9.
-   */
-  projectPlanLimits?: Maybe<ProjectPlanLimits>;
-  /**
-   * List of unprotected branches, ignoring any wildcard branch rules Introduced in GitLab 16.9: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.9.
-   */
-  protectableBranches?: Maybe<Array<Scalars["String"]["output"]>>;
-  /** Indicates if there is public access to pipelines and job details of the project, including output logs and artifacts. */
-  publicJobs?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Project's push rules settings. */
-  pushRules?: Maybe<PushRules>;
-  /** List of recently visited boards of the project. Maximum size is 4. */
-  recentIssueBoards?: Maybe<BoardConnection>;
-  /** A single release of the project. */
-  release?: Maybe<Release>;
-  /** Releases of the project. */
-  releases?: Maybe<ReleaseConnection>;
-  /** Indicates if `Delete source branch` option should be enabled by default for all new merge requests of the project. */
-  removeSourceBranchAfterMerge?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Git repository of the project. */
-  repository?: Maybe<Repository>;
-  /** Size of repository that exceeds the limit in bytes. */
-  repositorySizeExcess?: Maybe<Scalars["Float"]["output"]>;
-  /** Indicates if users can request member access to the project. */
-  requestAccessEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Find a single requirement. */
-  requirement?: Maybe<Requirement>;
-  /** Number of requirements for the project by their state. */
-  requirementStatesCount?: Maybe<RequirementStatesCount>;
-  /** Find requirements. */
-  requirements?: Maybe<RequirementConnection>;
-  /**
-   * Information used for provisioning the runner on a cloud provider. Returns `null` if the GitLab instance is not a SaaS instance. Introduced in GitLab 16.9: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.9.
-   */
-  runnerCloudProvisioning?: Maybe<CiRunnerCloudProvisioning>;
-  /** Find runners visible to the current user. */
-  runners?: Maybe<CiRunnerConnection>;
-  /** SAST CI configuration for the project. */
-  sastCiConfiguration?: Maybe<SastCiConfiguration>;
-  /**
-   * Saved replies available to the project. Available only when feature flag `project_saved_replies_flag` is enabled. Introduced in GitLab 16.11: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
-   */
-  savedReplies?: Maybe<ProjectSavedReplyConnection>;
-  /**
-   * Saved reply in the project. Available only when feature flag `group_saved_replies_flag` is enabled. Introduced in GitLab 16.11: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
-   */
-  savedReply?: Maybe<ProjectSavedReply>;
-  /** Scan Execution Policies of the project */
-  scanExecutionPolicies?: Maybe<ScanExecutionPolicyConnection>;
-  /**
-   * Scan Result Policies of the project Deprecated in GitLab 16.9: Use `approvalPolicies`.
-   * @deprecated Use `approvalPolicies`. Deprecated in GitLab 16.9.
-   */
-  scanResultPolicies?: Maybe<ScanResultPolicyConnection>;
-  /** Path to project's security dashboard. */
-  securityDashboardPath?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * A single security exclusion of a project. Introduced in GitLab 17.4: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
-   */
-  securityExclusion?: Maybe<ProjectSecurityExclusion>;
-  /**
-   * Security exclusions of the project. Introduced in GitLab 17.4: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
-   */
-  securityExclusions?: Maybe<ProjectSecurityExclusionConnection>;
-  /** Security policy project assigned to the project, absent if assigned to a parent group. */
-  securityPolicyProject?: Maybe<Project>;
-  /** Groups linked to the project, when used as Security Policy Project. */
-  securityPolicyProjectLinkedGroups?: Maybe<GroupConnection>;
-  /**
-   * Namespaces linked to the project, when used as Security Policy Project. Deprecated in GitLab 17.4: This was renamed.
-   * @deprecated This was renamed. Please use `security_policy_project_linked_groups`. Deprecated in GitLab 17.4.
-   */
-  securityPolicyProjectLinkedNamespaces?: Maybe<NamespaceConnection>;
-  /** Projects linked to the project, when used as Security Policy Project. */
-  securityPolicyProjectLinkedProjects?: Maybe<ProjectConnection>;
-  /** Security policy project suggestions */
-  securityPolicyProjectSuggestions?: Maybe<ProjectConnection>;
-  /** Information about security analyzers used in the project. */
-  securityScanners?: Maybe<SecurityScanners>;
-  /** List of security training providers for the project */
-  securityTrainingProviders?: Maybe<Array<ProjectSecurityTraining>>;
-  /** Security training URLs for the enabled training providers of the project. */
-  securityTrainingUrls?: Maybe<Array<SecurityTrainingUrl>>;
-  /** Detailed version of a Sentry error on the project. */
-  sentryDetailedError?: Maybe<SentryDetailedError>;
-  /** Paginated collection of Sentry errors on the project. */
-  sentryErrors?: Maybe<SentryErrorCollection>;
-  /** E-mail address of the Service Desk. */
-  serviceDeskAddress?: Maybe<Scalars["String"]["output"]>;
-  /** Indicates if the project has Service Desk enabled. */
-  serviceDeskEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /**
-   * Project services. Deprecated in GitLab 15.9: A `Project.integrations` field is proposed instead in [issue 389904](https://gitlab.com/gitlab-org/gitlab/-/issues/389904).
-   * @deprecated A `Project.integrations` field is proposed instead in [issue 389904](https://gitlab.com/gitlab-org/gitlab/-/issues/389904). Deprecated in GitLab 15.9.
-   */
-  services?: Maybe<ServiceConnection>;
-  /** Indicates if shared runners are enabled for the project. */
-  sharedRunnersEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Snippets of the project. */
-  snippets?: Maybe<SnippetConnection>;
-  /** Indicates if Snippets are enabled for the current user */
-  snippetsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Template used to create squash commit message in merge requests. */
-  squashCommitTemplate?: Maybe<Scalars["String"]["output"]>;
-  /** Indicates if `squashReadOnly` is enabled. */
-  squashReadOnly: Scalars["Boolean"]["output"];
-  /** URL to connect to the project via SSH. */
-  sshUrlToRepo?: Maybe<Scalars["String"]["output"]>;
-  /** Number of times the project has been starred. */
-  starCount: Scalars["Int"]["output"];
-  /** Statistics of the project. */
-  statistics?: Maybe<ProjectStatistics>;
-  /** Redirects for Statistics of the project. */
-  statisticsDetailsPaths?: Maybe<ProjectStatisticsRedirect>;
-  /** Commit message used to apply merge request suggestions. */
-  suggestionCommitMessage?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * List of project topics (not Git tags). Deprecated in GitLab 13.12: Use `topics`.
-   * @deprecated Use `topics`. Deprecated in GitLab 13.12.
-   */
-  tagList?: Maybe<Scalars["String"]["output"]>;
-  /** Target branch rules of the project. */
-  targetBranchRules?: Maybe<ProjectTargetBranchRuleConnection>;
-  /** Find a single Terraform state by name. */
-  terraformState?: Maybe<TerraformState>;
-  /** Terraform states associated with the project. */
-  terraformStates?: Maybe<TerraformStateConnection>;
-  /**
-   * Timelog categories for the project. Introduced in GitLab 15.3: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.3.
-   */
-  timelogCategories?: Maybe<TimeTrackingTimelogCategoryConnection>;
-  /** Time logged on issues and merge requests in the project. */
-  timelogs?: Maybe<TimelogConnection>;
-  /** List of project topics. */
-  topics?: Maybe<Array<Scalars["String"]["output"]>>;
-  /**
-   * Tracking key assigned to the project. Introduced in GitLab 16.0: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.0.
-   */
-  trackingKey?: Maybe<Scalars["String"]["output"]>;
-  /** Timestamp of when the project was last updated. */
-  updatedAt?: Maybe<Scalars["Time"]["output"]>;
-  /** Authorized cluster agents for the project through user_access keyword. */
-  userAccessAuthorizedAgents?: Maybe<ClusterAgentAuthorizationUserAccessConnection>;
-  /** Permissions for the current user on the resource */
-  userPermissions: ProjectPermissions;
-  /** Information about Value Stream Analytics within the project. */
-  valueStreamAnalytics?: Maybe<ValueStreamAnalytics>;
-  /**
-   * Aggregated usage counts within the project Introduced in GitLab 17.2: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.2.
-   */
-  valueStreamDashboardUsageOverview?: Maybe<ValueStreamDashboardCount>;
-  /** Value streams available to the project. */
-  valueStreams?: Maybe<ValueStreamConnection>;
-  /** Visibility of the project. */
-  visibility?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Visible forks of the project. Introduced in GitLab 15.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
-   */
-  visibleForks?: Maybe<ProjectConnection>;
-  /** Vulnerabilities reported on the project. */
-  vulnerabilities?: Maybe<VulnerabilityConnection>;
-  /** The historical number of vulnerabilities per day for the project. */
-  vulnerabilitiesCountByDay?: Maybe<VulnerabilitiesCountByDayConnection>;
-  /** Container images reported on the project vulnerabilities. */
-  vulnerabilityImages?: Maybe<VulnerabilityContainerImageConnection>;
-  /**
-   * Vulnerability Management Policies of the project. Introduced in GitLab 17.5: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
-   */
-  vulnerabilityManagementPolicies?: Maybe<VulnerabilityManagementPolicyConnection>;
-  /** Vulnerability scanners reported on the project vulnerabilities. */
-  vulnerabilityScanners?: Maybe<VulnerabilityScannerConnection>;
-  /** Counts for each vulnerability severity in the project. */
-  vulnerabilitySeveritiesCount?: Maybe<VulnerabilitySeveritiesCount>;
-  /** Web URL of the project. */
-  webUrl?: Maybe<Scalars["String"]["output"]>;
-  /** Indicates if Wikis are enabled for the current user */
-  wikiEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /**
-   * Counts of work items by state for the project. Introduced in GitLab 16.7: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.7.
-   */
-  workItemStateCounts?: Maybe<WorkItemStateCountsType>;
-  /** Work item types available to the project. */
-  workItemTypes?: Maybe<WorkItemTypeConnection>;
-  /**
-   * Work items of the project. Introduced in GitLab 15.1: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.1.
-   */
-  workItems?: Maybe<WorkItemConnection>;
-};
+export type Project = ProjectInterface &
+  Todoable & {
+    __typename?: "Project";
+    /** Size limit for the repository in bytes. */
+    actualRepositorySizeLimit?: Maybe<Scalars["Float"]["output"]>;
+    /** Agent configurations defined by the project */
+    agentConfigurations?: Maybe<AgentConfigurationConnection>;
+    /**
+     * Find a specific AI Agent. Introduced in GitLab 16.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
+     */
+    aiAgent?: Maybe<AiAgent>;
+    /**
+     * Ai Agents for the project. Introduced in GitLab 16.9: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.9.
+     */
+    aiAgents?: Maybe<AiAgentConnection>;
+    /**
+     * AI-related metrics. Introduced in GitLab 16.11: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+     */
+    aiMetrics?: Maybe<AiMetrics>;
+    /**
+     * AI-related data. Introduced in GitLab 17.5: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
+     */
+    aiUsageData?: Maybe<AiUsageData>;
+    /**
+     * AI-related user metrics. Introduced in GitLab 17.5: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
+     */
+    aiUserMetrics?: Maybe<AiUserMetricsConnection>;
+    /**
+     * X-ray reports of the project. Introduced in GitLab 17.8: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+     */
+    aiXrayReports: AiXrayReportConnection;
+    /** A single Alert Management alert of the project. */
+    alertManagementAlert?: Maybe<AlertManagementAlert>;
+    /** Counts of alerts by status for the project. */
+    alertManagementAlertStatusCounts?: Maybe<AlertManagementAlertStatusCountsType>;
+    /** Alert Management alerts of the project. */
+    alertManagementAlerts?: Maybe<AlertManagementAlertConnection>;
+    /** HTTP Integrations which can receive alerts for the project. */
+    alertManagementHttpIntegrations?: Maybe<AlertManagementHttpIntegrationConnection>;
+    /** Integrations which can receive alerts for the project. */
+    alertManagementIntegrations?: Maybe<AlertManagementIntegrationConnection>;
+    /** Extract alert fields from payload for custom mapping. */
+    alertManagementPayloadFields?: Maybe<
+      Array<AlertManagementPayloadAlertField>
+    >;
+    /** If `only_allow_merge_if_pipeline_succeeds` is true, indicates if merge requests of the project can also be merged with skipped jobs. */
+    allowMergeOnSkippedPipeline?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Project allows assigning multiple users to a merge request. */
+    allowsMultipleMergeRequestAssignees: Scalars["Boolean"]["output"];
+    /** Project allows assigning multiple reviewers to a merge request. */
+    allowsMultipleMergeRequestReviewers: Scalars["Boolean"]["output"];
+    /** API fuzzing configuration for the project.  */
+    apiFuzzingCiConfiguration?: Maybe<ApiFuzzingCiConfiguration>;
+    /** Approval Policies of the project */
+    approvalPolicies?: Maybe<ApprovalPolicyConnection>;
+    /** Indicates the archived status of the project. */
+    archived?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Indicates if issues referenced by merge requests and commits within the default branch are closed automatically. */
+    autocloseReferencedIssues?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Search users for autocompletion */
+    autocompleteUsers?: Maybe<Array<AutocompletedUser>>;
+    /** List of available deploy keys */
+    availableDeployKeys?: Maybe<AccessLevelDeployKeyConnection>;
+    /** Avatar URL of the project. */
+    avatarUrl?: Maybe<Scalars["String"]["output"]>;
+    /** A single board of the project. */
+    board?: Maybe<Board>;
+    /** Boards of the project. */
+    boards?: Maybe<BoardConnection>;
+    /** Branch rules configured for the project. */
+    branchRules?: Maybe<BranchRuleConnection>;
+    /** Authorized cluster agents for the project through ci_access keyword. */
+    ciAccessAuthorizedAgents?: Maybe<ClusterAgentAuthorizationCiAccessConnection>;
+    /** CI/CD settings for the project. */
+    ciCdSettings?: Maybe<ProjectCiCdSetting>;
+    /** Path of the CI configuration file. */
+    ciConfigPathOrDefault: Scalars["String"]["output"];
+    /**
+     * CI/CD config variable. Introduced in GitLab 15.3: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.3.
+     */
+    ciConfigVariables?: Maybe<Array<CiConfigVariable>>;
+    /**
+     * Pipeline subscriptions where this project is the upstream project.When this project's pipeline completes, a pipeline is triggered in the downstream project. Introduced in GitLab 17.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+     */
+    ciDownstreamProjectSubscriptions?: Maybe<CiProjectSubscriptionConnection>;
+    /**
+     * The CI Job Tokens authorization logs. Introduced in GitLab 17.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+     */
+    ciJobTokenAuthLogs?: Maybe<CiJobTokenAuthLogConnection>;
+    /** The CI Job Tokens scope of access. */
+    ciJobTokenScope?: Maybe<CiJobTokenScopeType>;
+    /**
+     * List of CI job token scopes where the project is the source. Introduced in GitLab 17.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+     */
+    ciJobTokenScopeAllowlist?: Maybe<CiJobTokenScopeAllowlist>;
+    /**
+     * Inputs to create a pipeline. Introduced in GitLab 17.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+     */
+    ciPipelineCreationInputs?: Maybe<Array<CiInputsSpec>>;
+    /**
+     * Get information about an asynchronous pipeline creation request. Introduced in GitLab 17.9: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+     */
+    ciPipelineCreationRequest?: Maybe<CiPipelineCreationRequest>;
+    /**
+     * Pipeline subscriptions for projects subscribed to the project. Deprecated in GitLab 17.6: Use `ciDownstreamProjectSubscriptions`.
+     * @deprecated Use `ciDownstreamProjectSubscriptions`. Deprecated in GitLab 17.6.
+     */
+    ciSubscribedProjects?: Maybe<CiSubscriptionsProjectConnection>;
+    /**
+     * Pipeline subscriptions for the project. Deprecated in GitLab 17.6: Use `ciUpstreamProjectSubscriptions`.
+     * @deprecated Use `ciUpstreamProjectSubscriptions`. Deprecated in GitLab 17.6.
+     */
+    ciSubscriptionsProjects?: Maybe<CiSubscriptionsProjectConnection>;
+    /** Find a single CI/CD template by name. */
+    ciTemplate?: Maybe<CiTemplate>;
+    /**
+     * Pipeline subscriptions where this project is the downstream project.When an upstream project's pipeline completes, a pipeline is triggered in the downstream project (this project). Introduced in GitLab 17.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+     */
+    ciUpstreamProjectSubscriptions?: Maybe<CiProjectSubscriptionConnection>;
+    /** List of the project's CI/CD variables. */
+    ciVariables?: Maybe<CiProjectVariableConnection>;
+    /** Find a single cluster agent by name. */
+    clusterAgent?: Maybe<ClusterAgent>;
+    /** Cluster agents associated with the project. */
+    clusterAgents?: Maybe<ClusterAgentConnection>;
+    /** Code coverage summary associated with the project. */
+    codeCoverageSummary?: Maybe<CodeCoverageSummary>;
+    /**
+     * Get tag names containing a given commit. Introduced in GitLab 16.0: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.0.
+     */
+    commitReferences?: Maybe<CommitReferences>;
+    /**
+     * Compliance control statuses for a project. Introduced in GitLab 17.11: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+     */
+    complianceControlStatus?: Maybe<ProjectComplianceControlStatusTypeConnection>;
+    /** Compliance frameworks associated with the project. */
+    complianceFrameworks?: Maybe<ComplianceFrameworkConnection>;
+    /** Compliance standards adherence for the project. */
+    complianceStandardsAdherence?: Maybe<ComplianceStandardsAdherenceConnection>;
+    /** Component(s) used by the project. */
+    componentUsages?: Maybe<CiCatalogResourceComponentUsageConnection>;
+    /**
+     * Find software dependency versions by component name. Introduced in GitLab 17.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+     */
+    componentVersions: ComponentVersionConnection;
+    /**
+     * Find software dependencies by name. Introduced in GitLab 17.9: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+     */
+    components?: Maybe<Array<Component>>;
+    /**
+     * Container expiration policy of the project. Deprecated in GitLab 17.5: Use `container_tags_expiration_policy`.
+     * @deprecated Use `container_tags_expiration_policy`. Deprecated in GitLab 17.5.
+     */
+    containerExpirationPolicy?: Maybe<ContainerExpirationPolicy>;
+    /**
+     * Container protection rules for the project. Introduced in GitLab 16.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
+     */
+    containerProtectionRepositoryRules?: Maybe<ContainerProtectionRepositoryRuleConnection>;
+    /**
+     * Container repository tag protection rules for the project. Introduced in GitLab 17.8: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+     */
+    containerProtectionTagRules?: Maybe<ContainerProtectionTagRuleConnection>;
+    /** Indicates if Container registry is enabled for the current user */
+    containerRegistryEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Container repositories of the project. */
+    containerRepositories?: Maybe<ContainerRepositoryConnection>;
+    /** Number of container repositories in the project. */
+    containerRepositoriesCount: Scalars["Int"]["output"];
+    /** Container tags expiration policy of the project. */
+    containerTagsExpirationPolicy?: Maybe<ContainerTagsExpirationPolicy>;
+    /** Find corpuses of the project. */
+    corpuses?: Maybe<CoverageFuzzingCorpusConnection>;
+    /** Timestamp of the project creation. */
+    createdAt?: Maybe<Scalars["Time"]["output"]>;
+    /**
+     * Visualizations of the project or associated configuration project. Introduced in GitLab 16.1: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.1.
+     */
+    customizableDashboardVisualizations?: Maybe<CustomizableDashboardVisualizationConnection>;
+    /**
+     * Customizable dashboards for the project. Introduced in GitLab 15.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.6.
+     */
+    customizableDashboards?: Maybe<CustomizableDashboardConnection>;
+    /** DAST Profile associated with the project. */
+    dastProfile?: Maybe<DastProfile>;
+    /** DAST Profiles associated with the project. */
+    dastProfiles?: Maybe<DastProfileConnection>;
+    /** DAST scanner profiles associated with the project. */
+    dastScannerProfiles?: Maybe<DastScannerProfileConnection>;
+    /** DAST Site Profile associated with the project. */
+    dastSiteProfile?: Maybe<DastSiteProfile>;
+    /** DAST Site Profiles associated with the project. */
+    dastSiteProfiles?: Maybe<DastSiteProfileConnection>;
+    /** DAST Site Validations associated with the project. */
+    dastSiteValidations?: Maybe<DastSiteValidationConnection>;
+    /** Data transfer data point for a specific period. This is mocked data under a development feature flag. */
+    dataTransfer?: Maybe<ProjectDataTransfer>;
+    /** Software dependencies used by the project. */
+    dependencies?: Maybe<DependencyConnection>;
+    /**
+     * Ancestor dependency paths for a dependency used by the project. \
+     *           Returns `null` if `dependency_graph_graphql` feature flag is disabled. Introduced in GitLab 17.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+     */
+    dependencyPaths?: Maybe<Array<DependencyPath>>;
+    /** Packages Dependency Proxy settings for the project. Requires the packages and dependency proxy to be enabled in the config. Requires the packages feature to be enabled at the project level.  */
+    dependencyProxyPackagesSetting?: Maybe<DependencyProxyPackagesSetting>;
+    /** Details of the deployment of the project. */
+    deployment?: Maybe<Deployment>;
+    /** Short description of the project. */
+    description?: Maybe<Scalars["String"]["output"]>;
+    /** GitLab Flavored Markdown rendering of `description` */
+    descriptionHtml?: Maybe<Scalars["String"]["output"]>;
+    /** Detailed import status of the project. */
+    detailedImportStatus?: Maybe<DetailedImportStatus>;
+    /** Project's DORA metrics. */
+    dora?: Maybe<Dora>;
+    /**
+     * Indicates whether GitLab Duo features are enabled for the project. Introduced in GitLab 16.9: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.9.
+     */
+    duoFeaturesEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /**
+     * Indicates whether GitLab Duo Workflow is enabled for the project. Introduced in GitLab 17.7: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.7.
+     */
+    duoWorkflowStatusCheck?: Maybe<DuoWorkflowEnablement>;
+    /** A single environment of the project. */
+    environment?: Maybe<Environment>;
+    /** Environments of the project. This field can only be resolved for one project in any single request. */
+    environments?: Maybe<EnvironmentConnection>;
+    /**
+     * Path to the project catalog resource. Introduced in GitLab 17.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+     */
+    exploreCatalogPath?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * Flow metrics for value stream analytics. Introduced in GitLab 15.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
+     */
+    flowMetrics?: Maybe<ProjectValueStreamAnalyticsFlowMetrics>;
+    /**
+     * Details of the fork project compared to its upstream project. Introduced in GitLab 15.7: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.7.
+     */
+    forkDetails?: Maybe<ForkDetails>;
+    /** Namespaces in which the current user can fork the project into. */
+    forkTargets?: Maybe<NamespaceConnection>;
+    /** Project the project was forked from. */
+    forkedFrom?: Maybe<Project>;
+    /** Access level required for forking access. */
+    forkingAccessLevel?: Maybe<ProjectFeatureAccess>;
+    /** Number of times the project has been forked. */
+    forksCount: Scalars["Int"]["output"];
+    /** Full path of the project. */
+    fullPath: Scalars["ID"]["output"];
+    /** Preview Billable User Changes */
+    gitlabSubscriptionsPreviewBillableUserChange?: Maybe<PreviewBillableUserChange>;
+    /**
+     * Google Artifact Registry repository. Returns `null` if the GitLab instance is not a SaaS instance. Introduced in GitLab 16.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
+     */
+    googleCloudArtifactRegistryRepository?: Maybe<GoogleCloudArtifactRegistryRepository>;
+    /** Grafana integration details for the project. */
+    grafanaIntegration?: Maybe<GrafanaIntegration>;
+    /** Group of the project. */
+    group?: Maybe<Group>;
+    /** Indicates whether Jira issue creation from vulnerabilities is enabled. */
+    hasJiraVulnerabilityIssueCreationEnabled: Scalars["Boolean"]["output"];
+    /** URL to connect to the project via HTTPS. */
+    httpUrlToRepo?: Maybe<Scalars["String"]["output"]>;
+    /** ID of the project. */
+    id: Scalars["ID"]["output"];
+    /** Status of import background job of the project. */
+    importStatus?: Maybe<Scalars["String"]["output"]>;
+    /** Incident Management escalation policies of the project. */
+    incidentManagementEscalationPolicies?: Maybe<EscalationPolicyTypeConnection>;
+    /** Incident Management escalation policy of the project. */
+    incidentManagementEscalationPolicy?: Maybe<EscalationPolicyType>;
+    /** Incident Management On-call schedules of the project. */
+    incidentManagementOncallSchedules?: Maybe<IncidentManagementOncallScheduleConnection>;
+    /** Incident Management Timeline event associated with the incident. */
+    incidentManagementTimelineEvent?: Maybe<TimelineEventType>;
+    /** Timeline event tags for the project. */
+    incidentManagementTimelineEventTags?: Maybe<Array<TimelineEventTagType>>;
+    /** Incident Management Timeline events associated with the incident. */
+    incidentManagementTimelineEvents?: Maybe<TimelineEventTypeConnection>;
+    /** List of CI/CD variables the project inherited from its parent group and ancestors. */
+    inheritedCiVariables?: Maybe<InheritedCiVariableConnection>;
+    /**
+     * Indicates if delayed project deletion is enabled. Introduced in GitLab 16.11: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+     */
+    isAdjournedDeletionEnabled: Scalars["Boolean"]["output"];
+    /**
+     * Indicates if a project is a catalog resource. Introduced in GitLab 15.11: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.11.
+     */
+    isCatalogResource?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Project is forked. */
+    isForked: Scalars["Boolean"]["output"];
+    /** A single issue of the project. */
+    issue?: Maybe<Issue>;
+    /** Counts of issues by status for the project. */
+    issueStatusCounts?: Maybe<IssueStatusCountsType>;
+    /** Issues of the project. */
+    issues?: Maybe<IssueConnection>;
+    /** Access level required for issues access. */
+    issuesAccessLevel?: Maybe<ProjectFeatureAccess>;
+    /** Indicates if Issues are enabled for the current user */
+    issuesEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Find iteration cadences. */
+    iterationCadences?: Maybe<IterationCadenceConnection>;
+    /** Find iterations. */
+    iterations?: Maybe<IterationConnection>;
+    /** Status of Jira import background job of the project. */
+    jiraImportStatus?: Maybe<Scalars["String"]["output"]>;
+    /** Jira imports into the project. */
+    jiraImports?: Maybe<JiraImportConnection>;
+    /** One job belonging to the project, selected by ID. */
+    job?: Maybe<CiJob>;
+    /** Jobs of a project. This field can only be resolved for one project in any single request. */
+    jobs?: Maybe<CiJobConnection>;
+    /** Indicates if CI/CD pipeline jobs are enabled for the current user. */
+    jobsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Label available on the project. */
+    label?: Maybe<Label>;
+    /** Labels available on this project. */
+    labels?: Maybe<LabelConnection>;
+    /** Programming languages used in the project. */
+    languages?: Maybe<Array<RepositoryLanguage>>;
+    /** Timestamp of the project last activity. */
+    lastActivityAt?: Maybe<Scalars["Time"]["output"]>;
+    /** Indicates if the project has Large File Storage (LFS) enabled. */
+    lfsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /**
+     * Date when project was scheduled to be deleted. Introduced in GitLab 16.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
+     */
+    markedForDeletionOn?: Maybe<Scalars["Time"]["output"]>;
+    /** Maximum access level of the current user in the project. */
+    maxAccessLevel: AccessLevel;
+    /**
+     * Member roles available for the group. Introduced in GitLab 16.5: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.5.
+     */
+    memberRoles?: Maybe<MemberRoleConnection>;
+    /** Template used to create merge commit message in merge requests. */
+    mergeCommitTemplate?: Maybe<Scalars["String"]["output"]>;
+    /** A single merge request of the project. */
+    mergeRequest?: Maybe<MergeRequest>;
+    /** Regex used to validate the title of merge requests. */
+    mergeRequestTitleRegex?: Maybe<Scalars["String"]["output"]>;
+    /** Compliance violations reported on merge requests merged within the project. */
+    mergeRequestViolations?: Maybe<ComplianceViolationConnection>;
+    /** Merge requests of the project. */
+    mergeRequests?: Maybe<MergeRequestConnection>;
+    /** Access level required for merge requests access. */
+    mergeRequestsAccessLevel?: Maybe<ProjectFeatureAccess>;
+    /** Indicates that committers of the given merge request cannot approve. */
+    mergeRequestsDisableCommittersApproval: Scalars["Boolean"]["output"];
+    /** Indicates if Merge requests are enabled for the current user */
+    mergeRequestsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Indicates if no merge commits should be created and all merges should instead be fast-forwarded, which means that merging is only allowed if the branch could be fast-forwarded. */
+    mergeRequestsFfOnlyEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /**
+     * Merge trains available to the project. Introduced in GitLab 17.1: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.1.
+     */
+    mergeTrains?: Maybe<MergeTrainConnection>;
+    /** Milestones of the project. */
+    milestones?: Maybe<MilestoneConnection>;
+    /** Find machine learning experiments */
+    mlExperiments?: Maybe<MlExperimentConnection>;
+    /**
+     * Finds machine learning models Introduced in GitLab 16.8: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.8.
+     */
+    mlModels?: Maybe<MlModelConnection>;
+    /** Name of the project without the namespace. */
+    name: Scalars["String"]["output"];
+    /** Name of the project including the namespace. */
+    nameWithNamespace: Scalars["String"]["output"];
+    /** Namespace of the project. */
+    namespace?: Maybe<Namespace>;
+    /** Environments for this project with nested folders, can only be resolved for one project in any single request */
+    nestedEnvironments?: Maybe<NestedEnvironmentConnection>;
+    /**
+     * Logs attached to the project. Introduced in GitLab 17.4: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
+     */
+    observabilityLogsLinks?: Maybe<ObservabilityLogConnection>;
+    /**
+     * Metrics attached to the project. Introduced in GitLab 17.4: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
+     */
+    observabilityMetricsLinks?: Maybe<ObservabilityMetricConnection>;
+    /**
+     * Traces attached to the project. Introduced in GitLab 17.4: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
+     */
+    observabilityTracesLinks?: Maybe<ObservabilityTraceConnection>;
+    /** Indicates if merge requests of the project can only be merged when all the discussions are resolved. */
+    onlyAllowMergeIfAllDiscussionsAreResolved?: Maybe<
+      Scalars["Boolean"]["output"]
+    >;
+    /** Indicates that merges of merge requests should be blocked unless all status checks have passed. */
+    onlyAllowMergeIfAllStatusChecksPassed?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Indicates if merge requests of the project can only be merged with successful jobs. */
+    onlyAllowMergeIfPipelineSucceeds?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Number of open issues for the project. */
+    openIssuesCount?: Maybe<Scalars["Int"]["output"]>;
+    /** Number of open merge requests for the project. */
+    openMergeRequestsCount?: Maybe<Scalars["Int"]["output"]>;
+    /**
+     * Path for editing project at the organization level. Introduced in GitLab 16.11: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+     */
+    organizationEditPath?: Maybe<Scalars["String"]["output"]>;
+    /** Packages of the project. */
+    packages?: Maybe<PackageConnection>;
+    /** Packages cleanup policy for the project. */
+    packagesCleanupPolicy?: Maybe<PackagesCleanupPolicy>;
+    /**
+     * Packages protection rules for the project. Introduced in GitLab 16.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
+     */
+    packagesProtectionRules?: Maybe<PackagesProtectionRuleConnection>;
+    /** List of the project's Pages Deployments. */
+    pagesDeployments?: Maybe<PagesDeploymentConnection>;
+    /** Project's Pages site redirects unsecured connections to HTTPS. */
+    pagesForceHttps: Scalars["Boolean"]["output"];
+    /** Project's Pages site uses a unique subdomain. */
+    pagesUseUniqueDomain: Scalars["Boolean"]["output"];
+    /** Path of the project. */
+    path: Scalars["String"]["output"];
+    /** The project's path locks. */
+    pathLocks?: Maybe<PathLockConnection>;
+    /**
+     * Pending member promotions of the project. Introduced in GitLab 17.3: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.3.
+     */
+    pendingMemberApprovals?: Maybe<MemberApprovalConnection>;
+    /**
+     * Date when project will be deleted if delayed project deletion is enabled. Introduced in GitLab 16.11: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.11.
+     */
+    permanentDeletionDate?: Maybe<Scalars["String"]["output"]>;
+    /** Pipeline of the project. If no arguments are provided, returns the latest pipeline for the head commit on the default branch */
+    pipeline?: Maybe<Pipeline>;
+    /** Pipeline analytics. */
+    pipelineAnalytics?: Maybe<PipelineAnalytics>;
+    /** Pipeline counts of the project. */
+    pipelineCounts?: Maybe<PipelineCounts>;
+    /** Pipeline Execution Policies of the project. */
+    pipelineExecutionPolicies?: Maybe<PipelineExecutionPolicyConnection>;
+    /** Pipeline Execution Schedule Policies of the namespace. */
+    pipelineExecutionSchedulePolicies?: Maybe<PipelineExecutionSchedulePolicyConnection>;
+    /** Pipeline schedules of the project. This field can only be resolved for one project per request. */
+    pipelineSchedules?: Maybe<PipelineScheduleConnection>;
+    /**
+     * List of pipeline trigger tokens. Introduced in GitLab 16.3: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.3.
+     */
+    pipelineTriggers?: Maybe<PipelineTriggerConnection>;
+    /** Pipelines of the project. */
+    pipelines?: Maybe<PipelineConnection>;
+    /** Indicates whether Secret Push Protection is on or not for the project. */
+    preReceiveSecretDetectionEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Indicates if an associated issue from Jira is required. */
+    preventMergeWithoutJiraIssueEnabled: Scalars["Boolean"]["output"];
+    /** Indicates if a link to create or view a merge request should display after a push to Git repositories of the project from the command line. */
+    printingMergeRequestLinkEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /**
+     * Count of all events used, broken down by month Introduced in GitLab 16.7: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.7.
+     */
+    productAnalyticsEventsStored?: Maybe<Array<MonthlyUsage>>;
+    /**
+     * Product Analytics instrumentation key assigned to the project. Introduced in GitLab 16.0: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.0.
+     */
+    productAnalyticsInstrumentationKey?: Maybe<Scalars["String"]["output"]>;
+    /** Project-level settings for product analytics. */
+    productAnalyticsSettings?: Maybe<ProductAnalyticsProjectSettings>;
+    /**
+     * Current state of the product analytics stack for this project.Can only be called for one project in a single request Introduced in GitLab 15.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
+     */
+    productAnalyticsState?: Maybe<ProductAnalyticsState>;
+    /** Members of the project. */
+    projectMembers?: Maybe<MemberInterfaceConnection>;
+    /**
+     * Plan limits for the current project. Introduced in GitLab 16.9: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.9.
+     */
+    projectPlanLimits?: Maybe<ProjectPlanLimits>;
+    /**
+     * List of unprotected branches, ignoring any wildcard branch rules. Introduced in GitLab 16.9: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.9.
+     */
+    protectableBranches?: Maybe<Array<Scalars["String"]["output"]>>;
+    /** Indicates if there is public access to pipelines and job details of the project, including output logs and artifacts. */
+    publicJobs?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Project's push rules settings. */
+    pushRules?: Maybe<PushRules>;
+    /** List of recently visited boards of the project. Maximum size is 4. */
+    recentIssueBoards?: Maybe<BoardConnection>;
+    /** A single release of the project. */
+    release?: Maybe<Release>;
+    /** Releases of the project. */
+    releases?: Maybe<ReleaseConnection>;
+    /** Indicates if `Delete source branch` option should be enabled by default for all new merge requests of the project. */
+    removeSourceBranchAfterMerge?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Git repository of the project. */
+    repository?: Maybe<Repository>;
+    /** Size of repository that exceeds the limit in bytes. */
+    repositorySizeExcess?: Maybe<Scalars["Float"]["output"]>;
+    /** Indicates if users can request member access to the project. */
+    requestAccessEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Find a single requirement. */
+    requirement?: Maybe<Requirement>;
+    /** Number of requirements for the project by their state. */
+    requirementStatesCount?: Maybe<RequirementStatesCount>;
+    /** Find requirements. */
+    requirements?: Maybe<RequirementConnection>;
+    /**
+     * Information used for provisioning the runner on a cloud provider. Returns `null` if the GitLab instance is not a SaaS instance. Introduced in GitLab 16.9: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.9.
+     */
+    runnerCloudProvisioning?: Maybe<CiRunnerCloudProvisioning>;
+    /** Find runners visible to the current user. */
+    runners?: Maybe<CiRunnerConnection>;
+    /** SAST CI configuration for the project. */
+    sastCiConfiguration?: Maybe<SastCiConfiguration>;
+    /** Saved replies available to the project. */
+    savedReplies?: Maybe<ProjectSavedReplyConnection>;
+    /** Saved reply in the project. */
+    savedReply?: Maybe<ProjectSavedReply>;
+    /** Scan Execution Policies of the project */
+    scanExecutionPolicies?: Maybe<ScanExecutionPolicyConnection>;
+    /**
+     * Scan Result Policies of the project Deprecated in GitLab 16.9: Use `approvalPolicies`.
+     * @deprecated Use `approvalPolicies`. Deprecated in GitLab 16.9.
+     */
+    scanResultPolicies?: Maybe<ScanResultPolicyConnection>;
+    /** Indicates whether Secret Push Protection is on or not for the project. */
+    secretPushProtectionEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Path to project's security dashboard. */
+    securityDashboardPath?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * A single security exclusion of a project. Introduced in GitLab 17.4: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
+     */
+    securityExclusion?: Maybe<ProjectSecurityExclusion>;
+    /**
+     * Security exclusions of the project. Introduced in GitLab 17.4: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
+     */
+    securityExclusions?: Maybe<ProjectSecurityExclusionConnection>;
+    /** Security policy project assigned to the project, absent if assigned to a parent group. */
+    securityPolicyProject?: Maybe<Project>;
+    /** Groups linked to the project, when used as Security Policy Project. */
+    securityPolicyProjectLinkedGroups?: Maybe<GroupConnection>;
+    /**
+     * Namespaces linked to the project, when used as Security Policy Project. Deprecated in GitLab 17.4: This was renamed.
+     * @deprecated This was renamed. Please use `security_policy_project_linked_groups`. Deprecated in GitLab 17.4.
+     */
+    securityPolicyProjectLinkedNamespaces?: Maybe<NamespaceConnection>;
+    /** Projects linked to the project, when used as Security Policy Project. */
+    securityPolicyProjectLinkedProjects?: Maybe<ProjectConnection>;
+    /** Security policy project suggestions */
+    securityPolicyProjectSuggestions?: Maybe<ProjectConnection>;
+    /** Information about security analyzers used in the project. */
+    securityScanners?: Maybe<SecurityScanners>;
+    /** List of security training providers for the project */
+    securityTrainingProviders?: Maybe<Array<ProjectSecurityTraining>>;
+    /** Security training URLs for the enabled training providers of the project. */
+    securityTrainingUrls?: Maybe<Array<SecurityTrainingUrl>>;
+    /** Detailed version of a Sentry error on the project. */
+    sentryDetailedError?: Maybe<SentryDetailedError>;
+    /** Paginated collection of Sentry errors on the project. */
+    sentryErrors?: Maybe<SentryErrorCollection>;
+    /** E-mail address of the Service Desk. */
+    serviceDeskAddress?: Maybe<Scalars["String"]["output"]>;
+    /** Indicates if the project has Service Desk enabled. */
+    serviceDeskEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /**
+     * Project services. Deprecated in GitLab 15.9: A `Project.integrations` field is proposed instead in [issue 389904](https://gitlab.com/gitlab-org/gitlab/-/issues/389904).
+     * @deprecated A `Project.integrations` field is proposed instead in [issue 389904](https://gitlab.com/gitlab-org/gitlab/-/issues/389904). Deprecated in GitLab 15.9.
+     */
+    services?: Maybe<ServiceConnection>;
+    /** Indicates if shared runners are enabled for the project. */
+    sharedRunnersEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Snippets of the project. */
+    snippets?: Maybe<SnippetConnection>;
+    /** Indicates if Snippets are enabled for the current user */
+    snippetsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Template used to create squash commit message in merge requests. */
+    squashCommitTemplate?: Maybe<Scalars["String"]["output"]>;
+    /** Indicates if `squashReadOnly` is enabled. */
+    squashReadOnly: Scalars["Boolean"]["output"];
+    /** URL to connect to the project via SSH. */
+    sshUrlToRepo?: Maybe<Scalars["String"]["output"]>;
+    /** Number of times the project has been starred. */
+    starCount: Scalars["Int"]["output"];
+    /** Statistics of the project. */
+    statistics?: Maybe<ProjectStatistics>;
+    /** Redirects for Statistics of the project. */
+    statisticsDetailsPaths?: Maybe<ProjectStatisticsRedirect>;
+    /** Commit message used to apply merge request suggestions. */
+    suggestionCommitMessage?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * List of project topics (not Git tags). Deprecated in GitLab 13.12: Use `topics`.
+     * @deprecated Use `topics`. Deprecated in GitLab 13.12.
+     */
+    tagList?: Maybe<Scalars["String"]["output"]>;
+    /** Target branch rules of the project. */
+    targetBranchRules?: Maybe<ProjectTargetBranchRuleConnection>;
+    /** Find a single Terraform state by name. */
+    terraformState?: Maybe<TerraformState>;
+    /** Terraform states associated with the project. */
+    terraformStates?: Maybe<TerraformStateConnection>;
+    /**
+     * Timelog categories for the project. Introduced in GitLab 15.3: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.3.
+     */
+    timelogCategories?: Maybe<TimeTrackingTimelogCategoryConnection>;
+    /** Time logged on issues and merge requests in the project. */
+    timelogs?: Maybe<TimelogConnection>;
+    /** List of project topics. */
+    topics?: Maybe<Array<Scalars["String"]["output"]>>;
+    /**
+     * Tracking key assigned to the project. Introduced in GitLab 16.0: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.0.
+     */
+    trackingKey?: Maybe<Scalars["String"]["output"]>;
+    /** Timestamp of when the project was last updated. */
+    updatedAt?: Maybe<Scalars["Time"]["output"]>;
+    /** Authorized cluster agents for the project through user_access keyword. */
+    userAccessAuthorizedAgents?: Maybe<ClusterAgentAuthorizationUserAccessConnection>;
+    /** Permissions for the current user on the resource */
+    userPermissions: ProjectPermissions;
+    /** Information about Value Stream Analytics within the project. */
+    valueStreamAnalytics?: Maybe<ValueStreamAnalytics>;
+    /**
+     * Aggregated usage counts within the project Introduced in GitLab 17.2: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.2.
+     */
+    valueStreamDashboardUsageOverview?: Maybe<ValueStreamDashboardCount>;
+    /** Value streams available to the project. */
+    valueStreams?: Maybe<ValueStreamConnection>;
+    /** Visibility of the project. */
+    visibility?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * Visible forks of the project. Introduced in GitLab 15.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
+     */
+    visibleForks?: Maybe<ProjectConnection>;
+    /** Vulnerabilities reported on the project. */
+    vulnerabilities?: Maybe<VulnerabilityConnection>;
+    /** The historical number of vulnerabilities per day for the project. */
+    vulnerabilitiesCountByDay?: Maybe<VulnerabilitiesCountByDayConnection>;
+    /**
+     * All vulnerability archives of the project. Introduced in GitLab 17.9: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+     */
+    vulnerabilityArchives?: Maybe<Array<VulnerabilityArchive>>;
+    /** Search for vulnerabilities by identifier. */
+    vulnerabilityIdentifierSearch?: Maybe<Array<Scalars["String"]["output"]>>;
+    /** Container images reported on the project vulnerabilities. */
+    vulnerabilityImages?: Maybe<VulnerabilityContainerImageConnection>;
+    /**
+     * Vulnerability Management Policies of the project. Introduced in GitLab 17.5: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.5.
+     */
+    vulnerabilityManagementPolicies?: Maybe<VulnerabilityManagementPolicyConnection>;
+    /** Vulnerability scanners reported on the project vulnerabilities. */
+    vulnerabilityScanners?: Maybe<VulnerabilityScannerConnection>;
+    /** Counts for each vulnerability severity in the project. */
+    vulnerabilitySeveritiesCount?: Maybe<VulnerabilitySeveritiesCount>;
+    /**
+     * Counts for each vulnerability severity in the project. Introduced in GitLab 18.0: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 18.0.
+     */
+    vulnerabilityStatistic?: Maybe<VulnerabilityStatisticType>;
+    /** Web URL of the project. */
+    webUrl?: Maybe<Scalars["String"]["output"]>;
+    /** Indicates if Wikis are enabled for the current user */
+    wikiEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /**
+     * Counts of work items by state for the project. Introduced in GitLab 16.7: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.7.
+     */
+    workItemStateCounts?: Maybe<WorkItemStateCountsType>;
+    /** Work item types available to the project. */
+    workItemTypes?: Maybe<WorkItemTypeConnection>;
+    /**
+     * Work items of the project. Introduced in GitLab 15.1: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.1.
+     */
+    workItems?: Maybe<WorkItemConnection>;
+  };
 
 export type ProjectAgentConfigurationsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
@@ -34217,6 +38256,13 @@ export type ProjectAiUserMetricsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   startDate?: InputMaybe<Scalars["Date"]["input"]>;
+};
+
+export type ProjectAiXrayReportsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type ProjectAlertManagementAlertArgs = {
@@ -34270,6 +38316,7 @@ export type ProjectApprovalPoliciesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  includeUnscoped?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   relationship?: InputMaybe<SecurityPolicyRelationType>;
 };
@@ -34331,6 +38378,14 @@ export type ProjectCiJobTokenAuthLogsArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
+export type ProjectCiPipelineCreationInputsArgs = {
+  ref: Scalars["String"]["input"];
+};
+
+export type ProjectCiPipelineCreationRequestArgs = {
+  requestId: Scalars["String"]["input"];
+};
+
 export type ProjectCiSubscribedProjectsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -34385,6 +38440,14 @@ export type ProjectCommitReferencesArgs = {
   commitSha: Scalars["String"]["input"];
 };
 
+export type ProjectComplianceControlStatusArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  filters?: InputMaybe<ProjectComplianceControlStatusInput>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
 export type ProjectComplianceFrameworksArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -34400,7 +38463,33 @@ export type ProjectComplianceStandardsAdherenceArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
-export type ProjectContainerRegistryProtectionRulesArgs = {
+export type ProjectComponentUsagesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type ProjectComponentVersionsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  componentName: Scalars["String"]["input"];
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type ProjectComponentsArgs = {
+  name?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type ProjectContainerProtectionRepositoryRulesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type ProjectContainerProtectionTagRulesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
@@ -34495,6 +38584,10 @@ export type ProjectDependenciesArgs = {
   packageManagers?: InputMaybe<Array<PackageManager>>;
   sort?: InputMaybe<DependencySort>;
   sourceTypes?: InputMaybe<Array<SbomSourceType>>;
+};
+
+export type ProjectDependencyPathsArgs = {
+  occurrence: Scalars["SbomOccurrenceID"]["input"];
 };
 
 export type ProjectDeploymentArgs = {
@@ -34619,6 +38712,7 @@ export type ProjectIssueArgs = {
   search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<IssueSort>;
   state?: InputMaybe<IssuableState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   types?: InputMaybe<Array<IssueType>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -34662,6 +38756,7 @@ export type ProjectIssueStatusCountsArgs = {
   releaseTag?: InputMaybe<Array<Scalars["String"]["input"]>>;
   releaseTagWildcardId?: InputMaybe<ReleaseTagWildcardId>;
   search?: InputMaybe<Scalars["String"]["input"]>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   types?: InputMaybe<Array<IssueType>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -34711,6 +38806,7 @@ export type ProjectIssuesArgs = {
   search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<IssueSort>;
   state?: InputMaybe<IssuableState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   types?: InputMaybe<Array<IssueType>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -34790,6 +38886,7 @@ export type ProjectMemberRolesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   id?: InputMaybe<Scalars["MemberRoleID"]["input"]>;
+  ids?: InputMaybe<Array<Scalars["MemberRoleID"]["input"]>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   orderBy?: InputMaybe<MemberRolesOrderBy>;
   sort?: InputMaybe<SortDirectionEnum>;
@@ -34814,6 +38911,7 @@ export type ProjectMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   authorUsername?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -34826,6 +38924,7 @@ export type ProjectMergeRequestsArgs = {
   environmentName?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   mergedAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -34835,12 +38934,15 @@ export type ProjectMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -34868,6 +38970,16 @@ export type ProjectMilestonesArgs = {
   state?: InputMaybe<MilestoneStateEnum>;
   timeframe?: InputMaybe<Timeframe>;
   title?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type ProjectMlExperimentsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  orderBy?: InputMaybe<MlModelsOrderBy>;
+  sort?: InputMaybe<SortDirectionEnum>;
 };
 
 export type ProjectMlModelsArgs = {
@@ -34980,6 +39092,16 @@ export type ProjectPipelineExecutionPoliciesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  includeUnscoped?: InputMaybe<Scalars["Boolean"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  relationship?: InputMaybe<SecurityPolicyRelationType>;
+};
+
+export type ProjectPipelineExecutionSchedulePoliciesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  includeUnscoped?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   relationship?: InputMaybe<SecurityPolicyRelationType>;
 };
@@ -35109,6 +39231,7 @@ export type ProjectScanExecutionPoliciesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  includeUnscoped?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   relationship?: InputMaybe<SecurityPolicyRelationType>;
 };
@@ -35117,6 +39240,7 @@ export type ProjectScanResultPoliciesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  includeUnscoped?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   relationship?: InputMaybe<SecurityPolicyRelationType>;
 };
@@ -35142,7 +39266,10 @@ export type ProjectSecurityPolicyProjectLinkedGroupsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
+  topLevelOnly?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
 export type ProjectSecurityPolicyProjectLinkedNamespacesArgs = {
@@ -35278,6 +39405,7 @@ export type ProjectVulnerabilitiesArgs = {
   hasMergeRequest?: InputMaybe<Scalars["Boolean"]["input"]>;
   hasRemediations?: InputMaybe<Scalars["Boolean"]["input"]>;
   hasResolution?: InputMaybe<Scalars["Boolean"]["input"]>;
+  identifierName?: InputMaybe<Scalars["String"]["input"]>;
   image?: InputMaybe<Array<Scalars["String"]["input"]>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   owaspTopTen?: InputMaybe<Array<VulnerabilityOwaspTop10>>;
@@ -35297,6 +39425,10 @@ export type ProjectVulnerabilitiesCountByDayArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   startDate: Scalars["ISO8601Date"]["input"];
+};
+
+export type ProjectVulnerabilityIdentifierSearchArgs = {
+  name: Scalars["String"]["input"];
 };
 
 export type ProjectVulnerabilityImagesArgs = {
@@ -35344,7 +39476,14 @@ export type ProjectWorkItemStateCountsArgs = {
   assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   authorUsername?: InputMaybe<Scalars["String"]["input"]>;
+  closedAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  closedBefore?: InputMaybe<Scalars["Time"]["input"]>;
   confidential?: InputMaybe<Scalars["Boolean"]["input"]>;
+  createdAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  createdBefore?: InputMaybe<Scalars["Time"]["input"]>;
+  dueAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  dueBefore?: InputMaybe<Scalars["Time"]["input"]>;
+  healthStatus?: InputMaybe<HealthStatusFilter>;
   iid?: InputMaybe<Scalars["String"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
   in?: InputMaybe<Array<IssuableSearchableField>>;
@@ -35357,8 +39496,12 @@ export type ProjectWorkItemStateCountsArgs = {
   search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<WorkItemSort>;
   state?: InputMaybe<IssuableState>;
-  statusWidget?: InputMaybe<StatusFilterInput>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   types?: InputMaybe<Array<IssueType>>;
+  updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
+  verificationStatusWidget?: InputMaybe<VerificationStatusFilterInput>;
+  weight?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type ProjectWorkItemTypesArgs = {
@@ -35375,8 +39518,15 @@ export type ProjectWorkItemsArgs = {
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   authorUsername?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
+  closedAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  closedBefore?: InputMaybe<Scalars["Time"]["input"]>;
   confidential?: InputMaybe<Scalars["Boolean"]["input"]>;
+  createdAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  createdBefore?: InputMaybe<Scalars["Time"]["input"]>;
+  dueAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  dueBefore?: InputMaybe<Scalars["Time"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  healthStatus?: InputMaybe<HealthStatusFilter>;
   iid?: InputMaybe<Scalars["String"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
   in?: InputMaybe<Array<IssuableSearchableField>>;
@@ -35390,8 +39540,12 @@ export type ProjectWorkItemsArgs = {
   search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<WorkItemSort>;
   state?: InputMaybe<IssuableState>;
-  statusWidget?: InputMaybe<StatusFilterInput>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   types?: InputMaybe<Array<IssueType>>;
+  updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
+  verificationStatusWidget?: InputMaybe<VerificationStatusFilterInput>;
+  weight?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 /** Values for the archived argument */
@@ -35418,6 +39572,8 @@ export type ProjectCiCdSetting = {
   mergeTrainsEnabled?: Maybe<Scalars["Boolean"]["output"]>;
   /** Whether merge immediately is allowed for merge trains. */
   mergeTrainsSkipTrainAllowed: Scalars["Boolean"]["output"];
+  /** Minimum role required to set variables when creating a pipeline or running a job. */
+  pipelineVariablesMinimumOverrideRole: Scalars["String"]["output"];
   /** Project the CI/CD settings belong to. */
   project?: Maybe<Project>;
   /** Indicates the ability to push to the original project repository using a job token */
@@ -35440,6 +39596,8 @@ export type ProjectCiCdSettingsUpdateInput = {
   mergeTrainsEnabled?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** Indicates whether an option is allowed to merge without refreshing the merge train. Ignored unless the `merge_trains_skip_train` feature flag is also enabled. */
   mergeTrainsSkipTrainAllowed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Minimum role required to set variables when creating a pipeline or running a job. */
+  pipelineVariablesMinimumOverrideRole?: InputMaybe<Scalars["String"]["input"]>;
   /** Indicates the ability to push to the original project repository using a job token */
   pushRepositoryForJobTokenAllowed?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
@@ -35454,6 +39612,107 @@ export type ProjectCiCdSettingsUpdatePayload = {
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
 };
+
+/** Compliance status of the project control. */
+export enum ProjectComplianceControlStatus {
+  /** Fail */
+  Fail = "FAIL",
+  /** Pass */
+  Pass = "PASS",
+  /** Pending */
+  Pending = "PENDING",
+}
+
+export type ProjectComplianceControlStatusInput = {
+  /** Compliance requirement id of the statuses. */
+  complianceRequirementId?: InputMaybe<
+    Scalars["ComplianceManagementComplianceFrameworkComplianceRequirementID"]["input"]
+  >;
+};
+
+/** Compliance control status for a project. */
+export type ProjectComplianceControlStatusType = {
+  __typename?: "ProjectComplianceControlStatusType";
+  /** Control of the compliance status. */
+  complianceRequirementsControl: ComplianceRequirementsControl;
+  /** Compliance control status ID. */
+  id: Scalars["ID"]["output"];
+  /** Compliance status of the project for the control. */
+  status: ProjectComplianceControlStatus;
+  /** Timestamp when the control status was last updated. */
+  updatedAt: Scalars["Time"]["output"];
+};
+
+/** The connection type for ProjectComplianceControlStatusType. */
+export type ProjectComplianceControlStatusTypeConnection = {
+  __typename?: "ProjectComplianceControlStatusTypeConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<ProjectComplianceControlStatusTypeEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<ProjectComplianceControlStatusType>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type ProjectComplianceControlStatusTypeEdge = {
+  __typename?: "ProjectComplianceControlStatusTypeEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<ProjectComplianceControlStatusType>;
+};
+
+/** Compliance requirement status for a project. */
+export type ProjectComplianceRequirementStatus = {
+  __typename?: "ProjectComplianceRequirementStatus";
+  /** Framework of the compliance status. */
+  complianceFramework: ComplianceFramework;
+  /** Requirement of the compliance status. */
+  complianceRequirement: ComplianceRequirement;
+  /** Total no. of failed compliance controls for the requirement. */
+  failCount: Scalars["Int"]["output"];
+  /** Compliance requirement status ID. */
+  id: Scalars["ID"]["output"];
+  /** Total no. of passed compliance controls for the requirement. */
+  passCount: Scalars["Int"]["output"];
+  /** Total no. of pending compliance controls for the requirement. */
+  pendingCount: Scalars["Int"]["output"];
+  /** Project of the compliance status. */
+  project: Project;
+  /** Timestamp when the requirement status was last updated. */
+  updatedAt: Scalars["Time"]["output"];
+};
+
+/** The connection type for ProjectComplianceRequirementStatus. */
+export type ProjectComplianceRequirementStatusConnection = {
+  __typename?: "ProjectComplianceRequirementStatusConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<ProjectComplianceRequirementStatusEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<ProjectComplianceRequirementStatus>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type ProjectComplianceRequirementStatusEdge = {
+  __typename?: "ProjectComplianceRequirementStatusEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<ProjectComplianceRequirementStatus>;
+};
+
+/** Values for order_by field for project requirement statuses. */
+export enum ProjectComplianceRequirementStatusOrderBy {
+  /** Order by frameworks. */
+  Framework = "FRAMEWORK",
+  /** Order by projects. */
+  Project = "PROJECT",
+  /** Order by requirements. */
+  Requirement = "REQUIREMENT",
+}
 
 /** The connection type for Project. */
 export type ProjectConnection = {
@@ -35528,6 +39787,23 @@ export type ProjectInitializeProductAnalyticsPayload = {
   errors: Array<Scalars["String"]["output"]>;
   /** Project on which the initialization took place. */
   project?: Maybe<Project>;
+};
+
+export type ProjectInterface = {
+  /** Avatar URL of the project. */
+  avatarUrl?: Maybe<Scalars["String"]["output"]>;
+  /** Short description of the project. */
+  description?: Maybe<Scalars["String"]["output"]>;
+  /** Full path of the project. */
+  fullPath?: Maybe<Scalars["ID"]["output"]>;
+  /** ID of the project. */
+  id?: Maybe<Scalars["ID"]["output"]>;
+  /** Name of the project without the namespace. */
+  name?: Maybe<Scalars["String"]["output"]>;
+  /** Name of the project including the namespace. */
+  nameWithNamespace?: Maybe<Scalars["String"]["output"]>;
+  /** Web URL of the project. */
+  webUrl?: Maybe<Scalars["String"]["output"]>;
 };
 
 /** Represents a Project Membership */
@@ -35629,6 +39905,24 @@ export enum ProjectMemberRelation {
   SharedIntoAncestors = "SHARED_INTO_ANCESTORS",
 }
 
+export type ProjectMinimalAccess = ProjectInterface & {
+  __typename?: "ProjectMinimalAccess";
+  /** Avatar URL of the project. */
+  avatarUrl?: Maybe<Scalars["String"]["output"]>;
+  /** Short description of the project. */
+  description?: Maybe<Scalars["String"]["output"]>;
+  /** Full path of the project. */
+  fullPath: Scalars["ID"]["output"];
+  /** ID of the project. */
+  id?: Maybe<Scalars["ID"]["output"]>;
+  /** Name of the project without the namespace. */
+  name: Scalars["String"]["output"];
+  /** Name of the project including the namespace. */
+  nameWithNamespace: Scalars["String"]["output"];
+  /** Web URL of the project. */
+  webUrl?: Maybe<Scalars["String"]["output"]>;
+};
+
 export type ProjectPermissions = {
   __typename?: "ProjectPermissions";
   /** If `true`, the user can perform `admin_operations` on this resource */
@@ -35661,6 +39955,8 @@ export type ProjectPermissions = {
   createMergeRequestIn: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `create_pages` on this resource */
   createPages: Scalars["Boolean"]["output"];
+  /** If `true`, the user can perform `create_path_lock` on this resource */
+  createPathLock: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `create_pipeline` on this resource */
   createPipeline: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `create_pipeline_schedule` on this resource */
@@ -35681,6 +39977,10 @@ export type ProjectPermissions = {
   downloadWikiCode: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `fork_project` on this resource */
   forkProject: Scalars["Boolean"]["output"];
+  /** If `true`, the user can perform `generate_description` on this resource */
+  generateDescription: Scalars["Boolean"]["output"];
+  /** If `true`, the user can perform `move_design` on this resource */
+  moveDesign: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `push_code` on this resource */
   pushCode: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `push_to_delete_protected_branch` on this resource */
@@ -35697,6 +39997,8 @@ export type ProjectPermissions = {
   readMergeRequest: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `read_pages_content` on this resource */
   readPagesContent: Scalars["Boolean"]["output"];
+  /** If `true`, the user can perform `read_path_locks` on this resource */
+  readPathLocks: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `read_project` on this resource */
   readProject: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `read_project_member` on this resource */
@@ -35735,14 +40037,25 @@ export type ProjectPlanLimits = {
 /** Represents the Geo replication and verification state of a project repository */
 export type ProjectRepositoryRegistry = {
   __typename?: "ProjectRepositoryRegistry";
+  /** Indicate if the checksums of the ProjectRepositoryRegistry do not match on the primary and secondary. */
+  checksumMismatch?: Maybe<Scalars["Boolean"]["output"]>;
   /** Timestamp when the ProjectRepositoryRegistry was created */
   createdAt?: Maybe<Scalars["Time"]["output"]>;
+  /**
+   * Indicate if a forced redownload is to be performed. Deprecated in GitLab 17.10: Removed from registry tables in the database in favor of the newer reusable framework.
+   * @deprecated Removed from registry tables in the database in favor of the newer reusable framework. Deprecated in GitLab 17.10.
+   */
+  forceToRedownload?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the ProjectRepositoryRegistry */
   id: Scalars["ID"]["output"];
   /** Error message during sync of the ProjectRepositoryRegistry */
   lastSyncFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp of the most recent successful sync of the ProjectRepositoryRegistry */
   lastSyncedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Indicate if the ProjectRepositoryRegistry is missing on primary. */
+  missingOnPrimary?: Maybe<Scalars["Boolean"]["output"]>;
+  /** ID of the ProjectRepositoryRegistry's model record. */
+  modelRecordId?: Maybe<Scalars["Int"]["output"]>;
   /** ID of the Project. */
   projectId: Scalars["ID"]["output"];
   /** Timestamp after which the ProjectRepositoryRegistry is resynced */
@@ -35753,13 +40066,15 @@ export type ProjectRepositoryRegistry = {
   state?: Maybe<RegistryState>;
   /** The local checksum of the ProjectRepositoryRegistry */
   verificationChecksum?: Maybe<Scalars["String"]["output"]>;
+  /** The expected checksum of the ProjectRepositoryRegistry in case of mismatch. */
+  verificationChecksumMismatched?: Maybe<Scalars["String"]["output"]>;
   /** Error message during verification of the ProjectRepositoryRegistry */
   verificationFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp after which the ProjectRepositoryRegistry is reverified */
   verificationRetryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed verification attempts of the ProjectRepositoryRegistry */
   verificationRetryCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Timestamp when the verification started of ProjectRepositoryRegistry */
+  /** Timestamp when the verification of ProjectRepositoryRegistry started */
   verificationStartedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Verification state of the ProjectRepositoryRegistry */
   verificationState?: Maybe<VerificationStateEnum>;
@@ -35770,12 +40085,19 @@ export type ProjectRepositoryRegistry = {
 /** The connection type for ProjectRepositoryRegistry. */
 export type ProjectRepositoryRegistryConnection = {
   __typename?: "ProjectRepositoryRegistryConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<ProjectRepositoryRegistryEdge>>>;
   /** A list of nodes. */
   nodes?: Maybe<Array<Maybe<ProjectRepositoryRegistry>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** The connection type for ProjectRepositoryRegistry. */
+export type ProjectRepositoryRegistryConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** An edge in a connection. */
@@ -35887,20 +40209,39 @@ export type ProjectSavedReplyUpdatePayload = {
 /** Representation of a project secret. */
 export type ProjectSecret = {
   __typename?: "ProjectSecret";
+  /** Branches that can access the secret. */
+  branch: Scalars["String"]["output"];
   /** Description of the project secret. */
-  description: Scalars["String"]["output"];
+  description?: Maybe<Scalars["String"]["output"]>;
+  /** Environments that can access the secret. */
+  environment: Scalars["String"]["output"];
   /** Name of the project secret. */
   name: Scalars["String"]["output"];
   /** Project the secret belong to. */
   project: Project;
 };
 
+/** The connection type for ProjectSecret. */
+export type ProjectSecretConnection = {
+  __typename?: "ProjectSecretConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<ProjectSecretEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<ProjectSecret>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
 /** Autogenerated input type of ProjectSecretCreate */
 export type ProjectSecretCreateInput = {
+  /** Branches that can access the secret. */
+  branch: Scalars["String"]["input"];
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
   /** Description of the project secret. */
   description?: InputMaybe<Scalars["String"]["input"]>;
+  /** Environments that can access the secret. */
+  environment: Scalars["String"]["input"];
   /** Name of the project secret. */
   name: Scalars["String"]["input"];
   /** Project of the secret. */
@@ -35918,6 +40259,36 @@ export type ProjectSecretCreatePayload = {
   errors: Array<Scalars["String"]["output"]>;
   /** Project secret. */
   projectSecret?: Maybe<ProjectSecret>;
+};
+
+/** Autogenerated input type of ProjectSecretDelete */
+export type ProjectSecretDeleteInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Name of the project secret. */
+  name: Scalars["String"]["input"];
+  /** Project of the secret. */
+  projectPath: Scalars["ID"]["input"];
+};
+
+/** Autogenerated return type of ProjectSecretDelete. */
+export type ProjectSecretDeletePayload = {
+  __typename?: "ProjectSecretDeletePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Deleted project secret. */
+  projectSecret?: Maybe<ProjectSecret>;
+};
+
+/** An edge in a connection. */
+export type ProjectSecretEdge = {
+  __typename?: "ProjectSecretEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<ProjectSecret>;
 };
 
 /** Representation of a project secrets manager. */
@@ -36257,7 +40628,7 @@ export type ProjectStatistics = {
   buildArtifactsSize: Scalars["Float"]["output"];
   /** Commit count of the project. */
   commitCount: Scalars["Float"]["output"];
-  /** Container Registry size of the project in bytes. */
+  /** Container registry size of the project in bytes. */
   containerRegistrySize?: Maybe<Scalars["Float"]["output"]>;
   /**
    * Build artifacts size in bytes with any applicable cost factor for forks applied. This will equal build_artifacts_size if there is no applicable cost factor. Introduced in GitLab 16.6: **Status**: Experiment.
@@ -36582,14 +40953,25 @@ export type ProjectValueStreamAnalyticsFlowMetricsTimeToMergeArgs = {
 /** Represents the Geo replication and verification state of a project_wiki_repository */
 export type ProjectWikiRepositoryRegistry = {
   __typename?: "ProjectWikiRepositoryRegistry";
+  /** Indicate if the checksums of the ProjectWikiRepositoryRegistry do not match on the primary and secondary. */
+  checksumMismatch?: Maybe<Scalars["Boolean"]["output"]>;
   /** Timestamp when the ProjectWikiRepositoryRegistry was created */
   createdAt?: Maybe<Scalars["Time"]["output"]>;
+  /**
+   * Indicate if a forced redownload is to be performed. Deprecated in GitLab 17.10: Removed from registry tables in the database in favor of the newer reusable framework.
+   * @deprecated Removed from registry tables in the database in favor of the newer reusable framework. Deprecated in GitLab 17.10.
+   */
+  forceToRedownload?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the ProjectWikiRepositoryRegistry */
   id: Scalars["ID"]["output"];
   /** Error message during sync of the ProjectWikiRepositoryRegistry */
   lastSyncFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp of the most recent successful sync of the ProjectWikiRepositoryRegistry */
   lastSyncedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Indicate if the ProjectWikiRepositoryRegistry is missing on primary. */
+  missingOnPrimary?: Maybe<Scalars["Boolean"]["output"]>;
+  /** ID of the ProjectWikiRepositoryRegistry's model record. */
+  modelRecordId?: Maybe<Scalars["Int"]["output"]>;
   /** ID of the Project Wiki Repository. */
   projectWikiRepositoryId: Scalars["ID"]["output"];
   /** Timestamp after which the ProjectWikiRepositoryRegistry is resynced */
@@ -36600,13 +40982,15 @@ export type ProjectWikiRepositoryRegistry = {
   state?: Maybe<RegistryState>;
   /** The local checksum of the ProjectWikiRepositoryRegistry */
   verificationChecksum?: Maybe<Scalars["String"]["output"]>;
+  /** The expected checksum of the ProjectWikiRepositoryRegistry in case of mismatch. */
+  verificationChecksumMismatched?: Maybe<Scalars["String"]["output"]>;
   /** Error message during verification of the ProjectWikiRepositoryRegistry */
   verificationFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp after which the ProjectWikiRepositoryRegistry is reverified */
   verificationRetryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed verification attempts of the ProjectWikiRepositoryRegistry */
   verificationRetryCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Timestamp when the verification started of ProjectWikiRepositoryRegistry */
+  /** Timestamp when the verification of ProjectWikiRepositoryRegistry started */
   verificationStartedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Verification state of the ProjectWikiRepositoryRegistry */
   verificationState?: Maybe<VerificationStateEnum>;
@@ -36617,12 +41001,19 @@ export type ProjectWikiRepositoryRegistry = {
 /** The connection type for ProjectWikiRepositoryRegistry. */
 export type ProjectWikiRepositoryRegistryConnection = {
   __typename?: "ProjectWikiRepositoryRegistryConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<ProjectWikiRepositoryRegistryEdge>>>;
   /** A list of nodes. */
   nodes?: Maybe<Array<Maybe<ProjectWikiRepositoryRegistry>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** The connection type for ProjectWikiRepositoryRegistry. */
+export type ProjectWikiRepositoryRegistryConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** An edge in a connection. */
@@ -36882,9 +41273,9 @@ export type PushAccessLevel = {
   accessLevelDescription: Scalars["String"]["output"];
   /** Deploy key assigned to the access level. */
   deployKey?: Maybe<AccessLevelDeployKey>;
-  /** Group associated with this access level. */
+  /** Group associated with the access level. */
   group?: Maybe<AccessLevelGroup>;
-  /** User associated with this access level. */
+  /** User associated with the access level. */
   user?: Maybe<AccessLevelUser>;
 };
 
@@ -36959,14 +41350,31 @@ export type Query = {
    * Abuse report labels. Introduced in GitLab 16.3: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.3.
    */
-  abuseReportLabels?: Maybe<LabelConnection>;
-  /**
-   * Retrieve the active add-on purchase. This query can be used in GitLab SaaS and self-managed environments. Deprecated in GitLab 17.4: Use add_on_purchases instead.
-   * @deprecated Use add_on_purchases instead. Deprecated in GitLab 17.4.
-   */
-  addOnPurchase?: Maybe<AddOnPurchase>;
+  abuseReportLabels?: Maybe<AbuseReportLabelConnection>;
   /** Retrieve all active add-on purchases. This query can be used in GitLab.com and self-managed environments. */
   addOnPurchases?: Maybe<Array<AddOnPurchase>>;
+  /**
+   * Finds a single admin custom role for the instance. Available only for GitLab Self-Managed. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  adminMemberRole?: Maybe<AdminMemberRole>;
+  /**
+   * List of all admin customizable permissions. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  adminMemberRolePermissions?: Maybe<CustomizableAdminPermissionConnection>;
+  /**
+   * Admin custom roles available for the instance. Available only for GitLab Self-Managed. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  adminMemberRoles?: Maybe<AdminMemberRoleConnection>;
+  /** Get available GitLab Duo Chat context presets for the current user for a specific URL */
+  aiChatContextPresets?: Maybe<ContextPreset>;
+  /**
+   * List conversation threads of AI features. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  aiConversationThreads: AiConversationsThreadConnection;
   /**
    * List of configurable AI features. Introduced in GitLab 17.4: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
@@ -36978,11 +41386,11 @@ export type Query = {
    */
   aiMessages: AiMessageConnection;
   /**
-   * List of self-hosted LLM servers. Introduced in GitLab 17.1: **Status**: Experiment.
+   * Returns the self-hosted model if an ID is provided, otherwise returns all models. Introduced in GitLab 17.1: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.1.
    */
   aiSelfHostedModels?: Maybe<AiSelfHostedModelConnection>;
-  /** Get available Duo Chat slash commands for the current user for a specific URL */
+  /** Get available GitLab Duo Chat slash commands for the current user for a specific URL */
   aiSlashCommands?: Maybe<Array<SlashCommand>>;
   /** Definitions for all audit events available on the instance. */
   auditEventDefinitions: AuditEventDefinitionConnection;
@@ -37018,12 +41426,16 @@ export type Query = {
    *
    */
   ciConfig?: Maybe<CiConfig>;
+  /** Returns available filters for GitLab Dedicated runner usage data. */
+  ciDedicatedHostedRunnerFilters?: Maybe<CiDedicatedHostedRunnerFilters>;
+  /** Compute usage data for runners across namespaces on GitLab Dedicated. Defaults to the current year if no year or billing month is specified. Ultimate only. */
+  ciDedicatedHostedRunnerUsage?: Maybe<CiDedicatedHostedRunnerUsageConnection>;
   /** Compute usage data for a namespace. */
   ciMinutesUsage?: Maybe<CiMinutesNamespaceMonthlyUsageConnection>;
   /** Stage belonging to a CI pipeline. */
   ciPipelineStage?: Maybe<CiStage>;
   /**
-   * Time taken for CI jobs to be picked up by runner by percentile. Introduced in GitLab 16.4: **Status**: Experiment.
+   * Time taken for CI jobs to be picked up by runner by percentile. Enable the ClickHouse database backend to use this query. Introduced in GitLab 16.4: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.4.
    */
   ciQueueingHistory?: Maybe<QueueingDelayHistory>;
@@ -37034,23 +41446,35 @@ export type Query = {
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.3.
    */
   cloudConnectorStatus?: Maybe<CloudConnectorStatus>;
+  /** Get the list of all the compliance requirement controls. */
+  complianceRequirementControls?: Maybe<ComplianceRequirementControl>;
   /** Find a container repository. */
   containerRepository?: Maybe<ContainerRepositoryDetails>;
   /** Fields related to the current license. */
   currentLicense?: Maybe<CurrentLicense>;
   /** Get information about current user. */
   currentUser?: Maybe<CurrentUser>;
+  /**
+   * Find a custom field by its ID. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  customField?: Maybe<CustomField>;
   /** Fields related to design management. */
   designManagement: DesignManagement;
   /** Get configured DevOps adoption namespaces. **Status:** Beta. This endpoint is subject to change without notice. */
   devopsAdoptionEnabledNamespaces?: Maybe<DevopsAdoptionEnabledNamespaceConnection>;
   /**
-   * List the events for a Duo Workflow Introduced in GitLab 17.2: **Status**: Experiment.
+   * Get GitLab Duo settings Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  duoSettings?: Maybe<DuoSettings>;
+  /**
+   * List the events for a Duo Workflow. Introduced in GitLab 17.2: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.2.
    */
   duoWorkflowEvents: DuoWorkflowEventConnection;
   /**
-   * List the workflows owned by the current user Introduced in GitLab 17.2: **Status**: Experiment.
+   * List the workflows owned by the current user. Introduced in GitLab 17.2: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.2.
    */
   duoWorkflowWorkflows: DuoWorkflowConnection;
@@ -37097,21 +41521,26 @@ export type Query = {
   /** Find an iteration. */
   iteration?: Maybe<Iteration>;
   /** All jobs on this GitLab instance. Returns an empty result for users without administrator access. */
-  jobs?: Maybe<CiJobConnection>;
+  jobs?: Maybe<CiJobInterfaceConnection>;
+  /**
+   * LDAP admin links. Available only for GitLab Self-Managed. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  ldapAdminRoleLinks?: Maybe<LdapAdminRoleLinkConnection>;
   /** Fields related to entries in the license history. */
   licenseHistoryEntries?: Maybe<LicenseHistoryEntryConnection>;
   /**
-   * Finds a single custom role for the instance. Available only for self-managed. Introduced in GitLab 16.6: **Status**: Experiment.
+   * Finds a single custom role for the instance. Available only for GitLab Self-Managed. Introduced in GitLab 16.6: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
    */
   memberRole?: Maybe<MemberRole>;
   /**
-   * List of all customizable permissions. Introduced in GitLab 16.4: **Status**: Experiment.
+   * List of all standard customizable permissions. Introduced in GitLab 16.4: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.4.
    */
-  memberRolePermissions?: Maybe<CustomizablePermissionConnection>;
+  memberRolePermissions?: Maybe<CustomizableStandardPermissionConnection>;
   /**
-   * Custom roles available for the instance. Available only for self-managed. Introduced in GitLab 16.7: **Status**: Experiment.
+   * Custom roles available for the instance. Available only for GitLab Self-Managed. Introduced in GitLab 16.7: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.7.
    */
   memberRoles?: Maybe<MemberRoleConnection>;
@@ -37121,6 +41550,8 @@ export type Query = {
   metadata?: Maybe<Metadata>;
   /** Find a milestone. */
   milestone?: Maybe<Milestone>;
+  /** Find a machine learning experiment. */
+  mlExperiment?: Maybe<MlExperiment>;
   /**
    * Find machine learning models. Introduced in GitLab 16.7: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.7.
@@ -37148,6 +41579,16 @@ export type Query = {
   /** Find a project. */
   project?: Maybe<Project>;
   /**
+   * View a specific project secret. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  projectSecret?: Maybe<ProjectSecret>;
+  /**
+   * List project secrets. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  projectSecrets?: Maybe<ProjectSecretConnection>;
+  /**
    * Find a project secrets manager. Introduced in GitLab 17.4: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.4.
    */
@@ -37168,12 +41609,17 @@ export type Query = {
    * @deprecated No longer used, use gitlab-runner documentation to learn about runner registration commands. Deprecated in GitLab 15.9.
    */
   runnerSetup?: Maybe<RunnerSetup>;
-  /** Runner usage by runner. */
+  /** Runner usage by runner. Enable the ClickHouse database backend to use this query. */
   runnerUsage?: Maybe<Array<CiRunnerUsage>>;
-  /** Runner usage by project. */
+  /** Runner usage by project. Enable the ClickHouse database backend to use this query. */
   runnerUsageByProject?: Maybe<Array<CiRunnerUsageByProject>>;
   /** Get all runners in the GitLab instance (project and shared). Access is restricted to users with administrator access. */
   runners?: Maybe<CiRunnerConnection>;
+  /**
+   * List secret permissions. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  secretPermissions?: Maybe<SecretPermissionConnection>;
   /**
    * Users within the self-managed instance who are eligible for add-ons. Introduced in GitLab 16.7: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.7.
@@ -37187,12 +41633,12 @@ export type Query = {
   /** Find Snippets visible to the current user. */
   snippets?: Maybe<SnippetConnection>;
   /**
-   * Finds a single default role for the instance. Available only for self-managed. Introduced in GitLab 17.6: **Status**: Experiment.
+   * Finds a single default role for the instance. Available only for GitLab Self-Managed. Introduced in GitLab 17.6: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
    */
   standardRole?: Maybe<StandardRole>;
   /**
-   * Default roles available for the instance. Available only for self-managed. Introduced in GitLab 17.3: **Status**: Experiment.
+   * Default roles available for the instance. Available only for GitLab Self-Managed. Introduced in GitLab 17.3: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.3.
    */
   standardRoles?: Maybe<StandardRoleConnection>;
@@ -37232,6 +41678,11 @@ export type Query = {
    */
   workItem?: Maybe<WorkItem>;
   /**
+   * Find a work item description template. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  workItemDescriptionTemplateContent?: Maybe<WorkItemDescriptionTemplate>;
+  /**
    * Find work items by their reference. Introduced in GitLab 16.7: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.7.
    */
@@ -37254,13 +41705,49 @@ export type QueryAbuseReportLabelsArgs = {
   searchTerm?: InputMaybe<Scalars["String"]["input"]>;
 };
 
-export type QueryAddOnPurchaseArgs = {
-  addOnType: GitlabSubscriptionsAddOnType;
+export type QueryAddOnPurchasesArgs = {
   namespaceId?: InputMaybe<Scalars["NamespaceID"]["input"]>;
 };
 
-export type QueryAddOnPurchasesArgs = {
-  namespaceId?: InputMaybe<Scalars["NamespaceID"]["input"]>;
+export type QueryAdminMemberRoleArgs = {
+  id?: InputMaybe<Scalars["MemberRoleID"]["input"]>;
+  ids?: InputMaybe<Array<Scalars["MemberRoleID"]["input"]>>;
+  orderBy?: InputMaybe<MemberRolesOrderBy>;
+  sort?: InputMaybe<SortDirectionEnum>;
+};
+
+export type QueryAdminMemberRolePermissionsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type QueryAdminMemberRolesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  id?: InputMaybe<Scalars["MemberRoleID"]["input"]>;
+  ids?: InputMaybe<Array<Scalars["MemberRoleID"]["input"]>>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  orderBy?: InputMaybe<MemberRolesOrderBy>;
+  sort?: InputMaybe<SortDirectionEnum>;
+};
+
+export type QueryAiChatContextPresetsArgs = {
+  projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
+  questionCount?: InputMaybe<Scalars["Int"]["input"]>;
+  resourceId?: InputMaybe<Scalars["AiModelID"]["input"]>;
+  url?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type QueryAiConversationThreadsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  conversationType?: InputMaybe<AiConversationsThreadsConversationType>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  id?: InputMaybe<Scalars["AiConversationThreadID"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type QueryAiFeatureSettingsArgs = {
@@ -37275,16 +41762,19 @@ export type QueryAiMessagesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   agentVersionId?: InputMaybe<Scalars["AiAgentVersionID"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
+  conversationType?: InputMaybe<AiConversationsThreadsConversationType>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   requestIds?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   roles?: InputMaybe<Array<AiMessageRole>>;
+  threadId?: InputMaybe<Scalars["AiConversationThreadID"]["input"]>;
 };
 
 export type QueryAiSelfHostedModelsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  id?: InputMaybe<Scalars["AiSelfHostedModelID"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
@@ -37335,6 +41825,8 @@ export type QueryCiCatalogResourcesArgs = {
   scope?: InputMaybe<CiCatalogResourceScope>;
   search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<CiCatalogResourceSort>;
+  topics?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  verificationLevel?: InputMaybe<CiCatalogResourceVerificationLevel>;
 };
 
 export type QueryCiConfigArgs = {
@@ -37342,6 +41834,17 @@ export type QueryCiConfigArgs = {
   dryRun?: InputMaybe<Scalars["Boolean"]["input"]>;
   projectPath: Scalars["ID"]["input"];
   sha?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type QueryCiDedicatedHostedRunnerUsageArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  billingMonth?: InputMaybe<Scalars["Date"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  grouping?: InputMaybe<GroupingEnum>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  runnerId?: InputMaybe<Scalars["CiRunnerID"]["input"]>;
+  year?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type QueryCiMinutesUsageArgs = {
@@ -37373,6 +41876,10 @@ export type QueryCiVariablesArgs = {
 
 export type QueryContainerRepositoryArgs = {
   id: Scalars["ContainerRepositoryID"]["input"];
+};
+
+export type QueryCustomFieldArgs = {
+  id: Scalars["IssuablesCustomFieldID"]["input"];
 };
 
 export type QueryDevopsAdoptionEnabledNamespacesArgs = {
@@ -37430,12 +41937,17 @@ export type QueryGroupArgs = {
 
 export type QueryGroupsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
+  allAvailable?: InputMaybe<Scalars["Boolean"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+  ids?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   markedForDeletionOn?: InputMaybe<Scalars["Date"]["input"]>;
+  ownedOnly?: InputMaybe<Scalars["Boolean"]["input"]>;
+  parentPath?: InputMaybe<Scalars["ID"]["input"]>;
   search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<Scalars["String"]["input"]>;
+  topLevelOnly?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
 export type QueryInstanceExternalAuditEventDestinationsArgs = {
@@ -37505,6 +42017,7 @@ export type QueryIssuesArgs = {
   search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<IssueSort>;
   state?: InputMaybe<IssuableState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   types?: InputMaybe<Array<IssueType>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -37524,6 +42037,13 @@ export type QueryJobsArgs = {
   statuses?: InputMaybe<Array<CiJobStatus>>;
 };
 
+export type QueryLdapAdminRoleLinksArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
 export type QueryLicenseHistoryEntriesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -37533,6 +42053,7 @@ export type QueryLicenseHistoryEntriesArgs = {
 
 export type QueryMemberRoleArgs = {
   id?: InputMaybe<Scalars["MemberRoleID"]["input"]>;
+  ids?: InputMaybe<Array<Scalars["MemberRoleID"]["input"]>>;
   orderBy?: InputMaybe<MemberRolesOrderBy>;
   sort?: InputMaybe<SortDirectionEnum>;
 };
@@ -37549,6 +42070,7 @@ export type QueryMemberRolesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   id?: InputMaybe<Scalars["MemberRoleID"]["input"]>;
+  ids?: InputMaybe<Array<Scalars["MemberRoleID"]["input"]>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   orderBy?: InputMaybe<MemberRolesOrderBy>;
   sort?: InputMaybe<SortDirectionEnum>;
@@ -37560,6 +42082,10 @@ export type QueryMergeRequestArgs = {
 
 export type QueryMilestoneArgs = {
   id: Scalars["MilestoneID"]["input"];
+};
+
+export type QueryMlExperimentArgs = {
+  id: Scalars["MlExperimentID"]["input"];
 };
 
 export type QueryMlModelArgs = {
@@ -37593,6 +42119,19 @@ export type QueryProjectArgs = {
   fullPath: Scalars["ID"]["input"];
 };
 
+export type QueryProjectSecretArgs = {
+  name: Scalars["String"]["input"];
+  projectPath: Scalars["ID"]["input"];
+};
+
+export type QueryProjectSecretsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  projectPath: Scalars["ID"]["input"];
+};
+
 export type QueryProjectSecretsManagerArgs = {
   projectPath: Scalars["ID"]["input"];
 };
@@ -37610,12 +42149,14 @@ export type QueryProjectsArgs = {
   markedForDeletionOn?: InputMaybe<Scalars["Date"]["input"]>;
   membership?: InputMaybe<Scalars["Boolean"]["input"]>;
   minAccessLevel?: InputMaybe<AccessLevelEnum>;
+  notAimedForDeletion?: InputMaybe<Scalars["Boolean"]["input"]>;
   personal?: InputMaybe<Scalars["Boolean"]["input"]>;
   programmingLanguageName?: InputMaybe<Scalars["String"]["input"]>;
   search?: InputMaybe<Scalars["String"]["input"]>;
   searchNamespaces?: InputMaybe<Scalars["Boolean"]["input"]>;
   sort?: InputMaybe<Scalars["String"]["input"]>;
   topics?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  trending?: InputMaybe<Scalars["Boolean"]["input"]>;
   withIssuesEnabled?: InputMaybe<Scalars["Boolean"]["input"]>;
   withMergeRequestsEnabled?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
@@ -37665,6 +42206,14 @@ export type QueryRunnersArgs = {
   tagList?: InputMaybe<Array<Scalars["String"]["input"]>>;
   type?: InputMaybe<CiRunnerType>;
   upgradeStatus?: InputMaybe<CiRunnerUpgradeStatus>;
+};
+
+export type QuerySecretPermissionsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  projectPath: Scalars["ID"]["input"];
 };
 
 export type QuerySelfManagedAddOnEligibleUsersArgs = {
@@ -37793,6 +42342,7 @@ export type QueryVulnerabilitiesArgs = {
   hasMergeRequest?: InputMaybe<Scalars["Boolean"]["input"]>;
   hasRemediations?: InputMaybe<Scalars["Boolean"]["input"]>;
   hasResolution?: InputMaybe<Scalars["Boolean"]["input"]>;
+  identifierName?: InputMaybe<Scalars["String"]["input"]>;
   image?: InputMaybe<Array<Scalars["String"]["input"]>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   owaspTopTen?: InputMaybe<Array<VulnerabilityOwaspTop10>>;
@@ -37826,6 +42376,10 @@ export type QueryWikiPageArgs = {
 
 export type QueryWorkItemArgs = {
   id: Scalars["WorkItemID"]["input"];
+};
+
+export type QueryWorkItemDescriptionTemplateContentArgs = {
+  templateContentInput: WorkItemDescriptionTemplateContentInput;
 };
 
 export type QueryWorkItemsByReferenceArgs = {
@@ -37885,11 +42439,25 @@ export type QueueingHistoryTimeSeries = {
   time: Scalars["Time"]["output"];
 };
 
+export type QuickActionsStatus = {
+  __typename?: "QuickActionsStatus";
+  /** Quick action command names. */
+  commandNames?: Maybe<Array<Scalars["String"]["output"]>>;
+  /** Returns true if only quick action commands were in the note. */
+  commandsOnly?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Error messages from quick actions that failed to apply. */
+  errorMessages?: Maybe<Array<Scalars["String"]["output"]>>;
+  /** Response messages from quick actions. */
+  messages?: Maybe<Array<Scalars["String"]["output"]>>;
+};
+
 /** Dependency reachability status */
 export enum ReachabilityType {
   /** Dependency is imported and in use. */
   InUse = "IN_USE",
-  /** Dependency reachability status is unknown. */
+  /** Dependency is not in use. */
+  NotFound = "NOT_FOUND",
+  /** Dependency reachability status is not available. */
   Unknown = "UNKNOWN",
 }
 
@@ -37984,7 +42552,7 @@ export type Release = {
   descriptionHtml?: Maybe<Scalars["String"]["output"]>;
   /** Evidence for the release. */
   evidences?: Maybe<ReleaseEvidenceConnection>;
-  /** Indicates the release is an historical release. */
+  /** Indicates the release is a historical release. */
   historicalRelease?: Maybe<Scalars["Boolean"]["output"]>;
   /** Global ID of the release. */
   id: Scalars["ReleaseID"]["output"];
@@ -38302,17 +42870,17 @@ export type ReleaseEvidenceEdge = {
 
 export type ReleaseLinks = {
   __typename?: "ReleaseLinks";
-  /** HTTP URL of the issues page, filtered by this release and `state=closed`. */
+  /** HTTP URL of the issues page, filtered by the release and `state=closed`. */
   closedIssuesUrl?: Maybe<Scalars["String"]["output"]>;
-  /** HTTP URL of the merge request page , filtered by this release and `state=closed`. */
+  /** HTTP URL of the merge request page, filtered by the release and `state=closed`. */
   closedMergeRequestsUrl?: Maybe<Scalars["String"]["output"]>;
   /** HTTP URL of the release's edit page. */
   editUrl?: Maybe<Scalars["String"]["output"]>;
-  /** HTTP URL of the merge request page , filtered by this release and `state=merged`. */
+  /** HTTP URL of the merge request page, filtered by the release and `state=merged`. */
   mergedMergeRequestsUrl?: Maybe<Scalars["String"]["output"]>;
-  /** HTTP URL of the issues page, filtered by this release and `state=open`. */
+  /** HTTP URL of the issues page, filtered by the release and `state=open`. */
   openedIssuesUrl?: Maybe<Scalars["String"]["output"]>;
-  /** HTTP URL of the merge request page, filtered by this release and `state=open`. */
+  /** HTTP URL of the merge request page, filtered by the release and `state=open`. */
   openedMergeRequestsUrl?: Maybe<Scalars["String"]["output"]>;
   /** HTTP URL of the release. */
   selfUrl?: Maybe<Scalars["String"]["output"]>;
@@ -38396,37 +42964,6 @@ export type ReleaseUpdatePayload = {
   release?: Maybe<Release>;
 };
 
-/** Represents a remote development agent configuration */
-export type RemoteDevelopmentAgentConfig = {
-  __typename?: "RemoteDevelopmentAgentConfig";
-  /** Cluster agent that the remote development agent config belongs to. */
-  clusterAgent: ClusterAgent;
-  /** Timestamp of when the remote development agent config was created. */
-  createdAt: Scalars["Time"]["output"];
-  /** Default max hours before worksapce termination of the remote development agent config. */
-  defaultMaxHoursBeforeTermination: Scalars["Int"]["output"];
-  /** DNS zone where workspaces are available. */
-  dnsZone: Scalars["String"]["output"];
-  /** Indicates whether remote development is enabled for the GitLab agent. */
-  enabled: Scalars["Boolean"]["output"];
-  /** Namespace where gitlab-workspaces-proxy is installed. */
-  gitlabWorkspacesProxyNamespace: Scalars["String"]["output"];
-  /** Global ID of the remote development agent config. */
-  id: Scalars["RemoteDevelopmentRemoteDevelopmentAgentConfigID"]["output"];
-  /** Max hours before worksapce termination limit of the remote development agent config. */
-  maxHoursBeforeTerminationLimit: Scalars["Int"]["output"];
-  /** Whether the network policy of the remote development agent config is enabled. */
-  networkPolicyEnabled: Scalars["Boolean"]["output"];
-  /** ID of the project that the remote development agent config belongs to. */
-  projectId?: Maybe<Scalars["ID"]["output"]>;
-  /** Timestamp of the last update to any mutable remote development agent config property. */
-  updatedAt: Scalars["Time"]["output"];
-  /** Maximum number of workspaces per user. */
-  workspacesPerUserQuota: Scalars["Int"]["output"];
-  /** Maximum number of workspaces for the GitLab agent. */
-  workspacesQuota: Scalars["Int"]["output"];
-};
-
 /** Autogenerated input type of RemoveProjectFromSecurityDashboard */
 export type RemoveProjectFromSecurityDashboardInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -38474,6 +43011,8 @@ export type RepositionImageDiffNotePayload = {
   errors: Array<Scalars["String"]["output"]>;
   /** Note after mutation. */
   note?: Maybe<Note>;
+  /** Status of quick actions after mutation. */
+  quickActionsStatus?: Maybe<QuickActionsStatus>;
 };
 
 export type Repository = {
@@ -38484,12 +43023,16 @@ export type Repository = {
   branchNames?: Maybe<Array<Scalars["String"]["output"]>>;
   /** Path to CODEOWNERS file in a ref. */
   codeOwnersPath?: Maybe<Scalars["String"]["output"]>;
+  /** Commit from the repository. */
+  commit?: Maybe<Commit>;
   /** Shows a disk path of the repository. */
   diskPath?: Maybe<Scalars["String"]["output"]>;
   /** Indicates repository has no visible content. */
   empty: Scalars["Boolean"]["output"];
   /** Indicates a corresponding Git repository exists on disk. */
   exists: Scalars["Boolean"]["output"];
+  /** The last commit made in the repository for the given path and ref. */
+  lastCommit?: Maybe<Commit>;
   /** Paginated tree of the repository. */
   paginatedTree?: Maybe<TreeConnection>;
   /** Default branch of the repository. */
@@ -38518,6 +43061,16 @@ export type RepositoryBranchNamesArgs = {
 
 export type RepositoryCodeOwnersPathArgs = {
   ref?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type RepositoryCommitArgs = {
+  ref: Scalars["String"]["input"];
+};
+
+export type RepositoryLastCommitArgs = {
+  path?: InputMaybe<Scalars["String"]["input"]>;
+  ref?: InputMaybe<Scalars["String"]["input"]>;
+  refType?: InputMaybe<RefType>;
 };
 
 export type RepositoryPaginatedTreeArgs = {
@@ -38583,9 +43136,9 @@ export type RepositoryBlob = {
   fileType?: Maybe<Scalars["String"]["output"]>;
   /** Web path to find file. */
   findFilePath?: Maybe<Scalars["String"]["output"]>;
-  /** Web path to edit this blob using a forked project. */
+  /** Web path to edit the blob using a forked project. */
   forkAndEditPath?: Maybe<Scalars["String"]["output"]>;
-  /** Web path to view this blob using a forked project. */
+  /** Web path to view the blob using a forked project. */
   forkAndViewPath?: Maybe<Scalars["String"]["output"]>;
   /** URL to the blob within Gitpod. */
   gitpodBlobUrl?: Maybe<Scalars["String"]["output"]>;
@@ -38593,9 +43146,9 @@ export type RepositoryBlob = {
   historyPath?: Maybe<Scalars["String"]["output"]>;
   /** ID of the blob. */
   id: Scalars["ID"]["output"];
-  /** Web path to edit this blob in the Web IDE. */
+  /** Web path to edit the blob in the Web IDE. */
   ideEditPath?: Maybe<Scalars["String"]["output"]>;
-  /** Web path to edit this blob in the Web IDE using a forked project. */
+  /** Web path to edit the blob in the Web IDE using a forked project. */
   ideForkAndEditPath?: Maybe<Scalars["String"]["output"]>;
   /** Blob language. */
   language?: Maybe<Scalars["String"]["output"]>;
@@ -38817,6 +43370,15 @@ export type ResolvableInterface = {
   resolvedBy?: Maybe<UserCore>;
 };
 
+/** Resource quotas of a workspace. */
+export type ResourceQuotas = {
+  __typename?: "ResourceQuotas";
+  /** Number of cpu cores. */
+  cpu: Scalars["String"]["output"];
+  /** Bytes of memory. */
+  memory: Scalars["String"]["output"];
+};
+
 /** Autogenerated input type of RestorePagesDeployment */
 export type RestorePagesDeploymentInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -38872,9 +43434,9 @@ export type RootStorageStatistics = {
   __typename?: "RootStorageStatistics";
   /** CI artifacts size in bytes. */
   buildArtifactsSize: Scalars["Float"]["output"];
-  /** Container Registry size in bytes. */
+  /** Container registry size in bytes. */
   containerRegistrySize: Scalars["Float"]["output"];
-  /** Indicates whether the deduplicated Container Registry size for the namespace is an estimated value or not. */
+  /** Indicates whether the deduplicated container registry size for the namespace is an estimated value or not. */
   containerRegistrySizeIsEstimated: Scalars["Boolean"]["output"];
   /**
    * Total storage in bytes with any applicable cost factor for forks applied. This will equal storage_size if there is no applicable cost factor. Introduced in GitLab 16.2: **Status**: Experiment.
@@ -38890,7 +43452,7 @@ export type RootStorageStatistics = {
   /** CI pipeline artifacts size in bytes. */
   pipelineArtifactsSize: Scalars["Float"]["output"];
   /**
-   * Indicates whether the deduplicated Container Registry size for the namespace is an estimated value or not. Deprecated in GitLab 16.2: Use `container_registry_size_is_estimated`.
+   * Indicates whether the deduplicated container registry size for the namespace is an estimated value or not. Deprecated in GitLab 16.2: Use `container_registry_size_is_estimated`.
    * @deprecated Use `container_registry_size_is_estimated`. Deprecated in GitLab 16.2.
    */
   registrySizeEstimated: Scalars["Boolean"]["output"];
@@ -38932,6 +43494,29 @@ export type RunnerArchitectureEdge = {
   cursor: Scalars["String"]["output"];
   /** The item at the end of the edge. */
   node?: Maybe<RunnerArchitecture>;
+};
+
+/** Autogenerated input type of RunnerBulkPause */
+export type RunnerBulkPauseInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** IDs of the runners to pause or unpause. */
+  ids: Array<Scalars["CiRunnerID"]["input"]>;
+  /** Indicates the runner is not allowed to receive jobs. */
+  paused: Scalars["Boolean"]["input"];
+};
+
+/** Autogenerated return type of RunnerBulkPause. */
+export type RunnerBulkPausePayload = {
+  __typename?: "RunnerBulkPausePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Number of records effectively updated. Only present if operation was performed synchronously. */
+  updatedCount?: Maybe<Scalars["Int"]["output"]>;
+  /** Runners after mutation. */
+  updatedRunners?: Maybe<Array<CiRunner>>;
 };
 
 /** Autogenerated input type of RunnerCacheClear */
@@ -39084,10 +43669,6 @@ export type RunnerUpdateInput = {
   maximumTimeout?: InputMaybe<Scalars["Int"]["input"]>;
   /** Indicates the runner is not allowed to receive jobs. */
   paused?: InputMaybe<Scalars["Boolean"]["input"]>;
-  /** Private projects' "compute cost factor" associated with the runner (GitLab.com only). */
-  privateProjectsMinutesCostFactor?: InputMaybe<Scalars["Float"]["input"]>;
-  /** Public projects' "compute cost factor" associated with the runner (GitLab.com only). */
-  publicProjectsMinutesCostFactor?: InputMaybe<Scalars["Float"]["input"]>;
   /** Indicates the runner is able to run untagged jobs. */
   runUntagged?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** Tags associated with the runner. */
@@ -39502,11 +44083,11 @@ export type ScanExecutionPolicy = OrchestrationPolicy & {
   description: Scalars["String"]["output"];
   /** URL of policy edit page. */
   editPath: Scalars["String"]["output"];
-  /** Indicates whether this policy is enabled. */
+  /** Indicates whether the policy is enabled. */
   enabled: Scalars["Boolean"]["output"];
   /** Name of the policy. */
   name: Scalars["String"]["output"];
-  /** Scope of the policy */
+  /** Scope of the policy. */
   policyScope?: Maybe<PolicyScope>;
   /** Source of the policy. Its fields depend on the source type. */
   source: SecurityPolicySource;
@@ -39570,6 +44151,8 @@ export type ScanResultPolicy = OrchestrationPolicy & {
   actionApprovers?: Maybe<Array<PolicyApproversType>>;
   /** All potential approvers of the group type, including groups inaccessible to the user. */
   allGroupApprovers?: Maybe<Array<PolicyApprovalGroup>>;
+  /** Approvers of the custom role type. Users belonging to these role(s) alone will be approvers. */
+  customRoles?: Maybe<Array<MemberRole>>;
   /**
    * All deprecated properties in the policy. Introduced in GitLab 16.10: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.10.
@@ -39579,11 +44162,11 @@ export type ScanResultPolicy = OrchestrationPolicy & {
   description: Scalars["String"]["output"];
   /** URL of policy edit page. */
   editPath: Scalars["String"]["output"];
-  /** Indicates whether this policy is enabled. */
+  /** Indicates whether the policy is enabled. */
   enabled: Scalars["Boolean"]["output"];
   /** Name of the policy. */
   name: Scalars["String"]["output"];
-  /** Scope of the policy */
+  /** Scope of the policy. */
   policyScope?: Maybe<PolicyScope>;
   /** Approvers of the role type. Users belonging to these role(s) alone will be approvers. */
   roleApprovers?: Maybe<Array<MemberAccessLevelName>>;
@@ -39698,7 +44281,12 @@ export type SearchBlobFileType = {
    */
   fileUrl?: Maybe<Scalars["String"]["output"]>;
   /**
-   * Matches per file in maximum 50 chunks. Introduced in GitLab 17.2: **Status**: Experiment.
+   * Language of the file. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  language?: Maybe<Scalars["String"]["output"]>;
+  /**
+   * Matches per file up to a max of 50 chunks.             Default is 3 Introduced in GitLab 17.2: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.2.
    */
   matchCount?: Maybe<Scalars["Int"]["output"]>;
@@ -39723,15 +44311,15 @@ export type SearchBlobFileType = {
 export type SearchBlobLine = {
   __typename?: "SearchBlobLine";
   /**
+   * Column numbers of the first and last highlighted characters on a line. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  highlights?: Maybe<Array<Array<Scalars["Int"]["output"]>>>;
+  /**
    * Line number of the blob. Introduced in GitLab 17.2: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.2.
    */
   lineNumber?: Maybe<Scalars["Int"]["output"]>;
-  /**
-   * Rich text of the blob. Introduced in GitLab 17.2: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 17.2.
-   */
-  richText?: Maybe<Scalars["String"]["output"]>;
   /**
    * Text content of the blob. Introduced in GitLab 17.2: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.2.
@@ -39758,6 +44346,87 @@ export enum SearchType {
   /** Exact code search. */
   Zoekt = "ZOEKT",
 }
+
+/** Representation of a secrets permission. */
+export type SecretPermission = {
+  __typename?: "SecretPermission";
+  /** Expiration date for Secret Permission (optional). */
+  expiredAt?: Maybe<Scalars["ISO8601Date"]["output"]>;
+  /** User who created the Secret Permission (optional). */
+  grantedBy?: Maybe<Scalars["String"]["output"]>;
+  /** Permissions to be provided. ['create', 'update', 'read', 'delete']. */
+  permissions: Scalars["String"]["output"];
+  /** Who is provided access to. For eg: User/Role/MemberRole/Group. */
+  principal: Principal;
+  /** Project the secret permission belong to. */
+  project: Project;
+};
+
+/** The connection type for SecretPermission. */
+export type SecretPermissionConnection = {
+  __typename?: "SecretPermissionConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<SecretPermissionEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<SecretPermission>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** Autogenerated input type of SecretPermissionDelete */
+export type SecretPermissionDeleteInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Whose permission to be deleted. */
+  principal: PrincipalInput;
+  /** Project permissions for the secret. */
+  projectPath: Scalars["ID"]["input"];
+};
+
+/** Autogenerated return type of SecretPermissionDelete. */
+export type SecretPermissionDeletePayload = {
+  __typename?: "SecretPermissionDeletePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Deleted Secret Permission. */
+  secretPermission?: Maybe<SecretPermission>;
+};
+
+/** An edge in a connection. */
+export type SecretPermissionEdge = {
+  __typename?: "SecretPermissionEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<SecretPermission>;
+};
+
+/** Autogenerated input type of SecretPermissionUpdate */
+export type SecretPermissionUpdateInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Expiration date for Secret Permission (optional). */
+  expiredAt?: InputMaybe<Scalars["ISO8601Date"]["input"]>;
+  /** Permissions to be provided. ['create', 'update', 'read', 'delete']. */
+  permissions: Array<Scalars["String"]["input"]>;
+  /** User/MemberRole/Role/Group that is provided access. */
+  principal: PrincipalInput;
+  /** Project to which the permissions are added. */
+  projectPath: Scalars["ID"]["input"];
+};
+
+/** Autogenerated return type of SecretPermissionUpdate. */
+export type SecretPermissionUpdatePayload = {
+  __typename?: "SecretPermissionUpdatePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Secret Permission that was created. */
+  secretPermission?: Maybe<SecretPermission>;
+};
 
 /** Autogenerated input type of SecurityFindingCreateIssue */
 export type SecurityFindingCreateIssueInput = {
@@ -39864,6 +44533,27 @@ export type SecurityFindingRevertToDetectedPayload = {
   securityFinding?: Maybe<PipelineSecurityReportFinding>;
 };
 
+/** Autogenerated input type of SecurityFindingSeverityOverride */
+export type SecurityFindingSeverityOverrideInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** New severity value for the finding. */
+  severity: VulnerabilitySeverity;
+  /** UUID of the finding to modify. */
+  uuid: Scalars["String"]["input"];
+};
+
+/** Autogenerated return type of SecurityFindingSeverityOverride. */
+export type SecurityFindingSeverityOverridePayload = {
+  __typename?: "SecurityFindingSeverityOverridePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Finding of which the severity was modified. */
+  securityFinding?: Maybe<PipelineSecurityReportFinding>;
+};
+
 /** Autogenerated input type of SecurityPolicyProjectAssign */
 export type SecurityPolicyProjectAssignInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -39957,6 +44647,8 @@ export type SecurityPolicyValidationError = {
   __typename?: "SecurityPolicyValidationError";
   /** Error field. */
   field: Scalars["String"]["output"];
+  /** Index of the errored action. */
+  index?: Maybe<Scalars["Int"]["output"]>;
   /** Error level. */
   level: Scalars["String"]["output"];
   /** Error message. */
@@ -40404,6 +45096,8 @@ export enum ServiceType {
   GithubService = "GITHUB_SERVICE",
   /** GitlabSlackApplicationService type */
   GitlabSlackApplicationService = "GITLAB_SLACK_APPLICATION_SERVICE",
+  /** GitGuardianService type */
+  GitGuardianService = "GIT_GUARDIAN_SERVICE",
   /** GoogleCloudPlatformArtifactRegistryService type */
   GoogleCloudPlatformArtifactRegistryService = "GOOGLE_CLOUD_PLATFORM_ARTIFACT_REGISTRY_SERVICE",
   /** GoogleCloudPlatformWorkloadIdentityFederationService type */
@@ -40470,7 +45164,7 @@ export enum ServiceType {
 export type SetContainerScanningForRegistryInput = {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
-  /** Desired status for Container Scanning on Container Registry feature. */
+  /** Desired status for Container Scanning on container registry feature. */
   enable: Scalars["Boolean"]["input"];
   /** Full path of the namespace (project). */
   namespacePath: Scalars["ID"]["input"];
@@ -40483,6 +45177,27 @@ export type SetContainerScanningForRegistryPayload = {
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Whether the feature is enabled. */
   containerScanningForRegistryEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+};
+
+/** Autogenerated input type of SetGroupSecretPushProtection */
+export type SetGroupSecretPushProtectionInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Full path of the group. */
+  namespacePath: Scalars["ID"]["input"];
+  /** IDs of projects to exclude from the feature. */
+  projectsToExclude?: InputMaybe<Array<Scalars["Int"]["input"]>>;
+  /** Whether to enable the feature. */
+  secretPushProtectionEnabled: Scalars["Boolean"]["input"];
+};
+
+/** Autogenerated return type of SetGroupSecretPushProtection. */
+export type SetGroupSecretPushProtectionPayload = {
+  __typename?: "SetGroupSecretPushProtectionPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
 };
@@ -40506,6 +45221,64 @@ export type SetPreReceiveSecretDetectionPayload = {
   errors: Array<Scalars["String"]["output"]>;
   /** Whether the feature is enabled. */
   preReceiveSecretDetectionEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Whether the feature is enabled. */
+  secretPushProtectionEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+};
+
+/** Autogenerated input type of SetSecretPushProtection */
+export type SetSecretPushProtectionInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Desired status for secret push protection feature. */
+  enable: Scalars["Boolean"]["input"];
+  /** Full path of the namespace (project). */
+  namespacePath: Scalars["ID"]["input"];
+};
+
+/** Autogenerated return type of SetSecretPushProtection. */
+export type SetSecretPushProtectionPayload = {
+  __typename?: "SetSecretPushProtectionPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Whether the feature is enabled. */
+  preReceiveSecretDetectionEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+  /** Whether the feature is enabled. */
+  secretPushProtectionEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+};
+
+/** Represents a vulnerability severity override */
+export type SeverityOverride = {
+  __typename?: "SeverityOverride";
+  /** User who changed the severity. */
+  author: UserCore;
+  /** Time of severity change. */
+  createdAt?: Maybe<Scalars["Time"]["output"]>;
+  /** New severity of the vulnerability. */
+  newSeverity: VulnerabilitySeverity;
+  /** Original severity of the vulnerability. */
+  originalSeverity: VulnerabilitySeverity;
+};
+
+/** The connection type for SeverityOverride. */
+export type SeverityOverrideConnection = {
+  __typename?: "SeverityOverrideConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<SeverityOverrideEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<SeverityOverride>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type SeverityOverrideEdge = {
+  __typename?: "SeverityOverrideEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<SeverityOverride>;
 };
 
 /** How to format SHA strings. */
@@ -40528,12 +45301,12 @@ export enum SharedRunnersSetting {
 /** Duo Chat slash command */
 export type SlashCommand = {
   __typename?: "SlashCommand";
-  /** Full slash command including the leading `/`. */
-  command: Scalars["String"]["output"];
   /** Description of what the slash command does. */
   description: Scalars["String"]["output"];
   /** Name of the slash command. */
   name: Scalars["String"]["output"];
+  /** Indicates whether the command should be submitted automatically when clicked. */
+  shouldSubmit: Scalars["Boolean"]["output"];
 };
 
 /** Represents a snippet entry */
@@ -40543,15 +45316,15 @@ export type Snippet = NoteableInterface & {
   author?: Maybe<UserCore>;
   /** Snippet blobs. */
   blobs?: Maybe<SnippetBlobConnection>;
-  /** All commenters on this noteable. */
+  /** All commenters on the noteable. */
   commenters: UserCoreConnection;
-  /** Timestamp this snippet was created. */
+  /** Timestamp the snippet was created. */
   createdAt: Scalars["Time"]["output"];
   /** Description of the snippet. */
   description?: Maybe<Scalars["String"]["output"]>;
   /** GitLab Flavored Markdown rendering of `description` */
   descriptionHtml?: Maybe<Scalars["String"]["output"]>;
-  /** All discussions on this noteable. */
+  /** All discussions on the noteable. */
   discussions: DiscussionConnection;
   /** File Name of the snippet. */
   fileName?: Maybe<Scalars["String"]["output"]>;
@@ -40575,7 +45348,7 @@ export type Snippet = NoteableInterface & {
   sshUrlToRepo?: Maybe<Scalars["String"]["output"]>;
   /** Title of the snippet. */
   title: Scalars["String"]["output"];
-  /** Timestamp this snippet was updated. */
+  /** Timestamp the snippet was updated. */
   updatedAt: Scalars["Time"]["output"];
   /** Permissions for the current user on the resource */
   userPermissions: SnippetPermissions;
@@ -40754,14 +45527,25 @@ export type SnippetPermissions = {
 /** Represents the Geo sync and verification state of a snippet repository */
 export type SnippetRepositoryRegistry = {
   __typename?: "SnippetRepositoryRegistry";
+  /** Indicate if the checksums of the SnippetRepositoryRegistry do not match on the primary and secondary. */
+  checksumMismatch?: Maybe<Scalars["Boolean"]["output"]>;
   /** Timestamp when the SnippetRepositoryRegistry was created */
   createdAt?: Maybe<Scalars["Time"]["output"]>;
+  /**
+   * Indicate if a forced redownload is to be performed. Deprecated in GitLab 17.10: Removed from registry tables in the database in favor of the newer reusable framework.
+   * @deprecated Removed from registry tables in the database in favor of the newer reusable framework. Deprecated in GitLab 17.10.
+   */
+  forceToRedownload?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the SnippetRepositoryRegistry */
   id: Scalars["ID"]["output"];
   /** Error message during sync of the SnippetRepositoryRegistry */
   lastSyncFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp of the most recent successful sync of the SnippetRepositoryRegistry */
   lastSyncedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Indicate if the SnippetRepositoryRegistry is missing on primary. */
+  missingOnPrimary?: Maybe<Scalars["Boolean"]["output"]>;
+  /** ID of the SnippetRepositoryRegistry's model record. */
+  modelRecordId?: Maybe<Scalars["Int"]["output"]>;
   /** Timestamp after which the SnippetRepositoryRegistry is resynced */
   retryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed sync attempts of the SnippetRepositoryRegistry */
@@ -40772,13 +45556,15 @@ export type SnippetRepositoryRegistry = {
   state?: Maybe<RegistryState>;
   /** The local checksum of the SnippetRepositoryRegistry */
   verificationChecksum?: Maybe<Scalars["String"]["output"]>;
+  /** The expected checksum of the SnippetRepositoryRegistry in case of mismatch. */
+  verificationChecksumMismatched?: Maybe<Scalars["String"]["output"]>;
   /** Error message during verification of the SnippetRepositoryRegistry */
   verificationFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp after which the SnippetRepositoryRegistry is reverified */
   verificationRetryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed verification attempts of the SnippetRepositoryRegistry */
   verificationRetryCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Timestamp when the verification started of SnippetRepositoryRegistry */
+  /** Timestamp when the verification of SnippetRepositoryRegistry started */
   verificationStartedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Verification state of the SnippetRepositoryRegistry */
   verificationState?: Maybe<VerificationStateEnum>;
@@ -40789,12 +45575,19 @@ export type SnippetRepositoryRegistry = {
 /** The connection type for SnippetRepositoryRegistry. */
 export type SnippetRepositoryRegistryConnection = {
   __typename?: "SnippetRepositoryRegistryConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<SnippetRepositoryRegistryEdge>>>;
   /** A list of nodes. */
   nodes?: Maybe<Array<Maybe<SnippetRepositoryRegistry>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** The connection type for SnippetRepositoryRegistry. */
+export type SnippetRepositoryRegistryConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** An edge in a connection. */
@@ -40848,6 +45641,10 @@ export enum SortDirectionEnum {
 
 /** Values for sorting the mapping of users on source instance to users on destination instance. */
 export enum SourceUserSort {
+  /** ID of the source user by ascending order. */
+  IdAsc = "ID_ASC",
+  /** ID of the source user by descending order. */
+  IdDesc = "ID_DESC",
   /** Instance source name by ascending order. */
   SourceNameAsc = "SOURCE_NAME_ASC",
   /** Instance source name by descending order. */
@@ -40856,6 +45653,27 @@ export enum SourceUserSort {
   StatusAsc = "STATUS_ASC",
   /** Status of the mapping by descending order. */
   StatusDesc = "STATUS_DESC",
+}
+
+/** Squash option overrides for a protected branch */
+export type SquashOption = {
+  __typename?: "SquashOption";
+  /** Help text for the squash option. */
+  helpText: Scalars["String"]["output"];
+  /** Human-readable description of the squash option. */
+  option: Scalars["String"]["output"];
+};
+
+/** Options for default squash behaviour for merge requests */
+export enum SquashOptionSetting {
+  /** Allow. */
+  Allowed = "ALLOWED",
+  /** Require. */
+  Always = "ALWAYS",
+  /** Encourage. */
+  Encouraged = "ENCOURAGED",
+  /** Do not allow. */
+  Never = "NEVER",
 }
 
 /** SSH signature for a signed commit */
@@ -40976,14 +45794,15 @@ export type StatusAction = {
   title?: Maybe<Scalars["String"]["output"]>;
 };
 
-export type StatusFilterInput = {
-  /** Status of the work item. */
-  status: RequirementStatusFilter;
-};
-
-export type StatusInput = {
-  /** Status to assign to the work item. */
-  status: TestReportState;
+/** an expression with a string value. */
+export type StringExpression = ExpressionInterface & {
+  __typename?: "StringExpression";
+  /** Field the expression applies to. */
+  field: Scalars["String"]["output"];
+  /** Operator of the expression. */
+  operator: Scalars["String"]["output"];
+  /** String value of the expression. */
+  value: Scalars["String"]["output"];
 };
 
 export type Submodule = Entry & {
@@ -41033,6 +45852,11 @@ export type Subscription = {
    * @deprecated **Status**: Experiment. Introduced in GitLab 15.11.
    */
   aiCompletionResponse?: Maybe<AiMessage>;
+  /**
+   * Triggered when a pipeline status is updated. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  ciPipelineStatusUpdated?: Maybe<Pipeline>;
   /** Triggered when the assignees of an issuable are updated. */
   issuableAssigneesUpdated?: Maybe<Issuable>;
   /** Triggered when the due date or start date of an issuable is updated. */
@@ -41074,6 +45898,11 @@ export type Subscription = {
    */
   securityPolicyProjectCreated?: Maybe<PolicyProjectCreated>;
   /**
+   * Triggered when a merge request the user is an assignee or a reviewer of is updated. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  userMergeRequestUpdated?: Maybe<MergeRequest>;
+  /**
    * Triggered when a note is created. Introduced in GitLab 15.9: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 15.9.
    */
@@ -41100,6 +45929,10 @@ export type SubscriptionAiCompletionResponseArgs = {
   clientSubscriptionId?: InputMaybe<Scalars["String"]["input"]>;
   resourceId?: InputMaybe<Scalars["AiModelID"]["input"]>;
   userId?: InputMaybe<Scalars["UserID"]["input"]>;
+};
+
+export type SubscriptionCiPipelineStatusUpdatedArgs = {
+  pipelineId: Scalars["CiPipelineID"]["input"];
 };
 
 export type SubscriptionIssuableAssigneesUpdatedArgs = {
@@ -41168,6 +46001,10 @@ export type SubscriptionMergeRequestReviewersUpdatedArgs = {
 
 export type SubscriptionSecurityPolicyProjectCreatedArgs = {
   fullPath: Scalars["String"]["input"];
+};
+
+export type SubscriptionUserMergeRequestUpdatedArgs = {
+  userId: Scalars["UserID"]["input"];
 };
 
 export type SubscriptionWorkItemNoteCreatedArgs = {
@@ -41268,6 +46105,62 @@ export type SystemNoteMetadata = {
   descriptionVersion?: Maybe<DescriptionVersion>;
   /** Global ID of the specific system note metadata. */
   id: Scalars["SystemNoteMetadataID"]["output"];
+};
+
+export type Tag = {
+  __typename?: "Tag";
+  /** Commit for the tag. */
+  commit?: Maybe<Commit>;
+  /** Tagging message. */
+  message?: Maybe<Scalars["String"]["output"]>;
+  /** Name of the tag. */
+  name: Scalars["String"]["output"];
+};
+
+/** Autogenerated input type of TagCreate */
+export type TagCreateInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Tagging message. */
+  message?: InputMaybe<Scalars["String"]["input"]>;
+  /** Name of the tag. */
+  name: Scalars["String"]["input"];
+  /** Project full path the branch is associated with. */
+  projectPath: Scalars["ID"]["input"];
+  /** Tag name or commit SHA to create tag from. */
+  ref: Scalars["String"]["input"];
+};
+
+/** Autogenerated return type of TagCreate. */
+export type TagCreatePayload = {
+  __typename?: "TagCreatePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Tag after mutation. */
+  tag?: Maybe<Tag>;
+};
+
+/** Autogenerated input type of TagDelete */
+export type TagDeleteInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Name of the tag. */
+  name: Scalars["String"]["input"];
+  /** Project full path the branch is associated with. */
+  projectPath: Scalars["ID"]["input"];
+};
+
+/** Autogenerated return type of TagDelete. */
+export type TagDeletePayload = {
+  __typename?: "TagDeletePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Tag after mutation. */
+  tag?: Maybe<Tag>;
 };
 
 /** Completion status of tasks */
@@ -41507,13 +46400,13 @@ export type TerraformStateVersion = {
   __typename?: "TerraformStateVersion";
   /** Timestamp the version was created. */
   createdAt: Scalars["Time"]["output"];
-  /** User that created this version. */
+  /** User that created the version. */
   createdByUser?: Maybe<UserCore>;
   /** URL for downloading the version's JSON file. */
   downloadPath?: Maybe<Scalars["String"]["output"]>;
   /** ID of the Terraform state version. */
   id: Scalars["ID"]["output"];
-  /** Job that created this version. */
+  /** Job that created the version. */
   job?: Maybe<CiJob>;
   /** Serial number of the version. */
   serial?: Maybe<Scalars["Int"]["output"]>;
@@ -41524,14 +46417,25 @@ export type TerraformStateVersion = {
 /** Represents the Geo sync and verification state of a terraform state version */
 export type TerraformStateVersionRegistry = {
   __typename?: "TerraformStateVersionRegistry";
+  /** Indicate if the checksums of the TerraformStateVersionRegistry do not match on the primary and secondary. */
+  checksumMismatch?: Maybe<Scalars["Boolean"]["output"]>;
   /** Timestamp when the TerraformStateVersionRegistry was created */
   createdAt?: Maybe<Scalars["Time"]["output"]>;
+  /**
+   * Indicate if a forced redownload is to be performed. Deprecated in GitLab 17.10: Removed from registry tables in the database in favor of the newer reusable framework.
+   * @deprecated Removed from registry tables in the database in favor of the newer reusable framework. Deprecated in GitLab 17.10.
+   */
+  forceToRedownload?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the TerraformStateVersionRegistry */
   id: Scalars["ID"]["output"];
   /** Error message during sync of the TerraformStateVersionRegistry */
   lastSyncFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp of the most recent successful sync of the TerraformStateVersionRegistry */
   lastSyncedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Indicate if the TerraformStateVersionRegistry is missing on primary. */
+  missingOnPrimary?: Maybe<Scalars["Boolean"]["output"]>;
+  /** ID of the TerraformStateVersionRegistry's model record. */
+  modelRecordId?: Maybe<Scalars["Int"]["output"]>;
   /** Timestamp after which the TerraformStateVersionRegistry is resynced */
   retryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed sync attempts of the TerraformStateVersionRegistry */
@@ -41542,13 +46446,15 @@ export type TerraformStateVersionRegistry = {
   terraformStateVersionId: Scalars["ID"]["output"];
   /** The local checksum of the TerraformStateVersionRegistry */
   verificationChecksum?: Maybe<Scalars["String"]["output"]>;
+  /** The expected checksum of the TerraformStateVersionRegistry in case of mismatch. */
+  verificationChecksumMismatched?: Maybe<Scalars["String"]["output"]>;
   /** Error message during verification of the TerraformStateVersionRegistry */
   verificationFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp after which the TerraformStateVersionRegistry is reverified */
   verificationRetryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed verification attempts of the TerraformStateVersionRegistry */
   verificationRetryCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Timestamp when the verification started of TerraformStateVersionRegistry */
+  /** Timestamp when the verification of TerraformStateVersionRegistry started */
   verificationStartedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Verification state of the TerraformStateVersionRegistry */
   verificationState?: Maybe<VerificationStateEnum>;
@@ -41559,12 +46465,19 @@ export type TerraformStateVersionRegistry = {
 /** The connection type for TerraformStateVersionRegistry. */
 export type TerraformStateVersionRegistryConnection = {
   __typename?: "TerraformStateVersionRegistryConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<TerraformStateVersionRegistryEdge>>>;
   /** A list of nodes. */
   nodes?: Maybe<Array<Maybe<TerraformStateVersionRegistry>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** The connection type for TerraformStateVersionRegistry. */
+export type TerraformStateVersionRegistryConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** An edge in a connection. */
@@ -42274,23 +47187,23 @@ export type Todo = {
   __typename?: "Todo";
   /** Action of the to-do item. */
   action: TodoActionEnum;
-  /** Author of this to-do item. */
+  /** Author of the to-do item. */
   author: UserCore;
   /** Body of the to-do item. */
   body: Scalars["String"]["output"];
-  /** Timestamp this to-do item was created. */
+  /** Timestamp the to-do item was created. */
   createdAt: Scalars["Time"]["output"];
-  /** Group this to-do item is associated with. */
+  /** Group the to-do item is associated with. */
   group?: Maybe<Group>;
   /** ID of the to-do item. */
   id: Scalars["ID"]["output"];
   /** Access type of access request to-do items. */
   memberAccessType?: Maybe<Scalars["String"]["output"]>;
-  /** Note which created this to-do item. */
+  /** Note which created the to-do item. */
   note?: Maybe<Note>;
-  /** Project this to-do item is associated with. */
+  /** Project the to-do item is associated with. */
   project?: Maybe<Project>;
-  /** The time until when the todo is snoozed. */
+  /** Time until when the todo is snoozed. */
   snoozedUntil?: Maybe<Scalars["Time"]["output"]>;
   /** State of the to-do item. */
   state: TodoStateEnum;
@@ -42299,7 +47212,7 @@ export type Todo = {
    * @deprecated Use `target_entity` field. Deprecated in GitLab 17.4.
    */
   target: Todoable;
-  /** Target of the to-do item */
+  /** Target of the to-do item. */
   targetEntity?: Maybe<Todoable>;
   /** Target type of the to-do item. */
   targetType: TodoTargetEnum;
@@ -42308,9 +47221,9 @@ export type Todo = {
 };
 
 export enum TodoActionEnum {
-  /** User was added as an approver. */
+  /** User is eligible to approve a merge request. */
   AddedApprover = "added_approver",
-  /** User was set as an approver. */
+  /** User is eligible to approve a merge request. */
   ApprovalRequired = "approval_required",
   /** User was assigned. */
   Assigned = "assigned",
@@ -42318,6 +47231,12 @@ export enum TodoActionEnum {
   BuildFailed = "build_failed",
   /** User was directly addressed. */
   DirectlyAddressed = "directly_addressed",
+  /** Access to Duo Core has been granted to the user. */
+  DuoCoreAccessGranted = "duo_core_access_granted",
+  /** Access to Duo Enterprise has been granted to the user. */
+  DuoEnterpriseAccessGranted = "duo_enterprise_access_granted",
+  /** Access to Duo Pro has been granted to the user. */
+  DuoProAccessGranted = "duo_pro_access_granted",
   /** User added a to-do item. */
   Marked = "marked",
   /** Group or project access requested from the user. */
@@ -42372,6 +47291,38 @@ export type TodoCreatePayload = {
   todo?: Maybe<Todo>;
 };
 
+/** Autogenerated input type of TodoDeleteAllDone */
+export type TodoDeleteAllDoneInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** Autogenerated return type of TodoDeleteAllDone. */
+export type TodoDeleteAllDonePayload = {
+  __typename?: "TodoDeleteAllDonePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+};
+
+/** Autogenerated input type of TodoDeleteMany */
+export type TodoDeleteManyInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Global IDs of the to-do items to process (a maximum of 100 is supported at once). */
+  ids: Array<Scalars["TodoID"]["input"]>;
+};
+
+/** Autogenerated return type of TodoDeleteMany. */
+export type TodoDeleteManyPayload = {
+  __typename?: "TodoDeleteManyPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+};
+
 /** An edge in a connection. */
 export type TodoEdge = {
   __typename?: "TodoEdge";
@@ -42400,6 +47351,25 @@ export type TodoMarkDonePayload = {
   todo: Todo;
 };
 
+/** Autogenerated input type of TodoResolveMany */
+export type TodoResolveManyInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Global IDs of the to-do items to process (a maximum of 100 is supported at once). */
+  ids: Array<Scalars["TodoID"]["input"]>;
+};
+
+/** Autogenerated return type of TodoResolveMany. */
+export type TodoResolveManyPayload = {
+  __typename?: "TodoResolveManyPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Resolved to-do items. */
+  todos: Array<Todo>;
+};
+
 /** Autogenerated input type of TodoRestore */
 export type TodoRestoreInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -42412,7 +47382,7 @@ export type TodoRestoreInput = {
 export type TodoRestoreManyInput = {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
-  /** Global IDs of the to-do items to restore (a maximum of 50 is supported at once). */
+  /** Global IDs of the to-do items to process (a maximum of 100 is supported at once). */
   ids: Array<Scalars["TodoID"]["input"]>;
 };
 
@@ -42423,7 +47393,7 @@ export type TodoRestoreManyPayload = {
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
-  /** Updated to-do items. */
+  /** Restored to-do items. */
   todos: Array<Todo>;
 };
 
@@ -42446,6 +47416,27 @@ export type TodoSnoozeInput = {
   id: Scalars["TodoID"]["input"];
   /** Time until which the todo should be snoozed. */
   snoozeUntil: Scalars["Time"]["input"];
+};
+
+/** Autogenerated input type of TodoSnoozeMany */
+export type TodoSnoozeManyInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Global IDs of the to-do items to process (a maximum of 100 is supported at once). */
+  ids: Array<Scalars["TodoID"]["input"]>;
+  /** Time until which the todos should be snoozed. */
+  snoozeUntil: Scalars["Time"]["input"];
+};
+
+/** Autogenerated return type of TodoSnoozeMany. */
+export type TodoSnoozeManyPayload = {
+  __typename?: "TodoSnoozeManyPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Snoozed to-do items. */
+  todos: Array<Todo>;
 };
 
 /** Autogenerated return type of TodoSnooze. */
@@ -42521,8 +47512,12 @@ export enum TodoTargetEnum {
   Namespace = "NAMESPACE",
   /** Project. */
   Project = "PROJECT",
+  /** User. */
+  User = "USER",
   /** Vulnerability. */
   Vulnerability = "VULNERABILITY",
+  /** Wiki page. */
+  Wikipagemeta = "WIKIPAGEMETA",
   /** Work item. */
   Workitem = "WORKITEM",
 }
@@ -42546,10 +47541,29 @@ export type TodoUnSnoozePayload = {
   todo: Todo;
 };
 
+/** Autogenerated input type of TodoUnsnoozeMany */
+export type TodoUnsnoozeManyInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Global IDs of the to-do items to process (a maximum of 100 is supported at once). */
+  ids: Array<Scalars["TodoID"]["input"]>;
+};
+
+/** Autogenerated return type of TodoUnsnoozeMany. */
+export type TodoUnsnoozeManyPayload = {
+  __typename?: "TodoUnsnoozeManyPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Unsnoozed to-do items. */
+  todos: Array<Todo>;
+};
+
 export type Todoable = {
-  /** Name or title of this object. */
+  /** Name or title of the object. */
   name?: Maybe<Scalars["String"]["output"]>;
-  /** URL of this object. */
+  /** URL of the object. */
   webUrl?: Maybe<Scalars["String"]["output"]>;
 };
 
@@ -42648,6 +47662,11 @@ export type Tree = {
   blobs: BlobConnection;
   /** Last commit for the tree. */
   lastCommit?: Maybe<Commit>;
+  /**
+   * Web path to tree permalink. The `permalinkPath` field returns a string that represents the web path to a specific version of a directory, identified by its commit SHA. Use this path to create permanent links to directories at specific points in your repository's history. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  permalinkPath?: Maybe<Scalars["String"]["output"]>;
   /** Sub-modules of the tree. */
   submodules: SubmoduleConnection;
   /** Trees of the tree. */
@@ -42659,6 +47678,12 @@ export type TreeBlobsArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type TreeLastCommitArgs = {
+  path?: InputMaybe<Scalars["String"]["input"]>;
+  ref?: InputMaybe<Scalars["String"]["input"]>;
+  refType?: InputMaybe<RefType>;
 };
 
 export type TreeSubmodulesArgs = {
@@ -42759,6 +47784,11 @@ export type UnionedIssueFilterInput = {
   labelNames?: InputMaybe<Array<Scalars["String"]["input"]>>;
 };
 
+export type UnionedMergeRequestFilterInput = {
+  /** Filters MRs that are assigned to at least one of the given users. */
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
+};
+
 export type UnionedWorkItemFilterInput = {
   /** Filters work items that are assigned to at least one of the given users. */
   assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
@@ -42775,9 +47805,9 @@ export type UnprotectAccessLevel = {
   accessLevel: Scalars["Int"]["output"];
   /** Human readable representation for the access level. */
   accessLevelDescription: Scalars["String"]["output"];
-  /** Group associated with this access level. */
+  /** Group associated with the access level. */
   group?: Maybe<AccessLevelGroup>;
-  /** User associated with this access level. */
+  /** User associated with the access level. */
   user?: Maybe<AccessLevelUser>;
 };
 
@@ -42955,6 +47985,50 @@ export type UpdateComplianceFrameworkPayload = {
   errors: Array<Scalars["String"]["output"]>;
 };
 
+/** Autogenerated input type of UpdateComplianceRequirement */
+export type UpdateComplianceRequirementInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Controls to add or update to the compliance requirement. */
+  controls?: InputMaybe<Array<ComplianceRequirementsControlInput>>;
+  /** Global ID of the compliance requirement to update. */
+  id: Scalars["ComplianceManagementComplianceFrameworkComplianceRequirementID"]["input"];
+  /** Parameters to update the compliance requirement with. */
+  params: ComplianceRequirementInput;
+};
+
+/** Autogenerated return type of UpdateComplianceRequirement. */
+export type UpdateComplianceRequirementPayload = {
+  __typename?: "UpdateComplianceRequirementPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Compliance requirement after updation. */
+  requirement?: Maybe<ComplianceRequirement>;
+};
+
+/** Autogenerated input type of UpdateComplianceRequirementsControl */
+export type UpdateComplianceRequirementsControlInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Global ID of the compliance requirement control to update. */
+  id: Scalars["ComplianceManagementComplianceFrameworkComplianceRequirementsControlID"]["input"];
+  /** Parameters to update the compliance requirement control with. */
+  params: ComplianceRequirementsControlInput;
+};
+
+/** Autogenerated return type of UpdateComplianceRequirementsControl. */
+export type UpdateComplianceRequirementsControlPayload = {
+  __typename?: "UpdateComplianceRequirementsControlPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Compliance requirement control after updation. */
+  requirementsControl?: Maybe<ComplianceRequirementsControl>;
+};
+
 /** Autogenerated input type of UpdateContainerExpirationPolicy */
 export type UpdateContainerExpirationPolicyInput = {
   /** Schedule of the container expiration policy. */
@@ -42991,24 +48065,49 @@ export type UpdateContainerExpirationPolicyPayload = {
   errors: Array<Scalars["String"]["output"]>;
 };
 
-/** Autogenerated input type of UpdateContainerRegistryProtectionRule */
-export type UpdateContainerRegistryProtectionRuleInput = {
+/** Autogenerated input type of UpdateContainerProtectionRepositoryRule */
+export type UpdateContainerProtectionRepositoryRuleInput = {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
-  /** Global ID of the container registry protection rule to be updated. */
+  /** Global ID of the container repository protection rule to be updated. */
   id: Scalars["ContainerRegistryProtectionRuleID"]["input"];
+  /** Minimum GitLab access level required to delete container images from the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the default minimum access level is `DEVELOPER`. */
+  minimumAccessLevelForDelete?: InputMaybe<ContainerProtectionRepositoryRuleAccessLevel>;
+  /** Minimum GitLab access level required to push container images to the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the default minimum access level is `DEVELOPER`. */
+  minimumAccessLevelForPush?: InputMaybe<ContainerProtectionRepositoryRuleAccessLevel>;
+  /** Container repository path pattern protected by the protection rule. Must start with the project’s full path. For example: `my-project/*-prod-*`. Wildcard character `*` is allowed anywhere after the project’s full path. */
+  repositoryPathPattern?: InputMaybe<Scalars["String"]["input"]>;
 };
 
-/** Autogenerated return type of UpdateContainerRegistryProtectionRule. */
-export type UpdateContainerRegistryProtectionRulePayload = {
-  __typename?: "UpdateContainerRegistryProtectionRulePayload";
+/** Autogenerated return type of UpdateContainerProtectionRepositoryRule. */
+export type UpdateContainerProtectionRepositoryRulePayload = {
+  __typename?: "UpdateContainerProtectionRepositoryRulePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Container repository protection rule after mutation. */
+  containerProtectionRepositoryRule?: Maybe<ContainerProtectionRepositoryRule>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+};
+
+/** Autogenerated input type of UpdateContainerProtectionTagRule */
+export type UpdateContainerProtectionTagRuleInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Global ID of the tag protection rule to update. */
+  id: Scalars["ContainerRegistryProtectionTagRuleID"]["input"];
+};
+
+/** Autogenerated return type of UpdateContainerProtectionTagRule. */
+export type UpdateContainerProtectionTagRulePayload = {
+  __typename?: "UpdateContainerProtectionTagRulePayload";
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /**
-   * Container registry protection rule after mutation. Introduced in GitLab 16.7: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.7.
+   * Protection rule for container image tags after creation. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
    */
-  containerRegistryProtectionRule?: Maybe<ContainerRegistryProtectionRule>;
+  containerProtectionTagRule?: Maybe<ContainerProtectionTagRule>;
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
 };
@@ -43071,6 +48170,10 @@ export type UpdateDependencyProxySettingsInput = {
   enabled?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** Group path for the group dependency proxy. */
   groupPath: Scalars["ID"]["input"];
+  /** Identity credential used to authenticate with Docker Hub when pulling images. Can be a username (for password or personal access token (PAT)) or organization name (for organization access token (OAT)). */
+  identity?: InputMaybe<Scalars["String"]["input"]>;
+  /** Secret credential used to authenticate with Docker Hub when pulling images. Can be a password, personal access token (PAT), or organization access token (OAT). */
+  secret?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 /** Autogenerated return type of UpdateDependencyProxySettings. */
@@ -43126,7 +48229,7 @@ export type UpdateEpicInput = {
   addLabels?: InputMaybe<Array<Scalars["String"]["input"]>>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
-  /** Color of the epic. Available only when feature flag `epic_color_highlight` is enabled. This flag is disabled by default, because the feature is experimental and is subject to change without notice. */
+  /** Color of the epic. */
   color?: InputMaybe<Scalars["Color"]["input"]>;
   /** Indicates if the epic is confidential. */
   confidential?: InputMaybe<Scalars["Boolean"]["input"]>;
@@ -43186,6 +48289,8 @@ export type UpdateImageDiffNotePayload = {
   errors: Array<Scalars["String"]["output"]>;
   /** Note after mutation. */
   note?: Maybe<Note>;
+  /** Status of quick actions after mutation. */
+  quickActionsStatus?: Maybe<QuickActionsStatus>;
 };
 
 /** Autogenerated input type of UpdateIssue */
@@ -43274,7 +48379,7 @@ export type UpdateNamespacePackageSettingsInput = {
   genericDuplicateExceptionRegex?: InputMaybe<
     Scalars["UntrustedRegexp"]["input"]
   >;
-  /** Indicates whether duplicate generic packages are allowed for this namespace. */
+  /** Indicates whether duplicate generic packages are allowed for the namespace. */
   genericDuplicatesAllowed?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** Indicates whether Maven package forwarding is locked for all descendent namespaces. */
   lockMavenPackageRequestsForwarding?: InputMaybe<Scalars["Boolean"]["input"]>;
@@ -43286,29 +48391,29 @@ export type UpdateNamespacePackageSettingsInput = {
   mavenDuplicateExceptionRegex?: InputMaybe<
     Scalars["UntrustedRegexp"]["input"]
   >;
-  /** Indicates whether duplicate Maven packages are allowed for this namespace. */
+  /** Indicates whether duplicate Maven packages are allowed for the namespace. */
   mavenDuplicatesAllowed?: InputMaybe<Scalars["Boolean"]["input"]>;
-  /** Indicates whether Maven package forwarding is allowed for this namespace. */
+  /** Indicates whether Maven package forwarding is allowed for the namespace. */
   mavenPackageRequestsForwarding?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** Namespace path where the namespace package setting is located. */
   namespacePath: Scalars["ID"]["input"];
-  /** Indicates whether npm package forwarding is allowed for this namespace. */
+  /** Indicates whether npm package forwarding is allowed for the namespace. */
   npmPackageRequestsForwarding?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** When nuget_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. Otherwise, this setting has no effect.  */
   nugetDuplicateExceptionRegex?: InputMaybe<
     Scalars["UntrustedRegexp"]["input"]
   >;
-  /** Indicates whether duplicate NuGet packages are allowed for this namespace. */
+  /** Indicates whether duplicate NuGet packages are allowed for the namespace. */
   nugetDuplicatesAllowed?: InputMaybe<Scalars["Boolean"]["input"]>;
-  /** Indicates wheather the NuGet symbol server is enabled for this namespace. */
+  /** Indicates whether the NuGet symbol server is enabled for the namespace. */
   nugetSymbolServerEnabled?: InputMaybe<Scalars["Boolean"]["input"]>;
-  /** Indicates whether PyPI package forwarding is allowed for this namespace. */
+  /** Indicates whether PyPI package forwarding is allowed for the namespace. */
   pypiPackageRequestsForwarding?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** When terraform_module_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. Otherwise, this setting has no effect. */
   terraformModuleDuplicateExceptionRegex?: InputMaybe<
     Scalars["UntrustedRegexp"]["input"]
   >;
-  /** Indicates whether duplicate Terraform packages are allowed for this namespace. */
+  /** Indicates whether duplicate Terraform packages are allowed for the namespace. */
   terraformModuleDuplicatesAllowed?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
@@ -43342,6 +48447,8 @@ export type UpdateNotePayload = {
   errors: Array<Scalars["String"]["output"]>;
   /** Note after mutation. */
   note?: Maybe<Note>;
+  /** Status of quick actions after mutation. */
+  quickActionsStatus?: Maybe<QuickActionsStatus>;
 };
 
 /** Autogenerated input type of UpdatePackagesCleanupPolicy */
@@ -43371,6 +48478,12 @@ export type UpdatePackagesProtectionRuleInput = {
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
   /** Global ID of the package protection rule to be updated. */
   id: Scalars["PackagesProtectionRuleID"]["input"];
+  /** Minimum GitLab access required to push packages to the package registry. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the default minimum access level is `DEVELOPER`. */
+  minimumAccessLevelForPush?: InputMaybe<PackagesProtectionRuleAccessLevel>;
+  /** Package name protected by the protection rule. For example, `@my-scope/my-package-*`. Wildcard character `*` allowed. */
+  packageNamePattern?: InputMaybe<Scalars["String"]["input"]>;
+  /** Package type protected by the protection rule. For example, `NPM`, `PYPI`. */
+  packageType?: InputMaybe<PackagesProtectionRulePackageType>;
 };
 
 /** Autogenerated return type of UpdatePackagesProtectionRule. */
@@ -43380,10 +48493,7 @@ export type UpdatePackagesProtectionRulePayload = {
   clientMutationId?: Maybe<Scalars["String"]["output"]>;
   /** Errors encountered during execution of the mutation. */
   errors: Array<Scalars["String"]["output"]>;
-  /**
-   * Packages protection rule after mutation. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
+  /** Packages protection rule after mutation. */
   packageProtectionRule?: Maybe<PackagesProtectionRule>;
 };
 
@@ -43471,16 +48581,27 @@ export type UploadDeletePayload = {
 /** Represents the Geo replication and verification state of an upload. */
 export type UploadRegistry = {
   __typename?: "UploadRegistry";
+  /** Indicate if the checksums of the UploadRegistry do not match on the primary and secondary. */
+  checksumMismatch?: Maybe<Scalars["Boolean"]["output"]>;
   /** Timestamp when the UploadRegistry was created */
   createdAt?: Maybe<Scalars["Time"]["output"]>;
   /** ID of the Upload. */
   fileId: Scalars["ID"]["output"];
+  /**
+   * Indicate if a forced redownload is to be performed. Deprecated in GitLab 17.10: Removed from registry tables in the database in favor of the newer reusable framework.
+   * @deprecated Removed from registry tables in the database in favor of the newer reusable framework. Deprecated in GitLab 17.10.
+   */
+  forceToRedownload?: Maybe<Scalars["Boolean"]["output"]>;
   /** ID of the UploadRegistry */
   id: Scalars["ID"]["output"];
   /** Error message during sync of the UploadRegistry */
   lastSyncFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp of the most recent successful sync of the UploadRegistry */
   lastSyncedAt?: Maybe<Scalars["Time"]["output"]>;
+  /** Indicate if the UploadRegistry is missing on primary. */
+  missingOnPrimary?: Maybe<Scalars["Boolean"]["output"]>;
+  /** ID of the UploadRegistry's model record. */
+  modelRecordId?: Maybe<Scalars["Int"]["output"]>;
   /** Timestamp after which the UploadRegistry is resynced */
   retryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed sync attempts of the UploadRegistry */
@@ -43489,13 +48610,15 @@ export type UploadRegistry = {
   state?: Maybe<RegistryState>;
   /** The local checksum of the UploadRegistry */
   verificationChecksum?: Maybe<Scalars["String"]["output"]>;
+  /** The expected checksum of the UploadRegistry in case of mismatch. */
+  verificationChecksumMismatched?: Maybe<Scalars["String"]["output"]>;
   /** Error message during verification of the UploadRegistry */
   verificationFailure?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp after which the UploadRegistry is reverified */
   verificationRetryAt?: Maybe<Scalars["Time"]["output"]>;
   /** Number of consecutive failed verification attempts of the UploadRegistry */
   verificationRetryCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Timestamp when the verification started of UploadRegistry */
+  /** Timestamp when the verification of UploadRegistry started */
   verificationStartedAt?: Maybe<Scalars["Time"]["output"]>;
   /** Verification state of the UploadRegistry */
   verificationState?: Maybe<VerificationStateEnum>;
@@ -43506,12 +48629,19 @@ export type UploadRegistry = {
 /** The connection type for UploadRegistry. */
 export type UploadRegistryConnection = {
   __typename?: "UploadRegistryConnection";
+  /** Limited count of collection. Returns limit + 1 for counts greater than the limit. */
+  count: Scalars["Int"]["output"];
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<UploadRegistryEdge>>>;
   /** A list of nodes. */
   nodes?: Maybe<Array<Maybe<UploadRegistry>>>;
   /** Information to aid in pagination. */
   pageInfo: PageInfo;
+};
+
+/** The connection type for UploadRegistry. */
+export type UploadRegistryConnectionCountArgs = {
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** An edge in a connection. */
@@ -43595,8 +48725,8 @@ export type User = {
   groups?: Maybe<GroupConnection>;
   /** Indicates if the user is a regular user. */
   human?: Maybe<Scalars["Boolean"]["output"]>;
-  /** ID of the user. */
-  id: Scalars["ID"]["output"];
+  /** Global ID of the user. */
+  id: Scalars["UserID"]["output"];
   /** IDE settings. */
   ide?: Maybe<Ide>;
   /** Job title of the user. */
@@ -43650,6 +48780,8 @@ export type User = {
   todos?: Maybe<TodoConnection>;
   /** X (formerly Twitter) username of the user. */
   twitter?: Maybe<Scalars["String"]["output"]>;
+  /** Type of the user. */
+  type: UserType;
   /**
    * Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled. Introduced in GitLab 15.10: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
@@ -43659,7 +48791,7 @@ export type User = {
   userPermissions: UserPermissions;
   /** Preferences for the user. */
   userPreferences?: Maybe<UserPreferences>;
-  /** Username of the user. Unique within this instance of GitLab. */
+  /** Username of the user. Unique within the instance of GitLab. */
   username: Scalars["String"]["output"];
   /** Web path of the user. */
   webPath: Scalars["String"]["output"];
@@ -43685,6 +48817,7 @@ export type UserAssignedMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -43695,14 +48828,17 @@ export type UserAssignedMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -43715,6 +48851,7 @@ export type UserAuthoredMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   createdAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -43727,7 +48864,9 @@ export type UserAuthoredMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
+  includeAssigned?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   mergedAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -43737,14 +48876,17 @@ export type UserAuthoredMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -43795,6 +48937,7 @@ export type UserGroupsArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
   permissionScope?: InputMaybe<GroupPermission>;
   search?: InputMaybe<Scalars["String"]["input"]>;
+  sort?: InputMaybe<GroupSort>;
 };
 
 /** Representation of a GitLab user. */
@@ -43830,6 +48973,7 @@ export type UserReviewRequestedMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   authorUsername?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -43843,6 +48987,7 @@ export type UserReviewRequestedMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -43853,12 +48998,15 @@ export type UserReviewRequestedMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -43924,6 +49072,7 @@ export type UserTodosArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  isSnoozed?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   projectId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   sort?: InputMaybe<TodoSort>;
@@ -44241,12 +49390,22 @@ export enum UserCalloutFeatureNameEnum {
   CanaryDeployment = "CANARY_DEPLOYMENT",
   /** Callout feature name for ci_deprecation_warning_for_types_keyword. */
   CiDeprecationWarningForTypesKeyword = "CI_DEPRECATION_WARNING_FOR_TYPES_KEYWORD",
+  /** Callout feature name for ci_minutes_limit_alert_danger_stage. */
+  CiMinutesLimitAlertDangerStage = "CI_MINUTES_LIMIT_ALERT_DANGER_STAGE",
+  /** Callout feature name for ci_minutes_limit_alert_exceeded_stage. */
+  CiMinutesLimitAlertExceededStage = "CI_MINUTES_LIMIT_ALERT_EXCEEDED_STAGE",
+  /** Callout feature name for ci_minutes_limit_alert_warning_stage. */
+  CiMinutesLimitAlertWarningStage = "CI_MINUTES_LIMIT_ALERT_WARNING_STAGE",
   /** Callout feature name for cluster_security_warning. */
   ClusterSecurityWarning = "CLUSTER_SECURITY_WARNING",
   /** Callout feature name for deployment_approvals_empty_state. */
   DeploymentApprovalsEmptyState = "DEPLOYMENT_APPROVALS_EMPTY_STATE",
   /** Callout feature name for deployment_details_feedback. */
   DeploymentDetailsFeedback = "DEPLOYMENT_DETAILS_FEEDBACK",
+  /** Callout feature name for dora_dashboard_migration_group. */
+  DoraDashboardMigrationGroup = "DORA_DASHBOARD_MIGRATION_GROUP",
+  /** Callout feature name for dora_dashboard_migration_project. */
+  DoraDashboardMigrationProject = "DORA_DASHBOARD_MIGRATION_PROJECT",
   /** Callout feature name for duo_chat_callout. */
   DuoChatCallout = "DUO_CHAT_CALLOUT",
   /** Callout feature name for feature_flags_new_version. */
@@ -44275,6 +49434,8 @@ export enum UserCalloutFeatureNameEnum {
   NamespaceStorageLimitAlertWarningThreshold = "NAMESPACE_STORAGE_LIMIT_ALERT_WARNING_THRESHOLD",
   /** Callout feature name for namespace_storage_pre_enforcement_banner. */
   NamespaceStoragePreEnforcementBanner = "NAMESPACE_STORAGE_PRE_ENFORCEMENT_BANNER",
+  /** Callout feature name for new_merge_request_dashboard_welcome. */
+  NewMergeRequestDashboardWelcome = "NEW_MERGE_REQUEST_DASHBOARD_WELCOME",
   /** Callout feature name for new_mr_dashboard_banner. */
   NewMrDashboardBanner = "NEW_MR_DASHBOARD_BANNER",
   /** Callout feature name for new_top_level_group_alert. */
@@ -44289,22 +49450,28 @@ export enum UserCalloutFeatureNameEnum {
   PersonalAccessTokenExpiry = "PERSONAL_ACCESS_TOKEN_EXPIRY",
   /** Callout feature name for personal_project_limitations_banner. */
   PersonalProjectLimitationsBanner = "PERSONAL_PROJECT_LIMITATIONS_BANNER",
+  /** Callout feature name for pipeline_inputs_announcement_banner. */
+  PipelineInputsAnnouncementBanner = "PIPELINE_INPUTS_ANNOUNCEMENT_BANNER",
   /** Callout feature name for pipeline_needs_banner. */
   PipelineNeedsBanner = "PIPELINE_NEEDS_BANNER",
   /** Callout feature name for pipeline_needs_hover_tip. */
   PipelineNeedsHoverTip = "PIPELINE_NEEDS_HOVER_TIP",
+  /** Callout feature name for pipeline_new_inputs_adoption_banner. */
+  PipelineNewInputsAdoptionBanner = "PIPELINE_NEW_INPUTS_ADOPTION_BANNER",
+  /** Callout feature name for pipeline_schedules_inputs_adoption_banner. */
+  PipelineSchedulesInputsAdoptionBanner = "PIPELINE_SCHEDULES_INPUTS_ADOPTION_BANNER",
+  /** Callout feature name for pipl_compliance_alert. */
+  PiplComplianceAlert = "PIPL_COMPLIANCE_ALERT",
+  /** Callout feature name for planner_role_callout. */
+  PlannerRoleCallout = "PLANNER_ROLE_CALLOUT",
   /** Callout feature name for preview_user_over_limit_free_plan_alert. */
   PreviewUserOverLimitFreePlanAlert = "PREVIEW_USER_OVER_LIMIT_FREE_PLAN_ALERT",
   /** Callout feature name for product_analytics_dashboard_feedback. */
   ProductAnalyticsDashboardFeedback = "PRODUCT_ANALYTICS_DASHBOARD_FEEDBACK",
+  /** Callout feature name for product_usage_data_collection_changes. */
+  ProductUsageDataCollectionChanges = "PRODUCT_USAGE_DATA_COLLECTION_CHANGES",
   /** Callout feature name for profile_personal_access_token_expiry. */
   ProfilePersonalAccessTokenExpiry = "PROFILE_PERSONAL_ACCESS_TOKEN_EXPIRY",
-  /** Callout feature name for project_quality_summary_feedback. */
-  ProjectQualitySummaryFeedback = "PROJECT_QUALITY_SUMMARY_FEEDBACK",
-  /** Callout feature name for project_repository_limit_alert_alert_threshold. */
-  ProjectRepositoryLimitAlertAlertThreshold = "PROJECT_REPOSITORY_LIMIT_ALERT_ALERT_THRESHOLD",
-  /** Callout feature name for project_repository_limit_alert_error_threshold. */
-  ProjectRepositoryLimitAlertErrorThreshold = "PROJECT_REPOSITORY_LIMIT_ALERT_ERROR_THRESHOLD",
   /** Callout feature name for project_repository_limit_alert_warning_threshold. */
   ProjectRepositoryLimitAlertWarningThreshold = "PROJECT_REPOSITORY_LIMIT_ALERT_WARNING_THRESHOLD",
   /** Callout feature name for registration_enabled_callout. */
@@ -44360,120 +49527,123 @@ export enum UserCalloutFeatureNameEnum {
 }
 
 /** Core representation of a GitLab user. */
-export type UserCore = User & {
-  __typename?: "UserCore";
-  /** Indicates if the user is active. */
-  active?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Merge requests assigned to the user. */
-  assignedMergeRequests?: Maybe<MergeRequestConnection>;
-  /** Merge requests authored by the user. */
-  authoredMergeRequests?: Maybe<MergeRequestConnection>;
-  /** URL of the user's avatar. */
-  avatarUrl?: Maybe<Scalars["String"]["output"]>;
-  /** Bio of the user. */
-  bio?: Maybe<Scalars["String"]["output"]>;
-  /** Indicates if the user is a bot. */
-  bot: Scalars["Boolean"]["output"];
-  /** User callouts that belong to the user. */
-  callouts?: Maybe<UserCalloutConnection>;
-  /** User's default commit email. */
-  commitEmail?: Maybe<Scalars["String"]["output"]>;
-  /** Projects the user has contributed to. */
-  contributedProjects?: Maybe<ProjectConnection>;
-  /** Timestamp of when the user was created. */
-  createdAt?: Maybe<Scalars["Time"]["output"]>;
-  /** Discord ID of the user. */
-  discord?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * User email. Deprecated in GitLab 13.7: This was renamed.
-   * @deprecated This was renamed. Please use `User.publicEmail`. Deprecated in GitLab 13.7.
-   */
-  email?: Maybe<Scalars["String"]["output"]>;
-  /** User's email addresses. */
-  emails?: Maybe<EmailConnection>;
-  /** Whether Gitpod is enabled at the user level. */
-  gitpodEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Group count for the user. */
-  groupCount?: Maybe<Scalars["Int"]["output"]>;
-  /** Group memberships of the user. */
-  groupMemberships?: Maybe<GroupMemberConnection>;
-  /** Groups where the user has access. */
-  groups?: Maybe<GroupConnection>;
-  /** Indicates if the user is a regular user. */
-  human?: Maybe<Scalars["Boolean"]["output"]>;
-  /** ID of the user. */
-  id: Scalars["ID"]["output"];
-  /** IDE settings. */
-  ide?: Maybe<Ide>;
-  /** Job title of the user. */
-  jobTitle?: Maybe<Scalars["String"]["output"]>;
-  /** Date the user last performed any actions. */
-  lastActivityOn?: Maybe<Scalars["Date"]["output"]>;
-  /** LinkedIn profile name of the user. */
-  linkedin?: Maybe<Scalars["String"]["output"]>;
-  /** Location of the user. */
-  location?: Maybe<Scalars["String"]["output"]>;
-  /** Human-readable name of the user. Returns `****` if the user is a project bot and the requester does not have permission to view the project. */
-  name: Scalars["String"]["output"];
-  /** Personal namespace of the user. */
-  namespace?: Maybe<Namespace>;
-  /** User's custom namespace commit emails. */
-  namespaceCommitEmails?: Maybe<NamespaceCommitEmailConnection>;
-  /** Who the user represents or works for. */
-  organization?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Organizations where the user has access. Introduced in GitLab 16.6: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
-   */
-  organizations?: Maybe<OrganizationConnection>;
-  /** Web path to the Gitpod section within user preferences. */
-  preferencesGitpodPath?: Maybe<Scalars["String"]["output"]>;
-  /** Web path to enable Gitpod for the user. */
-  profileEnableGitpodPath?: Maybe<Scalars["String"]["output"]>;
-  /** Project memberships of the user. */
-  projectMemberships?: Maybe<ProjectMemberConnection>;
-  /** Pronouns of the user. */
-  pronouns?: Maybe<Scalars["String"]["output"]>;
-  /** User's public email. */
-  publicEmail?: Maybe<Scalars["String"]["output"]>;
-  /** Merge requests assigned to the user for review. */
-  reviewRequestedMergeRequests?: Maybe<MergeRequestConnection>;
-  /** Saved replies authored by the user. */
-  savedReplies?: Maybe<SavedReplyConnection>;
-  /** Saved reply authored by the user. */
-  savedReply?: Maybe<SavedReply>;
-  /** Snippets authored by the user. */
-  snippets?: Maybe<SnippetConnection>;
-  /** Projects starred by the user. */
-  starredProjects?: Maybe<ProjectConnection>;
-  /** State of the user. */
-  state: UserState;
-  /** User status. */
-  status?: Maybe<UserStatus>;
-  /** Time logged by the user. */
-  timelogs?: Maybe<TimelogConnection>;
-  /** To-do items of the user. */
-  todos?: Maybe<TodoConnection>;
-  /** X (formerly Twitter) username of the user. */
-  twitter?: Maybe<Scalars["String"]["output"]>;
-  /**
-   * Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled. Introduced in GitLab 15.10: **Status**: Experiment.
-   * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
-   */
-  userAchievements?: Maybe<UserAchievementConnection>;
-  /** Permissions for the current user on the resource. */
-  userPermissions: UserPermissions;
-  /** Preferences for the user. */
-  userPreferences?: Maybe<UserPreferences>;
-  /** Username of the user. Unique within this instance of GitLab. */
-  username: Scalars["String"]["output"];
-  /** Web path of the user. */
-  webPath: Scalars["String"]["output"];
-  /** Web URL of the user. */
-  webUrl: Scalars["String"]["output"];
-  /** Workspaces owned by the current user. */
-  workspaces?: Maybe<WorkspaceConnection>;
-};
+export type UserCore = Todoable &
+  User & {
+    __typename?: "UserCore";
+    /** Indicates if the user is active. */
+    active?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Merge requests assigned to the user. */
+    assignedMergeRequests?: Maybe<MergeRequestConnection>;
+    /** Merge requests authored by the user. */
+    authoredMergeRequests?: Maybe<MergeRequestConnection>;
+    /** URL of the user's avatar. */
+    avatarUrl?: Maybe<Scalars["String"]["output"]>;
+    /** Bio of the user. */
+    bio?: Maybe<Scalars["String"]["output"]>;
+    /** Indicates if the user is a bot. */
+    bot: Scalars["Boolean"]["output"];
+    /** User callouts that belong to the user. */
+    callouts?: Maybe<UserCalloutConnection>;
+    /** User's default commit email. */
+    commitEmail?: Maybe<Scalars["String"]["output"]>;
+    /** Projects the user has contributed to. */
+    contributedProjects?: Maybe<ProjectConnection>;
+    /** Timestamp of when the user was created. */
+    createdAt?: Maybe<Scalars["Time"]["output"]>;
+    /** Discord ID of the user. */
+    discord?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * User email. Deprecated in GitLab 13.7: This was renamed.
+     * @deprecated This was renamed. Please use `User.publicEmail`. Deprecated in GitLab 13.7.
+     */
+    email?: Maybe<Scalars["String"]["output"]>;
+    /** User's email addresses. */
+    emails?: Maybe<EmailConnection>;
+    /** Whether Gitpod is enabled at the user level. */
+    gitpodEnabled?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Group count for the user. */
+    groupCount?: Maybe<Scalars["Int"]["output"]>;
+    /** Group memberships of the user. */
+    groupMemberships?: Maybe<GroupMemberConnection>;
+    /** Groups where the user has access. */
+    groups?: Maybe<GroupConnection>;
+    /** Indicates if the user is a regular user. */
+    human?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Global ID of the user. */
+    id: Scalars["UserID"]["output"];
+    /** IDE settings. */
+    ide?: Maybe<Ide>;
+    /** Job title of the user. */
+    jobTitle?: Maybe<Scalars["String"]["output"]>;
+    /** Date the user last performed any actions. */
+    lastActivityOn?: Maybe<Scalars["Date"]["output"]>;
+    /** LinkedIn profile name of the user. */
+    linkedin?: Maybe<Scalars["String"]["output"]>;
+    /** Location of the user. */
+    location?: Maybe<Scalars["String"]["output"]>;
+    /** Human-readable name of the user. Returns `****` if the user is a project bot and the requester does not have permission to view the project. */
+    name: Scalars["String"]["output"];
+    /** Personal namespace of the user. */
+    namespace?: Maybe<Namespace>;
+    /** User's custom namespace commit emails. */
+    namespaceCommitEmails?: Maybe<NamespaceCommitEmailConnection>;
+    /** Who the user represents or works for. */
+    organization?: Maybe<Scalars["String"]["output"]>;
+    /**
+     * Organizations where the user has access. Introduced in GitLab 16.6: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 16.6.
+     */
+    organizations?: Maybe<OrganizationConnection>;
+    /** Web path to the Gitpod section within user preferences. */
+    preferencesGitpodPath?: Maybe<Scalars["String"]["output"]>;
+    /** Web path to enable Gitpod for the user. */
+    profileEnableGitpodPath?: Maybe<Scalars["String"]["output"]>;
+    /** Project memberships of the user. */
+    projectMemberships?: Maybe<ProjectMemberConnection>;
+    /** Pronouns of the user. */
+    pronouns?: Maybe<Scalars["String"]["output"]>;
+    /** User's public email. */
+    publicEmail?: Maybe<Scalars["String"]["output"]>;
+    /** Merge requests assigned to the user for review. */
+    reviewRequestedMergeRequests?: Maybe<MergeRequestConnection>;
+    /** Saved replies authored by the user. */
+    savedReplies?: Maybe<SavedReplyConnection>;
+    /** Saved reply authored by the user. */
+    savedReply?: Maybe<SavedReply>;
+    /** Snippets authored by the user. */
+    snippets?: Maybe<SnippetConnection>;
+    /** Projects starred by the user. */
+    starredProjects?: Maybe<ProjectConnection>;
+    /** State of the user. */
+    state: UserState;
+    /** User status. */
+    status?: Maybe<UserStatus>;
+    /** Time logged by the user. */
+    timelogs?: Maybe<TimelogConnection>;
+    /** To-do items of the user. */
+    todos?: Maybe<TodoConnection>;
+    /** X (formerly Twitter) username of the user. */
+    twitter?: Maybe<Scalars["String"]["output"]>;
+    /** Type of the user. */
+    type: UserType;
+    /**
+     * Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled. Introduced in GitLab 15.10: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 15.10.
+     */
+    userAchievements?: Maybe<UserAchievementConnection>;
+    /** Permissions for the current user on the resource. */
+    userPermissions: UserPermissions;
+    /** Preferences for the user. */
+    userPreferences?: Maybe<UserPreferences>;
+    /** Username of the user. Unique within the instance of GitLab. */
+    username: Scalars["String"]["output"];
+    /** Web path of the user. */
+    webPath: Scalars["String"]["output"];
+    /** Web URL of the user. */
+    webUrl: Scalars["String"]["output"];
+    /** Workspaces owned by the current user. */
+    workspaces?: Maybe<WorkspaceConnection>;
+  };
 
 /** Core representation of a GitLab user. */
 export type UserCoreAssignedMergeRequestsArgs = {
@@ -44493,6 +49663,7 @@ export type UserCoreAssignedMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -44503,14 +49674,17 @@ export type UserCoreAssignedMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -44523,6 +49697,7 @@ export type UserCoreAuthoredMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   createdAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -44535,7 +49710,9 @@ export type UserCoreAuthoredMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
+  includeAssigned?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   mergedAfter?: InputMaybe<Scalars["Time"]["input"]>;
@@ -44545,14 +49722,17 @@ export type UserCoreAuthoredMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
   reviewerUsername?: InputMaybe<Scalars["String"]["input"]>;
   reviewerWildcardId?: InputMaybe<ReviewerWildcardId>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -44603,6 +49783,7 @@ export type UserCoreGroupsArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
   permissionScope?: InputMaybe<GroupPermission>;
   search?: InputMaybe<Scalars["String"]["input"]>;
+  sort?: InputMaybe<GroupSort>;
 };
 
 /** Core representation of a GitLab user. */
@@ -44638,6 +49819,7 @@ export type UserCoreReviewRequestedMergeRequestsArgs = {
   approvedBy?: InputMaybe<Array<Scalars["String"]["input"]>>;
   approver?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeUsername?: InputMaybe<Scalars["String"]["input"]>;
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
   assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
   authorUsername?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
@@ -44651,6 +49833,7 @@ export type UserCoreReviewRequestedMergeRequestsArgs = {
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Scalars["GroupID"]["input"]>;
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  in?: InputMaybe<Array<IssuableSearchableField>>;
   includeArchived?: InputMaybe<Scalars["Boolean"]["input"]>;
   labelName?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
@@ -44661,12 +49844,15 @@ export type UserCoreReviewRequestedMergeRequestsArgs = {
   milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
   myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
   not?: InputMaybe<MergeRequestsResolverNegatedParams>;
+  or?: InputMaybe<UnionedMergeRequestFilterInput>;
   projectId?: InputMaybe<Scalars["ProjectID"]["input"]>;
   projectPath?: InputMaybe<Scalars["String"]["input"]>;
   releaseTag?: InputMaybe<Scalars["String"]["input"]>;
+  search?: InputMaybe<Scalars["String"]["input"]>;
   sort?: InputMaybe<MergeRequestSort>;
   sourceBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   state?: InputMaybe<MergeRequestState>;
+  subscribed?: InputMaybe<SubscriptionStatus>;
   targetBranches?: InputMaybe<Array<Scalars["String"]["input"]>>;
   updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
   updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
@@ -44732,6 +49918,7 @@ export type UserCoreTodosArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   groupId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  isSnoozed?: InputMaybe<Scalars["Boolean"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
   projectId?: InputMaybe<Array<Scalars["ID"]["input"]>>;
   sort?: InputMaybe<TodoSort>;
@@ -44782,6 +49969,16 @@ export type UserCoreEdge = {
   node?: Maybe<UserCore>;
 };
 
+export type UserMemberRole = {
+  __typename?: "UserMemberRole";
+  /** Global ID of the user member role association. */
+  id: Scalars["GlobalID"]["output"];
+  /** Member Role to which the user belongs. */
+  memberRole: MemberRole;
+  /** User to which the member role belongs. */
+  user: UserCore;
+};
+
 /**
  * Information about a merge request given a specific user.
  *
@@ -44791,17 +49988,17 @@ export type UserCoreEdge = {
  */
 export type UserMergeRequestInteraction = {
   __typename?: "UserMergeRequestInteraction";
-  /** Approval rules that apply to this user for this merge request. */
+  /** Approval rules that apply to the user for the merge request. */
   applicableApprovalRules?: Maybe<Array<ApprovalRule>>;
-  /** Whether this user has approved this merge request. */
+  /** Whether the user has approved the merge request. */
   approved: Scalars["Boolean"]["output"];
-  /** Whether this user can merge this merge request. */
+  /** Whether the user can merge the merge request. */
   canMerge: Scalars["Boolean"]["output"];
-  /** Whether this user can update this merge request. */
+  /** Whether the user can update the merge request. */
   canUpdate: Scalars["Boolean"]["output"];
-  /** State of the review by this user. */
+  /** State of the review by the user. */
   reviewState?: Maybe<MergeRequestReviewState>;
-  /** Whether this user has provided a review for this merge request. */
+  /** Whether the user has provided a review for the merge request. */
   reviewed: Scalars["Boolean"]["output"];
 };
 
@@ -44817,6 +50014,8 @@ export type UserPreferences = {
   extensionsMarketplaceOptInStatus: ExtensionsMarketplaceOptInStatus;
   /** Sort order for issue lists. */
   issuesSort?: Maybe<IssueSort>;
+  /** Merge request dashboard list rendering type. */
+  mergeRequestDashboardListType?: Maybe<MergeRequestsDashboardListType>;
   /**
    * Default list view for organization groups and projects. Introduced in GitLab 17.2: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.2.
@@ -44827,6 +50026,13 @@ export type UserPreferences = {
    * @deprecated **Status**: Experiment. Introduced in GitLab 17.2.
    */
   organizationGroupsProjectsSort?: Maybe<OrganizationGroupProjectSort>;
+  /** Sort order for projects. */
+  projectsSort?: Maybe<ProjectSort>;
+  /**
+   * Timezone of the user. Introduced in GitLab 17.7: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.7.
+   */
+  timezone?: Maybe<Scalars["String"]["output"]>;
   /** Use work item view instead of legacy issue view. */
   useWorkItemsView?: Maybe<Scalars["Boolean"]["output"]>;
   /** Determines whether the pipeline list shows ID or IID. */
@@ -44841,8 +50047,12 @@ export type UserPreferencesUpdateInput = {
   extensionsMarketplaceOptInStatus?: InputMaybe<ExtensionsMarketplaceOptInStatus>;
   /** Sort order for issue lists. */
   issuesSort?: InputMaybe<IssueSort>;
+  /** Merge request dashboard list rendering type. */
+  mergeRequestDashboardListType?: InputMaybe<MergeRequestsDashboardListType>;
   /** Sort order for issue lists. */
   mergeRequestsSort?: InputMaybe<MergeRequestSort>;
+  /** Sort order for projects. */
+  projectsSort?: InputMaybe<ProjectSort>;
   /** Use work item view instead of legacy issue view. */
   useWorkItemsView?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** Determines whether the pipeline list shows ID or IID. */
@@ -44918,6 +50128,46 @@ export type UserStatus = {
   /** HTML of the user status message */
   messageHtml?: Maybe<Scalars["String"]["output"]>;
 };
+
+/** Possible types of user */
+export enum UserType {
+  /** Admin bot */
+  AdminBot = "ADMIN_BOT",
+  /** Alert bot */
+  AlertBot = "ALERT_BOT",
+  /** Automation bot */
+  AutomationBot = "AUTOMATION_BOT",
+  /** Duo code review bot */
+  DuoCodeReviewBot = "DUO_CODE_REVIEW_BOT",
+  /** Ghost */
+  Ghost = "GHOST",
+  /** Human */
+  Human = "HUMAN",
+  /** Import user */
+  ImportUser = "IMPORT_USER",
+  /** Llm bot */
+  LlmBot = "LLM_BOT",
+  /** Migration bot */
+  MigrationBot = "MIGRATION_BOT",
+  /** Placeholder */
+  Placeholder = "PLACEHOLDER",
+  /** Project bot */
+  ProjectBot = "PROJECT_BOT",
+  /** Security bot */
+  SecurityBot = "SECURITY_BOT",
+  /** Security policy bot */
+  SecurityPolicyBot = "SECURITY_POLICY_BOT",
+  /** Service account */
+  ServiceAccount = "SERVICE_ACCOUNT",
+  /** Service user */
+  ServiceUser = "SERVICE_USER",
+  /** Suggested reviewers bot */
+  SuggestedReviewersBot = "SUGGESTED_REVIEWERS_BOT",
+  /** Support bot */
+  SupportBot = "SUPPORT_BOT",
+  /** Visual review bot */
+  VisualReviewBot = "VISUAL_REVIEW_BOT",
+}
 
 /** Represents a Pending Member Approval Queued for Role Promotion */
 export type UsersQueuedForRolePromotion = {
@@ -45211,6 +50461,8 @@ export enum ValueStreamStageEvent {
   MergeRequestLabelAdded = "MERGE_REQUEST_LABEL_ADDED",
   /** Merge request label removed event. */
   MergeRequestLabelRemoved = "MERGE_REQUEST_LABEL_REMOVED",
+  /** Merge request last approved at event. */
+  MergeRequestLastApprovedAt = "MERGE_REQUEST_LAST_APPROVED_AT",
   /** Merge request last build finished event. */
   MergeRequestLastBuildFinished = "MERGE_REQUEST_LAST_BUILD_FINISHED",
   /** Merge request last build started event. */
@@ -45373,6 +50625,8 @@ export enum VerificationStatus {
   UnknownKey = "UNKNOWN_KEY",
   /** unverified verification status. */
   Unverified = "UNVERIFIED",
+  /** unverified_author_email verification status. */
+  UnverifiedAuthorEmail = "UNVERIFIED_AUTHOR_EMAIL",
   /** unverified_key verification status. */
   UnverifiedKey = "UNVERIFIED_KEY",
   /** verified verification status. */
@@ -45382,6 +50636,16 @@ export enum VerificationStatus {
   /** verified_system verification status. */
   VerifiedSystem = "VERIFIED_SYSTEM",
 }
+
+export type VerificationStatusFilterInput = {
+  /** Verification status of the work item. */
+  verificationStatus: RequirementStatusFilter;
+};
+
+export type VerificationStatusInput = {
+  /** Verification status of the work item. */
+  verificationStatus: TestReportState;
+};
 
 /** Autogenerated input type of VerifiedNamespaceCreate */
 export type VerifiedNamespaceCreateInput = {
@@ -45428,6 +50692,27 @@ export enum VisibilityScopesEnum {
   Public = "public",
 }
 
+/** Autogenerated input type of VulnerabilitiesArchive */
+export type VulnerabilitiesArchiveInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Last update date of vulnerabilities being archived. */
+  date: Scalars["Date"]["input"];
+  /** ID of the project to attach the vulnerability to. */
+  projectId: Scalars["ProjectID"]["input"];
+};
+
+/** Autogenerated return type of VulnerabilitiesArchive. */
+export type VulnerabilitiesArchivePayload = {
+  __typename?: "VulnerabilitiesArchivePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Status of the action. */
+  status: Scalars["String"]["output"];
+};
+
 /** Represents the count of vulnerabilities by severity on a particular day. This data is retained for 365 days */
 export type VulnerabilitiesCountByDay = {
   __typename?: "VulnerabilitiesCountByDay";
@@ -45467,6 +50752,27 @@ export type VulnerabilitiesCountByDayEdge = {
   cursor: Scalars["String"]["output"];
   /** The item at the end of the edge. */
   node?: Maybe<VulnerabilitiesCountByDay>;
+};
+
+/** Autogenerated input type of VulnerabilitiesCreateIssue */
+export type VulnerabilitiesCreateIssueInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** ID of the project to attach the issue to. */
+  project: Scalars["ProjectID"]["input"];
+  /** IDs of vulnerabilities to link to the given issue.  Up to 100 can be provided. */
+  vulnerabilityIds: Array<Scalars["VulnerabilityID"]["input"]>;
+};
+
+/** Autogenerated return type of VulnerabilitiesCreateIssue. */
+export type VulnerabilitiesCreateIssuePayload = {
+  __typename?: "VulnerabilitiesCreateIssuePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Issue created after mutation. */
+  issue?: Maybe<Issue>;
 };
 
 /** Autogenerated input type of VulnerabilitiesDismiss */
@@ -45517,17 +50823,22 @@ export type VulnerabilitiesRemoveAllFromProjectPayload = {
 export type Vulnerability = NoteableInterface &
   Todoable & {
     __typename?: "Vulnerability";
-    /** Indicates whether this type of vulnerability can be resolved with AI. */
+    /** Indicates whether the type of vulnerability can be resolved with AI. */
     aiResolutionAvailable?: Maybe<Scalars["Boolean"]["output"]>;
-    /** Indicates whether this specific vulnerability can be resolved with AI. */
+    /** Indicates whether the specific vulnerability can be resolved with AI. */
     aiResolutionEnabled?: Maybe<Scalars["Boolean"]["output"]>;
-    /** All commenters on this noteable. */
+    /**
+     * Indicates whether the vulnerability is about to be archived in the next month. Introduced in GitLab 17.11: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+     */
+    archivalInformation: VulnerabilityArchivalInformation;
+    /** All commenters on the noteable. */
     commenters: UserCoreConnection;
     /** Timestamp of when the vulnerability state was changed to confirmed. */
     confirmedAt?: Maybe<Scalars["Time"]["output"]>;
     /** User that confirmed the vulnerability. */
     confirmedBy?: Maybe<UserCore>;
-    /** Enrichment (EPSS score) for CVE vulnerabilities. */
+    /** Enrichment (EPSS score and KEV) for CVE vulnerabilities. */
     cveEnrichment?: Maybe<CveEnrichmentType>;
     /** CVSS information for the vulnerability. */
     cvss: Array<CvssType>;
@@ -45539,7 +50850,7 @@ export type Vulnerability = NoteableInterface &
     details: Array<VulnerabilityDetail>;
     /** Timestamp of when the vulnerability was first detected. */
     detectedAt: Scalars["Time"]["output"];
-    /** All discussions on this noteable. */
+    /** All discussions on the noteable. */
     discussions: DiscussionConnection;
     /** Reason for dismissal. Returns `null` for states other than `dismissed`. */
     dismissalReason?: Maybe<VulnerabilityDismissalReason>;
@@ -45551,7 +50862,7 @@ export type Vulnerability = NoteableInterface &
     externalIssueLinks: VulnerabilityExternalIssueLinkConnection;
     /** Indicates whether the vulnerability is a false positive. */
     falsePositive?: Maybe<Scalars["Boolean"]["output"]>;
-    /** Indicates whether there is a remediation available for this vulnerability. */
+    /** Indicates whether there is a remediation available for the vulnerability. */
     hasRemediations?: Maybe<Scalars["Boolean"]["output"]>;
     /** GraphQL ID of the vulnerability. */
     id: Scalars["ID"]["output"];
@@ -45565,7 +50876,7 @@ export type Vulnerability = NoteableInterface &
     location?: Maybe<VulnerabilityLocation>;
     /** Merge request that fixes the vulnerability. */
     mergeRequest?: Maybe<MergeRequest>;
-    /** Name or title of this object. */
+    /** Name or title of the object. */
     name?: Maybe<Scalars["String"]["output"]>;
     /** All notes on this noteable. */
     notes: NoteConnection;
@@ -45575,8 +50886,18 @@ export type Vulnerability = NoteableInterface &
     primaryIdentifier?: Maybe<VulnerabilityIdentifier>;
     /** Project on which the vulnerability was found. */
     project?: Maybe<Project>;
+    /**
+     * Reachability status of the vulnerability. Introduced in GitLab 17.11: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+     */
+    reachability?: Maybe<ReachabilityType>;
     /** Type of the security report that found the vulnerability (SAST, DEPENDENCY_SCANNING, CONTAINER_SCANNING, DAST, SECRET_DETECTION, COVERAGE_FUZZING, API_FUZZING, CLUSTER_IMAGE_SCANNING, CONTAINER_SCANNING_FOR_REGISTRY, GENERIC). `Scan Type` in the UI. */
     reportType?: Maybe<VulnerabilityReportType>;
+    /**
+     * Information about the representation of the vulnerability, such as resolved commit SHA. Introduced in GitLab 17.7: **Status**: Experiment.
+     * @deprecated **Status**: Experiment. Introduced in GitLab 17.7.
+     */
+    representationInformation?: Maybe<VulnerabilityRepresentationInformation>;
     /** Timestamp of when the vulnerability state was changed to resolved. */
     resolvedAt?: Maybe<Scalars["Time"]["output"]>;
     /** User that resolved the vulnerability. */
@@ -45587,6 +50908,8 @@ export type Vulnerability = NoteableInterface &
     scanner?: Maybe<VulnerabilityScanner>;
     /** Severity of the vulnerability (INFO, UNKNOWN, LOW, MEDIUM, HIGH, CRITICAL) */
     severity?: Maybe<VulnerabilitySeverity>;
+    /** List of severity changes for the vulnerability. */
+    severityOverrides?: Maybe<SeverityOverrideConnection>;
     /** Recommended solution for the vulnerability. */
     solution?: Maybe<Scalars["String"]["output"]>;
     /** State of the vulnerability (DETECTED, CONFIRMED, RESOLVED, DISMISSED) */
@@ -45654,11 +50977,39 @@ export type VulnerabilityNotesArgs = {
 };
 
 /** Represents a vulnerability */
+export type VulnerabilitySeverityOverridesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** Represents a vulnerability */
 export type VulnerabilityStateTransitionsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** Represents vulnerability archival information */
+export type VulnerabilityArchivalInformation = {
+  __typename?: "VulnerabilityArchivalInformation";
+  /** Indicates whether the vulnerability is about to be archived in the next month. */
+  aboutToBeArchived: Scalars["Boolean"]["output"];
+  /** Date when the vulnerability is expected to be archived. */
+  expectedToBeArchivedOn?: Maybe<Scalars["Date"]["output"]>;
+};
+
+/** Represents a vulnerability archive */
+export type VulnerabilityArchive = {
+  __typename?: "VulnerabilityArchive";
+  /** Number of records the archive contains. */
+  archivedRecordsCount: Scalars["Int"]["output"];
+  /** Month of the archive, represented as a number from 1 (January) to 12 (December). */
+  month: Scalars["Int"]["output"];
+  /** Year of the archive. */
+  year: Scalars["Int"]["output"];
 };
 
 /** Autogenerated input type of VulnerabilityConfirm */
@@ -46438,11 +51789,11 @@ export type VulnerabilityManagementPolicy = OrchestrationPolicy & {
   description: Scalars["String"]["output"];
   /** URL of policy edit page. */
   editPath: Scalars["String"]["output"];
-  /** Indicates whether this policy is enabled. */
+  /** Indicates whether the policy is enabled. */
   enabled: Scalars["Boolean"]["output"];
   /** Name of the policy. */
   name: Scalars["String"]["output"];
-  /** Scope of the policy */
+  /** Scope of the policy. */
   policyScope?: Maybe<PolicyScope>;
   /** Source of the policy. Its fields depend on the source type. */
   source: SecurityPolicySource;
@@ -46471,6 +51822,30 @@ export type VulnerabilityManagementPolicyEdge = {
   /** The item at the end of the edge. */
   node?: Maybe<VulnerabilityManagementPolicy>;
 };
+
+/** Counts for each vulnerability severity in the group and its subgroups. */
+export type VulnerabilityNamespaceStatisticType =
+  VulnerabilityStatisticInterface & {
+    __typename?: "VulnerabilityNamespaceStatisticType";
+    /** Number of vulnerabilities of CRITICAL severity. */
+    critical: Scalars["Int"]["output"];
+    /** Number of vulnerabilities of HIGH severity. */
+    high: Scalars["Int"]["output"];
+    /** Number of vulnerabilities of INFO severity. */
+    info: Scalars["Int"]["output"];
+    /** Number of vulnerabilities of LOW severity. */
+    low: Scalars["Int"]["output"];
+    /** Number of vulnerabilities of MEDIUM severity. */
+    medium: Scalars["Int"]["output"];
+    /** Namespace ID. */
+    namespaceId: Scalars["Int"]["output"];
+    /** Total of all vulnerabilities. */
+    total: Scalars["Int"]["output"];
+    /** Number of vulnerabilities of UNKNOWN severity. */
+    unknown: Scalars["Int"]["output"];
+    /** Date that data was last updated. */
+    updatedAt?: Maybe<Scalars["Time"]["output"]>;
+  };
 
 /** OwaspTop10 category of the vulnerability */
 export enum VulnerabilityOwaspTop10 {
@@ -46648,6 +52023,13 @@ export enum VulnerabilityReportType {
   /** Secret Detection report */
   SecretDetection = "SECRET_DETECTION",
 }
+
+/** Represents vulnerability information */
+export type VulnerabilityRepresentationInformation = {
+  __typename?: "VulnerabilityRepresentationInformation";
+  /** SHA of the commit where the vulnerability was resolved. */
+  resolvedInCommitSha?: Maybe<Scalars["String"]["output"]>;
+};
 
 /** Represents a Vulnerability Request */
 export type VulnerabilityRequest = {
@@ -46828,13 +52210,13 @@ export enum VulnerabilitySort {
 
 /** The state of the vulnerability */
 export enum VulnerabilityState {
-  /** For details, see [vulnerability status values](https://docs.gitlab.com/ee/user/application_security/vulnerabilities/index.html#vulnerability-status-values). */
+  /** For details, see [vulnerability status values](https://docs.gitlab.com/ee/user/application_security/vulnerabilities/#vulnerability-status-values). */
   Confirmed = "CONFIRMED",
-  /** For details, see [vulnerability status values](https://docs.gitlab.com/ee/user/application_security/vulnerabilities/index.html#vulnerability-status-values). */
+  /** For details, see [vulnerability status values](https://docs.gitlab.com/ee/user/application_security/vulnerabilities/#vulnerability-status-values). */
   Detected = "DETECTED",
-  /** For details, see [vulnerability status values](https://docs.gitlab.com/ee/user/application_security/vulnerabilities/index.html#vulnerability-status-values). */
+  /** For details, see [vulnerability status values](https://docs.gitlab.com/ee/user/application_security/vulnerabilities/#vulnerability-status-values). */
   Dismissed = "DISMISSED",
-  /** For details, see [vulnerability status values](https://docs.gitlab.com/ee/user/application_security/vulnerabilities/index.html#vulnerability-status-values). */
+  /** For details, see [vulnerability status values](https://docs.gitlab.com/ee/user/application_security/vulnerabilities/#vulnerability-status-values). */
   Resolved = "RESOLVED",
 }
 
@@ -46877,6 +52259,48 @@ export type VulnerabilityStateTransitionTypeEdge = {
   node?: Maybe<VulnerabilityStateTransitionType>;
 };
 
+export type VulnerabilityStatisticInterface = {
+  /** Number of vulnerabilities of CRITICAL severity. */
+  critical: Scalars["Int"]["output"];
+  /** Number of vulnerabilities of HIGH severity. */
+  high: Scalars["Int"]["output"];
+  /** Number of vulnerabilities of INFO severity. */
+  info: Scalars["Int"]["output"];
+  /** Number of vulnerabilities of LOW severity. */
+  low: Scalars["Int"]["output"];
+  /** Number of vulnerabilities of MEDIUM severity. */
+  medium: Scalars["Int"]["output"];
+  /** Total of all vulnerabilities. */
+  total: Scalars["Int"]["output"];
+  /** Number of vulnerabilities of UNKNOWN severity. */
+  unknown: Scalars["Int"]["output"];
+  /** Date that data was last updated. */
+  updatedAt?: Maybe<Scalars["Time"]["output"]>;
+};
+
+/** Counts for each vulnerability severity in the project. */
+export type VulnerabilityStatisticType = VulnerabilityStatisticInterface & {
+  __typename?: "VulnerabilityStatisticType";
+  /** Number of vulnerabilities of CRITICAL severity. */
+  critical: Scalars["Int"]["output"];
+  /** Number of vulnerabilities of HIGH severity. */
+  high: Scalars["Int"]["output"];
+  /** Number of vulnerabilities of INFO severity. */
+  info: Scalars["Int"]["output"];
+  /** Number of vulnerabilities of LOW severity. */
+  low: Scalars["Int"]["output"];
+  /** Number of vulnerabilities of MEDIUM severity. */
+  medium: Scalars["Int"]["output"];
+  /** Project ID. */
+  projectId: Scalars["Int"]["output"];
+  /** Total of all vulnerabilities. */
+  total: Scalars["Int"]["output"];
+  /** Number of vulnerabilities of UNKNOWN severity. */
+  unknown: Scalars["Int"]["output"];
+  /** Date that data was last updated. */
+  updatedAt?: Maybe<Scalars["Time"]["output"]>;
+};
+
 /** Represents a vulnerable dependency. Used in vulnerability location data */
 export type VulnerableDependency = {
   __typename?: "VulnerableDependency";
@@ -46913,11 +52337,11 @@ export type VulnerablePackage = {
 /** Represents vulnerability letter grades with associated projects */
 export type VulnerableProjectsByGrade = {
   __typename?: "VulnerableProjectsByGrade";
-  /** Number of projects within this grade. */
+  /** Number of projects within the grade. */
   count: Scalars["Int"]["output"];
   /** Grade based on the highest severity vulnerability present. */
   grade: VulnerabilityGrade;
-  /** Projects within this grade. */
+  /** Projects within the grade. */
   projects: ProjectConnection;
 };
 
@@ -46938,21 +52362,26 @@ export enum WeightWildcardId {
 }
 
 /** A wiki page */
-export type WikiPage = NoteableInterface & {
-  __typename?: "WikiPage";
-  /** All commenters on this noteable. */
-  commenters: UserCoreConnection;
-  /** All discussions on this noteable. */
-  discussions: DiscussionConnection;
-  /** Global ID of the wiki page metadata record. */
-  id: Scalars["WikiPageMetaID"]["output"];
-  /** All notes on this noteable. */
-  notes: NoteConnection;
-  /** Wiki page title. */
-  title: Scalars["String"]["output"];
-  /** Permissions for the current user on the resource */
-  userPermissions: WikiPagePermissions;
-};
+export type WikiPage = NoteableInterface &
+  Todoable & {
+    __typename?: "WikiPage";
+    /** All commenters on the noteable. */
+    commenters: UserCoreConnection;
+    /** All discussions on the noteable. */
+    discussions: DiscussionConnection;
+    /** Global ID of the wiki page metadata record. */
+    id: Scalars["WikiPageMetaID"]["output"];
+    /** Name or title of the object. */
+    name?: Maybe<Scalars["String"]["output"]>;
+    /** All notes on this noteable. */
+    notes: NoteConnection;
+    /** Wiki page title. */
+    title: Scalars["String"]["output"];
+    /** Permissions for the current user on the resource */
+    userPermissions: WikiPagePermissions;
+    /** URL of the object. */
+    webUrl?: Maybe<Scalars["String"]["output"]>;
+  };
 
 /** A wiki page */
 export type WikiPageCommentersArgs = {
@@ -47011,13 +52440,19 @@ export type WorkItem = Todoable & {
   description?: Maybe<Scalars["String"]["output"]>;
   /** GitLab Flavored Markdown rendering of `description` */
   descriptionHtml?: Maybe<Scalars["String"]["output"]>;
+  /** URL of the work item that the work item is marked as a duplicate of. */
+  duplicatedToWorkItemUrl?: Maybe<Scalars["String"]["output"]>;
+  /** Indicates the work item is hidden because the author has been banned. */
+  hidden?: Maybe<Scalars["Boolean"]["output"]>;
   /** Global ID of the work item. */
   id: Scalars["WorkItemID"]["output"];
   /** Internal ID of the work item. */
   iid: Scalars["String"]["output"];
   /** Lock version of the work item. Incremented each time the work item is updated. */
   lockVersion: Scalars["Int"]["output"];
-  /** Name or title of this object. */
+  /** URL of the work item that the work item was moved to. */
+  movedToWorkItemUrl?: Maybe<Scalars["String"]["output"]>;
+  /** Name or title of the object. */
   name?: Maybe<Scalars["String"]["output"]>;
   /**
    * Namespace the work item belongs to. Introduced in GitLab 15.10: **Status**: Experiment.
@@ -47029,8 +52464,15 @@ export type WorkItem = Todoable & {
    * @deprecated **Status**: Experiment. Introduced in GitLab 15.3.
    */
   project?: Maybe<Project>;
+  /** URL of the epic that the work item has been promoted to. */
+  promotedToEpicUrl?: Maybe<Scalars["String"]["output"]>;
   /** Internal reference of the work item. Returned in shortened format by default. */
   reference: Scalars["String"]["output"];
+  /**
+   * Whether to show the promotional message for the work item. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  showPlanUpgradePromotion: Scalars["Boolean"]["output"];
   /** State of the work item. */
   state: WorkItemState;
   /** Title of the work item. */
@@ -47039,9 +52481,11 @@ export type WorkItem = Todoable & {
   titleHtml?: Maybe<Scalars["String"]["output"]>;
   /** Timestamp of when the work item was last updated. */
   updatedAt: Scalars["Time"]["output"];
+  /** Number of user discussions in the work item. */
+  userDiscussionsCount: Scalars["Int"]["output"];
   /** Permissions for the current user on the resource */
   userPermissions: WorkItemPermissions;
-  /** URL of this object. */
+  /** URL of the object. */
   webUrl?: Maybe<Scalars["String"]["output"]>;
   /** Collection of widgets that belong to the work item. */
   widgets?: Maybe<Array<WorkItemWidget>>;
@@ -47051,6 +52495,11 @@ export type WorkItem = Todoable & {
 
 export type WorkItemReferenceArgs = {
   full?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type WorkItemWidgetsArgs = {
+  exceptTypes?: InputMaybe<Array<WorkItemWidgetType>>;
+  onlyTypes?: InputMaybe<Array<WorkItemWidgetType>>;
 };
 
 /** Autogenerated input type of WorkItemAddClosingMergeRequest */
@@ -47149,6 +52598,8 @@ export type WorkItemClosingMergeRequest = {
 /** The connection type for WorkItemClosingMergeRequest. */
 export type WorkItemClosingMergeRequestConnection = {
   __typename?: "WorkItemClosingMergeRequestConnection";
+  /** Number of merge requests that close the work item on merge. */
+  count?: Maybe<Scalars["Int"]["output"]>;
   /** A list of edges. */
   edges?: Maybe<Array<Maybe<WorkItemClosingMergeRequestEdge>>>;
   /** A list of nodes. */
@@ -47246,10 +52697,14 @@ export type WorkItemCreateInput = {
   colorWidget?: InputMaybe<WorkItemWidgetColorInput>;
   /** Sets the work item confidentiality. */
   confidential?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Timestamp when the work item was created. Available only for admins and project owners. */
+  createdAt?: InputMaybe<Scalars["Time"]["input"]>;
   /** Input for CRM contacts widget. */
   crmContactsWidget?: InputMaybe<WorkItemWidgetCrmContactsCreateInput>;
   /** Input for description widget. */
   descriptionWidget?: InputMaybe<WorkItemWidgetDescriptionInput>;
+  /** Information required to resolve discussions in a noteable, when the work item is created. */
+  discussionsToResolve?: InputMaybe<WorkItemResolveDiscussionsInput>;
   /** Input for health status widget. */
   healthStatusWidget?: InputMaybe<WorkItemWidgetHealthStatusInput>;
   /** Input for hierarchy widget. */
@@ -47285,6 +52740,11 @@ export type WorkItemCreatePayload = {
   workItem?: Maybe<WorkItem>;
 };
 
+export type WorkItemCustomFieldValue = {
+  /** Custom field associated with the custom field value. */
+  customField: CustomField;
+};
+
 /** Autogenerated input type of WorkItemDelete */
 export type WorkItemDeleteInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -47309,6 +52769,45 @@ export type WorkItemDeletePayload = {
   project?: Maybe<Project>;
 };
 
+export type WorkItemDescriptionTemplate = {
+  __typename?: "WorkItemDescriptionTemplate";
+  /** Category of description template. */
+  category?: Maybe<Scalars["String"]["output"]>;
+  /** Content of Description Template. */
+  content?: Maybe<Scalars["String"]["output"]>;
+  /** Name of Description Template. */
+  name?: Maybe<Scalars["String"]["output"]>;
+  /** ID of the description template project. */
+  projectId?: Maybe<Scalars["Int"]["output"]>;
+};
+
+/** The connection type for WorkItemDescriptionTemplate. */
+export type WorkItemDescriptionTemplateConnection = {
+  __typename?: "WorkItemDescriptionTemplateConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<WorkItemDescriptionTemplateEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<WorkItemDescriptionTemplate>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type WorkItemDescriptionTemplateContentInput = {
+  /** Name of the description template. */
+  name: Scalars["String"]["input"];
+  /** ID of the project the template belongs to. */
+  projectId: Scalars["Int"]["input"];
+};
+
+/** An edge in a connection. */
+export type WorkItemDescriptionTemplateEdge = {
+  __typename?: "WorkItemDescriptionTemplateEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<WorkItemDescriptionTemplate>;
+};
+
 /** An edge in a connection. */
 export type WorkItemEdge = {
   __typename?: "WorkItemEdge";
@@ -47328,8 +52827,20 @@ export type WorkItemExportInput = {
   authorUsername?: InputMaybe<Scalars["String"]["input"]>;
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Work items closed after the date. */
+  closedAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  /** Work items closed before the date. */
+  closedBefore?: InputMaybe<Scalars["Time"]["input"]>;
   /** Filter for confidential work items. If `false`, excludes confidential work items. If `true`, returns only confidential work items. */
   confidential?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Work items created after the timestamp. */
+  createdAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  /** Work items created before the timestamp. */
+  createdBefore?: InputMaybe<Scalars["Time"]["input"]>;
+  /** Work items due after the timestamp. */
+  dueAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  /** Work items due before the timestamp. */
+  dueBefore?: InputMaybe<Scalars["Time"]["input"]>;
   /** List of IIDs of work items. For example, `["1", "2"]`. */
   iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
   /**
@@ -47358,8 +52869,14 @@ export type WorkItemExportInput = {
   selectedFields?: InputMaybe<Array<AvailableExportFields>>;
   /** Current state of the work item. */
   state?: InputMaybe<IssuableState>;
+  /** Work items the current user is subscribed to. */
+  subscribed?: InputMaybe<SubscriptionStatus>;
   /** Filter work items by the given work item types. */
   types?: InputMaybe<Array<IssueType>>;
+  /** Work items updated after the timestamp. */
+  updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  /** Work items updated before the timestamp. */
+  updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
 };
 
 /** Autogenerated return type of WorkItemExport. */
@@ -47373,6 +52890,40 @@ export type WorkItemExportPayload = {
   message?: Maybe<Scalars["String"]["output"]>;
 };
 
+export type WorkItemLinkedResource = {
+  __typename?: "WorkItemLinkedResource";
+  /** URL of resource. */
+  url: Scalars["String"]["output"];
+};
+
+/** The connection type for WorkItemLinkedResource. */
+export type WorkItemLinkedResourceConnection = {
+  __typename?: "WorkItemLinkedResourceConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<WorkItemLinkedResourceEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<WorkItemLinkedResource>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type WorkItemLinkedResourceEdge = {
+  __typename?: "WorkItemLinkedResourceEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<WorkItemLinkedResource>;
+};
+
+export type WorkItemNumberFieldValue = WorkItemCustomFieldValue & {
+  __typename?: "WorkItemNumberFieldValue";
+  /** Custom field associated with the custom field value. */
+  customField: CustomField;
+  /** Number value of the custom field. */
+  value?: Maybe<Scalars["Float"]["output"]>;
+};
+
 /** Check permissions for the current user on a work item */
 export type WorkItemPermissions = {
   __typename?: "WorkItemPermissions";
@@ -47382,18 +52933,58 @@ export type WorkItemPermissions = {
   adminWorkItem: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `admin_work_item_link` on this resource */
   adminWorkItemLink: Scalars["Boolean"]["output"];
+  /** If `true`, the user can perform `blocked_work_items` on the work item. */
+  blockedWorkItems?: Maybe<Scalars["Boolean"]["output"]>;
+  /** If `true`, the user can perform `clone_work_item` on this resource */
+  cloneWorkItem: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `create_note` on this resource */
   createNote: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `delete_work_item` on this resource */
   deleteWorkItem: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `mark_note_as_internal` on this resource */
   markNoteAsInternal: Scalars["Boolean"]["output"];
+  /** If `true`, the user can perform `move_work_item` on this resource */
+  moveWorkItem: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `read_work_item` on this resource */
   readWorkItem: Scalars["Boolean"]["output"];
+  /** If `true`, the user can perform `report_spam` on this resource */
+  reportSpam: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `set_work_item_metadata` on this resource */
   setWorkItemMetadata: Scalars["Boolean"]["output"];
+  /** If `true`, the user can perform `summarize_comments` on this resource */
+  summarizeComments: Scalars["Boolean"]["output"];
   /** If `true`, the user can perform `update_work_item` on this resource */
   updateWorkItem: Scalars["Boolean"]["output"];
+};
+
+export type WorkItemRelatedBranch = {
+  __typename?: "WorkItemRelatedBranch";
+  /** Path to comparison of branch to default branch. */
+  comparePath?: Maybe<Scalars["String"]["output"]>;
+  /** Name of the branch. */
+  name: Scalars["String"]["output"];
+  /** Status of pipeline for the branch. */
+  pipelineStatus?: Maybe<DetailedStatus>;
+};
+
+/** The connection type for WorkItemRelatedBranch. */
+export type WorkItemRelatedBranchConnection = {
+  __typename?: "WorkItemRelatedBranchConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<WorkItemRelatedBranchEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<WorkItemRelatedBranch>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type WorkItemRelatedBranchEdge = {
+  __typename?: "WorkItemRelatedBranchEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<WorkItemRelatedBranch>;
 };
 
 /** Values for work item link types */
@@ -47429,12 +53020,124 @@ export type WorkItemRemoveLinkedItemsPayload = {
   workItem?: Maybe<WorkItem>;
 };
 
+export type WorkItemResolveDiscussionsInput = {
+  /** ID of a discussion to resolve. */
+  discussionId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Global ID of the noteable where discussions will be resolved when the work item is created. Only `MergeRequestID` is supported at the moment. */
+  noteableId: Scalars["NoteableID"]["input"];
+};
+
+export type WorkItemSelectFieldValue = WorkItemCustomFieldValue & {
+  __typename?: "WorkItemSelectFieldValue";
+  /** Custom field associated with the custom field value. */
+  customField: CustomField;
+  /** Selected options of the custom field. */
+  selectedOptions?: Maybe<Array<CustomFieldSelectOption>>;
+};
+
 /** Values for sorting work items */
 export enum WorkItemSort {
+  /** Blocking items count by ascending order. */
+  BlockingItemsAsc = "BLOCKING_ITEMS_ASC",
+  /** Blocking items count by descending order. */
+  BlockingItemsDesc = "BLOCKING_ITEMS_DESC",
+  /**
+   * Closed time by ascending order. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  ClosedAtAsc = "CLOSED_AT_ASC",
+  /**
+   * Closed time by descending order. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  ClosedAtDesc = "CLOSED_AT_DESC",
   /** Created at ascending order. */
   CreatedAsc = "CREATED_ASC",
   /** Created at descending order. */
   CreatedDesc = "CREATED_DESC",
+  /**
+   * Due date by ascending order. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  DueDateAsc = "DUE_DATE_ASC",
+  /**
+   * Due date by descending order. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  DueDateDesc = "DUE_DATE_DESC",
+  /**
+   * Status from triggered to resolved. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  EscalationStatusAsc = "ESCALATION_STATUS_ASC",
+  /**
+   * Status from resolved to triggered. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  EscalationStatusDesc = "ESCALATION_STATUS_DESC",
+  /**
+   * Health status by ascending order. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  HealthStatusAsc = "HEALTH_STATUS_ASC",
+  /**
+   * Health status by descending order. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  HealthStatusDesc = "HEALTH_STATUS_DESC",
+  /** Label priority by ascending order. */
+  LabelPriorityAsc = "LABEL_PRIORITY_ASC",
+  /** Label priority by descending order. */
+  LabelPriorityDesc = "LABEL_PRIORITY_DESC",
+  /** Milestone due date by ascending order. */
+  MilestoneDueAsc = "MILESTONE_DUE_ASC",
+  /** Milestone due date by descending order. */
+  MilestoneDueDesc = "MILESTONE_DUE_DESC",
+  /**
+   * Number of upvotes (awarded "thumbs up" emoji) by ascending order. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  PopularityAsc = "POPULARITY_ASC",
+  /**
+   * Number of upvotes (awarded "thumbs up" emoji) by descending order. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  PopularityDesc = "POPULARITY_DESC",
+  /**
+   * Priority by ascending order. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  PriorityAsc = "PRIORITY_ASC",
+  /**
+   * Priority by descending order. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  PriorityDesc = "PRIORITY_DESC",
+  /**
+   * Relative position by ascending order. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  RelativePositionAsc = "RELATIVE_POSITION_ASC",
+  /**
+   * Severity from less critical to more critical. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  SeverityAsc = "SEVERITY_ASC",
+  /**
+   * Severity from more critical to less critical. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  SeverityDesc = "SEVERITY_DESC",
+  /**
+   * Start date by ascending order. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  StartDateAsc = "START_DATE_ASC",
+  /**
+   * Start date by descending order. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  StartDateDesc = "START_DATE_DESC",
   /** Title by ascending order. */
   TitleAsc = "TITLE_ASC",
   /** Title by descending order. */
@@ -47443,6 +53146,16 @@ export enum WorkItemSort {
   UpdatedAsc = "UPDATED_ASC",
   /** Updated at descending order. */
   UpdatedDesc = "UPDATED_DESC",
+  /**
+   * Weight by ascending order. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  WeightAsc = "WEIGHT_ASC",
+  /**
+   * Weight by descending order. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  WeightDesc = "WEIGHT_DESC",
   /**
    * Created at ascending order. Deprecated in GitLab 13.5: This was renamed.
    * @deprecated This was renamed. Please use `CREATED_ASC`. Deprecated in GitLab 13.5.
@@ -47492,6 +53205,36 @@ export enum WorkItemStateEvent {
   Reopen = "REOPEN",
 }
 
+/** Represents status */
+export type WorkItemStatus = {
+  __typename?: "WorkItemStatus";
+  /**
+   * Color of the status. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  color?: Maybe<Scalars["String"]["output"]>;
+  /**
+   * Icon name of the status. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  iconName?: Maybe<Scalars["String"]["output"]>;
+  /**
+   * ID of the status. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  id?: Maybe<Scalars["GlobalID"]["output"]>;
+  /**
+   * Name of the status. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  name?: Maybe<Scalars["String"]["output"]>;
+  /**
+   * Position of the status within its category. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  position?: Maybe<Scalars["Int"]["output"]>;
+};
+
 /** Autogenerated input type of WorkItemSubscribe */
 export type WorkItemSubscribeInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -47511,6 +53254,14 @@ export type WorkItemSubscribePayload = {
   errors: Array<Scalars["String"]["output"]>;
   /** Work item after mutation. */
   workItem?: Maybe<WorkItem>;
+};
+
+export type WorkItemTextFieldValue = WorkItemCustomFieldValue & {
+  __typename?: "WorkItemTextFieldValue";
+  /** Custom field associated with the custom field value. */
+  customField: CustomField;
+  /** Text value of the custom field. */
+  value?: Maybe<Scalars["String"]["output"]>;
 };
 
 export type WorkItemTimelog = {
@@ -47572,6 +53323,11 @@ export type WorkItemType = {
   /** Name of the work item type. */
   name: Scalars["String"]["output"];
   /**
+   * Supported conversion types for the work item type. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  supportedConversionTypes?: Maybe<Array<WorkItemType>>;
+  /**
    * Available widgets for the work item type. Introduced in GitLab 16.7: **Status**: Experiment.
    * @deprecated **Status**: Experiment. Introduced in GitLab 16.7.
    */
@@ -47616,6 +53372,16 @@ export type WorkItemTypeEdge = {
   node?: Maybe<WorkItemType>;
 };
 
+export type WorkItemTypesUserPreference = {
+  __typename?: "WorkItemTypesUserPreference";
+  /** Namespace for the user preference. */
+  namespace: Namespace;
+  /** Sort order for work item lists. */
+  sort?: Maybe<WorkItemSort>;
+  /** Type assigned to the work item. */
+  workItemType?: Maybe<WorkItemType>;
+};
+
 /** Autogenerated input type of WorkItemUpdate */
 export type WorkItemUpdateInput = {
   /** Input for assignees widget. */
@@ -47656,12 +53422,12 @@ export type WorkItemUpdateInput = {
   startAndDueDateWidget?: InputMaybe<WorkItemWidgetStartAndDueDateUpdateInput>;
   /** Close or reopen a work item. */
   stateEvent?: InputMaybe<WorkItemStateEvent>;
-  /** Input for status widget. */
-  statusWidget?: InputMaybe<StatusInput>;
   /** Input for time tracking widget. */
   timeTrackingWidget?: InputMaybe<WorkItemWidgetTimeTrackingInput>;
   /** Title of the work item. */
   title?: InputMaybe<Scalars["String"]["input"]>;
+  /** Input for verification status widget. */
+  verificationStatusWidget?: InputMaybe<VerificationStatusInput>;
   /** Input for weight widget. */
   weightWidget?: InputMaybe<WorkItemWidgetWeightInput>;
 };
@@ -47675,6 +53441,29 @@ export type WorkItemUpdatePayload = {
   errors: Array<Scalars["String"]["output"]>;
   /** Updated work item. */
   workItem?: Maybe<WorkItem>;
+};
+
+/** Autogenerated input type of WorkItemUserPreferenceUpdate */
+export type WorkItemUserPreferenceUpdateInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Full path of the namespace on which the preference is set. */
+  namespacePath: Scalars["ID"]["input"];
+  /** Sort order for work item lists. */
+  sort?: InputMaybe<WorkItemSort>;
+  /** Global ID of a work item type. */
+  workItemTypeId?: InputMaybe<Scalars["WorkItemsTypeID"]["input"]>;
+};
+
+/** Autogenerated return type of WorkItemUserPreferenceUpdate. */
+export type WorkItemUserPreferenceUpdatePayload = {
+  __typename?: "WorkItemUserPreferenceUpdatePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** User preferences. */
+  userPreferences?: Maybe<WorkItemTypesUserPreference>;
 };
 
 export type WorkItemWidget = {
@@ -47721,6 +53510,8 @@ export type WorkItemWidgetAwardEmoji = WorkItemWidget & {
   awardEmoji?: Maybe<AwardEmojiConnection>;
   /** Number of downvotes the work item has received. */
   downvotes: Scalars["Int"]["output"];
+  /** Path to create a new custom emoji. */
+  newCustomEmojiPath?: Maybe<Scalars["String"]["output"]>;
   /** Widget type. */
   type?: Maybe<WorkItemWidgetType>;
   /** Number of upvotes the work item has received. */
@@ -47763,6 +53554,8 @@ export type WorkItemWidgetCrmContacts = WorkItemWidget & {
   __typename?: "WorkItemWidgetCrmContacts";
   /** Collection of CRM contacts associated with the work item. */
   contacts?: Maybe<CustomerRelationsContactConnection>;
+  /** Indicates whether contacts are available to be associated with the work item. */
+  contactsAvailable: Scalars["Boolean"]["output"];
   /** Widget type. */
   type?: Maybe<WorkItemWidgetType>;
 };
@@ -47813,6 +53606,47 @@ export type WorkItemWidgetCurrentUserTodosInput = {
   todoId?: InputMaybe<Scalars["TodoID"]["input"]>;
 };
 
+export type WorkItemWidgetCustomFieldFilterInputType = {
+  /** Global ID of the custom field. */
+  customFieldId: Scalars["IssuablesCustomFieldID"]["input"];
+  /** Global IDs of the selected options for custom fields with select type. */
+  selectedOptionIds?: InputMaybe<
+    Array<Scalars["IssuablesCustomFieldSelectOptionID"]["input"]>
+  >;
+};
+
+export type WorkItemWidgetCustomFieldValueInputType = {
+  /** Global ID of the custom field. */
+  customFieldId: Scalars["IssuablesCustomFieldID"]["input"];
+  /** Value for custom fields with number type. */
+  numberValue?: InputMaybe<Scalars["Float"]["input"]>;
+  /** Global IDs of the selected options for custom fields with select type. */
+  selectedOptionIds?: InputMaybe<
+    Array<Scalars["IssuablesCustomFieldSelectOptionID"]["input"]>
+  >;
+  /** Value for custom fields with text type. */
+  textValue?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** Represents a custom fields widget */
+export type WorkItemWidgetCustomFields = WorkItemWidget & {
+  __typename?: "WorkItemWidgetCustomFields";
+  /**
+   * Custom field values associated to the work item. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  customFieldValues?: Maybe<Array<WorkItemCustomFieldValue>>;
+  /** Widget type. */
+  type?: Maybe<WorkItemWidgetType>;
+};
+
+/** Represents a custom fields widget */
+export type WorkItemWidgetCustomFieldsCustomFieldValuesArgs = {
+  customFieldIds?: InputMaybe<
+    Array<Scalars["IssuablesCustomFieldID"]["input"]>
+  >;
+};
+
 export type WorkItemWidgetDefinition = {
   /** Widget type. */
   type: WorkItemWidgetType;
@@ -47825,6 +53659,18 @@ export type WorkItemWidgetDefinitionAssignees = WorkItemWidgetDefinition & {
   allowsMultipleAssignees: Scalars["Boolean"]["output"];
   /** Indicates whether the current user can invite members to the work item's parent. */
   canInviteMembers: Scalars["Boolean"]["output"];
+  /** Widget type. */
+  type: WorkItemWidgetType;
+};
+
+/** Represents a custom fields widget definition */
+export type WorkItemWidgetDefinitionCustomFields = WorkItemWidgetDefinition & {
+  __typename?: "WorkItemWidgetDefinitionCustomFields";
+  /**
+   * Custom field values associated to the work item. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  customFieldValues?: Maybe<Array<WorkItemCustomFieldValue>>;
   /** Widget type. */
   type: WorkItemWidgetType;
 };
@@ -47868,6 +53714,18 @@ export type WorkItemWidgetDefinitionLabels = WorkItemWidgetDefinition & {
   __typename?: "WorkItemWidgetDefinitionLabels";
   /** Indicates whether scoped labels are available. */
   allowsScopedLabels: Scalars["Boolean"]["output"];
+  /** Widget type. */
+  type: WorkItemWidgetType;
+};
+
+/** Represents a Status widget definition */
+export type WorkItemWidgetDefinitionStatus = WorkItemWidgetDefinition & {
+  __typename?: "WorkItemWidgetDefinitionStatus";
+  /**
+   * Allowed statuses for the work item type. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  allowedStatuses?: Maybe<Array<WorkItemStatus>>;
   /** Widget type. */
   type: WorkItemWidgetType;
 };
@@ -47923,6 +53781,13 @@ export type WorkItemWidgetDevelopment = WorkItemWidget & {
   closingMergeRequests?: Maybe<WorkItemClosingMergeRequestConnection>;
   /** Feature flags associated with the work item. */
   featureFlags?: Maybe<FeatureFlagConnection>;
+  /** Branches that have referred to the work item, but do not have an associated merge request. */
+  relatedBranches?: Maybe<WorkItemRelatedBranchConnection>;
+  /**
+   * Merge requests where the work item has been mentioned. This field can only be resolved for one work item in any single request. Introduced in GitLab 17.6: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+   */
+  relatedMergeRequests?: Maybe<MergeRequestConnection>;
   /** Widget type. */
   type?: Maybe<WorkItemWidgetType>;
   /** Whether the work item will automatically be closed when a closing merge request is merged. */
@@ -47945,6 +53810,22 @@ export type WorkItemWidgetDevelopmentFeatureFlagsArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
+/** Represents a development widget */
+export type WorkItemWidgetDevelopmentRelatedBranchesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** Represents a development widget */
+export type WorkItemWidgetDevelopmentRelatedMergeRequestsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
 /** Represents email participants widget */
 export type WorkItemWidgetEmailParticipants = WorkItemWidget & {
   __typename?: "WorkItemWidgetEmailParticipants";
@@ -47960,6 +53841,36 @@ export type WorkItemWidgetEmailParticipantsEmailParticipantsArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** Represents the error tracking widget */
+export type WorkItemWidgetErrorTracking = WorkItemWidget & {
+  __typename?: "WorkItemWidgetErrorTracking";
+  /** Error tracking issue id.This field can only be resolved for one work item in any single request. */
+  identifier?: Maybe<Scalars["BigInt"]["output"]>;
+  /** Stack trace details of the error.This field can only be resolved for one work item in any single request. */
+  stackTrace?: Maybe<ErrorTrackingStackTraceConnection>;
+  /** Response status of error service.This field can only be resolved for one work item in any single request. */
+  status?: Maybe<ErrorTrackingStatus>;
+  /** Widget type. */
+  type?: Maybe<WorkItemWidgetType>;
+};
+
+/** Represents the error tracking widget */
+export type WorkItemWidgetErrorTrackingStackTraceArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** Represents details about a line of code of the stack trace */
+export type WorkItemWidgetErrorTrackingStackTraceContext = {
+  __typename?: "WorkItemWidgetErrorTrackingStackTraceContext";
+  /** Line of code. */
+  line?: Maybe<Scalars["String"]["output"]>;
+  /** Line number of code. */
+  lineNumber?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** Represents a health status widget */
@@ -48131,6 +54042,23 @@ export type WorkItemWidgetLinkedItemsCreateInput = {
   workItemsIds: Array<Scalars["WorkItemID"]["input"]>;
 };
 
+/** Represents the linked resources widget */
+export type WorkItemWidgetLinkedResources = WorkItemWidget & {
+  __typename?: "WorkItemWidgetLinkedResources";
+  /** Resources for the work item. */
+  linkedResources?: Maybe<WorkItemLinkedResourceConnection>;
+  /** Widget type. */
+  type?: Maybe<WorkItemWidgetType>;
+};
+
+/** Represents the linked resources widget */
+export type WorkItemWidgetLinkedResourcesLinkedResourcesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
 /** Represents a milestone widget */
 export type WorkItemWidgetMilestone = WorkItemWidget & {
   __typename?: "WorkItemWidgetMilestone";
@@ -48150,8 +54078,10 @@ export type WorkItemWidgetNotes = WorkItemWidget & {
   __typename?: "WorkItemWidgetNotes";
   /** Discussion lock attribute of the work item. */
   discussionLocked?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Notes on this work item. */
+  /** Discussions on this work item. */
   discussions?: Maybe<DiscussionConnection>;
+  /** Notes on this work item. */
+  notes: NoteConnection;
   /** Widget type. */
   type?: Maybe<WorkItemWidgetType>;
 };
@@ -48161,6 +54091,15 @@ export type WorkItemWidgetNotesDiscussionsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   filter?: InputMaybe<NotesFilterType>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** Represents a notes widget */
+export type WorkItemWidgetNotesNotesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  filter?: InputMaybe<NotesFilterType>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type WorkItemWidgetNotesInput = {
@@ -48237,44 +54176,6 @@ export type WorkItemWidgetRequirementLegacy = WorkItemWidget & {
   type?: Maybe<WorkItemWidgetType>;
 };
 
-/** Represents the rolledup dates widget */
-export type WorkItemWidgetRolledupDates = WorkItemWidget & {
-  __typename?: "WorkItemWidgetRolledupDates";
-  /** Due date for the work item. */
-  dueDate?: Maybe<Scalars["Date"]["output"]>;
-  /** Fixed due date for the work item. */
-  dueDateFixed?: Maybe<Scalars["Date"]["output"]>;
-  /** Indicates if the due date for the work item is fixed. */
-  dueDateIsFixed?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Indicates which milestone sources the rolledup due date. */
-  dueDateSourcingMilestone?: Maybe<Milestone>;
-  /** Indicates which work_item sources the rolledup due date. */
-  dueDateSourcingWorkItem?: Maybe<WorkItem>;
-  /** Start date for the work item. */
-  startDate?: Maybe<Scalars["Date"]["output"]>;
-  /** Fixed start date for the work item. */
-  startDateFixed?: Maybe<Scalars["Date"]["output"]>;
-  /** Indicates if the start date for the work item is fixed. */
-  startDateIsFixed?: Maybe<Scalars["Boolean"]["output"]>;
-  /** Indicates which milestone sources the rolledup start date. */
-  startDateSourcingMilestone?: Maybe<Milestone>;
-  /** Indicates which work_item sources the rolledup start date. */
-  startDateSourcingWorkItem?: Maybe<WorkItem>;
-  /** Widget type. */
-  type?: Maybe<WorkItemWidgetType>;
-};
-
-export type WorkItemWidgetRolledupDatesInput = {
-  /** Fixed due date for the work item. */
-  dueDateFixed?: InputMaybe<Scalars["Date"]["input"]>;
-  /** When due_date_fixed is not provided it defaults to `false`. */
-  dueDateIsFixed?: InputMaybe<Scalars["Boolean"]["input"]>;
-  /** Fixed start date for the work item. */
-  startDateFixed?: InputMaybe<Scalars["Date"]["input"]>;
-  /** When start_date_fixed is not provided it defaults to `false`. */
-  startDateIsFixed?: InputMaybe<Scalars["Boolean"]["input"]>;
-};
-
 /** Represents a start and due date widget */
 export type WorkItemWidgetStartAndDueDate = WorkItemWidget & {
   __typename?: "WorkItemWidgetStartAndDueDate";
@@ -48307,13 +54208,21 @@ export type WorkItemWidgetStartAndDueDateUpdateInput = {
   startDate?: InputMaybe<Scalars["Date"]["input"]>;
 };
 
-/** Represents a status widget */
+/** Represents status widget */
 export type WorkItemWidgetStatus = WorkItemWidget & {
   __typename?: "WorkItemWidgetStatus";
-  /** Status of the work item. */
-  status?: Maybe<Scalars["String"]["output"]>;
+  /**
+   * Status assigned to work item. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  status?: Maybe<WorkItemStatus>;
   /** Widget type. */
   type?: Maybe<WorkItemWidgetType>;
+};
+
+export type WorkItemWidgetStatusInput = {
+  /** Status of the work item. */
+  status?: InputMaybe<Scalars["WorkItemsStatusesStatusID"]["input"]>;
 };
 
 /** Represents a test reports widget */
@@ -48333,9 +54242,11 @@ export type WorkItemWidgetTestReportsTestReportsArgs = {
   last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
-/** Represents a time tracking widget */
+/** Represents the time tracking widget on the work item */
 export type WorkItemWidgetTimeTracking = WorkItemWidget & {
   __typename?: "WorkItemWidgetTimeTracking";
+  /** Human-readable attributes of the work item. */
+  humanReadableAttributes?: Maybe<WorkItemWidgetTimeTrackingHumanReadableAttributes>;
   /** Time estimate of the work item. */
   timeEstimate?: Maybe<Scalars["Int"]["output"]>;
   /** Timelogs on the work item. */
@@ -48346,12 +54257,21 @@ export type WorkItemWidgetTimeTracking = WorkItemWidget & {
   type?: Maybe<WorkItemWidgetType>;
 };
 
-/** Represents a time tracking widget */
+/** Represents the time tracking widget on the work item */
 export type WorkItemWidgetTimeTrackingTimelogsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** Represents a time tracking human readable attributes */
+export type WorkItemWidgetTimeTrackingHumanReadableAttributes = {
+  __typename?: "WorkItemWidgetTimeTrackingHumanReadableAttributes";
+  /** Human-readable time estimate of the work item. */
+  timeEstimate?: Maybe<Scalars["String"]["output"]>;
+  /** Human-readable total time reported as spent on the work item. */
+  totalTimeSpent?: Maybe<Scalars["String"]["output"]>;
 };
 
 export type WorkItemWidgetTimeTrackingInput = {
@@ -48382,6 +54302,8 @@ export enum WorkItemWidgetType {
   CrmContacts = "CRM_CONTACTS",
   /** Current User Todos widget. */
   CurrentUserTodos = "CURRENT_USER_TODOS",
+  /** Custom Fields widget. */
+  CustomFields = "CUSTOM_FIELDS",
   /** Description widget. */
   Description = "DESCRIPTION",
   /** Designs widget. */
@@ -48390,6 +54312,8 @@ export enum WorkItemWidgetType {
   Development = "DEVELOPMENT",
   /** Email Participants widget. */
   EmailParticipants = "EMAIL_PARTICIPANTS",
+  /** Error Tracking widget. */
+  ErrorTracking = "ERROR_TRACKING",
   /** Health Status widget. */
   HealthStatus = "HEALTH_STATUS",
   /** Hierarchy widget. */
@@ -48400,6 +54324,8 @@ export enum WorkItemWidgetType {
   Labels = "LABELS",
   /** Linked Items widget. */
   LinkedItems = "LINKED_ITEMS",
+  /** Linked Resources widget. */
+  LinkedResources = "LINKED_RESOURCES",
   /** Milestone widget. */
   Milestone = "MILESTONE",
   /** Notes widget. */
@@ -48412,8 +54338,6 @@ export enum WorkItemWidgetType {
   Progress = "PROGRESS",
   /** Requirement Legacy widget. */
   RequirementLegacy = "REQUIREMENT_LEGACY",
-  /** Rolledup Dates widget. */
-  RolledupDates = "ROLLEDUP_DATES",
   /** Start And Due Date widget. */
   StartAndDueDate = "START_AND_DUE_DATE",
   /** Status widget. */
@@ -48422,9 +54346,45 @@ export enum WorkItemWidgetType {
   TestReports = "TEST_REPORTS",
   /** Time Tracking widget. */
   TimeTracking = "TIME_TRACKING",
+  /** Verification Status widget. */
+  VerificationStatus = "VERIFICATION_STATUS",
+  /** Vulnerabilities widget. */
+  Vulnerabilities = "VULNERABILITIES",
   /** Weight widget. */
   Weight = "WEIGHT",
 }
+
+/** Represents a verification status widget */
+export type WorkItemWidgetVerificationStatus = WorkItemWidget & {
+  __typename?: "WorkItemWidgetVerificationStatus";
+  /** Widget type. */
+  type?: Maybe<WorkItemWidgetType>;
+  /**
+   * Verification status of the work item. Introduced in GitLab 15.5: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 15.5.
+   */
+  verificationStatus?: Maybe<Scalars["String"]["output"]>;
+};
+
+/** Represents a vulnerabilities widget */
+export type WorkItemWidgetVulnerabilities = WorkItemWidget & {
+  __typename?: "WorkItemWidgetVulnerabilities";
+  /**
+   * Related vulnerabilities of the work item. Introduced in GitLab 17.10: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.10.
+   */
+  relatedVulnerabilities?: Maybe<VulnerabilityConnection>;
+  /** Widget type. */
+  type?: Maybe<WorkItemWidgetType>;
+};
+
+/** Represents a vulnerabilities widget */
+export type WorkItemWidgetVulnerabilitiesRelatedVulnerabilitiesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
 
 /** Represents a weight widget */
 export type WorkItemWidgetWeight = WorkItemWidget & {
@@ -48452,17 +54412,100 @@ export type WorkItemWidgetWeightInput = {
   weight?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
+/** Autogenerated input type of WorkItemsCsvExport */
+export type WorkItemsCsvExportInput = {
+  /** Usernames of users assigned to the work item. */
+  assigneeUsernames?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  /** Filter by assignee wildcard. Incompatible with `assigneeUsernames`. */
+  assigneeWildcardId?: InputMaybe<AssigneeWildcardId>;
+  /** Filter work items by author username. */
+  authorUsername?: InputMaybe<Scalars["String"]["input"]>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Work items closed after the date. */
+  closedAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  /** Work items closed before the date. */
+  closedBefore?: InputMaybe<Scalars["Time"]["input"]>;
+  /** Filter for confidential work items. If `false`, excludes confidential work items. If `true`, returns only confidential work items. */
+  confidential?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Work items created after the timestamp. */
+  createdAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  /** Work items created before the timestamp. */
+  createdBefore?: InputMaybe<Scalars["Time"]["input"]>;
+  /** Work items due after the timestamp. */
+  dueAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  /** Work items due before the timestamp. */
+  dueBefore?: InputMaybe<Scalars["Time"]["input"]>;
+  /** List of IIDs of work items. For example, `["1", "2"]`. */
+  iids?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  /**
+   * Specify the fields to perform the search in.
+   * Defaults to `[TITLE, DESCRIPTION]`. Requires the `search` argument.'
+   *
+   */
+  in?: InputMaybe<Array<IssuableSearchableField>>;
+  /** Labels applied to the work item. */
+  labelName?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  /** Milestone applied to the work item. */
+  milestoneTitle?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  /** Filter by milestone ID wildcard. Incompatible with `milestoneTitle`. */
+  milestoneWildcardId?: InputMaybe<MilestoneWildcardId>;
+  /** Filter by reaction emoji applied by the current user. Wildcard values `NONE` and `ANY` are supported. */
+  myReactionEmoji?: InputMaybe<Scalars["String"]["input"]>;
+  /** Negated work item arguments. */
+  not?: InputMaybe<NegatedWorkItemFilterInput>;
+  /** List of arguments with inclusive `OR`. */
+  or?: InputMaybe<UnionedWorkItemFilterInput>;
+  /** Full project path. */
+  projectPath: Scalars["ID"]["input"];
+  /** Search query for title or description. */
+  search?: InputMaybe<Scalars["String"]["input"]>;
+  /** List of selected fields to be exported. Omit to export all available fields. */
+  selectedFields?: InputMaybe<Array<AvailableExportFields>>;
+  /** Current state of the work item. */
+  state?: InputMaybe<IssuableState>;
+  /** Work items the current user is subscribed to. */
+  subscribed?: InputMaybe<SubscriptionStatus>;
+  /** Filter work items by the given work item types. */
+  types?: InputMaybe<Array<IssueType>>;
+  /** Work items updated after the timestamp. */
+  updatedAfter?: InputMaybe<Scalars["Time"]["input"]>;
+  /** Work items updated before the timestamp. */
+  updatedBefore?: InputMaybe<Scalars["Time"]["input"]>;
+};
+
+/** Autogenerated return type of WorkItemsCsvExport. */
+export type WorkItemsCsvExportPayload = {
+  __typename?: "WorkItemsCsvExportPayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Export request result message. */
+  message?: Maybe<Scalars["String"]["output"]>;
+};
+
 /** Represents a remote development workspace */
 export type Workspace = {
   __typename?: "Workspace";
   /** Actual state of the workspace. */
   actualState: Scalars["String"]["output"];
+  /**
+   * Timestamp of the last update to the actual state. Introduced in GitLab 17.11: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.11.
+   */
+  actualStateUpdatedAt: Scalars["Time"]["output"];
   /** Kubernetes agent associated with the workspace. */
   clusterAgent: ClusterAgent;
   /** Timestamp of when the workspace was created. */
   createdAt: Scalars["Time"]["output"];
   /** Version of the deployment resource for the workspace. */
   deploymentResourceVersion?: Maybe<Scalars["Int"]["output"]>;
+  /**
+   * Version of the desired config generator for the workspace. Introduced in GitLab 17.6: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+   */
+  desiredConfigGeneratorVersion: Scalars["Int"]["output"];
   /** Desired state of the workspace. */
   desiredState: Scalars["String"]["output"];
   /** Timestamp of the last update to the desired state. */
@@ -48470,19 +54513,33 @@ export type Workspace = {
   /** Source YAML of the devfile used to configure the workspace. */
   devfile: Scalars["String"]["output"];
   /** Path to the devfile used to configure the workspace. */
-  devfilePath: Scalars["String"]["output"];
-  /** Git reference that contains the devfile used to configure the workspace. */
+  devfilePath?: Maybe<Scalars["String"]["output"]>;
+  /**
+   * Git reference that contains the devfile used to configure the workspace. Deprecated in GitLab 17.8: Field is renamed to project_ref.
+   * @deprecated Field is renamed to project_ref. Deprecated in GitLab 17.8.
+   */
   devfileRef: Scalars["String"]["output"];
-  /** Web URL of the devfile used to configure the workspace. */
-  devfileWebUrl: Scalars["String"]["output"];
+  /**
+   * Web URL of the devfile used to configure the workspace. Deprecated in GitLab 17.8: Field is not used.
+   * @deprecated Field is not used. Deprecated in GitLab 17.8.
+   */
+  devfileWebUrl?: Maybe<Scalars["String"]["output"]>;
   /**
    * Editor used to configure the workspace. Must match a configured template. Deprecated in GitLab 17.5: Field is not used.
    * @deprecated Field is not used. Deprecated in GitLab 17.5.
    */
   editor: Scalars["String"]["output"];
+  /**
+   * Forces all resources to be included for the workspaceduring the next reconciliation with the agent. Introduced in GitLab 17.6: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+   */
+  forceIncludeAllResources: Scalars["Boolean"]["output"];
   /** Global ID of the workspace. */
   id: Scalars["RemoteDevelopmentWorkspaceID"]["output"];
-  /** Number of hours until the workspace automatically terminates. */
+  /**
+   * Number of hours until the workspace automatically terminates. Deprecated in GitLab 17.9: Field is not used.
+   * @deprecated Field is not used. Deprecated in GitLab 17.9.
+   */
   maxHoursBeforeTermination: Scalars["Int"]["output"];
   /** Name of the workspace in Kubernetes. */
   name: Scalars["String"]["output"];
@@ -48492,6 +54549,8 @@ export type Workspace = {
   processedDevfile: Scalars["String"]["output"];
   /** ID of the project that contains the devfile for the workspace. */
   projectId: Scalars["ID"]["output"];
+  /** Git reference that contains the devfile used to configure the workspace, and that will be cloned into the workspace */
+  projectRef: Scalars["String"]["output"];
   /** Timestamp of the last response sent to the GitLab agent for Kubernetes for the workspace. */
   respondedToAgentAt?: Maybe<Scalars["Time"]["output"]>;
   /** Timestamp of the last update to any mutable workspace property. */
@@ -48500,6 +54559,24 @@ export type Workspace = {
   url: Scalars["String"]["output"];
   /** Owner of the workspace. */
   user: UserCore;
+  /**
+   * User defined variables associated with the workspace. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  workspaceVariables?: Maybe<WorkspaceVariableConnection>;
+  /**
+   * Version of the associated WorkspacesAgentConfig for the workspace. Introduced in GitLab 17.6: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.6.
+   */
+  workspacesAgentConfigVersion: Scalars["Int"]["output"];
+};
+
+/** Represents a remote development workspace */
+export type WorkspaceWorkspaceVariablesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /** The connection type for Workspace. */
@@ -48521,16 +54598,12 @@ export type WorkspaceCreateInput = {
   clusterAgentId: Scalars["ClustersAgentID"]["input"];
   /** Desired state of the created workspace. */
   desiredState: Scalars["String"]["input"];
-  /** Project repo git path containing the devfile used to configure the workspace. */
-  devfilePath: Scalars["String"]["input"];
-  /** Project repo git ref containing the devfile used to configure the workspace. */
-  devfileRef: Scalars["String"]["input"];
-  /** Maximum hours the workspace can exist before it is automatically terminated. */
-  maxHoursBeforeTermination: Scalars["Int"]["input"];
+  /** Project path containing the devfile used to configure the workspace. If not provided, the GitLab default devfile is used. */
+  devfilePath?: InputMaybe<Scalars["String"]["input"]>;
   /** ID of the project that will provide the Devfile for the created workspace. */
   projectId: Scalars["ProjectID"]["input"];
-  /** Variables to inject into the workspace. */
-  variables?: InputMaybe<Array<WorkspaceVariableInput>>;
+  /** Project repo git ref. */
+  projectRef?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 /** Autogenerated return type of WorkspaceCreate. */
@@ -48551,6 +54624,15 @@ export type WorkspaceEdge = {
   cursor: Scalars["String"]["output"];
   /** The item at the end of the edge. */
   node?: Maybe<Workspace>;
+};
+
+/** Resource specifications of the workspace container. */
+export type WorkspaceResources = {
+  __typename?: "WorkspaceResources";
+  /** Limits for the requested container resources of a workspace. */
+  limits?: Maybe<ResourceQuotas>;
+  /** Requested resources for the container of a workspace. */
+  requests?: Maybe<ResourceQuotas>;
 };
 
 /** Autogenerated input type of WorkspaceUpdate */
@@ -48574,19 +54656,62 @@ export type WorkspaceUpdatePayload = {
   workspace?: Maybe<Workspace>;
 };
 
+/** Represents a remote development workspace variable */
+export type WorkspaceVariable = {
+  __typename?: "WorkspaceVariable";
+  /** Timestamp of when the workspace variable was created. */
+  createdAt: Scalars["Time"]["output"];
+  /** Global ID of the workspace variable. */
+  id: Scalars["RemoteDevelopmentWorkspaceVariableID"]["output"];
+  /** Name of the workspace variable. */
+  key?: Maybe<Scalars["String"]["output"]>;
+  /** Timestamp of when the workspace variable was updated. */
+  updatedAt: Scalars["Time"]["output"];
+  /** Value of the workspace variable. */
+  value?: Maybe<Scalars["String"]["output"]>;
+  /** Type of the workspace variable. */
+  variableType?: Maybe<WorkspaceVariableType>;
+};
+
+/** The connection type for WorkspaceVariable. */
+export type WorkspaceVariableConnection = {
+  __typename?: "WorkspaceVariableConnection";
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<WorkspaceVariableEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<WorkspaceVariable>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type WorkspaceVariableEdge = {
+  __typename?: "WorkspaceVariableEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node?: Maybe<WorkspaceVariable>;
+};
+
 /** Attributes for defining a variable to be injected in a workspace. */
 export type WorkspaceVariableInput = {
-  /** Key of the variable. */
+  /** Name of the workspace variable. */
   key: Scalars["String"]["input"];
-  /** Type of the variable to be injected in a workspace. */
-  type: WorkspaceVariableInputType;
   /** Value of the variable. */
   value: Scalars["String"]["input"];
+  /** Type of the variable to be injected in a workspace. */
+  variableType?: InputMaybe<WorkspaceVariableType>;
 };
 
 /** Enum for the type of the variable to be injected in a workspace. */
 export enum WorkspaceVariableInputType {
   /** Name type. */
+  Environment = "ENVIRONMENT",
+}
+
+/** Enum for the type of the variable injected in a workspace. */
+export enum WorkspaceVariableType {
+  /** Environment type. */
   Environment = "ENVIRONMENT",
 }
 
@@ -48601,8 +54726,11 @@ export type WorkspacesAgentConfig = {
   clusterAgent: ClusterAgent;
   /** Timestamp of when the workspaces agent config was created. */
   createdAt: Scalars["Time"]["output"];
-  /** Default max hours before worksapce termination of the workspaces agent config. */
-  defaultMaxHoursBeforeTermination: Scalars["Int"]["output"];
+  /**
+   * Default cpu and memory resources of the workspace container. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  defaultResourcesPerWorkspaceContainer: WorkspaceResources;
   /** Default Kubernetes RuntimeClass. */
   defaultRuntimeClass: Scalars["String"]["output"];
   /** DNS zone where workspaces are available. */
@@ -48613,10 +54741,23 @@ export type WorkspacesAgentConfig = {
   gitlabWorkspacesProxyNamespace: Scalars["String"]["output"];
   /** Global ID of the workspaces agent config. */
   id: Scalars["RemoteDevelopmentWorkspacesAgentConfigID"]["output"];
+  /**
+   * Kubernetes secrets to pull private images for a workspace. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  imagePullSecrets: Array<ImagePullSecrets>;
   /** Labels to apply to Kubernetes objects. */
   labels: Array<KubernetesLabel>;
-  /** Max hours before worksapce termination limit of the workspaces agent config. */
-  maxHoursBeforeTerminationLimit: Scalars["Int"]["output"];
+  /**
+   * Maximum cpu and memory resources of the workspace. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  maxResourcesPerWorkspace: WorkspaceResources;
+  /**
+   * IP CIDR range specifications for egress destinations from a workspace. Introduced in GitLab 17.9: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.9.
+   */
+  networkPolicyEgress: Array<NetworkPolicyEgress>;
   /** Whether the network policy of the workspaces agent config is enabled. */
   networkPolicyEnabled: Scalars["Boolean"]["output"];
   /** ID of the project that the workspaces agent config belongs to. */
@@ -48759,6 +54900,51 @@ export type BranchRuleApprovalProjectRuleCreatePayload = {
   errors: Array<Scalars["String"]["output"]>;
 };
 
+/** Requires ClickHouse. Premium and Ultimate with GitLab Duo Pro and Enterprise only. */
+export type CodeSuggestionMetrics = {
+  __typename?: "codeSuggestionMetrics";
+  /** Total count of code suggestions accepted. */
+  acceptedCount?: Maybe<Scalars["Int"]["output"]>;
+  /** Sum of lines of code from code suggestions accepted. */
+  acceptedLinesOfCode?: Maybe<Scalars["Int"]["output"]>;
+  /** Number of code contributors who used GitLab Duo Code Suggestions features. */
+  contributorsCount?: Maybe<Scalars["Int"]["output"]>;
+  /** List of languages with at least one suggestion shown or accepted. */
+  languages?: Maybe<Array<Scalars["String"]["output"]>>;
+  /** Total count of code suggestions shown. */
+  shownCount?: Maybe<Scalars["Int"]["output"]>;
+  /** Sum of lines of code from code suggestions shown. */
+  shownLinesOfCode?: Maybe<Scalars["Int"]["output"]>;
+};
+
+/** Autogenerated input type of createContainerProtectionTagRule */
+export type CreateContainerProtectionTagRuleInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Minimum GitLab access level required to delete container image tags from the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, no access level can delete tags. Introduced in GitLab 17.8: **Status**: Experiment. */
+  minimumAccessLevelForDelete?: InputMaybe<ContainerProtectionTagRuleAccessLevel>;
+  /** Minimum GitLab access level required to push container image tags to the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, no access level can push tags. Introduced in GitLab 17.8: **Status**: Experiment. */
+  minimumAccessLevelForPush?: InputMaybe<ContainerProtectionTagRuleAccessLevel>;
+  /** Full path of the project containing the container image tags. */
+  projectPath: Scalars["ID"]["input"];
+  /** The pattern that matches container image tags to protect. For example, `v1.*`. Wildcard character `*` allowed. Introduced in GitLab 17.8: **Status**: Experiment. */
+  tagNamePattern: Scalars["String"]["input"];
+};
+
+/** Autogenerated return type of createContainerProtectionTagRule. */
+export type CreateContainerProtectionTagRulePayload = {
+  __typename?: "createContainerProtectionTagRulePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /**
+   * Protection rule for container image tags after creation. Introduced in GitLab 17.8: **Status**: Experiment.
+   * @deprecated **Status**: Experiment. Introduced in GitLab 17.8.
+   */
+  containerProtectionTagRule?: Maybe<ContainerProtectionTagRule>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+};
+
 /** Autogenerated input type of iterationCreate */
 export type IterationCreateInput = {
   /** A unique identifier for the client performing the mutation. */
@@ -48828,6 +55014,29 @@ export type ProjectTextReplacePayload = {
   errors: Array<Scalars["String"]["output"]>;
 };
 
+/** Autogenerated input type of vulnerabilitiesSeverityOverride */
+export type VulnerabilitiesSeverityOverrideInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** Comment why vulnerability severity was changed (maximum 50,000 characters). */
+  comment: Scalars["String"]["input"];
+  /** New severity value for the severities. */
+  severity: VulnerabilitySeverity;
+  /** IDs of the vulnerabilities for which severity needs to be changed (maximum 100 entries). */
+  vulnerabilityIds: Array<Scalars["VulnerabilityID"]["input"]>;
+};
+
+/** Autogenerated return type of vulnerabilitiesSeverityOverride. */
+export type VulnerabilitiesSeverityOverridePayload = {
+  __typename?: "vulnerabilitiesSeverityOverridePayload";
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** Errors encountered during execution of the mutation. */
+  errors: Array<Scalars["String"]["output"]>;
+  /** Vulnerabilities after severity change. */
+  vulnerabilities: Array<Vulnerability>;
+};
+
 /** Autogenerated input type of workItemsHierarchyReorder */
 export type WorkItemsHierarchyReorderInput = {
   /** ID of the work item to move next to. For example, the item above or below. */
@@ -48863,8 +55072,6 @@ export type GitLabPullRequestFragment = {
     __typename?: "MergeRequest";
     title: string;
     id: string;
-    approvalsRequired?: number | null;
-    approvalsLeft?: number | null;
     webUrl?: string | null;
     draft: boolean;
     userNotesCount?: number | null;
@@ -48906,7 +55113,7 @@ export type GetCurrentUserQuery = {
   __typename?: "Query";
   currentUser?: {
     __typename?: "CurrentUser";
-    id: string;
+    id: any;
     avatarUrl?: string | null;
     username: string;
     name: string;
@@ -48959,14 +55166,6 @@ export const GitLabPullRequestFragmentDoc = {
               selections: [
                 { kind: "Field", name: { kind: "Name", value: "title" } },
                 { kind: "Field", name: { kind: "Name", value: "id" } },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "approvalsRequired" },
-                },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "approvalsLeft" },
-                },
                 { kind: "Field", name: { kind: "Name", value: "webUrl" } },
                 { kind: "Field", name: { kind: "Name", value: "draft" } },
                 {
@@ -49199,14 +55398,6 @@ export const GetGitLabPullRequestsDocument = {
               selections: [
                 { kind: "Field", name: { kind: "Name", value: "title" } },
                 { kind: "Field", name: { kind: "Name", value: "id" } },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "approvalsRequired" },
-                },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "approvalsLeft" },
-                },
                 { kind: "Field", name: { kind: "Name", value: "webUrl" } },
                 { kind: "Field", name: { kind: "Name", value: "draft" } },
                 {

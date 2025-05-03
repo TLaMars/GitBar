@@ -4,7 +4,9 @@ import React
 public class WindowModule: Module {
     
     private var windowsMap = [String: NSWindow]()
+    internal var moduleNameMap = [NSWindow: String]()
     private var bridge: RCTBridge!
+    private var delegateHandler: WindowDelegateHandler?
 
     public func definition() -> ModuleDefinition {
         Name("WindowModule")
@@ -23,17 +25,20 @@ public class WindowModule: Module {
             "STYLE_MASK_NONACTIVATING_PANEL": NSWindow.StyleMask.nonactivatingPanel.rawValue
         ])
         
+        Events("onWindowClose")
+        
         OnCreate {
             // Get Bridge from RCTBridge -> is also in Appdelegate, but how do we type it
             // let appDelegate = NSApp.delegate
             bridge = RCTBridge.current()
+            delegateHandler = WindowDelegateHandler(module: self)
         }
         
         AsyncFunction("openWindow") { (moduleName: String, options: [String: Any]) in
             // Check if the window for the module already exists
-            if let existingWindow = windowsMap[moduleName] {
+            if let existingWindow = self.windowsMap[moduleName] {
                 // If the window exists, bring it to the front
-                bringWindowToFront(window: existingWindow)
+                self.bringWindowToFront(window: existingWindow)
                 return
             }
             
@@ -61,18 +66,24 @@ public class WindowModule: Module {
             
             let rootView = RCTRootView(bridge: self.bridge, moduleName: moduleName, initialProperties: nil)
             newWindow.contentView = rootView
-            windowsMap[moduleName] = newWindow
+            self.windowsMap[moduleName] = newWindow
+            self.moduleNameMap[newWindow] = moduleName
+            
+            // Set delegate to intercept window close
+            newWindow.delegate = self.delegateHandler
             
             newWindow.titlebarAppearsTransparent = titlebarAppearsTransparent
             newWindow.title = title
-            updateWindowAppearance(window: newWindow, styleMask: windowStyleMask)
+            self.updateWindowAppearance(window: newWindow, styleMask: windowStyleMask)
             
-            bringWindowToFront(window: newWindow)
+            self.bringWindowToFront(window: newWindow)
         }.runOnQueue(.main)
         
         AsyncFunction("closeWindow") { (moduleName: String) in
             if let window = self.windowsMap[moduleName] {
                 window.close()
+                // self.windowsMap.removeValue(forKey: moduleName)
+                // self.moduleNameMap.removeValue(forKey: window)
             }
         }.runOnQueue(.main)
     }
@@ -89,5 +100,27 @@ public class WindowModule: Module {
             window?.styleMask = styleMask
             window?.display()
         }
+    }
+}
+
+// NSWindowDelegate implementation as a separate class that inherits from NSObject
+class WindowDelegateHandler: NSObject, NSWindowDelegate {
+    weak var module: WindowModule?
+    
+    init(module: WindowModule) {
+        self.module = module
+        super.init()
+    }
+    
+    public func windowShouldClose(_ sender: NSWindow) -> Bool {
+        // Emit event before window closes
+        if let moduleName = module?.moduleNameMap[sender] {
+            module?.sendEvent("onWindowClose", [
+                "moduleName": moduleName
+            ])
+        }
+        
+        // Return true to allow the window to close
+        return true
     }
 }

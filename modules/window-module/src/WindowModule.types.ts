@@ -16,6 +16,16 @@ export type WindowModuleType = {
   STYLE_MASK_UTILITY_WINDOW: number;
   STYLE_MASK_DOC_MODAL_WINDOW: number;
   STYLE_MASK_NONACTIVATING_PANEL: number;
+
+  // Events
+  addListener: (
+    eventName: "onWindowClose",
+    listener: (event: WindowCloseEvent) => void,
+  ) => { remove: () => void };
+};
+
+export type WindowCloseEvent = {
+  moduleName: string;
 };
 
 export enum WindowStyleMask {

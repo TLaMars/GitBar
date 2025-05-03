@@ -1,5 +1,7 @@
 import { AppRegistry } from "react-native";
 
+import AppModule from "modules/app-module";
+
 import WindowModule from "./src/WindowModule";
 import {
   NativeWindowOptions,
@@ -66,16 +68,39 @@ function createWindowsNavigator<T extends WindowsConfig>(config: T) {
     AppRegistry.registerComponent(key, () => value.component);
   });
 
+  // Store callbacks for each window - using a simple Map with window name as key and callback as value
+  const windowCallbacks = new Map<keyof T, () => void>();
+
+  const closeWindow = async (window: keyof T) => {
+    await WindowModule.closeWindow(window.toString());
+    AppModule.hideDockIcon();
+    windowCallbacks.get(window)?.();
+  };
+
+  const subscribeToWindowClose = () => {
+    const subscription = WindowModule.addListener(
+      "onWindowClose",
+      async ({ moduleName }) => {
+        await closeWindow(moduleName);
+      },
+    );
+
+    return subscription;
+  };
+
   return {
     open: async (window: keyof T) => {
       await WindowModule.openWindow(
         String(window),
         convertOptionsToNative(config[window].options),
       );
+      AppModule.showDockIcon();
+      subscribeToWindowClose();
     },
-    close: async (window: keyof T) => {
-      await WindowModule.closeWindow(window.toString());
+    setCloseCallback: (window: keyof T, callback: () => void) => {
+      windowCallbacks.set(window.toString(), callback);
     },
+    close: closeWindow,
   };
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "gitbar",
-  "version": "1.11.0",
+  "version": "1.11.1",
   "private": true,
   "scripts": {
     "codegen:watch": "graphql-codegen --config codegen.ts --watch",

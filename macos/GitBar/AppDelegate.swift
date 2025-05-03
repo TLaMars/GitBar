@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
   func applicationDidFinishLaunching(_ notification: Notification) {
     UNUserNotificationCenter.current().delegate = self
     setMMKVStorageLocation()
-
+    
     bridge = RCTBridge(delegate: self, launchOptions: nil)
     
     statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -31,6 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
       image?.prefersColorMatch = true
       button.image = image
       button.action = #selector(onPressStatusItem(_:))
+      button.sendAction(on: [.leftMouseUp, .rightMouseUp])
     }
     
     let rootView = RCTRootView(bridge: bridge, moduleName: "main", initialProperties: [:])
@@ -47,6 +48,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
     
     let em = NSAppleEventManager.shared()
     em.setEventHandler(self, andSelector: #selector(self.getUrl(_:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+  }
+  
+  func createStatusMenu() -> NSMenu {
+    let menu = NSMenu()
+    menu.addItem(withTitle: "Quit", action: #selector(quitApp), keyEquivalent: "q")
+    
+    return menu
+  }
+  
+  @objc
+  func quitApp() {
+    NSApplication.shared.terminate(self)
   }
   
   func popoverDidClose(_ notification: Notification) {
@@ -70,11 +83,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
   }
   
   func sourceURL(for bridge: RCTBridge) -> URL? {
-    #if DEBUG
+#if DEBUG
     return RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackExtension: nil)
-    #else
+#else
     return Bundle.main.url(forResource: "main", withExtension: "jsbundle")
-    #endif
+#endif
   }
   
   @objc
@@ -82,7 +95,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
     popover.show(relativeTo: statusItem.button!.bounds, of: statusItem.button!, preferredEdge: .minY)
     popover.contentViewController?.view.window?.makeKey()
   }
-
+  
   func closePopover() {
     popover.close()
   }
@@ -101,22 +114,31 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
   
   @objc
   func setPopoverAppearance(_ notification: NSNotification) {
-      guard let userInfo = notification.userInfo as? [String: Any],
-            let isDark = userInfo["isDark"] as? Bool else { return }
-
-      popover.appearance = NSAppearance(named: isDark ? .darkAqua : .aqua)
+    guard let userInfo = notification.userInfo as? [String: Any],
+          let isDark = userInfo["isDark"] as? Bool else { return }
+    
+    popover.appearance = NSAppearance(named: isDark ? .darkAqua : .aqua)
   }
   
   @objc
   func setStatusItemText(_ notification: NSNotification) {
-      guard let userInfo = notification.userInfo as? [String: Any],
-            let text = userInfo["text"] as? String else { return }
-
+    guard let userInfo = notification.userInfo as? [String: Any],
+          let text = userInfo["text"] as? String else { return }
+    
     statusItem.button?.title = text
   }
   
   @objc 
   func onPressStatusItem(_ sender: Any?) {
+    guard let event = NSApp.currentEvent else { return }
+    
+    if event.type == .rightMouseUp {
+      statusItem.menu = createStatusMenu()
+      statusItem.button?.performClick(nil)
+      statusItem.menu = nil
+      return
+    }
+    
     if popover.isShown {
       closePopover()
     } else {

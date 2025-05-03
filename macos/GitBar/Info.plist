@@ -62,5 +62,7 @@
 	<true/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2025 Thomas Lamars</string>
 </dict>
 </plist>

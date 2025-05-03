@@ -10,3 +10,8 @@ export enum MacState {
 export type MacStateChangeEvent = {
   state: MacState;
 };
+
+export enum DockIconState {
+  VISIBLE = "visible",
+  HIDDEN = "hidden",
+}

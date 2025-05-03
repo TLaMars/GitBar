@@ -7,6 +7,9 @@ declare class AppModule extends NativeModule<AppModuleEvents> {
   isLaunchAtLoginEnabled(): Promise<boolean>;
   setLaunchAtLoginEnabled(enabled: boolean): Promise<void>;
   isLaunchAtLoginSupported(): Promise<boolean>;
+  showDockIcon(): void;
+  hideDockIcon(): void;
+  isDockIconVisible(): boolean;
 }
 
 export default requireNativeModule<AppModule>("AppModule");

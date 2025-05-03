@@ -9,5 +9,5 @@ export function addMacStateListener(
   return AppModule.addListener("onMacStateChange", listener);
 }
 
-export { MacState } from "./src/AppModule.types";
+export { MacState, DockIconState } from "./src/AppModule.types";
 export default AppModule;

@@ -1,5 +1,6 @@
 import ExpoModulesCore
 import ServiceManagement
+import Cocoa
 
 // custom error
 enum AppError: Error {
@@ -14,12 +15,17 @@ enum MacStateChange: String {
 let APP_ON_MAC_STATE_CHANGE = "onMacStateChange"
 
 public class AppModule: Module {
+  private var dockIconVisible = false
 
   public func definition() -> ModuleDefinition {
 
     Name("AppModule")
 
     Events(APP_ON_MAC_STATE_CHANGE)
+
+    OnCreate {
+      self.initializeDockIconState()
+    }
 
     OnStartObserving {
       DistributedNotificationCenter.default().addObserver(self, selector: #selector(self.handleScreenLocked), name: NSNotification.Name("com.apple.screenIsLocked"), object: nil)
@@ -33,6 +39,24 @@ public class AppModule: Module {
 
     Function("closeApp") {
       exit(0)
+    }
+
+    Function("showDockIcon") {
+      if !dockIconVisible {
+        NSApp.setActivationPolicy(.regular)
+        dockIconVisible = true
+      }
+    }
+
+    Function("hideDockIcon") {
+      if dockIconVisible {
+        NSApp.setActivationPolicy(.accessory)
+        dockIconVisible = false
+      }
+    }
+
+    Function("isDockIconVisible") { () -> Bool in
+      return self.dockIconVisible
     }
 
     // Launch at login functions
@@ -67,6 +91,12 @@ public class AppModule: Module {
     }
   }
 
+  private func initializeDockIconState() {
+    // Default to accessory (menu bar only) when app starts
+    NSApp.setActivationPolicy(.accessory)
+    dockIconVisible = false
+  }
+
   @objc 
   private func handleScreenLocked() {
     sendEvent("onMacStateChange", ["state": MacStateChange.Locked.rawValue])
@@ -75,5 +105,5 @@ public class AppModule: Module {
   @objc 
   private func handleScreenUnlocked() {
     sendEvent("onMacStateChange", ["state": MacStateChange.Unlocked.rawValue])
-  }
+  } 
 }

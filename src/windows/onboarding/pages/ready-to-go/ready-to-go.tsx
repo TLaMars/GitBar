@@ -7,6 +7,7 @@ import Body from "components/body/body";
 import Spacer from "components/spacer/spacer";
 import useTranslation from "hooks/use-translation";
 import OnboardingLayout from "layouts/onboarding-layout/onboarding-layout";
+import AppModule from "modules/app-module";
 import WindowModule from "modules/window-module/src/WindowModule";
 import { setIsOnboarded } from "store/slices/user";
 
@@ -21,6 +22,7 @@ const ReadyToGo: React.FC = () => {
     dispatch(setIsOnboarded(true));
     // TODO: fix this so it can use WindowNavigator
     void WindowModule.closeWindow("Onboarding");
+    AppModule.hideDockIcon();
   };
 
   return (

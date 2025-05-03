@@ -197,7 +197,7 @@ const Settings: React.FC = () => {
             });
           }}
         />
-        {!GIT_NOTIFICATIONS_ENABLED && (
+        {GIT_NOTIFICATIONS_ENABLED && (
           <>
             <Spacer mt={4} />
             <Heading size="x2s">

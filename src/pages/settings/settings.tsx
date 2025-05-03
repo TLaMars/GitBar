@@ -1,7 +1,7 @@
 import { useGuavaClient } from "@guava/react-native";
 import { useNavigation } from "@react-navigation/native";
 import React, { useContext, useEffect, useState } from "react";
-import { ActivityIndicator, ScrollView, View } from "react-native";
+import { ActivityIndicator, Linking, ScrollView, View } from "react-native";
 
 import AccountCard from "components/account-card/account-card";
 import Body from "components/body/body";
@@ -311,6 +311,25 @@ const Settings: React.FC = () => {
             client.trackEvent("close_app");
           }}
         />
+        <Spacer mt={4} />
+        <View style={$.footer}>
+          <Body size="xs" textAlign="center">
+            {t("Settings/Link/MadeBy")}
+          </Body>
+          <Link
+            label={t("Settings/Link/ThomasLamars")}
+            onPress={() => Linking.openURL("https://lamars.io")}
+            analyticsLabel="Settings/Link/ThomasLamars"
+            arrow={false}
+          />
+          <Body size="xs" textAlign="center">
+            -{" "}
+            {t("Settings/Link/Version", {
+              version: AppModule.APP_VERSION,
+              buildNumber: AppModule.APP_BUILD_NUMBER,
+            })}
+          </Body>
+        </View>
       </ScrollView>
     </DefaultLayout>
   );

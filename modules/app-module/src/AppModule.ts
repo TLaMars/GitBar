@@ -10,6 +10,10 @@ declare class AppModule extends NativeModule<AppModuleEvents> {
   showDockIcon(): void;
   hideDockIcon(): void;
   isDockIconVisible(): boolean;
+
+  APP_VERSION: string;
+
+  APP_BUILD_NUMBER: string;
 }
 
 export default requireNativeModule<AppModule>("AppModule");

@@ -23,6 +23,11 @@ public class AppModule: Module {
 
     Events(APP_ON_MAC_STATE_CHANGE)
 
+    Constants([
+      "APP_VERSION": Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "",
+      "APP_BUILD_NUMBER": Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "",
+    ])
+
     OnCreate {
       self.initializeDockIconState()
     }

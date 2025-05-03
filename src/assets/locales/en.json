@@ -104,5 +104,8 @@
   "Onboarding/GitNotifications/Heading": "Git Notifications",
   "Onboarding/GitNotifications/Body": "GitBar can help you stay on top of your GitHub notifications by showing the latest updated issues directly within the app.",
   "Notifications/Disabled/Body": "You disabled Git Notifications. To enable this go to the settings.",
-  "General/Button/No": "No"
+  "General/Button/No": "No",
+  "Settings/Link/ThomasLamars": "Thomas Lamars",
+  "Settings/Link/Version": "Version {version} ({buildNumber})",
+  "Settings/Link/MadeBy": "GitBar made by"
 }

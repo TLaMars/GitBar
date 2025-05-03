@@ -10,6 +10,12 @@ const useStyles = () =>
       justifyContent: "space-between",
       alignItems: "center",
     },
+    footer: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: spacing(0.5),
+    },
   }));
 
 export default useStyles;

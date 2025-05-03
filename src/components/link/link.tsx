@@ -11,9 +11,15 @@ type Props = {
   onPress: () => void;
   label: string;
   analyticsLabel: string;
+  arrow?: boolean;
 };
 
-const Link: React.FC<Props> = ({ label, onPress, analyticsLabel }) => {
+const Link: React.FC<Props> = ({
+  label,
+  onPress,
+  analyticsLabel,
+  arrow = true,
+}) => {
   const $ = useStyles();
   const client = useGuavaClient();
 
@@ -29,7 +35,7 @@ const Link: React.FC<Props> = ({ label, onPress, analyticsLabel }) => {
       <Body bold size="xs" color="textLink">
         {label}
       </Body>
-      <Icon name="ChevronRight" color="textLink" size={22} />
+      {arrow && <Icon name="ChevronRight" color="textLink" size={22} />}
     </Pressable>
   );
 };

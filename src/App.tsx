@@ -1,4 +1,4 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import * as Sentry from "@sentry/react-native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -35,7 +35,21 @@ const App: React.FC = () => (
           <IntlProvider>
             <BlobBackground>
               <ToastProvider>
-                <NavigationContainer linking={linkingConfig}>
+                <NavigationContainer
+                  linking={linkingConfig}
+                  theme={{
+                    colors: {
+                      background: "transparent",
+                      primary: "transparent",
+                      card: "transparent",
+                      text: "transparent",
+                      border: "transparent",
+                      notification: "transparent",
+                    },
+                    fonts: DefaultTheme.fonts,
+                    dark: true,
+                  }}
+                >
                   <Guava>
                     <DataProvider>
                       <RootStack />

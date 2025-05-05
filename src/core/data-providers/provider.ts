@@ -1,4 +1,3 @@
-import Notification from "models/notification";
 import Profile from "models/profile";
 import { PullRequest } from "models/pull-request";
 
@@ -9,7 +8,6 @@ interface Provider {
   getProfile(): Promise<Profile>;
   getPullRequests(): Promise<PullRequest[]>;
   getValidatedProfile(): Promise<Profile>;
-  getNotifications(): Promise<Notification[]>;
 }
 
 export default Provider;

@@ -4,7 +4,6 @@ import { View } from "react-native";
 
 import Sidebar from "components/sidebar/sidebar";
 import SidebarItem from "components/sidebar-item/sidebar-item";
-import { GIT_NOTIFICATIONS_ENABLED } from "constants/feature-flags";
 
 import useStyles from "./default-layout.styles";
 
@@ -33,20 +32,11 @@ const DefaultLayout: React.FC<Props> = ({
             />
           }
           bottomContainer={
-            <>
-              {GIT_NOTIFICATIONS_ENABLED && (
-                <SidebarItem
-                  icon="Notification"
-                  onPress={() => navigate("Notifications")}
-                  active={route.name === "Notifications"}
-                />
-              )}
-              <SidebarItem
-                icon="Settings"
-                onPress={() => navigate("Settings")}
-                active={route.name === "Settings"}
-              />
-            </>
+            <SidebarItem
+              icon="Settings"
+              onPress={() => navigate("Settings")}
+              active={route.name === "Settings"}
+            />
           }
         />
       )}

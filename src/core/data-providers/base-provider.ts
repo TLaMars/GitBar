@@ -66,10 +66,6 @@ abstract class BaseProvider implements Provider {
       };
     }
   }
-
-  async getNotifications(): Promise<any[]> {
-    return [];
-  }
 }
 
 export default BaseProvider;

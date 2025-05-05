@@ -3,12 +3,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type UserSlice = {
   isOnboarded: boolean;
-  isGitNotificationsEnabled: boolean | undefined;
 };
 
 const initialState: UserSlice = {
   isOnboarded: false,
-  isGitNotificationsEnabled: undefined,
 };
 
 const user = createSlice({
@@ -18,12 +16,9 @@ const user = createSlice({
     setIsOnboarded(state, action: PayloadAction<boolean>) {
       state.isOnboarded = action.payload;
     },
-    setIsGitNotificationsEnabled(state, action: PayloadAction<boolean>) {
-      state.isGitNotificationsEnabled = action.payload;
-    },
   },
 });
 
-export const { setIsOnboarded, setIsGitNotificationsEnabled } = user.actions;
+export const { setIsOnboarded } = user.actions;
 
 export default user.reducer;

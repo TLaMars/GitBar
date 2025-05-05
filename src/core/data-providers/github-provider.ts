@@ -3,10 +3,7 @@ import QueryGetGitHubViewer from "gql/github/queries/viewer";
 import { AccountType } from "models/account";
 import { GitHubAuth } from "models/auth";
 import { AccountState } from "models/profile";
-import githubApi from "services/api/github/api";
-import transformGitHubNotification from "transformers/github/github-notification";
 import transformGithubPullRequest from "transformers/github/github-pull-request";
-import { githubConfig } from "utils/api-config";
 import { createGitHubGqlClient } from "utils/graphql-client";
 
 import BaseProvider from "./base-provider";
@@ -44,17 +41,6 @@ class GitHubProvider extends BaseProvider {
     return transformGithubPullRequest(profile, data).filter(
       (pr, index, self) => index === self.findIndex((p) => p.id === pr.id),
     );
-  }
-
-  async getNotifications() {
-    const data = await githubApi.get(
-      "/notifications",
-      githubConfig(this.auth.accessToken, {
-        all: "true",
-      }),
-    );
-
-    return data.data.map(transformGitHubNotification);
   }
 }
 

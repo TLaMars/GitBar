@@ -12,7 +12,6 @@ import RegisterAzure from "pages/auth/register/azure";
 import RegisterGithub from "pages/auth/register/github";
 import RegisterGitLab from "pages/auth/register/gitlab";
 import Dashboard from "pages/dashboard/dashboard";
-import Notifications from "pages/notifications/notifications";
 import Settings from "pages/settings/settings";
 import WindowNavigator from "src/windows";
 import { selectAccounts } from "store/selectors/accounts";
@@ -66,10 +65,6 @@ const RootStack: React.FC = () => {
       }}
     >
       <RootStackNavigator.Screen name="Dashboard" component={Dashboard} />
-      <RootStackNavigator.Screen
-        name="Notifications"
-        component={Notifications}
-      />
       <RootStackNavigator.Screen
         name="RegisterAzure"
         component={RegisterAzure}

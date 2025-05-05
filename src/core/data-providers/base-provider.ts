@@ -3,6 +3,7 @@ import { TypedDocumentNode } from "@graphql-typed-document-node/core";
 
 import { AccountType } from "models/account";
 import Profile, { AccountState } from "models/profile";
+import { PullRequest } from "models/pull-request";
 
 import Provider from "./provider";
 
@@ -49,7 +50,7 @@ abstract class BaseProvider implements Provider {
   }
 
   abstract getProfile(): Promise<Profile>;
-  abstract getPullRequests(): Promise<any[]>;
+  abstract getPullRequests(): Promise<PullRequest[]>;
 
   async getValidatedProfile(): Promise<Profile> {
     try {

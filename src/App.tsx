@@ -35,21 +35,7 @@ const App: React.FC = () => (
           <IntlProvider>
             <BlobBackground>
               <ToastProvider>
-                <NavigationContainer
-                  linking={linkingConfig}
-                  theme={{
-                    // Override the default theme
-                    dark: false,
-                    colors: {
-                      notification: "transparent",
-                      background: "transparent",
-                      border: "transparent",
-                      card: "transparent",
-                      primary: "transparent",
-                      text: "transparent",
-                    },
-                  }}
-                >
+                <NavigationContainer linking={linkingConfig}>
                   <Guava>
                     <DataProvider>
                       <RootStack />

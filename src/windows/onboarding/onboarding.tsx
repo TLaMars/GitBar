@@ -14,20 +14,7 @@ const Onboarding: React.FC = () => (
     <ThemeProvider>
       <BlobBackground>
         <IntlProvider>
-          <NavigationContainer
-            theme={{
-              // Override the default theme
-              dark: false,
-              colors: {
-                notification: "transparent",
-                background: "transparent",
-                border: "transparent",
-                card: "transparent",
-                primary: "transparent",
-                text: "transparent",
-              },
-            }}
-          >
+          <NavigationContainer>
             <Guava>
               <OnboardingStack />
             </Guava>

@@ -1,4 +1,4 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import * as Sentry from "@sentry/react-native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -49,6 +49,7 @@ const App: React.FC = () => (
                     border: "transparent",
                     notification: "transparent",
                   },
+                  fonts: DefaultTheme.fonts,
                   dark: true,
                 }}
               >

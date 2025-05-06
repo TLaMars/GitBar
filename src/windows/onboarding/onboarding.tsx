@@ -1,4 +1,4 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import React from "react";
 
 import BlobBackground from "components/blob-background/blob-background";
@@ -22,6 +22,7 @@ const Onboarding: React.FC = () => (
               border: "transparent",
               notification: "transparent",
             },
+            fonts: DefaultTheme.fonts,
             dark: true,
           }}
         >

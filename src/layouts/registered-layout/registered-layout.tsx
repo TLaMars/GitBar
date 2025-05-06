@@ -1,5 +1,5 @@
 import { useGuavaClient } from "@guava/react-native";
-import { useNavigation } from "@react-navigation/native";
+import { StackActions, useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import { useStyles } from "react-native-unistyles";
@@ -33,7 +33,7 @@ const RegisteredLayout: React.FC<Props> = ({
   const { styles: $ } = useStyles(styles);
   const client = useGuavaClient();
   const { t } = useTranslation();
-  const { navigate } = useNavigation();
+  const navigation = useNavigation();
   const [seconds, setSeconds] = useState(5);
 
   useEffect(() => {
@@ -43,13 +43,13 @@ const RegisteredLayout: React.FC<Props> = ({
       interval = setInterval(() => {
         setSeconds((prev) => prev - 1);
         if (seconds === 0) {
-          navigate("Dashboard");
+          navigation.dispatch(StackActions.popTo("Dashboard"));
         }
       }, 1000);
     }
 
     return () => clearInterval(interval);
-  }, [error, navigate, seconds]);
+  }, [error, seconds, navigation]);
 
   useEffect(() => {
     if (error) {
@@ -81,7 +81,9 @@ const RegisteredLayout: React.FC<Props> = ({
             <Button
               analyticsLabel="RegisteredLayout/Button/GoToPullRequests"
               label={t("RegisteredLayout/Button/GoToPullRequests")}
-              onPress={() => navigate("Dashboard")}
+              onPress={() =>
+                navigation.dispatch(StackActions.popTo("Dashboard"))
+              }
             />
           </>
         )}

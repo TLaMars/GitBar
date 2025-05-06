@@ -1,4 +1,8 @@
-import { useNavigation, useRoute } from "@react-navigation/native";
+import {
+  StackActions,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
 import React, { PropsWithChildren } from "react";
 import { View } from "react-native";
 import { useStyles } from "react-native-unistyles";
@@ -17,7 +21,7 @@ const DefaultLayout: React.FC<Props> = ({
   sideBarHidden = false,
 }) => {
   const { styles: $ } = useStyles(styles);
-  const { navigate } = useNavigation();
+  const navigation = useNavigation();
   const route = useRoute();
 
   return (
@@ -28,14 +32,16 @@ const DefaultLayout: React.FC<Props> = ({
           topContainer={
             <SidebarItem
               icon="PullRequest"
-              onPress={() => navigate("Dashboard")}
+              onPress={() =>
+                navigation.dispatch(StackActions.popTo("Dashboard"))
+              }
               active={route.name === "Dashboard"}
             />
           }
           bottomContainer={
             <SidebarItem
               icon="Settings"
-              onPress={() => navigate("Settings")}
+              onPress={() => navigation.navigate("Settings")}
               active={route.name === "Settings"}
             />
           }

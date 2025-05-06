@@ -1,4 +1,4 @@
-import { useGuavaClient } from "@guava/react-native";
+import { useGuavaClient } from "@guava-analytics/react-native";
 import React from "react";
 import { Pressable, View } from "react-native";
 import { useStyles } from "react-native-unistyles";

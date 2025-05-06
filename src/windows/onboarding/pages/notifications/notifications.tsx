@@ -1,4 +1,4 @@
-import { useGuavaClient } from "@guava/react-native";
+import { useGuavaClient } from "@guava-analytics/react-native";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { View, Image, ImageSourcePropType } from "react-native";

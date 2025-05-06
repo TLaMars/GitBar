@@ -1,4 +1,4 @@
-import { useGuavaClient } from "@guava/react-native";
+import { useGuavaClient } from "@guava-analytics/react-native";
 import { useMemo } from "react";
 import { TouchableOpacity, View } from "react-native";
 import { Linking } from "react-native-macos";

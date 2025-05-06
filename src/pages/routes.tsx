@@ -1,4 +1,4 @@
-import { useGuavaClient } from "@guava/react-native";
+import { useGuavaClient } from "@guava-analytics/react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import React, { useEffect } from "react";
 

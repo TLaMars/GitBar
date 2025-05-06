@@ -1,4 +1,4 @@
-import { GuavaProvider } from "@guava/react-native";
+import { GuavaProvider } from "@guava-analytics/react-native";
 import { PropsWithChildren } from "react";
 
 const Guava: React.FC<PropsWithChildren> = ({ children }) => (

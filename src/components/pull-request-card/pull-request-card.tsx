@@ -1,4 +1,4 @@
-import { useGuavaClient } from "@guava/react-native";
+import { useGuavaClient } from "@guava-analytics/react-native";
 import React, { memo } from "react";
 import { GestureResponderEvent, Linking, TouchableOpacity } from "react-native";
 import {

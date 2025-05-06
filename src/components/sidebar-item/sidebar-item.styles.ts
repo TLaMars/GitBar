@@ -1,17 +1,16 @@
-import useMemoizedStyles from "hooks/use-memoized-styles";
+import { createStyleSheet } from "react-native-unistyles";
 
-const useStyles = () =>
-  useMemoizedStyles(({ borderRadiuses, colors, spacing }) => ({
-    button: {
-      justifyContent: "center",
-      aspectRatio: 1,
-      width: "100%",
-      alignItems: "center",
-      borderRadius: borderRadiuses.item,
-      padding: spacing(2),
-    },
-    active: {
-      backgroundColor: colors.backgroundSecondary,
-    },
-  }));
-export default useStyles;
+const styles = createStyleSheet(({ borderRadiuses, colors, spacing }) => ({
+  button: {
+    justifyContent: "center",
+    aspectRatio: 1,
+    width: "100%",
+    alignItems: "center",
+    borderRadius: borderRadiuses.item,
+    padding: spacing(2),
+  },
+  active: {
+    backgroundColor: colors.backgroundSecondary,
+  },
+}));
+export default styles;

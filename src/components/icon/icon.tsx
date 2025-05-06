@@ -1,6 +1,6 @@
 import React from "react";
+import { useStyles } from "react-native-unistyles";
 
-import useTheme from "hooks/use-theme";
 import { ThemeColor } from "models/theme";
 
 import iconImportMap from "./icon-imports";
@@ -14,7 +14,9 @@ type Props = {
 };
 
 const Icon: React.FC<Props> = ({ color = "icon", name, size = 24 }) => {
-  const { colors } = useTheme();
+  const {
+    theme: { colors },
+  } = useStyles();
   const IconComponent = iconImportMap[name];
 
   return <IconComponent color={colors[color]} width={size} height={size} />;

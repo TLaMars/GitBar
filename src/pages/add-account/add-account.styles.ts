@@ -1,18 +1,17 @@
-import useMemoizedStyles from "hooks/use-memoized-styles";
+import { createStyleSheet } from "react-native-unistyles";
 
-const useStyles = () =>
-  useMemoizedStyles(({ spacing }) => ({
-    container: {
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      gap: spacing(1),
-      flex: 1,
-    },
-    buttonGroup: {
-      flexDirection: "column",
-      gap: spacing(1),
-    },
-  }));
+const styles = createStyleSheet(({ spacing }) => ({
+  container: {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: spacing(1),
+    flex: 1,
+  },
+  buttonGroup: {
+    flexDirection: "column",
+    gap: spacing(1),
+  },
+}));
 
-export default useStyles;
+export default styles;

@@ -159,56 +159,15 @@ const COLORS = {
   lightGray300: "#CED8DF",
   // Accent Colors
   red100: "#F05069",
-  red200: "#FB394D",
   orange100: "#FC8370",
-  orange200: "#FF6C50",
   yellow100: "#FCD277",
-  yellow200: "#FECD57",
   green100: "#B4E080",
-  green200: "#9ED36a",
   teal100: "#62DDBD",
-  teal200: "#46CEAD",
   blue100: "#AFDFF3",
-  blue200: "#7BD0F9",
   blue600: "#3166DD",
   purple100: "#B3A5EF",
-  purple200: "#AC92EA",
   pink100: "#F299CE",
-  pink200: "#EB87BF",
 };
-
-export const THEME_COLORS_LIGHT = {
-  background: COLORS.lightGray300,
-  backgroundSurface: COLORS.lightGray200,
-  backgroundSecondary: COLORS.lightGray100,
-  backgroundCta: COLORS.blue600,
-  backgroundCtaDanger: COLORS.red200,
-  backgroundCtaSecondary: COLORS.lightGray100,
-  textOnCta: COLORS.lightGray100,
-  textOnCtaDanger: COLORS.lightGray100,
-  textOnCtaSecondary: COLORS.black,
-  iconOnCta: COLORS.lightGray100,
-  iconOnCtaDanger: COLORS.lightGray100,
-  iconOnCtaSecondary: COLORS.black,
-  border: COLORS.lightGray100,
-  borderDanger: COLORS.red200,
-  borderValid: COLORS.green200,
-  icon: COLORS.black,
-  text: COLORS.black,
-  textLink: COLORS.blue600,
-  textSecondary: COLORS.darkGray200,
-  textDanger: COLORS.red200,
-  // Accent Colors (used for profile pictures and color coding PRs per project)
-  accentRed: COLORS.red200,
-  accentOrange: COLORS.orange200,
-  accentYellow: COLORS.yellow200,
-  accentGreen: COLORS.green200,
-  accentTeal: COLORS.teal200,
-  accentLightBlue: COLORS.blue200,
-  accentBlue: COLORS.blue200,
-  accentPurple: COLORS.purple200,
-  accentPink: COLORS.pink200,
-} as const satisfies Record<string, string>;
 
 export const THEME_COLORS_DARK = {
   background: COLORS.black,
@@ -249,11 +208,6 @@ export const THEME = {
   fontSizes: THEME_FONT_SIZES,
   fontWeights: THEME_FONT_WEIGHTS,
   lineHeights: THEME_LINE_HEIGHTS,
-  colors: THEME_COLORS_LIGHT,
+  colors: THEME_COLORS_DARK,
   spacing: (value: ThemeSpacingScale) => value * THEME_SPACING_UNIT,
 } as const;
-
-export const THEME_DARK = {
-  ...THEME,
-  colors: THEME_COLORS_DARK,
-};

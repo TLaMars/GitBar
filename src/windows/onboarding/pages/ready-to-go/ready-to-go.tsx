@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 import { useDispatch } from "react-redux";
 
 import ReadyToGoImage from "assets/illustrations/onboarding/ready-to-go.jpg";
@@ -11,10 +12,10 @@ import AppModule from "modules/app-module";
 import WindowModule from "modules/window-module/src/WindowModule";
 import { setIsOnboarded } from "store/slices/user";
 
-import useStyles from "./ready-to-go.styles";
+import styles from "./ready-to-go.styles";
 
 const ReadyToGo: React.FC = () => {
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
   const { t } = useTranslation();
   const dispatch = useDispatch();
 

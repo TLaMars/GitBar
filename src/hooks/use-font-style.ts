@@ -1,12 +1,14 @@
 import { useMemo } from "react";
 import { StyleProp, StyleSheet, TextStyle } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
-import useTheme from "hooks/use-theme";
 import { FontFamily, FontWeight } from "models/font";
 import createFontStyle from "utils/create-font-style";
 
 const useFontStyle = (style: StyleProp<TextStyle>) => {
-  const { fontFamilies, fontWeights, colors } = useTheme();
+  const {
+    theme: { fontFamilies, fontWeights, colors },
+  } = useStyles();
 
   const getStyle = (): StyleProp<TextStyle> => {
     const flattenStyle = StyleSheet.flatten(style);

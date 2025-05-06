@@ -1,12 +1,11 @@
-import useMemoizedStyles from "hooks/use-memoized-styles";
+import { createStyleSheet } from "react-native-unistyles";
 
-const useStyles = () =>
-  useMemoizedStyles(({ colors, fontSizes, fontFamilies }) => ({
-    text: {
-      fontFamily: fontFamilies.primary,
-      fontSize: fontSizes.text,
-      color: colors.text,
-    },
-  }));
+const styles = createStyleSheet(({ colors, fontSizes, fontFamilies }) => ({
+  text: {
+    fontFamily: fontFamilies.primary,
+    fontSize: fontSizes.text,
+    color: colors.text,
+  },
+}));
 
-export default useStyles;
+export default styles;

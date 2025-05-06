@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Body from "components/body/body";
 import ButtonToggle, {
@@ -10,7 +11,7 @@ import Icon from "components/icon/icon";
 import useTranslation from "hooks/use-translation";
 import calculateMinutesAgo from "utils/calculate-minutes-ago";
 
-import useStyles from "./page-header.styles";
+import styles from "./page-header.styles";
 
 type Props = {
   title: string;
@@ -25,7 +26,7 @@ const PageHeader: React.FC<Props> = ({
   selectedButtonIndex,
   buttonToggleOptions,
 }) => {
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
   const { t } = useTranslation();
   const [minutesAgo, setMinutesAgo] = useState(Date.now());
 

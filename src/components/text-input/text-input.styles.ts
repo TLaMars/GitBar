@@ -1,7 +1,7 @@
-import useMemoizedStyles from "hooks/use-memoized-styles";
+import { createStyleSheet } from "react-native-unistyles";
 
-const useStyles = () =>
-  useMemoizedStyles(({ borderRadiuses, colors, spacing, fontSizes }) => ({
+const styles = createStyleSheet(
+  ({ borderRadiuses, colors, spacing, fontSizes }) => ({
     input: {
       padding: spacing(2),
       borderWidth: 2,
@@ -21,5 +21,6 @@ const useStyles = () =>
       minWidth: 200,
       gap: spacing(0.5),
     },
-  }));
-export default useStyles;
+  }),
+);
+export default styles;

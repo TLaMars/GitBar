@@ -2,6 +2,7 @@ import { useGuavaClient } from "@guava/react-native";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import LaunchAtLoginImage from "assets/illustrations/onboarding/launch-at-login.jpg";
 import Body from "components/body/body";
@@ -10,11 +11,11 @@ import OnboardingLayout from "layouts/onboarding-layout/onboarding-layout";
 import { OnboardingStackParamList } from "models/onboarding-stack-param-list";
 import AppModule from "modules/app-module";
 
-import useStyles from "./launch-at-login.styles";
+import styles from "./launch-at-login.styles";
 
 const LaunchAtLogin: React.FC = () => {
   const client = useGuavaClient();
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
   const { t } = useTranslation();
   const { navigate } =
     useNavigation<NavigationProp<OnboardingStackParamList>>();

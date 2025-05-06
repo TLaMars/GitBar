@@ -1,17 +1,17 @@
 import React from "react";
 import { View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Attendee from "components/attendee/attendee";
 import Body from "components/body/body";
 import Heading from "components/heading/heading";
 import IconButton from "components/icon-button/icon-button";
 import AccountMap from "constants/account-map";
-import useTheme from "hooks/use-theme";
 import useTranslation from "hooks/use-translation";
 import { AccountType } from "models/account";
 import { AccountState } from "models/profile";
 
-import useStyles from "./account-card.styles";
+import styles from "./account-card.styles";
 
 type Props = {
   type: AccountType;
@@ -34,9 +34,11 @@ const AccountCard: React.FC<Props> = ({
   state = AccountState.Unknown,
   onDeletePress,
 }) => {
-  const $ = useStyles();
+  const {
+    styles: $,
+    theme: { colors },
+  } = useStyles(styles);
   const { t } = useTranslation();
-  const { colors } = useTheme();
 
   const TypeIcon = AccountMap[type];
 

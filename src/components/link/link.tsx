@@ -1,11 +1,12 @@
 import { useGuavaClient } from "@guava/react-native";
 import React from "react";
 import { Pressable } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Body from "components/body/body";
 import Icon from "components/icon/icon";
 
-import useStyles from "./link.styles";
+import styles from "./link.styles";
 
 type Props = {
   onPress: () => void;
@@ -20,7 +21,7 @@ const Link: React.FC<Props> = ({
   analyticsLabel,
   arrow = true,
 }) => {
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
   const client = useGuavaClient();
 
   const handlePress = () => {

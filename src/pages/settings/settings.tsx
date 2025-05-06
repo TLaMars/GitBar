@@ -2,6 +2,7 @@ import { useGuavaClient } from "@guava/react-native";
 import { useNavigation } from "@react-navigation/native";
 import React, { useContext, useEffect, useState } from "react";
 import { ActivityIndicator, Linking, ScrollView, View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import AccountCard from "components/account-card/account-card";
 import Body from "components/body/body";
@@ -43,10 +44,10 @@ import {
 } from "store/slices/settings";
 import { setIsOnboarded } from "store/slices/user";
 
-import useStyles from "./settings.styles";
+import styles from "./settings.styles";
 
 const Settings: React.FC = () => {
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
   const { t } = useTranslation();
   const client = useGuavaClient();
   const dispatch = useDispatch();

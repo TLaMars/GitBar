@@ -1,13 +1,14 @@
 import React from "react";
 // eslint-disable-next-line no-restricted-imports
 import { StyleSheet, Text as ReactNativeText, TextProps } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import useFontStyle from "hooks/use-font-style";
 
-import useStyles from "./text.styles";
+import styles from "./text.styles";
 
 const Text: React.FC<TextProps> = ({ children, style, ...rest }) => {
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
 
   const textStyle = useFontStyle({
     ...$.text,

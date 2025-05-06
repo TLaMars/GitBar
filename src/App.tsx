@@ -1,4 +1,4 @@
-import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import * as Sentry from "@sentry/react-native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -10,9 +10,11 @@ import DataProvider from "contexts/data";
 import Guava from "contexts/guava";
 import IntlProvider from "contexts/intl";
 import ReduxProvider from "contexts/redux-provider";
-import ThemeProvider from "contexts/theme";
 import ToastProvider from "contexts/toasts";
+import PopoverModule from "modules/popover-module/src/PopoverModule";
 import RootStack from "pages/routes";
+
+import "../unistyles.config";
 
 Sentry.init({
   dsn: "https://e4459bd169456448afd4a22a2ec5345a@o4507833408552960.ingest.de.sentry.io/4507833413009488",
@@ -27,40 +29,39 @@ const queryClient = new QueryClient({
   },
 });
 
+PopoverModule.setAppearance(true);
+
 const App: React.FC = () => (
   <QueryClientProvider client={queryClient}>
     <ReduxProvider>
       <AccountsProvider>
-        <ThemeProvider>
-          <IntlProvider>
-            <BlobBackground>
-              <ToastProvider>
-                <NavigationContainer
-                  linking={linkingConfig}
-                  theme={{
-                    colors: {
-                      background: "transparent",
-                      primary: "transparent",
-                      card: "transparent",
-                      text: "transparent",
-                      border: "transparent",
-                      notification: "transparent",
-                    },
-                    fonts: DefaultTheme.fonts,
-                    dark: true,
-                  }}
-                >
-                  <Guava>
-                    <DataProvider>
-                      <RootStack />
-                    </DataProvider>
-                  </Guava>
-                </NavigationContainer>
-                <Toasts />
-              </ToastProvider>
-            </BlobBackground>
-          </IntlProvider>
-        </ThemeProvider>
+        <IntlProvider>
+          <BlobBackground>
+            <ToastProvider>
+              <NavigationContainer
+                linking={linkingConfig}
+                theme={{
+                  colors: {
+                    background: "transparent",
+                    primary: "transparent",
+                    card: "transparent",
+                    text: "transparent",
+                    border: "transparent",
+                    notification: "transparent",
+                  },
+                  dark: true,
+                }}
+              >
+                <Guava>
+                  <DataProvider>
+                    <RootStack />
+                  </DataProvider>
+                </Guava>
+              </NavigationContainer>
+              <Toasts />
+            </ToastProvider>
+          </BlobBackground>
+        </IntlProvider>
       </AccountsProvider>
     </ReduxProvider>
   </QueryClientProvider>

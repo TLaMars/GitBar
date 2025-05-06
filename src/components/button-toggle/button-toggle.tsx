@@ -1,10 +1,11 @@
 import { useGuavaClient } from "@guava/react-native";
 import React from "react";
 import { Pressable, View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Body from "components/body/body";
 
-import useStyles from "./button-toggle.styles";
+import styles from "./button-toggle.styles";
 
 export type ButtonToggleOption = {
   label: string;
@@ -18,7 +19,7 @@ type Props = {
 
 const ButtonToggle: React.FC<Props> = ({ selectedIndex = 0, buttons }) => {
   const client = useGuavaClient();
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
   const [activeIndex, setActiveIndex] = React.useState(selectedIndex);
 
   return (

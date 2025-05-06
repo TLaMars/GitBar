@@ -2,6 +2,7 @@ import { useGuavaClient } from "@guava/react-native";
 import { useMemo } from "react";
 import { TouchableOpacity, View } from "react-native";
 import { Linking } from "react-native-macos";
+import { useStyles } from "react-native-unistyles";
 
 import Body from "components/body/body";
 import Heading from "components/heading/heading";
@@ -10,7 +11,7 @@ import Spacer from "components/spacer/spacer";
 import useTranslation from "hooks/use-translation";
 import calculateMinutesAgo from "utils/calculate-minutes-ago";
 
-import useStyles from "./issue-card.styles";
+import styles from "./issue-card.styles";
 
 type Props = {
   title: string;
@@ -20,7 +21,7 @@ type Props = {
 };
 
 const IssueCard: React.FC<Props> = ({ title, projectPath, updatedAt, url }) => {
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
   const { t } = useTranslation();
   const client = useGuavaClient();
 

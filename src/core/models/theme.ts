@@ -3,13 +3,12 @@ import {
   THEME,
   THEME_BORDER_RADIUSES,
   THEME_COLORS_DARK,
-  THEME_COLORS_LIGHT,
   THEME_FONT_FAMILIES,
   THEME_FONT_SIZES,
   THEME_FONT_WEIGHTS,
 } from "constants/theme";
 
-type ThemeColors = typeof THEME_COLORS_DARK | typeof THEME_COLORS_LIGHT;
+type ThemeColors = typeof THEME_COLORS_DARK;
 
 export type ThemeColor = keyof ThemeColors;
 

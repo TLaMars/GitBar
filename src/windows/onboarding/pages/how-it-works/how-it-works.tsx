@@ -2,6 +2,7 @@ import { useGuavaClient } from "@guava/react-native";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React from "react";
 import { View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import HowItWorksColorsImage from "assets/illustrations/onboarding/how-it-works-colors.jpg";
 import HowItWorksHideImage from "assets/illustrations/onboarding/how-it-works-hide.jpg";
@@ -12,11 +13,11 @@ import OnboardingLayout from "layouts/onboarding-layout/onboarding-layout";
 import { OnboardingStackParamList } from "models/onboarding-stack-param-list";
 import AppModule from "modules/app-module";
 
-import useStyles from "./how-it-works.styles";
+import styles from "./how-it-works.styles";
 
 const HowItWorks: React.FC = () => {
   const client = useGuavaClient();
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
   const { t } = useTranslation();
   const { navigate } =
     useNavigation<NavigationProp<OnboardingStackParamList>>();

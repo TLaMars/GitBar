@@ -1,5 +1,6 @@
 import React from "react";
 import { View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Body from "components/body/body";
 import Button from "components/button/button";
@@ -7,7 +8,7 @@ import Heading from "components/heading/heading";
 import Spacer from "components/spacer/spacer";
 import useTranslation from "hooks/use-translation";
 
-import useStyles from "./error-container.styles";
+import styles from "./error-container.styles";
 
 type Props = {
   errors: Error[];
@@ -15,7 +16,7 @@ type Props = {
 };
 
 const ErrorContainer: React.FC<Props> = ({ errors, onErrorRetry }) => {
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
   const { t } = useTranslation();
 
   return (

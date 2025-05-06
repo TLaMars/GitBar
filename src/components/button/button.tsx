@@ -1,10 +1,11 @@
 import { useGuavaClient } from "@guava/react-native";
 import React from "react";
 import { TouchableOpacity, TouchableOpacityProps } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Text from "components/text/text";
 
-import useStyles from "./button.styles";
+import styles from "./button.styles";
 
 export type ButtonType = "neutral" | "danger" | "secondary";
 
@@ -28,35 +29,16 @@ const Button: React.FC<Props> = ({
   onPress,
   ...rest
 }) => {
-  const $ = useStyles();
-  const client = useGuavaClient();
+  const { styles: $ } = useStyles(styles, {
+    type,
+    size,
+  });
 
-  const textStyle = [
-    { textAlign: $.text.textAlign },
-    size === "l" && $.text.l,
-    size === "m" && $.text.m,
-    size === "s" && $.text.s,
-    size === "xs" && $.text.xs,
-    type === "secondary" && $.text.secondary,
-    type === "danger" && $.text.danger,
-    type === "neutral" && $.text.neutral,
-    boldText && $.bold,
-  ];
+  const client = useGuavaClient();
 
   return (
     <TouchableOpacity
-      style={[
-        $.button,
-        size === "l" && $.button.l,
-        size === "m" && $.button.m,
-        size === "s" && $.button.s,
-        size === "xs" && $.button.xs,
-        type === "secondary" && $.button.secondary,
-        type === "danger" && $.button.danger,
-        type === "neutral" && $.button.neutral,
-        disabled && $.disabled,
-        style,
-      ]}
+      style={[$.button, disabled && $.disabled, style]}
       disabled={disabled}
       onPress={(e) => {
         onPress?.(e);
@@ -67,7 +49,11 @@ const Button: React.FC<Props> = ({
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...rest}
     >
-      <Text style={textStyle}>{label}</Text>
+      <Text
+        style={[{ textAlign: $.text.textAlign }, $.text, boldText && $.bold]}
+      >
+        {label}
+      </Text>
     </TouchableOpacity>
   );
 };

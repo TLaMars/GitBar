@@ -1,12 +1,12 @@
 import React, { useCallback } from "react";
 import { Image, View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Text from "components/text/text";
-import useTheme from "hooks/use-theme";
 import { Vote } from "models/attendee";
 import getInitials from "utils/get-initials";
 
-import useStyles from "./attendee.styles";
+import styles from "./attendee.styles";
 
 type Props = {
   name: string;
@@ -21,8 +21,10 @@ const Attendee: React.FC<Props> = ({
   size = 80,
   vote = Vote.NoVote,
 }) => {
-  const $ = useStyles();
-  const { fontSizes, lineHeights } = useTheme();
+  const {
+    styles: $,
+    theme: { fontSizes, lineHeights },
+  } = useStyles(styles);
 
   const getBorderColor = useCallback(() => {
     switch (vote) {

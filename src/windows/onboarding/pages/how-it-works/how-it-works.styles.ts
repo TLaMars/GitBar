@@ -1,9 +1,8 @@
-import useMemoizedStyles from "hooks/use-memoized-styles";
+import { createStyleSheet } from "react-native-unistyles";
 
-const useStyles = () =>
-  useMemoizedStyles(({ spacing }) => ({
-    wrapper: {
-      gap: spacing(5),
-    },
-  }));
-export default useStyles;
+const styles = createStyleSheet(({ spacing }) => ({
+  wrapper: {
+    gap: spacing(5),
+  },
+}));
+export default styles;

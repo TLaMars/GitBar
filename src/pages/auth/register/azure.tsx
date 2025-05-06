@@ -3,6 +3,7 @@ import { encode } from "js-base64";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Alert, Linking, View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import AzureDevOpsLogo from "assets/illustrations/azure-devops.svg";
 import Body from "components/body/body";
@@ -19,12 +20,12 @@ import azureApi from "services/api/azure/api";
 import { ProfileResponse } from "services/api/azure/models/profile-response";
 import { upsertOneAccount } from "store/slices/accounts";
 
-import useStyles from "./register.styles";
+import styles from "./register.styles";
 
 const RegisterAzure: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
   const { goBack } = useNavigation();
   const [loading, setLoading] = useState(false);
   const [organization, setOrganization] = useState("");

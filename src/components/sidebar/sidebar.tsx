@@ -1,10 +1,10 @@
 import React, { ReactNode } from "react";
 import { View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import { ThemeSpacingScale } from "constants/theme";
-import useTheme from "hooks/use-theme";
 
-import useStyles from "./sidebar.styles";
+import styles from "./sidebar.styles";
 
 type Props = {
   topContainer?: ReactNode;
@@ -17,8 +17,10 @@ const Sidebar: React.FC<Props> = ({
   bottomContainer,
   marginVertical: marginVerticalFromProps,
 }) => {
-  const $ = useStyles();
-  const { spacing } = useTheme();
+  const {
+    styles: $,
+    theme: { spacing },
+  } = useStyles(styles);
   const marginVertical = spacing(marginVerticalFromProps ?? 0);
 
   return (

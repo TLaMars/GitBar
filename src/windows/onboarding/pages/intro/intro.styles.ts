@@ -1,12 +1,11 @@
-import useMemoizedStyles from "hooks/use-memoized-styles";
+import { createStyleSheet } from "react-native-unistyles";
 
-const useStyles = () =>
-  useMemoizedStyles(() => ({
-    image: {
-      width: "100%",
-      borderRadius: 8,
-      height: undefined,
-      aspectRatio: 315 / 170,
-    },
-  }));
-export default useStyles;
+const styles = createStyleSheet(() => ({
+  image: {
+    width: "100%",
+    borderRadius: 8,
+    height: undefined,
+    aspectRatio: 315 / 170,
+  },
+}));
+export default styles;

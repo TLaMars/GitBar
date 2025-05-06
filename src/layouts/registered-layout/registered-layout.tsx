@@ -2,6 +2,7 @@ import { useGuavaClient } from "@guava/react-native";
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Avatar from "components/attendee/attendee";
 import Body from "components/body/body";
@@ -12,7 +13,7 @@ import useTranslation from "hooks/use-translation";
 import DefaultLayout from "layouts/default-layout/default-layout";
 import { AccountType } from "models/account";
 
-import useStyles from "./registered-layout.styles";
+import styles from "./registered-layout.styles";
 
 type Props = {
   type: AccountType;
@@ -29,7 +30,7 @@ const RegisteredLayout: React.FC<Props> = ({
   type,
   onRetryPress,
 }) => {
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
   const client = useGuavaClient();
   const { t } = useTranslation();
   const { navigate } = useNavigation();

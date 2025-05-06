@@ -3,6 +3,7 @@ import React, { useCallback, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { Linking, View } from "react-native";
 import { Alert } from "react-native-macos";
+import { useStyles } from "react-native-unistyles";
 
 import GitLabLogo from "assets/illustrations/gitlab.svg";
 import Body from "components/body/body";
@@ -22,12 +23,12 @@ import formatDomain from "utils/format-domain";
 import { createGitLabGqlClient } from "utils/graphql-client";
 import validateDomain from "utils/validate-domain";
 
-import useStyles from "./register.styles";
+import styles from "./register.styles";
 
 const RegisterGitLab: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
   const { goBack } = useNavigation();
   const [domain, setDomain] = React.useState("");
   const [token, setToken] = React.useState("");

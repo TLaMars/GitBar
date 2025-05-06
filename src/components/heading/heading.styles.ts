@@ -1,9 +1,8 @@
-import useMemoizedStyles from "hooks/use-memoized-styles";
+import { createStyleSheet } from "react-native-unistyles";
 
-const useStyles = () =>
-  useMemoizedStyles(() => ({
-    numberOfLines: {
-      flex: 1,
-    },
-  }));
-export default useStyles;
+const styles = createStyleSheet(() => ({
+  numberOfLines: {
+    flex: 1,
+  },
+}));
+export default styles;

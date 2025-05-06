@@ -1,6 +1,7 @@
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import IntroImage from "assets/illustrations/onboarding/intro.jpg";
 import Body from "components/body/body";
@@ -9,10 +10,10 @@ import useTranslation from "hooks/use-translation";
 import OnboardingLayout from "layouts/onboarding-layout/onboarding-layout";
 import { OnboardingStackParamList } from "models/onboarding-stack-param-list";
 
-import useStyles from "./intro.styles";
+import styles from "./intro.styles";
 
 const Intro: React.FC = () => {
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
   const { t } = useTranslation();
   const { navigate } =
     useNavigation<NavigationProp<OnboardingStackParamList>>();

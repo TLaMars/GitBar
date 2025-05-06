@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Pressable, View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Body from "components/body/body";
 import Icon, { IconName } from "components/icon/icon";
@@ -7,7 +8,7 @@ import Spacer from "components/spacer/spacer";
 import { ThemeColor } from "models/theme";
 import { ToastType } from "models/toast";
 
-import useStyles from "./toasts.styles";
+import styles from "./toasts.styles";
 
 type Props = {
   closeButton?: boolean;
@@ -28,7 +29,7 @@ const Toast: React.FC<Props> = ({
   removeToast,
   type = "neutral",
 }) => {
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
   const timeoutId = React.useRef<NodeJS.Timeout | null>();
 
   const clearToastTimeout = () => {

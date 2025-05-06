@@ -1,11 +1,12 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { PropsWithChildren } from "react";
 import { View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Sidebar from "components/sidebar/sidebar";
 import SidebarItem from "components/sidebar-item/sidebar-item";
 
-import useStyles from "./default-layout.styles";
+import styles from "./default-layout.styles";
 
 type Props = {
   sideBarHidden?: boolean;
@@ -15,7 +16,7 @@ const DefaultLayout: React.FC<Props> = ({
   children,
   sideBarHidden = false,
 }) => {
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
   const { navigate } = useNavigation();
   const route = useRoute();
 

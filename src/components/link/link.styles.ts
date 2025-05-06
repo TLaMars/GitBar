@@ -1,10 +1,9 @@
-import useMemoizedStyles from "hooks/use-memoized-styles";
+import { createStyleSheet } from "react-native-unistyles";
 
-const useStyles = () =>
-  useMemoizedStyles(() => ({
-    link: {
-      flexDirection: "row",
-      alignItems: "center",
-    },
-  }));
-export default useStyles;
+const styles = createStyleSheet(() => ({
+  link: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+}));
+export default styles;

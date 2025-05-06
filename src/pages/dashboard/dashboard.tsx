@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ActivityIndicator, View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import PageHeader from "components/page-header/page-header";
 import PullRequestList from "components/pull-request-list/pull-request-list";
@@ -7,11 +8,11 @@ import usePullRequests from "hooks/use-pull-requests";
 import useTranslation from "hooks/use-translation";
 import DefaultLayout from "layouts/default-layout/default-layout";
 
-import useStyles from "./dashboard.styles";
+import styles from "./dashboard.styles";
 
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
   const [isRelevant, setIsRelevant] = useState<boolean>(true);
   const { isLoading, groupedAllPrs, groupedRelevantPRs, updatedAt, errors } =
     usePullRequests();

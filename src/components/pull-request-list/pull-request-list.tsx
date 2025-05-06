@@ -4,6 +4,7 @@ import {
   SectionListData,
   SectionListRenderItemInfo,
 } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Body from "components/body/body";
 import ErrorContainer from "components/error-container/error-container";
@@ -14,7 +15,7 @@ import { PullRequest } from "models/pull-request";
 import { setPullRequestHidden } from "store/slices/pull-requests";
 import { PullRequestSection } from "utils/group-pull-requests";
 
-import useStyles from "./pull-request-list.styles";
+import styles from "./pull-request-list.styles";
 
 const SectionHeader = ({
   section: { title, hideTitle },
@@ -38,7 +39,7 @@ type Props = {
 };
 
 const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
   const { t } = useTranslation();
   const dispatch = useDispatch();
 

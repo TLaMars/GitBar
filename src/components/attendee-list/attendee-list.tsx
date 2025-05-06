@@ -1,10 +1,11 @@
 import React, { useMemo } from "react";
 import { View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Attendee from "components/attendee/attendee";
 import { Attendee as AttendeeType, Vote } from "models/attendee";
 
-import useStyles from "./attendee-list.styles";
+import styles from "./attendee-list.styles";
 
 type Props = {
   attendees: AttendeeType[];
@@ -12,7 +13,7 @@ type Props = {
 };
 
 const AttendeeList: React.FC<Props> = ({ attendees, profileIconSize = 20 }) => {
-  const $ = useStyles(profileIconSize);
+  const { styles: $ } = useStyles(styles);
 
   const sortedAttendees = useMemo(
     () =>
@@ -33,15 +34,15 @@ const AttendeeList: React.FC<Props> = ({ attendees, profileIconSize = 20 }) => {
       {sortedAttendees.map(({ avatarUrl, name, vote }, index) => (
         <View
           style={[
-            index > 0 && $.container,
+            index > 0 && $.container(profileIconSize),
             {
               zIndex: sortedAttendees.length - index,
             },
           ]}
           key={name}
         >
-          {index > 0 && <View style={$.seperator} />}
-          <View style={[index > 0 && $.icon]}>
+          {index > 0 && <View style={$.seperator(profileIconSize)} />}
+          <View style={[index > 0 && $.icon(profileIconSize)]}>
             <Attendee
               name={name}
               avatarUrl={avatarUrl}

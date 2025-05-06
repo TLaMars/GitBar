@@ -2,6 +2,7 @@ import { useGuavaClient } from "@guava/react-native";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { View, Image, ImageSourcePropType } from "react-native";
+import { useStyles } from "react-native-unistyles";
 import { useDispatch } from "react-redux";
 
 import NotificationConfirmImage from "assets/illustrations/onboarding/notification-confirmation.jpg";
@@ -14,7 +15,7 @@ import { OnboardingStackParamList } from "models/onboarding-stack-param-list";
 import NotificationsModule from "modules/notifications-module";
 import { setAllowNotifications } from "store/slices/settings";
 
-import useStyles from "./notifications.styles";
+import styles from "./notifications.styles";
 
 type PageContentType = Record<
   string,
@@ -39,7 +40,7 @@ const PageContent: PageContentType = {
 };
 
 const Notifications: React.FC = () => {
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
   const client = useGuavaClient();
   const dispatch = useDispatch();
   const { t } = useTranslation();

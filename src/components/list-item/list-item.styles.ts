@@ -1,16 +1,15 @@
-import useMemoizedStyles from "hooks/use-memoized-styles";
+import { createStyleSheet } from "react-native-unistyles";
 
-const useStyles = () =>
-  useMemoizedStyles(({ spacing, colors }) => ({
-    container: {
-      height: spacing(12),
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "space-between",
-    },
-    border: {
-      borderBottomWidth: 1,
-      borderBottomColor: colors.border,
-    },
-  }));
-export default useStyles;
+const styles = createStyleSheet(({ spacing, colors }) => ({
+  container: {
+    height: spacing(12),
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  border: {
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+  },
+}));
+export default styles;

@@ -1,9 +1,10 @@
 import React from "react";
 import { TouchableOpacity } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Icon, { IconName } from "components/icon/icon";
 
-import useStyles from "./sidebar-item.styles";
+import styles from "./sidebar-item.styles";
 
 type Props = {
   active?: boolean;
@@ -12,7 +13,7 @@ type Props = {
 };
 
 const SidebarItem: React.FC<Props> = ({ active = false, icon, onPress }) => {
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
 
   return (
     <TouchableOpacity

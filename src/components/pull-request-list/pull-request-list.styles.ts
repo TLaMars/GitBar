@@ -1,10 +1,9 @@
-import useMemoizedStyles from "hooks/use-memoized-styles";
+import { createStyleSheet } from "react-native-unistyles";
 
-const useStyles = () =>
-  useMemoizedStyles(({ spacing }) => ({
-    list: {
-      gap: spacing(2),
-      paddingBottom: spacing(0.5),
-    },
-  }));
-export default useStyles;
+const styles = createStyleSheet(({ spacing }) => ({
+  list: {
+    gap: spacing(2),
+    paddingBottom: spacing(0.5),
+  },
+}));
+export default styles;

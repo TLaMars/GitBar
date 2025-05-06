@@ -1,10 +1,11 @@
 import React from "react";
 import { TouchableOpacity } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Icon, { IconName } from "components/icon/icon";
 import { ThemeColor } from "models/theme";
 
-import useStyles from "./icon-button.styles";
+import styles from "./icon-button.styles";
 
 type Props = {
   icon: IconName;
@@ -21,7 +22,7 @@ const IconButton: React.FC<Props> = ({
   size = 20,
   spacing = 8,
 }) => {
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
 
   const iconColor = (): ThemeColor => {
     switch (type) {

@@ -1,10 +1,11 @@
 import React from "react";
 import { Image, ImageSourcePropType, View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Body from "components/body/body";
 import Heading from "components/heading/heading";
 
-import useStyles from "./feature-item.styles";
+import styles from "./feature-item.styles";
 
 type Props = {
   image: ImageSourcePropType;
@@ -13,7 +14,7 @@ type Props = {
 };
 
 const FeatureItem: React.FC<Props> = ({ image, heading, body }) => {
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
 
   return (
     <View style={$.container}>

@@ -1,11 +1,12 @@
 import React, { useContext, useMemo } from "react";
 import { View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import { ToastApiContext, ToastDataContext } from "contexts/toasts";
 import { Toast as ToastType } from "models/toast";
 
 import Toast from "./toast";
-import useStyles from "./toasts.styles";
+import styles from "./toasts.styles";
 
 const MAX_CONCURRENT_TOASTS = 3;
 
@@ -13,7 +14,7 @@ const Toasts: React.FC = () => {
   const { removeToast } = useContext(ToastApiContext);
   const toasts = useContext(ToastDataContext);
 
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
 
   const showableToasts = useMemo(
     () => toasts.slice(0, MAX_CONCURRENT_TOASTS),

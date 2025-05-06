@@ -1,12 +1,13 @@
 import React, { PropsWithChildren } from "react";
 import { View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Button, { ButtonType } from "components/button/button";
 import Heading from "components/heading/heading";
 import Spacer from "components/spacer/spacer";
 import { ThemeSpacingScale } from "constants/theme";
 
-import useStyles from "./onboarding-layout.styles";
+import styles from "./onboarding-layout.styles";
 
 type Buttons = {
   type: ButtonType;
@@ -28,7 +29,7 @@ const OnboardingLayout: React.FC<Props> = ({
   title,
   titleSpacing,
 }) => {
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
 
   return (
     <View style={$.container}>

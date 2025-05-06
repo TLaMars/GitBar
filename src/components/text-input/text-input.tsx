@@ -4,12 +4,12 @@ import {
   TextInputProps,
   View,
 } from "react-native-macos";
+import { useStyles } from "react-native-unistyles";
 
 import Body from "components/body/body";
 import useFontStyle from "hooks/use-font-style";
-import useTheme from "hooks/use-theme";
 
-import useStyles from "./text-input.styles";
+import styles from "./text-input.styles";
 
 type Props = {
   label: string;
@@ -24,8 +24,10 @@ const TextInput: React.FC<Props> = ({
   message,
   ...restProps
 }) => {
-  const $ = useStyles();
-  const { fontFamilies, fontWeights, colors } = useTheme();
+  const {
+    styles: $,
+    theme: { fontFamilies, fontWeights, colors },
+  } = useStyles(styles);
 
   const fontStyle = useFontStyle({
     fontFamily: fontFamilies.primary,

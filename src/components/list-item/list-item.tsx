@@ -1,9 +1,10 @@
 import React, { PropsWithChildren } from "react";
 import { View } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Body from "components/body/body";
 
-import useStyles from "./list-item.styles";
+import styles from "./list-item.styles";
 
 export type ListItmeProps = {
   label: string;
@@ -15,7 +16,7 @@ const ListItem: React.FC<ListItmeProps & PropsWithChildren> = ({
   border,
   children,
 }) => {
-  const $ = useStyles();
+  const { styles: $ } = useStyles(styles);
 
   return (
     <View style={[$.container, border && $.border]}>

@@ -1,11 +1,11 @@
 import React, { PropsWithChildren } from "react";
 import { TextProps, TextStyle } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Text from "components/text/text";
-import useTheme from "hooks/use-theme";
 import { ThemeColor, ThemeFontSizes } from "models/theme";
 
-import useStyles from "./heading.styles";
+import styles from "./heading.styles";
 
 type HeadingSize = "xl" | "l" | "m" | "s" | "xs" | "x2s";
 type ThemeHeadingSize = keyof Pick<
@@ -48,11 +48,13 @@ const Heading: React.FC<Props> = ({
   onTextLayout,
   fontSizeIsLineHeight,
 }) => {
-  const { fontSizes, fontWeights, lineHeights, colors } = useTheme();
+  const {
+    styles: $,
+    theme: { fontSizes, fontWeights, lineHeights, colors },
+  } = useStyles(styles);
   const sizeKey = sizeMapping[size];
   const textTransform = capitalize ? "capitalize" : "none";
   const color = colorFromProps ? colors[colorFromProps] : colors.text;
-  const $ = useStyles();
 
   const fontSize = fontSizes[sizeKey];
   const lineHeight = lineHeights[sizeKey];

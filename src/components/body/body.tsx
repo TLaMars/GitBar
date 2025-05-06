@@ -1,8 +1,8 @@
 import React, { PropsWithChildren } from "react";
 import { TextProps, TextStyle } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import Text from "components/text/text";
-import useTheme from "hooks/use-theme";
 import { ThemeColor, ThemeFontSizes } from "models/theme";
 
 export type BodySize = "l" | "m" | "s" | "xs" | "x2s";
@@ -47,7 +47,9 @@ const Body: React.FC<Props> = ({
   onPress,
   onTextLayout,
 }) => {
-  const { fontSizes, fontWeights, lineHeights, colors } = useTheme();
+  const {
+    theme: { fontSizes, fontWeights, lineHeights, colors },
+  } = useStyles();
 
   const fontSizeKey = sizeMapping[size];
   const fontSize = fontSizes[fontSizeKey];

@@ -1,8 +1,8 @@
 import React, { PropsWithChildren } from "react";
 import { View, ViewProps, ViewStyle } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 import { ThemeSpacingScale } from "constants/theme";
-import useTheme from "hooks/use-theme";
 
 type SpacingProperty =
   | "m" // margin
@@ -41,7 +41,9 @@ const Spacer: React.FC<Props> = ({
   px,
   py,
 }) => {
-  const { spacing } = useTheme();
+  const {
+    theme: { spacing },
+  } = useStyles();
   const style = React.useMemo(() => {
     const styles: ViewStyle = {};
     if (m) styles.margin = spacing(m);

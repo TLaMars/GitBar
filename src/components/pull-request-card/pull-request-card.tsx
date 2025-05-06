@@ -6,6 +6,7 @@ import {
   ActionSheetIOSOptions,
   View,
 } from "react-native-macos";
+import { useStyles } from "react-native-unistyles";
 
 import Attendee from "components/attendee/attendee";
 import AttendeeList from "components/attendee-list/attendee-list";
@@ -17,7 +18,7 @@ import useTranslation from "hooks/use-translation";
 import { Attendee as AttendeeType } from "models/attendee";
 import { ThemeColor } from "models/theme";
 
-import useStyles from "./pull-request-card.styles";
+import styles from "./pull-request-card.styles";
 
 type Props = {
   id: string;
@@ -51,7 +52,7 @@ const PullRequestCard: React.FC<Props> = ({
   isDraft,
 }) => {
   const client = useGuavaClient();
-  const $ = useStyles(accentColor);
+  const { styles: $ } = useStyles(styles);
   const { t } = useTranslation();
 
   const onPress = async (event: GestureResponderEvent) => {
@@ -92,7 +93,7 @@ const PullRequestCard: React.FC<Props> = ({
         style={$.card}
         onPress={onPress}
       >
-        <View style={[$.borderLine, isDraft && $.draftLine]} />
+        <View style={[$.borderLine(accentColor), isDraft && $.draftLine]} />
         <View style={$.header}>
           {isDraft && <Icon name="EditPencil" size={20} />}
           <Spacer mb={isDraft ? 1 : 0}>

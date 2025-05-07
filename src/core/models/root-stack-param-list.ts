@@ -3,6 +3,7 @@ export type RootStackParamList = {
   AddAccount?: {
     showBackButton: boolean;
   };
+  Issues: undefined;
   Notifications: undefined;
   RegisterGitHub: {
     code: string;

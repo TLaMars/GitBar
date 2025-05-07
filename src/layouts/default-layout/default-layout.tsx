@@ -30,13 +30,20 @@ const DefaultLayout: React.FC<Props> = ({
         <Sidebar
           marginVertical={2.5}
           topContainer={
-            <SidebarItem
-              icon="PullRequest"
-              onPress={() =>
-                navigation.dispatch(StackActions.popTo("Dashboard"))
-              }
-              active={route.name === "Dashboard"}
-            />
+            <>
+              <SidebarItem
+                icon="PullRequest"
+                onPress={() =>
+                  navigation.dispatch(StackActions.popTo("Dashboard"))
+                }
+                active={route.name === "Dashboard"}
+              />
+              <SidebarItem
+                icon="IssueCircle"
+                onPress={() => navigation.navigate("Issues")}
+                active={route.name === "Issues"}
+              />
+            </>
           }
           bottomContainer={
             <SidebarItem

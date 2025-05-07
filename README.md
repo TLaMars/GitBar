@@ -36,3 +36,28 @@ Your new Pull Request tool for GitHub, GitLab and Azure.
    3. This will create a new release with the new version.
    4. Adds the changelog to the release.
 3. Done!
+
+### Certificates
+
+For installing the certificates in the workflow we use: apple-actions/import-codesign-certs@v3.
+
+To make a certificate for the workflow you need to do the following:
+
+1. Apple Distribution Certificate
+2. 3rd Party Mac Developer Installer Certificate
+3. API Key for App Store Connect
+   1. API Key ID
+   2. API Key Issuer ID
+4. Apple Developer Team ID
+
+How to give them to the workflow:
+
+1. In keychain select both certificates and corresponding private keys.
+2. Right click and select "Export 4 items".
+3. Choose a name for the certificates and private keys and export them as p12 file.
+4. Choose a password and save that password (it is needed in the workflow)
+5. Base64 encode the p12 file: `cat certificate.p12 | base64`
+6. Add the base64 encoded string as a secret in the repository. -> `APPLE_CERTIFICATE_P12_BASE64`
+7. Add the password as a secret in the repository. -> `APPLE_CERTIFICATE_P12_PASSWORD`
+8. Base64 encode the API Key for App Store Connect: `cat api-key.txt | base64`
+9. Add the base64 encoded string as a secret in the repository. -> `APPLE_API_KEY_CONTENT`

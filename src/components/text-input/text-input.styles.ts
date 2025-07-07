@@ -1,7 +1,14 @@
 import { createStyleSheet } from "react-native-unistyles";
 
 const styles = createStyleSheet(
-  ({ borderRadiuses, colors, spacing, fontSizes }) => ({
+  ({
+    borderRadiuses,
+    colors,
+    spacing,
+    fontSizes,
+    fontFamilies,
+    fontWeights,
+  }) => ({
     input: {
       padding: spacing(2),
       borderWidth: 2,
@@ -9,6 +16,8 @@ const styles = createStyleSheet(
       backgroundColor: colors.backgroundSurface,
       borderRadius: borderRadiuses.input,
       fontSize: fontSizes.input,
+      fontFamily: fontFamilies.primary,
+      fontWeight: fontWeights.normal,
       color: colors.text,
     },
     error: {

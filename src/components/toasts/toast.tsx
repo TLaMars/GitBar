@@ -30,7 +30,7 @@ const Toast: React.FC<Props> = ({
   type = "neutral",
 }) => {
   const { styles: $ } = useStyles(styles);
-  const timeoutId = React.useRef<NodeJS.Timeout | null>();
+  const timeoutId = React.useRef<NodeJS.Timeout | null>(null);
 
   const clearToastTimeout = () => {
     if (timeoutId.current) {

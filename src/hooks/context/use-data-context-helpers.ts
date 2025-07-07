@@ -21,7 +21,7 @@ import sendPullRequestNotification from "utils/send-pull-request-notification";
 // This hook is used to update the menu bar and send notifications
 // directly from the data context.
 const useDataHelper = () => {
-  const prevPrsRef = useRef<PullRequest[]>();
+  const prevPrsRef = useRef<PullRequest[]>([]);
 
   const hidePRsAfterTwoMonths = useSelector(selectHidePRsAfterTwoMonths);
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);

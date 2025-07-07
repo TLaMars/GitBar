@@ -7,7 +7,6 @@ import {
 import { useStyles } from "react-native-unistyles";
 
 import Body from "components/body/body";
-import useFontStyle from "hooks/use-font-style";
 
 import styles from "./text-input.styles";
 
@@ -26,13 +25,8 @@ const TextInput: React.FC<Props> = ({
 }) => {
   const {
     styles: $,
-    theme: { fontFamilies, fontWeights, colors },
+    theme: { colors },
   } = useStyles(styles);
-
-  const fontStyle = useFontStyle({
-    fontFamily: fontFamilies.primary,
-    fontWeight: fontWeights.normal,
-  });
 
   return (
     <View style={$.wrapper}>
@@ -45,7 +39,7 @@ const TextInput: React.FC<Props> = ({
         enableFocusRing={false}
         style={[
           $.input,
-          fontStyle,
+          // fontStyle,
           style,
           state === "error" && $.error,
           state === "valid" && $.valid,

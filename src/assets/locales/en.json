@@ -101,5 +101,6 @@
   "General/Button/No": "No",
   "Settings/Link/ThomasLamars": "Thomas Lamars",
   "Settings/Link/Version": "Version {version} ({buildNumber})",
-  "Settings/Link/MadeBy": "GitBar made by"
+  "Settings/Link/MadeBy": "GitBar made by",
+  "Issues/Heading/Issues": "Issues"
 }

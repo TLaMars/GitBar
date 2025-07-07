@@ -12,6 +12,7 @@ import RegisterAzure from "pages/auth/register/azure";
 import RegisterGithub from "pages/auth/register/github";
 import RegisterGitLab from "pages/auth/register/gitlab";
 import Dashboard from "pages/dashboard/dashboard";
+import Issues from "pages/issues/issues";
 import Settings from "pages/settings/settings";
 import WindowNavigator from "src/windows";
 import { selectAccounts } from "store/selectors/accounts";
@@ -79,6 +80,7 @@ const RootStack: React.FC = () => {
       />
       <RootStackNavigator.Screen name="AddAccount" component={AddAccount} />
       <RootStackNavigator.Screen name="Settings" component={Settings} />
+      <RootStackNavigator.Screen name="Issues" component={Issues} />
     </RootStackNavigator.Navigator>
   );
 };

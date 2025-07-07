@@ -9,20 +9,35 @@ import Foundation
 import Cocoa
 import UserNotifications
 import React
+import React_RCTAppDelegate
 
-@NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate, RCTBridgeDelegate, NSPopoverDelegate {
-  
-  var bridge: RCTBridge!
+@main
+class AppDelegate: RCTAppDelegate, UNUserNotificationCenterDelegate, NSPopoverDelegate {
+
   var statusItem: NSStatusItem!
   var popover: NSPopover!
   
-  func applicationDidFinishLaunching(_ notification: Notification) {
+  override func applicationDidFinishLaunching(_ notification: Notification) {
     UNUserNotificationCenter.current().delegate = self
     setMMKVStorageLocation()
     
-    bridge = RCTBridge(delegate: self, launchOptions: nil)
-    
+    moduleName = "main"
+    initialProps = [:]
+
+    // We can't override `loadReactNativeWindow` from Swift
+    self.automaticallyLoadReactNativeWindow = false
+    super.applicationDidFinishLaunching(notification)
+
+    loadReactNativeWindow(notification.userInfo)
+  }
+
+   func loadReactNativeWindow(_ launchOptions: [AnyHashable: Any]!) {
+    let rootView = self.rootViewFactory().view(
+      withModuleName: self.moduleName!,
+      initialProperties: initialProps,
+      launchOptions: launchOptions
+    )
+
     statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     if let button = statusItem.button {
       let image = NSImage(named: "PullRequest")
@@ -33,11 +48,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
       button.action = #selector(onPressStatusItem(_:))
       button.sendAction(on: [.leftMouseUp, .rightMouseUp])
     }
-    
-    let rootView = RCTRootView(bridge: bridge, moduleName: "main", initialProperties: [:])
+
     let rootViewController = NSViewController()
     rootViewController.view = rootView
-    
+
     popover = NSPopover()
     popover.contentSize = NSSize(width: 700, height: 500)
     popover.contentViewController = rootViewController
@@ -48,6 +62,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
     
     let em = NSAppleEventManager.shared()
     em.setEventHandler(self, andSelector: #selector(self.getUrl(_:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+
+    NSApp.activate(ignoringOtherApps: true)
   }
   
   func createStatusMenu() -> NSMenu {
@@ -81,18 +97,23 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
     }
     return RCTLinkingManager.getUrlEventHandler(event, withReplyEvent: reply)
   }
+
+  override func sourceURL(for bridge: RCTBridge) -> URL? {
+    self.bundleURL()
+  }
   
-  func sourceURL(for bridge: RCTBridge) -> URL? {
+  override func bundleURL() -> URL? {
 #if DEBUG
-    return RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackExtension: nil)
+    RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
 #else
-    return Bundle.main.url(forResource: "main", withExtension: "jsbundle")
+    Bundle.main.url(forResource: "main", withExtension: "jsbundle")
 #endif
   }
   
   @objc
   func openPopover() {
-    popover.show(relativeTo: statusItem.button!.bounds, of: statusItem.button!, preferredEdge: .minY)
+    guard let button = statusItem.button else { return }
+    popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
     popover.contentViewController?.view.window?.makeKey()
   }
   

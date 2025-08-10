@@ -115,6 +115,11 @@ class AzureProvider extends BaseProvider {
       .flat()
       .map((pr) => transformAzurePullRequest(profile, pr));
   }
+
+  async getIssues() {
+    // TODO: Implement Azure issues
+    return [];
+  }
 }
 
 export default AzureProvider;

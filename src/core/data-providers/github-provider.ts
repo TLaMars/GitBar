@@ -1,8 +1,10 @@
+import QueryGetGithubIssues from "gql/github/queries/issues";
 import QueryGetGithubPullRequests from "gql/github/queries/pull-requests";
 import QueryGetGitHubViewer from "gql/github/queries/viewer";
 import { AccountType } from "models/account";
 import { GitHubAuth } from "models/auth";
 import { AccountState } from "models/profile";
+import transformGithubIssue from "transformers/github/github-issue";
 import transformGithubPullRequest from "transformers/github/github-pull-request";
 import { createGitHubGqlClient } from "utils/graphql-client";
 
@@ -40,6 +42,17 @@ class GitHubProvider extends BaseProvider {
 
     return transformGithubPullRequest(profile, data).filter(
       (pr, index, self) => index === self.findIndex((p) => p.id === pr.id),
+    );
+  }
+
+  async getIssues() {
+    const data = await this.query(QueryGetGithubIssues);
+
+    return (
+      data.viewer.repositories.nodes
+        ?.flatMap((repo) => repo?.issues.nodes)
+        .filter((issue) => issue != null)
+        .map((issue) => transformGithubIssue(issue)) ?? []
     );
   }
 }

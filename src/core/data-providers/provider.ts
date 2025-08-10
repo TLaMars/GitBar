@@ -1,3 +1,4 @@
+import Issue from "models/issue";
 import Profile from "models/profile";
 import { PullRequest } from "models/pull-request";
 
@@ -7,6 +8,7 @@ interface Provider {
 
   getProfile(): Promise<Profile>;
   getPullRequests(): Promise<PullRequest[]>;
+  getIssues(): Promise<Issue[]>;
   getValidatedProfile(): Promise<Profile>;
 }
 

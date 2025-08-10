@@ -51,6 +51,11 @@ class GitLabProvider extends BaseProvider {
       (pr, index, self) => index === self.findIndex((p) => p.id === pr.id),
     );
   }
+
+  async getIssues() {
+    // TODO: Implement GitLab issues
+    return [];
+  }
 }
 
 export default GitLabProvider;

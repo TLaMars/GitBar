@@ -2,6 +2,7 @@ import { ApolloClient } from "@apollo/client";
 import { TypedDocumentNode } from "@graphql-typed-document-node/core";
 
 import { AccountType } from "models/account";
+import Issue from "models/issue";
 import Profile, { AccountState } from "models/profile";
 import { PullRequest } from "models/pull-request";
 
@@ -51,6 +52,7 @@ abstract class BaseProvider implements Provider {
 
   abstract getProfile(): Promise<Profile>;
   abstract getPullRequests(): Promise<PullRequest[]>;
+  abstract getIssues(): Promise<Issue[]>;
 
   async getValidatedProfile(): Promise<Profile> {
     try {

@@ -9,6 +9,7 @@ import { useStyles } from "react-native-unistyles";
 
 import Sidebar from "components/sidebar/sidebar";
 import SidebarItem from "components/sidebar-item/sidebar-item";
+import { SHOW_ISSUES } from "constants/feature-flag";
 
 import styles from "./default-layout.styles";
 
@@ -38,11 +39,13 @@ const DefaultLayout: React.FC<Props> = ({
                 }
                 active={route.name === "Dashboard"}
               />
-              <SidebarItem
-                icon="IssueCircle"
-                onPress={() => navigation.navigate("Issues")}
-                active={route.name === "Issues"}
-              />
+              {SHOW_ISSUES && (
+                <SidebarItem
+                  icon="IssueCircle"
+                  onPress={() => navigation.navigate("Issues")}
+                  active={route.name === "Issues"}
+                />
+              )}
             </>
           }
           bottomContainer={

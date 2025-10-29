@@ -15,6 +15,7 @@
 		6A3FD27E2D034E8A0046242F /* RNEventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3FD27D2D034E7D0046242F /* RNEventEmitter.swift */; };
 		6A700CFF2C936CBF009FE82F /* MMKVStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A700CFE2C936CBF009FE82F /* MMKVStorage.swift */; };
 		6A87DC452C9205EE0014F3ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A87DC442C9205EE0014F3ED /* AppDelegate.swift */; };
+		6AB5D7D82EB26B8B00EF5728 /* GitBar.icon in Resources */ = {isa = PBXBuildFile; fileRef = 6AB5D7D72EB26B8B00EF5728 /* GitBar.icon */; };
 		6AC7F0692CA80E4500CB5C0A /* AvailableInterfaces.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC7F0682CA80E4500CB5C0A /* AvailableInterfaces.m */; };
 		B251F639C3B1D566B5066829 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731F036827B7D7037932CD5B /* ExpoModulesProvider.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,7 @@
 		6A700D222C937D67009FE82F /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/System/Library/Frameworks/ServiceManagement.framework; sourceTree = DEVELOPER_DIR; };
 		6A87DC442C9205EE0014F3ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A87DC462C9206000014F3ED /* GitBar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GitBar-Bridging-Header.h"; sourceTree = "<group>"; };
+		6AB5D7D72EB26B8B00EF5728 /* GitBar.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = GitBar.icon; sourceTree = "<group>"; };
 		6AC7F0682CA80E4500CB5C0A /* AvailableInterfaces.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AvailableInterfaces.m; sourceTree = "<group>"; };
 		6ADF92C92D74DE5800A9A77A /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		731F036827B7D7037932CD5B /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-GitBar/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				D94C66BB14FF792DC8A5DE90 /* PrivacyInfo.xcprivacy */,
 				8AC8227AACF26F45CD346F5A /* Pods */,
 				256FA451A5AB1DBD4956936E /* ExpoModulesProviders */,
+				6AB5D7D72EB26B8B00EF5728 /* GitBar.icon */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			files = (
 				514201522437B4B40078DB4F /* Assets.xcassets in Resources */,
 				514201552437B4B40078DB4F /* Main.storyboard in Resources */,
+				6AB5D7D82EB26B8B00EF5728 /* GitBar.icon in Resources */,
 				532DA30C1A3C5672972A09B8 /* PrivacyInfo.xcprivacy in Resources */,
 				6A0FC0DA2C92355400A74D15 /* fonts in Resources */,
 			);
@@ -381,7 +385,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E70A2B8F2A523D2523286AB7 /* Pods-GitBar.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = GitBar;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GitBar/GitBar.entitlements;
@@ -418,7 +422,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DC7515AD06F0646C13A409C0 /* Pods-GitBar.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = GitBar;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GitBar/GitBar.entitlements;
@@ -514,10 +518,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -580,10 +581,7 @@
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

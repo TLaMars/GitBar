@@ -18,7 +18,7 @@ const ListItemPicker: React.FC<Props> = ({
   selectedValue,
   border,
   pickerItems,
-  width = 150,
+  width = 120,
 }) => (
   <ListItem label={label} border={border}>
     <Picker

@@ -12,15 +12,15 @@ import PullRequestCard from "components/pull-request-card/pull-request-card";
 import useDispatch from "hooks/use-dispatch";
 import useTranslation from "hooks/use-translation";
 import { PullRequest } from "models/pull-request";
+import { Section } from "models/section";
 import { setPullRequestHidden } from "store/slices/pull-requests";
-import { PullRequestSection } from "utils/group-pull-requests";
 
 import styles from "./pull-request-list.styles";
 
 const SectionHeader = ({
   section: { title, hideTitle },
 }: {
-  section: SectionListData<PullRequest, PullRequestSection>;
+  section: SectionListData<PullRequest, Section<PullRequest>>;
 }) => {
   if (hideTitle) {
     return null;
@@ -35,7 +35,7 @@ const SectionHeader = ({
 
 type Props = {
   errors: Error[];
-  sections: PullRequestSection[];
+  sections: Section<PullRequest>[];
 };
 
 const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
@@ -60,7 +60,9 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
   );
 
   const renderItem = useCallback(
-    ({ item }: SectionListRenderItemInfo<PullRequest, PullRequestSection>) => (
+    ({
+      item,
+    }: SectionListRenderItemInfo<PullRequest, Section<PullRequest>>) => (
       <PullRequestCard
         key={item.id}
         id={item.id}

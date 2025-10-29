@@ -1,17 +1,12 @@
 import { GroupPullRequestsBy, PullRequest } from "models/pull-request";
-
-export type PullRequestSection = {
-  title: string;
-  data: PullRequest[];
-  hideTitle?: boolean;
-};
+import { Section } from "models/section";
 
 const groupPullRequestsBy = (
   pullRequests: PullRequest[],
   groupPRsBy: GroupPullRequestsBy,
 ) =>
-  pullRequests.reduce<PullRequestSection[]>((acc, pullRequest) => {
-    let section: PullRequestSection | undefined;
+  pullRequests.reduce<Section<PullRequest>[]>((acc, pullRequest) => {
+    let section: Section<PullRequest> | undefined;
     let title: string = "";
     if (groupPRsBy === GroupPullRequestsBy.REPO) {
       section = acc.find((s) => s.title === pullRequest.repoName);

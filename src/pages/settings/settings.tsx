@@ -18,7 +18,6 @@ import useProfiles from "hooks/use-profiles";
 import useSelector from "hooks/use-selector";
 import useTranslation from "hooks/use-translation";
 import DefaultLayout from "layouts/default-layout/default-layout";
-import Appearance from "models/appearance";
 import { GroupPullRequestsBy } from "models/pull-request";
 import AppModule from "modules/app-module";
 import NotificationsModule, {
@@ -26,7 +25,6 @@ import NotificationsModule, {
 } from "modules/notifications-module";
 import {
   selectAllowNotifications,
-  selectAppearance,
   selectGroupPRsBy,
   selectHideDraftPRs,
   selectHidePRsAfterTwoMonths,
@@ -36,7 +34,6 @@ import { removeOneAccount } from "store/slices/accounts";
 import { resetHiddenPullRequests } from "store/slices/pull-requests";
 import {
   setAllowNotifications,
-  setAppearance,
   setGroupPRsBy,
   setHideDraftPRs,
   setHidePRsAfterTwoMonths,
@@ -58,7 +55,6 @@ const Settings: React.FC = () => {
   const groupPRsBy = useSelector(selectGroupPRsBy);
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
   const allowPushNotifications = useSelector(selectAllowNotifications);
-  const appearance = useSelector(selectAppearance);
   const hideDraftPRs = useSelector(selectHideDraftPRs);
   const [notificationPermissions, setNotificationPermissions] =
     useState<NotificationPermission>();
@@ -207,23 +203,6 @@ const Settings: React.FC = () => {
               value: value.toString(),
             });
           }}
-        />
-        <ListItemPicker
-          label={t("Settings/Application/Appearance")}
-          border
-          selectedValue={appearance}
-          onValueChange={(value) => {
-            dispatch(setAppearance(value as Appearance));
-            client.trackEvent("appearance_changed", {
-              value,
-            });
-          }}
-          pickerItems={[
-            { label: t("Settings/Appearance/Light"), value: Appearance.Light },
-            { label: t("Settings/Appearance/Dark"), value: Appearance.Dark },
-            // TODO: Implement system appearance
-            // { label: t("Settings/Appearance/System"), value: Appearance.Auto },
-          ]}
         />
         {!isLaunchAtLoginSupported && (
           <ListItemToggle

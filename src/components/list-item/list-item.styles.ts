@@ -12,7 +12,7 @@ const styles = createStyleSheet(({ spacing, colors }) => ({
     borderBottomColor: colors.border,
   },
   toggle: {
-    marginRight: spacing(0.5),
+    marginTop: spacing(2.5),
   },
 }));
 export default styles;

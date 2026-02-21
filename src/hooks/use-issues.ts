@@ -1,11 +1,13 @@
 import { useContext, useMemo } from "react";
 
 import { DataContext } from "contexts/data";
-// import Issue from "models/issue";
-// import { Section } from "models/section";
+import { selectHideIssuesAfterTwoMonths } from "store/selectors/settings";
+
+import useSelector from "./use-selector";
 
 const useIssues = () => {
   const { issues: result } = useContext(DataContext);
+  const hideIssuesAfterTwoMonths = useSelector(selectHideIssuesAfterTwoMonths);
 
   const queryInfo = useMemo(
     () => ({
@@ -19,10 +21,23 @@ const useIssues = () => {
     [result],
   );
 
-  // TODO: Group issues
+  const issues = useMemo(
+    () =>
+      result
+        .flatMap((d) => d.data || [])
+        .filter((issue) => {
+          if (hideIssuesAfterTwoMonths) {
+            const twoMonthsAgo = new Date();
+            twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
+            return new Date(issue.updatedAt) > twoMonthsAgo;
+          }
+          return true;
+        }),
+    [result, hideIssuesAfterTwoMonths],
+  );
 
   return {
-    issues: result.flatMap((d) => d.data || []),
+    issues,
     ...queryInfo,
   };
 };

@@ -10,7 +10,7 @@ const initialState = {
   hidePRsAfterTwoMonths: true,
   hideDraftPRs: false,
 
-  showIssues: false,
+  showIssues: true,
   hideIssuesAfterTwoMonths: false,
 };
 

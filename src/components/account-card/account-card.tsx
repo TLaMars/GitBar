@@ -21,6 +21,7 @@ type Props = {
   provider?: string;
   border?: boolean;
   onDeletePress: () => void;
+  onRenewPress?: () => void;
   state?: AccountState;
 };
 
@@ -33,6 +34,7 @@ const AccountCard: React.FC<Props> = ({
   border = true,
   state = AccountState.Unknown,
   onDeletePress,
+  onRenewPress,
 }) => {
   const {
     styles: $,
@@ -60,14 +62,24 @@ const AccountCard: React.FC<Props> = ({
         </View>
       </View>
       <View style={$.right}>
-        <Body
-          size="xs"
-          color={state === AccountState.Valid ? "text" : "textDanger"}
-        >
-          {state === AccountState.Valid
-            ? t("AccountCard/Status/Valid")
-            : t("AccountCard/Status/Invalid")}
-        </Body>
+        <View style={$.statusRow}>
+          <Body
+            size="xs"
+            color={state === AccountState.Valid ? "text" : "textDanger"}
+          >
+            {state === AccountState.Valid
+              ? t("AccountCard/Status/Valid")
+              : t("AccountCard/Status/Invalid")}
+          </Body>
+        </View>
+        {state === AccountState.Invalid && onRenewPress && (
+          <IconButton
+            icon="Refresh"
+            spacing={4}
+            onPress={onRenewPress}
+            type="secondary"
+          />
+        )}
         <IconButton
           icon="Cross"
           spacing={4}

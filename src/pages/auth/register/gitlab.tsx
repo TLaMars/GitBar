@@ -1,4 +1,4 @@
-import { useNavigation } from "@react-navigation/native";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import React, { useCallback, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { Linking, View } from "react-native";
@@ -18,6 +18,7 @@ import useDispatch from "hooks/use-dispatch";
 import useTranslation from "hooks/use-translation";
 import RegisteredLayout from "layouts/registered-layout/registered-layout";
 import { AccountType } from "models/account";
+import { RootStackParamList } from "models/root-stack-param-list";
 import { upsertOneAccount } from "store/slices/accounts";
 import formatDomain from "utils/format-domain";
 import { createGitLabGqlClient } from "utils/graphql-client";
@@ -30,7 +31,10 @@ const RegisterGitLab: React.FC = () => {
   const dispatch = useDispatch();
   const { styles: $ } = useStyles(styles);
   const { goBack } = useNavigation();
-  const [domain, setDomain] = React.useState("");
+  const { params } =
+    useRoute<RouteProp<RootStackParamList, "RegisterGitLab">>();
+  const initialDomain = params?.domain;
+  const [domain, setDomain] = React.useState(initialDomain ?? "");
   const [token, setToken] = React.useState("");
   const [error, setError] = React.useState<"domain" | "token">();
   const [data, setData] = React.useState<GetCurrentUserQuery>();

@@ -15,10 +15,13 @@ import Spacer from "components/spacer/spacer";
 import { SHOW_ISSUES } from "constants/feature-flag";
 import { AccountsContext } from "contexts/accounts";
 import useDispatch from "hooks/use-dispatch";
+import useGitHubAuth from "hooks/use-github-auth";
 import useProfiles from "hooks/use-profiles";
 import useSelector from "hooks/use-selector";
 import useTranslation from "hooks/use-translation";
 import DefaultLayout from "layouts/default-layout/default-layout";
+import { AccountType } from "models/account";
+import Profile, { AccountState } from "models/profile";
 import { GroupPullRequestsBy } from "models/pull-request";
 import AppModule from "modules/app-module";
 import NotificationsModule, {
@@ -56,6 +59,7 @@ const Settings: React.FC = () => {
   const accounts = useContext(AccountsContext);
   const { profiles, isLoading } = useProfiles();
   const { navigate } = useNavigation();
+  const { openAuthSession } = useGitHubAuth();
   const hidePRsAfterTwoMonths = useSelector(selectHidePRsAfterTwoMonths);
   const groupPRsBy = useSelector(selectGroupPRsBy);
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
@@ -88,6 +92,27 @@ const Settings: React.FC = () => {
     dispatch(removeOneAccount(accountId));
     if (accounts.length === 1) {
       navigate("AddAccount");
+    }
+  };
+
+  const renewAccount = (profile: Profile) => {
+    if (profile.state !== AccountState.Invalid) return;
+
+    client.trackEvent("settings_account_renew", {
+      account_type: profile.type,
+    });
+    if (profile.type === AccountType.GitHub) {
+      void openAuthSession();
+    } else if (profile.type === AccountType.GitLab) {
+      navigate("RegisterGitLab", {
+        renewAccountId: profile.id,
+        ...(profile.provider && { domain: profile.provider }),
+      });
+    } else {
+      navigate("RegisterAzure", {
+        renewAccountId: profile.id,
+        ...(profile.provider && { organization: profile.provider }),
+      });
     }
   };
 
@@ -125,6 +150,7 @@ const Settings: React.FC = () => {
                   account_type: profile.type,
                 });
               }}
+              onRenewPress={() => renewAccount(profile)}
               state={profile.state}
             />
           </View>

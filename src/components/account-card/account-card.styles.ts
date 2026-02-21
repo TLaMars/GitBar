@@ -21,6 +21,10 @@ const styles = createStyleSheet(({ colors, spacing }) => ({
     flexDirection: "row",
     alignItems: "center",
   },
+  statusRow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
   type: {
     bottom: -4,
     right: -4,

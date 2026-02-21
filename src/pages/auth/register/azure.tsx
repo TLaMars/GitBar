@@ -1,4 +1,4 @@
-import { useNavigation } from "@react-navigation/native";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { encode } from "js-base64";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -16,6 +16,7 @@ import useDispatch from "hooks/use-dispatch";
 import useTranslation from "hooks/use-translation";
 import RegisteredLayout from "layouts/registered-layout/registered-layout";
 import { AccountType } from "models/account";
+import { RootStackParamList } from "models/root-stack-param-list";
 import azureApi from "services/api/azure/api";
 import { ProfileResponse } from "services/api/azure/models/profile-response";
 import { upsertOneAccount } from "store/slices/accounts";
@@ -27,8 +28,10 @@ const RegisterAzure: React.FC = () => {
   const dispatch = useDispatch();
   const { styles: $ } = useStyles(styles);
   const { goBack } = useNavigation();
+  const { params } = useRoute<RouteProp<RootStackParamList, "RegisterAzure">>();
+  const initialOrganization = params?.organization;
   const [loading, setLoading] = useState(false);
-  const [organization, setOrganization] = useState("");
+  const [organization, setOrganization] = useState(initialOrganization ?? "");
   const [token, setToken] = useState("");
   const [data, setData] = useState<ProfileResponse>();
   const [error, setError] = useState<"organization" | "token">();
@@ -109,6 +112,7 @@ const RegisterAzure: React.FC = () => {
               accessibilityLabel={t("RegisterAzure/Label/Organization")}
               label={t("RegisterAzure/Label/Organization")}
               placeholder="Organization"
+              value={organization}
               onChangeText={setOrganization}
               state={error === "organization" ? "error" : "neutral"}
               message={

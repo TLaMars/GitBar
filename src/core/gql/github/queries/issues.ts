@@ -12,6 +12,11 @@ const QueryGetGithubIssues = graphql(`
           }
         }
       }
+      issues(first: 100, states: OPEN) {
+        nodes {
+          ...GitHubIssue
+        }
+      }
     }
   }
 `);

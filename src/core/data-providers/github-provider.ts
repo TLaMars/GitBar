@@ -48,12 +48,26 @@ class GitHubProvider extends BaseProvider {
   async getIssues() {
     const data = await this.query(QueryGetGithubIssues);
 
-    return (
+    const repoIssues =
       data.viewer.repositories.nodes
         ?.flatMap((repo) => repo?.issues.nodes)
         .filter((issue) => issue != null)
-        .map((issue) => transformGithubIssue(issue)) ?? []
-    );
+        .map((issue) => transformGithubIssue(issue)) ?? [];
+
+    const viewerIssues =
+      data.viewer.issues.nodes
+        ?.filter((issue) => issue != null)
+        .map((issue) => transformGithubIssue(issue)) ?? [];
+
+    return [...repoIssues, ...viewerIssues]
+      .filter(
+        (issue, index, self) =>
+          index === self.findIndex((i) => i.id === issue.id),
+      )
+      .sort(
+        (a, b) =>
+          new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
+      );
   }
 }
 

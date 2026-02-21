@@ -21,6 +21,7 @@ const Issues: React.FC = () => {
         <PageHeader title={t("Issues/Heading/Issues")} updatedAt={updatedAt} />
         {isLoading && <ActivityIndicator />}
         <FlatList
+          contentContainerStyle={$.list}
           data={issues}
           renderItem={({ item }) => (
             <IssueCard

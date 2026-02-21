@@ -49,10 +49,7 @@ const IssueCard: React.FC<Props> = ({ title, projectPath, updatedAt, url }) => {
       onPress={async () => {
         await Linking.openURL(url);
         client.trackEvent("issue_card_clicked", {
-          title,
-          project_path: projectPath,
           updated_at: updatedAt,
-          url,
         });
       }}
     >

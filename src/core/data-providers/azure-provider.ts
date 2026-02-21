@@ -25,15 +25,25 @@ class AzureProvider extends BaseProvider {
     );
   }
 
+  #transformApiError(error: unknown): never {
+    const err = error as { statusCode?: number; message?: string } | null;
+    const statusCode = err?.statusCode;
+    const errMessage = err?.message ?? "";
+    const isTokenExpired =
+      statusCode === 401 ||
+      errMessage.includes("401") ||
+      errMessage.toLowerCase().includes("unauthorized");
+    const message = isTokenExpired
+      ? "Your access token has expired. Please reconnect your account in Settings."
+      : `failed with a ${statusCode ?? "unknown"}`;
+    throw new Error(`${this.accountType} ${this.userIdentifier}: ${message}`);
+  }
+
   async getProfile() {
     if (!this.profile) {
       const { data } = await azureApi
         .get("/:organization/_apis/profile/profiles/me", this.#config)
-        .catch((error) => {
-          throw new Error(
-            `${this.accountType} ${this.userIdentifier}: failed with a ${error.statusCode}`,
-          );
-        });
+        .catch((error) => this.#transformApiError(error));
 
       this.profile = {
         id: data.id,
@@ -50,10 +60,9 @@ class AzureProvider extends BaseProvider {
   }
 
   private async projects() {
-    const { data } = await azureApi.get(
-      "/:organization/_apis/projects",
-      this.#config,
-    );
+    const { data } = await azureApi
+      .get("/:organization/_apis/projects", this.#config)
+      .catch((error) => this.#transformApiError(error));
     return data.value;
   }
 
@@ -62,18 +71,20 @@ class AzureProvider extends BaseProvider {
     repositoryId: string,
     pullRequestId: string,
   ) {
-    const { data } = await azureApi.get(
-      "/:organization/:projectId/_apis/git/repositories/:repositoryId/pullrequests/:pullRequesId/threads",
-      azureConfig(
-        {
-          organization: this.auth.organization,
-          projectId,
-          pullRequesId: pullRequestId,
-          repositoryId,
-        },
-        this.auth.token,
-      ),
-    );
+    const { data } = await azureApi
+      .get(
+        "/:organization/:projectId/_apis/git/repositories/:repositoryId/pullrequests/:pullRequesId/threads",
+        azureConfig(
+          {
+            organization: this.auth.organization,
+            projectId,
+            pullRequesId: pullRequestId,
+            repositoryId,
+          },
+          this.auth.token,
+        ),
+      )
+      .catch((error) => this.#transformApiError(error));
     return data.value;
   }
 
@@ -83,16 +94,18 @@ class AzureProvider extends BaseProvider {
     const pullRequests: AzurePullRequest[] = (
       await Promise.all(
         projects.map(async (project) => {
-          const { data: pullRequestsData } = await azureApi.get(
-            "/:organization/:projectId/_apis/git/pullrequests",
-            azureConfig(
-              {
-                organization: this.auth.organization,
-                projectId: project.id,
-              },
-              this.auth.token,
-            ),
-          );
+          const { data: pullRequestsData } = await azureApi
+            .get(
+              "/:organization/:projectId/_apis/git/pullrequests",
+              azureConfig(
+                {
+                  organization: this.auth.organization,
+                  projectId: project.id,
+                },
+                this.auth.token,
+              ),
+            )
+            .catch((error) => this.#transformApiError(error));
 
           const data = pullRequestsData.value;
           const pullRequestsWithComments = await Promise.all(

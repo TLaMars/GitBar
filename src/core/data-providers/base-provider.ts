@@ -44,9 +44,16 @@ abstract class BaseProvider implements Provider {
       const result = await this.client.query<TData>({ query });
       return result.data;
     } catch (e: any) {
-      throw new Error(
-        `${this.accountType} ${this.userIdentifier}: ${e.message}`,
-      );
+      const isTokenExpired =
+        e?.networkError?.statusCode === 401 ||
+        e?.message?.includes("401") ||
+        e?.message?.toLowerCase().includes("unauthorized");
+
+      const message = isTokenExpired
+        ? "Your access token has expired. Please reconnect your account in Settings."
+        : e.message;
+
+      throw new Error(`${this.accountType} ${this.userIdentifier}: ${message}`);
     }
   }
 

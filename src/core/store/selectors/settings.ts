@@ -16,3 +16,8 @@ export const selectShowRelevantTab = (state: RootState) =>
 
 export const selectHideDraftPRs = (state: RootState) =>
   state.settings.hideDraftPRs;
+
+export const selectShowIssues = (state: RootState) => state.settings.showIssues;
+
+export const selectHideIssuesAfterTwoMonths = (state: RootState) =>
+  state.settings.hideIssuesAfterTwoMonths;

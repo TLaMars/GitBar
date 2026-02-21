@@ -98,5 +98,9 @@
   "Settings/Link/ThomasLamars": "Thomas Lamars",
   "Settings/Link/Version": "Version {version} ({buildNumber})",
   "Settings/Link/MadeBy": "GitBar made by",
-  "Issues/Heading/Issues": "Issues"
+  "Issues/Heading/Issues": "Issues",
+  "Settings/SectionHeading/Issues": "Issues",
+  "Settings/Issues/Show": "Show my issues (GitHub only)",
+  "Settings/Issues/HideAfter": "Hide Issues after 2 months of inactivity",
+  "Settings/Issues/Description": "Issues are currently only supported for GitHub.\nIt will collect issues you created, are made on repos you own or collaborate on."
 }

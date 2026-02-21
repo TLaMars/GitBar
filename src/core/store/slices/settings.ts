@@ -9,6 +9,9 @@ const initialState = {
   hidePRsApprovedByMe: true,
   hidePRsAfterTwoMonths: true,
   hideDraftPRs: false,
+
+  showIssues: false,
+  hideIssuesAfterTwoMonths: false,
 };
 
 const settings = createSlice({
@@ -30,6 +33,13 @@ const settings = createSlice({
     setHideDraftPRs(state, action: PayloadAction<boolean>) {
       state.hideDraftPRs = action.payload;
     },
+
+    setShowIssues(state, action: PayloadAction<boolean>) {
+      state.showIssues = action.payload;
+    },
+    setHideIssuesAfterTwoMonths(state, action: PayloadAction<boolean>) {
+      state.hideIssuesAfterTwoMonths = action.payload;
+    },
   },
 });
 
@@ -39,6 +49,8 @@ export const {
   setGroupPRsBy,
   setHidePRsApprovedByMe,
   setHideDraftPRs,
+  setShowIssues,
+  setHideIssuesAfterTwoMonths,
 } = settings.actions;
 
 export default settings.reducer;

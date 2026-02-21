@@ -12,6 +12,7 @@ import Link from "components/link/link";
 import ListItemPicker from "components/list-item/list-item-picker";
 import ListItemToggle from "components/list-item/list-item-toggle";
 import Spacer from "components/spacer/spacer";
+import { SHOW_ISSUES } from "constants/feature-flag";
 import { AccountsContext } from "contexts/accounts";
 import useDispatch from "hooks/use-dispatch";
 import useProfiles from "hooks/use-profiles";
@@ -27,8 +28,10 @@ import {
   selectAllowNotifications,
   selectGroupPRsBy,
   selectHideDraftPRs,
+  selectHideIssuesAfterTwoMonths,
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
+  selectShowIssues,
 } from "store/selectors/settings";
 import { removeOneAccount } from "store/slices/accounts";
 import { resetHiddenPullRequests } from "store/slices/pull-requests";
@@ -36,8 +39,10 @@ import {
   setAllowNotifications,
   setGroupPRsBy,
   setHideDraftPRs,
+  setHideIssuesAfterTwoMonths,
   setHidePRsAfterTwoMonths,
   setHidePRsApprovedByMe,
+  setShowIssues,
 } from "store/slices/settings";
 import { setIsOnboarded } from "store/slices/user";
 
@@ -61,6 +66,9 @@ const Settings: React.FC = () => {
   const [launchAtLogin, setLaunchAtLogin] = useState<boolean>();
   const [isLaunchAtLoginSupported, setIsLaunchAtLoginSupported] =
     useState<boolean>();
+
+  const showIssues = useSelector(selectShowIssues);
+  const hideIssuesAfterTwoMonths = useSelector(selectHideIssuesAfterTwoMonths);
 
   useEffect(() => {
     void AppModule.isLaunchAtLoginEnabled().then((status: boolean) => {
@@ -187,6 +195,37 @@ const Settings: React.FC = () => {
           }}
         />
         <Spacer mt={4} />
+        {SHOW_ISSUES && (
+          <>
+            <Heading size="x2s">{t("Settings/SectionHeading/Issues")}</Heading>
+            <Body color="textSecondary" size="xs">
+              {t("Settings/Issues/Description")}
+            </Body>
+            <Spacer mt={1} />
+            <ListItemToggle
+              label={t("Settings/Issues/Show")}
+              border
+              value={showIssues}
+              onToggle={(value) => {
+                dispatch(setShowIssues(value));
+                client.trackEvent("show_issues_changed", {
+                  value: value.toString(),
+                });
+              }}
+            />
+            <ListItemToggle
+              label={t("Settings/Issues/HideAfter")}
+              value={hideIssuesAfterTwoMonths}
+              onToggle={(value) => {
+                dispatch(setHideIssuesAfterTwoMonths(value));
+                client.trackEvent("hide_issues_after_two_months_changed", {
+                  value: value.toString(),
+                });
+              }}
+            />
+            <Spacer mt={4} />
+          </>
+        )}
         <Heading size="x2s">{t("Settings/SectionHeading/App")}</Heading>
         <Spacer mt={1} />
         <ListItemToggle

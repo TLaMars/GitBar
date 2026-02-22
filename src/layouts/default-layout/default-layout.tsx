@@ -9,7 +9,6 @@ import { useStyles } from "react-native-unistyles";
 
 import Sidebar from "components/sidebar/sidebar";
 import SidebarItem from "components/sidebar-item/sidebar-item";
-import { SHOW_ISSUES } from "constants/feature-flag";
 import useSelector from "hooks/use-selector";
 import { selectShowIssues } from "store/selectors/settings";
 
@@ -42,7 +41,7 @@ const DefaultLayout: React.FC<Props> = ({
                 }
                 active={route.name === "Dashboard"}
               />
-              {SHOW_ISSUES && showIssues && (
+              {showIssues && (
                 <SidebarItem
                   icon="IssueCircle"
                   onPress={() => navigation.navigate("Issues")}

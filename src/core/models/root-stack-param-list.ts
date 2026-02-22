@@ -8,12 +8,8 @@ export type RootStackParamList = {
   RegisterGitHub: {
     code: string;
   };
-  RegisterGitLab:
-    | { renewAccountId?: string; domain?: string }
-    | undefined;
-  RegisterAzure:
-    | { renewAccountId?: string; organization?: string }
-    | undefined;
+  RegisterGitLab: { renewAccountId?: string; domain?: string } | undefined;
+  RegisterAzure: { renewAccountId?: string; organization?: string } | undefined;
   Settings: undefined;
 };
 

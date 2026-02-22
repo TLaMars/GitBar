@@ -5,7 +5,7 @@ const styles = createStyleSheet(() => ({
     width: "100%",
     borderRadius: 8,
     height: undefined,
-    aspectRatio: 315 / 170,
+    aspectRatio: 315 / 196,
   },
 }));
 export default styles;

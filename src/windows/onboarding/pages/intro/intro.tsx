@@ -38,6 +38,7 @@ const Intro: React.FC = () => {
           style={$.image}
           source={IntroImage}
           accessibilityIgnoresInvertColors
+          resizeMode="cover"
         />
       </View>
     </OnboardingLayout>

@@ -81,6 +81,8 @@
   "Onboarding/Notifications/ConfirmHeading": "Confirm permissions",
   "Onboarding/Notifications/ConfirmBody": "Accept the permissions from Apple in the top right corner (see image for reference) to start receiving notifications.",
   "Onboarding/Notifications/Body": "By allowing notifications from GitBar you will be informed every time you receive new Pull Requests or comments are added to them.",
+  "Onboarding/Issues/Heading": "Issues in GitBar",
+  "Onboarding/Issues/Body": "GitHub issues will now appear in GitBar. Issues you created, or made on repos you own or collaborate on. You can turn this feature off in settings.",
   "Onboarding/ReadyToGo/Heading": "Ready to go!",
   "Onboarding/ReadyToGo/GetStarted": "Open GitBar",
   "Onboarding/ReadyToGo/Body": "Open GitBar through the menu bar icon",

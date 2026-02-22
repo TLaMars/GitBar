@@ -1,7 +1,6 @@
 import { useQueries } from "@tanstack/react-query";
 import { useContext } from "react";
 
-import { SHOW_ISSUES } from "constants/feature-flag";
 import { AccountsContext } from "contexts/accounts";
 import useMacState from "hooks/use-mac-state";
 import useSelector from "hooks/use-selector";
@@ -18,7 +17,7 @@ const useIssuesQueries = () => {
       queryKey: ["issues", account.id],
       queryFn: async () => account.getIssues(),
       refetchInterval: 900000, // 15 minutes
-      enabled: SHOW_ISSUES && showIssues && macState === MacState.UNLOCKED,
+      enabled: showIssues && macState === MacState.UNLOCKED,
     })),
   });
 };

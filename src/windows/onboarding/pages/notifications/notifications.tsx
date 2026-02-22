@@ -1,7 +1,7 @@
 import { useGuavaClient } from "@guava-analytics/react-native";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { View, Image, ImageSourcePropType } from "react-native";
+import { Image, ImageSourcePropType, View } from "react-native";
 import { useStyles } from "react-native-unistyles";
 import { useDispatch } from "react-redux";
 
@@ -57,7 +57,7 @@ const Notifications: React.FC = () => {
     client.trackEvent("onboarding_notifications_enabled", {
       value: accepted.toString(),
     });
-    navigate("ReadyToGo");
+    navigate("Issues");
   };
 
   const { image, heading, body } = PageContent[awaitingPermissions.toString()];

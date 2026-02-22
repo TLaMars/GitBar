@@ -13,7 +13,7 @@ abstract class BaseProvider implements Provider {
 
   auth: Record<string, string>;
 
-  protected client?: ApolloClient<object>;
+  protected client?: ApolloClient;
 
   protected profile?: Profile;
 
@@ -41,8 +41,13 @@ abstract class BaseProvider implements Provider {
     }
 
     try {
-      const result = await this.client.query<TData>({ query });
-      return result.data;
+      const { data } = await this.client.query<TData>({ query });
+
+      if (!data) {
+        throw new Error("No data returned from query");
+      }
+
+      return data;
     } catch (e: any) {
       const isTokenExpired =
         e?.networkError?.statusCode === 401 ||

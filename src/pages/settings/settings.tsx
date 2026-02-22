@@ -228,7 +228,7 @@ const Settings: React.FC = () => {
         <ListItemToggle
           label={t("Settings/Issues/Show")}
           border
-          value={showIssues}
+          value={showIssues ?? false}
           onToggle={(value) => {
             dispatch(setShowIssues(value));
             client.trackEvent("show_issues_changed", {

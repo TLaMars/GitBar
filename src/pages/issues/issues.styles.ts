@@ -7,6 +7,10 @@ const styles = createStyleSheet(({ spacing }) => ({
     flex: 1,
     flexDirection: "column",
   },
+  fallback: {
+    flex: 1,
+    paddingTop: spacing(2),
+  },
   list: {
     gap: spacing(2),
     paddingBottom: spacing(0.5),

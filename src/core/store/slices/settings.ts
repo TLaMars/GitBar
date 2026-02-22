@@ -3,14 +3,25 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { GroupPullRequestsBy } from "models/pull-request";
 
-const initialState = {
+type SettingsState = {
+  allowNotifications: boolean;
+  groupPRsBy: GroupPullRequestsBy;
+  hidePRsApprovedByMe: boolean;
+  hidePRsAfterTwoMonths: boolean;
+  hideDraftPRs: boolean;
+
+  showIssues: boolean | undefined;
+  hideIssuesAfterTwoMonths: boolean;
+};
+
+const initialState: SettingsState = {
   allowNotifications: false,
   groupPRsBy: GroupPullRequestsBy.REPO,
   hidePRsApprovedByMe: true,
   hidePRsAfterTwoMonths: true,
   hideDraftPRs: false,
 
-  showIssues: true,
+  showIssues: undefined,
   hideIssuesAfterTwoMonths: false,
 };
 

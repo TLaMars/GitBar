@@ -76,6 +76,9 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
         actionSheetOptions={actionSheetOptions}
         actionSheetCallback={actionSheetCallback}
         isDraft={item.isDraft}
+        updatedAt={item.updatedAt}
+        mergeableState={item.mergeableState}
+        ciStatus={item.ciStatus}
       />
     ),
     [actionSheetCallback, actionSheetOptions],

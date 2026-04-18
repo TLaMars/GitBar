@@ -7,6 +7,20 @@ export enum GroupPullRequestsBy {
   NONE = "none",
 }
 
+export enum MergeableState {
+  Mergeable = "Mergeable",
+  Conflicting = "Conflicting",
+  Unknown = "Unknown",
+}
+
+export enum CIStatus {
+  Success = "Success",
+  Failure = "Failure",
+  Running = "Running",
+  Pending = "Pending",
+  None = "None",
+}
+
 export type PullRequest = {
   id: string;
   title: string;
@@ -15,9 +29,12 @@ export type PullRequest = {
   repoName: string;
   reviewers: Attendee[];
   createdAt: string;
+  updatedAt: string;
   url: string;
   amountOfComments?: number;
   isDraft: boolean;
+  mergeableState: MergeableState;
+  ciStatus?: CIStatus;
   // Accent Color for the repository
   accentColor: ThemeColor;
   // User specific fields

@@ -55076,6 +55076,12 @@ export type GitLabPullRequestFragment = {
     draft: boolean;
     userNotesCount?: number | null;
     createdAt: any;
+    updatedAt: any;
+    mergeStatusEnum?: MergeStatus | null;
+    headPipeline?: {
+      __typename?: "Pipeline";
+      status: PipelineStatusEnum;
+    } | null;
     author?: {
       __typename?: "MergeRequestAuthor";
       name: string;
@@ -55145,6 +55151,18 @@ export type GetGitLabPullRequestsQuery = {
   } | null;
 };
 
+const GITLAB_PR_EXTRA_FIELDS = [
+  { kind: "Field", name: { kind: "Name", value: "updatedAt" } },
+  { kind: "Field", name: { kind: "Name", value: "mergeStatusEnum" } },
+  {
+    kind: "Field",
+    name: { kind: "Name", value: "headPipeline" },
+    selectionSet: {
+      kind: "SelectionSet",
+      selections: [{ kind: "Field", name: { kind: "Name", value: "status" } }],
+    },
+  },
+];
 export const GitLabPullRequestFragmentDoc = {
   kind: "Document",
   definitions: [
@@ -55277,6 +55295,7 @@ export const GitLabPullRequestFragmentDoc = {
                   name: { kind: "Name", value: "userNotesCount" },
                 },
                 { kind: "Field", name: { kind: "Name", value: "createdAt" } },
+                ...GITLAB_PR_EXTRA_FIELDS,
               ],
             },
           },
@@ -55509,6 +55528,7 @@ export const GetGitLabPullRequestsDocument = {
                   name: { kind: "Name", value: "userNotesCount" },
                 },
                 { kind: "Field", name: { kind: "Name", value: "createdAt" } },
+                ...GITLAB_PR_EXTRA_FIELDS,
               ],
             },
           },

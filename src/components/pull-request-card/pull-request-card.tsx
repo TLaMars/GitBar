@@ -16,9 +16,19 @@ import Icon from "components/icon/icon";
 import Spacer from "components/spacer/spacer";
 import useTranslation from "hooks/use-translation";
 import { Attendee as AttendeeType } from "models/attendee";
+import { CIStatus, MergeableState } from "models/pull-request";
 import { ThemeColor } from "models/theme";
+import formatRelativeTime from "utils/format-relative-time";
 
 import styles from "./pull-request-card.styles";
+
+const CI_DOT_COLOR: Record<CIStatus, ThemeColor> = {
+  [CIStatus.Success]: "accentGreen",
+  [CIStatus.Failure]: "accentRed",
+  [CIStatus.Running]: "accentBlue",
+  [CIStatus.Pending]: "accentBlue",
+  [CIStatus.None]: "textSecondary",
+};
 
 type Props = {
   id: string;
@@ -36,6 +46,9 @@ type Props = {
   ) => void;
   accentColor: ThemeColor;
   isDraft: boolean;
+  updatedAt: string;
+  mergeableState: MergeableState;
+  ciStatus?: CIStatus;
 };
 
 const PullRequestCard: React.FC<Props> = ({
@@ -50,6 +63,9 @@ const PullRequestCard: React.FC<Props> = ({
   id,
   repoName,
   isDraft,
+  updatedAt,
+  mergeableState,
+  ciStatus,
 }) => {
   const client = useGuavaClient();
   const { styles: $ } = useStyles(styles);
@@ -86,6 +102,11 @@ const PullRequestCard: React.FC<Props> = ({
     }
   };
 
+  const relativeTime = formatRelativeTime(updatedAt);
+  const isConflicting = mergeableState === MergeableState.Conflicting;
+  const ciDotColor =
+    ciStatus && ciStatus !== CIStatus.None ? CI_DOT_COLOR[ciStatus] : undefined;
+
   return (
     <View style={{ overflow: "hidden" }}>
       <TouchableOpacity
@@ -95,12 +116,23 @@ const PullRequestCard: React.FC<Props> = ({
       >
         <View style={[$.borderLine(accentColor), isDraft && $.draftLine]} />
         <View style={$.header}>
+          {ciDotColor && <View style={$.ciDot(ciDotColor)} />}
           {isDraft && <Icon name="EditPencil" size={20} />}
-          <Spacer mb={isDraft ? 1 : 0}>
+          <View style={$.titleWrapper}>
             <Heading numberOfLines={1} size="x2s">
               {title}
             </Heading>
-          </Spacer>
+          </View>
+          {isConflicting && (
+            <View style={$.conflictBadge}>
+              <Icon name="Cross" size={14} />
+            </View>
+          )}
+          {!!relativeTime && (
+            <Body size="xs" color="textSecondary">
+              {relativeTime}
+            </Body>
+          )}
         </View>
         <View style={$.footer}>
           <View style={$.left}>

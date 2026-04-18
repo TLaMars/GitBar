@@ -30,6 +30,24 @@ const styles = createStyleSheet(({ spacing, colors, borderRadiuses }) => ({
     gap: spacing(1),
     minHeight: spacing(5),
   },
+  titleWrapper: {
+    flex: 1,
+    flexShrink: 1,
+  },
+  ciDot: (ciColor: keyof typeof colors) => ({
+    width: spacing(2.5),
+    height: spacing(2.5),
+    borderRadius: borderRadiuses.round,
+    backgroundColor: colors[ciColor],
+  }),
+  conflictBadge: {
+    width: spacing(5),
+    height: spacing(5),
+    borderRadius: borderRadiuses.round,
+    backgroundColor: colors.backgroundCtaDanger,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   footer: {
     flexDirection: "row",
     flex: 1,

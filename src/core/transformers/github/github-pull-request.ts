@@ -2,14 +2,42 @@
 import { getFragmentData } from "gql/github/codegen";
 import {
   GetGithubPullRequestsQuery,
+  MergeableState as GitHubMergeableState,
   PullRequestReviewState,
+  StatusState,
 } from "gql/github/codegen/graphql";
 import FragmentGitHubPullRequest from "gql/github/fragments/pull-request";
 import Profile from "models/profile";
-import { PullRequest } from "models/pull-request";
+import { CIStatus, MergeableState, PullRequest } from "models/pull-request";
 import getColorForProject from "utils/get-project-color";
 
 import transformGitHubAttendees from "./github-combine-reviewers";
+
+const mapMergeable = (state: GitHubMergeableState): MergeableState => {
+  switch (state) {
+    case GitHubMergeableState.Conflicting:
+      return MergeableState.Conflicting;
+    case GitHubMergeableState.Mergeable:
+      return MergeableState.Mergeable;
+    default:
+      return MergeableState.Unknown;
+  }
+};
+
+const mapCIStatus = (state: StatusState | undefined): CIStatus | undefined => {
+  switch (state) {
+    case StatusState.Success:
+      return CIStatus.Success;
+    case StatusState.Failure:
+    case StatusState.Error:
+      return CIStatus.Failure;
+    case StatusState.Pending:
+    case StatusState.Expected:
+      return CIStatus.Running;
+    default:
+      return undefined;
+  }
+};
 
 const transformGithubPullRequest = (
   profile: Profile,
@@ -36,10 +64,13 @@ const transformGithubPullRequest = (
         repoName: pr.repository.nameWithOwner,
         reviewers: attendees,
         createdAt: pr.createdAt,
+        updatedAt: pr.updatedAt,
         url: pr.url,
         amountOfComments: pr.totalCommentsCount ?? 0,
         accentColor: getColorForProject(pr.repository.id),
         isDraft: pr.isDraft,
+        mergeableState: mapMergeable(pr.mergeable),
+        ciStatus: mapCIStatus(pr.statusCheckRollup?.state),
         isApprovedByMe:
           pr.reviews?.nodes?.some(
             (review) =>

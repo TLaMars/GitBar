@@ -12,6 +12,8 @@ type SettingsState = {
 
   showIssues: boolean | undefined;
   hideIssuesAfterTwoMonths: boolean;
+
+  refreshIntervalMinutes: number;
 };
 
 const initialState: SettingsState = {
@@ -23,6 +25,8 @@ const initialState: SettingsState = {
 
   showIssues: undefined,
   hideIssuesAfterTwoMonths: false,
+
+  refreshIntervalMinutes: 3,
 };
 
 const settings = createSlice({
@@ -51,6 +55,9 @@ const settings = createSlice({
     setHideIssuesAfterTwoMonths(state, action: PayloadAction<boolean>) {
       state.hideIssuesAfterTwoMonths = action.payload;
     },
+    setRefreshIntervalMinutes(state, action: PayloadAction<number>) {
+      state.refreshIntervalMinutes = action.payload;
+    },
   },
 });
 
@@ -62,6 +69,7 @@ export const {
   setHideDraftPRs,
   setShowIssues,
   setHideIssuesAfterTwoMonths,
+  setRefreshIntervalMinutes,
 } = settings.actions;
 
 export default settings.reducer;

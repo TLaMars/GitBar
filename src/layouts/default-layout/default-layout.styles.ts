@@ -1,6 +1,10 @@
 import { createStyleSheet } from "react-native-unistyles";
 
 const styles = createStyleSheet(({ spacing }) => ({
+  root: {
+    flex: 1,
+    flexDirection: "column",
+  },
   container: {
     flex: 1,
     flexDirection: "row",

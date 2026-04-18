@@ -50,6 +50,11 @@ const FragmentGitHubPullRequest = graphql(`
         }
       }
     }
+    updatedAt
+    mergeable
+    statusCheckRollup {
+      state
+    }
   }
 `);
 

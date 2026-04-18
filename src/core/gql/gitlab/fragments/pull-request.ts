@@ -34,6 +34,11 @@ const FragmentGitLabPullRequest = graphql(`
       }
       userNotesCount
       createdAt
+      updatedAt
+      mergeStatusEnum
+      headPipeline {
+        status
+      }
     }
   }
 `);

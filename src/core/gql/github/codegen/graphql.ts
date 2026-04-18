@@ -35933,9 +35933,15 @@ export type GitHubPullRequestFragment = {
   title: string;
   isDraft: boolean;
   createdAt: any;
+  updatedAt: any;
   url: any;
+  mergeable: MergeableState;
   reviewDecision?: PullRequestReviewDecision | null;
   totalCommentsCount?: number | null;
+  statusCheckRollup?: {
+    __typename?: "StatusCheckRollup";
+    state: StatusState;
+  } | null;
   author?:
     | { __typename?: "Bot"; avatarUrl: any; login: string }
     | { __typename?: "EnterpriseUserAccount"; avatarUrl: any; login: string }
@@ -36109,6 +36115,18 @@ export const GitHubIssueFragmentDoc = {
     },
   ],
 } as unknown as DocumentNode<GitHubIssueFragment, unknown>;
+const GITHUB_PR_EXTRA_FIELDS = [
+  { kind: "Field", name: { kind: "Name", value: "updatedAt" } },
+  { kind: "Field", name: { kind: "Name", value: "mergeable" } },
+  {
+    kind: "Field",
+    name: { kind: "Name", value: "statusCheckRollup" },
+    selectionSet: {
+      kind: "SelectionSet",
+      selections: [{ kind: "Field", name: { kind: "Name", value: "state" } }],
+    },
+  },
+];
 export const GitHubPullRequestFragmentDoc = {
   kind: "Document",
   definitions: [
@@ -36327,6 +36345,7 @@ export const GitHubPullRequestFragmentDoc = {
               ],
             },
           },
+          ...GITHUB_PR_EXTRA_FIELDS,
         ],
       },
     },
@@ -36782,6 +36801,7 @@ export const GetGithubPullRequestsDocument = {
               ],
             },
           },
+          ...GITHUB_PR_EXTRA_FIELDS,
         ],
       },
     },

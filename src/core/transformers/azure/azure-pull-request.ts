@@ -1,6 +1,6 @@
 import { Vote } from "models/attendee";
 import Profile from "models/profile";
-import { PullRequest } from "models/pull-request";
+import { MergeableState, PullRequest } from "models/pull-request";
 import {
   AzurePullRequest,
   ReviewerVote,
@@ -35,6 +35,20 @@ const transformAzurePullRequest = (
   const encodedProject = encodeURIComponent(data.repository.project.name);
   const encodedRepo = encodeURIComponent(data.repository.name);
 
+  const latestThreadUpdate = data.threads.reduce<string | undefined>(
+    (latest, thread) =>
+      !latest || thread.lastUpdatedDate > latest
+        ? thread.lastUpdatedDate
+        : latest,
+    undefined,
+  );
+
+  const mergeableState = ((): MergeableState => {
+    if (data.mergeStatus === "conflicts") return MergeableState.Conflicting;
+    if (data.mergeStatus === "succeeded") return MergeableState.Mergeable;
+    return MergeableState.Unknown;
+  })();
+
   return {
     id: data.pullRequestId.toString(),
     title: data.title,
@@ -54,6 +68,7 @@ const transformAzurePullRequest = (
       }))
       .sort((a, b) => (a.name > b.name ? 1 : -1)),
     createdAt: data.creationDate,
+    updatedAt: latestThreadUpdate ?? data.creationDate,
     url: match
       ? `${match[1]}${encodedProject}/_git/${encodedRepo}/pullrequest/${data.pullRequestId}`
       : "",
@@ -66,6 +81,8 @@ const transformAzurePullRequest = (
       0,
     ),
     isDraft: data.isDraft,
+    mergeableState,
+    ciStatus: undefined,
     accentColor: getColorForProject(data.repository.id),
     isApprovedByMe: data.reviewers.some(
       (reviewer) =>

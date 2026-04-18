@@ -33,6 +33,7 @@ import {
   selectHideIssuesAfterTwoMonths,
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
+  selectRefreshIntervalMinutes,
   selectShowIssues,
 } from "store/selectors/settings";
 import { removeOneAccount } from "store/slices/accounts";
@@ -44,6 +45,7 @@ import {
   setHideIssuesAfterTwoMonths,
   setHidePRsAfterTwoMonths,
   setHidePRsApprovedByMe,
+  setRefreshIntervalMinutes,
   setShowIssues,
 } from "store/slices/settings";
 import { setIsOnboarded } from "store/slices/user";
@@ -64,6 +66,7 @@ const Settings: React.FC = () => {
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
   const allowPushNotifications = useSelector(selectAllowNotifications);
   const hideDraftPRs = useSelector(selectHideDraftPRs);
+  const refreshIntervalMinutes = useSelector(selectRefreshIntervalMinutes);
   const [notificationPermissions, setNotificationPermissions] =
     useState<NotificationPermission>();
   const [launchAtLogin, setLaunchAtLogin] = useState<boolean>();
@@ -249,6 +252,25 @@ const Settings: React.FC = () => {
         <Spacer mt={4} />
         <Heading size="x2s">{t("Settings/SectionHeading/App")}</Heading>
         <Spacer mt={1} />
+        <ListItemPicker
+          label={t("Settings/Application/RefreshInterval")}
+          selectedValue={String(refreshIntervalMinutes)}
+          onValueChange={(value) => {
+            const minutes = Number(value);
+            dispatch(setRefreshIntervalMinutes(minutes));
+            client.trackEvent("refresh_interval_changed", { value });
+          }}
+          pickerItems={[
+            { label: t("Settings/RefreshInterval/OneMinute"), value: "1" },
+            { label: t("Settings/RefreshInterval/ThreeMinutes"), value: "3" },
+            { label: t("Settings/RefreshInterval/FiveMinutes"), value: "5" },
+            {
+              label: t("Settings/RefreshInterval/FifteenMinutes"),
+              value: "15",
+            },
+            { label: t("Settings/RefreshInterval/ThirtyMinutes"), value: "30" },
+          ]}
+        />
         <ListItemToggle
           border
           label={t("Settings/Application/Notifications")}

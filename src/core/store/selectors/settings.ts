@@ -21,3 +21,6 @@ export const selectShowIssues = (state: RootState) => state.settings.showIssues;
 
 export const selectHideIssuesAfterTwoMonths = (state: RootState) =>
   state.settings.hideIssuesAfterTwoMonths;
+
+export const selectRefreshIntervalMinutes = (state: RootState) =>
+  state.settings.refreshIntervalMinutes;

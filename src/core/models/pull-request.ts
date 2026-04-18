@@ -26,6 +26,14 @@ export type PullRequest = {
   isCommentedByMe: boolean;
   isAuthoredByMe: boolean;
   isAssignedToMe: boolean;
+  // True when the provider's approval policy is satisfied (e.g. required
+  // review count reached on GitHub, all approval rules met on GitLab,
+  // minimum-approvers policy approved on Azure).
+  isFullyApproved: boolean;
+  // True when the branch has unresolved merge conflicts. GitHub can also
+  // return Unknown (still computing) — we treat that as false so we never
+  // flag a false positive.
+  hasConflicts: boolean;
   // CI / pipeline status. Undefined when the provider has not yet been
   // wired up, or when there is no data (transformer decides between
   // undefined and CiState.None).

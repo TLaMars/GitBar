@@ -22,6 +22,11 @@ export const AZURE_BUILD_POLICY_TYPE_ID =
   "0609b952-1397-4640-95ec-e00a01b2c241";
 export const AZURE_STATUS_POLICY_TYPE_ID =
   "cbdc66da-9728-4af8-aada-9a5a32e4a226";
+// Minimum number of reviewers policy — the approval gate that maps most
+// directly to "approval policy passed". Same GUID across all Azure DevOps
+// Services tenants and Azure DevOps Server instances.
+export const AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID =
+  "fa4e907d-c16b-452d-8106-7efa0cb84489";
 
 export type PolicyEvaluation = {
   evaluationId: string;

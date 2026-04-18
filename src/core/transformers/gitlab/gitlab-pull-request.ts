@@ -7,6 +7,7 @@ import FragmentGitLabPullRequest from "gql/gitlab/fragments/pull-request";
 import { Attendee, Vote } from "models/attendee";
 import Profile from "models/profile";
 import { PullRequest } from "models/pull-request";
+import cleanPrTitle from "utils/clean-pr-title";
 import getColorForProject from "utils/get-project-color";
 
 import transformGitlabCiStatus from "./gitlab-ci-status";
@@ -37,6 +38,7 @@ const transformGitLabPullRequest = ({
     .flatMap((fragment) =>
       getFragmentData(FragmentGitLabPullRequest, [fragment]),
     )
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     .flatMap((fragment) => fragment.nodes ?? []);
 
   return pullRequests.reduce<PullRequest[]>((acc, pr) => {
@@ -44,7 +46,7 @@ const transformGitLabPullRequest = ({
 
     const pullRequest: PullRequest = {
       id: pr.id,
-      title: pr.title,
+      title: cleanPrTitle(pr.title),
       author: {
         name: pr.author?.name ?? "",
         avatarUrl: pr.author?.avatarUrl?.includes("https")
@@ -82,6 +84,8 @@ const transformGitLabPullRequest = ({
           (reviewer) => reviewer?.username === profile.userName,
         ) ?? false,
       isAuthoredByMe: pr.author?.username === profile.userName,
+      isFullyApproved: pr.approved,
+      hasConflicts: pr.conflicts,
       ci: transformGitlabCiStatus(pr.headPipeline, domain),
     };
 

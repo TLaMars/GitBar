@@ -76,6 +76,8 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
         actionSheetOptions={actionSheetOptions}
         actionSheetCallback={actionSheetCallback}
         isDraft={item.isDraft}
+        isFullyApproved={item.isFullyApproved}
+        hasConflicts={item.hasConflicts}
         ci={item.ci}
       />
     ),

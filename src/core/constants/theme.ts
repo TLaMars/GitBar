@@ -195,6 +195,8 @@ export const THEME_COLORS_DARK = {
   backgroundCiFailure: "rgba(240, 80, 105, 0.18)",
   backgroundCiPending: "rgba(175, 223, 243, 0.18)",
   backgroundCiCancelled: "rgba(206, 216, 223, 0.15)",
+  // Warning tint — used for non-blocking merge issues like conflicts.
+  backgroundWarning: "rgba(252, 131, 112, 0.18)",
   // Accent Colors (used for profile pictures and color coding PRs per project)
   accentRed: COLORS.red100,
   accentOrange: COLORS.orange100,

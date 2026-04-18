@@ -2,11 +2,14 @@
 import { getFragmentData } from "gql/github/codegen";
 import {
   GetGithubPullRequestsQuery,
+  MergeableState,
+  PullRequestReviewDecision,
   PullRequestReviewState,
 } from "gql/github/codegen/graphql";
 import FragmentGitHubPullRequest from "gql/github/fragments/pull-request";
 import Profile from "models/profile";
 import { PullRequest } from "models/pull-request";
+import cleanPrTitle from "utils/clean-pr-title";
 import getColorForProject from "utils/get-project-color";
 
 import transformGithubCiStatus from "./github-ci-status";
@@ -30,7 +33,7 @@ const transformGithubPullRequest = (
 
       const pullRequest: PullRequest = {
         id: pr.id,
-        title: pr.title,
+        title: cleanPrTitle(pr.title),
         author: {
           name: pr.author?.login ?? "",
           avatarUrl: pr.author?.avatarUrl ?? "",
@@ -61,6 +64,9 @@ const transformGithubPullRequest = (
               assignee.requestedReviewer.login === profile.userName,
           ) ?? false,
         isAuthoredByMe: pr.author?.login === profile.userName,
+        isFullyApproved:
+          pr.reviewDecision === PullRequestReviewDecision.Approved,
+        hasConflicts: pr.mergeable === MergeableState.Conflicting,
         ci: transformGithubCiStatus(rollup, pr.url),
       };
 

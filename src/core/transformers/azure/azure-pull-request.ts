@@ -2,10 +2,15 @@ import { Vote } from "models/attendee";
 import Profile from "models/profile";
 import { PullRequest } from "models/pull-request";
 import {
+  AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID,
+  PolicyEvaluationStatus,
+} from "services/api/azure/models/policy-evaluations-response";
+import {
   AzurePullRequest,
   ReviewerVote,
 } from "services/api/azure/models/pull-requests-response";
 import { CommentType } from "services/api/azure/models/thread-response";
+import cleanPrTitle from "utils/clean-pr-title";
 import getColorForProject from "utils/get-project-color";
 
 import transformAzureCiStatus from "./azure-ci-status";
@@ -42,7 +47,7 @@ const transformAzurePullRequest = (
 
   return {
     id: data.pullRequestId.toString(),
-    title: data.title,
+    title: cleanPrTitle(data.title),
     author: {
       name: data.createdBy.displayName,
       // TODO: Add avatarUrl
@@ -84,6 +89,23 @@ const transformAzurePullRequest = (
         (comment) => comment.author.displayName === profile.name,
       ),
     ),
+    hasConflicts: data.mergeStatus === "conflicts",
+    isFullyApproved: (() => {
+      const minApproversEval = data.policyEvaluations?.find(
+        (e) =>
+          e.configuration.type.id === AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID,
+      );
+      if (minApproversEval) {
+        return minApproversEval.status === PolicyEvaluationStatus.Approved;
+      }
+      // Repo has no minimum-approvers policy — fall back to at least one
+      // approved vote as a best-effort signal.
+      return data.reviewers.some(
+        (r) =>
+          r.vote === ReviewerVote.Approved ||
+          r.vote === ReviewerVote.ApprovedWithSuggestions,
+      );
+    })(),
     ci: transformAzureCiStatus(data.policyEvaluations, prUrl),
   };
 };

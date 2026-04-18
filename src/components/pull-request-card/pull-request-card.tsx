@@ -15,6 +15,7 @@ import CiStatusIndicator from "components/ci-status-indicator/ci-status-indicato
 import Heading from "components/heading/heading";
 import Icon from "components/icon/icon";
 import Spacer from "components/spacer/spacer";
+import StatusBadge from "components/status-badge/status-badge";
 import useTranslation from "hooks/use-translation";
 import { Attendee as AttendeeType } from "models/attendee";
 import { CiStatus } from "models/ci-status";
@@ -38,6 +39,8 @@ type Props = {
   ) => void;
   accentColor: ThemeColor;
   isDraft: boolean;
+  isFullyApproved: boolean;
+  hasConflicts: boolean;
   ci?: CiStatus;
 };
 
@@ -53,6 +56,8 @@ const PullRequestCard: React.FC<Props> = ({
   id,
   repoName,
   isDraft,
+  isFullyApproved,
+  hasConflicts,
   ci,
 }) => {
   const client = useGuavaClient();
@@ -99,30 +104,51 @@ const PullRequestCard: React.FC<Props> = ({
       >
         <View style={[$.borderLine(accentColor), isDraft && $.draftLine]} />
         <View style={$.header}>
-          {isDraft && <Icon name="EditPencil" size={20} />}
           <View style={$.title}>
-            <Spacer mb={isDraft ? 1 : 0}>
-              <Heading numberOfLines={1} size="x2s">
-                {title}
-              </Heading>
-            </Spacer>
+            <Heading numberOfLines={1} size="x2s">
+              {title}
+            </Heading>
           </View>
+          {/* State slot: draft takes precedence over approved — they're
+              mutually exclusive in practice, so never show both. */}
+          {isDraft && (
+            <StatusBadge
+              tone="textSecondary"
+              backgroundTone="backgroundCiCancelled"
+              iconName="EditPencil"
+              label={t("PullRequestCard/Status/Draft")}
+            />
+          )}
+          {!isDraft && isFullyApproved && (
+            <StatusBadge
+              tone="accentGreen"
+              backgroundTone="backgroundCiSuccess"
+              iconName="Check"
+              label={t("PullRequestCard/Status/Approved")}
+            />
+          )}
+          {hasConflicts && (
+            <StatusBadge
+              tone="accentOrange"
+              backgroundTone="backgroundWarning"
+              iconName="AlertCircle"
+              label={t("PullRequestCard/Status/Conflicts")}
+            />
+          )}
           <CiStatusIndicator ci={ci} />
         </View>
         <View style={$.footer}>
           <View style={$.left}>
-            <Body size="s">{t("PullRequestCard/Body/Author")}</Body>
-            <Spacer ml={1.5} />
             <Attendee
               name={author.name}
               size={24}
               avatarUrl={author.avatarUrl}
             />
-            <Spacer ml={3} />
             {reviewers.length > 0 && (
               <>
-                <Body size="s">{t("PullRequestCard/Body/Reviewers")}</Body>
-                <Spacer ml={1.5} />
+                <Spacer ml={2} />
+                <Icon name="ChevronRight" size={14} color="textSecondary" />
+                <Spacer ml={2} />
                 <AttendeeList attendees={reviewers} profileIconSize={24} />
               </>
             )}

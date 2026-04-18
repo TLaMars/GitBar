@@ -37066,6 +37066,7 @@ export type GitHubPullRequestFragment = {
   createdAt: any;
   url: any;
   reviewDecision?: PullRequestReviewDecision | null;
+  mergeable: MergeableState;
   totalCommentsCount?: number | null;
   author?:
     | { __typename?: "Bot"; avatarUrl: any; login: string }
@@ -37380,6 +37381,7 @@ export const GitHubPullRequestFragmentDoc = {
             },
           },
           { kind: "Field", name: { kind: "Name", value: "reviewDecision" } },
+          { kind: "Field", name: { kind: "Name", value: "mergeable" } },
           {
             kind: "Field",
             name: { kind: "Name", value: "totalCommentsCount" },
@@ -37885,6 +37887,7 @@ export const GetGithubPullRequestsDocument = {
             },
           },
           { kind: "Field", name: { kind: "Name", value: "reviewDecision" } },
+          { kind: "Field", name: { kind: "Name", value: "mergeable" } },
           {
             kind: "Field",
             name: { kind: "Name", value: "totalCommentsCount" },

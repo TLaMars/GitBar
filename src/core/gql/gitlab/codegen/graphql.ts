@@ -74271,6 +74271,8 @@ export type GitLabPullRequestFragment = {
     id: string;
     webUrl?: string | null;
     draft: boolean;
+    approved: boolean;
+    conflicts: boolean;
     userNotesCount?: number | null;
     createdAt: any;
     author?: {
@@ -74477,6 +74479,8 @@ export const GitLabPullRequestFragmentDoc = {
                     ],
                   },
                 },
+                { kind: "Field", name: { kind: "Name", value: "approved" } },
+                { kind: "Field", name: { kind: "Name", value: "conflicts" } },
                 {
                   kind: "Field",
                   name: { kind: "Name", value: "userNotesCount" },
@@ -74735,6 +74739,8 @@ export const GetGitLabPullRequestsDocument = {
                     ],
                   },
                 },
+                { kind: "Field", name: { kind: "Name", value: "approved" } },
+                { kind: "Field", name: { kind: "Name", value: "conflicts" } },
                 {
                   kind: "Field",
                   name: { kind: "Name", value: "userNotesCount" },

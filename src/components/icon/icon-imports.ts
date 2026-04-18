@@ -1,3 +1,4 @@
+import AlertCircle from "assets/svgs/alert-circle.svg";
 import AzureDevOps from "assets/svgs/azure-devops.svg";
 import Ban from "assets/svgs/ban.svg";
 import Check from "assets/svgs/check.svg";
@@ -19,6 +20,7 @@ import UserCheck from "assets/svgs/user-check.svg";
 
 export default {
   AzureDevOps,
+  AlertCircle,
   Ban,
   Check,
   ChevronRight,

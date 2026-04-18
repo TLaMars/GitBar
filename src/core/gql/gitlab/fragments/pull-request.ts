@@ -32,6 +32,8 @@ const FragmentGitLabPullRequest = graphql(`
         name
         id
       }
+      approved
+      conflicts
       userNotesCount
       createdAt
       headPipeline {

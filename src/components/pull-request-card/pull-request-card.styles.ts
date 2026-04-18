@@ -30,6 +30,10 @@ const styles = createStyleSheet(({ spacing, colors, borderRadiuses }) => ({
     gap: spacing(1),
     minHeight: spacing(5),
   },
+  title: {
+    flex: 1,
+    minWidth: 0,
+  },
   footer: {
     flexDirection: "row",
     flex: 1,

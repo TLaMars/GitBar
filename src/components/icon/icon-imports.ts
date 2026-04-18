@@ -1,7 +1,10 @@
 import AzureDevOps from "assets/svgs/azure-devops.svg";
+import Ban from "assets/svgs/ban.svg";
+import Check from "assets/svgs/check.svg";
 import ChevronRight from "assets/svgs/chevron-right.svg";
 import Clock from "assets/svgs/clock.svg";
 import Comment from "assets/svgs/comment.svg";
+import CrossBold from "assets/svgs/cross-bold.svg";
 import Cross from "assets/svgs/cross.svg";
 import EditPencil from "assets/svgs/edit-pencil.svg";
 import GitHub from "assets/svgs/github.svg";
@@ -16,10 +19,13 @@ import UserCheck from "assets/svgs/user-check.svg";
 
 export default {
   AzureDevOps,
+  Ban,
+  Check,
   ChevronRight,
   Clock,
   Comment,
   Cross,
+  CrossBold,
   EditPencil,
   GitHub,
   GitLab,

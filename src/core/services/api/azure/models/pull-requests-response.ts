@@ -1,3 +1,4 @@
+import { PolicyEvaluation } from "./policy-evaluations-response";
 import { Thread } from "./thread-response";
 
 export type PullRequestsResponse = {
@@ -33,8 +34,9 @@ export type AzurePullRequest = {
   url: string;
   supportsIterations: boolean;
   isDraft: boolean;
-  // Custom added field during transformation
+  // Custom added fields during transformation
   threads: Thread[];
+  policyEvaluations?: PolicyEvaluation[];
 };
 
 type Repository = {

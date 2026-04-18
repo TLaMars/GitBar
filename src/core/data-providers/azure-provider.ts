@@ -88,6 +88,42 @@ class AzureProvider extends BaseProvider {
     return data.value;
   }
 
+  private async policyEvaluations(projectId: string, pullRequestId: string) {
+    try {
+      const { data } = await azureApi.get(
+        "/:organization/:projectId/_apis/policy/evaluations",
+        azureConfig(
+          {
+            organization: this.auth.organization,
+            projectId,
+            // Sent as a query param because no `:artifactId` placeholder
+            // appears in the path — see utils/buildUrl behaviour.
+            artifactId: `vstfs:///CodeReview/CodeReviewId/${projectId}/${pullRequestId}`,
+          },
+          this.auth.token,
+        ),
+      );
+      return data.value;
+    } catch {
+      // Policy evaluations are best-effort too — a repo without any
+      // configured branch policies returns an empty list anyway.
+      return [];
+    }
+  }
+
+  /**
+   * Azure enrichment cost: threads + statuses + policy evaluations per PR
+   * adds up quickly (3N extra round-trips). Most of those PRs aren't
+   * interesting to the signed-in user anyway, so we only enrich the ones
+   * they are directly involved in — authored or explicitly requested as
+   * reviewer. Every other PR comes back with empty arrays so the
+   * transformer still yields a valid card (just no comments / no CI badge).
+   */
+  #isRelevantToUser(pr: AzurePullRequest, profileName: string): boolean {
+    if (pr.createdBy.displayName === profileName) return true;
+    return pr.reviewers.some((r) => r.displayName === profileName);
+  }
+
   async getPullRequests() {
     const profile = await this.getProfile();
     const projects = await this.projects();
@@ -108,18 +144,28 @@ class AzureProvider extends BaseProvider {
             .catch((error) => this.#transformApiError(error));
 
           const data = pullRequestsData.value;
-          const pullRequestsWithComments = await Promise.all(
-            data.map(async (pr) => ({
-              ...pr,
-              threads: await this.threads(
-                project.id,
-                pr.repository.id,
-                pr.pullRequestId.toString(),
-              ),
-            })),
+          const pullRequestsWithExtras = await Promise.all(
+            data.map(async (pr) => {
+              if (!this.#isRelevantToUser(pr, profile.name)) {
+                return {
+                  ...pr,
+                  threads: [],
+                  policyEvaluations: [],
+                };
+              }
+              const [threads, policyEvaluations] = await Promise.all([
+                this.threads(
+                  project.id,
+                  pr.repository.id,
+                  pr.pullRequestId.toString(),
+                ),
+                this.policyEvaluations(project.id, pr.pullRequestId.toString()),
+              ]);
+              return { ...pr, threads, policyEvaluations };
+            }),
           );
 
-          return pullRequestsWithComments;
+          return pullRequestsWithExtras;
         }),
       )
     ).flat();

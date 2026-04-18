@@ -11,11 +11,13 @@ import { useStyles } from "react-native-unistyles";
 import Attendee from "components/attendee/attendee";
 import AttendeeList from "components/attendee-list/attendee-list";
 import Body from "components/body/body";
+import CiStatusIndicator from "components/ci-status-indicator/ci-status-indicator";
 import Heading from "components/heading/heading";
 import Icon from "components/icon/icon";
 import Spacer from "components/spacer/spacer";
 import useTranslation from "hooks/use-translation";
 import { Attendee as AttendeeType } from "models/attendee";
+import { CiStatus } from "models/ci-status";
 import { ThemeColor } from "models/theme";
 
 import styles from "./pull-request-card.styles";
@@ -36,6 +38,7 @@ type Props = {
   ) => void;
   accentColor: ThemeColor;
   isDraft: boolean;
+  ci?: CiStatus;
 };
 
 const PullRequestCard: React.FC<Props> = ({
@@ -50,6 +53,7 @@ const PullRequestCard: React.FC<Props> = ({
   id,
   repoName,
   isDraft,
+  ci,
 }) => {
   const client = useGuavaClient();
   const { styles: $ } = useStyles(styles);
@@ -96,11 +100,14 @@ const PullRequestCard: React.FC<Props> = ({
         <View style={[$.borderLine(accentColor), isDraft && $.draftLine]} />
         <View style={$.header}>
           {isDraft && <Icon name="EditPencil" size={20} />}
-          <Spacer mb={isDraft ? 1 : 0}>
-            <Heading numberOfLines={1} size="x2s">
-              {title}
-            </Heading>
-          </Spacer>
+          <View style={$.title}>
+            <Spacer mb={isDraft ? 1 : 0}>
+              <Heading numberOfLines={1} size="x2s">
+                {title}
+              </Heading>
+            </Spacer>
+          </View>
+          <CiStatusIndicator ci={ci} />
         </View>
         <View style={$.footer}>
           <View style={$.left}>

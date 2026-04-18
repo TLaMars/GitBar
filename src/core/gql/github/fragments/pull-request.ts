@@ -33,6 +33,15 @@ const FragmentGitHubPullRequest = graphql(`
     }
     reviewDecision
     totalCommentsCount
+    commits(last: 1) {
+      nodes {
+        commit {
+          statusCheckRollup {
+            state
+          }
+        }
+      }
+    }
     reviews(first: 100, states: APPROVED) {
       totalCount
       nodes {

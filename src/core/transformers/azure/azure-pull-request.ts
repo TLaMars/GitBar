@@ -8,6 +8,8 @@ import {
 import { CommentType } from "services/api/azure/models/thread-response";
 import getColorForProject from "utils/get-project-color";
 
+import transformAzureCiStatus from "./azure-ci-status";
+
 const getVote = (vote: ReviewerVote): Vote => {
   switch (vote) {
     case ReviewerVote.Approved:
@@ -34,6 +36,9 @@ const transformAzurePullRequest = (
   );
   const encodedProject = encodeURIComponent(data.repository.project.name);
   const encodedRepo = encodeURIComponent(data.repository.name);
+  const prUrl = match
+    ? `${match[1]}${encodedProject}/_git/${encodedRepo}/pullrequest/${data.pullRequestId}`
+    : "";
 
   return {
     id: data.pullRequestId.toString(),
@@ -54,9 +59,7 @@ const transformAzurePullRequest = (
       }))
       .sort((a, b) => (a.name > b.name ? 1 : -1)),
     createdAt: data.creationDate,
-    url: match
-      ? `${match[1]}${encodedProject}/_git/${encodedRepo}/pullrequest/${data.pullRequestId}`
-      : "",
+    url: prUrl,
     amountOfComments: data.threads.reduce(
       (acc, thread) =>
         acc +
@@ -81,6 +84,7 @@ const transformAzurePullRequest = (
         (comment) => comment.author.displayName === profile.name,
       ),
     ),
+    ci: transformAzureCiStatus(data.policyEvaluations, prUrl),
   };
 };
 

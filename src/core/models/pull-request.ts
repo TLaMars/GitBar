@@ -1,4 +1,5 @@
 import { Attendee } from "./attendee";
+import { CiStatus } from "./ci-status";
 import { ThemeColor } from "./theme";
 
 export enum GroupPullRequestsBy {
@@ -25,4 +26,8 @@ export type PullRequest = {
   isCommentedByMe: boolean;
   isAuthoredByMe: boolean;
   isAssignedToMe: boolean;
+  // CI / pipeline status. Undefined when the provider has not yet been
+  // wired up, or when there is no data (transformer decides between
+  // undefined and CiState.None).
+  ci?: CiStatus;
 };

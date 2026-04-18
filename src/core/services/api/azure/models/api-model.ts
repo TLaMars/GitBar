@@ -1,6 +1,7 @@
 import DOMAINS from "constants/domains";
 import { Config } from "services/api/api-wrapper";
 
+import { PolicyEvaluationsResponse } from "./policy-evaluations-response";
 import { ProfileResponse } from "./profile-response";
 import { ProjectsResponse } from "./projects-response";
 import { PullRequestsResponse } from "./pull-requests-response";
@@ -10,6 +11,7 @@ type AzureGetApiRequest = {
   "/:organization/_apis/projects": ProjectsResponse;
   "/:organization/:projectId/_apis/git/pullrequests": PullRequestsResponse;
   "/:organization/:projectId/_apis/git/repositories/:repositoryId/pullrequests/:pullRequesId/threads": ThreadResponse;
+  "/:organization/:projectId/_apis/policy/evaluations": PolicyEvaluationsResponse;
   "/:organization/_apis/profile/profiles/me": ProfileResponse;
 };
 
@@ -18,6 +20,7 @@ export const azureApiEndpoints: Record<keyof AzureGetApiRequest, string> = {
   "/:organization/:projectId/_apis/git/pullrequests": DOMAINS.devAzure,
   "/:organization/:projectId/_apis/git/repositories/:repositoryId/pullrequests/:pullRequesId/threads":
     DOMAINS.devAzure,
+  "/:organization/:projectId/_apis/policy/evaluations": DOMAINS.devAzure,
   "/:organization/_apis/profile/profiles/me": DOMAINS.vsspsDevAzure,
 };
 

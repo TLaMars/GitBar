@@ -9,6 +9,7 @@ import Profile from "models/profile";
 import { PullRequest } from "models/pull-request";
 import getColorForProject from "utils/get-project-color";
 
+import transformGithubCiStatus from "./github-ci-status";
 import transformGitHubAttendees from "./github-combine-reviewers";
 
 const transformGithubPullRequest = (
@@ -24,6 +25,8 @@ const transformGithubPullRequest = (
       const pr = getFragmentData(FragmentGitHubPullRequest, fragment);
 
       const attendees = transformGitHubAttendees(pr.reviewRequests, pr.reviews);
+
+      const rollup = pr.commits.nodes?.[0]?.commit.statusCheckRollup;
 
       const pullRequest: PullRequest = {
         id: pr.id,
@@ -58,6 +61,7 @@ const transformGithubPullRequest = (
               assignee.requestedReviewer.login === profile.userName,
           ) ?? false,
         isAuthoredByMe: pr.author?.login === profile.userName,
+        ci: transformGithubCiStatus(rollup, pr.url),
       };
 
       return [...acc, pullRequest];

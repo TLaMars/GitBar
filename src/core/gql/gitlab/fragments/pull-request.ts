@@ -34,6 +34,12 @@ const FragmentGitLabPullRequest = graphql(`
       }
       userNotesCount
       createdAt
+      headPipeline {
+        status
+        detailedStatus {
+          detailsPath
+        }
+      }
     }
   }
 `);

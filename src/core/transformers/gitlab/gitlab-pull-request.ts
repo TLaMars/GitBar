@@ -9,6 +9,8 @@ import Profile from "models/profile";
 import { PullRequest } from "models/pull-request";
 import getColorForProject from "utils/get-project-color";
 
+import transformGitlabCiStatus from "./gitlab-ci-status";
+
 const getVote = (vote: MergeRequestReviewState | undefined | null): Vote => {
   switch (vote) {
     case MergeRequestReviewState.Approved:
@@ -80,6 +82,7 @@ const transformGitLabPullRequest = ({
           (reviewer) => reviewer?.username === profile.userName,
         ) ?? false,
       isAuthoredByMe: pr.author?.username === profile.userName,
+      ci: transformGitlabCiStatus(pr.headPipeline, domain),
     };
 
     return [...acc, pullRequest];

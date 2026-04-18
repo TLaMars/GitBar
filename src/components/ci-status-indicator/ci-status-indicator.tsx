@@ -29,6 +29,7 @@ type A11yKey =
 
 type Presentation = {
   tone: ThemeColor;
+  backgroundTone: ThemeColor;
   iconName: IconName;
   tooltipKey: TooltipKey;
   a11yKey: A11yKey;
@@ -37,24 +38,28 @@ type Presentation = {
 const PRESENTATIONS: Record<Exclude<CiState, CiState.None>, Presentation> = {
   [CiState.Success]: {
     tone: "accentGreen",
+    backgroundTone: "backgroundCiSuccess",
     iconName: "Check",
     tooltipKey: "PullRequestCard/CI/TooltipPassing",
     a11yKey: "PullRequestCard/CI/Passing",
   },
   [CiState.Failure]: {
     tone: "accentRed",
+    backgroundTone: "backgroundCiFailure",
     iconName: "CrossBold",
     tooltipKey: "PullRequestCard/CI/TooltipFailing",
     a11yKey: "PullRequestCard/CI/Failing",
   },
   [CiState.Pending]: {
     tone: "accentLightBlue",
+    backgroundTone: "backgroundCiPending",
     iconName: "Clock",
     tooltipKey: "PullRequestCard/CI/TooltipRunning",
     a11yKey: "PullRequestCard/CI/Running",
   },
   [CiState.Cancelled]: {
     tone: "textSecondary",
+    backgroundTone: "backgroundCiCancelled",
     iconName: "Ban",
     tooltipKey: "PullRequestCard/CI/TooltipCancelled",
     a11yKey: "PullRequestCard/CI/Cancelled",
@@ -77,7 +82,7 @@ const CiStatusIndicator: React.FC<Props> = ({ ci }) => {
 
   const content = (
     <View
-      style={$.badge(presentation.tone)}
+      style={$.badge(presentation.tone, presentation.backgroundTone)}
       accessibilityLabel={a11y}
       accessibilityHint={tooltip}
       tooltip={tooltip}

@@ -190,6 +190,11 @@ export const THEME_COLORS_DARK = {
   textLink: COLORS.blue600,
   textSecondary: COLORS.lightGray300,
   textDanger: COLORS.red100,
+  // CI status badge background (accent color at low alpha)
+  backgroundCiSuccess: "rgba(180, 224, 128, 0.18)",
+  backgroundCiFailure: "rgba(240, 80, 105, 0.18)",
+  backgroundCiPending: "rgba(175, 223, 243, 0.18)",
+  backgroundCiCancelled: "rgba(206, 216, 223, 0.15)",
   // Accent Colors (used for profile pictures and color coding PRs per project)
   accentRed: COLORS.red100,
   accentOrange: COLORS.orange100,

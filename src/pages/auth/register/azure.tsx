@@ -124,8 +124,7 @@ const RegisterAzure: React.FC = () => {
             <Spacer mt={0.5} />
             <Body size="x2s" textAlign="left" color="textSecondary">
               <FormattedMessage
-                id="register.organization"
-                defaultMessage={t("RegisterAzure/Helper/OrganizationExample")}
+                id="RegisterAzure/Helper/OrganizationExample"
                 values={{
                   organization: (
                     <Body size="x2s" bold>
@@ -155,8 +154,7 @@ const RegisterAzure: React.FC = () => {
             <Spacer mt={0.5} />
             <Body size="x2s" textAlign="left" color="textSecondary">
               <FormattedMessage
-                id="register.token"
-                defaultMessage={t("Register/Helper/TokenDescription")}
+                id="Register/Helper/TokenDescription"
                 values={{
                   token: (
                     <Body

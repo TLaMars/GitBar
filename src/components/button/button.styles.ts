@@ -13,7 +13,7 @@ const styles = createStyleSheet(
       alignItems: "center",
       justifyContent: "center",
       flexDirection: "row",
-      borderRadius: borderRadiuses.button,
+      borderRadius: borderRadiuses.round,
       variants: {
         size: {
           xs: {

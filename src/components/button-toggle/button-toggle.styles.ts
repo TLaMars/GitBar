@@ -3,9 +3,10 @@ import { createStyleSheet } from "react-native-unistyles";
 const styles = createStyleSheet(({ spacing, colors, borderRadiuses }) => ({
   container: {
     flexDirection: "row",
-    padding: spacing(1),
+    padding: spacing(0.25),
     backgroundColor: colors.backgroundSurface,
-    borderRadius: borderRadiuses.sidebar,
+    borderRadius: borderRadiuses.round,
+    borderCurve: "continuous",
   },
   button: {
     flex: 1,
@@ -14,8 +15,9 @@ const styles = createStyleSheet(({ spacing, colors, borderRadiuses }) => ({
   },
   activeButton: {
     backgroundColor: colors.backgroundCtaSecondary,
-    paddingVertical: spacing(0.5),
-    borderRadius: borderRadiuses.item,
+    paddingVertical: spacing(1),
+    borderRadius: borderRadiuses.round,
+    borderCurve: "continuous",
   },
 }));
 

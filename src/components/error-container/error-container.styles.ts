@@ -4,7 +4,7 @@ const styles = createStyleSheet(({ spacing, colors, borderRadiuses }) => ({
   errorContainer: {
     padding: spacing(2),
     paddingTop: spacing(1),
-    borderRadius: borderRadiuses.input,
+    borderRadius: borderRadiuses.card,
     backgroundColor: colors.backgroundCtaDanger,
   },
 }));

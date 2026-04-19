@@ -61,20 +61,20 @@ const Toast: React.FC<Props> = ({
               </Spacer>
             )}
             <View style={$.message}>
-              <Body color="textOnCta">{message}</Body>
+              <Body color="textOnCta" size="s">
+                {message}
+              </Body>
             </View>
             {(closeButton || !duration) && (
-              <Spacer mt={0.5} ml={2}>
-                <Pressable
-                  hitSlop={10}
-                  accessibilityRole="button"
-                  onPress={() => {
-                    onClose();
-                  }}
-                >
-                  <Icon name="Cross" color="iconOnCta" size={20} />
-                </Pressable>
-              </Spacer>
+              <Pressable
+                hitSlop={10}
+                accessibilityRole="button"
+                onPress={() => {
+                  onClose();
+                }}
+              >
+                <Icon name="Cross" color="iconOnCta" size={20} />
+              </Pressable>
             )}
           </View>
         </View>

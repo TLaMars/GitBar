@@ -2,15 +2,14 @@ import { createStyleSheet } from "react-native-unistyles";
 
 const styles = createStyleSheet(({ colors, borderRadiuses, spacing }) => ({
   container: {
+    alignSelf: "stretch",
     backgroundColor: colors.backgroundSurface,
-    borderRadius: borderRadiuses.sidebar,
-    padding: spacing(2),
-    width: 48,
+    borderRadius: borderRadiuses.round,
+    borderCurve: "continuous",
+    padding: spacing(1),
+    width: 42,
     gap: spacing(1),
-    justifyContent: "space-between",
-  },
-  section: {
-    gap: spacing(1.5),
+    justifyContent: "flex-start",
   },
 }));
 export default styles;

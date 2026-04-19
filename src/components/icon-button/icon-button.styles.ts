@@ -5,7 +5,8 @@ const styles = createStyleSheet(({ borderRadiuses, colors }) => ({
     justifyContent: "center",
     aspectRatio: 1,
     alignItems: "center",
-    borderRadius: borderRadiuses.item,
+    borderRadius: borderRadiuses.round,
+    borderCurve: "continuous",
   },
   danger: {
     backgroundColor: colors.backgroundCtaDanger,

@@ -30,34 +30,29 @@ const DefaultLayout: React.FC<Props> = ({
   return (
     <View style={$.container}>
       {!sideBarHidden && (
-        <Sidebar
-          marginVertical={2.5}
-          topContainer={
-            <>
+        <View>
+          <Sidebar marginVertical={2.5}>
+            <SidebarItem
+              icon="PullRequest"
+              onPress={() =>
+                navigation.dispatch(StackActions.popTo("Dashboard"))
+              }
+              active={route.name === "Dashboard"}
+            />
+            {showIssues && (
               <SidebarItem
-                icon="PullRequest"
-                onPress={() =>
-                  navigation.dispatch(StackActions.popTo("Dashboard"))
-                }
-                active={route.name === "Dashboard"}
+                icon="IssueCircle"
+                onPress={() => navigation.navigate("Issues")}
+                active={route.name === "Issues"}
               />
-              {showIssues && (
-                <SidebarItem
-                  icon="IssueCircle"
-                  onPress={() => navigation.navigate("Issues")}
-                  active={route.name === "Issues"}
-                />
-              )}
-            </>
-          }
-          bottomContainer={
+            )}
             <SidebarItem
               icon="Settings"
               onPress={() => navigation.navigate("Settings")}
               active={route.name === "Settings"}
             />
-          }
-        />
+          </Sidebar>
+        </View>
       )}
       {children}
     </View>

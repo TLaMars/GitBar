@@ -11,10 +11,11 @@ const styles = createStyleSheet(
   }) => ({
     input: {
       padding: spacing(2),
+      paddingHorizontal: spacing(2.5),
       borderWidth: 2,
       borderColor: colors.border,
       backgroundColor: colors.backgroundSurface,
-      borderRadius: borderRadiuses.input,
+      borderRadius: borderRadiuses.round,
       fontSize: fontSizes.input,
       fontFamily: fontFamilies.primary,
       fontWeight: fontWeights.normal,

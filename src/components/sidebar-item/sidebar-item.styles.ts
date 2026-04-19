@@ -6,7 +6,8 @@ const styles = createStyleSheet(({ borderRadiuses, colors, spacing }) => ({
     aspectRatio: 1,
     width: "100%",
     alignItems: "center",
-    borderRadius: borderRadiuses.item,
+    borderRadius: borderRadiuses.round,
+    borderCurve: "continuous",
     padding: spacing(2),
   },
   active: {

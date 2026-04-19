@@ -187,7 +187,7 @@ export const THEME_COLORS_DARK = {
   borderValid: COLORS.green100,
   icon: COLORS.lightGray100,
   text: COLORS.lightGray100,
-  textLink: COLORS.blue600,
+  textLink: COLORS.teal100,
   textSecondary: COLORS.lightGray300,
   textDanger: COLORS.red100,
   // CI status badge background (accent color at low alpha)

@@ -10,10 +10,11 @@ const styles = createStyleSheet(({ spacing, borderRadiuses, colors }) => ({
   },
   message: { flex: 1 },
   toast: {
-    borderRadius: borderRadiuses.modal,
-    padding: spacing(3),
+    borderRadius: borderRadiuses.round,
+    padding: spacing(2),
     width: "100%",
     flexDirection: "column",
+    alignItems: "center",
     backgroundColor: colors.backgroundCta,
   },
   error: {

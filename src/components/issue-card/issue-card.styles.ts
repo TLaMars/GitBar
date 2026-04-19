@@ -4,11 +4,10 @@ const styles = createStyleSheet(({ spacing, colors, borderRadiuses }) => ({
   card: {
     overflow: "hidden",
     backgroundColor: colors.backgroundSurface,
-    padding: spacing(3),
-    paddingTop: spacing(2),
-    borderRadius: borderRadiuses.sidebar,
+    padding: spacing(2),
+    borderRadius: borderRadiuses.card,
     flexDirection: "column",
-    gap: spacing(1),
+    gap: spacing(1.5),
   },
   header: {
     flexDirection: "row",

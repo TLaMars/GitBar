@@ -102,7 +102,8 @@ const PullRequestCard: React.FC<Props> = ({
         style={$.card}
         onPress={onPress}
       >
-        <View style={[$.borderLine(accentColor), isDraft && $.draftLine]} />
+        {/* TEMP off for redesign */}
+        {/* <View style={[$.borderLine(accentColor), isDraft && $.draftLine]} /> */}
         <View style={$.header}>
           <View style={$.title}>
             <Heading numberOfLines={1} size="x2s">

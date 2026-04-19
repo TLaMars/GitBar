@@ -80,7 +80,7 @@ export const THEME_SPACING_UNIT = 4;
 
 export const THEME_BORDER_RADIUSES = {
   button: BORDER_RADIUSES.xl,
-  card: BORDER_RADIUSES.x4l,
+  card: BORDER_RADIUSES.x5l,
   input: BORDER_RADIUSES.xl,
   label: BORDER_RADIUSES.x2l,
   modal: BORDER_RADIUSES.xl,

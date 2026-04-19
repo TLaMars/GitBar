@@ -86,6 +86,8 @@
   "Onboarding/HowItWorks/CompactBody": "Switch to a compact view to fit more PRs on screen, perfect when you're juggling many at once",
   "Onboarding/HowItWorks/MRStatusHeading": "Merge request status",
   "Onboarding/HowItWorks/MRStatusBody": "Quickly spot approved, draft, or conflicted PRs with clear status badges",
+  "WhatsNew/Heading": "What's new in GitBar",
+  "WhatsNew/Button/Done": "Got it",
   "Onboarding/LaunchAtLogin/Heading": "Launch GitBar at login",
   "Onboarding/LaunchAtLogin/Body": "To get the best out of GitBar, we recommend to start GitBar at start up of your device.",
   "General/Button/Yes": "Yes!",

@@ -1,11 +1,14 @@
 import { useGuavaClient } from "@guava-analytics/react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
+import WhatsNewModal from "components/whats-new-modal/whats-new-modal";
+import { getUnseenWhatsNewFeatures } from "constants/whats-new";
 import useDispatch from "hooks/use-dispatch";
 import usePopoverState, { PopoverState } from "hooks/use-popover-state";
 import useSelector from "hooks/use-selector";
 import { RootStackParamList } from "models/root-stack-param-list";
+import AppModule from "modules/app-module";
 import PopoverModule from "modules/popover-module";
 import AddAccount from "pages/add-account/add-account";
 import RegisterAzure from "pages/auth/register/azure";
@@ -16,8 +19,11 @@ import Issues from "pages/issues/issues";
 import Settings from "pages/settings/settings";
 import WindowNavigator from "src/windows";
 import { selectAccounts } from "store/selectors/accounts";
-import { selectIsOnboarded } from "store/selectors/user";
-import { setIsOnboarded } from "store/slices/user";
+import {
+  selectIsOnboarded,
+  selectLastSeenWhatsNewVersion,
+} from "store/selectors/user";
+import { setIsOnboarded, setLastSeenWhatsNewVersion } from "store/slices/user";
 
 const RootStackNavigator = createStackNavigator<RootStackParamList>();
 
@@ -26,9 +32,34 @@ let IS_STARTED_UP = false;
 const RootStack: React.FC = () => {
   const accounts = useSelector(selectAccounts);
   const isOnboarded = useSelector(selectIsOnboarded);
+  const lastSeenWhatsNewVersion = useSelector(selectLastSeenWhatsNewVersion);
   const client = useGuavaClient();
   const dispatch = useDispatch();
   const popoverState = usePopoverState();
+  const [isWhatsNewVisible, setIsWhatsNewVisible] = useState(false);
+
+  useEffect(() => {
+    if (
+      !isOnboarded ||
+      lastSeenWhatsNewVersion === AppModule.APP_VERSION ||
+      popoverState !== PopoverState.OPEN
+    ) {
+      return;
+    }
+
+    const unseen = getUnseenWhatsNewFeatures(lastSeenWhatsNewVersion);
+    if (unseen.length === 0) {
+      dispatch(setLastSeenWhatsNewVersion(AppModule.APP_VERSION));
+      return;
+    }
+
+    setIsWhatsNewVisible(true);
+  }, [isOnboarded, lastSeenWhatsNewVersion, popoverState, dispatch]);
+
+  const onWhatsNewClose = () => {
+    setIsWhatsNewVisible(false);
+    dispatch(setLastSeenWhatsNewVersion(AppModule.APP_VERSION));
+  };
 
   // TODO: Check if this view can be automatically tracked by Guava
   // Currently, the view is not tracked after the first time opening the popover
@@ -59,29 +90,35 @@ const RootStack: React.FC = () => {
   }, [isOnboarded, dispatch]);
 
   return (
-    <RootStackNavigator.Navigator
-      initialRouteName={accounts.length > 0 ? "Dashboard" : "AddAccount"}
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <RootStackNavigator.Screen name="Dashboard" component={Dashboard} />
-      <RootStackNavigator.Screen
-        name="RegisterAzure"
-        component={RegisterAzure}
+    <>
+      <RootStackNavigator.Navigator
+        initialRouteName={accounts.length > 0 ? "Dashboard" : "AddAccount"}
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <RootStackNavigator.Screen name="Dashboard" component={Dashboard} />
+        <RootStackNavigator.Screen
+          name="RegisterAzure"
+          component={RegisterAzure}
+        />
+        <RootStackNavigator.Screen
+          name="RegisterGitLab"
+          component={RegisterGitLab}
+        />
+        <RootStackNavigator.Screen
+          name="RegisterGitHub"
+          component={RegisterGithub}
+        />
+        <RootStackNavigator.Screen name="AddAccount" component={AddAccount} />
+        <RootStackNavigator.Screen name="Settings" component={Settings} />
+        <RootStackNavigator.Screen name="Issues" component={Issues} />
+      </RootStackNavigator.Navigator>
+      <WhatsNewModal
+        visible={isWhatsNewVisible}
+        onClose={onWhatsNewClose}
       />
-      <RootStackNavigator.Screen
-        name="RegisterGitLab"
-        component={RegisterGitLab}
-      />
-      <RootStackNavigator.Screen
-        name="RegisterGitHub"
-        component={RegisterGithub}
-      />
-      <RootStackNavigator.Screen name="AddAccount" component={AddAccount} />
-      <RootStackNavigator.Screen name="Settings" component={Settings} />
-      <RootStackNavigator.Screen name="Issues" component={Issues} />
-    </RootStackNavigator.Navigator>
+    </>
   );
 };
 

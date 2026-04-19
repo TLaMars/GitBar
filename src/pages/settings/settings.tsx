@@ -48,7 +48,7 @@ import {
   setHidePRsApprovedByMe,
   setShowIssues,
 } from "store/slices/settings";
-import { setIsOnboarded } from "store/slices/user";
+import { setIsOnboarded, setLastSeenWhatsNewVersion } from "store/slices/user";
 
 import styles from "./settings.styles";
 
@@ -312,6 +312,15 @@ const Settings: React.FC = () => {
               label="Reset onboarding"
               onPress={() => {
                 dispatch(setIsOnboarded(false));
+              }}
+            />
+            <Spacer mt={1} />
+            <Button
+              analyticsLabel="Settings/Button/ResetWhatsNew"
+              size="xs"
+              label="Reset What's New version"
+              onPress={() => {
+                dispatch(setLastSeenWhatsNewVersion(null));
               }}
             />
             <Spacer mt={1} />

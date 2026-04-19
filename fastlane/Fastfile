@@ -17,7 +17,6 @@ platform :mac do
       provisioning_name: "GitBar - Production",
     )
 
-
     build_mac_app(
       workspace: "macos/gitbar.xcworkspace",
       scheme: "GitBar",

@@ -39,16 +39,22 @@ Your new Pull Request tool for GitHub, GitLab and Azure.
 
 ### Certificates
 
+To build and distribute the app to TestFlight / the Mac App Store you need:
+
+1. **3rd Party Mac Developer Application** certificate — signs the `.app` binary.
+2. **3rd Party Mac Developer Installer** certificate — signs the `.pkg` installer that gets uploaded.
+3. **Provisioning profile** `GitBar - Production` for `io.lamars.gitbar` (macOS, App Store). Fetched automatically by `get_provisioning_profile` in the [Fastfile](fastlane/Fastfile).
+4. **App Store Connect API key** (.p8) with the App Manager role — used by `upload_to_testflight`:
+   - API Key ID (`APPLE_API_KEY_ID`)
+   - API Key Issuer ID (`APPLE_API_KEY_ISSUER_ID`)
+   - Key contents, base64 encoded (`APPLE_API_KEY_CONTENT`)
+5. **Apple Developer Team ID**.
+
+Notes:
+- Developer ID Application / Installer certificates are **not** needed — those are only for distribution outside the Mac App Store.
+- Notarization is not required; App Store review replaces it.
+
 For installing the certificates in the workflow we use: apple-actions/import-codesign-certs@v3.
-
-To make a certificate for the workflow you need to do the following:
-
-1. Apple Distribution Certificate
-2. 3rd Party Mac Developer Installer Certificate
-3. API Key for App Store Connect
-   1. API Key ID
-   2. API Key Issuer ID
-4. Apple Developer Team ID
 
 How to give them to the workflow:
 

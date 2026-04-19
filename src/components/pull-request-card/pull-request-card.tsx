@@ -42,6 +42,7 @@ type Props = {
   isFullyApproved: boolean;
   hasConflicts: boolean;
   ci?: CiStatus;
+  compact?: boolean;
 };
 
 const PullRequestCard: React.FC<Props> = ({
@@ -59,6 +60,7 @@ const PullRequestCard: React.FC<Props> = ({
   isFullyApproved,
   hasConflicts,
   ci,
+  compact = false,
 }) => {
   const client = useGuavaClient();
   const { styles: $ } = useStyles(styles);
@@ -95,76 +97,98 @@ const PullRequestCard: React.FC<Props> = ({
     }
   };
 
-  return (
-    <View style={{ overflow: "hidden" }}>
+  // Shared across compact + full layouts. Draft takes precedence over
+  // Approved in the state slot (mutually exclusive in practice).
+  const statusBadges = (
+    <>
+      {isDraft && (
+        <StatusBadge
+          tone="textSecondary"
+          backgroundTone="backgroundCiCancelled"
+          iconName="EditPencil"
+          label={t("PullRequestCard/Status/Draft")}
+          compact={compact}
+        />
+      )}
+      {!isDraft && isFullyApproved && (
+        <StatusBadge
+          tone="accentGreen"
+          backgroundTone="backgroundCiSuccess"
+          iconName="Check"
+          label={t("PullRequestCard/Status/Approved")}
+          compact={compact}
+        />
+      )}
+      {hasConflicts && (
+        <StatusBadge
+          tone="accentOrange"
+          backgroundTone="backgroundWarning"
+          iconName="AlertCircle"
+          label={t("PullRequestCard/Status/Conflicts")}
+          compact={compact}
+        />
+      )}
+    </>
+  );
+
+  if (compact) {
+    return (
       <TouchableOpacity
         accessibilityRole="button"
-        style={$.card}
+        style={$.cardCompact}
         onPress={onPress}
       >
-        {/* TEMP off for redesign */}
-        {/* <View style={[$.borderLine(accentColor), isDraft && $.draftLine]} /> */}
-        <View style={$.header}>
-          <View style={$.title}>
-            <Heading numberOfLines={1} size="x2s">
-              {title}
-            </Heading>
-          </View>
-          {/* State slot: draft takes precedence over approved — they're
-              mutually exclusive in practice, so never show both. */}
-          {isDraft && (
-            <StatusBadge
-              tone="textSecondary"
-              backgroundTone="backgroundCiCancelled"
-              iconName="EditPencil"
-              label={t("PullRequestCard/Status/Draft")}
-            />
-          )}
-          {!isDraft && isFullyApproved && (
-            <StatusBadge
-              tone="accentGreen"
-              backgroundTone="backgroundCiSuccess"
-              iconName="Check"
-              label={t("PullRequestCard/Status/Approved")}
-            />
-          )}
-          {hasConflicts && (
-            <StatusBadge
-              tone="accentOrange"
-              backgroundTone="backgroundWarning"
-              iconName="AlertCircle"
-              label={t("PullRequestCard/Status/Conflicts")}
-            />
-          )}
-          <CiStatusIndicator ci={ci} />
+        <Attendee name={author.name} size={24} avatarUrl={author.avatarUrl} />
+        <View style={$.compactTitle}>
+          <Heading numberOfLines={1} size="x2s">
+            {title}
+          </Heading>
         </View>
-        <View style={$.footer}>
-          <View style={$.left}>
-            <Attendee
-              name={author.name}
-              size={24}
-              avatarUrl={author.avatarUrl}
-            />
-            {reviewers.length > 0 && (
-              <>
-                <Spacer ml={2} />
-                <Icon name="ChevronRight" size={14} color="textSecondary" />
-                <Spacer ml={2} />
-                <AttendeeList attendees={reviewers} profileIconSize={24} />
-              </>
-            )}
-          </View>
-          <View style={$.right}>
-            {amountOfComments !== undefined && (
-              <View style={$.info}>
-                <Body size="s">{amountOfComments}</Body>
-                <Icon name="Comment" size={20} />
-              </View>
-            )}
-          </View>
-        </View>
+        {statusBadges}
+        <CiStatusIndicator ci={ci} />
       </TouchableOpacity>
-    </View>
+    );
+  }
+
+  return (
+    <TouchableOpacity
+      accessibilityRole="button"
+      style={$.card}
+      onPress={onPress}
+    >
+      {/* TEMP off for redesign */}
+      {/* <View style={[$.borderLine(accentColor), isDraft && $.draftLine]} /> */}
+      <View style={$.header}>
+        <View style={$.title}>
+          <Heading numberOfLines={1} size="x2s">
+            {title}
+          </Heading>
+        </View>
+        {statusBadges}
+        <CiStatusIndicator ci={ci} />
+      </View>
+      <View style={$.footer}>
+        <View style={$.left}>
+          <Attendee name={author.name} size={24} avatarUrl={author.avatarUrl} />
+          {reviewers.length > 0 && (
+            <>
+              <Spacer ml={2} />
+              <Icon name="ChevronRight" size={14} color="textSecondary" />
+              <Spacer ml={2} />
+              <AttendeeList attendees={reviewers} profileIconSize={24} />
+            </>
+          )}
+        </View>
+        <View style={$.right}>
+          {amountOfComments !== undefined && (
+            <View style={$.info}>
+              <Body size="s">{amountOfComments}</Body>
+              <Icon name="Comment" size={20} />
+            </View>
+          )}
+        </View>
+      </View>
+    </TouchableOpacity>
   );
 };
 

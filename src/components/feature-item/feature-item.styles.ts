@@ -1,6 +1,6 @@
 import { createStyleSheet } from "react-native-unistyles";
 
-const styles = createStyleSheet(({ spacing }) => ({
+const styles = createStyleSheet(({ spacing, borderRadiuses }) => ({
   container: {
     flexDirection: "row",
     gap: spacing(3),
@@ -8,7 +8,8 @@ const styles = createStyleSheet(({ spacing }) => ({
   },
   image: {
     width: 152,
-    borderRadius: 4,
+    borderRadius: borderRadiuses.label,
+    borderCurve: "continuous",
     aspectRatio: 112 / 60.44,
   },
   content: {

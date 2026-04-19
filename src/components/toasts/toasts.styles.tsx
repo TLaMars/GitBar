@@ -11,6 +11,7 @@ const styles = createStyleSheet(({ spacing, borderRadiuses, colors }) => ({
   message: { flex: 1 },
   toast: {
     borderRadius: borderRadiuses.round,
+    borderCurve: "continuous",
     padding: spacing(2),
     width: "100%",
     flexDirection: "column",

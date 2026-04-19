@@ -5,6 +5,7 @@ const styles = createStyleSheet(({ spacing, colors, borderRadiuses }) => ({
     padding: spacing(2),
     paddingTop: spacing(1),
     borderRadius: borderRadiuses.card,
+    borderCurve: "continuous",
     backgroundColor: colors.backgroundCtaDanger,
   },
 }));

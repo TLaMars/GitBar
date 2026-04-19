@@ -7,8 +7,23 @@ const styles = createStyleSheet(({ spacing, colors, borderRadiuses }) => ({
     padding: spacing(2),
     paddingTop: spacing(2),
     borderRadius: borderRadiuses.card,
+    borderCurve: "continuous",
     flexDirection: "column",
     gap: spacing(1.5),
+  },
+  cardCompact: {
+    overflow: "hidden",
+    backgroundColor: colors.backgroundSurface,
+    padding: spacing(2),
+    borderRadius: borderRadiuses.round,
+    borderCurve: "continuous",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing(2),
+  },
+  compactTitle: {
+    flex: 1,
+    minWidth: 0,
   },
   borderLine: (accentColor: keyof typeof colors) => ({
     position: "absolute",
@@ -64,6 +79,7 @@ const styles = createStyleSheet(({ spacing, colors, borderRadiuses }) => ({
     right: 2,
     padding: spacing(1.5),
     borderRadius: borderRadiuses.sidebar,
+    borderCurve: "continuous",
   },
 }));
 

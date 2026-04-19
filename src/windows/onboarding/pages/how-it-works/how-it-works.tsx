@@ -4,7 +4,6 @@ import React from "react";
 import { View } from "react-native";
 import { useStyles } from "react-native-unistyles";
 
-import HowItWorksColorsImage from "assets/illustrations/onboarding/how-it-works-colors.jpg";
 import HowItWorksHideImage from "assets/illustrations/onboarding/how-it-works-hide.jpg";
 import HowItWorksRelevantImage from "assets/illustrations/onboarding/how-it-works-relevant.jpg";
 import FeatureItem from "components/feature-item/feature-item";
@@ -55,11 +54,6 @@ const HowItWorks: React.FC = () => {
           image={HowItWorksHideImage}
           heading={t("Onboarding/HowItWorks/HidePRsHeading")}
           body={t("Onboarding/HowItWorks/HidePRsBody")}
-        />
-        <FeatureItem
-          image={HowItWorksColorsImage}
-          heading={t("Onboarding/HowItWorks/ColorCodedProjectsHeading")}
-          body={t("Onboarding/HowItWorks/ColorCodedProjectsBody")}
         />
       </View>
     </OnboardingLayout>

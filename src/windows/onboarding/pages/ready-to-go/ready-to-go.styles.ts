@@ -1,12 +1,13 @@
 import { createStyleSheet } from "react-native-unistyles";
 
-const styles = createStyleSheet(() => ({
+const styles = createStyleSheet(({ borderRadiuses }) => ({
   wrapper: {
     alignItems: "center",
   },
   image: {
     width: "100%",
-    borderRadius: 8,
+    borderRadius: borderRadiuses.card,
+    borderCurve: "continuous",
     height: undefined,
     aspectRatio: 315 / 170,
   },

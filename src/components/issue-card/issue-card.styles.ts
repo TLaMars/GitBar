@@ -6,6 +6,7 @@ const styles = createStyleSheet(({ spacing, colors, borderRadiuses }) => ({
     backgroundColor: colors.backgroundSurface,
     padding: spacing(2),
     borderRadius: borderRadiuses.card,
+    borderCurve: "continuous",
     flexDirection: "column",
     gap: spacing(1.5),
   },

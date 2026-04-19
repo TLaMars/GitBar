@@ -18,6 +18,8 @@ type Props = {
   // Optional override for the hover tooltip / a11y hint. Defaults to `label`
   // so callers only need to pass it when the short label needs elaboration.
   tooltip?: string;
+  // Compact mode - no text
+  compact?: boolean;
 };
 
 const StatusBadge: React.FC<Props> = ({
@@ -26,9 +28,23 @@ const StatusBadge: React.FC<Props> = ({
   iconName,
   label,
   tooltip,
+  compact = false,
 }) => {
   const { styles: $ } = useStyles(styles);
   const tip = tooltip ?? label;
+
+  if (compact) {
+    return (
+      <View
+        style={$.badgeCompact(backgroundTone)}
+        tooltip={tip}
+        accessibilityLabel={label}
+        accessibilityHint={tip}
+      >
+        <Icon name={iconName} size={14} color={tone} />
+      </View>
+    );
+  }
 
   return (
     <View

@@ -14,6 +14,7 @@ const styles = createStyleSheet(
       justifyContent: "center",
       flexDirection: "row",
       borderRadius: borderRadiuses.round,
+      borderCurve: "continuous",
       variants: {
         size: {
           xs: {

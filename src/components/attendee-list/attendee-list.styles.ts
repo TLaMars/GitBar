@@ -13,6 +13,7 @@ const styles = createStyleSheet(({ borderRadiuses, spacing }) => ({
   }),
   seperator: (size: number) => ({
     borderRadius: borderRadiuses.round,
+    borderCurve: "continuous",
     width: size + 2,
     height: size + 2,
   }),

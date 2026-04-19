@@ -10,9 +10,11 @@ import Body from "components/body/body";
 import ErrorContainer from "components/error-container/error-container";
 import PullRequestCard from "components/pull-request-card/pull-request-card";
 import useDispatch from "hooks/use-dispatch";
+import useSelector from "hooks/use-selector";
 import useTranslation from "hooks/use-translation";
 import { PullRequest } from "models/pull-request";
 import { Section } from "models/section";
+import { selectCompactCards } from "store/selectors/settings";
 import { setPullRequestHidden } from "store/slices/pull-requests";
 
 import styles from "./pull-request-list.styles";
@@ -42,6 +44,7 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
   const { styles: $ } = useStyles(styles);
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const compact = useSelector(selectCompactCards);
 
   const actionSheetOptions = useMemo(
     () => ({
@@ -79,9 +82,10 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
         isFullyApproved={item.isFullyApproved}
         hasConflicts={item.hasConflicts}
         ci={item.ci}
+        compact={compact}
       />
     ),
-    [actionSheetCallback, actionSheetOptions],
+    [actionSheetCallback, actionSheetOptions, compact],
   );
 
   return (

@@ -28,6 +28,7 @@ import NotificationsModule, {
 } from "modules/notifications-module";
 import {
   selectAllowNotifications,
+  selectCompactCards,
   selectGroupPRsBy,
   selectHideDraftPRs,
   selectHideIssuesAfterTwoMonths,
@@ -39,6 +40,7 @@ import { removeOneAccount } from "store/slices/accounts";
 import { resetHiddenPullRequests } from "store/slices/pull-requests";
 import {
   setAllowNotifications,
+  setCompactCards,
   setGroupPRsBy,
   setHideDraftPRs,
   setHideIssuesAfterTwoMonths,
@@ -64,6 +66,7 @@ const Settings: React.FC = () => {
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
   const allowPushNotifications = useSelector(selectAllowNotifications);
   const hideDraftPRs = useSelector(selectHideDraftPRs);
+  const compactCards = useSelector(selectCompactCards);
   const [notificationPermissions, setNotificationPermissions] =
     useState<NotificationPermission>();
   const [launchAtLogin, setLaunchAtLogin] = useState<boolean>();
@@ -162,6 +165,7 @@ const Settings: React.FC = () => {
         <ListItemPicker
           label={t("Settings/GroupPRsBy/GroupBy")}
           selectedValue={groupPRsBy}
+          border
           onValueChange={(value) => {
             dispatch(setGroupPRsBy(value as GroupPullRequestsBy));
             client.trackEvent("group_prs_by_changed", {
@@ -182,6 +186,16 @@ const Settings: React.FC = () => {
               value: GroupPullRequestsBy.NONE,
             },
           ]}
+        />
+        <ListItemToggle
+          label={t("Settings/PullRequests/CompactCards")}
+          value={compactCards}
+          onToggle={(value) => {
+            dispatch(setCompactCards(value));
+            client.trackEvent("compact_cards_changed", {
+              value: value.toString(),
+            });
+          }}
         />
         <Spacer mt={4} />
         <Body bold size="s">

@@ -16,6 +16,7 @@ const styles = createStyleSheet(
       borderColor: colors.border,
       backgroundColor: colors.backgroundSurface,
       borderRadius: borderRadiuses.round,
+      borderCurve: "continuous",
       fontSize: fontSizes.input,
       fontFamily: fontFamilies.primary,
       fontWeight: fontWeights.normal,

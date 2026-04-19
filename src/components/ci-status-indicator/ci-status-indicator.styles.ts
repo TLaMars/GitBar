@@ -10,6 +10,7 @@ const styles = createStyleSheet(({ colors }) => ({
     width: BADGE_SIZE,
     height: BADGE_SIZE,
     borderRadius: BADGE_SIZE / 2,
+    borderCurve: "continuous",
     borderWidth: BORDER_WIDTH,
     borderColor: colors[tone],
     backgroundColor: colors[backgroundTone],

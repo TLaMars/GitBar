@@ -51,6 +51,7 @@ const Attendee: React.FC<Props> = ({
       width: size,
       height: size,
       borderRadius: size / 2,
+      borderCurve: "continuous" as const,
     },
   ];
 

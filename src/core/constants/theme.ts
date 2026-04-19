@@ -151,9 +151,9 @@ export const THEME_FONT_WEIGHTS = {
 } as const satisfies Record<string, string>;
 
 const COLORS = {
-  black: "#111317",
-  darkGray100: "#20242C",
-  darkGray200: "#353B47",
+  black: "#000000",
+  darkGray100: "#1C1C1E",
+  darkGray200: "#2C2C2E",
   lightGray100: "#F5F8FA",
   lightGray200: "#DCE6EC",
   lightGray300: "#CED8DF",

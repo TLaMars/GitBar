@@ -92,7 +92,7 @@
   },
   "overrides": {
     "@react-navigation/elements": "2.3.0",
-    "fast-xml-parser": "5.3.6"
+    "fast-xml-parser": "5.7.1"
   },
   "prettier": "eslint-config-triple/.prettierrc",
   "engines": {

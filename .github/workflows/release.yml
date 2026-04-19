@@ -44,6 +44,9 @@ jobs:
           p12-password: ${{ secrets.APPLE_CERTIFICATE_P12_PASSWORD }}
           keychain-password: ${{ github.run_id }}
 
+      - name: Verify signing identities
+        run: security find-identity -v -p basic ${{ steps.cert-installer.outputs.keychain-path }}
+
       - name: Install CocoaPods
         run: |
           cd macos

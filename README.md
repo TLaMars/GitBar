@@ -58,12 +58,14 @@ For installing the certificates in the workflow we use: apple-actions/import-cod
 
 How to give them to the workflow:
 
-1. In keychain select both certificates and corresponding private keys.
-2. Right click and select "Export 4 items".
-3. Choose a name for the certificates and private keys and export them as p12 file.
-4. Choose a password and save that password (it is needed in the workflow)
-5. Base64 encode the p12 file: `cat certificate.p12 | base64`
-6. Add the base64 encoded string as a secret in the repository. -> `APPLE_CERTIFICATE_P12_BASE64`
-7. Add the password as a secret in the repository. -> `APPLE_CERTIFICATE_P12_PASSWORD`
-8. Base64 encode the API Key for App Store Connect: `cat api-key.txt | base64`
-9. Add the base64 encoded string as a secret in the repository. -> `APPLE_API_KEY_CONTENT`
+1. In Keychain Access, find both certificates (3rd Party Mac Developer Application **and** 3rd Party Mac Developer Installer). Expand each with the disclosure triangle and confirm a private key is nested under it — without the key you cannot sign.
+2. Select both certificates **and** both private keys (4 items total).
+3. Right click → "Export 4 items" → save as a `.p12` file with a password.
+4. Base64 encode: `base64 -i certificate.p12 | pbcopy`
+5. Add to repository secrets:
+   - `APPLE_CERTIFICATE_P12_BASE64` — the base64 string
+   - `APPLE_CERTIFICATE_P12_PASSWORD` — the export password
+6. Base64 encode the App Store Connect API key: `base64 -i api-key.p8 | pbcopy`
+7. Add as `APPLE_API_KEY_CONTENT`, plus `APPLE_API_KEY_ID` and `APPLE_API_KEY_ISSUER_ID`.
+
+The workflow runs `security find-identity` after importing so you can verify both identities are present in the CI log.

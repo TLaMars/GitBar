@@ -36,7 +36,7 @@ jobs:
         with:
           xcode-version: "26.0"
 
-      - name: Install Certificates
+      - name: Install Application Certificate
         id: cert-installer
         uses: apple-actions/import-codesign-certs@v3
         with:
@@ -44,16 +44,20 @@ jobs:
           p12-password: ${{ secrets.APPLE_CERTIFICATE_P12_PASSWORD }}
           keychain-password: ${{ github.run_id }}
 
+      - name: Install Installer Certificate
+        uses: apple-actions/import-codesign-certs@v3
+        with:
+          p12-file-base64: ${{ secrets.APPLE_INSTALLER_CERTIFICATE_P12_BASE64 }}
+          p12-password: ${{ secrets.APPLE_INSTALLER_CERTIFICATE_P12_PASSWORD }}
+          keychain-password: ${{ github.run_id }}
+          create-keychain: false
+
       - name: Verify signing identities
         run: |
           echo "--- find-identity -v (all policies) ---"
           security find-identity -v ${{ steps.cert-installer.outputs.keychain-path }}
-          echo "--- find-identity -v -p basic ---"
-          security find-identity -v -p basic ${{ steps.cert-installer.outputs.keychain-path }}
           echo "--- find-identity -v -p codesigning ---"
           security find-identity -v -p codesigning ${{ steps.cert-installer.outputs.keychain-path }}
-          echo "--- all certificates in keychain ---"
-          security find-certificate -a ${{ steps.cert-installer.outputs.keychain-path }} | grep -E 'labl|alis' || true
 
       # - name: Install CocoaPods
       #   run: |

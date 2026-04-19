@@ -51,6 +51,7 @@ To build and distribute the app to TestFlight / the Mac App Store you need:
 5. **Apple Developer Team ID**.
 
 Notes:
+
 - Developer ID Application / Installer certificates are **not** needed — those are only for distribution outside the Mac App Store.
 - Notarization is not required; App Store review replaces it.
 
@@ -58,14 +59,23 @@ For installing the certificates in the workflow we use: apple-actions/import-cod
 
 How to give them to the workflow:
 
-1. In Keychain Access, find both certificates (3rd Party Mac Developer Application **and** 3rd Party Mac Developer Installer). Expand each with the disclosure triangle and confirm a private key is nested under it — without the key you cannot sign.
-2. Select both certificates **and** both private keys (4 items total).
-3. Right click → "Export 4 items" → save as a `.p12` file with a password.
-4. Base64 encode: `base64 -i certificate.p12 | pbcopy`
-5. Add to repository secrets:
-   - `APPLE_CERTIFICATE_P12_BASE64` — the base64 string
-   - `APPLE_CERTIFICATE_P12_PASSWORD` — the export password
-6. Base64 encode the App Store Connect API key: `base64 -i api-key.p8 | pbcopy`
-7. Add as `APPLE_API_KEY_CONTENT`, plus `APPLE_API_KEY_ID` and `APPLE_API_KEY_ISSUER_ID`.
+Export the two certs **separately** — Keychain Access's "Export 4 items" flow is unreliable and silently drops entries, so each cert goes into its own `.p12`.
 
-The workflow runs `security find-identity` after importing so you can verify both identities are present in the CI log.
+For **each** of `3rd Party Mac Developer Application` and `3rd Party Mac Developer Installer`:
+
+1. In Keychain Access → My Certificates, expand the cert with the disclosure triangle and confirm a private key is nested under it.
+2. Select the cert **and** its private key (2 items).
+3. Right-click → "Export 2 items" → save as a `.p12` with a password.
+4. Base64 encode: `base64 -i certificate.p12 | pbcopy`
+
+Add the four resulting secrets to the repo:
+
+- Application cert → `APPLE_CERTIFICATE_P12_BASE64` + `APPLE_CERTIFICATE_P12_PASSWORD`
+- Installer cert → `APPLE_INSTALLER_CERTIFICATE_P12_BASE64` + `APPLE_INSTALLER_CERTIFICATE_P12_PASSWORD`
+
+Then the App Store Connect API key:
+
+5. Base64 encode the key: `base64 -i api-key.p8 | pbcopy`
+6. Add as `APPLE_API_KEY_CONTENT`, plus `APPLE_API_KEY_ID` and `APPLE_API_KEY_ISSUER_ID`.
+
+The workflow runs `security find-identity` after importing so you can verify both identities show up in the CI log (Application under `codesigning`, Installer under all policies).

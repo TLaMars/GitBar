@@ -41,7 +41,10 @@ abstract class BaseProvider implements Provider {
     }
 
     try {
-      const { data } = await this.client.query<TData>({ query });
+      const { data } = await this.client.query<TData>({
+        query,
+        fetchPolicy: "no-cache",
+      });
 
       if (!data) {
         throw new Error("No data returned from query");

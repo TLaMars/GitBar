@@ -19,6 +19,7 @@ const useIssuesQueries = () => {
       queryKey: ["issues", account.id],
       queryFn: async () => account.getIssues(),
       refetchInterval: 900000, // 15 minutes
+      refetchIntervalInBackground: true,
       enabled: showIssues && hasGitHubAccount && macState === MacState.UNLOCKED,
     })),
   });

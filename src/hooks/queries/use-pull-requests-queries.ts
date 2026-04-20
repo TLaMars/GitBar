@@ -14,6 +14,7 @@ const usePullRequestsQueries = () => {
       queryKey: ["pull-requests", account.id],
       queryFn: async () => account.getPullRequests(),
       refetchInterval: 180000, // 3 minutes
+      refetchIntervalInBackground: true,
       enabled: macState === MacState.UNLOCKED,
     })),
   });

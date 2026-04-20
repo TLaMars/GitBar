@@ -11,7 +11,6 @@ import Guava from "contexts/guava";
 import IntlProvider from "contexts/intl";
 import ReduxProvider from "contexts/redux-provider";
 import ToastProvider from "contexts/toasts";
-import PopoverModule from "modules/popover-module/src/PopoverModule";
 import RootStack from "pages/routes";
 
 import "../unistyles.config";
@@ -28,8 +27,6 @@ const queryClient = new QueryClient({
     },
   },
 });
-
-PopoverModule.setAppearance(true);
 
 const App: React.FC = () => (
   <QueryClientProvider client={queryClient}>

@@ -6,9 +6,6 @@ FileUtils.remove_dir("./build", true)
 
 prepare_react_native_project!
 
-# Disable the new architecture until we bump to SDK 55
-ENV['RCT_NEW_ARCH_ENABLED'] = '0'
-
 target 'GitBar' do
   platform :macos, '14.0'
   use_expo_modules!

@@ -1,0 +1,18 @@
+diff --git a/node_modules/react-native-svg/apple/Elements/RNSVGSvgView.mm b/node_modules/react-native-svg/apple/Elements/RNSVGSvgView.mm
+index d03d5c0..f9d90bb 100644
+--- a/node_modules/react-native-svg/apple/Elements/RNSVGSvgView.mm
++++ b/node_modules/react-native-svg/apple/Elements/RNSVGSvgView.mm
+@@ -522,6 +522,13 @@ - (void)updateReactTransformInternal:(CATransform3D)transform
+ }
+ #endif // macOS]
+ 
++#if TARGET_OS_OSX && defined(RCT_NEW_ARCH_ENABLED)
++- (BOOL)wantsUpdateLayer
++{
++  return NO;
++}
++#endif
++
+ @end
+ 
+ #ifdef RCT_NEW_ARCH_ENABLED

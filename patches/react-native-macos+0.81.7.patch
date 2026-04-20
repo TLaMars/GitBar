@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-macos/Libraries/Components/Touchable/TouchableOpacity.js b/node_modules/react-native-macos/Libraries/Components/Touchable/TouchableOpacity.js
+index 81dd9f3..28a0b61 100644
+--- a/node_modules/react-native-macos/Libraries/Components/Touchable/TouchableOpacity.js
++++ b/node_modules/react-native-macos/Libraries/Components/Touchable/TouchableOpacity.js
+@@ -239,7 +239,7 @@ class TouchableOpacity extends React.Component<
+       toValue,
+       duration,
+       easing: Easing.inOut(Easing.quad),
+-      useNativeDriver: true,
++      useNativeDriver: false,
+     }).start();
+   }
+ 

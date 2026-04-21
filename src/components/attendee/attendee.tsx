@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
-import { Image, View } from "react-native";
+import { Image } from "react-native";
+import { View } from "react-native-macos";
 import { useStyles } from "react-native-unistyles";
 
 import Text from "components/text/text";
@@ -57,16 +58,21 @@ const Attendee: React.FC<Props> = ({
 
   if (avatarUrl) {
     return (
-      <Image
-        accessibilityIgnoresInvertColors
-        style={[attendeeStyle, $.border, getBorderColor()]}
-        source={{ uri: avatarUrl }}
-      />
+      <View tooltip={name}>
+        <Image
+          accessibilityIgnoresInvertColors
+          style={[attendeeStyle, $.border, getBorderColor()]}
+          source={{ uri: avatarUrl }}
+        />
+      </View>
     );
   }
 
   return (
-    <View style={[attendeeStyle, $.attendee, $.border, getBorderColor()]}>
+    <View
+      tooltip={name}
+      style={[attendeeStyle, $.attendee, $.border, getBorderColor()]}
+    >
       <Text
         style={[
           $.initials,

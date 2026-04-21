@@ -13,7 +13,7 @@ Your new Pull Request tool for GitHub, GitLab and Azure.
 - [x] Dark / Light Mode
 - [x] Amount of PRs in the menubar
 - [x] Open PRs in your browser
-- [x] Hide PRs from Relevant PRs tab
+- [x] Hide PRs from Mine & Review tabs
 
 ### To Do
 

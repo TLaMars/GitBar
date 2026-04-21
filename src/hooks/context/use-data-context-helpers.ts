@@ -13,8 +13,8 @@ import {
   selectHidePRsApprovedByMe,
 } from "store/selectors/settings";
 import {
+  applyUserFilters,
   filterPRQueryResult,
-  filterRelevantPRs,
 } from "utils/pull-request-filters";
 import sendPullRequestNotification from "utils/send-pull-request-notification";
 
@@ -33,7 +33,7 @@ const useDataHelper = () => {
   const updateMenuBarAndSendNotification = useCallback(
     (result: UseQueryResult<PullRequest[], Error>[]) => {
       const prs = filterPRQueryResult(result);
-      const relevantPrs = filterRelevantPRs(
+      const relevantPrs = applyUserFilters(
         prs,
         hiddenPullRequests,
         hidePRsAfterTwoMonths,

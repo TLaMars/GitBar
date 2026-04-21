@@ -8,6 +8,12 @@ export enum GroupPullRequestsBy {
   NONE = "none",
 }
 
+export enum PullRequestTab {
+  MINE = "mine",
+  REVIEW = "review",
+  ALL = "all",
+}
+
 export type PullRequest = {
   id: string;
   title: string;

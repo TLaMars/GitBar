@@ -7,39 +7,59 @@ import PullRequestList from "components/pull-request-list/pull-request-list";
 import usePullRequests from "hooks/use-pull-requests";
 import useTranslation from "hooks/use-translation";
 import DefaultLayout from "layouts/default-layout/default-layout";
+import { PullRequestTab } from "models/pull-request";
 
 import styles from "./dashboard.styles";
+
+const TAB_ORDER = [
+  PullRequestTab.MINE,
+  PullRequestTab.REVIEW,
+  PullRequestTab.ALL,
+] as const;
 
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();
   const { styles: $ } = useStyles(styles);
-  const [isRelevant, setIsRelevant] = useState<boolean>(true);
-  const { isLoading, groupedAllPrs, groupedRelevantPRs, updatedAt, errors } =
-    usePullRequests();
+  const [tab, setTab] = useState<PullRequestTab>(PullRequestTab.REVIEW);
+  const {
+    isLoading,
+    groupedAllPRs,
+    groupedMinePRs,
+    groupedReviewPRs,
+    updatedAt,
+    errors,
+  } = usePullRequests();
+
+  const sectionsByTab = {
+    [PullRequestTab.MINE]: groupedMinePRs,
+    [PullRequestTab.REVIEW]: groupedReviewPRs,
+    [PullRequestTab.ALL]: groupedAllPRs,
+  };
 
   return (
     <DefaultLayout>
       <View style={$.container}>
         <PageHeader
           title={t("Dashboard/Heading/PullRequests")}
-          selectedButtonIndex={isRelevant ? 0 : 1}
+          selectedButtonIndex={TAB_ORDER.indexOf(tab)}
           buttonToggleOptions={[
             {
-              label: t("Dashboard/Button/Relevant"),
-              onPress: () => setIsRelevant(true),
+              label: t("Dashboard/Button/Mine"),
+              onPress: () => setTab(PullRequestTab.MINE),
+            },
+            {
+              label: t("Dashboard/Button/Review"),
+              onPress: () => setTab(PullRequestTab.REVIEW),
             },
             {
               label: t("Dashboard/Button/All"),
-              onPress: () => setIsRelevant(false),
+              onPress: () => setTab(PullRequestTab.ALL),
             },
           ]}
           updatedAt={updatedAt}
         />
         {isLoading && <ActivityIndicator />}
-        <PullRequestList
-          errors={errors}
-          sections={isRelevant ? groupedRelevantPRs : groupedAllPrs}
-        />
+        <PullRequestList errors={errors} sections={sectionsByTab[tab]} />
       </View>
     </DefaultLayout>
   );

@@ -10,8 +10,10 @@ import {
 } from "store/selectors/settings";
 import groupPullRequestsBy from "utils/group-pull-requests";
 import {
+  applyUserFilters,
+  filterMinePRs,
   filterPRQueryResult,
-  filterRelevantPRs,
+  filterReviewPRs,
 } from "utils/pull-request-filters";
 
 import useSelector from "./use-selector";
@@ -37,9 +39,9 @@ const usePullRequests = () => {
     [result],
   );
 
-  const { groupedAllPrs, groupedRelevantPRs } = useMemo(() => {
+  const { groupedAllPRs, groupedMinePRs, groupedReviewPRs } = useMemo(() => {
     const prs = filterPRQueryResult(result);
-    const relevantPrs = filterRelevantPRs(
+    const filtered = applyUserFilters(
       prs,
       hiddenPullRequests,
       hidePRsAfterTwoMonths,
@@ -47,12 +49,13 @@ const usePullRequests = () => {
       hideDraftPRs,
     );
 
-    const prsGrouped = groupPullRequestsBy(prs, groupPRsBy);
-    const relevantPrsGrouped = groupPullRequestsBy(relevantPrs, groupPRsBy);
-
     return {
-      groupedAllPrs: prsGrouped,
-      groupedRelevantPRs: relevantPrsGrouped,
+      groupedAllPRs: groupPullRequestsBy(prs, groupPRsBy),
+      groupedMinePRs: groupPullRequestsBy(filterMinePRs(filtered), groupPRsBy),
+      groupedReviewPRs: groupPullRequestsBy(
+        filterReviewPRs(filtered),
+        groupPRsBy,
+      ),
     };
   }, [
     result,
@@ -64,8 +67,9 @@ const usePullRequests = () => {
   ]);
 
   return {
-    groupedAllPrs,
-    groupedRelevantPRs,
+    groupedAllPRs,
+    groupedMinePRs,
+    groupedReviewPRs,
     ...queryInfo,
   };
 };

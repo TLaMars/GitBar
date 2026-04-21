@@ -18,14 +18,14 @@ export const filterPRQueryResult = (
         new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
     );
 
-export const filterRelevantPRs = (
+export const applyUserFilters = (
   pullRequests: PullRequest[],
   hiddenPullRequests: HiddenPullRequest[],
   hidePRsAfterTwoMonths: boolean,
   hidePRsApprovedByMe: boolean,
   hideDraftPRs: boolean,
-): PullRequest[] => {
-  const relevantPrs = pullRequests
+): PullRequest[] =>
+  pullRequests
     .filter(
       (pr) =>
         !hiddenPullRequests.some(
@@ -44,5 +44,11 @@ export const filterRelevantPRs = (
     .filter((pr) => !hidePRsApprovedByMe || !pr.isApprovedByMe)
     .filter((pr) => !pr.isDraft || !hideDraftPRs);
 
-  return relevantPrs;
-};
+export const filterMinePRs = (pullRequests: PullRequest[]): PullRequest[] =>
+  pullRequests.filter((pr) => pr.isAuthoredByMe);
+
+export const filterReviewPRs = (pullRequests: PullRequest[]): PullRequest[] =>
+  pullRequests.filter(
+    (pr) =>
+      !pr.isAuthoredByMe && (pr.isAssignedToMe || pr.isCommentedByMe),
+  );

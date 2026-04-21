@@ -4,7 +4,7 @@ import HowItWorksCIStatusImage from "assets/illustrations/onboarding/how-it-work
 import HowItWorksCompactImage from "assets/illustrations/onboarding/how-it-works-compact.jpg";
 import HowItWorksHideImage from "assets/illustrations/onboarding/how-it-works-hide.jpg";
 import HowItWorksMRStatusImage from "assets/illustrations/onboarding/how-it-works-mr-status.jpg";
-import HowItWorksRelevantImage from "assets/illustrations/onboarding/how-it-works-relevant.jpg";
+import HowItWorksTabsImage from "assets/illustrations/onboarding/how-it-works-tabs.jpg";
 import { TranslationKey } from "contexts/intl";
 import AppModule from "modules/app-module";
 
@@ -19,9 +19,9 @@ export type WhatsNewFeature = {
 
 export const whatsNewFeatures: WhatsNewFeature[] = [
   {
-    image: HowItWorksRelevantImage,
-    headingKey: "Onboarding/HowItWorks/RelevantTabHeading",
-    bodyKey: "Onboarding/HowItWorks/RelevantTabBody",
+    image: HowItWorksTabsImage,
+    headingKey: "Onboarding/HowItWorks/TabsHeading",
+    bodyKey: "Onboarding/HowItWorks/TabsBody",
     sinceVersion: "1.15.0",
   },
   {

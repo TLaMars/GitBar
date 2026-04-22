@@ -1,11 +1,12 @@
+import Expo
 import ExpoModulesCore
 import React
+import React_RCTAppDelegate
 
 public class WindowModule: Module {
-    
+
     private var windowsMap = [String: NSWindow]()
     internal var moduleNameMap = [NSWindow: String]()
-    private var bridge: RCTBridge!
     private var delegateHandler: WindowDelegateHandler?
 
     public func definition() -> ModuleDefinition {
@@ -28,9 +29,6 @@ public class WindowModule: Module {
         Events("onWindowClose")
         
         OnCreate {
-            // Get Bridge from RCTBridge -> is also in Appdelegate, but how do we type it
-            // let appDelegate = NSApp.delegate
-            bridge = RCTBridge.current()
             delegateHandler = WindowDelegateHandler(module: self)
         }
         
@@ -63,8 +61,17 @@ public class WindowModule: Module {
             // Create and configure the new window
             let windowFrame = NSRect(x: originX, y: originY, width: width, height: height)
             let newWindow = NSWindow(contentRect: windowFrame, styleMask: windowStyleMask, backing: .buffered, defer: false)
-            
-            let rootView = RCTRootView(bridge: self.bridge, moduleName: moduleName, initialProperties: nil)
+
+            let appDelegate = NSApp.delegate as! NSObject
+            let factory = appDelegate.value(forKey: "factory") as! RCTReactNativeFactory
+            let rootViewFactory = factory.rootViewFactory as! ExpoReactRootViewFactory
+            let rootView = rootViewFactory.superView(
+                withModuleName: moduleName,
+                initialProperties: [:],
+                launchOptions: [:]
+            )
+            rootView.frame = NSRect(x: 0, y: 0, width: width, height: height)
+            rootView.autoresizingMask = [.width, .height]
             newWindow.contentView = rootView
             self.windowsMap[moduleName] = newWindow
             self.moduleNameMap[newWindow] = moduleName

@@ -18,8 +18,6 @@ class AppDelegate: ExpoAppDelegate {
   var reactNativeFactory: RCTReactNativeFactory?
 
   override func applicationDidFinishLaunching(_ notification: Notification) {
-    migrateMMKVToDocumentsIfNeeded()
-
     let delegate = ReactNativeDelegate()
     let factory = ExpoReactNativeFactory(delegate: delegate)
     delegate.dependencyProvider = RCTAppDependencyProvider()

@@ -2,6 +2,19 @@
   "name": "GitBar",
   "expo": {
     "name": "GitBar",
-    "plugins": ["expo-font"]
+    "platforms": ["ios", "macos"],
+    "macos": {
+      "bundleIdentifier": "io.lamars.gitbar"
+    },
+    "plugins": [
+      "expo-font",
+      [
+        "expo-desktop-config-plugins",
+        {
+          "displayName": "GitBar",
+          "bundleIdentifier": "io.lamars.gitbar"
+        }
+      ]
+    ]
   }
 }

@@ -7,13 +7,12 @@
 
 import Foundation
 import Cocoa
-import UserNotifications
 import Expo
 import React
 import ReactAppDependencyProvider
 
 @main
-class AppDelegate: ExpoAppDelegate, UNUserNotificationCenterDelegate, NSPopoverDelegate {
+class AppDelegate: ExpoAppDelegate, NSPopoverDelegate {
 
   var statusItem: NSStatusItem!
   var popover: NSPopover!
@@ -22,7 +21,6 @@ class AppDelegate: ExpoAppDelegate, UNUserNotificationCenterDelegate, NSPopoverD
   var reactNativeFactory: RCTReactNativeFactory?
 
   override func applicationDidFinishLaunching(_ notification: Notification) {
-    UNUserNotificationCenter.current().delegate = self
     migrateMMKVToDocumentsIfNeeded()
 
     super.applicationDidFinishLaunching(notification)
@@ -150,10 +148,6 @@ class AppDelegate: ExpoAppDelegate, UNUserNotificationCenterDelegate, NSPopoverD
     }
   }
 
-  func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-    openPopover()
-    completionHandler()
-  }
 }
 
 class ReactNativeDelegate: ExpoReactNativeFactoryDelegate {

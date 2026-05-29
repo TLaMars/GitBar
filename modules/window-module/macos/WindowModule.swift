@@ -62,9 +62,12 @@ public class WindowModule: Module {
             let windowFrame = NSRect(x: originX, y: originY, width: width, height: height)
             let newWindow = NSWindow(contentRect: windowFrame, styleMask: windowStyleMask, backing: .buffered, defer: false)
 
-            let appDelegate = NSApp.delegate as! NSObject
-            let factory = appDelegate.value(forKey: "factory") as! RCTReactNativeFactory
-            let rootViewFactory = factory.rootViewFactory as! ExpoReactRootViewFactory
+            guard let provider = NSApp.delegate as? (any ReactNativeFactoryProvider),
+                  let factory = provider.factory as? RCTReactNativeFactory,
+                  let rootViewFactory = factory.rootViewFactory as? ExpoReactRootViewFactory else {
+                NSLog("WindowModule: could not access RCTReactNativeFactory from app delegate")
+                return
+            }
             let rootView = rootViewFactory.superView(
                 withModuleName: moduleName,
                 initialProperties: [:],

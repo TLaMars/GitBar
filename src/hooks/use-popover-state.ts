@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { NativeEventEmitter, NativeModules } from "react-native";
 
-const nativeModule = NativeModules.RNEventEmitter;
-const EventEmitter = new NativeEventEmitter(nativeModule);
+import PopoverModule from "modules/popover-module";
+import { PopoverStateEvent } from "modules/popover-module/src/PopoverModule.types";
 
 export enum PopoverState {
   OPEN = "Opened",
@@ -13,12 +12,15 @@ const usePopoverState = () => {
   const [state, setState] = useState<PopoverState>(PopoverState.OPEN);
 
   useEffect(() => {
-    EventEmitter.addListener("onPopoverState", ({ state: popoverState }) => {
-      setState(popoverState);
-    });
+    const subscription = PopoverModule.addListener(
+      "onPopoverState",
+      ({ state: popoverState }: PopoverStateEvent) => {
+        setState(popoverState as PopoverState);
+      },
+    );
 
     return () => {
-      EventEmitter.removeAllListeners("onPopoverState");
+      subscription.remove();
     };
   }, []);
 

@@ -10,7 +10,7 @@
     "lint:prettier": "prettier --check --loglevel=warn src",
     "lint:tsc": "tsc --noEmit",
     "lint": "concurrently --kill-others-on-fail \"npm:lint:*\"",
-    "mac": "react-native run-macos --scheme=GitBar",
+    "mac": "rnc-cli run-macos --scheme=GitBar",
     "pre-commit": "lint-staged",
     "prepare": "husky",
     "start": "expo start",

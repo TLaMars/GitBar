@@ -16,7 +16,7 @@ const WindowNavigator = createWindowsNavigator({
           WindowStyleMask.Miniaturizable,
         ],
         titlebarAppearsTransparent: true,
-        height: 500,
+        height: 540,
         width: 440,
       },
     },

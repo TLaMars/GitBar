@@ -43,16 +43,20 @@ public class WindowModule: Module {
             // Window does not exist, create a new one
             let title = options["title"] as? String ?? moduleName
             let windowStyle = options["windowStyle"] as? [String: Any]
+            // SDK 56's expo-modules-core boxes untyped `[String: Any]` JS numbers as native Swift
+            // `Double`/`Int` instead of `NSNumber`. `Double`/`Int` do NOT satisfy `as? CGFloat` or
+            // `as? UInt` (distinct nominal types), so those casts silently returned nil and the
+            // window fell back to its defaults. Casting via `NSNumber` bridges every numeric boxing.
             let windowStyleMask: NSWindow.StyleMask = {
-                if let mask = windowStyle?["mask"] as? UInt {
-                    return NSWindow.StyleMask(rawValue: mask)
+                if let mask = windowStyle?["mask"] as? NSNumber {
+                    return NSWindow.StyleMask(rawValue: mask.uintValue)
                 } else {
                     return [.titled, .closable, .resizable]
                 }
             }()
-            
-            let width = windowStyle?["width"] as? CGFloat ?? 400
-            let height = windowStyle?["height"] as? CGFloat ?? 300
+
+            let width = (windowStyle?["width"] as? NSNumber).map { CGFloat($0.doubleValue) } ?? 400
+            let height = (windowStyle?["height"] as? NSNumber).map { CGFloat($0.doubleValue) } ?? 300
             let titlebarAppearsTransparent = windowStyle?["titlebarAppearsTransparent"] as? Bool ?? false
             let screenRect = NSScreen.main?.visibleFrame ?? NSRect.zero
             let originX = (screenRect.width - width) / 2.0

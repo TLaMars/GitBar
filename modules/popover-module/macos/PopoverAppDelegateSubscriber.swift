@@ -9,9 +9,10 @@ public class PopoverAppDelegateSubscriber: ExpoAppDelegateSubscriber, NSPopoverD
   private var popover: NSPopover!
 
   public func applicationDidFinishLaunching(_ notification: Notification) {
-    guard let provider = NSApp.delegate as? (any ReactNativeFactoryProvider),
-          let factory = provider.factory as? RCTReactNativeFactory else {
-      NSLog("PopoverAppDelegateSubscriber: no ReactNativeFactoryProvider on NSApp.delegate; popover not initialized")
+    // SDK 56 removed Expo's shared `ReactNativeFactoryProvider`. This pod can't import the app
+    // target's AppDelegate, so read its `@objc reactNativeFactory` via KVC (single-process app).
+    guard let factory = (NSApp.delegate as? NSObject)?.value(forKey: "reactNativeFactory") as? RCTReactNativeFactory else {
+      NSLog("PopoverAppDelegateSubscriber: could not read reactNativeFactory from NSApp.delegate; popover not initialized")
       return
     }
 

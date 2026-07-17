@@ -3,12 +3,13 @@ PODS:
     - ExpoModulesCore
   - boost (1.84.0)
   - DoubleConversion (1.1.6)
-  - EXConstants (18.0.13):
+  - EXConstants (56.0.21):
     - ExpoModulesCore
-  - Expo (54.0.33):
+  - Expo (56.0.16):
     - boost
     - DoubleConversion
     - ExpoModulesCore
+    - ExpoModulesJSI
     - fast_float
     - fmt
     - glog
@@ -36,19 +37,22 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - ExpoAsset (12.0.12):
+  - ExpoAsset (56.0.20):
     - ExpoModulesCore
-  - ExpoCrypto (14.1.5):
+  - ExpoCrypto (56.0.4):
     - ExpoModulesCore
-  - ExpoFileSystem (19.0.21):
+  - ExpoFileSystem (56.0.8):
     - ExpoModulesCore
-  - ExpoFont (14.0.11):
+  - ExpoFont (56.0.7):
     - ExpoModulesCore
-  - ExpoKeepAwake (15.0.8):
+  - ExpoKeepAwake (56.0.3):
     - ExpoModulesCore
-  - ExpoModulesCore (3.0.29):
+  - ExpoLogBox (56.0.14):
+    - React-Core
+  - ExpoModulesCore (56.0.21):
     - boost
     - DoubleConversion
+    - ExpoModulesJSI
     - fast_float
     - fmt
     - glog
@@ -75,6 +79,12 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
+  - ExpoModulesJSI (56.0.12):
+    - React-Core
+    - ReactCommon
+  - ExpoModulesWorklets (56.0.21):
+    - ExpoModulesCore
+    - ExpoModulesJSI
   - fast_float (8.0.0)
   - FBLazyVector (0.81.7)
   - fmt (11.0.2)
@@ -1859,7 +1869,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - react-native-safe-area-context (5.6.2):
+  - react-native-safe-area-context (5.7.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -1877,8 +1887,8 @@ PODS:
     - React-graphics
     - React-ImageManager
     - React-jsi
-    - react-native-safe-area-context/common (= 5.6.2)
-    - react-native-safe-area-context/fabric (= 5.6.2)
+    - react-native-safe-area-context/common (= 5.7.0)
+    - react-native-safe-area-context/fabric (= 5.7.0)
     - React-NativeModulesApple
     - React-RCTFabric
     - React-renderercss
@@ -1889,7 +1899,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - react-native-safe-area-context/common (5.6.2):
+  - react-native-safe-area-context/common (5.7.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -1917,7 +1927,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - react-native-safe-area-context/fabric (5.6.2):
+  - react-native-safe-area-context/fabric (5.7.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -2509,7 +2519,7 @@ PODS:
     - Sentry (= 9.10.0)
     - SocketRocket
     - Yoga
-  - RNSVG (15.15.3):
+  - RNSVG (15.15.4):
     - boost
     - DoubleConversion
     - fast_float
@@ -2535,10 +2545,10 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - RNSVG/common (= 15.15.3)
+    - RNSVG/common (= 15.15.4)
     - SocketRocket
     - Yoga
-  - RNSVG/common (15.15.3):
+  - RNSVG/common (15.15.4):
     - boost
     - DoubleConversion
     - fast_float
@@ -2589,7 +2599,10 @@ DEPENDENCIES:
   - ExpoFileSystem (from `../node_modules/expo/node_modules/expo-file-system/ios`)
   - ExpoFont (from `../node_modules/expo-font/ios`)
   - ExpoKeepAwake (from `../node_modules/expo/node_modules/expo-keep-awake/ios`)
+  - "ExpoLogBox (from `../node_modules/expo/node_modules/@expo/log-box`)"
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
+  - ExpoModulesJSI (from `../node_modules/expo-modules-jsi/apple`)
+  - ExpoModulesWorklets (from `../node_modules/expo-modules-core`)
   - fast_float (from `../node_modules/react-native-macos/third-party-podspecs/fast_float.podspec`)
   - FBLazyVector (from `../node_modules/react-native-macos/Libraries/FBLazyVector`)
   - fmt (from `../node_modules/react-native-macos/third-party-podspecs/fmt.podspec`)
@@ -2699,7 +2712,13 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-font/ios"
   ExpoKeepAwake:
     :path: "../node_modules/expo/node_modules/expo-keep-awake/ios"
+  ExpoLogBox:
+    :path: "../node_modules/expo/node_modules/@expo/log-box"
   ExpoModulesCore:
+    :path: "../node_modules/expo-modules-core"
+  ExpoModulesJSI:
+    :path: "../node_modules/expo-modules-jsi/apple"
+  ExpoModulesWorklets:
     :path: "../node_modules/expo-modules-core"
   fast_float:
     :podspec: "../node_modules/react-native-macos/third-party-podspecs/fast_float.podspec"
@@ -2867,14 +2886,17 @@ SPEC CHECKSUMS:
   AppModule: 2a816a6c11ac74d3bbd466ece6d31d4aac2941b7
   boost: cea1d4f90a3a59537f3deb03ff5656489d7133dd
   DoubleConversion: d31b1eb37f6d6f456530c4fd9124b857d6889cab
-  EXConstants: fce59a631a06c4151602843667f7cfe35f81e271
-  Expo: ffcd2fb31776b663b84501a2568cab7dd7c0f9cb
-  ExpoAsset: f867e55ceb428aab99e1e8c082b5aee7c159ea18
-  ExpoCrypto: a9f1d75baeea6ef8b03c1660621585196c382e85
-  ExpoFileSystem: 858a44267a3e6e9057e0888ad7c7cfbf55d52063
-  ExpoFont: f543ce20a228dd702813668b1a07b46f51878d47
-  ExpoKeepAwake: 55f75eca6499bb9e4231ebad6f3e9cb8f99c0296
-  ExpoModulesCore: d86dab8a6c8f1184f9b0b0503ace93919882aa15
+  EXConstants: b761e3534d6066412c7c3276dd4f104d2275e6d4
+  Expo: 78395ab8aab6f87a987b06e12595e58da5bcfb3e
+  ExpoAsset: d69e54981e14baa059c5d9cc9580d06fffc44644
+  ExpoCrypto: b54a97c4357d46d7f8de079e69fa89029572244b
+  ExpoFileSystem: 9dc04ec1e11bc3c7b965d7feb2de12c789755c7b
+  ExpoFont: 274487aa78f8c65d6551e2558eca3ec6ce3432ce
+  ExpoKeepAwake: 359c47a1d9ccc3a3c519bca6e39562cce230c5bb
+  ExpoLogBox: cdad5c9402a186574fb5924ea91df1f08ba9a98a
+  ExpoModulesCore: dfd68d99a43c2ce0676602d0a6bae6d171ed7ed4
+  ExpoModulesJSI: e62656cfaffb5aeb3fdc1dd2bc49f77e87ed2261
+  ExpoModulesWorklets: 58bf4b7f263b5cad3f6017a68148789878ffd5a3
   fast_float: 20817c22759af6ac8d4d67e6e059b8b499953656
   FBLazyVector: e8ec216d79635ba4c9fb0e9becc30391ca4bff1b
   fmt: 24e7591456deb60b4a77518f83d9a916ac84223f
@@ -2918,7 +2940,7 @@ SPEC CHECKSUMS:
   React-Mapbuffer: 59df6730a578de280cd8675cdf5440b91c243bdf
   React-microtasksnativemodule: 255f0b29a74d001ecd202e4d5f7f170a009b3987
   react-native-mmkv: ac7507625cd74bac0eb5333604a7cd7b08fe9e3e
-  react-native-safe-area-context: c00143b4823773bba23f2f19f85663ae89ceb460
+  react-native-safe-area-context: befb5404eb8a16fdc07fa2bebab3568ecabcbb8a
   react-native-unistyles: e3077cae2280e79409f074fb6eebbad2de7e31e5
   React-NativeModulesApple: c1e8f5e34efed354e5a066ef47c45a4ca5dddbb4
   React-oscompat: b359d251f6ea20fa91e5e0f99fd7b563f50a8af3
@@ -2951,7 +2973,7 @@ SPEC CHECKSUMS:
   ReactCodegen: 8b4eefc1bbc1b4691070c87fb6593e78856e43aa
   ReactCommon: b2b6ff304cf01e1b67d8e9646e34d58320be0964
   RNSentry: 80792b62c5fa701a58e27d022e1eb20d52a796e5
-  RNSVG: c4d5a438a1c96f7ed7dc66349a5b7e97616fd701
+  RNSVG: 681be694d501c0af971615811d4f2ea9baf58966
   SafariWebAuthModule: 84c162f295dad8201ed5c6f4558cad4fa15dca1a
   Sentry: 4e85b40e4b0235853f40f959d315a6b28e3148d8
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748

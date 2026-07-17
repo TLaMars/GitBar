@@ -2,6 +2,9 @@
   "name": "GitBar",
   "expo": {
     "name": "GitBar",
-    "plugins": ["expo-font"]
+    "plugins": ["expo-font"],
+    "experiments": {
+      "outOfTreePlatforms": true
+    }
   }
 }

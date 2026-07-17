@@ -7,7 +7,9 @@
 
 import Foundation
 import Cocoa
-import Expo
+// SDK 56 / Swift 6: Expo is imported with `internal` access level in generated code, so an
+// implicit-access-level `import Expo` here is ambiguous. Mark it `internal` to match.
+internal import Expo
 import React
 import ReactAppDependencyProvider
 
@@ -15,7 +17,10 @@ import ReactAppDependencyProvider
 class AppDelegate: ExpoAppDelegate {
 
   var reactNativeDelegate: ExpoReactNativeFactoryDelegate?
-  var reactNativeFactory: RCTReactNativeFactory?
+  // Exposed to @objc/KVC so the popover- and window-module pods (which can't import this app
+  // target) can read the factory off NSApp.delegate. SDK 56 removed Expo's shared
+  // `bindReactNativeFactory` / `ReactNativeFactoryProvider`, which used to provide this.
+  @objc var reactNativeFactory: RCTReactNativeFactory?
 
   override func applicationDidFinishLaunching(_ notification: Notification) {
     let delegate = ReactNativeDelegate()
@@ -24,7 +29,6 @@ class AppDelegate: ExpoAppDelegate {
 
     reactNativeDelegate = delegate
     reactNativeFactory = factory
-    bindReactNativeFactory(factory)
 
     super.applicationDidFinishLaunching(notification)
   }

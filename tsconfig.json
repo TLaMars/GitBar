@@ -17,15 +17,20 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "baseUrl": "./",
+    // baseUrl is deprecated in TS 6.0 (removed in 7.0) but still load-bearing here: it powers
+    // root-relative imports like `modules/app-module` and `src/windows` that aren't in `paths`
+    // (babel's module-resolver `root: ["."]` mirrors this at runtime). Silence the deprecation
+    // until those imports are migrated to explicit path aliases.
+    "ignoreDeprecations": "6.0",
     "paths": {
       "assets/*": ["./src/assets/*"],
       "components/*": ["./src/components/*"],
-      "constants/*": ["src/core/constants/*"],
+      "constants/*": ["./src/core/constants/*"],
       "contexts/*": ["./src/contexts/*"],
       "gql/*": ["./src/core/gql/*"],
       "hooks/*": ["./src/hooks/*"],
       "layouts/*": ["./src/layouts/*"],
-      "models/*": ["src/core/models/*"],
+      "models/*": ["./src/core/models/*"],
       "pages/*": ["./src/pages/*"],
       "utils/*": ["./src/utils/*"],
       "services/*": ["./src/core/services/*"],

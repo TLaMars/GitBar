@@ -62,8 +62,9 @@ public class WindowModule: Module {
             let windowFrame = NSRect(x: originX, y: originY, width: width, height: height)
             let newWindow = NSWindow(contentRect: windowFrame, styleMask: windowStyleMask, backing: .buffered, defer: false)
 
-            guard let provider = NSApp.delegate as? (any ReactNativeFactoryProvider),
-                  let factory = provider.factory as? RCTReactNativeFactory,
+            // SDK 56 removed Expo's shared `ReactNativeFactoryProvider`. This pod can't import the
+            // app target's AppDelegate, so read its `@objc reactNativeFactory` via KVC.
+            guard let factory = (NSApp.delegate as? NSObject)?.value(forKey: "reactNativeFactory") as? RCTReactNativeFactory,
                   let rootViewFactory = factory.rootViewFactory as? ExpoReactRootViewFactory else {
                 NSLog("WindowModule: could not access RCTReactNativeFactory from app delegate")
                 return

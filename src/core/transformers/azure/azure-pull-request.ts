@@ -84,6 +84,13 @@ const transformAzurePullRequest = (
     isAssignedToMe: data.reviewers.some(
       (reviewer) => reviewer.displayName === profile.name,
     ),
+    // Azure keeps you in reviewers with a vote, so pending = I am a reviewer who
+    // has not voted yet (NoVote); any other vote means I have already acted.
+    isReviewPendingFromMe: data.reviewers.some(
+      (reviewer) =>
+        reviewer.displayName === profile.name &&
+        reviewer.vote === ReviewerVote.NoVote,
+    ),
     isAuthoredByMe: data.createdBy.displayName === profile.name,
     isCommentedByMe: data.threads.some((thread) =>
       thread.comments.some(

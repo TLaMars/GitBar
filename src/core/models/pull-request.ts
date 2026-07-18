@@ -58,6 +58,10 @@ export type PullRequest = {
   isCommentedByMe: boolean;
   isAuthoredByMe: boolean;
   isAssignedToMe: boolean;
+  // Review requested from me AND not yet voted. Cross-provider (GitHub drops you
+  // from reviewRequests once you review; GitLab/Azure derive it from my vote).
+  // Drives the "Blocked on you" attention reason so it stays tight.
+  isReviewPendingFromMe: boolean;
   isFullyApproved: boolean;
   isApprovalRequired: boolean;
   hasConflicts: boolean;

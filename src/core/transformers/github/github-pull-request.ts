@@ -64,6 +64,14 @@ const transformGithubPullRequest = (
               assignee?.requestedReviewer?.__typename === "User" &&
               assignee.requestedReviewer.login === profile.userName,
           ) ?? false,
+        // GitHub removes you from reviewRequests once you submit a review, so
+        // membership there already means "requested and still pending".
+        isReviewPendingFromMe:
+          pr.reviewRequests?.nodes?.some(
+            (assignee) =>
+              assignee?.requestedReviewer?.__typename === "User" &&
+              assignee.requestedReviewer.login === profile.userName,
+          ) ?? false,
         isAuthoredByMe: pr.author?.login === profile.userName,
         isFullyApproved:
           pr.reviewDecision === PullRequestReviewDecision.Approved,

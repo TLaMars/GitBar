@@ -18,6 +18,7 @@ const mergeablePullRequest: PullRequest = {
   isCommentedByMe: false,
   isAuthoredByMe: false,
   isAssignedToMe: true,
+  isReviewPendingFromMe: false,
   isFullyApproved: true,
   isApprovalRequired: true,
   hasConflicts: false,

@@ -84,6 +84,14 @@ const transformGitLabPullRequest = ({
         pr.reviewers?.nodes?.some(
           (reviewer) => reviewer?.username === profile.userName,
         ) ?? false,
+      // GitLab keeps you in reviewers after you approve, so pending = I am a
+      // reviewer AND have not approved yet.
+      isReviewPendingFromMe:
+        pr.reviewers?.nodes?.some(
+          (reviewer) =>
+            reviewer?.username === profile.userName &&
+            !reviewer?.mergeRequestInteraction?.approved,
+        ) ?? false,
       isAuthoredByMe: pr.author?.username === profile.userName,
       isFullyApproved: pr.approved,
       // approvalsRequired is 0/null when the project has no approval rules —

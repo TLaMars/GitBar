@@ -1,7 +1,7 @@
 import { useGuavaClient } from "@guava-analytics/react-native";
 import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { Linking } from "react-native";
-import { Pressable, View } from "react-native-macos";
+import { Pressable, TouchableOpacity, View } from "react-native-macos";
 import { useStyles } from "react-native-unistyles";
 
 import ActionPill from "components/action-pill/action-pill";
@@ -217,7 +217,7 @@ const PullRequestCard: React.FC<Props> = ({
         <View style={$.right}>
           {active ? (
             <View style={$.actions}>
-              <Pressable
+              <TouchableOpacity
                 accessibilityRole="button"
                 style={$.actionButton}
                 tooltip={t("PullRequestCard/Action/SnoozeTooltip")}
@@ -227,8 +227,8 @@ const PullRequestCard: React.FC<Props> = ({
                 <Body size="xs" color="textSecondary">
                   {t("PullRequestCard/Action/Snooze")}
                 </Body>
-              </Pressable>
-              <Pressable
+              </TouchableOpacity>
+              <TouchableOpacity
                 accessibilityRole="button"
                 style={$.actionButton}
                 tooltip={t("PullRequestCard/Action/Hide")}
@@ -238,7 +238,7 @@ const PullRequestCard: React.FC<Props> = ({
                 <Body size="xs" color="textSecondary">
                   {t("PullRequestCard/Action/Hide")}
                 </Body>
-              </Pressable>
+              </TouchableOpacity>
             </View>
           ) : (
             amountOfComments !== undefined && (

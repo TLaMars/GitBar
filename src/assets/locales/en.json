@@ -16,6 +16,7 @@
   "PullRequestCard/Merge/AccountMissing": "Could not find the account for this pull request",
   "PullRequestCard/CI/TooltipCancelled": "Pipeline cancelled",
   "PullRequestCard/Status/Approved": "Approved",
+  "PullRequestCard/Status/ChangesRequested": "Changes requested",
   "PullRequestCard/Status/Conflicts": "Conflicts",
   "PullRequestCard/Status/Draft": "Draft",
   "PullRequestCard/CI/TooltipFailing": "Pipeline failing",

@@ -13,12 +13,14 @@ import Heading from "components/heading/heading";
 import Icon from "components/icon/icon";
 import Pill from "components/pill/pill";
 import Spacer from "components/spacer/spacer";
+import { STATUS_BADGE_PRESENTATION } from "constants/status-badge";
 import useMergePullRequest from "hooks/mutations/use-merge-pull-request";
 import useTranslation from "hooks/use-translation";
-import { Attendee as AttendeeType } from "models/attendee";
+import { Attendee as AttendeeType, Vote } from "models/attendee";
 import { CiStatus } from "models/ci-status";
 import { MergeRef } from "models/pull-request";
 import { ThemeColor } from "models/theme";
+import resolveStatusBadge from "utils/resolve-status-badge";
 
 import styles from "./pull-request-card.styles";
 
@@ -72,6 +74,20 @@ const PullRequestCard: React.FC<Props> = ({
   });
   const badgeVariant = compact ? "compact" : "pill";
 
+  // At most one status badge per card (D12). The Merge pill is a CTA that
+  // subsumes the badge slot, so it wins outright when the PR is mergeable.
+  const hasChangesRequested = reviewers.some(
+    (reviewer) => reviewer.vote === Vote.Rejected,
+  );
+  const statusBadge = canMerge
+    ? null
+    : resolveStatusBadge({
+        hasConflicts,
+        hasChangesRequested,
+        isDraft,
+        isFullyApproved,
+      });
+
   const onPress = async () => {
     if (await Linking.canOpenURL(url)) {
       client.trackEvent("pull_request_card_clicked", {
@@ -84,8 +100,8 @@ const PullRequestCard: React.FC<Props> = ({
     }
   };
 
-  // Shared across compact + full layouts. Draft takes precedence over
-  // Approved in the state slot (mutually exclusive in practice).
+  // Shared across compact + full layouts. The Merge CTA and the single
+  // resolved status badge are mutually exclusive (see statusBadge above).
   const statusBadges = (
     <>
       {canMerge && (
@@ -101,34 +117,14 @@ const PullRequestCard: React.FC<Props> = ({
           onPress={merge}
         />
       )}
-      {isDraft && (
+      {statusBadge && (
         <Pill
           variant={badgeVariant}
-          tone="textSecondary"
-          backgroundTone="backgroundCiCancelled"
-          iconName="EditPencil"
-          label={t("PullRequestCard/Status/Draft")}
-          tooltip={t("PullRequestCard/Status/Draft")}
-        />
-      )}
-      {!isDraft && isFullyApproved && !canMerge && (
-        <Pill
-          variant={badgeVariant}
-          tone="accentGreen"
-          backgroundTone="backgroundCiSuccess"
-          iconName="Check"
-          label={t("PullRequestCard/Status/Approved")}
-          tooltip={t("PullRequestCard/Status/Approved")}
-        />
-      )}
-      {hasConflicts && (
-        <Pill
-          variant={badgeVariant}
-          tone="accentOrange"
-          backgroundTone="backgroundWarning"
-          iconName="AlertCircle"
-          label={t("PullRequestCard/Status/Conflicts")}
-          tooltip={t("PullRequestCard/Status/Conflicts")}
+          tone={STATUS_BADGE_PRESENTATION[statusBadge].tone}
+          backgroundTone={STATUS_BADGE_PRESENTATION[statusBadge].backgroundTone}
+          iconName={STATUS_BADGE_PRESENTATION[statusBadge].iconName}
+          label={t(STATUS_BADGE_PRESENTATION[statusBadge].labelKey)}
+          tooltip={t(STATUS_BADGE_PRESENTATION[statusBadge].labelKey)}
         />
       )}
     </>

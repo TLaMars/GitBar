@@ -2,25 +2,27 @@
 
 Your new Pull Request tool for GitHub, GitLab and Azure.
 
-## Featues
+## Features
 
 - [x] GitHub
 - [x] GitLab (self-hosted and gitlab.com)
 - [x] Azure DevOps
 - [x] View Pull Requests
+- [x] "Needs you" tab (PRs grouped by what needs your attention)
 - [x] Get Notifications
 - [x] Launch at Login
 - [x] Dark / Light Mode
 - [x] Amount of PRs in the menubar
 - [x] Open PRs in your browser
 - [x] Hide PRs from Mine & Review tabs
+- [x] Snooze PRs (until updated)
+- [x] Hide PRs opened by bots
 - [x] Merge PRs
 - [x] See Pipeline Status
 
 ### To Do
 
 - [ ] Bitbucket
-- [ ] Prioritize PRs
 - [ ] Ignore Repositories
 
 ## Release Process

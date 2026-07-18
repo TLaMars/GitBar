@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo } from "react";
+import { memo, useCallback } from "react";
 import {
   SectionList,
   SectionListData,
@@ -9,13 +9,10 @@ import { useStyles } from "react-native-unistyles";
 import Body from "components/body/body";
 import ErrorContainer from "components/error-container/error-container";
 import PullRequestCard from "components/pull-request-card/pull-request-card";
-import useDispatch from "hooks/use-dispatch";
 import useSelector from "hooks/use-selector";
-import useTranslation from "hooks/use-translation";
 import { PullRequest } from "models/pull-request";
 import { Section } from "models/section";
 import { selectCompactCards } from "store/selectors/settings";
-import { setPullRequestHidden } from "store/slices/pull-requests";
 
 import styles from "./pull-request-list.styles";
 
@@ -42,25 +39,7 @@ type Props = {
 
 const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
   const { styles: $ } = useStyles(styles);
-  const { t } = useTranslation();
-  const dispatch = useDispatch();
   const compact = useSelector(selectCompactCards);
-
-  const actionSheetOptions = useMemo(
-    () => ({
-      options: [t("PullRequestCard/ActionSheet/Hide")],
-    }),
-    [t],
-  );
-
-  const actionSheetCallback = useCallback(
-    (buttonIndex: number, id: string, repoName: string) => {
-      if (buttonIndex === 0) {
-        dispatch(setPullRequestHidden({ id, repoName }));
-      }
-    },
-    [dispatch],
-  );
 
   const renderItem = useCallback(
     ({
@@ -69,15 +48,12 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
       <PullRequestCard
         key={item.id}
         id={item.id}
-        repoName={item.repoName}
         title={item.title}
         author={item.author}
         reviewers={item.reviewers}
         url={item.url}
         amountOfComments={item.amountOfComments}
         accentColor={item.accentColor}
-        actionSheetOptions={actionSheetOptions}
-        actionSheetCallback={actionSheetCallback}
         isDraft={item.isDraft}
         isFullyApproved={item.isFullyApproved}
         hasConflicts={item.hasConflicts}
@@ -85,7 +61,7 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
         compact={compact}
       />
     ),
-    [actionSheetCallback, actionSheetOptions, compact],
+    [compact],
   );
 
   return (

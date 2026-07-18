@@ -55,33 +55,31 @@ const WhatsNewModal: React.FC<Props> = ({ visible, onClose }) => {
   return (
     <View style={$.overlay} pointerEvents="auto">
       <View style={$.card}>
-          <Heading textAlign="center" size="l">
-            {t("WhatsNew/Heading")}
-          </Heading>
-          <Spacer mt={6} />
-          <View style={$.wrapper}>
-            {visibleFeatures.map((feature) => (
-              <FeatureItem
-                key={feature.headingKey}
-                image={feature.image}
-                heading={t(feature.headingKey)}
-                body={t(feature.bodyKey)}
-              />
-            ))}
-          </View>
-          <Spacer mt={6} />
-          <View style={$.buttonGroup}>
-            <Button
-              analyticsLabel="WhatsNew/Button/Next"
-              size="xs"
-              type="neutral"
-              label={
-                isLastPage
-                  ? t("WhatsNew/Button/Done")
-                  : t("General/Button/Next")
-              }
-              onPress={onNextPress}
+        <Heading textAlign="center" size="l">
+          {t("WhatsNew/Heading")}
+        </Heading>
+        <Spacer mt={6} />
+        <View style={$.wrapper}>
+          {visibleFeatures.map((feature) => (
+            <FeatureItem
+              key={feature.headingKey}
+              image={feature.image}
+              heading={t(feature.headingKey)}
+              body={t(feature.bodyKey)}
             />
+          ))}
+        </View>
+        <Spacer mt={6} />
+        <View style={$.buttonGroup}>
+          <Button
+            analyticsLabel="WhatsNew/Button/Next"
+            size="xs"
+            type="neutral"
+            label={
+              isLastPage ? t("WhatsNew/Button/Done") : t("General/Button/Next")
+            }
+            onPress={onNextPress}
+          />
         </View>
       </View>
     </View>

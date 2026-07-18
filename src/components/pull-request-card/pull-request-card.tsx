@@ -1,11 +1,7 @@
 import { useGuavaClient } from "@guava-analytics/react-native";
 import React, { memo } from "react";
-import { GestureResponderEvent, Linking, TouchableOpacity } from "react-native";
-import {
-  ActionSheetIOS,
-  ActionSheetIOSOptions,
-  View,
-} from "react-native-macos";
+import { Linking } from "react-native";
+import { Pressable, View } from "react-native-macos";
 import { useStyles } from "react-native-unistyles";
 
 import Attendee from "components/attendee/attendee";
@@ -28,15 +24,8 @@ type Props = {
   title: string;
   author: AttendeeType;
   reviewers: AttendeeType[];
-  repoName: string;
   url: string;
   amountOfComments?: number;
-  actionSheetOptions?: ActionSheetIOSOptions;
-  actionSheetCallback?: (
-    buttonIndex: number,
-    id: string,
-    repoName: string,
-  ) => void;
   accentColor: ThemeColor;
   isDraft: boolean;
   isFullyApproved: boolean;
@@ -51,11 +40,8 @@ const PullRequestCard: React.FC<Props> = ({
   reviewers,
   url,
   amountOfComments,
-  actionSheetOptions,
-  actionSheetCallback,
   accentColor,
   id,
-  repoName,
   isDraft,
   isFullyApproved,
   hasConflicts,
@@ -66,26 +52,7 @@ const PullRequestCard: React.FC<Props> = ({
   const { styles: $ } = useStyles(styles);
   const { t } = useTranslation();
 
-  const onPress = async (event: GestureResponderEvent) => {
-    if ("button" in event.nativeEvent && event.nativeEvent.button === 2) {
-      if (actionSheetOptions && actionSheetCallback) {
-        ActionSheetIOS.showActionSheetWithOptions(
-          actionSheetOptions,
-          (buttonIndex) => {
-            client.trackEvent("pull_request_card_right_clicked", {
-              button_index: buttonIndex.toString(),
-              button_title: actionSheetOptions.options[buttonIndex],
-              id,
-              accent_color: accentColor,
-              amount_of_comments: amountOfComments?.toString() ?? "0",
-              is_draft: isDraft.toString(),
-            });
-            actionSheetCallback(buttonIndex, id, repoName);
-          },
-        );
-      }
-      return;
-    }
+  const onPress = async () => {
     if (await Linking.canOpenURL(url)) {
       client.trackEvent("pull_request_card_clicked", {
         id,
@@ -133,11 +100,12 @@ const PullRequestCard: React.FC<Props> = ({
 
   if (compact) {
     return (
-      <TouchableOpacity
+      <Pressable
         accessibilityRole="button"
         style={$.cardCompact}
         onPress={onPress}
       >
+        <View style={[$.borderLine(accentColor)]} />
         <Attendee name={author.name} size={24} avatarUrl={author.avatarUrl} />
         <View style={$.compactTitle}>
           <Heading numberOfLines={1} size="x2s">
@@ -146,18 +114,13 @@ const PullRequestCard: React.FC<Props> = ({
         </View>
         {statusBadges}
         <CiStatusIndicator ci={ci} />
-      </TouchableOpacity>
+      </Pressable>
     );
   }
 
   return (
-    <TouchableOpacity
-      accessibilityRole="button"
-      style={$.card}
-      onPress={onPress}
-    >
-      {/* TEMP off for redesign */}
-      {/* <View style={[$.borderLine(accentColor), isDraft && $.draftLine]} /> */}
+    <Pressable accessibilityRole="button" style={$.card} onPress={onPress}>
+      <View style={[$.borderLine(accentColor)]} />
       <View style={$.header}>
         <View style={$.title}>
           <Heading numberOfLines={1} size="x2s">
@@ -188,7 +151,7 @@ const PullRequestCard: React.FC<Props> = ({
           )}
         </View>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 

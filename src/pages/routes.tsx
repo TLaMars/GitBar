@@ -114,10 +114,7 @@ const RootStack: React.FC = () => {
         <RootStackNavigator.Screen name="Settings" component={Settings} />
         <RootStackNavigator.Screen name="Issues" component={Issues} />
       </RootStackNavigator.Navigator>
-      <WhatsNewModal
-        visible={isWhatsNewVisible}
-        onClose={onWhatsNewClose}
-      />
+      <WhatsNewModal visible={isWhatsNewVisible} onClose={onWhatsNewClose} />
     </>
   );
 };

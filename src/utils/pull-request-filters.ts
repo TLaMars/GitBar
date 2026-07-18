@@ -49,6 +49,5 @@ export const filterMinePRs = (pullRequests: PullRequest[]): PullRequest[] =>
 
 export const filterReviewPRs = (pullRequests: PullRequest[]): PullRequest[] =>
   pullRequests.filter(
-    (pr) =>
-      !pr.isAuthoredByMe && (pr.isAssignedToMe || pr.isCommentedByMe),
+    (pr) => !pr.isAuthoredByMe && (pr.isAssignedToMe || pr.isCommentedByMe),
   );

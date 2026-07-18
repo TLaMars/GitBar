@@ -72,7 +72,6 @@
   "Settings/GroupPRsBy/None": "Don't Group",
   "Settings/Application/LaunchAtLogin": "Launch GitBar at login",
   "ErrorContainer/Heading/Error": "Errors",
-  "PullRequestCard/ActionSheet/Hide": "Hide PullRequest from Mine & Review",
   "ErrorContainer/Button/Retry": "Retry",
   "Onboarding/Intro/SubHeading": "Let's get you setup and started!",
   "Onboarding/Intro/GetStarted": "Get Started!",

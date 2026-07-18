@@ -4,9 +4,9 @@ import { CiState } from "models/ci-status";
 import { PullRequest } from "models/pull-request";
 import getMenuBarTint from "utils/get-menu-bar-tint";
 
-const RED = "#F05069"; // accentRed — needsWork
-const BLUE = "#AFDFF3"; // accentLightBlue — blockedOnYou
-const GREEN = "#B4E080"; // accentGreen — readyToMerge
+const RED = "#F05069"; // needsWork
+const ORANGE = "#F59E0B"; // blockedOnYou
+const GREEN = "#3FB950"; // readyToMerge
 
 const makePullRequest = (overrides: Partial<PullRequest>): PullRequest => ({
   id: "pr",
@@ -65,8 +65,8 @@ describe("getMenuBarTint", () => {
     expect(getMenuBarTint([waiting, needsWork])).toBe(RED);
   });
 
-  it("tints blue for blocked-on-you", () => {
-    expect(getMenuBarTint([waiting, blockedOnYou])).toBe(BLUE);
+  it("tints orange for blocked-on-you", () => {
+    expect(getMenuBarTint([waiting, blockedOnYou])).toBe(ORANGE);
   });
 
   it("tints green for ready-to-merge", () => {
@@ -74,10 +74,8 @@ describe("getMenuBarTint", () => {
   });
 
   it("picks the most urgent when several apply (needs-work > blocked > ready)", () => {
-    expect(
-      getMenuBarTint([readyToMerge, blockedOnYou, needsWork]),
-    ).toBe(RED);
-    expect(getMenuBarTint([readyToMerge, blockedOnYou])).toBe(BLUE);
+    expect(getMenuBarTint([readyToMerge, blockedOnYou, needsWork])).toBe(RED);
+    expect(getMenuBarTint([readyToMerge, blockedOnYou])).toBe(ORANGE);
   });
 });
 

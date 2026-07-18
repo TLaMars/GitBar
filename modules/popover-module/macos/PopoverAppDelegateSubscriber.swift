@@ -8,6 +8,11 @@ public class PopoverAppDelegateSubscriber: ExpoAppDelegateSubscriber, NSPopoverD
   private var statusItem: NSStatusItem!
   private var popover: NSPopover!
 
+  // Menu-bar count text and the urgency dot color (D15). Kept so either can
+  // update independently and the title is rebuilt from both.
+  private var currentText: String = ""
+  private var currentTint: NSColor?
+
   public func applicationDidFinishLaunching(_ notification: Notification) {
     // SDK 56 removed Expo's shared `ReactNativeFactoryProvider`. This pod can't import the app
     // target's AppDelegate, so read its `@objc reactNativeFactory` via KVC (single-process app).
@@ -97,12 +102,52 @@ public class PopoverAppDelegateSubscriber: ExpoAppDelegateSubscriber, NSPopoverD
       self?.closePopover()
     }
     nc.addObserver(self, selector: #selector(setStatusItemText(_:)), name: Notification.Name("GitBar-SetStatusItemText"), object: nil)
+    nc.addObserver(self, selector: #selector(setStatusItemTint(_:)), name: Notification.Name("GitBar-SetStatusItemTint"), object: nil)
   }
 
   @objc private func setStatusItemText(_ notification: NSNotification) {
     guard let userInfo = notification.userInfo as? [String: Any],
           let text = userInfo["text"] as? String else { return }
-    statusItem?.button?.title = text
+    currentText = text
+    updateStatusItemTitle()
+  }
+
+  @objc private func setStatusItemTint(_ notification: NSNotification) {
+    guard let userInfo = notification.userInfo as? [String: Any],
+          let hex = userInfo["hex"] as? String else { return }
+    currentTint = Self.color(fromHex: hex)
+    updateStatusItemTitle()
+  }
+
+  // Keeps the icon as a monochrome, appearance-adaptive template image and
+  // shows a small colored dot next to the count when there is an urgent state.
+  private func updateStatusItemTitle() {
+    guard let button = statusItem?.button else { return }
+
+    guard let tint = currentTint else {
+      button.attributedTitle = NSAttributedString(string: currentText)
+      return
+    }
+
+    let title = NSMutableAttributedString(
+      string: "\u{25CF} ",
+      attributes: [.foregroundColor: tint]
+    )
+    title.append(NSAttributedString(string: currentText))
+    button.attributedTitle = title
+  }
+
+  private static func color(fromHex hex: String) -> NSColor? {
+    var value = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+    guard value.hasPrefix("#") else { return nil }
+    value.removeFirst()
+    guard value.count == 6, let rgb = UInt32(value, radix: 16) else { return nil }
+    return NSColor(
+      red: CGFloat((rgb >> 16) & 0xFF) / 255,
+      green: CGFloat((rgb >> 8) & 0xFF) / 255,
+      blue: CGFloat(rgb & 0xFF) / 255,
+      alpha: 1
+    )
   }
 
   // MARK: - Status item click

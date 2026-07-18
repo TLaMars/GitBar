@@ -11,11 +11,13 @@ import {
 } from "store/selectors/pull-requests";
 import {
   selectAllowNotifications,
+  selectColoredMenuBarIcon,
   selectHideBotPRs,
   selectHideDraftPRs,
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
 } from "store/selectors/settings";
+import getMenuBarTint from "utils/get-menu-bar-tint";
 import { countActionablePullRequests } from "utils/group-pull-requests-by-attention";
 import { filterSnoozed } from "utils/is-pull-request-snoozed";
 import {
@@ -35,6 +37,7 @@ const useDataHelper = () => {
   const snoozedPullRequests = useSelector(selectSnoozedPullRequests);
   const hideDraftPRs = useSelector(selectHideDraftPRs);
   const hideBotPRs = useSelector(selectHideBotPRs);
+  const coloredMenuBarIcon = useSelector(selectColoredMenuBarIcon);
   const sendNotifications = useSelector(selectAllowNotifications);
   const popoverState = usePopoverState();
 
@@ -62,6 +65,11 @@ const useDataHelper = () => {
         countActionablePullRequests(relevantPrs).toString(),
       );
 
+      // Menu-bar urgency dot (D15), behind a setting.
+      PopoverModule.setStatusItemTint(
+        coloredMenuBarIcon ? getMenuBarTint(relevantPrs) : null,
+      );
+
       if (sendNotifications && popoverState === PopoverState.CLOSED) {
         sendPullRequestNotification(relevantPrs, prevPrsRef.current);
         prevPrsRef.current = relevantPrs;
@@ -74,6 +82,7 @@ const useDataHelper = () => {
       hidePRsApprovedByMe,
       hideDraftPRs,
       hideBotPRs,
+      coloredMenuBarIcon,
       sendNotifications,
       popoverState,
     ],

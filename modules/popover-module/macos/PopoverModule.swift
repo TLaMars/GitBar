@@ -27,6 +27,13 @@ public class PopoverModule: Module {
       info["text"] = text
       NotificationCenter.default.post(name: NSNotification.Name(rawValue: "GitBar-SetStatusItemText"), object: nil, userInfo: info)
     }.runOnQueue(.main)
+
+    // Menu-bar urgency dot (D15). Pass a hex like "#F05069", or nil/"" to clear.
+    AsyncFunction("setStatusItemTint") { (hex: String?) in
+      var info = [String: String]()
+      info["hex"] = hex ?? ""
+      NotificationCenter.default.post(name: NSNotification.Name(rawValue: "GitBar-SetStatusItemTint"), object: nil, userInfo: info)
+    }.runOnQueue(.main)
   }
 
   func emitPopoverState(_ state: String) {

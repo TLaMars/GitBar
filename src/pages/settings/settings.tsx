@@ -30,6 +30,7 @@ import {
   selectAllowNotifications,
   selectCompactCards,
   selectGroupPRsBy,
+  selectColoredMenuBarIcon,
   selectHideBotPRs,
   selectHideDraftPRs,
   selectHideIssuesAfterTwoMonths,
@@ -46,6 +47,7 @@ import {
   setAllowNotifications,
   setCompactCards,
   setGroupPRsBy,
+  setColoredMenuBarIcon,
   setHideBotPRs,
   setHideDraftPRs,
   setHideIssuesAfterTwoMonths,
@@ -72,6 +74,7 @@ const Settings: React.FC = () => {
   const allowPushNotifications = useSelector(selectAllowNotifications);
   const hideDraftPRs = useSelector(selectHideDraftPRs);
   const hideBotPRs = useSelector(selectHideBotPRs);
+  const coloredMenuBarIcon = useSelector(selectColoredMenuBarIcon);
   const compactCards = useSelector(selectCompactCards);
   const [notificationPermissions, setNotificationPermissions] =
     useState<NotificationPermission>();
@@ -307,6 +310,16 @@ const Settings: React.FC = () => {
             }}
           />
         )}
+        <ListItemToggle
+          label={t("Settings/Application/ColoredMenuBarIcon")}
+          value={coloredMenuBarIcon}
+          onToggle={(value) => {
+            dispatch(setColoredMenuBarIcon(value));
+            client.trackEvent("colored_menu_bar_icon_changed", {
+              value: value.toString(),
+            });
+          }}
+        />
 
         {__DEV__ && (
           <>

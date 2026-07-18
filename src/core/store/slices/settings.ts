@@ -11,6 +11,7 @@ type SettingsState = {
   hideDraftPRs: boolean;
   hideBotPRs: boolean;
   compactCards: boolean;
+  coloredMenuBarIcon: boolean;
 
   showIssues: boolean | undefined;
   hideIssuesAfterTwoMonths: boolean;
@@ -24,6 +25,7 @@ const initialState: SettingsState = {
   hideDraftPRs: false,
   hideBotPRs: false,
   compactCards: false,
+  coloredMenuBarIcon: false,
 
   showIssues: undefined,
   hideIssuesAfterTwoMonths: false,
@@ -51,6 +53,9 @@ const settings = createSlice({
     setHideBotPRs(state, action: PayloadAction<boolean>) {
       state.hideBotPRs = action.payload;
     },
+    setColoredMenuBarIcon(state, action: PayloadAction<boolean>) {
+      state.coloredMenuBarIcon = action.payload;
+    },
     setCompactCards(state, action: PayloadAction<boolean>) {
       state.compactCards = action.payload;
     },
@@ -71,6 +76,7 @@ export const {
   setHidePRsApprovedByMe,
   setHideDraftPRs,
   setHideBotPRs,
+  setColoredMenuBarIcon,
   setCompactCards,
   setShowIssues,
   setHideIssuesAfterTwoMonths,

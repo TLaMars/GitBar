@@ -76,6 +76,7 @@
   "Settings/GroupPRsBy/GroupBy": "Group PRs by setting ",
   "Settings/GroupPRsBy/None": "Don't Group",
   "Settings/Application/LaunchAtLogin": "Launch GitBar at login",
+  "Settings/Application/ColoredMenuBarIcon": "Colored menu bar icon",
   "ErrorContainer/Heading/Error": "Errors",
   "ErrorContainer/Button/Retry": "Retry",
   "Onboarding/Intro/SubHeading": "Let's get you setup and started!",

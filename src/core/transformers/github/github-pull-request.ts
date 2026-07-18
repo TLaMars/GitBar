@@ -7,8 +7,9 @@ import {
   PullRequestReviewState,
 } from "gql/github/codegen/graphql";
 import FragmentGitHubPullRequest from "gql/github/fragments/pull-request";
+import { AccountType } from "models/account";
 import Profile from "models/profile";
-import { PullRequest } from "models/pull-request";
+import { TransformedPullRequest } from "models/pull-request";
 import cleanPrTitle from "utils/clean-pr-title";
 import getColorForProject from "utils/get-project-color";
 
@@ -18,11 +19,11 @@ import transformGitHubAttendees from "./github-combine-reviewers";
 const transformGithubPullRequest = (
   profile: Profile,
   data?: GetGithubPullRequestsQuery,
-): PullRequest[] => {
+): TransformedPullRequest[] => {
   if (!data) return [];
 
   return (
-    data.search.nodes?.reduce<PullRequest[]>((acc, fragment) => {
+    data.search.nodes?.reduce<TransformedPullRequest[]>((acc, fragment) => {
       if (!fragment || fragment.__typename !== "PullRequest") return acc;
 
       const pr = getFragmentData(FragmentGitHubPullRequest, fragment);
@@ -31,7 +32,7 @@ const transformGithubPullRequest = (
 
       const rollup = pr.commits.nodes?.[0]?.commit.statusCheckRollup;
 
-      const pullRequest: PullRequest = {
+      const pullRequest: TransformedPullRequest = {
         id: pr.id,
         title: cleanPrTitle(pr.title),
         author: {
@@ -66,8 +67,15 @@ const transformGithubPullRequest = (
         isAuthoredByMe: pr.author?.login === profile.userName,
         isFullyApproved:
           pr.reviewDecision === PullRequestReviewDecision.Approved,
+        isApprovalRequired: pr.reviewDecision != null,
         hasConflicts: pr.mergeable === MergeableState.Conflicting,
         ci: transformGithubCiStatus(rollup, pr.url),
+        mergeRef: {
+          provider: AccountType.GitHub,
+          pullRequestId: pr.id,
+          mergeMethod: pr.repository.viewerDefaultMergeMethod,
+          expectedHeadOid: pr.headRefOid,
+        },
       };
 
       return [...acc, pullRequest];

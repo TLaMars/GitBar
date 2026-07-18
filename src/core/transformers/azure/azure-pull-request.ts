@@ -1,6 +1,7 @@
+import { AccountType } from "models/account";
 import { Vote } from "models/attendee";
 import Profile from "models/profile";
-import { PullRequest } from "models/pull-request";
+import { TransformedPullRequest } from "models/pull-request";
 import {
   AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID,
   PolicyEvaluationStatus,
@@ -35,7 +36,7 @@ const getVote = (vote: ReviewerVote): Vote => {
 const transformAzurePullRequest = (
   profile: Profile,
   data: AzurePullRequest,
-): PullRequest => {
+): TransformedPullRequest => {
   const match = /^(https:\/\/dev\.azure\.com\/[^/]+\/)/.exec(
     data.repository.url,
   );
@@ -90,6 +91,9 @@ const transformAzurePullRequest = (
       ),
     ),
     hasConflicts: data.mergeStatus === "conflicts",
+    isApprovalRequired: !!data.policyEvaluations?.some(
+      (e) => e.configuration.type.id === AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID,
+    ),
     isFullyApproved: (() => {
       const minApproversEval = data.policyEvaluations?.find(
         (e) =>
@@ -98,8 +102,6 @@ const transformAzurePullRequest = (
       if (minApproversEval) {
         return minApproversEval.status === PolicyEvaluationStatus.Approved;
       }
-      // Repo has no minimum-approvers policy — fall back to at least one
-      // approved vote as a best-effort signal.
       return data.reviewers.some(
         (r) =>
           r.vote === ReviewerVote.Approved ||
@@ -107,6 +109,15 @@ const transformAzurePullRequest = (
       );
     })(),
     ci: transformAzureCiStatus(data.policyEvaluations, prUrl),
+    mergeRef: data.lastMergeSourceCommit
+      ? {
+          provider: AccountType.Azure,
+          projectId: data.repository.project.id,
+          repositoryId: data.repository.id,
+          pullRequestId: data.pullRequestId,
+          lastMergeSourceCommitId: data.lastMergeSourceCommit.commitId,
+        }
+      : undefined,
   };
 };
 

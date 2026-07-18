@@ -56,8 +56,11 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
         accentColor={item.accentColor}
         isDraft={item.isDraft}
         isFullyApproved={item.isFullyApproved}
+        isApprovalRequired={item.isApprovalRequired}
         hasConflicts={item.hasConflicts}
         ci={item.ci}
+        accountId={item.accountId}
+        mergeRef={item.mergeRef}
         compact={compact}
       />
     ),

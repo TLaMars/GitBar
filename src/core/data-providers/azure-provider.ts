@@ -1,6 +1,7 @@
 import { AccountType } from "models/account";
 import { AzureAuth } from "models/auth";
 import { AccountState } from "models/profile";
+import { MergeRef } from "models/pull-request";
 import { Config } from "services/api/api-wrapper";
 import azureApi from "services/api/azure/api";
 import { AzurePullRequest } from "services/api/azure/models/pull-requests-response";
@@ -170,9 +171,38 @@ class AzureProvider extends BaseProvider {
       )
     ).flat();
 
-    return pullRequests
-      .flat()
-      .map((pr) => transformAzurePullRequest(profile, pr));
+    return pullRequests.flat().map((pr) => ({
+      ...transformAzurePullRequest(profile, pr),
+      accountId: this.id,
+    }));
+  }
+
+  async mergePullRequest(mergeRef: MergeRef) {
+    if (mergeRef.provider !== AccountType.Azure) {
+      throw new Error(
+        `${this.accountType} ${this.userIdentifier}: pull request cannot be merged by this account`,
+      );
+    }
+
+    await azureApi
+      .patch(
+        "/:organization/:projectId/_apis/git/repositories/:repositoryId/pullrequests/:pullRequestId",
+        {
+          status: "completed",
+          lastMergeSourceCommit: { commitId: mergeRef.lastMergeSourceCommitId },
+        },
+        azureConfig(
+          {
+            organization: this.auth.organization,
+            projectId: mergeRef.projectId,
+            repositoryId: mergeRef.repositoryId,
+            pullRequestId: mergeRef.pullRequestId.toString(),
+            "api-version": "7.1",
+          },
+          this.auth.token,
+        ),
+      )
+      .catch((error) => this.#transformApiError(error));
   }
 
   async getIssues() {

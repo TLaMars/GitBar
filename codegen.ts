@@ -18,39 +18,34 @@ const config: CodegenConfig = {
       documents: [
         "./src/core/gql/github/queries/**/*.ts",
         "./src/core/gql/github/fragments/**/*.ts",
+        "./src/core/gql/github/mutations/**/*.ts",
       ],
       plugins: [],
       presetConfig: {
         fragmentMasking: { unmaskFunctionName: "getFragmentData" },
       },
     },
-    // "./src/core/gql/gitlab/codegen/": {
-    //   preset: "client",
-    //   schema: {
-    //     "https://gitlab.com/api/graphql": {
-    //       method: "GET",
-    //       headers: {
-    //         Authorization: `bearer ${process.env.GITLAB_TOKEN}`,
-    //         "user-agent": "My-User-Agent",
-    //       },
-    //     },
-    //   },
-    //   documents: [
-    //     "./src/core/gql/gitlab/queries/**/*.ts",
-    //     "./src/core/gql/gitlab/fragments/**/*.ts",
-    //   ],
-    // plugins: [
-    //     {
-    //       add: {
-    //         // Add a comment to the top of each generated file
-    //         content: "// @ts-nocheck\n",
-    //       },
-    //     },
-    //   ],
-    //   presetConfig: {
-    //     fragmentMasking: { unmaskFunctionName: "getFragmentData" },
-    //   },
-    // },
+    "./src/core/gql/gitlab/codegen/": {
+      preset: "client",
+      // gitlab.com allows unauthenticated schema introspection — no token needed.
+      schema: "https://gitlab.com/api/graphql",
+      documents: [
+        "./src/core/gql/gitlab/queries/**/*.ts",
+        "./src/core/gql/gitlab/fragments/**/*.ts",
+        "./src/core/gql/gitlab/mutations/**/*.ts",
+      ],
+      plugins: [
+        {
+          add: {
+            // Add a comment to the top of each generated file
+            content: "// @ts-nocheck\n",
+          },
+        },
+      ],
+      presetConfig: {
+        fragmentMasking: { unmaskFunctionName: "getFragmentData" },
+      },
+    },
   },
 };
 

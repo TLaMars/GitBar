@@ -5,8 +5,10 @@ const FragmentGitLabPullRequest = graphql(`
     nodes {
       title
       id
+      iid
       webUrl
       draft
+      diffHeadSha
       author {
         name
         username
@@ -32,7 +34,13 @@ const FragmentGitLabPullRequest = graphql(`
         name
         id
       }
+      targetProject {
+        id
+        name
+        fullPath
+      }
       approved
+      approvalsRequired
       conflicts
       userNotesCount
       createdAt

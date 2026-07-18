@@ -1,9 +1,12 @@
+import { PullRequestMergeMethod } from "gql/github/codegen/graphql";
+import MutationMergeGitHubPullRequest from "gql/github/mutations/merge-pull-request";
 import QueryGetGithubIssues from "gql/github/queries/issues";
 import QueryGetGithubPullRequests from "gql/github/queries/pull-requests";
 import QueryGetGitHubViewer from "gql/github/queries/viewer";
 import { AccountType } from "models/account";
 import { GitHubAuth } from "models/auth";
 import { AccountState } from "models/profile";
+import { MergeRef } from "models/pull-request";
 import transformGithubIssue from "transformers/github/github-issue";
 import transformGithubPullRequest from "transformers/github/github-pull-request";
 import { createGitHubGqlClient } from "utils/graphql-client";
@@ -40,9 +43,27 @@ class GitHubProvider extends BaseProvider {
     const profile = await this.getProfile();
     const data = await this.query(QueryGetGithubPullRequests);
 
-    return transformGithubPullRequest(profile, data).filter(
-      (pr, index, self) => index === self.findIndex((p) => p.id === pr.id),
-    );
+    return transformGithubPullRequest(profile, data)
+      .filter(
+        (pr, index, self) => index === self.findIndex((p) => p.id === pr.id),
+      )
+      .map((pr) => ({ ...pr, accountId: this.id }));
+  }
+
+  async mergePullRequest(mergeRef: MergeRef) {
+    if (mergeRef.provider !== AccountType.GitHub) {
+      throw new Error(
+        `${this.accountType} ${this.userIdentifier}: pull request cannot be merged by this account`,
+      );
+    }
+
+    await this.mutate(MutationMergeGitHubPullRequest, {
+      input: {
+        pullRequestId: mergeRef.pullRequestId,
+        mergeMethod: mergeRef.mergeMethod as PullRequestMergeMethod,
+        expectedHeadOid: mergeRef.expectedHeadOid,
+      },
+    });
   }
 
   async getIssues() {

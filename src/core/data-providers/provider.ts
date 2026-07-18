@@ -1,6 +1,6 @@
 import Issue from "models/issue";
 import Profile from "models/profile";
-import { PullRequest } from "models/pull-request";
+import { MergeRef, PullRequest } from "models/pull-request";
 
 interface Provider {
   id: string;
@@ -10,6 +10,7 @@ interface Provider {
   getPullRequests(): Promise<PullRequest[]>;
   getIssues(): Promise<Issue[]>;
   getValidatedProfile(): Promise<Profile>;
+  mergePullRequest(mergeRef: MergeRef): Promise<void>;
 }
 
 export default Provider;

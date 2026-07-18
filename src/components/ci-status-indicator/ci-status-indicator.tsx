@@ -1,15 +1,13 @@
 import React, { memo, useMemo } from "react";
 import { Linking } from "react-native";
-import { TouchableOpacity, View } from "react-native-macos";
-import { useStyles } from "react-native-unistyles";
+import { TouchableOpacity } from "react-native-macos";
 
-import Icon, { IconName } from "components/icon/icon";
+import { IconName } from "components/icon/icon";
+import Pill from "components/pill/pill";
 import useTranslation from "hooks/use-translation";
 import { CiState, CiStatus } from "models/ci-status";
 import { ThemeColor } from "models/theme";
 import isAbsoluteUrl from "utils/is-absolute-url";
-
-import styles from "./ci-status-indicator.styles";
 
 type Props = {
   ci?: CiStatus;
@@ -21,18 +19,11 @@ type TooltipKey =
   | "PullRequestCard/CI/TooltipRunning"
   | "PullRequestCard/CI/TooltipCancelled";
 
-type A11yKey =
-  | "PullRequestCard/CI/Passing"
-  | "PullRequestCard/CI/Failing"
-  | "PullRequestCard/CI/Running"
-  | "PullRequestCard/CI/Cancelled";
-
 type Presentation = {
   tone: ThemeColor;
   backgroundTone: ThemeColor;
   iconName: IconName;
   tooltipKey: TooltipKey;
-  a11yKey: A11yKey;
 };
 
 const PRESENTATIONS: Record<Exclude<CiState, CiState.None>, Presentation> = {
@@ -41,33 +32,28 @@ const PRESENTATIONS: Record<Exclude<CiState, CiState.None>, Presentation> = {
     backgroundTone: "backgroundCiSuccess",
     iconName: "Check",
     tooltipKey: "PullRequestCard/CI/TooltipPassing",
-    a11yKey: "PullRequestCard/CI/Passing",
   },
   [CiState.Failure]: {
     tone: "accentRed",
     backgroundTone: "backgroundCiFailure",
     iconName: "CrossBold",
     tooltipKey: "PullRequestCard/CI/TooltipFailing",
-    a11yKey: "PullRequestCard/CI/Failing",
   },
   [CiState.Pending]: {
     tone: "accentLightBlue",
     backgroundTone: "backgroundCiPending",
     iconName: "Clock",
     tooltipKey: "PullRequestCard/CI/TooltipRunning",
-    a11yKey: "PullRequestCard/CI/Running",
   },
   [CiState.Cancelled]: {
     tone: "textSecondary",
     backgroundTone: "backgroundCiCancelled",
     iconName: "Ban",
     tooltipKey: "PullRequestCard/CI/TooltipCancelled",
-    a11yKey: "PullRequestCard/CI/Cancelled",
   },
 };
 
 const CiStatusIndicator: React.FC<Props> = ({ ci }) => {
-  const { styles: $ } = useStyles(styles);
   const { t } = useTranslation();
 
   const presentation = useMemo(() => {
@@ -78,17 +64,15 @@ const CiStatusIndicator: React.FC<Props> = ({ ci }) => {
   if (!presentation || !ci) return null;
 
   const tooltip = t(presentation.tooltipKey);
-  const a11y = t(presentation.a11yKey);
 
   const content = (
-    <View
-      style={$.badge(presentation.tone, presentation.backgroundTone)}
-      accessibilityLabel={a11y}
-      accessibilityHint={tooltip}
+    <Pill
+      variant="compactBordered"
+      tone={presentation.tone}
+      backgroundTone={presentation.backgroundTone}
+      iconName={presentation.iconName}
       tooltip={tooltip}
-    >
-      <Icon name={presentation.iconName} size={12} color={presentation.tone} />
-    </View>
+    />
   );
 
   // Only wrap in a touchable when we have a real http(s) URL to open.
@@ -100,8 +84,6 @@ const CiStatusIndicator: React.FC<Props> = ({ ci }) => {
   return (
     <TouchableOpacity
       accessibilityRole="link"
-      accessibilityLabel={a11y}
-      accessibilityHint={tooltip}
       tooltip={tooltip}
       onPress={async () => {
         if (await Linking.canOpenURL(pipelineUrl)) {

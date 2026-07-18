@@ -1,10 +1,10 @@
-import { ApolloClient } from "@apollo/client";
+import { ApolloClient, OperationVariables } from "@apollo/client";
 import { TypedDocumentNode } from "@graphql-typed-document-node/core";
 
 import { AccountType } from "models/account";
 import Issue from "models/issue";
 import Profile, { AccountState } from "models/profile";
-import { PullRequest } from "models/pull-request";
+import { MergeRef, PullRequest } from "models/pull-request";
 
 import Provider from "./provider";
 
@@ -52,22 +52,51 @@ abstract class BaseProvider implements Provider {
 
       return data;
     } catch (e: any) {
-      const isTokenExpired =
-        e?.networkError?.statusCode === 401 ||
-        e?.message?.includes("401") ||
-        e?.message?.toLowerCase().includes("unauthorized");
-
-      const message = isTokenExpired
-        ? "Your access token has expired. Please reconnect your account in Settings."
-        : e.message;
-
-      throw new Error(`${this.accountType} ${this.userIdentifier}: ${message}`);
+      throw this.#mapError(e);
     }
+  }
+
+  protected async mutate<TData, TVariables extends OperationVariables>(
+    mutation: TypedDocumentNode<TData, TVariables>,
+    variables: TVariables,
+  ) {
+    if (!this.client) {
+      throw new Error("GraphQL client not initialized");
+    }
+
+    try {
+      const { data } = await this.client.mutate<TData, TVariables>({
+        mutation,
+        variables,
+      });
+
+      if (!data) {
+        throw new Error("No data returned from mutation");
+      }
+
+      return data;
+    } catch (e: any) {
+      throw this.#mapError(e);
+    }
+  }
+
+  #mapError(e: any): Error {
+    const isTokenExpired =
+      e?.networkError?.statusCode === 401 ||
+      e?.message?.includes("401") ||
+      e?.message?.toLowerCase().includes("unauthorized");
+
+    const message = isTokenExpired
+      ? "Your access token has expired. Please reconnect your account in Settings."
+      : e.message;
+
+    return new Error(`${this.accountType} ${this.userIdentifier}: ${message}`);
   }
 
   abstract getProfile(): Promise<Profile>;
   abstract getPullRequests(): Promise<PullRequest[]>;
   abstract getIssues(): Promise<Issue[]>;
+  abstract mergePullRequest(mergeRef: MergeRef): Promise<void>;
 
   async getValidatedProfile(): Promise<Profile> {
     try {

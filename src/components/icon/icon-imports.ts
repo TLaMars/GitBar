@@ -8,6 +8,7 @@ import Comment from "assets/svgs/comment.svg";
 import CrossBold from "assets/svgs/cross-bold.svg";
 import Cross from "assets/svgs/cross.svg";
 import EditPencil from "assets/svgs/edit-pencil.svg";
+import GitMerge from "assets/svgs/git-merge.svg";
 import GitHub from "assets/svgs/github.svg";
 import GitLab from "assets/svgs/gitlab.svg";
 import IssueCircle from "assets/svgs/issue-circle.svg";
@@ -31,6 +32,7 @@ export default {
   EditPencil,
   GitHub,
   GitLab,
+  GitMerge,
   IssueCircle,
   Notification,
   PowerOff,

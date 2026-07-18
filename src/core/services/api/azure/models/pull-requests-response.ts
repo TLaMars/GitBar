@@ -27,7 +27,7 @@ export type AzurePullRequest = {
   targetRefName: string;
   mergeStatus: string;
   mergeId: string;
-  lastMergeSourceCommit: LastMergeSourceCommit;
+  lastMergeSourceCommit?: LastMergeSourceCommit;
   lastMergeTargetCommit: LastMergeTargetCommit;
   lastMergeCommit: LastMergeCommit;
   reviewers: Reviewer[];

@@ -4,9 +4,10 @@ import {
   MergeRequestReviewState,
 } from "gql/gitlab/codegen/graphql";
 import FragmentGitLabPullRequest from "gql/gitlab/fragments/pull-request";
+import { AccountType } from "models/account";
 import { Attendee, Vote } from "models/attendee";
 import Profile from "models/profile";
-import { PullRequest } from "models/pull-request";
+import { TransformedPullRequest } from "models/pull-request";
 import cleanPrTitle from "utils/clean-pr-title";
 import getColorForProject from "utils/get-project-color";
 
@@ -31,7 +32,7 @@ const transformGitLabPullRequest = ({
   domain: string;
   data: GetGitLabPullRequestsQuery;
   profile: Profile;
-}): PullRequest[] => {
+}): TransformedPullRequest[] => {
   const pullRequests = (data.currentUser?.contributedProjects?.nodes ?? [])
     .filter((project) => !project?.archived)
     .flatMap((project) => project?.mergeRequests ?? [])
@@ -41,10 +42,10 @@ const transformGitLabPullRequest = ({
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     .flatMap((fragment) => fragment.nodes ?? []);
 
-  return pullRequests.reduce<PullRequest[]>((acc, pr) => {
+  return pullRequests.reduce<TransformedPullRequest[]>((acc, pr) => {
     if (!pr) return acc;
 
-    const pullRequest: PullRequest = {
+    const pullRequest: TransformedPullRequest = {
       id: pr.id,
       title: cleanPrTitle(pr.title),
       author: {
@@ -85,8 +86,22 @@ const transformGitLabPullRequest = ({
         ) ?? false,
       isAuthoredByMe: pr.author?.username === profile.userName,
       isFullyApproved: pr.approved,
+      // approvalsRequired is 0/null when the project has no approval rules —
+      // GitLab still reports approved:false there, so gate on the requirement.
+      isApprovalRequired: (pr.approvalsRequired ?? 0) > 0,
       hasConflicts: pr.conflicts,
       ci: transformGitlabCiStatus(pr.headPipeline, domain),
+      // The accept API requires the head sha as a staleness guard; without it
+      // (or a target project path) the merge action is unavailable.
+      mergeRef:
+        pr.diffHeadSha && pr.targetProject.fullPath
+          ? {
+              provider: AccountType.GitLab,
+              projectPath: String(pr.targetProject.fullPath),
+              iid: pr.iid,
+              sha: pr.diffHeadSha,
+            }
+          : undefined,
     };
 
     return [...acc, pullRequest];

@@ -14,14 +14,14 @@ Your new Pull Request tool for GitHub, GitLab and Azure.
 - [x] Amount of PRs in the menubar
 - [x] Open PRs in your browser
 - [x] Hide PRs from Mine & Review tabs
+- [x] Merge PRs
+- [x] See Pipeline Status
 
 ### To Do
 
 - [ ] Bitbucket
 - [ ] Prioritize PRs
 - [ ] Ignore Repositories
-- [ ] Merge PRs
-- [ ] See Pipeline Status
 
 ## Release Process
 

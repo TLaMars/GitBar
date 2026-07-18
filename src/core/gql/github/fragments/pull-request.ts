@@ -11,7 +11,9 @@ const FragmentGitHubPullRequest = graphql(`
     repository {
       nameWithOwner
       id
+      viewerDefaultMergeMethod
     }
+    headRefOid
     reviewRequests(first: 5) {
       nodes {
         requestedReviewer {

@@ -4,17 +4,20 @@ import { Linking } from "react-native";
 import { Pressable, View } from "react-native-macos";
 import { useStyles } from "react-native-unistyles";
 
+import ActionPill from "components/action-pill/action-pill";
 import Attendee from "components/attendee/attendee";
 import AttendeeList from "components/attendee-list/attendee-list";
 import Body from "components/body/body";
 import CiStatusIndicator from "components/ci-status-indicator/ci-status-indicator";
 import Heading from "components/heading/heading";
 import Icon from "components/icon/icon";
+import Pill from "components/pill/pill";
 import Spacer from "components/spacer/spacer";
-import StatusBadge from "components/status-badge/status-badge";
+import useMergePullRequest from "hooks/mutations/use-merge-pull-request";
 import useTranslation from "hooks/use-translation";
 import { Attendee as AttendeeType } from "models/attendee";
 import { CiStatus } from "models/ci-status";
+import { MergeRef } from "models/pull-request";
 import { ThemeColor } from "models/theme";
 
 import styles from "./pull-request-card.styles";
@@ -29,28 +32,45 @@ type Props = {
   accentColor: ThemeColor;
   isDraft: boolean;
   isFullyApproved: boolean;
+  isApprovalRequired: boolean;
   hasConflicts: boolean;
   ci?: CiStatus;
+  accountId: string;
+  mergeRef?: MergeRef;
   compact?: boolean;
 };
 
 const PullRequestCard: React.FC<Props> = ({
+  id,
   title,
   author,
   reviewers,
   url,
   amountOfComments,
   accentColor,
-  id,
   isDraft,
   isFullyApproved,
+  isApprovalRequired,
   hasConflicts,
   ci,
+  accountId,
+  mergeRef,
   compact = false,
 }) => {
   const client = useGuavaClient();
   const { styles: $ } = useStyles(styles);
   const { t } = useTranslation();
+  const { canMerge, isMerging, merge } = useMergePullRequest({
+    id,
+    accountId,
+    mergeRef,
+    isDraft,
+    isFullyApproved,
+    isApprovalRequired,
+    hasConflicts,
+    ci,
+  });
+  const badgeVariant = compact ? "compact" : "pill";
 
   const onPress = async () => {
     if (await Linking.canOpenURL(url)) {
@@ -68,31 +88,47 @@ const PullRequestCard: React.FC<Props> = ({
   // Approved in the state slot (mutually exclusive in practice).
   const statusBadges = (
     <>
+      {compact && canMerge && (
+        <ActionPill
+          analyticsLabel="pull_request_merge"
+          iconName="GitMerge"
+          label={t("PullRequestCard/Action/Merge")}
+          pendingLabel={t("PullRequestCard/Action/Merging")}
+          tooltip={t("PullRequestCard/Action/MergeTooltip")}
+          tone="textOnCtaPositive"
+          backgroundTone="backgroundCtaPositive"
+          pending={isMerging}
+          onPress={merge}
+        />
+      )}
       {isDraft && (
-        <StatusBadge
+        <Pill
+          variant={badgeVariant}
           tone="textSecondary"
           backgroundTone="backgroundCiCancelled"
           iconName="EditPencil"
           label={t("PullRequestCard/Status/Draft")}
-          compact={compact}
+          tooltip={t("PullRequestCard/Status/Draft")}
         />
       )}
-      {!isDraft && isFullyApproved && (
-        <StatusBadge
+      {!isDraft && isFullyApproved && !canMerge && (
+        <Pill
+          variant={badgeVariant}
           tone="accentGreen"
           backgroundTone="backgroundCiSuccess"
           iconName="Check"
           label={t("PullRequestCard/Status/Approved")}
-          compact={compact}
+          tooltip={t("PullRequestCard/Status/Approved")}
         />
       )}
       {hasConflicts && (
-        <StatusBadge
+        <Pill
+          variant={badgeVariant}
           tone="accentOrange"
           backgroundTone="backgroundWarning"
           iconName="AlertCircle"
           label={t("PullRequestCard/Status/Conflicts")}
-          compact={compact}
+          tooltip={t("PullRequestCard/Status/Conflicts")}
         />
       )}
     </>
@@ -143,11 +179,27 @@ const PullRequestCard: React.FC<Props> = ({
           )}
         </View>
         <View style={$.right}>
-          {amountOfComments !== undefined && (
-            <View style={$.info}>
-              <Body size="s">{amountOfComments}</Body>
-              <Icon name="Comment" size={20} />
-            </View>
+          {/* Ready-to-merge is the card's most important state — the merge
+              pill takes over the slot from the comment count (D8/D9). */}
+          {canMerge ? (
+            <ActionPill
+              analyticsLabel="pull_request_merge"
+              iconName="GitMerge"
+              label={t("PullRequestCard/Action/Merge")}
+              pendingLabel={t("PullRequestCard/Action/Merging")}
+              tooltip={t("PullRequestCard/Action/MergeTooltip")}
+              tone="textOnCtaPositive"
+              backgroundTone="backgroundCtaPositive"
+              pending={isMerging}
+              onPress={merge}
+            />
+          ) : (
+            amountOfComments !== undefined && (
+              <View style={$.info}>
+                <Body size="s">{amountOfComments}</Body>
+                <Icon name="Comment" size={20} />
+              </View>
+            )
           )}
         </View>
       </View>

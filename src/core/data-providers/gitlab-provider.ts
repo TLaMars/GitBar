@@ -1,8 +1,10 @@
+import MutationAcceptGitLabMergeRequest from "gql/gitlab/mutations/merge-request-accept";
 import QueryGetGitLabCurrentUser from "gql/gitlab/queries/current-user";
 import QueryGetGitLabPullRequests from "gql/gitlab/queries/pull-requests";
 import { AccountType } from "models/account";
 import { GitLabAuth } from "models/auth";
 import { AccountState } from "models/profile";
+import { MergeRef } from "models/pull-request";
 import transformGitLabPullRequest from "transformers/gitlab/gitlab-pull-request";
 import { createGitLabGqlClient } from "utils/graphql-client";
 
@@ -47,9 +49,34 @@ class GitLabProvider extends BaseProvider {
       profile,
       domain: this.auth.domain,
       data,
-    }).filter(
-      (pr, index, self) => index === self.findIndex((p) => p.id === pr.id),
-    );
+    })
+      .filter(
+        (pr, index, self) => index === self.findIndex((p) => p.id === pr.id),
+      )
+      .map((pr) => ({ ...pr, accountId: this.id }));
+  }
+
+  async mergePullRequest(mergeRef: MergeRef) {
+    if (mergeRef.provider !== AccountType.GitLab) {
+      throw new Error(
+        `${this.accountType} ${this.userIdentifier}: merge request cannot be merged by this account`,
+      );
+    }
+
+    const data = await this.mutate(MutationAcceptGitLabMergeRequest, {
+      input: {
+        projectPath: mergeRef.projectPath,
+        iid: mergeRef.iid,
+        sha: mergeRef.sha,
+      },
+    });
+
+    const errors = data.mergeRequestAccept?.errors ?? [];
+    if (errors.length > 0) {
+      throw new Error(
+        `${this.accountType} ${this.userIdentifier}: ${errors.join(", ")}`,
+      );
+    }
   }
 
   async getIssues() {

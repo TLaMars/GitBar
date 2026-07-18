@@ -26,6 +26,7 @@ import AppModule from "modules/app-module";
 import NotificationsModule, {
   NotificationPermission,
 } from "modules/notifications-module";
+import PopoverModule from "modules/popover-module";
 import {
   selectAllowNotifications,
   selectCompactCards,
@@ -325,6 +326,24 @@ const Settings: React.FC = () => {
           <>
             <Spacer mt={4} />
             <Heading size="x2s">Development section</Heading>
+            <Spacer mt={1} />
+            <Button
+              analyticsLabel="Settings/Button/TestMenuBarDot"
+              size="xs"
+              label="Test menu bar dot (red)"
+              onPress={() => {
+                PopoverModule.setStatusItemTint("#F05069");
+              }}
+            />
+            <Spacer mt={1} />
+            <Button
+              analyticsLabel="Settings/Button/ClearMenuBarDot"
+              size="xs"
+              label="Clear menu bar dot"
+              onPress={() => {
+                PopoverModule.setStatusItemTint(null);
+              }}
+            />
             <Spacer mt={1} />
             <Button
               analyticsLabel="Settings/Button/ResetHiddenPRs"

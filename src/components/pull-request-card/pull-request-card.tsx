@@ -88,7 +88,7 @@ const PullRequestCard: React.FC<Props> = ({
   // Approved in the state slot (mutually exclusive in practice).
   const statusBadges = (
     <>
-      {compact && canMerge && (
+      {canMerge && (
         <ActionPill
           analyticsLabel="pull_request_merge"
           iconName="GitMerge"
@@ -149,7 +149,7 @@ const PullRequestCard: React.FC<Props> = ({
           </Heading>
         </View>
         {statusBadges}
-        <CiStatusIndicator ci={ci} />
+        {!canMerge && <CiStatusIndicator ci={ci} />}
       </Pressable>
     );
   }
@@ -164,7 +164,7 @@ const PullRequestCard: React.FC<Props> = ({
           </Heading>
         </View>
         {statusBadges}
-        <CiStatusIndicator ci={ci} />
+        {!canMerge && <CiStatusIndicator ci={ci} />}
       </View>
       <View style={$.footer}>
         <View style={$.left}>
@@ -179,27 +179,11 @@ const PullRequestCard: React.FC<Props> = ({
           )}
         </View>
         <View style={$.right}>
-          {/* Ready-to-merge is the card's most important state — the merge
-              pill takes over the slot from the comment count (D8/D9). */}
-          {canMerge ? (
-            <ActionPill
-              analyticsLabel="pull_request_merge"
-              iconName="GitMerge"
-              label={t("PullRequestCard/Action/Merge")}
-              pendingLabel={t("PullRequestCard/Action/Merging")}
-              tooltip={t("PullRequestCard/Action/MergeTooltip")}
-              tone="textOnCtaPositive"
-              backgroundTone="backgroundCtaPositive"
-              pending={isMerging}
-              onPress={merge}
-            />
-          ) : (
-            amountOfComments !== undefined && (
-              <View style={$.info}>
-                <Body size="s">{amountOfComments}</Body>
-                <Icon name="Comment" size={20} />
-              </View>
-            )
+          {amountOfComments !== undefined && (
+            <View style={$.info}>
+              <Body size="s">{amountOfComments}</Body>
+              <Icon name="Comment" size={20} />
+            </View>
           )}
         </View>
       </View>

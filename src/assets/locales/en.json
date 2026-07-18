@@ -1,6 +1,6 @@
 {
   "Dashboard/Body/LastUpdated": "{minutesAgo}m ago",
-  "Dashboard/Heading/PullRequests": "PR's",
+  "Dashboard/Heading/PullRequests": "PRs",
   "General/Button/Back": "Back",
   "General/Button/Continue": "Continue",
   "General/Button/Next": "Next",

@@ -4,7 +4,10 @@ import { DataContext } from "contexts/data";
 import { TranslationKey } from "contexts/intl";
 import { PullRequest } from "models/pull-request";
 import { Section } from "models/section";
-import { selectHiddenPullRequests } from "store/selectors/pull-requests";
+import {
+  selectHiddenPullRequests,
+  selectSnoozedPullRequests,
+} from "store/selectors/pull-requests";
 import {
   selectGroupPRsBy,
   selectHideDraftPRs,
@@ -16,6 +19,7 @@ import groupPullRequestsBy from "utils/group-pull-requests";
 import groupPullRequestsByAttention, {
   isActionableReason,
 } from "utils/group-pull-requests-by-attention";
+import { filterSnoozed } from "utils/is-pull-request-snoozed";
 import {
   applyUserFilters,
   filterMinePRs,
@@ -39,6 +43,7 @@ const usePullRequests = () => {
   const hidePRsAfterTwoMonths = useSelector(selectHidePRsAfterTwoMonths);
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
   const hiddenPullRequests = useSelector(selectHiddenPullRequests);
+  const snoozedPullRequests = useSelector(selectSnoozedPullRequests);
   const hideDraftPRs = useSelector(selectHideDraftPRs);
 
   const { pullRequests: result } = useContext(DataContext);
@@ -63,12 +68,16 @@ const usePullRequests = () => {
     needsYouCount,
   } = useMemo(() => {
     const prs = filterPRQueryResult(result);
-    const filtered = applyUserFilters(
-      prs,
-      hiddenPullRequests,
-      hidePRsAfterTwoMonths,
-      hidePRsApprovedByMe,
-      hideDraftPRs,
+    const filtered = filterSnoozed(
+      applyUserFilters(
+        prs,
+        hiddenPullRequests,
+        hidePRsAfterTwoMonths,
+        hidePRsApprovedByMe,
+        hideDraftPRs,
+      ),
+      snoozedPullRequests,
+      Date.now(),
     );
 
     const attentionGroups = groupPullRequestsByAttention(filtered);
@@ -94,6 +103,7 @@ const usePullRequests = () => {
   }, [
     result,
     hiddenPullRequests,
+    snoozedPullRequests,
     hideDraftPRs,
     hidePRsAfterTwoMonths,
     hidePRsApprovedByMe,

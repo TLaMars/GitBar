@@ -5,7 +5,10 @@ import { useSelector } from "react-redux";
 import usePopoverState, { PopoverState } from "hooks/use-popover-state";
 import { PullRequest } from "models/pull-request";
 import PopoverModule from "modules/popover-module";
-import { selectHiddenPullRequests } from "store/selectors/pull-requests";
+import {
+  selectHiddenPullRequests,
+  selectSnoozedPullRequests,
+} from "store/selectors/pull-requests";
 import {
   selectAllowNotifications,
   selectHideDraftPRs,
@@ -13,6 +16,7 @@ import {
   selectHidePRsApprovedByMe,
 } from "store/selectors/settings";
 import { countActionablePullRequests } from "utils/group-pull-requests-by-attention";
+import { filterSnoozed } from "utils/is-pull-request-snoozed";
 import {
   applyUserFilters,
   filterPRQueryResult,
@@ -27,6 +31,7 @@ const useDataHelper = () => {
   const hidePRsAfterTwoMonths = useSelector(selectHidePRsAfterTwoMonths);
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
   const hiddenPullRequests = useSelector(selectHiddenPullRequests);
+  const snoozedPullRequests = useSelector(selectSnoozedPullRequests);
   const hideDraftPRs = useSelector(selectHideDraftPRs);
   const sendNotifications = useSelector(selectAllowNotifications);
   const popoverState = usePopoverState();
@@ -34,12 +39,16 @@ const useDataHelper = () => {
   const updateMenuBarAndSendNotification = useCallback(
     (result: UseQueryResult<PullRequest[], Error>[]) => {
       const prs = filterPRQueryResult(result);
-      const relevantPrs = applyUserFilters(
-        prs,
-        hiddenPullRequests,
-        hidePRsAfterTwoMonths,
-        hidePRsApprovedByMe,
-        hideDraftPRs,
+      const relevantPrs = filterSnoozed(
+        applyUserFilters(
+          prs,
+          hiddenPullRequests,
+          hidePRsAfterTwoMonths,
+          hidePRsApprovedByMe,
+          hideDraftPRs,
+        ),
+        snoozedPullRequests,
+        Date.now(),
       );
 
       if (result.some((d) => d.isLoading)) return;
@@ -57,6 +66,7 @@ const useDataHelper = () => {
     },
     [
       hiddenPullRequests,
+      snoozedPullRequests,
       hidePRsAfterTwoMonths,
       hidePRsApprovedByMe,
       hideDraftPRs,

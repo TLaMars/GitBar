@@ -5,3 +5,6 @@ export const selectHiddenPullRequests = (state: RootState) =>
 
 export const selectHiddenPullRequestIds = (state: RootState) =>
   state.pullRequests.hidden.map((pr) => pr.id);
+
+export const selectSnoozedPullRequests = (state: RootState) =>
+  state.pullRequests.snoozed;

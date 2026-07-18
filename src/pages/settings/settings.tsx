@@ -37,7 +37,10 @@ import {
   selectShowIssues,
 } from "store/selectors/settings";
 import { removeOneAccount } from "store/slices/accounts";
-import { resetHiddenPullRequests } from "store/slices/pull-requests";
+import {
+  resetHiddenPullRequests,
+  resetSnoozedPullRequests,
+} from "store/slices/pull-requests";
 import {
   setAllowNotifications,
   setCompactCards,
@@ -303,6 +306,15 @@ const Settings: React.FC = () => {
               label="Reset hidden PRs"
               onPress={() => {
                 dispatch(resetHiddenPullRequests());
+              }}
+            />
+            <Spacer mt={1} />
+            <Button
+              analyticsLabel="Settings/Button/ResetSnoozedPRs"
+              size="xs"
+              label="Reset snoozed PRs"
+              onPress={() => {
+                dispatch(resetSnoozedPullRequests());
               }}
             />
             <Spacer mt={1} />

@@ -12,6 +12,7 @@ import {
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
 } from "store/selectors/settings";
+import { countActionablePullRequests } from "utils/group-pull-requests-by-attention";
 import {
   applyUserFilters,
   filterPRQueryResult,
@@ -43,7 +44,11 @@ const useDataHelper = () => {
 
       if (result.some((d) => d.isLoading)) return;
 
-      PopoverModule.setStatusItemText(relevantPrs.length.toString());
+      // The badge shows how many PRs need your action now (the "Needs you"
+      // count), matching the tab chip — not the total relevant count.
+      PopoverModule.setStatusItemText(
+        countActionablePullRequests(relevantPrs).toString(),
+      );
 
       if (sendNotifications && popoverState === PopoverState.CLOSED) {
         sendPullRequestNotification(relevantPrs, prevPrsRef.current);

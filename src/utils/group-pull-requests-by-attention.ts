@@ -39,4 +39,11 @@ const groupPullRequestsByAttention = (
 export const isActionableReason = (reason: AttentionReason): boolean =>
   reason !== AttentionReason.Waiting;
 
+// PRs that need your action now — the tab chip and menu-bar badge share this so
+// the two counts always agree.
+export const countActionablePullRequests = (
+  pullRequests: PullRequest[],
+): number =>
+  pullRequests.filter((pr) => isActionableReason(getAttentionReason(pr))).length;
+
 export default groupPullRequestsByAttention;

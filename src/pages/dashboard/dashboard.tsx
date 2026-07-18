@@ -12,6 +12,7 @@ import { PullRequestTab } from "models/pull-request";
 import styles from "./dashboard.styles";
 
 const TAB_ORDER = [
+  PullRequestTab.NEEDS_YOU,
   PullRequestTab.MINE,
   PullRequestTab.REVIEW,
   PullRequestTab.ALL,
@@ -26,11 +27,14 @@ const Dashboard: React.FC = () => {
     groupedAllPRs,
     groupedMinePRs,
     groupedReviewPRs,
+    groupedNeedsYouPRs,
+    needsYouCount,
     updatedAt,
     errors,
   } = usePullRequests();
 
   const sectionsByTab = {
+    [PullRequestTab.NEEDS_YOU]: groupedNeedsYouPRs,
     [PullRequestTab.MINE]: groupedMinePRs,
     [PullRequestTab.REVIEW]: groupedReviewPRs,
     [PullRequestTab.ALL]: groupedAllPRs,
@@ -43,6 +47,11 @@ const Dashboard: React.FC = () => {
           title={t("Dashboard/Heading/PullRequests")}
           selectedButtonIndex={TAB_ORDER.indexOf(tab)}
           buttonToggleOptions={[
+            {
+              label: t("Dashboard/Button/NeedsYou"),
+              count: needsYouCount,
+              onPress: () => setTab(PullRequestTab.NEEDS_YOU),
+            },
             {
               label: t("Dashboard/Button/Mine"),
               onPress: () => setTab(PullRequestTab.MINE),

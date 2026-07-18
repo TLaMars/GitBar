@@ -10,6 +10,7 @@ import styles from "./button-toggle.styles";
 export type ButtonToggleOption = {
   label: string;
   onPress: () => void;
+  count?: number;
 };
 
 type Props = {
@@ -38,9 +39,18 @@ const ButtonToggle: React.FC<Props> = ({ selectedIndex = 0, buttons }) => {
             });
           }}
         >
-          <Body textAlign="center" size="xs">
-            {button.label}
-          </Body>
+          <View style={$.labelRow}>
+            <Body textAlign="center" size="xs" numberOfLines={1}>
+              {button.label}
+            </Body>
+            {button.count !== undefined && button.count > 0 && (
+              <View style={$.countChip}>
+                <Body size="x2s" color="accentLightBlue">
+                  {button.count}
+                </Body>
+              </View>
+            )}
+          </View>
         </Pressable>
       ))}
     </View>

@@ -10,9 +10,6 @@ const styles = createStyleSheet(({ spacing }) => ({
     flexDirection: "row",
     alignItems: "flex-end",
   },
-  headerRight: {
-    width: 180,
-  },
   poller: {
     marginLeft: spacing(2),
     flexDirection: "row",

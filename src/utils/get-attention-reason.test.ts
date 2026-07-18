@@ -91,15 +91,15 @@ describe("getAttentionReason", () => {
     });
 
     it("does not flag when it is already fully approved (my review is moot)", () => {
-      // Fully approved + clean + green would be mergeable, so it lands in
-      // ReadyToMerge rather than BlockedOnYou.
+      // Someone else's PR that is already fully approved no longer needs my
+      // review, and it is not mine to merge, so it waits — not BlockedOnYou.
       expect(
         getAttentionReason({
           ...base,
           isReviewPendingFromMe: true,
           isFullyApproved: true,
         }),
-      ).toBe(AttentionReason.ReadyToMerge);
+      ).toBe(AttentionReason.Waiting);
     });
 
     it("never flags my own PR as blocked on me", () => {
@@ -143,6 +143,18 @@ describe("getAttentionReason", () => {
           isAuthoredByMe: true,
           isFullyApproved: true,
           mergeRef: undefined,
+        }),
+      ).toBe(AttentionReason.Waiting);
+    });
+
+    it("does not flag someone else's mergeable PR (author's to ship)", () => {
+      // Approved, clean, green, and I could merge it — but it is not mine, so it
+      // waits on the author rather than sitting in my Ready to merge.
+      expect(
+        getAttentionReason({
+          ...base,
+          isAuthoredByMe: false,
+          isFullyApproved: true,
         }),
       ).toBe(AttentionReason.Waiting);
     });

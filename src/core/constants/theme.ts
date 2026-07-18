@@ -200,6 +200,8 @@ export const THEME_COLORS_DARK = {
   backgroundCiCancelled: "rgba(206, 216, 223, 0.15)",
   // Warning tint — used for non-blocking merge issues like conflicts.
   backgroundWarning: "rgba(252, 131, 112, 0.18)",
+  // "Needs you" tab count chip — accentLightBlue at 25% alpha (D1).
+  backgroundTabCount: "rgba(175, 223, 243, 0.25)",
   // Accent Colors (used for profile pictures and color coding PRs per project)
   accentRed: COLORS.red100,
   accentOrange: COLORS.orange100,

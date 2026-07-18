@@ -10,6 +10,7 @@ export enum GroupPullRequestsBy {
 }
 
 export enum PullRequestTab {
+  NEEDS_YOU = "needsYou",
   MINE = "mine",
   REVIEW = "review",
   ALL = "all",

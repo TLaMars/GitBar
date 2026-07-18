@@ -1,13 +1,15 @@
-import { memo, useCallback } from "react";
+import { memo, useCallback, useMemo, useState } from "react";
 import {
   SectionList,
   SectionListData,
   SectionListRenderItemInfo,
 } from "react-native";
+import { Pressable, View } from "react-native-macos";
 import { useStyles } from "react-native-unistyles";
 
 import Body from "components/body/body";
 import ErrorContainer from "components/error-container/error-container";
+import Icon from "components/icon/icon";
 import PullRequestCard from "components/pull-request-card/pull-request-card";
 import useSelector from "hooks/use-selector";
 import { PullRequest } from "models/pull-request";
@@ -15,22 +17,6 @@ import { Section } from "models/section";
 import { selectCompactCards } from "store/selectors/settings";
 
 import styles from "./pull-request-list.styles";
-
-const SectionHeader = ({
-  section: { title, hideTitle },
-}: {
-  section: SectionListData<PullRequest, Section<PullRequest>>;
-}) => {
-  if (hideTitle) {
-    return null;
-  }
-
-  return (
-    <Body bold size="xs">
-      {title}
-    </Body>
-  );
-};
 
 type Props = {
   errors: Error[];
@@ -40,6 +26,76 @@ type Props = {
 const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
   const { styles: $ } = useStyles(styles);
   const compact = useSelector(selectCompactCards);
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+
+  const toggleSection = useCallback((title: string) => {
+    setExpanded((current) => {
+      const next = new Set(current);
+      if (next.has(title)) {
+        next.delete(title);
+      } else {
+        next.add(title);
+      }
+      return next;
+    });
+  }, []);
+
+  const isCollapsed = useCallback(
+    (section: Section<PullRequest>) =>
+      !!section.collapsible && !expanded.has(section.title),
+    [expanded],
+  );
+
+  const displaySections = useMemo(
+    () =>
+      sections.map((section) =>
+        isCollapsed(section) ? { ...section, data: [] } : section,
+      ),
+    [sections, isCollapsed],
+  );
+
+  const counts = useMemo(
+    () =>
+      new Map(sections.map((section) => [section.title, section.data.length])),
+    [sections],
+  );
+
+  const renderSectionHeader = useCallback(
+    (info: { section: SectionListData<PullRequest, Section<PullRequest>> }) => {
+      const { section } = info;
+      if (section.hideTitle) {
+        return null;
+      }
+
+      if (section.collapsible) {
+        const collapsed = !expanded.has(section.title);
+        return (
+          <Pressable
+            accessibilityRole="button"
+            style={$.disclosure}
+            onPress={() => toggleSection(section.title)}
+          >
+            <View style={$.chevron(!collapsed)}>
+              <Icon name="ChevronRight" size={14} color="textSecondary" />
+            </View>
+            <Body bold size="xs">
+              {section.title}
+            </Body>
+            <Body size="xs" color="textSecondary">
+              {counts.get(section.title) ?? 0}
+            </Body>
+          </Pressable>
+        );
+      }
+
+      return (
+        <Body bold size="xs">
+          {section.title}
+        </Body>
+      );
+    },
+    [$, counts, expanded, toggleSection],
+  );
 
   const renderItem = useCallback(
     ({
@@ -72,13 +128,13 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
       contentContainerStyle={$.list}
       initialNumToRender={15}
       maxToRenderPerBatch={5}
-      sections={sections}
+      sections={displaySections}
       ListHeaderComponent={
         errors.length > 0 ? <ErrorContainer errors={errors} /> : undefined
       }
       renderItem={renderItem}
       keyExtractor={(item) => item.id}
-      renderSectionHeader={SectionHeader}
+      renderSectionHeader={renderSectionHeader}
     />
   );
 };

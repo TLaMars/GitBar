@@ -51,12 +51,10 @@ const PageHeader: React.FC<Props> = ({
         </View>
       </View>
       {buttonToggleOptions && (
-        <View style={$.headerRight}>
-          <ButtonToggle
-            selectedIndex={selectedButtonIndex}
-            buttons={buttonToggleOptions}
-          />
-        </View>
+        <ButtonToggle
+          selectedIndex={selectedButtonIndex}
+          buttons={buttonToggleOptions}
+        />
       )}
     </View>
   );

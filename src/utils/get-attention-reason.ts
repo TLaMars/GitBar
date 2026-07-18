@@ -29,11 +29,9 @@ type AttentionInput = Pick<
 
 /**
  * Derives the attention bucket. Priority: your own PR that you must fix >
- * someone else's PR blocked on your review > a PR you can merge now > waiting.
- * The buckets are near-disjoint (needs-work is yours; blocked-on-you is others';
- * ready-to-merge requires an approved/clean state), so order only matters for
- * the rare approval-optional PR that is both mergeable and awaiting your review —
- * there, your pending review wins.
+ * someone else's PR blocked on your review > your own PR you can merge > waiting.
+ * The actionable buckets are disjoint (needs-work and ready-to-merge are your own
+ * PRs; blocked-on-you is someone else's), so ordering is unambiguous.
  */
 const getAttentionReason = (pr: AttentionInput): AttentionReason => {
   const isFailing = pr.ci?.state === CiState.Failure;
@@ -57,7 +55,9 @@ const getAttentionReason = (pr: AttentionInput): AttentionReason => {
     return AttentionReason.BlockedOnYou;
   }
 
-  if (canMergePullRequest(pr)) {
+  // Your own PR you can merge right now (same gate as the Merge pill). Someone
+  // else's mergeable PR is the author's to ship, so it falls through to waiting.
+  if (pr.isAuthoredByMe && canMergePullRequest(pr)) {
     return AttentionReason.ReadyToMerge;
   }
 

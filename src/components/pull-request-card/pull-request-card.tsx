@@ -220,10 +220,13 @@ const PullRequestCard: React.FC<Props> = ({
               <Pressable
                 accessibilityRole="button"
                 style={$.actionButton}
-                tooltip={t("PullRequestCard/Action/Snooze")}
+                tooltip={t("PullRequestCard/Action/SnoozeTooltip")}
                 onPress={onSnooze}
               >
-                <Icon name="Clock" size={16} color="textSecondary" />
+                <Icon name="Clock" size={14} color="textSecondary" />
+                <Body size="xs" color="textSecondary">
+                  {t("PullRequestCard/Action/Snooze")}
+                </Body>
               </Pressable>
               <Pressable
                 accessibilityRole="button"
@@ -231,7 +234,10 @@ const PullRequestCard: React.FC<Props> = ({
                 tooltip={t("PullRequestCard/Action/Hide")}
                 onPress={onHide}
               >
-                <Icon name="Cross" size={16} color="textSecondary" />
+                <Icon name="Ban" size={14} color="textSecondary" />
+                <Body size="xs" color="textSecondary">
+                  {t("PullRequestCard/Action/Hide")}
+                </Body>
               </Pressable>
             </View>
           ) : (

@@ -10,6 +10,12 @@ const styles = createStyleSheet(({ spacing, colors, borderRadiuses }) => ({
     borderCurve: "continuous",
     flexDirection: "column",
     gap: spacing(1.5),
+    // Always reserve the border so the active state (D5) doesn't shift layout.
+    borderWidth: 1,
+    borderColor: "transparent",
+  },
+  cardActive: {
+    borderColor: colors.borderActiveCard,
   },
   cardCompact: {
     overflow: "hidden",
@@ -59,6 +65,24 @@ const styles = createStyleSheet(({ spacing, colors, borderRadiuses }) => ({
     flexDirection: "row",
     gap: spacing(2),
     alignItems: "center",
+    // Fixed height so swapping comment count ↔ action pills never resizes the
+    // card (D5); matches the 24px author avatar on the left.
+    minHeight: 24,
+  },
+  actions: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing(1),
+  },
+  actionButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing(1),
+    height: 24,
+    paddingHorizontal: spacing(2),
+    borderRadius: borderRadiuses.round,
+    borderCurve: "continuous",
+    backgroundColor: colors.backgroundActionButton,
   },
   info: {
     flexDirection: "row",

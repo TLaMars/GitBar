@@ -130,10 +130,15 @@ public class PopoverAppDelegateSubscriber: ExpoAppDelegateSubscriber, NSPopoverD
     }
 
     let title = NSMutableAttributedString(
-      string: "\u{25CF} ",
-      attributes: [.foregroundColor: tint]
+      string: "\u{25CF}",
+      attributes: [
+        .foregroundColor: tint,
+        // Smaller than the count text and nudged up to vertically center.
+        .font: NSFont.systemFont(ofSize: 9),
+        .baselineOffset: 1,
+      ]
     )
-    title.append(NSAttributedString(string: currentText))
+    title.append(NSAttributedString(string: " \(currentText)"))
     button.attributedTitle = title
   }
 

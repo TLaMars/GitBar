@@ -1,3 +1,4 @@
+import { useGuavaClient } from "@guava-analytics/react-native";
 import { memo, useCallback, useMemo, useState } from "react";
 import {
   SectionList,
@@ -25,20 +26,29 @@ type Props = {
 
 const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
   const { styles: $ } = useStyles(styles);
+  const client = useGuavaClient();
   const compact = useSelector(selectCompactCards);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
 
-  const toggleSection = useCallback((title: string) => {
-    setExpanded((current) => {
-      const next = new Set(current);
-      if (next.has(title)) {
-        next.delete(title);
-      } else {
-        next.add(title);
-      }
-      return next;
-    });
-  }, []);
+  const toggleSection = useCallback(
+    (title: string) => {
+      const nowExpanded = !expanded.has(title);
+      setExpanded((current) => {
+        const next = new Set(current);
+        if (nowExpanded) {
+          next.add(title);
+        } else {
+          next.delete(title);
+        }
+        return next;
+      });
+      client.trackEvent("pull_request_section_toggled", {
+        section_title: title,
+        expanded: nowExpanded.toString(),
+      });
+    },
+    [client, expanded],
+  );
 
   const isCollapsed = useCallback(
     (section: Section<PullRequest>) =>

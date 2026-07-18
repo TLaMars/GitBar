@@ -12,6 +12,7 @@ import Body from "components/body/body";
 import ErrorContainer from "components/error-container/error-container";
 import Icon from "components/icon/icon";
 import PullRequestCard from "components/pull-request-card/pull-request-card";
+import usePullRequestActions from "hooks/use-pull-request-actions";
 import useSelector from "hooks/use-selector";
 import { PullRequest } from "models/pull-request";
 import { Section } from "models/section";
@@ -28,6 +29,7 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
   const { styles: $ } = useStyles(styles);
   const client = useGuavaClient();
   const compact = useSelector(selectCompactCards);
+  const { snooze, hide } = usePullRequestActions();
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
 
   const toggleSection = useCallback(
@@ -128,9 +130,11 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
         accountId={item.accountId}
         mergeRef={item.mergeRef}
         compact={compact}
+        onSnooze={() => snooze(item)}
+        onHide={() => hide(item)}
       />
     ),
-    [compact],
+    [compact, snooze, hide],
   );
 
   return (

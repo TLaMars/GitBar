@@ -1,5 +1,5 @@
 import { useGuavaClient } from "@guava-analytics/react-native";
-import React, { memo } from "react";
+import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { Linking } from "react-native";
 import { Pressable, View } from "react-native-macos";
 import { useStyles } from "react-native-unistyles";
@@ -24,6 +24,10 @@ import resolveStatusBadge from "utils/resolve-status-badge";
 
 import styles from "./pull-request-card.styles";
 
+// Delay before hiding the action pills after the cursor leaves, so brushing
+// between the card and its pills doesn't flicker them away (D5).
+const HOVER_LEAVE_DELAY_MS = 100;
+
 type Props = {
   id: string;
   title: string;
@@ -40,6 +44,8 @@ type Props = {
   accountId: string;
   mergeRef?: MergeRef;
   compact?: boolean;
+  onSnooze: () => void;
+  onHide: () => void;
 };
 
 const PullRequestCard: React.FC<Props> = ({
@@ -58,10 +64,38 @@ const PullRequestCard: React.FC<Props> = ({
   accountId,
   mergeRef,
   compact = false,
+  onSnooze,
+  onHide,
 }) => {
   const client = useGuavaClient();
   const { styles: $ } = useStyles(styles);
   const { t } = useTranslation();
+
+  // Hover-revealed actions (D5). react-native-macos exposes onMouseEnter/Leave.
+  const [active, setActive] = useState(false);
+  const leaveTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined,
+  );
+
+  useEffect(
+    () => () => {
+      if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    },
+    [],
+  );
+
+  const onMouseEnter = useCallback(() => {
+    if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    setActive(true);
+  }, []);
+
+  const onMouseLeave = useCallback(() => {
+    leaveTimer.current = setTimeout(
+      () => setActive(false),
+      HOVER_LEAVE_DELAY_MS,
+    );
+  }, []);
+
   const { canMerge, isMerging, merge } = useMergePullRequest({
     id,
     accountId,
@@ -151,7 +185,13 @@ const PullRequestCard: React.FC<Props> = ({
   }
 
   return (
-    <Pressable accessibilityRole="button" style={$.card} onPress={onPress}>
+    <Pressable
+      accessibilityRole="button"
+      style={[$.card, active && $.cardActive]}
+      onPress={onPress}
+      onHoverIn={onMouseEnter}
+      onHoverOut={onMouseLeave}
+    >
       <View style={[$.borderLine(accentColor)]} />
       <View style={$.header}>
         <View style={$.title}>
@@ -175,11 +215,32 @@ const PullRequestCard: React.FC<Props> = ({
           )}
         </View>
         <View style={$.right}>
-          {amountOfComments !== undefined && (
-            <View style={$.info}>
-              <Body size="s">{amountOfComments}</Body>
-              <Icon name="Comment" size={20} />
+          {active ? (
+            <View style={$.actions}>
+              <Pressable
+                accessibilityRole="button"
+                style={$.actionButton}
+                tooltip={t("PullRequestCard/Action/Snooze")}
+                onPress={onSnooze}
+              >
+                <Icon name="Clock" size={16} color="textSecondary" />
+              </Pressable>
+              <Pressable
+                accessibilityRole="button"
+                style={$.actionButton}
+                tooltip={t("PullRequestCard/Action/Hide")}
+                onPress={onHide}
+              >
+                <Icon name="Cross" size={16} color="textSecondary" />
+              </Pressable>
             </View>
+          ) : (
+            amountOfComments !== undefined && (
+              <View style={$.info}>
+                <Body size="s">{amountOfComments}</Body>
+                <Icon name="Comment" size={20} />
+              </View>
+            )
           )}
         </View>
       </View>

@@ -31,7 +31,7 @@ const styles = createStyleSheet(({ spacing, colors, borderRadiuses }) => ({
     paddingVertical: spacing(0.25),
     borderRadius: borderRadiuses.round,
     borderCurve: "continuous",
-    backgroundColor: colors.backgroundTabCount,
+    backgroundColor: colors.backgroundStatusInfo,
   },
 }));
 

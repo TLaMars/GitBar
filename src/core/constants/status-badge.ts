@@ -20,25 +20,25 @@ export const STATUS_BADGE_PRESENTATION: Record<
 > = {
   conflicts: {
     tone: "accentOrange",
-    backgroundTone: "backgroundWarning",
+    backgroundTone: "backgroundStatusWarning",
     iconName: "AlertCircle",
     labelKey: "PullRequestCard/Status/Conflicts",
   },
   changesRequested: {
     tone: "accentRed",
-    backgroundTone: "backgroundCiFailure",
+    backgroundTone: "backgroundStatusError",
     iconName: "CrossBold",
     labelKey: "PullRequestCard/Status/ChangesRequested",
   },
   draft: {
     tone: "textSecondary",
-    backgroundTone: "backgroundCiCancelled",
+    backgroundTone: "backgroundStatusNeutral",
     iconName: "EditPencil",
     labelKey: "PullRequestCard/Status/Draft",
   },
   approved: {
     tone: "accentGreen",
-    backgroundTone: "backgroundCiSuccess",
+    backgroundTone: "backgroundStatusSuccess",
     iconName: "Check",
     labelKey: "PullRequestCard/Status/Approved",
   },

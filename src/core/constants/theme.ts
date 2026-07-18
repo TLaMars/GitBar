@@ -188,20 +188,19 @@ export const THEME_COLORS_DARK = {
   border: COLORS.darkGray200,
   borderDanger: COLORS.red100,
   borderValid: COLORS.green100,
+  borderActiveCard: "rgba(206, 216, 223, 0.35)",
   icon: COLORS.lightGray100,
   text: COLORS.lightGray100,
   textLink: COLORS.teal100,
   textSecondary: COLORS.lightGray300,
   textDanger: COLORS.red100,
-  // CI status badge background (accent color at low alpha)
-  backgroundCiSuccess: "rgba(180, 224, 128, 0.18)",
-  backgroundCiFailure: "rgba(240, 80, 105, 0.18)",
-  backgroundCiPending: "rgba(175, 223, 243, 0.18)",
-  backgroundCiCancelled: "rgba(206, 216, 223, 0.15)",
-  // Warning tint — used for non-blocking merge issues like conflicts.
-  backgroundWarning: "rgba(252, 131, 112, 0.18)",
-  // "Needs you" tab count chip — accentLightBlue at 25% alpha (D1).
-  backgroundTabCount: "rgba(175, 223, 243, 0.25)",
+  // Semantic status tints — the accent color at 18% alpha. Used for status
+  // badges, CI glyphs, and the tab count chip.
+  backgroundStatusSuccess: "rgba(180, 224, 128, 0.18)",
+  backgroundStatusError: "rgba(240, 80, 105, 0.18)",
+  backgroundStatusWarning: "rgba(252, 131, 112, 0.18)",
+  backgroundStatusInfo: "rgba(175, 223, 243, 0.18)",
+  backgroundStatusNeutral: "rgba(206, 216, 223, 0.18)",
   // Accent Colors (used for profile pictures and color coding PRs per project)
   accentRed: COLORS.red100,
   accentOrange: COLORS.orange100,

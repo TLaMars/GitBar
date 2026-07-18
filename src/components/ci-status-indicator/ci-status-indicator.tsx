@@ -29,25 +29,25 @@ type Presentation = {
 const PRESENTATIONS: Record<Exclude<CiState, CiState.None>, Presentation> = {
   [CiState.Success]: {
     tone: "accentGreen",
-    backgroundTone: "backgroundCiSuccess",
+    backgroundTone: "backgroundStatusSuccess",
     iconName: "Check",
     tooltipKey: "PullRequestCard/CI/TooltipPassing",
   },
   [CiState.Failure]: {
     tone: "accentRed",
-    backgroundTone: "backgroundCiFailure",
+    backgroundTone: "backgroundStatusError",
     iconName: "CrossBold",
     tooltipKey: "PullRequestCard/CI/TooltipFailing",
   },
   [CiState.Pending]: {
     tone: "accentLightBlue",
-    backgroundTone: "backgroundCiPending",
+    backgroundTone: "backgroundStatusInfo",
     iconName: "Clock",
     tooltipKey: "PullRequestCard/CI/TooltipRunning",
   },
   [CiState.Cancelled]: {
     tone: "textSecondary",
-    backgroundTone: "backgroundCiCancelled",
+    backgroundTone: "backgroundStatusNeutral",
     iconName: "Ban",
     tooltipKey: "PullRequestCard/CI/TooltipCancelled",
   },

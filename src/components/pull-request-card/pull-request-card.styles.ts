@@ -82,7 +82,7 @@ const styles = createStyleSheet(({ spacing, colors, borderRadiuses }) => ({
     paddingHorizontal: spacing(2),
     borderRadius: borderRadiuses.round,
     borderCurve: "continuous",
-    backgroundColor: colors.backgroundActionButton,
+    backgroundColor: colors.backgroundSecondary,
   },
   info: {
     flexDirection: "row",

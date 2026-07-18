@@ -21,7 +21,7 @@ const TAB_ORDER = [
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();
   const { styles: $ } = useStyles(styles);
-  const [tab, setTab] = useState<PullRequestTab>(PullRequestTab.REVIEW);
+  const [tab, setTab] = useState<PullRequestTab>(PullRequestTab.NEEDS_YOU);
   const {
     isLoading,
     groupedAllPRs,

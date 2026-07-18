@@ -11,6 +11,7 @@ const mergeablePullRequest: PullRequest = {
   repoName: "repo",
   reviewers: [],
   createdAt: "2026-01-01T00:00:00Z",
+  updatedAt: "2026-01-01T00:00:00Z",
   url: "https://example.com/pr/1",
   isDraft: false,
   accentColor: "accentTeal",

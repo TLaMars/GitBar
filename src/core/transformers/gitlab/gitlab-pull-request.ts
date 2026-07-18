@@ -66,6 +66,7 @@ const transformGitLabPullRequest = ({
         })) ?? []
       ).sort((a, b) => (a.name > b.name ? 1 : -1)),
       createdAt: pr.createdAt,
+      updatedAt: pr.updatedAt,
       url: pr.webUrl ?? "",
       amountOfComments: pr.userNotesCount ?? 0,
       accentColor: getColorForProject(pr.sourceProject?.name ?? ""),

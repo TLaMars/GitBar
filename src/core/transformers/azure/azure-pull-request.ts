@@ -65,6 +65,14 @@ const transformAzurePullRequest = (
       }))
       .sort((a, b) => (a.name > b.name ? 1 : -1)),
     createdAt: data.creationDate,
+    // Azure has no PR-level updated timestamp; the newest thread activity
+    // (system threads cover pushes/votes, not just comments) is the closest
+    // signal. ISO strings compare lexicographically, so reduce for the max.
+    updatedAt: data.threads.reduce(
+      (latest, thread) =>
+        thread.lastUpdatedDate > latest ? thread.lastUpdatedDate : latest,
+      data.creationDate,
+    ),
     url: prUrl,
     amountOfComments: data.threads.reduce(
       (acc, thread) =>

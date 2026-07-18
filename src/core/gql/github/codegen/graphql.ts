@@ -37621,6 +37621,7 @@ export type GitHubPullRequestFragment = {
   headRefOid: any;
   isDraft: boolean;
   createdAt: any;
+  updatedAt: any;
   url: any;
   reviewDecision?: PullRequestReviewDecision | null;
   mergeable: MergeableState;
@@ -37938,6 +37939,7 @@ export const GitHubPullRequestFragmentDoc = {
           },
           { kind: "Field", name: { kind: "Name", value: "isDraft" } },
           { kind: "Field", name: { kind: "Name", value: "createdAt" } },
+          { kind: "Field", name: { kind: "Name", value: "updatedAt" } },
           { kind: "Field", name: { kind: "Name", value: "url" } },
           {
             kind: "Field",
@@ -38516,6 +38518,7 @@ export const GetGithubPullRequestsDocument = {
           },
           { kind: "Field", name: { kind: "Name", value: "isDraft" } },
           { kind: "Field", name: { kind: "Name", value: "createdAt" } },
+          { kind: "Field", name: { kind: "Name", value: "updatedAt" } },
           { kind: "Field", name: { kind: "Name", value: "url" } },
           {
             kind: "Field",

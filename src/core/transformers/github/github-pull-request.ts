@@ -43,6 +43,7 @@ const transformGithubPullRequest = (
         repoName: pr.repository.nameWithOwner,
         reviewers: attendees,
         createdAt: pr.createdAt,
+        updatedAt: pr.updatedAt,
         url: pr.url,
         amountOfComments: pr.totalCommentsCount ?? 0,
         accentColor: getColorForProject(pr.repository.id),

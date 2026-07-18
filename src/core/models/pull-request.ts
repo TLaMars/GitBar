@@ -51,6 +51,9 @@ export type PullRequest = {
   repoName: string;
   reviewers: Attendee[];
   createdAt: string;
+  // Last-activity timestamp (ISO). GitHub/GitLab expose it directly; Azure has
+  // no PR-level field, so it is derived from the latest comment thread.
+  updatedAt: string;
   url: string;
   amountOfComments?: number;
   isDraft: boolean;

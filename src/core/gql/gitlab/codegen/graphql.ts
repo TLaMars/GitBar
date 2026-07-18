@@ -82159,6 +82159,7 @@ export type GitLabPullRequestFragment = {
     conflicts: boolean;
     userNotesCount?: number | null;
     createdAt: any;
+    updatedAt: any;
     author?: {
       __typename?: "MergeRequestAuthor";
       name: string;
@@ -82414,6 +82415,7 @@ export const GitLabPullRequestFragmentDoc = {
                   name: { kind: "Name", value: "userNotesCount" },
                 },
                 { kind: "Field", name: { kind: "Name", value: "createdAt" } },
+                { kind: "Field", name: { kind: "Name", value: "updatedAt" } },
                 {
                   kind: "Field",
                   name: { kind: "Name", value: "headPipeline" },
@@ -82760,6 +82762,7 @@ export const GetGitLabPullRequestsDocument = {
                   name: { kind: "Name", value: "userNotesCount" },
                 },
                 { kind: "Field", name: { kind: "Name", value: "createdAt" } },
+                { kind: "Field", name: { kind: "Name", value: "updatedAt" } },
                 {
                   kind: "Field",
                   name: { kind: "Name", value: "headPipeline" },

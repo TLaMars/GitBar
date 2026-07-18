@@ -44,6 +44,7 @@ const FragmentGitLabPullRequest = graphql(`
       conflicts
       userNotesCount
       createdAt
+      updatedAt
       headPipeline {
         status
         detailedStatus {

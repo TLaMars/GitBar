@@ -27,6 +27,7 @@ const FragmentGitHubPullRequest = graphql(`
     }
     isDraft
     createdAt
+    updatedAt
     url
     baseRef {
       branchProtectionRule {

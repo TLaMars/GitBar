@@ -24,6 +24,7 @@ export const applyUserFilters = (
   hidePRsAfterTwoMonths: boolean,
   hidePRsApprovedByMe: boolean,
   hideDraftPRs: boolean,
+  hideBotPRs: boolean,
 ): PullRequest[] =>
   pullRequests
     .filter(
@@ -42,7 +43,8 @@ export const applyUserFilters = (
       return true;
     })
     .filter((pr) => !hidePRsApprovedByMe || !pr.isApprovedByMe)
-    .filter((pr) => !pr.isDraft || !hideDraftPRs);
+    .filter((pr) => !pr.isDraft || !hideDraftPRs)
+    .filter((pr) => !hideBotPRs || !pr.author.isBot);
 
 export const filterMinePRs = (pullRequests: PullRequest[]): PullRequest[] =>
   pullRequests.filter((pr) => pr.isAuthoredByMe);

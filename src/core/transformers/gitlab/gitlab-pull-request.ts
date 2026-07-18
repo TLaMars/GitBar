@@ -53,6 +53,7 @@ const transformGitLabPullRequest = ({
         avatarUrl: pr.author?.avatarUrl?.includes("https")
           ? pr.author.avatarUrl
           : `${domain}${pr.author?.avatarUrl}`,
+        isBot: pr.author?.bot ?? false,
       },
       repoId: pr.sourceProject?.id ?? "",
       repoName: pr.sourceProject?.name ?? "",

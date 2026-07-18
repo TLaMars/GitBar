@@ -14,6 +14,9 @@ export const selectHidePRsApprovedByMe = (state: RootState) =>
 export const selectHideDraftPRs = (state: RootState) =>
   state.settings.hideDraftPRs;
 
+export const selectHideBotPRs = (state: RootState) =>
+  state.settings.hideBotPRs;
+
 export const selectCompactCards = (state: RootState) =>
   state.settings.compactCards;
 

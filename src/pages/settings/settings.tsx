@@ -30,6 +30,7 @@ import {
   selectAllowNotifications,
   selectCompactCards,
   selectGroupPRsBy,
+  selectHideBotPRs,
   selectHideDraftPRs,
   selectHideIssuesAfterTwoMonths,
   selectHidePRsAfterTwoMonths,
@@ -45,6 +46,7 @@ import {
   setAllowNotifications,
   setCompactCards,
   setGroupPRsBy,
+  setHideBotPRs,
   setHideDraftPRs,
   setHideIssuesAfterTwoMonths,
   setHidePRsAfterTwoMonths,
@@ -69,6 +71,7 @@ const Settings: React.FC = () => {
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
   const allowPushNotifications = useSelector(selectAllowNotifications);
   const hideDraftPRs = useSelector(selectHideDraftPRs);
+  const hideBotPRs = useSelector(selectHideBotPRs);
   const compactCards = useSelector(selectCompactCards);
   const [notificationPermissions, setNotificationPermissions] =
     useState<NotificationPermission>();
@@ -232,6 +235,16 @@ const Settings: React.FC = () => {
           onToggle={(value) => {
             dispatch(setHideDraftPRs(value));
             client.trackEvent("hide_draft_prs_changed", {
+              value: value.toString(),
+            });
+          }}
+        />
+        <ListItemToggle
+          label={t("Settings/PullRequests/HideBots")}
+          value={hideBotPRs}
+          onToggle={(value) => {
+            dispatch(setHideBotPRs(value));
+            client.trackEvent("hide_bot_prs_changed", {
               value: value.toString(),
             });
           }}

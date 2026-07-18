@@ -10,6 +10,7 @@ import {
 } from "store/selectors/pull-requests";
 import {
   selectGroupPRsBy,
+  selectHideBotPRs,
   selectHideDraftPRs,
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
@@ -45,6 +46,7 @@ const usePullRequests = () => {
   const hiddenPullRequests = useSelector(selectHiddenPullRequests);
   const snoozedPullRequests = useSelector(selectSnoozedPullRequests);
   const hideDraftPRs = useSelector(selectHideDraftPRs);
+  const hideBotPRs = useSelector(selectHideBotPRs);
 
   const { pullRequests: result } = useContext(DataContext);
 
@@ -75,6 +77,7 @@ const usePullRequests = () => {
         hidePRsAfterTwoMonths,
         hidePRsApprovedByMe,
         hideDraftPRs,
+        hideBotPRs,
       ),
       snoozedPullRequests,
       Date.now(),
@@ -105,6 +108,7 @@ const usePullRequests = () => {
     hiddenPullRequests,
     snoozedPullRequests,
     hideDraftPRs,
+    hideBotPRs,
     hidePRsAfterTwoMonths,
     hidePRsApprovedByMe,
     groupPRsBy,

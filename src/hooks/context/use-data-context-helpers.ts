@@ -11,6 +11,7 @@ import {
 } from "store/selectors/pull-requests";
 import {
   selectAllowNotifications,
+  selectHideBotPRs,
   selectHideDraftPRs,
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
@@ -33,6 +34,7 @@ const useDataHelper = () => {
   const hiddenPullRequests = useSelector(selectHiddenPullRequests);
   const snoozedPullRequests = useSelector(selectSnoozedPullRequests);
   const hideDraftPRs = useSelector(selectHideDraftPRs);
+  const hideBotPRs = useSelector(selectHideBotPRs);
   const sendNotifications = useSelector(selectAllowNotifications);
   const popoverState = usePopoverState();
 
@@ -46,6 +48,7 @@ const useDataHelper = () => {
           hidePRsAfterTwoMonths,
           hidePRsApprovedByMe,
           hideDraftPRs,
+          hideBotPRs,
         ),
         snoozedPullRequests,
         Date.now(),
@@ -70,6 +73,7 @@ const useDataHelper = () => {
       hidePRsAfterTwoMonths,
       hidePRsApprovedByMe,
       hideDraftPRs,
+      hideBotPRs,
       sendNotifications,
       popoverState,
     ],

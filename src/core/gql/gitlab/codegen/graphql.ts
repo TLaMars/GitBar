@@ -82165,6 +82165,7 @@ export type GitLabPullRequestFragment = {
       name: string;
       username: string;
       avatarUrl?: string | null;
+      bot: boolean;
     } | null;
     reviewers?: {
       __typename?: "MergeRequestReviewerConnection";
@@ -82300,6 +82301,7 @@ export const GitLabPullRequestFragmentDoc = {
                         kind: "Field",
                         name: { kind: "Name", value: "avatarUrl" },
                       },
+                      { kind: "Field", name: { kind: "Name", value: "bot" } },
                     ],
                   },
                 },
@@ -82647,6 +82649,7 @@ export const GetGitLabPullRequestsDocument = {
                         kind: "Field",
                         name: { kind: "Name", value: "avatarUrl" },
                       },
+                      { kind: "Field", name: { kind: "Name", value: "bot" } },
                     ],
                   },
                 },

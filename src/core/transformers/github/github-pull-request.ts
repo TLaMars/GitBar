@@ -38,6 +38,7 @@ const transformGithubPullRequest = (
         author: {
           name: pr.author?.login ?? "",
           avatarUrl: pr.author?.avatarUrl ?? "",
+          isBot: (pr.author?.login ?? "").endsWith("[bot]"),
         },
         repoId: pr.repository.id,
         repoName: pr.repository.nameWithOwner,

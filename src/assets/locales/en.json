@@ -105,6 +105,7 @@
   "Onboarding/ReadyToGo/Body": "Open GitBar through the menu bar icon",
   "Settings/Button/CloseApp": "Quit GitBar",
   "Settings/PullRequests/HideDrafts": "Hide PRs that have a draft status",
+  "Settings/PullRequests/HideBots": "Hide PRs opened by bots",
   "Settings/PullRequests/CompactCards": "Compact PR cards (one line per PR)",
   "Auth/GitHub/Cancelled": "Something went wrong during the authentication process",
   "Auth/GitHub/Dismissed": "You dismissed the authentication process",

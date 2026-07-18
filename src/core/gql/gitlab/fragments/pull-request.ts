@@ -13,6 +13,7 @@ const FragmentGitLabPullRequest = graphql(`
         name
         username
         avatarUrl
+        bot
       }
       reviewers {
         nodes {

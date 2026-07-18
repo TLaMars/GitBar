@@ -9,6 +9,7 @@ type SettingsState = {
   hidePRsApprovedByMe: boolean;
   hidePRsAfterTwoMonths: boolean;
   hideDraftPRs: boolean;
+  hideBotPRs: boolean;
   compactCards: boolean;
 
   showIssues: boolean | undefined;
@@ -21,6 +22,7 @@ const initialState: SettingsState = {
   hidePRsApprovedByMe: true,
   hidePRsAfterTwoMonths: true,
   hideDraftPRs: false,
+  hideBotPRs: false,
   compactCards: false,
 
   showIssues: undefined,
@@ -46,6 +48,9 @@ const settings = createSlice({
     setHideDraftPRs(state, action: PayloadAction<boolean>) {
       state.hideDraftPRs = action.payload;
     },
+    setHideBotPRs(state, action: PayloadAction<boolean>) {
+      state.hideBotPRs = action.payload;
+    },
     setCompactCards(state, action: PayloadAction<boolean>) {
       state.compactCards = action.payload;
     },
@@ -65,6 +70,7 @@ export const {
   setGroupPRsBy,
   setHidePRsApprovedByMe,
   setHideDraftPRs,
+  setHideBotPRs,
   setCompactCards,
   setShowIssues,
   setHideIssuesAfterTwoMonths,

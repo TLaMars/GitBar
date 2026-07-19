@@ -50,12 +50,33 @@ describe("getAttentionReason", () => {
       ).toBe(AttentionReason.NeedsWork);
     });
 
-    it("flags my PR with a rejected review", () => {
+    it("flags my PR with a rejected review (Azure)", () => {
       expect(
         getAttentionReason({
           ...base,
           isAuthoredByMe: true,
           reviewers: [{ name: "R", avatarUrl: "", vote: Vote.Rejected }],
+        }),
+      ).toBe(AttentionReason.NeedsWork);
+    });
+
+    it("flags my PR with changes requested (GitHub/GitLab WaitingFor)", () => {
+      expect(
+        getAttentionReason({
+          ...base,
+          isAuthoredByMe: true,
+          reviewers: [{ name: "R", avatarUrl: "", vote: Vote.WaitingFor }],
+        }),
+      ).toBe(AttentionReason.NeedsWork);
+    });
+
+    it("wins over ReadyToMerge when changes are requested on an approval-optional PR", () => {
+      expect(
+        getAttentionReason({
+          ...base,
+          isAuthoredByMe: true,
+          isApprovalRequired: false,
+          reviewers: [{ name: "R", avatarUrl: "", vote: Vote.WaitingFor }],
         }),
       ).toBe(AttentionReason.NeedsWork);
     });

@@ -1,7 +1,7 @@
-import { Vote } from "models/attendee";
 import { CiState } from "models/ci-status";
 import { PullRequest } from "models/pull-request";
 import canMergePullRequest from "utils/can-merge-pull-request";
+import hasChangesRequested from "utils/has-changes-requested";
 
 /**
  * Viewer-relative "why does this need me" bucket for the "Needs you" tab (D3).
@@ -35,13 +35,10 @@ type AttentionInput = Pick<
  */
 const getAttentionReason = (pr: AttentionInput): AttentionReason => {
   const isFailing = pr.ci?.state === CiState.Failure;
-  const hasChangesRequested = pr.reviewers.some(
-    (reviewer) => reviewer.vote === Vote.Rejected,
-  );
 
   if (
     pr.isAuthoredByMe &&
-    (pr.hasConflicts || isFailing || hasChangesRequested)
+    (pr.hasConflicts || isFailing || hasChangesRequested(pr.reviewers))
   ) {
     return AttentionReason.NeedsWork;
   }

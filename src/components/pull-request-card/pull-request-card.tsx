@@ -16,10 +16,11 @@ import Spacer from "components/spacer/spacer";
 import { STATUS_BADGE_PRESENTATION } from "constants/status-badge";
 import useMergePullRequest from "hooks/mutations/use-merge-pull-request";
 import useTranslation from "hooks/use-translation";
-import { Attendee as AttendeeType, Vote } from "models/attendee";
+import { Attendee as AttendeeType } from "models/attendee";
 import { CiStatus } from "models/ci-status";
 import { MergeRef } from "models/pull-request";
 import { ThemeColor } from "models/theme";
+import hasChangesRequested from "utils/has-changes-requested";
 import resolveStatusBadge from "utils/resolve-status-badge";
 
 import styles from "./pull-request-card.styles";
@@ -110,14 +111,11 @@ const PullRequestCard: React.FC<Props> = ({
 
   // At most one status badge per card (D12). The Merge pill is a CTA that
   // subsumes the badge slot, so it wins outright when the PR is mergeable.
-  const hasChangesRequested = reviewers.some(
-    (reviewer) => reviewer.vote === Vote.Rejected,
-  );
   const statusBadge = canMerge
     ? null
     : resolveStatusBadge({
         hasConflicts,
-        hasChangesRequested,
+        hasChangesRequested: hasChangesRequested(reviewers),
         isDraft,
         isFullyApproved,
       });

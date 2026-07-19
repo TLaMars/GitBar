@@ -14,8 +14,7 @@ export const selectHidePRsApprovedByMe = (state: RootState) =>
 export const selectHideDraftPRs = (state: RootState) =>
   state.settings.hideDraftPRs;
 
-export const selectHideBotPRs = (state: RootState) =>
-  state.settings.hideBotPRs;
+export const selectHideBotPRs = (state: RootState) => state.settings.hideBotPRs;
 
 export const selectColoredMenuBarIcon = (state: RootState) =>
   state.settings.coloredMenuBarIcon;

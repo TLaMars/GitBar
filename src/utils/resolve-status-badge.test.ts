@@ -13,9 +13,9 @@ describe("resolveStatusBadge", () => {
   });
 
   it("shows Approved as the lowest-priority badge", () => {
-    expect(
-      resolveStatusBadge({ ...cleanState, isFullyApproved: true }),
-    ).toBe("approved");
+    expect(resolveStatusBadge({ ...cleanState, isFullyApproved: true })).toBe(
+      "approved",
+    );
   });
 
   it("shows Draft over Approved", () => {

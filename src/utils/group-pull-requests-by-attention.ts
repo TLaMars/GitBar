@@ -44,6 +44,7 @@ export const isActionableReason = (reason: AttentionReason): boolean =>
 export const countActionablePullRequests = (
   pullRequests: PullRequest[],
 ): number =>
-  pullRequests.filter((pr) => isActionableReason(getAttentionReason(pr))).length;
+  pullRequests.filter((pr) => isActionableReason(getAttentionReason(pr)))
+    .length;
 
 export default groupPullRequestsByAttention;

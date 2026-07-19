@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GitBar design board — Needs you + inline actions</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.0.0/dist/tabler-icons.min.css">
+<style>
+  body { margin: 0; padding: 32px; background: #141416; color: #F5F8FA; font-family: -apple-system, "Segoe UI", sans-serif; font-size: 13px; }
+  h1 { font-size: 20px; font-weight: 600; margin: 0 0 4px; }
+  h2 { font-size: 15px; font-weight: 600; margin: 40px 0 4px; }
+  p.caption { color: #9a9aa0; font-size: 12px; margin: 0 0 16px; max-width: 720px; }
+  .board { max-width: 760px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; max-width: 760px; }
+  .statelabel { font-size: 12px; color: #9a9aa0; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<h1>GitBar design board</h1>
+<p class="caption">Reference mockups for docs/design/needs-you-and-actions.md. Each section notes the design decisions (D#) it illustrates. Colors reference the dark theme tokens in src/core/constants/theme.ts.</p>
+
+<h2>Dashboard — "Needs you" tab (D1, D2, D4, D5, D6, D8, D10–D13, D17)</h2>
+<p class="caption">Card one is shown in its hovered/selected state (footer slot swapped to action pills). Card four shows the right-click menu open. In the real app those two states would not normally be visible at the same time.</p>
+<div class="board">
+<div style="border-radius: 26px; padding: 20px 22px 18px; background: radial-gradient(60% 45% at 0% 0%, rgba(20,62,44,0.85), transparent 65%), radial-gradient(70% 55% at 100% 100%, rgba(10,42,94,0.85), transparent 65%), #000; display: flex; gap: 18px;">
+  <div style="background: rgba(28,28,30,0.92); border-radius: 999px; padding: 10px 9px; display: flex; flex-direction: column; align-items: center; gap: 14px; align-self: flex-start;">
+    <span style="width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.14); display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-git-pull-request" style="font-size: 18px;"></i></span>
+    <span style="width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; color: #CED8DF;"><i class="ti ti-circle-dot" style="font-size: 18px;"></i></span>
+    <span style="width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; color: #CED8DF;"><i class="ti ti-settings" style="font-size: 18px;"></i></span>
+  </div>
+  <div style="flex: 1; min-width: 0;">
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+      <span style="font-size: 21px; font-weight: 600;">PRs</span>
+      <i class="ti ti-refresh" style="font-size: 14px; color: #CED8DF;"></i>
+      <span style="font-size: 12px; color: #CED8DF;">1m ago</span>
+      <div style="margin-left: auto; display: flex; align-items: center; background: rgba(255,255,255,0.07); border-radius: 999px; padding: 3px;">
+        <span style="background: rgba(255,255,255,0.16); border-radius: 999px; padding: 5px 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">Needs you <span style="background: rgba(175,223,243,0.25); color: #AFDFF3; border-radius: 999px; padding: 0 7px; font-size: 11px;">4</span></span>
+        <span style="padding: 5px 13px; color: #CED8DF;">Mine</span>
+        <span style="padding: 5px 13px; color: #CED8DF;">Review</span>
+        <span style="padding: 5px 13px; color: #CED8DF;">All</span>
+      </div>
+    </div>
+    <div style="font-size: 14px; font-weight: 600; margin: 0 0 8px 4px;">Blocked on you</div>
+    <div style="background: #232326; border: 1px solid rgba(175,223,243,0.35); border-radius: 18px; padding: 12px 16px; margin-bottom: 10px; display: flex; gap: 12px;">
+      <span style="width: 4px; border-radius: 999px; background: #62DDBD; flex-shrink: 0;"></span>
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="flex: 1; min-width: 0; font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">feat: add rate limiter to API</span>
+          <span style="font-size: 11px; color: #CED8DF;">gitbar-api</span>
+          <span style="width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid #B4E080; color: #B4E080; display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-check" style="font-size: 13px;"></i></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 7px; margin-top: 10px; height: 28px;">
+          <span style="width: 28px; height: 28px; border-radius: 50%; background: #3a3a3c; display: inline-flex; align-items: center; justify-content: center; font-size: 10px;">MJ</span>
+          <span style="margin-left: auto; display: inline-flex; gap: 6px;">
+            <span style="display: inline-flex; align-items: center; gap: 5px; background: rgba(180,224,128,0.2); color: #B4E080; border-radius: 999px; padding: 5px 13px; font-size: 12px; font-weight: 600;"><i class="ti ti-check" style="font-size: 13px;"></i>Approve</span>
+            <span style="width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.1); display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-message-circle" style="font-size: 14px;"></i></span>
+            <span style="width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.1); display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-external-link" style="font-size: 14px;"></i></span>
+            <span style="width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.1); color: #CED8DF; display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-dots" style="font-size: 14px;"></i></span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div style="background: rgba(26,26,28,0.92); border-radius: 18px; padding: 12px 16px; margin-bottom: 14px; display: flex; gap: 12px;">
+      <span style="width: 4px; border-radius: 999px; background: #B3A5EF; flex-shrink: 0;"></span>
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="flex: 1; min-width: 0; font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">fix(GBAR-121): onboarding window flicker</span>
+          <span style="font-size: 11px; color: #CED8DF;">gitbar</span>
+          <span style="display: inline-flex; align-items: center; gap: 5px; background: rgba(252,131,112,0.18); color: #FC8370; border-radius: 999px; padding: 4px 12px; font-size: 12px;"><i class="ti ti-alert-circle" style="font-size: 13px;"></i>Changes requested</span>
+          <span style="width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid #AFDFF3; color: #AFDFF3; display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-clock" style="font-size: 13px;"></i></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 7px; margin-top: 10px; height: 28px;">
+          <span style="width: 28px; height: 28px; border-radius: 50%; background: #3a3a3c; display: inline-flex; align-items: center; justify-content: center; font-size: 10px;">TL</span>
+          <i class="ti ti-chevron-right" style="font-size: 13px; color: #CED8DF;"></i>
+          <span style="width: 28px; height: 28px; border-radius: 50%; background: #3a3a3c; border: 2px solid #F05069; display: inline-flex; align-items: center; justify-content: center; font-size: 10px;">SB</span>
+          <span style="font-size: 12px; color: #CED8DF; margin-left: 6px;">SB requested changes · 4h</span>
+          <span style="margin-left: auto; display: inline-flex; align-items: center; gap: 5px;">5 <i class="ti ti-message-circle" style="font-size: 17px;"></i></span>
+        </div>
+      </div>
+    </div>
+    <div style="font-size: 14px; font-weight: 600; margin: 0 0 8px 4px;">Ready to merge</div>
+    <div style="background: rgba(26,26,28,0.92); border-radius: 18px; padding: 12px 16px; margin-bottom: 14px; display: flex; gap: 12px;">
+      <span style="width: 4px; border-radius: 999px; background: #B3A5EF; flex-shrink: 0;"></span>
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="flex: 1; min-width: 0; font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">chore: bump expo sdk 56</span>
+          <span style="font-size: 11px; color: #CED8DF;">gitbar</span>
+          <span style="width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid #B4E080; color: #B4E080; display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-check" style="font-size: 13px;"></i></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 7px; margin-top: 10px; height: 28px;">
+          <span style="width: 28px; height: 28px; border-radius: 50%; background: #3a3a3c; display: inline-flex; align-items: center; justify-content: center; font-size: 10px;">TL</span>
+          <i class="ti ti-chevron-right" style="font-size: 13px; color: #CED8DF;"></i>
+          <span style="width: 28px; height: 28px; border-radius: 50%; background: #3a3a3c; border: 2px solid #B4E080; display: inline-flex; align-items: center; justify-content: center; font-size: 10px;">SB</span>
+          <span style="margin-left: auto; display: inline-flex; align-items: center; gap: 6px; background: #B4E080; color: #1c3a08; border-radius: 999px; padding: 6px 14px; font-size: 12px; font-weight: 600;"><i class="ti ti-git-merge" style="font-size: 14px;"></i>Merge</span>
+        </div>
+      </div>
+    </div>
+    <div style="font-size: 14px; font-weight: 600; margin: 0 0 8px 4px;">Failing</div>
+    <div style="position: relative; background: rgba(26,26,28,0.92); border-radius: 18px; padding: 12px 16px; margin-bottom: 14px; display: flex; gap: 12px;">
+      <span style="width: 4px; border-radius: 999px; background: #62DDBD; flex-shrink: 0;"></span>
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="flex: 1; min-width: 0; font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">feat: bitbucket provider</span>
+          <span style="font-size: 11px; color: #CED8DF;">gitbar-api</span>
+          <span style="display: inline-flex; align-items: center; gap: 5px; background: rgba(240,80,105,0.18); color: #F05069; border-radius: 999px; padding: 4px 12px; font-size: 12px;"><i class="ti ti-x" style="font-size: 13px;"></i>2 of 5 checks failed</span>
+          <span style="width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid #F05069; color: #F05069; display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-x" style="font-size: 13px;"></i></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 7px; margin-top: 10px; height: 28px;">
+          <span style="width: 28px; height: 28px; border-radius: 50%; background: #3a3a3c; display: inline-flex; align-items: center; justify-content: center; font-size: 10px;">TL</span>
+          <span style="font-size: 12px; color: #CED8DF; margin-left: 6px;">Your PR · lint, tests failing · 30m</span>
+          <span style="margin-left: auto; display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.08); border-radius: 999px; padding: 5px 13px; font-size: 12px;"><i class="ti ti-refresh" style="font-size: 13px;"></i>Re-run checks</span>
+        </div>
+      </div>
+      <div style="position: absolute; right: 20px; top: 50px; background: #232325; border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 6px; width: 196px; font-size: 12px; z-index: 2;">
+        <div style="padding: 7px 10px; display: flex; align-items: center; gap: 8px;"><i class="ti ti-clock" style="font-size: 14px; color: #CED8DF;"></i>Snooze until updated</div>
+        <div style="padding: 7px 10px; background: rgba(49,102,221,0.45); border-radius: 9px; display: flex; align-items: center; gap: 8px;"><i class="ti ti-clock-pause" style="font-size: 14px;"></i>Snooze for 1 day</div>
+        <div style="padding: 7px 10px; display: flex; align-items: center; gap: 8px;"><i class="ti ti-eye-off" style="font-size: 14px; color: #CED8DF;"></i>Hide</div>
+        <div style="padding: 7px 10px; display: flex; align-items: center; gap: 8px;"><i class="ti ti-folder-off" style="font-size: 14px; color: #CED8DF;"></i>Ignore this repository</div>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 6px; color: #CED8DF; font-size: 13px; margin: 0 0 4px 4px;">
+      <i class="ti ti-chevron-right" style="font-size: 14px;"></i>
+      <span style="font-weight: 600;">Waiting on others</span>
+      <span style="background: rgba(255,255,255,0.1); border-radius: 999px; padding: 0 7px; font-size: 11px;">3</span>
+    </div>
+    <div style="height: 60px;"></div>
+  </div>
+</div>
+</div>
+
+<h2>Action lifecycle (D5–D9)</h2>
+<p class="caption">The footer right slot is fixed-height; hover swaps its content. Approve is optimistic; merge executes in one click.</p>
+<div class="grid">
+  <div>
+    <div class="statelabel">1 · Rest — today's card</div>
+    <div style="background: #1C1C1E; border-radius: 14px; padding: 10px 12px; display: flex; gap: 10px;">
+      <span style="width: 4px; border-radius: 999px; background: #62DDBD; flex-shrink: 0;"></span>
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="flex: 1; min-width: 0; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">feat: add rate limiter to API</span>
+          <span style="width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #B4E080; color: #B4E080; display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-check" style="font-size: 11px;"></i></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px; margin-top: 8px; height: 26px;">
+          <span style="width: 22px; height: 22px; border-radius: 50%; background: #3a3a3c; display: inline-flex; align-items: center; justify-content: center; font-size: 9px;">MJ</span>
+          <span style="font-size: 11px; color: #CED8DF;">Review requested · 2d</span>
+          <span style="margin-left: auto; display: inline-flex; align-items: center; gap: 4px; font-size: 12px;">3 <i class="ti ti-message-circle" style="font-size: 15px;"></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="statelabel">2 · Hover — slot swaps, same height</div>
+    <div style="background: #232326; border: 1px solid rgba(175,223,243,0.35); border-radius: 14px; padding: 10px 12px; display: flex; gap: 10px;">
+      <span style="width: 4px; border-radius: 999px; background: #62DDBD; flex-shrink: 0;"></span>
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="flex: 1; min-width: 0; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">feat: add rate limiter to API</span>
+          <span style="width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #B4E080; color: #B4E080; display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-check" style="font-size: 11px;"></i></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px; margin-top: 8px; height: 26px;">
+          <span style="width: 22px; height: 22px; border-radius: 50%; background: #3a3a3c; display: inline-flex; align-items: center; justify-content: center; font-size: 9px;">MJ</span>
+          <span style="display: inline-flex; gap: 5px; margin-left: auto;">
+            <span style="display: inline-flex; align-items: center; gap: 4px; background: rgba(180,224,128,0.2); color: #B4E080; border-radius: 999px; padding: 4px 11px; font-size: 11px; font-weight: 600;"><i class="ti ti-check" style="font-size: 12px;"></i>Approve</span>
+            <span style="width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.1); display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-message-circle" style="font-size: 13px;"></i></span>
+            <span style="width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.1); display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-external-link" style="font-size: 13px;"></i></span>
+            <span style="width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.1); color: #CED8DF; display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-dots" style="font-size: 13px;"></i></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="statelabel">3 · Working — optimistic, siblings dim</div>
+    <div style="background: #232326; border: 1px solid rgba(175,223,243,0.35); border-radius: 14px; padding: 10px 12px; display: flex; gap: 10px;">
+      <span style="width: 4px; border-radius: 999px; background: #62DDBD; flex-shrink: 0;"></span>
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="flex: 1; min-width: 0; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">feat: add rate limiter to API</span>
+          <span style="width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #B4E080; color: #B4E080; display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-check" style="font-size: 11px;"></i></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px; margin-top: 8px; height: 26px;">
+          <span style="width: 22px; height: 22px; border-radius: 50%; background: #3a3a3c; display: inline-flex; align-items: center; justify-content: center; font-size: 9px;">MJ</span>
+          <span style="display: inline-flex; gap: 5px; margin-left: auto;">
+            <span style="display: inline-flex; align-items: center; gap: 4px; background: rgba(180,224,128,0.2); color: #B4E080; border-radius: 999px; padding: 4px 11px; font-size: 11px; font-weight: 600;"><i class="ti ti-loader-2" style="font-size: 12px;"></i>Approving…</span>
+            <span style="width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.05); color: rgba(245,248,250,0.35); display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-message-circle" style="font-size: 13px;"></i></span>
+            <span style="width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.05); color: rgba(245,248,250,0.35); display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-external-link" style="font-size: 13px;"></i></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="statelabel">4 · Success — ring flips, re-groups on next tick</div>
+    <div style="background: #1C1C1E; border-radius: 14px; padding: 10px 12px; display: flex; gap: 10px;">
+      <span style="width: 4px; border-radius: 999px; background: #62DDBD; flex-shrink: 0;"></span>
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="flex: 1; min-width: 0; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">feat: add rate limiter to API</span>
+          <span style="width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #B4E080; color: #B4E080; display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-check" style="font-size: 11px;"></i></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px; margin-top: 8px; height: 26px;">
+          <span style="width: 22px; height: 22px; border-radius: 50%; background: #3a3a3c; display: inline-flex; align-items: center; justify-content: center; font-size: 9px;">MJ</span>
+          <span style="width: 22px; height: 22px; border-radius: 50%; background: #3a3a3c; border: 2px solid #B4E080; display: inline-flex; align-items: center; justify-content: center; font-size: 9px;">TL</span>
+          <span style="margin-left: auto; display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: #B4E080;"><i class="ti ti-check" style="font-size: 13px;"></i>Approved · moving to Waiting on others</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="statelabel">5 · Merge — one click executes</div>
+    <div style="background: #1C1C1E; border-radius: 14px; padding: 10px 12px; display: flex; gap: 10px;">
+      <span style="width: 4px; border-radius: 999px; background: #B3A5EF; flex-shrink: 0;"></span>
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="flex: 1; min-width: 0; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">chore: bump expo sdk 56</span>
+          <span style="width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #B4E080; color: #B4E080; display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-check" style="font-size: 11px;"></i></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px; margin-top: 8px; height: 26px;">
+          <span style="width: 22px; height: 22px; border-radius: 50%; background: #3a3a3c; display: inline-flex; align-items: center; justify-content: center; font-size: 9px;">TL</span>
+          <span style="margin-left: auto; display: inline-flex; align-items: center; gap: 5px; background: #B4E080; color: #1c3a08; border-radius: 999px; padding: 4px 12px; font-size: 11px; font-weight: 600;"><i class="ti ti-git-merge" style="font-size: 12px;"></i>Merge</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>Menu bar icon states (D15)</h2>
+<p class="caption">Tint follows the most urgent state, red &gt; blue &gt; green &gt; default. Behind a "Colored menu bar icon" setting.</p>
+<div style="display: flex; flex-direction: column; gap: 6px;">
+  <div style="display: flex; align-items: center; gap: 10px;"><span style="background: #1C1C1E; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 4px 9px; display: inline-flex; align-items: center; gap: 5px;"><i class="ti ti-git-pull-request" style="font-size: 14px;"></i>5</span><span style="font-size: 12px; color: #9a9aa0;">Default — open PR count</span></div>
+  <div style="display: flex; align-items: center; gap: 10px;"><span style="background: #1C1C1E; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 4px 9px; color: #AFDFF3; display: inline-flex; align-items: center; gap: 5px;"><i class="ti ti-git-pull-request" style="font-size: 14px;"></i>2</span><span style="font-size: 12px; color: #9a9aa0;">Blocked on you</span></div>
+  <div style="display: flex; align-items: center; gap: 10px;"><span style="background: #1C1C1E; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 4px 9px; color: #F05069; display: inline-flex; align-items: center; gap: 5px;"><i class="ti ti-git-pull-request" style="font-size: 14px;"></i>1</span><span style="font-size: 12px; color: #9a9aa0;">Your CI failed or conflicts</span></div>
+  <div style="display: flex; align-items: center; gap: 10px;"><span style="background: #1C1C1E; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 4px 9px; color: #B4E080; display: inline-flex; align-items: center; gap: 5px;"><i class="ti ti-git-pull-request" style="font-size: 14px;"></i>1</span><span style="font-size: 12px; color: #9a9aa0;">Ready to merge</span></div>
+</div>
+
+<h2>Notifications — system-rendered, actions via UNNotificationCategory (D16)</h2>
+<p class="caption">macOS draws the banner; no custom styling exists. Actions (Approve, Reply with comment, Snooze, Open) appear in the system Options menu on hover.</p>
+<div style="display: flex; gap: 20px; flex-wrap: wrap;">
+  <div style="flex: 1; min-width: 260px;">
+    <div class="statelabel">Resting</div>
+    <div style="background: rgba(44,44,46,0.98); border: 0.5px solid rgba(255,255,255,0.14); border-radius: 14px; padding: 11px 13px; max-width: 340px; display: flex; gap: 11px; align-items: center;">
+      <span style="width: 38px; height: 38px; border-radius: 9px; background: #111; border: 0.5px solid rgba(255,255,255,0.12); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ti ti-git-pull-request" style="font-size: 20px; color: #62DDBD;"></i></span>
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; justify-content: space-between; gap: 8px;"><span style="font-weight: 600;">Review requested</span><span style="font-size: 11px; color: rgba(245,248,250,0.55);">now</span></div>
+        <div style="font-size: 12px; color: rgba(245,248,250,0.75); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">gitbar-api · feat: add rate limiter to API</div>
+      </div>
+    </div>
+  </div>
+  <div style="flex: 1; min-width: 260px;">
+    <div class="statelabel">On hover — Options menu open</div>
+    <div style="max-width: 340px;">
+      <div style="background: rgba(44,44,46,0.98); border: 0.5px solid rgba(255,255,255,0.14); border-radius: 14px; padding: 11px 13px; display: flex; gap: 11px; align-items: center;">
+        <span style="width: 38px; height: 38px; border-radius: 9px; background: #111; border: 0.5px solid rgba(255,255,255,0.12); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ti ti-git-pull-request" style="font-size: 20px; color: #62DDBD;"></i></span>
+        <div style="flex: 1; min-width: 0;">
+          <div style="font-weight: 600;">Review requested</div>
+          <div style="font-size: 12px; color: rgba(245,248,250,0.75); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">gitbar-api · feat: add rate limiter…</div>
+        </div>
+        <span style="display: inline-flex; align-items: center; gap: 3px; background: rgba(255,255,255,0.14); border-radius: 999px; padding: 4px 10px; font-size: 11px; flex-shrink: 0;">Options <i class="ti ti-chevron-down" style="font-size: 11px;"></i></span>
+      </div>
+      <div style="background: rgba(50,50,52,0.98); border: 0.5px solid rgba(255,255,255,0.14); border-radius: 10px; padding: 4px; width: 180px; margin: 4px 0 0 auto; font-size: 12px;">
+        <div style="padding: 5px 10px; background: #3166DD; border-radius: 6px;">Approve</div>
+        <div style="padding: 5px 10px;">Reply with comment…</div>
+        <div style="padding: 5px 10px;">Snooze for 1 day</div>
+        <div style="padding: 5px 10px;">Open in browser</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

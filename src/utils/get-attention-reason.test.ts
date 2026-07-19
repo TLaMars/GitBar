@@ -2,7 +2,9 @@ import { AccountType } from "models/account";
 import { Vote } from "models/attendee";
 import { CiState } from "models/ci-status";
 import { MergeRef } from "models/pull-request";
-import getAttentionReason, { AttentionReason } from "utils/get-attention-reason";
+import getAttentionReason, {
+  AttentionReason,
+} from "utils/get-attention-reason";
 
 const mergeRef: MergeRef = {
   provider: AccountType.GitHub,
@@ -19,6 +21,7 @@ const base = {
   isFullyApproved: false,
   isApprovalRequired: true,
   hasConflicts: false,
+  unresolvedThreadCount: 0,
   ci: { state: CiState.Success },
   reviewers: [],
   mergeRef,
@@ -86,13 +89,40 @@ describe("getAttentionReason", () => {
         getAttentionReason({ ...base, ci: { state: CiState.Failure } }),
       ).toBe(AttentionReason.Waiting);
     });
+
+    it("flags my PR with unresolved discussion threads", () => {
+      expect(
+        getAttentionReason({
+          ...base,
+          isAuthoredByMe: true,
+          unresolvedThreadCount: 1,
+        }),
+      ).toBe(AttentionReason.NeedsWork);
+    });
+
+    it("prefers NeedsWork over ReadyToMerge when my mergeable PR has open threads", () => {
+      expect(
+        getAttentionReason({
+          ...base,
+          isAuthoredByMe: true,
+          isFullyApproved: true,
+          unresolvedThreadCount: 2,
+        }),
+      ).toBe(AttentionReason.NeedsWork);
+    });
+
+    it("does not flag someone else's PR with open threads as NeedsWork", () => {
+      expect(getAttentionReason({ ...base, unresolvedThreadCount: 3 })).toBe(
+        AttentionReason.Waiting,
+      );
+    });
   });
 
   describe("BlockedOnYou", () => {
     it("flags another PR with my review still pending", () => {
-      expect(
-        getAttentionReason({ ...base, isReviewPendingFromMe: true }),
-      ).toBe(AttentionReason.BlockedOnYou);
+      expect(getAttentionReason({ ...base, isReviewPendingFromMe: true })).toBe(
+        AttentionReason.BlockedOnYou,
+      );
     });
 
     it("does not flag when I have already voted (not pending)", () => {

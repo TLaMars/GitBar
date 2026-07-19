@@ -37664,6 +37664,13 @@ export type GitHubPullRequestFragment = {
       requiredApprovingReviewCount?: number | null;
     } | null;
   } | null;
+  reviewThreads: {
+    __typename?: "PullRequestReviewThreadConnection";
+    nodes?: Array<{
+      __typename?: "PullRequestReviewThread";
+      isResolved: boolean;
+    } | null> | null;
+  };
   commits: {
     __typename?: "PullRequestCommitConnection";
     nodes?: Array<{
@@ -37971,6 +37978,35 @@ export const GitHubPullRequestFragmentDoc = {
           {
             kind: "Field",
             name: { kind: "Name", value: "totalCommentsCount" },
+          },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "reviewThreads" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "first" },
+                value: { kind: "IntValue", value: "50" },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "isResolved" },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
           },
           {
             kind: "Field",
@@ -38550,6 +38586,35 @@ export const GetGithubPullRequestsDocument = {
           {
             kind: "Field",
             name: { kind: "Name", value: "totalCommentsCount" },
+          },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "reviewThreads" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "first" },
+                value: { kind: "IntValue", value: "50" },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "isResolved" },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
           },
           {
             kind: "Field",

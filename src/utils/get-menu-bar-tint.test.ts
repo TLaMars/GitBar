@@ -28,6 +28,7 @@ const makePullRequest = (overrides: Partial<PullRequest>): PullRequest => ({
   isFullyApproved: false,
   isApprovalRequired: true,
   hasConflicts: false,
+  unresolvedThreadCount: 0,
   ci: { state: CiState.Success },
   accountId: "account-1",
   mergeRef: {

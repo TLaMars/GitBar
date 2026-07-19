@@ -101,4 +101,29 @@ describe("transformGitLabPullRequest", () => {
 
     expect(pullRequest.isApprovalRequired).toBe(false);
   });
+
+  it("counts unresolved discussions as resolvable minus resolved", () => {
+    const [pullRequest] = transformGitLabPullRequest({
+      domain: "https://gitlab.com",
+      data: makeData([
+        makeMergeRequest({
+          resolvableDiscussionsCount: 5,
+          resolvedDiscussionsCount: 3,
+        }),
+      ]),
+      profile,
+    });
+
+    expect(pullRequest.unresolvedThreadCount).toBe(2);
+  });
+
+  it("reports zero unresolved discussions when the counts are absent", () => {
+    const [pullRequest] = transformGitLabPullRequest({
+      domain: "https://gitlab.com",
+      data: makeData([makeMergeRequest()]),
+      profile,
+    });
+
+    expect(pullRequest.unresolvedThreadCount).toBe(0);
+  });
 });

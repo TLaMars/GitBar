@@ -68,6 +68,10 @@ export type PullRequest = {
   isReviewPendingFromMe: boolean;
   isFullyApproved: boolean;
   isApprovalRequired: boolean;
+  // Open (unresolved) discussion threads. GitLab: resolvable minus resolved
+  // counts; GitHub: unresolved reviewThreads (diff threads only — conversation
+  // comments have no resolution concept); Azure: active/pending text threads.
+  unresolvedThreadCount: number;
   hasConflicts: boolean;
   ci?: CiStatus;
   accountId: string;

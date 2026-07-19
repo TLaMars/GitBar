@@ -39,6 +39,7 @@ const rawPullRequest = {
   commits: { nodes: [] },
   reviews: { totalCount: 0, nodes: [] },
   comments: { nodes: [] },
+  reviewThreads: { nodes: [] },
 };
 
 const makeData = (pullRequest: unknown) =>
@@ -78,5 +79,28 @@ describe("transformGithubPullRequest", () => {
 
     expect(pullRequest.isApprovalRequired).toBe(false);
     expect(pullRequest.isFullyApproved).toBe(false);
+  });
+
+  it("counts only unresolved review threads", () => {
+    const [pullRequest] = transformGithubPullRequest(
+      profile,
+      makeData({
+        ...rawPullRequest,
+        reviewThreads: {
+          nodes: [{ isResolved: false }, { isResolved: true }, null],
+        },
+      }),
+    );
+
+    expect(pullRequest.unresolvedThreadCount).toBe(1);
+  });
+
+  it("reports zero unresolved threads when the thread list is null", () => {
+    const [pullRequest] = transformGithubPullRequest(
+      profile,
+      makeData({ ...rawPullRequest, reviewThreads: { nodes: null } }),
+    );
+
+    expect(pullRequest.unresolvedThreadCount).toBe(0);
   });
 });

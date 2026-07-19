@@ -10,7 +10,10 @@ import {
   AzurePullRequest,
   ReviewerVote,
 } from "services/api/azure/models/pull-requests-response";
-import { CommentType } from "services/api/azure/models/thread-response";
+import {
+  CommentType,
+  ThreadStatus,
+} from "services/api/azure/models/thread-response";
 import cleanPrTitle from "utils/clean-pr-title";
 import getColorForProject from "utils/get-project-color";
 
@@ -100,6 +103,17 @@ const transformAzurePullRequest = (
         reviewer.vote === ReviewerVote.NoVote,
     ),
     isAuthoredByMe: data.createdBy.displayName === profile.name,
+    // Active/pending discussion threads with real (text, non-deleted) comments;
+    // system threads track pushes/votes and are never resolvable.
+    unresolvedThreadCount: data.threads.filter(
+      (thread) =>
+        (thread.status === ThreadStatus.Active ||
+          thread.status === ThreadStatus.Pending) &&
+        thread.comments.some(
+          (comment) =>
+            comment.commentType === CommentType.Text && !comment.isDeleted,
+        ),
+    ).length,
     isCommentedByMe: data.threads.some((thread) =>
       thread.comments.some(
         (comment) => comment.author.displayName === profile.name,

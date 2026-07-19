@@ -79,6 +79,12 @@ const transformGithubPullRequest = (
           pr.reviewDecision === PullRequestReviewDecision.Approved,
         isApprovalRequired: pr.reviewDecision != null,
         hasConflicts: pr.mergeable === MergeableState.Conflicting,
+        // Diff review threads only (first 50); conversation comments have no
+        // resolution concept on GitHub so they never count here.
+        unresolvedThreadCount:
+          pr.reviewThreads.nodes?.filter(
+            (thread) => thread != null && !thread.isResolved,
+          ).length ?? 0,
         ci: transformGithubCiStatus(rollup, pr.url),
         mergeRef: {
           provider: AccountType.GitHub,

@@ -37,6 +37,11 @@ const FragmentGitHubPullRequest = graphql(`
     reviewDecision
     mergeable
     totalCommentsCount
+    reviewThreads(first: 50) {
+      nodes {
+        isResolved
+      }
+    }
     commits(last: 1) {
       nodes {
         commit {

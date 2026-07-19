@@ -82157,6 +82157,8 @@ export type GitLabPullRequestFragment = {
     approved: boolean;
     approvalsRequired?: number | null;
     conflicts: boolean;
+    resolvableDiscussionsCount?: number | null;
+    resolvedDiscussionsCount?: number | null;
     userNotesCount?: number | null;
     createdAt: any;
     updatedAt: any;
@@ -82412,6 +82414,14 @@ export const GitLabPullRequestFragmentDoc = {
                   name: { kind: "Name", value: "approvalsRequired" },
                 },
                 { kind: "Field", name: { kind: "Name", value: "conflicts" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "resolvableDiscussionsCount" },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "resolvedDiscussionsCount" },
+                },
                 {
                   kind: "Field",
                   name: { kind: "Name", value: "userNotesCount" },
@@ -82760,6 +82770,14 @@ export const GetGitLabPullRequestsDocument = {
                   name: { kind: "Name", value: "approvalsRequired" },
                 },
                 { kind: "Field", name: { kind: "Name", value: "conflicts" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "resolvableDiscussionsCount" },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "resolvedDiscussionsCount" },
+                },
                 {
                   kind: "Field",
                   name: { kind: "Name", value: "userNotesCount" },

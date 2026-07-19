@@ -5,6 +5,11 @@ import {
   PolicyEvaluationStatus,
 } from "services/api/azure/models/policy-evaluations-response";
 import { AzurePullRequest } from "services/api/azure/models/pull-requests-response";
+import {
+  CommentType,
+  Thread,
+  ThreadStatus,
+} from "services/api/azure/models/thread-response";
 import transformAzurePullRequest from "transformers/azure/azure-pull-request";
 
 const profile: Profile = {
@@ -52,6 +57,32 @@ const makeAzurePullRequest = (
   threads: [],
   policyEvaluations: [],
   ...overrides,
+});
+
+const makeThread = (
+  status: ThreadStatus,
+  commentType: CommentType,
+  isDeleted = false,
+): Thread => ({
+  id: "thread-1",
+  comments: [
+    {
+      author: { id: "author-1", displayName: "Author", descriptor: "" },
+      commentType,
+      content: "comment",
+      id: "comment-1",
+      isDeleted,
+      usersLiked: [],
+      publishedDate: "2026-01-02T00:00:00Z",
+      lastUpdatedDate: "2026-01-02T00:00:00Z",
+      parentCommentId: 0,
+      lastContentUpdatedDate: "2026-01-02T00:00:00Z",
+    },
+  ],
+  identities: [],
+  publisedDate: "2026-01-02T00:00:00Z",
+  lastUpdatedDate: "2026-01-02T00:00:00Z",
+  status,
 });
 
 describe("transformAzurePullRequest", () => {
@@ -105,5 +136,25 @@ describe("transformAzurePullRequest", () => {
     );
 
     expect(pullRequest.isApprovalRequired).toBe(true);
+  });
+
+  it("counts open text threads as unresolved, ignoring system and closed ones", () => {
+    const pullRequest = transformAzurePullRequest(
+      profile,
+      makeAzurePullRequest({
+        threads: [
+          makeThread(ThreadStatus.Active, CommentType.Text),
+          makeThread(ThreadStatus.Pending, CommentType.Text),
+          // Resolved discussion — not open anymore.
+          makeThread(ThreadStatus.Fixed, CommentType.Text),
+          // System thread (push/vote) — never a discussion.
+          makeThread(ThreadStatus.Unknown, CommentType.System),
+          // Open thread whose only comment was deleted.
+          makeThread(ThreadStatus.Active, CommentType.Text, true),
+        ],
+      }),
+    );
+
+    expect(pullRequest.unresolvedThreadCount).toBe(2);
   });
 });

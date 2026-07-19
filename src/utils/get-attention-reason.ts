@@ -25,6 +25,7 @@ type AttentionInput = Pick<
   | "ci"
   | "reviewers"
   | "mergeRef"
+  | "unresolvedThreadCount"
 >;
 
 /**
@@ -35,10 +36,14 @@ type AttentionInput = Pick<
  */
 const getAttentionReason = (pr: AttentionInput): AttentionReason => {
   const isFailing = pr.ci?.state === CiState.Failure;
+  const hasUnresolvedThreads = pr.unresolvedThreadCount > 0;
 
   if (
     pr.isAuthoredByMe &&
-    (pr.hasConflicts || isFailing || hasChangesRequested(pr.reviewers))
+    (pr.hasConflicts ||
+      isFailing ||
+      hasChangesRequested(pr.reviewers) ||
+      hasUnresolvedThreads)
   ) {
     return AttentionReason.NeedsWork;
   }

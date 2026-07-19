@@ -100,6 +100,13 @@ const transformGitLabPullRequest = ({
       // GitLab still reports approved:false there, so gate on the requirement.
       isApprovalRequired: (pr.approvalsRequired ?? 0) > 0,
       hasConflicts: pr.conflicts,
+      // Resolvable counts both open and resolved discussions; the difference
+      // is what is still open. Clamped in case the API returns partial nulls.
+      unresolvedThreadCount: Math.max(
+        0,
+        (pr.resolvableDiscussionsCount ?? 0) -
+          (pr.resolvedDiscussionsCount ?? 0),
+      ),
       ci: transformGitlabCiStatus(pr.headPipeline, domain),
       // The accept API requires the head sha as a staleness guard; without it
       // (or a target project path) the merge action is unavailable.

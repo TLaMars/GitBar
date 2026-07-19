@@ -4,10 +4,10 @@ Your new Pull Request tool for GitHub, GitLab and Azure.
 
 ## Features
 
-- [x] GitHub
-- [x] GitLab (self-hosted and gitlab.com)
-- [x] Azure DevOps
-- [x] View Pull Requests
+- [x] [GitHub](docs/features/accounts.md)
+- [x] [GitLab (self-hosted and gitlab.com)](docs/features/accounts.md)
+- [x] [Azure DevOps](docs/features/accounts.md)
+- [x] [View Pull Requests](docs/features/tabs-and-pr-list.md)
 - [x] ["Needs you" tab](docs/features/needs-you.md) (PRs grouped by what needs your attention)
 - [x] [Get Notifications](docs/features/notifications.md)
 - [x] Launch at Login
@@ -20,6 +20,7 @@ Your new Pull Request tool for GitHub, GitLab and Azure.
 - [x] [Hide PRs opened by bots](docs/features/hide-and-snooze.md#filter-toggles-settings--pull-requests)
 - [x] [Merge PRs](docs/features/merge.md)
 - [x] [See Pipeline Status](docs/features/pipeline-status.md)
+- [x] [Show your GitHub issues](docs/features/issues.md)
 
 ### To Do
 

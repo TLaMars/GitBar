@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 import usePopoverState, { PopoverState } from "hooks/use-popover-state";
 import { PullRequest } from "models/pull-request";
+import NotificationsModule from "modules/notifications-module";
 import PopoverModule from "modules/popover-module";
 import {
   selectHiddenPullRequests,
@@ -17,6 +18,11 @@ import {
   selectHidePRsAfterTwoMonths,
   selectHidePRsApprovedByMe,
 } from "store/selectors/settings";
+import buildNotificationPayload from "utils/build-notification-payload";
+import deriveNotificationEvents, {
+  getPullRequestKey,
+  NotificationSnapshot,
+} from "utils/derive-notification-events";
 import getMenuBarTint from "utils/get-menu-bar-tint";
 import { countActionablePullRequests } from "utils/group-pull-requests-by-attention";
 import { filterSnoozed } from "utils/is-pull-request-snoozed";
@@ -24,12 +30,13 @@ import {
   applyUserFilters,
   filterPRQueryResult,
 } from "utils/pull-request-filters";
-import sendPullRequestNotification from "utils/send-pull-request-notification";
 
 // This hook is used to update the menu bar and send notifications
 // directly from the data context.
 const useDataHelper = () => {
-  const prevPrsRef = useRef<PullRequest[]>([]);
+  // Last-seen notification latches per PR; null until the first completed
+  // poll, which seeds silently so a (re)launch never bursts.
+  const snapshotRef = useRef<NotificationSnapshot | null>(null);
 
   const hidePRsAfterTwoMonths = useSelector(selectHidePRsAfterTwoMonths);
   const hidePRsApprovedByMe = useSelector(selectHidePRsApprovedByMe);
@@ -70,9 +77,21 @@ const useDataHelper = () => {
         coloredMenuBarIcon ? getMenuBarTint(relevantPrs) : null,
       );
 
+      // The latches advance every completed poll, unconditionally — the
+      // settings toggle and the open popover gate only the sending. Advancing
+      // the baseline inside the gate would burst the whole backlog the moment
+      // notifications are toggled on (or the popover closes).
+      const { events, next } = deriveNotificationEvents(
+        snapshotRef.current,
+        prs,
+        new Set(relevantPrs.map(getPullRequestKey)),
+      );
+      snapshotRef.current = next;
+
       if (sendNotifications && popoverState === PopoverState.CLOSED) {
-        sendPullRequestNotification(relevantPrs, prevPrsRef.current);
-        prevPrsRef.current = relevantPrs;
+        events.forEach((event) => {
+          NotificationsModule.sendNotification(buildNotificationPayload(event));
+        });
       }
     },
     [

@@ -8,11 +8,12 @@ Your new Pull Request tool for GitHub, GitLab and Azure.
 - [x] GitLab (self-hosted and gitlab.com)
 - [x] Azure DevOps
 - [x] View Pull Requests
-- [x] "Needs you" tab (PRs grouped by what needs your attention)
+- [x] ["Needs you" tab](docs/features/needs-you.md) (PRs grouped by what needs your attention)
 - [x] Get Notifications
 - [x] Launch at Login
 - [x] Dark / Light Mode
-- [x] Amount of PRs in the menubar
+- [x] [Amount of PRs in the menubar](docs/features/needs-you.md#counts-and-filters)
+- [x] [Menu-bar urgency dot](docs/features/menu-bar-urgency-dot.md) (red / orange / green)
 - [x] Open PRs in your browser
 - [x] Hide PRs from Mine & Review tabs
 - [x] Snooze PRs (until updated)

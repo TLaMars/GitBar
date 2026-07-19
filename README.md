@@ -9,17 +9,17 @@ Your new Pull Request tool for GitHub, GitLab and Azure.
 - [x] Azure DevOps
 - [x] View Pull Requests
 - [x] ["Needs you" tab](docs/features/needs-you.md) (PRs grouped by what needs your attention)
-- [x] Get Notifications
+- [x] [Get Notifications](docs/features/notifications.md)
 - [x] Launch at Login
 - [x] Dark / Light Mode
 - [x] [Amount of PRs in the menubar](docs/features/needs-you.md#counts-and-filters)
 - [x] [Menu-bar urgency dot](docs/features/menu-bar-urgency-dot.md) (red / orange / green)
 - [x] Open PRs in your browser
-- [x] Hide PRs from Mine & Review tabs
-- [x] Snooze PRs (until updated)
-- [x] Hide PRs opened by bots
-- [x] Merge PRs
-- [x] See Pipeline Status
+- [x] [Hide PRs from Mine & Review tabs](docs/features/hide-and-snooze.md#hide)
+- [x] [Snooze PRs (until updated)](docs/features/hide-and-snooze.md#snooze-until-updated)
+- [x] [Hide PRs opened by bots](docs/features/hide-and-snooze.md#filter-toggles-settings--pull-requests)
+- [x] [Merge PRs](docs/features/merge.md)
+- [x] [See Pipeline Status](docs/features/pipeline-status.md)
 
 ### To Do
 

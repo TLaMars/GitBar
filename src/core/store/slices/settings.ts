@@ -25,7 +25,7 @@ const initialState: SettingsState = {
   hideDraftPRs: false,
   hideBotPRs: false,
   compactCards: false,
-  coloredMenuBarIcon: false,
+  coloredMenuBarIcon: true,
 
   showIssues: undefined,
   hideIssuesAfterTwoMonths: false,

@@ -20,12 +20,19 @@ const transformGitHubAttendees = (
   requestedReviewers: GitHubPullRequestFragment["reviewRequests"],
   reviews: GitHubPullRequestFragment["reviews"],
 ): Attendee[] => {
-  const reviewers =
-    reviews?.nodes?.map<Attendee>((review) => ({
-      name: review?.author?.login ?? "",
+  // The reviews connection is full review history (oldest first), so one
+  // author can appear once per submitted review. Only their latest one counts:
+  // a request-changes followed by an approve must read as Approved.
+  const latestReviewByAuthor = new Map<string, Attendee>();
+  reviews?.nodes?.forEach((review) => {
+    const name = review?.author?.login ?? "";
+    latestReviewByAuthor.set(name, {
+      name,
       avatarUrl: review?.author?.avatarUrl ?? "",
       vote: getVote(review?.state),
-    })) ?? [];
+    });
+  });
+  const reviewers = [...latestReviewByAuthor.values()];
 
   const requested =
     requestedReviewers?.nodes?.map<Attendee>((reviewer) => ({

@@ -30,6 +30,15 @@ const transformGithubPullRequest = (
 
       const attendees = transformGitHubAttendees(pr.reviewRequests, pr.reviews);
 
+      // Review history is oldest-first and one author can appear multiple
+      // times; only my latest APPROVED/CHANGES_REQUESTED review reflects my
+      // current vote (an approve superseded by a request-changes is stale).
+      const myReviews =
+        pr.reviews?.nodes?.filter(
+          (review) => review?.author?.login === profile.userName,
+        ) ?? [];
+      const myLatestReview = myReviews[myReviews.length - 1];
+
       const rollup = pr.commits.nodes?.[0]?.commit.statusCheckRollup;
 
       const pullRequest: TransformedPullRequest = {
@@ -50,12 +59,7 @@ const transformGithubPullRequest = (
         accentColor: getColorForProject(pr.repository.id),
         isDraft: pr.isDraft,
         isApprovedByMe:
-          pr.reviews?.nodes?.some(
-            (review) =>
-              review?.author?.login === profile.userName &&
-              review?.__typename === "PullRequestReview" &&
-              review.state === PullRequestReviewState.Approved,
-          ) ?? false,
+          myLatestReview?.state === PullRequestReviewState.Approved,
         isCommentedByMe:
           pr.comments.nodes?.some(
             (comment) => comment?.author?.login === profile.userName,

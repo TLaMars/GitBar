@@ -38070,7 +38070,13 @@ export const GitHubPullRequestFragmentDoc = {
               {
                 kind: "Argument",
                 name: { kind: "Name", value: "states" },
-                value: { kind: "EnumValue", value: "APPROVED" },
+                value: {
+                  kind: "ListValue",
+                  values: [
+                    { kind: "EnumValue", value: "APPROVED" },
+                    { kind: "EnumValue", value: "CHANGES_REQUESTED" },
+                  ],
+                },
               },
             ],
             selectionSet: {
@@ -38678,7 +38684,13 @@ export const GetGithubPullRequestsDocument = {
               {
                 kind: "Argument",
                 name: { kind: "Name", value: "states" },
-                value: { kind: "EnumValue", value: "APPROVED" },
+                value: {
+                  kind: "ListValue",
+                  values: [
+                    { kind: "EnumValue", value: "APPROVED" },
+                    { kind: "EnumValue", value: "CHANGES_REQUESTED" },
+                  ],
+                },
               },
             ],
             selectionSet: {

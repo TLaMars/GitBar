@@ -51,7 +51,7 @@ const FragmentGitHubPullRequest = graphql(`
         }
       }
     }
-    reviews(first: 100, states: APPROVED) {
+    reviews(first: 100, states: [APPROVED, CHANGES_REQUESTED]) {
       totalCount
       nodes {
         author {

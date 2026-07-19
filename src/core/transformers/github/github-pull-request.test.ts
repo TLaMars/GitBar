@@ -3,8 +3,10 @@ import {
   MergeableState,
   PullRequestMergeMethod,
   PullRequestReviewDecision,
+  PullRequestReviewState,
 } from "gql/github/codegen/graphql";
 import { AccountType } from "models/account";
+import { Vote } from "models/attendee";
 import Profile, { AccountState } from "models/profile";
 import transformGithubPullRequest from "transformers/github/github-pull-request";
 
@@ -102,5 +104,113 @@ describe("transformGithubPullRequest", () => {
     );
 
     expect(pullRequest.unresolvedThreadCount).toBe(0);
+  });
+
+  // The reviews connection is full history (oldest first): the same author
+  // appears once per submitted review, and only the latest one may count.
+  describe("review supersede sequences", () => {
+    const review = (login: string, state: PullRequestReviewState) => ({
+      author: { login, avatarUrl: "" },
+      state,
+    });
+
+    it("counts a request-changes followed by an approve as Approved", () => {
+      const [pullRequest] = transformGithubPullRequest(
+        profile,
+        makeData({
+          ...rawPullRequest,
+          reviews: {
+            totalCount: 2,
+            nodes: [
+              review("alice", PullRequestReviewState.ChangesRequested),
+              review("alice", PullRequestReviewState.Approved),
+            ],
+          },
+        }),
+      );
+
+      expect(pullRequest.reviewers).toEqual([
+        { name: "alice", avatarUrl: "", vote: Vote.Approved },
+      ]);
+    });
+
+    it("counts an approve followed by a request-changes as changes requested", () => {
+      const [pullRequest] = transformGithubPullRequest(
+        profile,
+        makeData({
+          ...rawPullRequest,
+          reviews: {
+            totalCount: 2,
+            nodes: [
+              review("alice", PullRequestReviewState.Approved),
+              review("alice", PullRequestReviewState.ChangesRequested),
+            ],
+          },
+        }),
+      );
+
+      expect(pullRequest.reviewers).toEqual([
+        { name: "alice", avatarUrl: "", vote: Vote.WaitingFor },
+      ]);
+    });
+
+    it("clears isApprovedByMe when my approve is superseded by a request-changes", () => {
+      const [pullRequest] = transformGithubPullRequest(
+        profile,
+        makeData({
+          ...rawPullRequest,
+          reviews: {
+            totalCount: 2,
+            nodes: [
+              review("me", PullRequestReviewState.Approved),
+              review("me", PullRequestReviewState.ChangesRequested),
+            ],
+          },
+        }),
+      );
+
+      expect(pullRequest.isApprovedByMe).toBe(false);
+    });
+
+    it("sets isApprovedByMe when my request-changes is superseded by an approve", () => {
+      const [pullRequest] = transformGithubPullRequest(
+        profile,
+        makeData({
+          ...rawPullRequest,
+          reviews: {
+            totalCount: 2,
+            nodes: [
+              review("me", PullRequestReviewState.ChangesRequested),
+              review("me", PullRequestReviewState.Approved),
+            ],
+          },
+        }),
+      );
+
+      expect(pullRequest.isApprovedByMe).toBe(true);
+    });
+
+    it("keeps other authors' votes independent of mine", () => {
+      const [pullRequest] = transformGithubPullRequest(
+        profile,
+        makeData({
+          ...rawPullRequest,
+          reviews: {
+            totalCount: 3,
+            nodes: [
+              review("alice", PullRequestReviewState.ChangesRequested),
+              review("me", PullRequestReviewState.Approved),
+              review("alice", PullRequestReviewState.Approved),
+            ],
+          },
+        }),
+      );
+
+      expect(pullRequest.reviewers).toEqual([
+        { name: "alice", avatarUrl: "", vote: Vote.Approved },
+        { name: "me", avatarUrl: "", vote: Vote.Approved },
+      ]);
+      expect(pullRequest.isApprovedByMe).toBe(true);
+    });
   });
 });

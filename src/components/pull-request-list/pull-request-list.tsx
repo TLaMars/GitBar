@@ -29,7 +29,8 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
   const { styles: $ } = useStyles(styles);
   const client = useGuavaClient();
   const compact = useSelector(selectCompactCards);
-  const { snooze, hide } = usePullRequestActions();
+  const { isSnoozed, isHidden, toggleSnooze, toggleHide } =
+    usePullRequestActions();
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
 
   const toggleSection = useCallback(
@@ -130,11 +131,13 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
         accountId={item.accountId}
         mergeRef={item.mergeRef}
         compact={compact}
-        onSnooze={() => snooze(item)}
-        onHide={() => hide(item)}
+        isSnoozed={isSnoozed(item)}
+        isHidden={isHidden(item)}
+        onSnooze={() => toggleSnooze(item)}
+        onHide={() => toggleHide(item)}
       />
     ),
-    [compact, snooze, hide],
+    [compact, isSnoozed, isHidden, toggleSnooze, toggleHide],
   );
 
   return (

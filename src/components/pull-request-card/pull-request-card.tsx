@@ -25,8 +25,6 @@ import resolveStatusBadge from "utils/resolve-status-badge";
 
 import styles from "./pull-request-card.styles";
 
-// Delay before hiding the action pills after the cursor leaves, so brushing
-// between the card and its pills doesn't flicker them away (D5).
 const HOVER_LEAVE_DELAY_MS = 100;
 
 type Props = {
@@ -45,6 +43,8 @@ type Props = {
   accountId: string;
   mergeRef?: MergeRef;
   compact?: boolean;
+  isSnoozed?: boolean;
+  isHidden?: boolean;
   onSnooze: () => void;
   onHide: () => void;
 };
@@ -65,6 +65,8 @@ const PullRequestCard: React.FC<Props> = ({
   accountId,
   mergeRef,
   compact = false,
+  isSnoozed = false,
+  isHidden = false,
   onSnooze,
   onHide,
 }) => {
@@ -218,23 +220,39 @@ const PullRequestCard: React.FC<Props> = ({
               <TouchableOpacity
                 accessibilityRole="button"
                 style={$.actionButton}
-                tooltip={t("PullRequestCard/Action/SnoozeTooltip")}
+                tooltip={t(
+                  isSnoozed
+                    ? "PullRequestCard/Action/Unsnooze"
+                    : "PullRequestCard/Action/SnoozeTooltip",
+                )}
                 onPress={onSnooze}
               >
                 <Icon name="Clock" size={14} color="textSecondary" />
                 <Body size="xs" color="textSecondary">
-                  {t("PullRequestCard/Action/Snooze")}
+                  {t(
+                    isSnoozed
+                      ? "PullRequestCard/Action/Unsnooze"
+                      : "PullRequestCard/Action/Snooze",
+                  )}
                 </Body>
               </TouchableOpacity>
               <TouchableOpacity
                 accessibilityRole="button"
                 style={$.actionButton}
-                tooltip={t("PullRequestCard/Action/Hide")}
+                tooltip={t(
+                  isHidden
+                    ? "PullRequestCard/Action/Unhide"
+                    : "PullRequestCard/Action/Hide",
+                )}
                 onPress={onHide}
               >
                 <Icon name="Ban" size={14} color="textSecondary" />
                 <Body size="xs" color="textSecondary">
-                  {t("PullRequestCard/Action/Hide")}
+                  {t(
+                    isHidden
+                      ? "PullRequestCard/Action/Unhide"
+                      : "PullRequestCard/Action/Hide",
+                  )}
                 </Body>
               </TouchableOpacity>
             </View>

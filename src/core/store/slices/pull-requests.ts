@@ -41,6 +41,15 @@ const settings = createSlice({
     setPullRequestHidden(state, action: PayloadAction<HiddenPullRequest>) {
       state.hidden = [...state.hidden, action.payload];
     },
+    setPullRequestVisible(
+      state,
+      action: PayloadAction<{ id: string; repoName: string }>,
+    ) {
+      const { id, repoName } = action.payload;
+      state.hidden = state.hidden.filter(
+        (entry) => !isSamePullRequest(id, repoName)(entry),
+      );
+    },
     resetHiddenPullRequests(state) {
       state.hidden = [];
     },
@@ -71,6 +80,7 @@ const settings = createSlice({
 
 export const {
   setPullRequestHidden,
+  setPullRequestVisible,
   resetHiddenPullRequests,
   snoozePullRequest,
   unsnoozePullRequest,

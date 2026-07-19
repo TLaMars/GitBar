@@ -1,12 +1,12 @@
 # Menu-bar urgency dot
 
-An opt-in colored dot next to the PR count in the menu bar that tells you, at a
+A colored dot next to the PR count in the menu bar that tells you, at a
 glance, whether anything needs you — and how urgently — without opening the
 popover.
 
-## Enabling it
+## Turning it off
 
-Settings → Application → **"Colored menu bar icon"**. Off by default; when off (or
+Settings → Application → **"Colored menu bar icon"**. On by default; when off (or
 when nothing is urgent) the menu bar shows only the monochrome icon and count.
 
 ## The urgency ramp

@@ -386,7 +386,12 @@ const Settings: React.FC = () => {
               size="xs"
               label="Send notification"
               onPress={() => {
-                NotificationsModule.sendNotification("TEST", "TEST");
+                // No url: tapping the test banner opens the popover.
+                NotificationsModule.sendNotification({
+                  id: "TEST",
+                  title: "TEST",
+                  body: "TEST",
+                });
               }}
             />
           </>

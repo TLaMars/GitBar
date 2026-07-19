@@ -1,19 +1,9 @@
+import type { NotificationPayload } from "modules/notifications-module";
 import {
   getPullRequestKey,
   NotificationEvent,
 } from "utils/derive-notification-events";
 import { NotificationSignal } from "utils/get-pull-request-signals";
-
-export type NotificationPayload = {
-  // Per-PR identifier: a newer banner for the same PR replaces the older one
-  // OS-side, across event types, so stale states never stack.
-  id: string;
-  title: string;
-  body: string;
-  url?: string;
-  // Groups Notification Center per repo.
-  threadId?: string;
-};
 
 // Plain English constants — react-intl lives inside the component tree only,
 // and this runs from the poll loop.

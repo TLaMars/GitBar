@@ -28,10 +28,12 @@ const sendPullRequestNotification = (
     }, 0);
 
     if (newPullRequests.length > 0 || newComments > 0) {
-      NotificationsModule.sendNotification(
-        "GitBar update:",
-        `You have ${newPullRequests.length} new pull requests and ${newComments} new comments`,
-      );
+      // No url: tapping the summary banner opens the popover.
+      NotificationsModule.sendNotification({
+        id: "summary",
+        title: "GitBar update:",
+        body: `You have ${newPullRequests.length} new pull requests and ${newComments} new comments`,
+      });
     }
   }
 };

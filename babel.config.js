@@ -27,5 +27,5 @@ module.exports = {
   // for a modern hermesc. Force the legacy "hermes-v0" profile so the bundle is downleveled to
   // what this hermesc accepts. Drop once rn-macos ships a modern hermesc.
   presets: [["babel-preset-expo", { unstable_transformProfile: "hermes-v0" }]],
-  plugins: [MODULE_RESOLVER, "module:react-native-dotenv"],
+  plugins: [MODULE_RESOLVER],
 };

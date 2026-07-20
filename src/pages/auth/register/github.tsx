@@ -36,9 +36,9 @@ const RegisterGithub: React.FC = () => {
         .post(
           "/login/oauth/access_token",
           {
-            client_id: process.env.GITHUB_CLIENT_ID ?? "",
+            client_id: process.env.EXPO_PUBLIC_GITHUB_CLIENT_ID ?? "",
             code,
-            client_secret: process.env.GITHUB_CLIENT_SECRET ?? "",
+            client_secret: process.env.EXPO_PUBLIC_GITHUB_CLIENT_SECRET ?? "",
           },
           {
             headers: {

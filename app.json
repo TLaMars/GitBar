@@ -2,7 +2,10 @@
   "name": "GitBar",
   "expo": {
     "name": "GitBar",
-    "plugins": ["expo-font"],
+    "plugins": [
+      "expo-font",
+      "@sentry/react-native"
+    ],
     "experiments": {
       "outOfTreePlatforms": true
     }

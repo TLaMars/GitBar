@@ -1,9 +1,24 @@
-const { getDefaultConfig, mergeConfig } = require("@react-native/metro-config");
-const { withSentryConfig } = require("@sentry/react-native/metro");
+const { getSentryExpoConfig } = require("@sentry/react-native/metro");
 
-const {
-  resolver: { sourceExts, assetExts },
-} = getDefaultConfig();
+/**
+ * Metro configuration
+ * https://facebook.github.io/metro/docs/configuration
+ *
+ * Built on Expo's Metro config (via Sentry's wrapper) so that BOTH bundle
+ * paths — the dev server (`expo start`) and the release bundle embedded by
+ * the Xcode "Bundle React Native code and images" phase (`expo export:embed`)
+ * — resolve `react-native` to `react-native-macos` through SDK 56's
+ * `outOfTreePlatforms` experiment (see app.json).
+ *
+ * The previous `@react-native/metro-config` base only applied to the release
+ * bundler, which knew nothing about the macOS platform redirect: release
+ * bundles contained BOTH the iOS `react-native` core and `react-native-macos`,
+ * crashing at startup ("Cannot read property 'select' of undefined") and
+ * shipping black-screen TestFlight builds while dev builds worked.
+ *
+ * @type {import('metro-config').MetroConfig}
+ */
+const config = getSentryExpoConfig(__dirname);
 
 // react-native-gesture-handler has no native module linked on macOS, so its
 // TurboModule (RNGestureHandlerModule) can't be enforced there. Expo's Metro
@@ -13,8 +28,11 @@ const {
 // one module to the library's no-op `GestureHandler.js` fallback on macOS — the
 // same variant the react-native CLI bundler already resolves. Navigation works;
 // only the (macOS-irrelevant) swipe gestures are no-ops.
-const macosGestureHandlerResolver = (context, moduleName, platform) => {
-  const resolved = context.resolveRequest(context, moduleName, platform);
+const expoResolveRequest = config.resolver.resolveRequest;
+config.resolver.resolveRequest = (context, moduleName, platform) => {
+  const resolved = expoResolveRequest
+    ? expoResolveRequest(context, moduleName, platform)
+    : context.resolveRequest(context, moduleName, platform);
   if (
     platform === "macos" &&
     resolved?.type === "sourceFile" &&
@@ -36,30 +54,22 @@ const macosGestureHandlerResolver = (context, moduleName, platform) => {
   return resolved;
 };
 
-/**
- * Metro configuration
- * https://facebook.github.io/metro/docs/configuration
- *
- * The `react-native` -> `react-native-macos` resolver alias and the
- * `getModulesRunBeforeMainModule` override that used to live here are no longer
- * needed: SDK 56's `outOfTreePlatforms` experiment (see app.json) handles macOS
- * module resolution and InitializeCore ordering natively.
- *
- * @type {import('metro-config').MetroConfig}
- */
-const config = {
-  transformer: {
-    experimentalImportSupport: false,
-    inlineRequires: true,
-    babelTransformerPath: require.resolve("react-native-svg-transformer"),
-  },
-  resolver: {
-    assetExts: assetExts.filter((ext) => ext !== "svg"),
-    sourceExts: [...sourceExts, "svg"],
-    resolveRequest: macosGestureHandlerResolver,
-  },
-};
-
-module.exports = withSentryConfig(
-  mergeConfig(getDefaultConfig(__dirname), config),
+config.transformer.babelTransformerPath = require.resolve(
+  "react-native-svg-transformer/expo",
 );
+// Expo's default leaves inlineRequires off; enable it like expo/orbit's
+// menu-bar app does so modules evaluate lazily on first use (faster startup).
+// The pre-Expo config set a bare `transformer.inlineRequires` key, which
+// modern Metro ignores — this is the honored location.
+config.transformer.getTransformOptions = async () => ({
+  transform: {
+    experimentalImportSupport: true,
+    inlineRequires: true,
+  },
+});
+config.resolver.assetExts = config.resolver.assetExts.filter(
+  (ext) => ext !== "svg",
+);
+config.resolver.sourceExts = [...config.resolver.sourceExts, "svg"];
+
+module.exports = config;

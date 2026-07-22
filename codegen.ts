@@ -21,6 +21,8 @@ const config: CodegenConfig = {
         "./src/core/gql/github/mutations/**/*.ts",
       ],
       plugins: [],
+      // Only emit types reachable from our operations, not the whole schema.
+      config: { onlyOperationTypes: true },
       presetConfig: {
         fragmentMasking: { unmaskFunctionName: "getFragmentData" },
       },
@@ -42,6 +44,8 @@ const config: CodegenConfig = {
           },
         },
       ],
+      // Only emit types reachable from our operations, not the whole schema.
+      config: { onlyOperationTypes: true },
       presetConfig: {
         fragmentMasking: { unmaskFunctionName: "getFragmentData" },
       },

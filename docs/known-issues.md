@@ -9,7 +9,7 @@ each entry captures what was seen so it can be triaged later.
 
 **Reported:** 2026-07-20
 **Area:** [Menu-bar urgency dot](features/menu-bar-urgency-dot.md)
-**Status:** Open — not fixed
+**Status:** Closed 2026-07-25 — intended behavior, no code change
 
 ### What happens
 
@@ -27,10 +27,26 @@ orange rather than green.
   [menu-bar-urgency-dot.md](features/menu-bar-urgency-dot.md).
 - In the screenshot there are four "Blocked on you" PRs alongside the single
   ready-to-merge one, so the current color follows the documented priority order.
-- Open question for triage: is this the intended behavior, or should a
-  ready-to-merge PR of your own surface more prominently even when reviews are
-  also pending on you? Tint logic lives in
-  [get-menu-bar-tint.ts](../src/utils/get-menu-bar-tint.ts).
+
+### Resolution
+
+Intended behavior. Someone blocked on your review is more urgent than your own
+PR sitting mergeable — you can merge whenever, they cannot proceed. The dot keeps
+showing the *most* urgent bucket, so orange wins.
+
+Verified while triaging: the tint is computed from `relevantPrs`, the same
+filtered/unsnoozed set as the badge count
+([use-data-context-helpers.ts:76](../src/hooks/context/use-data-context-helpers.ts#L76)),
+so no hidden PR can drive the color; the buckets are disjoint by construction
+([get-attention-reason.ts](../src/utils/get-attention-reason.ts)); and
+[get-menu-bar-tint.test.ts](../src/utils/get-menu-bar-tint.test.ts) already pins
+`[readyToMerge, blockedOnYou] → orange`.
+
+Accepted consequence: green is only reachable when *no* review is pending on you.
+If "I have something to merge" ever needs its own always-visible signal, that is a
+separate affordance (second dot / green ring on the count), not a reordering of
+this ramp. Tint logic lives in
+[get-menu-bar-tint.ts](../src/utils/get-menu-bar-tint.ts).
 
 ---
 
@@ -38,7 +54,7 @@ orange rather than green.
 
 **Reported:** 2026-07-20
 **Area:** [Merge PRs](features/merge.md) · Azure DevOps provider
-**Status:** Open — not fixed
+**Status:** Fix applied 2026-07-25 — awaiting confirmation on a real Azure PR
 
 ### What happens
 
@@ -64,6 +80,50 @@ approvals yet ("No review yet" for both reviewers).
   minimum-approver policy is enforced server-side), so the risk is a misleading
   "Ready to merge" state rather than an unsafe merge — worth confirming during
   triage.
+
+### Root cause
+
+The merge gate failed **open** on missing data. `isApprovalRequired` was derived
+purely from the *presence* of a minimum-approvers policy evaluation, so an empty
+`policyEvaluations` array made it `false`, and the gate's "fully approved **or** no
+approval required" clause was satisfied by the second half. Result: any
+conflict-free Azure PR with a merge commit showed the Merge pill.
+
+For !50355 the evaluation was definitely absent from what GitBar received — with
+it present at any status, `isApprovalRequired` would be `true` and `isFullyApproved`
+`false` (Azure showed "At least 1 reviewer must approve" as pending), closing the
+gate. Two code paths produced the empty array: a swallowing `catch` around the
+policy request, and the `#isRelevantToUser` skip that returned `policyEvaluations: []`
+for un-enriched PRs. The PR was authored-by-me in GitBar's view, so the request ran
+and either errored or came back empty.
+
+### Fix
+
+1. `api-version: "7.1"` added to the policy-evaluations request — it was the only
+   Azure call omitting it, and the newest of the endpoints used, so a `400` there
+   would have been invisible.
+2. Failed lookups and un-enriched PRs now yield `policyEvaluations: undefined`
+   instead of `[]`, and the failure is logged rather than swallowed silently.
+3. `undefined` ⇒ `isApprovalRequired: true`. Unknown fails closed; an empty list
+   still means "this repo has no branch policies". See
+   [merge.md](features/merge.md#unknown-approval-state-fails-closed).
+
+### Still to confirm
+
+Whether the policy request was **erroring** or **returning an empty list** for
+!50355 — the swallowed `catch` destroyed that evidence. Fix 1 addresses the first,
+fix 3 makes either one safe, but the underlying request should be verified against
+a real Azure PR that has an unmet minimum-approvers policy: the pill must not
+appear, and no policy warning should be logged.
+
+### Related
+
+A separate suspicion surfaced while triaging: GitBar treated a PR authored by
+another person as authored by the signed-in user, which is what put it in "Ready to
+merge" at all. Azure is the only provider matching identity on `displayName`
+instead of a stable handle (GitHub and GitLab use `profile.userName`), even though
+`getProfile` already stores the account email there. Tracked as
+[KI-5](#ki-5--azure-identity-matching-uses-displayname).
 
 ---
 
@@ -91,3 +151,66 @@ card is showing its Snooze/Hide actions.
 - Things to check during triage: mouse-enter/leave handling on the card, whether
   a re-render/refresh (the list refetches — note "1m ago") drops or retains the
   hovered element, and pointer events while the popover regains focus.
+
+---
+
+## KI-4 — Merging an Azure DevOps MR from GitBar does nothing
+
+**Reported:** 2026-07-25
+**Area:** [Merge PRs](features/merge.md) · Azure DevOps provider
+**Status:** Open — not fixed
+
+### What happens
+
+Clicking the green **Merge** pill on an Azure DevOps pull request does not merge
+it. The PR stays open on Azure.
+
+### Notes
+
+- Azure merges go through `mergePullRequest` in
+  [azure-provider.ts:180](../src/core/data-providers/azure-provider.ts#L180): a
+  `PATCH` to the pull-request endpoint with `status: "completed"` and
+  `lastMergeSourceCommit`. GitHub/GitLab use their GraphQL merge mutations, so
+  this is Azure-specific.
+- Things to check during triage: whether the request is sent at all, the HTTP
+  status/body Azure returns (a rejected completion may come back `200` with an
+  unchanged PR rather than an error), whether `lastMergeSourceCommitId` is
+  populated and current, and whether the error surfaces in the UI at all —
+  `#transformApiError` may be swallowing it silently.
+- Possibly the same root cause as [KI-2](#ki-2--azure-mr-shown-as-ready-to-merge-but-it-isnt-mergeable):
+  if the PR isn't actually mergeable (approvals pending, auto-complete only),
+  Azure would refuse the completion and GitBar would look like it did nothing.
+  KI-2's fix makes the pill stop appearing on those PRs, so re-test KI-4 on a PR
+  that really is mergeable before digging further.
+
+---
+
+## KI-5 — Azure identity matching uses `displayName`
+
+**Reported:** 2026-07-25 (surfaced while triaging [KI-2](#ki-2--azure-mr-shown-as-ready-to-merge-but-it-isnt-mergeable))
+**Area:** Azure DevOps provider
+**Status:** Open — not fixed
+
+### What happens
+
+In the KI-2 screenshot GitBar filed PR !50355 under "Ready to merge", which only
+happens for PRs you authored
+([get-attention-reason.ts](../src/utils/get-attention-reason.ts)) — but Azure shows
+Silvan Belder as the author, not the signed-in user.
+
+### Notes
+
+- `isAuthoredByMe` for Azure is `data.createdBy.displayName === profile.name`
+  ([azure-pull-request.ts](../src/core/transformers/azure/azure-pull-request.ts)).
+  GitHub and GitLab match on `profile.userName` (login / username), a stable handle.
+  `getProfile` already puts the account email in `userName`.
+- Display names are mutable and can collide; `#isRelevantToUser` uses the same
+  comparison, so a mismatch also silently disables per-PR enrichment (threads,
+  policies) — which is how this interacts with KI-2.
+- A wrong `isAuthoredByMe` misfiles PRs into both "Ready to merge" and "Needs work",
+  and the same `displayName` comparison drives `isAssignedToMe`,
+  `isReviewPendingFromMe`, `isApprovedByMe` and `isCommentedByMe`.
+- To check during triage: what `/_apis/profile/profiles/me` actually returns for the
+  connected account (note GitBar calls it on `dev.azure.com`, while Azure documents
+  profiles under `vssps`), and whether `uniqueName` on `createdBy` is the better
+  field to match against.

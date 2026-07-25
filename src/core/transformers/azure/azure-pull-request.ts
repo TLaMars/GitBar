@@ -120,9 +120,15 @@ const transformAzurePullRequest = (
       ),
     ),
     hasConflicts: data.mergeStatus === "conflicts",
-    isApprovalRequired: !!data.policyEvaluations?.some(
-      (e) => e.configuration.type.id === AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID,
-    ),
+    // Undefined means we never got the policies (request failed, or the PR
+    // wasn't enriched) — assume an approval is needed so the merge gate fails
+    // closed. An empty list is a real answer: this repo has no branch policies.
+    isApprovalRequired:
+      data.policyEvaluations === undefined ||
+      data.policyEvaluations.some(
+        (e) =>
+          e.configuration.type.id === AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID,
+      ),
     isFullyApproved: (() => {
       const minApproversEval = data.policyEvaluations?.find(
         (e) =>

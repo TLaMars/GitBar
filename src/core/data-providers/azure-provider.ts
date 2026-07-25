@@ -100,15 +100,22 @@ class AzureProvider extends BaseProvider {
             // Sent as a query param because no `:artifactId` placeholder
             // appears in the path — see utils/buildUrl behaviour.
             artifactId: `vstfs:///CodeReview/CodeReviewId/${projectId}/${pullRequestId}`,
+            "api-version": "7.1",
           },
           this.auth.token,
         ),
       );
       return data.value;
-    } catch {
-      // Policy evaluations are best-effort too — a repo without any
-      // configured branch policies returns an empty list anyway.
-      return [];
+    } catch (error) {
+      // `undefined`, not `[]` — a repo with no branch policies genuinely
+      // returns an empty list, and the merge gate reads that as "no approval
+      // required". Conflating it with a failed lookup made unmergeable Azure
+      // PRs show the Merge pill (KI-2). Unknown fails closed instead.
+      console.warn(
+        `Azure policy evaluations unavailable for PR ${pullRequestId}:`,
+        error,
+      );
+      return undefined;
     }
   }
 
@@ -148,10 +155,12 @@ class AzureProvider extends BaseProvider {
           const pullRequestsWithExtras = await Promise.all(
             data.map(async (pr) => {
               if (!this.#isRelevantToUser(pr, profile.name)) {
+                // Same reasoning as the catch above: we never looked, so leave
+                // policyEvaluations undefined rather than claiming "no policies".
                 return {
                   ...pr,
                   threads: [],
-                  policyEvaluations: [],
+                  policyEvaluations: undefined,
                 };
               }
               const [threads, policyEvaluations] = await Promise.all([

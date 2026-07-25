@@ -11,6 +11,7 @@ import {
   ThreadStatus,
 } from "services/api/azure/models/thread-response";
 import transformAzurePullRequest from "transformers/azure/azure-pull-request";
+import canMergePullRequest from "utils/can-merge-pull-request";
 
 const profile: Profile = {
   id: "user-1",
@@ -117,6 +118,18 @@ describe("transformAzurePullRequest", () => {
     );
 
     expect(pullRequest.isApprovalRequired).toBe(false);
+  });
+
+  it("requires approval when the policies could not be fetched at all", () => {
+    const pullRequest = transformAzurePullRequest(
+      profile,
+      makeAzurePullRequest({ policyEvaluations: undefined }),
+    );
+
+    // Fails closed: an unknown policy state must not read as "nothing to
+    // satisfy", otherwise every conflict-free PR shows the Merge pill (KI-2).
+    expect(pullRequest.isApprovalRequired).toBe(true);
+    expect(canMergePullRequest(pullRequest)).toBe(false);
   });
 
   it("treats approval as required with a minimum-approvers policy", () => {

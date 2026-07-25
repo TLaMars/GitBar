@@ -22,6 +22,24 @@ The pill only appears when *all* of these hold
 This is the exact same gate that puts your own PRs in the "Ready to merge" bucket
 of the [Needs you tab](needs-you.md), so the pill and the section always agree.
 
+### Unknown approval state fails closed
+
+"No approval required" must be a real answer from the provider, never a
+side-effect of missing data. On Azure the approval signal comes from branch-policy
+evaluations, and GitBar distinguishes two cases
+([azure-pull-request.ts](../../src/core/transformers/azure/azure-pull-request.ts)):
+
+| Policy evaluations | Meaning                       | `isApprovalRequired` |
+| ------------------ | ----------------------------- | -------------------- |
+| empty list         | repo has no branch policies   | `false`              |
+| `undefined`        | we never found out            | `true`               |
+
+`undefined` happens when the policy request fails or when the PR wasn't enriched
+(GitBar only enriches PRs you authored or review — see
+[azure-provider.ts](../../src/core/data-providers/azure-provider.ts)). Treating
+that as "nothing to satisfy" used to show the Merge pill on PRs Azure would refuse
+to complete.
+
 ## How the merge executes
 
 The card calls

@@ -131,7 +131,7 @@ instead of a stable handle (GitHub and GitLab use `profile.userName`), even thou
 
 **Reported:** 2026-07-20
 **Area:** PR list card hover actions ([Hide & snooze](features/hide-and-snooze.md))
-**Status:** Open — not fixed
+**Status:** Fixed 2026-07-25 — verified manually; one native follow-up open
 
 ### What happens
 
@@ -151,6 +151,58 @@ card is showing its Snooze/Hide actions.
 - Things to check during triage: mouse-enter/leave handling on the card, whether
   a re-render/refresh (the list refetches — note "1m ago") drops or retains the
   hovered element, and pointer events while the popover regains focus.
+
+### Root cause
+
+Not the hover handlers. `onHoverIn`/`onHoverOut` bottom out in `NSTrackingArea`,
+and AppKit only fires `mouseEntered:`/`mouseExited:` when the *pointer* crosses a
+boundary — never when the boundary moves under a resting pointer. On a refetch that
+adds, removes or reorders a PR:
+
+- the card sliding **out** from under the pointer gets no leave → stays armed, and
+  the pointer is now over a different card
+- the card sliding **under** the pointer gets no enter → hover looks dead until you
+  move the mouse or scroll
+
+react-native-macos compensates for *scrolling* only, via a clip-view bounds
+observer (`RCTViewComponentView.mm`, `updateClipViewBoundsObserverIfNeeded` /
+`updateMouseOverIfNeeded`), and rebuilds the tracking area only when the view's own
+`bounds` change. A card that merely *moves* changes neither — hence the
+intermittency: it needs the list to change while the pointer rests on a card.
+
+Ruled out: `isHoverEnabled()` is unconditionally true on macOS
+(`Libraries/Pressability/HoverState.js`), so it is not the web-style touch-modality
+gate; the card does not resize on the actions↔comment-count swap (`right` carries
+`minHeight: 24` for exactly that reason), so there is no self-inflicted reflow;
+tracking areas use `NSTrackingActiveAlways`, so window focus is irrelevant; and
+popover close/reopen self-heals, because `viewDidMoveToWindow` re-runs
+`updateMouseOverIfNeeded`.
+
+### Fix
+
+Hover moved off the card into a single `hoveredKey` on the list, cleared whenever
+the rendered order changes. At most one card can be armed, so a missed leave event
+can no longer strand the actions on the wrong card. The leave clear is guarded on
+"is this still the armed card", since AppKit can deliver the next card's enter
+first. Rows are now keyed by `accountId:id` (`getPullRequestKey`) instead of bare
+`id`, closing a latent duplicate-key hazard: Azure PR ids are only unique per
+organization, so two Azure accounts could collide and let React reuse a row for a
+different PR. See [hide-and-snooze.md](features/hide-and-snooze.md#where-card-hover-lives).
+
+Accepted cost: after a poll that moves cards, hover needs one pointer movement to
+re-arm. Fixing that requires the native side.
+
+### Open follow-up
+
+`prepareForRecycle` in `RCTViewComponentView.mm` does not reset `_hasMouseOver`, so
+a native view recycled from a card that was unmounted *while hovered* stays flagged
+as hovered — and `mouseEntered:` early-returns on that flag, so the next card to
+reuse it never fires `onHoverIn`. Snooze and Hide unmount the card you are hovering,
+which makes this reachable: snooze a PR, then hover other cards.
+
+This repo already runs `patch-package` on postinstall and ships
+`patches/react-native-macos+0.81.7.patch`, so the fix is a one-line addition to that
+patch's macOS block. Needs a native rebuild to take effect.
 
 ---
 

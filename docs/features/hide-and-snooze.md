@@ -32,6 +32,18 @@ un-hide; dev builds have a "Reset hidden PRs" button in Settings.
 
 Both hidden and snoozed state persist across app restarts.
 
+### Where card hover lives
+
+The hovered card is a single `hoveredKey` on the list
+([pull-request-list.tsx](../../src/components/pull-request-list/pull-request-list.tsx)),
+not per-card state. AppKit only delivers mouse enter/exit on pointer *movement*,
+so a card that slides out from under a resting pointer never receives its leave
+event — with N independent card states that stranded the actions on the wrong card
+([KI-3](../known-issues.md#ki-3--card-hover-state-is-flaky-doesnt-trigger-or-stays-stuck-active)).
+One owner means at most one card is ever armed, and the list drops the key whenever
+the rendered order changes. Cards are keyed by `accountId:id`, since Azure PR ids
+are only unique per organization.
+
 ## Filter toggles (Settings → Pull requests)
 
 | Setting                          | What it drops                                                    |

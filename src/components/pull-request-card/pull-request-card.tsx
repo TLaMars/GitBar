@@ -1,5 +1,5 @@
 import { useGuavaClient } from "@guava-analytics/react-native";
-import React, { memo, useCallback, useEffect, useRef, useState } from "react";
+import React, { memo } from "react";
 import { Linking } from "react-native";
 import { Pressable, TouchableOpacity, View } from "react-native-macos";
 import { useStyles } from "react-native-unistyles";
@@ -25,8 +25,6 @@ import resolveStatusBadge from "utils/resolve-status-badge";
 
 import styles from "./pull-request-card.styles";
 
-const HOVER_LEAVE_DELAY_MS = 100;
-
 type Props = {
   id: string;
   title: string;
@@ -45,6 +43,13 @@ type Props = {
   compact?: boolean;
   isSnoozed?: boolean;
   isHidden?: boolean;
+  // Hover lives in the list, not here: AppKit only delivers mouse enter/exit on
+  // pointer *movement*, so a card that slides out from under a resting pointer
+  // never gets its leave event. One owner up top can be reset when the list
+  // relayouts; N independent card states cannot (KI-3).
+  active: boolean;
+  onHoverIn: () => void;
+  onHoverOut: () => void;
   onSnooze: () => void;
   onHide: () => void;
 };
@@ -67,37 +72,15 @@ const PullRequestCard: React.FC<Props> = ({
   compact = false,
   isSnoozed = false,
   isHidden = false,
+  active,
+  onHoverIn,
+  onHoverOut,
   onSnooze,
   onHide,
 }) => {
   const client = useGuavaClient();
   const { styles: $ } = useStyles(styles);
   const { t } = useTranslation();
-
-  // Hover-revealed actions (D5). react-native-macos exposes onMouseEnter/Leave.
-  const [active, setActive] = useState(false);
-  const leaveTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
-    undefined,
-  );
-
-  useEffect(
-    () => () => {
-      if (leaveTimer.current) clearTimeout(leaveTimer.current);
-    },
-    [],
-  );
-
-  const onMouseEnter = useCallback(() => {
-    if (leaveTimer.current) clearTimeout(leaveTimer.current);
-    setActive(true);
-  }, []);
-
-  const onMouseLeave = useCallback(() => {
-    leaveTimer.current = setTimeout(
-      () => setActive(false),
-      HOVER_LEAVE_DELAY_MS,
-    );
-  }, []);
 
   const { canMerge, isMerging, merge } = useMergePullRequest({
     id,
@@ -189,8 +172,8 @@ const PullRequestCard: React.FC<Props> = ({
       accessibilityRole="button"
       style={[$.card, active && $.cardActive]}
       onPress={onPress}
-      onHoverIn={onMouseEnter}
-      onHoverOut={onMouseLeave}
+      onHoverIn={onHoverIn}
+      onHoverOut={onHoverOut}
     >
       <View style={[$.borderLine(accentColor)]} />
       <View style={$.header}>

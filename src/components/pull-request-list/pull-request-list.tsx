@@ -1,5 +1,5 @@
 import { useGuavaClient } from "@guava-analytics/react-native";
-import { memo, useCallback, useMemo, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   SectionList,
   SectionListData,
@@ -17,8 +17,13 @@ import useSelector from "hooks/use-selector";
 import { PullRequest } from "models/pull-request";
 import { Section } from "models/section";
 import { selectCompactCards } from "store/selectors/settings";
+import { getPullRequestKey } from "utils/derive-notification-events";
 
 import styles from "./pull-request-list.styles";
+
+// Bridges the gap between a card's leave and the next card's enter, which AppKit
+// can deliver in either order.
+const HOVER_LEAVE_DELAY_MS = 100;
 
 type Props = {
   errors: Error[];
@@ -32,6 +37,34 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
   const { isSnoozed, isHidden, toggleSnooze, toggleHide } =
     usePullRequestActions();
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
+
+  // Exactly one card can be armed, so a missed leave event can never leave a
+  // second one showing its actions (KI-3).
+  const [hoveredKey, setHoveredKey] = useState<string | null>(null);
+  const leaveTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined,
+  );
+
+  useEffect(
+    () => () => {
+      if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    },
+    [],
+  );
+
+  const onHoverIn = useCallback((key: string) => {
+    if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    setHoveredKey(key);
+  }, []);
+
+  const onHoverOut = useCallback((key: string) => {
+    // Only clear if this card is still the armed one — an enter for the next
+    // card may already have landed.
+    leaveTimer.current = setTimeout(
+      () => setHoveredKey((current) => (current === key ? null : current)),
+      HOVER_LEAVE_DELAY_MS,
+    );
+  }, []);
 
   const toggleSection = useCallback(
     (title: string) => {
@@ -66,6 +99,19 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
       ),
     [sections, isCollapsed],
   );
+
+  // Cards moving under a resting pointer is what strands the hover state, so
+  // drop it whenever the rendered order changes. A poll that returns the same
+  // PRs in the same order produces the same string and leaves hover alone.
+  const renderedOrder = useMemo(
+    () =>
+      displaySections
+        .flatMap((section) => section.data.map(getPullRequestKey))
+        .join(),
+    [displaySections],
+  );
+
+  useEffect(() => setHoveredKey(null), [renderedOrder]);
 
   const counts = useMemo(
     () =>
@@ -115,7 +161,7 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
       item,
     }: SectionListRenderItemInfo<PullRequest, Section<PullRequest>>) => (
       <PullRequestCard
-        key={item.id}
+        key={getPullRequestKey(item)}
         id={item.id}
         title={item.title}
         author={item.author}
@@ -133,11 +179,23 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
         compact={compact}
         isSnoozed={isSnoozed(item)}
         isHidden={isHidden(item)}
+        active={hoveredKey === getPullRequestKey(item)}
+        onHoverIn={() => onHoverIn(getPullRequestKey(item))}
+        onHoverOut={() => onHoverOut(getPullRequestKey(item))}
         onSnooze={() => toggleSnooze(item)}
         onHide={() => toggleHide(item)}
       />
     ),
-    [compact, isSnoozed, isHidden, toggleSnooze, toggleHide],
+    [
+      compact,
+      isSnoozed,
+      isHidden,
+      toggleSnooze,
+      toggleHide,
+      hoveredKey,
+      onHoverIn,
+      onHoverOut,
+    ],
   );
 
   return (
@@ -150,7 +208,7 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
         errors.length > 0 ? <ErrorContainer errors={errors} /> : undefined
       }
       renderItem={renderItem}
-      keyExtractor={(item) => item.id}
+      keyExtractor={getPullRequestKey}
       renderSectionHeader={renderSectionHeader}
     />
   );

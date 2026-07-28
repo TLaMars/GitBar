@@ -201,6 +201,8 @@ const PullRequestList: React.FC<Props> = ({ errors, sections }) => {
   return (
     <SectionList
       contentContainerStyle={$.list}
+      showsVerticalScrollIndicator={false}
+      showsHorizontalScrollIndicator={false}
       initialNumToRender={15}
       maxToRenderPerBatch={5}
       sections={displaySections}

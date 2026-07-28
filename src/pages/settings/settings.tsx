@@ -130,7 +130,11 @@ const Settings: React.FC = () => {
 
   return (
     <DefaultLayout>
-      <ScrollView contentContainerStyle={$.container}>
+      <ScrollView
+        contentContainerStyle={$.container}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+      >
         <Heading size="s">{t("Settings/Heading/Settings")}</Heading>
         <Spacer mt={2} />
         <View style={$.sectionHeader}>

@@ -79,6 +79,8 @@ const Issues: React.FC = () => {
         {!isLoading && !fallbackState && (
           <FlatList
             contentContainerStyle={$.list}
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
             data={issues}
             renderItem={({ item }) => (
               <IssueCard

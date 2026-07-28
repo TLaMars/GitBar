@@ -393,7 +393,8 @@ badging, so the badge and the gate would need to diverge
 
 **Reported:** 2026-07-27
 **Area:** [Settings](../src/pages/settings/settings.tsx)
-**Status:** Open — not fixed
+**Status:** Fix applied 2026-07-28 — scroll indicators hidden app-wide, awaiting
+confirmation from the reporter
 
 ### What happens
 
@@ -420,12 +421,78 @@ at the edge.
      pushes the row wider than the pane instead of wrapping or truncating. With
      overlay scrollbars this stays hidden; with legacy scrollers the lost width
      makes it visible.
-- The only `ScrollView` in the app is Settings
-  ([settings.tsx:133](../src/pages/settings/settings.tsx#L133)) and it passes no
-  indicator props, so both indicators default to `true`. `showsHorizontalScrollIndicator={false}`
-  would hide the horizontal bar but not the overflow it is reporting — fix the row
-  layout, don't just mute the symptom.
+- ~~The only `ScrollView` in the app is Settings~~ — wrong, and it matters: the
+  reporter sees the bars on **every** scrollable page. Dashboard is a `SectionList`
+  ([pull-request-list.tsx:202](../src/components/pull-request-list/pull-request-list.tsx#L202)),
+  Issues a `FlatList` ([issues.tsx:80](../src/pages/issues/issues.tsx#L80)), Settings
+  a `ScrollView` ([settings.tsx:133](../src/pages/settings/settings.tsx#L133)). All
+  three are scroll views and none pass indicator props, so both indicators default to
+  `true`. That makes the always-drawn scrollers an app-wide symptom with one cause,
+  not a Settings bug — only the *clipping* was Settings-specific.
 - To confirm during triage: ask the user for their *Show scroll bars* setting, then
   reproduce locally with it on `Always` and check whether the clipping matches the
-  screenshot. Also check the other panes (they are not scroll views) for the same
-  row overflow.
+  screenshot.
+
+### Root cause
+
+One cause, both symptoms: legacy scrollers take real layout width, overlay ones take
+none. `Show scroll bars` → **Always** therefore shrank the usable width on every pane
+until the right-hand controls no longer fit — which is why the horizontal bar had
+something to report. Hiding the scrollers removes the stolen width, so the clipping
+goes with it.
+
+### Fix
+
+Hidden outright on all three surfaces:
+
+```jsx
+showsVerticalScrollIndicator={false}
+showsHorizontalScrollIndicator={false}
+```
+
+On macOS these map to `hasVerticalScroller` / `hasHorizontalScroller`
+([RCTUIKit.m:554](../node_modules/react-native-macos/React/Base/macOS/RCTUIKit.m#L554)),
+so the scroller is never created and the system preference has nothing to draw. Wheel,
+trackpad and programmatic scrolling are untouched — only the visual control goes.
+
+Accepted trade-off: nobody gets a scroll position indicator, including users with
+overlay scrollbars who saw a tasteful fading one. For a menu-bar popover with three
+short panes that is a fair price for a symptom the app cannot otherwise dismiss; the
+alternative needed a native patch (below) and would still leave legacy scrollers
+stealing layout width.
+
+### Background — why the framework did not handle it
+
+The system preference (*Appearance › Show scroll bars › Always*) is the trigger, but
+react-native-macos already tries to defeat it. Since **0.81.7** the Fabric scroll view
+forces the style in its initialiser and re-forces it when the preference changes:
+
+```objc
+// Force overlay scrollbar style to avoid layout issues with legacy scrollbars.
+_scrollView.scrollerStyle = NSScrollerStyleOverlay;
+```
+
+([RCTScrollViewComponentView.mm:161](../node_modules/react-native-macos/React/Fabric/Mounting/ComponentViews/ScrollView/RCTScrollViewComponentView.mm),
+plus a `NSPreferredScrollerStyleDidChangeNotification` handler that also calls
+`[_scrollView tile]`.) Verified absent in 0.81.2, so this arrived with the new-arch
+bump in `1871a90`. Every shipped build from v2.0.0 (67) onwards resolves `^0.81.7`.
+
+So either the reporter is on an older release, or the forcing does not hold. Leading
+hypothesis for the latter: the init path sets the style but never calls `tile`, while
+the preference-change handler does. AppKit lays scrollers out per style, so a window
+built while the preference is *already* `Always` would keep legacy scrollers — and it
+would self-heal for anyone who toggles the preference while the app is running, which
+fits "one user, permanently".
+
+Left unproven, because hiding the scrollers makes it moot. If a scroll indicator is
+ever wanted back, that is the thread to pull: reproduce with
+`defaults write io.lamars.gitbar.debug AppleShowScrollBars Always` (scoped to the debug
+app, not the whole system) plus `pnpm mac`, and if the hypothesis holds, add a
+`[_scrollView tile]` after the init-path assignment to
+`patches/react-native-macos+0.81.7.patch` — native rebuild required.
+
+### Still to confirm
+
+That the reporter's bars are actually gone, and that no pane lost a scroll affordance
+anyone misses. Everything here is JS — no native rebuild needed, a normal release
+carries it.

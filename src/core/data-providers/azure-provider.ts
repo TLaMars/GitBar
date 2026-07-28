@@ -100,7 +100,8 @@ class AzureProvider extends BaseProvider {
             // Sent as a query param because no `:artifactId` placeholder
             // appears in the path — see utils/buildUrl behaviour.
             artifactId: `vstfs:///CodeReview/CodeReviewId/${projectId}/${pullRequestId}`,
-            // Preview-only endpoint: plain "7.1" is rejected with a 400, which
+            // Preview-only endpoint, so it overrides the "7.1" default in
+            // azureConfig: plain "7.1" is rejected with a 400, which
             // is what made every policy lookup fail closed and hid the Merge
             // pill entirely (KI-6). The docs are explicit — "This should be set
             // to '7.1-preview.1' to use this version of the api."
@@ -211,7 +212,6 @@ class AzureProvider extends BaseProvider {
             projectId: mergeRef.projectId,
             repositoryId: mergeRef.repositoryId,
             pullRequestId: mergeRef.pullRequestId.toString(),
-            "api-version": "7.1",
           },
           this.auth.token,
         ),

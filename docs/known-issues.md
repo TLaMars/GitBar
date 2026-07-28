@@ -496,3 +496,88 @@ app, not the whole system) plus `pnpm mac`, and if the hypothesis holds, add a
 That the reporter's bars are actually gone, and that no pane lost a scroll affordance
 anyone misses. Everything here is JS — no native rebuild needed, a normal release
 carries it.
+
+---
+
+## KI-8 — Draft PR on Azure is not marked as draft in GitBar
+
+**Reported:** 2026-07-28
+**Area:** [PR list status badges](features/tabs-and-pr-list.md) · Azure DevOps provider
+**Status:** Fix applied 2026-07-28 — awaiting confirmation on the real Azure draft PR
+
+### What happens
+
+A pull request that is a **draft** on Azure DevOps shows up in GitBar without the
+draft badge, and is treated as a normal PR (it is not hidden by the "Hide draft PRs"
+setting either).
+
+### Notes
+
+- The wiring itself looks intact: `isDraft: data.isDraft`
+  ([azure-pull-request.ts:111](../src/core/transformers/azure/azure-pull-request.ts#L111))
+  → `isDraft` on the model → `resolveStatusBadge` returns `"draft"`
+  ([resolve-status-badge.ts:23](../src/utils/resolve-status-badge.ts#L23)). So the
+  value arriving from Azure is most likely falsy/absent rather than mishandled.
+- **Leading candidate: no `api-version` on the PR list request.**
+  `/_apis/git/pullrequests` is fetched through `azureConfig`
+  ([api-config.ts](../src/utils/api-config.ts)), which sets only the `Authorization`
+  header — no `api-version` param
+  ([azure-provider.ts:146](../src/core/data-providers/azure-provider.ts#L146)). Azure
+  then serves a default version, and `isDraft` only exists on the newer ones, so the
+  field would simply be missing from the payload. `AzurePullRequest.isDraft` is typed
+  `boolean` ([pull-requests-response.ts:36](../src/core/services/api/azure/models/pull-requests-response.ts#L36)),
+  so TypeScript never flags the `undefined`. Same class of invisible-version bug as
+  [KI-6](#ki-6--azure-pr-with-a-2-approval-policy-shows-as-mergeable-after-one-approval)'s
+  fix 1 — check the raw response first.
+- **Second candidate: badge priority.** Only one badge shows, and the ramp is
+  conflicts > changesRequested > draft > approved
+  ([tabs-and-pr-list.md](features/tabs-and-pr-list.md)). A draft PR that also has
+  conflicts or changes requested shows *that* badge instead — expected behavior, but
+  worth ruling out on the reported PR before chasing the API.
+- GitHub gets `isDraft` from the GraphQL fragment and GitLab maps `pr.draft`, so if
+  those still badge correctly this is Azure-only.
+- To check during triage: log the raw list payload for the draft PR and see whether
+  `isDraft` is present at all; if absent, pin an explicit `api-version` on the request
+  (and consider setting it once in `azureConfig` so no Azure call can omit it again).
+
+### Root cause
+
+The PR list request sent no `api-version`, so Azure served a pre-5.0 payload — and
+`isDraft` does not exist on `GitPullRequest` until **5.0**. Confirmed against the
+[4.1 reference](https://learn.microsoft.com/en-us/rest/api/azure/devops/git/pull-requests/get-pull-requests-by-project?view=azure-devops-rest-4.1):
+the definition lists `supportsIterations`, `autoCompleteSetBy`, `mergeStatus` and the
+rest, but no `isDraft`. Azure does not reject an unversioned request, it just answers
+in an older shape — the
+[versioning docs](https://learn.microsoft.com/en-us/azure/devops/integrate/concepts/rest-api-versioning?view=azure-devops)
+give no default and simply state the version "**must** be specified with every
+request".
+
+So `data.isDraft` was `undefined`, `isDraft` on the model went falsy, and
+`resolveStatusBadge` fell straight through the `if (isDraft)` arm. `AzurePullRequest`
+types the field as `boolean`, so nothing complained.
+
+Only two of the five Azure calls carried a version at all (policy evaluations and the
+merge `PATCH`, both added while fixing KI-2/KI-6) — the list, threads, projects and
+profile requests were all unversioned and picking up whatever Azure defaults to.
+
+### Fix
+
+`api-version: "7.1"` defaulted in `azureConfig`
+([api-config.ts](../src/utils/api-config.ts)), which every Azure request already
+routes through, so no call can omit it again. Caller params spread last, so the
+preview-only evaluations endpoint keeps its `7.1-preview.1`
+([azure-provider.ts](../src/core/data-providers/azure-provider.ts)); the now-redundant
+literal on the merge `PATCH` is gone. `7.1` is a released version for every service
+GitBar touches here (git, policy, projects, profile), not a preview one.
+
+Fixing it in the shared helper rather than on the list request is the point: the same
+missing-version bug was live on threads, projects and profile too, quietly serving
+legacy shapes. [api-config.test.ts](../src/utils/api-config.test.ts) pins both halves —
+the default, and that an explicit version still wins.
+
+### Still to confirm
+
+That the draft badge now shows on the reported Azure PR. Also worth a glance while
+testing: threads and profile now resolve at `7.1` instead of Azure's default, so PR
+comment counts and the account name should be unchanged — if a connected Azure account
+suddenly reports invalid, that request is the place to look.

@@ -4,6 +4,7 @@ import Profile from "models/profile";
 import { TransformedPullRequest } from "models/pull-request";
 import {
   AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID,
+  PolicyEvaluation,
   PolicyEvaluationStatus,
 } from "services/api/azure/models/policy-evaluations-response";
 import {
@@ -36,6 +37,27 @@ const getVote = (vote: ReviewerVote): Vote => {
   }
 };
 
+/**
+ * The minimum-approvers evaluations that actually gate a merge. Azure returns
+ * optional (`isBlocking: false`), disabled and out-of-scope (`notApplicable`)
+ * policies in the same list, and none of those stop a completion. Missing flags
+ * count as blocking so an unfamiliar shape fails closed.
+ *
+ * `undefined` in, `undefined` out: we never learned the policies, which is not
+ * the same as knowing there are none.
+ */
+const gatingApprovalPolicies = (
+  data: AzurePullRequest,
+): PolicyEvaluation[] | undefined =>
+  data.policyEvaluations?.filter(
+    (e) =>
+      e.configuration.type.id === AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID &&
+      e.configuration.isEnabled !== false &&
+      e.configuration.isBlocking !== false &&
+      e.configuration.isDeleted !== true &&
+      e.status !== PolicyEvaluationStatus.NotApplicable,
+  );
+
 const transformAzurePullRequest = (
   profile: Profile,
   data: AzurePullRequest,
@@ -43,6 +65,7 @@ const transformAzurePullRequest = (
   const match = /^(https:\/\/dev\.azure\.com\/[^/]+\/)/.exec(
     data.repository.url,
   );
+  const approvalPolicies = gatingApprovalPolicies(data);
   const encodedProject = encodeURIComponent(data.repository.project.name);
   const encodedRepo = encodeURIComponent(data.repository.name);
   const prUrl = match
@@ -124,19 +147,22 @@ const transformAzurePullRequest = (
     // wasn't enriched) — assume an approval is needed so the merge gate fails
     // closed. An empty list is a real answer: this repo has no branch policies.
     isApprovalRequired:
-      data.policyEvaluations === undefined ||
-      data.policyEvaluations.some(
-        (e) =>
-          e.configuration.type.id === AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID,
-      ),
+      approvalPolicies === undefined || approvalPolicies.length > 0,
     isFullyApproved: (() => {
-      const minApproversEval = data.policyEvaluations?.find(
-        (e) =>
-          e.configuration.type.id === AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID,
-      );
-      if (minApproversEval) {
-        return minApproversEval.status === PolicyEvaluationStatus.Approved;
+      // Unknown fails closed here too. Reviewer votes cannot answer "fully"
+      // approved: a single approval says nothing about a policy requiring two
+      // (KI-6). Only the policy evaluation knows the required count — Azure
+      // reports it `approved` once the count is met, `queued` while short.
+      if (approvalPolicies === undefined) return false;
+      // A branch can carry several minimum-approvers policies; all must pass.
+      if (approvalPolicies.length > 0) {
+        return approvalPolicies.every(
+          (e) => e.status === PolicyEvaluationStatus.Approved,
+        );
       }
+      // Known to have no approval policy, so isApprovalRequired is false and
+      // the merge gate ignores this — it only feeds the "approved" badge, which
+      // any approving vote earns.
       return data.reviewers.some(
         (r) =>
           r.vote === ReviewerVote.Approved ||

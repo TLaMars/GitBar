@@ -29,16 +29,49 @@ side-effect of missing data. On Azure the approval signal comes from branch-poli
 evaluations, and GitBar distinguishes two cases
 ([azure-pull-request.ts](../../src/core/transformers/azure/azure-pull-request.ts)):
 
-| Policy evaluations | Meaning                       | `isApprovalRequired` |
-| ------------------ | ----------------------------- | -------------------- |
-| empty list         | repo has no branch policies   | `false`              |
-| `undefined`        | we never found out            | `true`               |
+| Minimum-approvers evaluations | Meaning                     | `isApprovalRequired` | `isFullyApproved`       |
+| ----------------------------- | --------------------------- | -------------------- | ----------------------- |
+| none                          | no approval policy in force | `false`              | any approving vote      |
+| `undefined`                   | we never found out          | `true`               | `false`                 |
+| one or more                   | approval gate configured    | `true`               | every evaluation passed |
+
+"None in force" is narrower than "empty response". Azure returns optional
+(`isBlocking: false`), disabled and out-of-scope (`notApplicable`) policies in the
+same list, and none of those stop a completion — so they are filtered out before the
+table above applies. A missing flag counts as blocking, so an unfamiliar shape fails
+closed.
+
+`undefined` is load-bearing in the failure direction: it suppresses the pill on every
+Azure PR. If none of them show a Merge pill, check the console for
+`Azure policy evaluations unavailable for PR …` before looking at the approval logic —
+the evaluations endpoint is preview-only and needs `api-version=7.1-preview.1`
+([azure-provider.ts](../../src/core/data-providers/azure-provider.ts)); plain `7.1`
+answers `400`.
 
 `undefined` happens when the policy request fails or when the PR wasn't enriched
 (GitBar only enriches PRs you authored or review — see
 [azure-provider.ts](../../src/core/data-providers/azure-provider.ts)). Treating
 that as "nothing to satisfy" used to show the Merge pill on PRs Azure would refuse
 to complete.
+
+Both halves of the gate's approval clause have to fail closed for that to hold.
+Reviewer votes can never stand in for the policy: one approval says nothing about a
+policy requiring two, so an unknown policy state means *not* fully approved rather
+than "someone approved, good enough". Votes only decide the badge when GitBar knows
+the repo has no approval policy at all — nothing to be "fully" approved against.
+
+Azure also allows several minimum-approvers policies on one branch (differently
+scoped), so all of their evaluations must be `approved`, not just the first one
+found.
+
+The required *count* is never read. Azure reports the evaluation `approved` only
+once the count is met and `queued` while it is short, so the status answers
+"2-of-2?" on its own. Identifying that evaluation depends on a hard-coded policy
+type GUID
+([policy-evaluations-response.ts](../../src/core/services/api/azure/models/policy-evaluations-response.ts)) —
+the wrong id there is silent, since an unrecognised policy simply looks like no
+policy, which is exactly how KI-2 and KI-6 happened. A test pins it to a real Azure
+response.
 
 ## How the merge executes
 

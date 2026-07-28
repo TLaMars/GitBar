@@ -25,13 +25,25 @@ export const AZURE_STATUS_POLICY_TYPE_ID =
 // Minimum number of reviewers policy — the approval gate that maps most
 // directly to "approval policy passed". Same GUID across all Azure DevOps
 // Services tenants and Azure DevOps Server instances.
+//
+// Careful: `fa4e907d-c16b-452d-8106-7efa0cb84489` shares the first two segments
+// but is "Require a merge strategy". Using it here matched no approval policy at
+// all, so `isApprovalRequired` was always false when policies *were* fetched —
+// the real cause of KI-2/KI-6. Verified against a live `policy/evaluations`
+// response: this id carries `displayName: "Minimum number of reviewers"`.
 export const AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID =
-  "fa4e907d-c16b-452d-8106-7efa0cb84489";
+  "fa4e907d-c16b-4a4c-9dfa-4906e5d171dd";
 
 export type PolicyEvaluation = {
   evaluationId: string;
   status: PolicyEvaluationStatus;
   configuration: {
+    // Azure returns optional (`isBlocking: false`) and disabled policies
+    // alongside the enforcing ones. Optional in this type so a missing flag
+    // counts as blocking — unknown fails closed, as with the whole approval gate.
+    isEnabled?: boolean;
+    isBlocking?: boolean;
+    isDeleted?: boolean;
     type: {
       id: string;
       displayName?: string;

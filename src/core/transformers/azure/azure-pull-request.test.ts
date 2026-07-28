@@ -4,7 +4,10 @@ import {
   AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID,
   PolicyEvaluationStatus,
 } from "services/api/azure/models/policy-evaluations-response";
-import { AzurePullRequest } from "services/api/azure/models/pull-requests-response";
+import {
+  AzurePullRequest,
+  ReviewerVote,
+} from "services/api/azure/models/pull-requests-response";
 import {
   CommentType,
   Thread,
@@ -129,6 +132,151 @@ describe("transformAzurePullRequest", () => {
     // Fails closed: an unknown policy state must not read as "nothing to
     // satisfy", otherwise every conflict-free PR shows the Merge pill (KI-2).
     expect(pullRequest.isApprovalRequired).toBe(true);
+    expect(canMergePullRequest(pullRequest)).toBe(false);
+  });
+
+  it("does not count a lone approval as fully approved when policies are unknown", () => {
+    const pullRequest = transformAzurePullRequest(
+      profile,
+      makeAzurePullRequest({
+        policyEvaluations: undefined,
+        reviewers: [
+          {
+            reviewerUrl: "",
+            id: "r-1",
+            displayName: "Reviewer",
+            uniqueName: "reviewer@example.com",
+            url: "",
+            imageUrl: "",
+            vote: ReviewerVote.Approved,
+          },
+        ],
+      }),
+    );
+
+    // KI-6: reviewer votes cannot prove "fully" — the policy may require two.
+    expect(pullRequest.isFullyApproved).toBe(false);
+    expect(canMergePullRequest(pullRequest)).toBe(false);
+  });
+
+  it("recognises the minimum-approvers policy id Azure actually sends", () => {
+    // Verbatim from a live policy/evaluations response — GitBar previously held
+    // the "Require a merge strategy" guid here, so no approval policy ever
+    // matched and every conflict-free PR looked mergeable (KI-6).
+    const pullRequest = transformAzurePullRequest(
+      profile,
+      makeAzurePullRequest({
+        policyEvaluations: [
+          {
+            evaluationId: "06d170c3-37fa-4fa1-bbe9-b32ae7af8e01",
+            status: PolicyEvaluationStatus.Queued,
+            configuration: {
+              isEnabled: true,
+              isBlocking: true,
+              isDeleted: false,
+              type: {
+                id: "fa4e907d-c16b-4a4c-9dfa-4906e5d171dd",
+                displayName: "Minimum number of reviewers",
+              },
+            },
+          },
+        ],
+      }),
+    );
+
+    expect(pullRequest.isApprovalRequired).toBe(true);
+    expect(pullRequest.isFullyApproved).toBe(false);
+    expect(canMergePullRequest(pullRequest)).toBe(false);
+  });
+
+  it("merges once every blocking approval policy is approved", () => {
+    const pullRequest = transformAzurePullRequest(
+      profile,
+      makeAzurePullRequest({
+        policyEvaluations: [
+          {
+            evaluationId: "eval-1",
+            status: PolicyEvaluationStatus.Approved,
+            configuration: {
+              isEnabled: true,
+              isBlocking: true,
+              type: { id: AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID },
+            },
+          },
+        ],
+      }),
+    );
+
+    expect(pullRequest.isFullyApproved).toBe(true);
+    expect(canMergePullRequest(pullRequest)).toBe(true);
+  });
+
+  it("ignores optional, disabled and out-of-scope approval policies", () => {
+    const pullRequest = transformAzurePullRequest(
+      profile,
+      makeAzurePullRequest({
+        policyEvaluations: [
+          {
+            // Optional policy: Azure lets you complete without it.
+            evaluationId: "eval-optional",
+            status: PolicyEvaluationStatus.Queued,
+            configuration: {
+              isEnabled: true,
+              isBlocking: false,
+              type: { id: AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID },
+            },
+          },
+          {
+            evaluationId: "eval-disabled",
+            status: PolicyEvaluationStatus.Queued,
+            configuration: {
+              isEnabled: false,
+              isBlocking: true,
+              type: { id: AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID },
+            },
+          },
+          {
+            // Scoped to another branch.
+            evaluationId: "eval-not-applicable",
+            status: PolicyEvaluationStatus.NotApplicable,
+            configuration: {
+              isEnabled: true,
+              isBlocking: true,
+              type: { id: AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID },
+            },
+          },
+        ],
+      }),
+    );
+
+    expect(pullRequest.isApprovalRequired).toBe(false);
+    expect(canMergePullRequest(pullRequest)).toBe(true);
+  });
+
+  it("requires every minimum-approvers policy to pass, not just the first", () => {
+    const pullRequest = transformAzurePullRequest(
+      profile,
+      makeAzurePullRequest({
+        policyEvaluations: [
+          {
+            evaluationId: "eval-1",
+            status: PolicyEvaluationStatus.Approved,
+            configuration: {
+              type: { id: AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID },
+            },
+          },
+          {
+            evaluationId: "eval-2",
+            status: PolicyEvaluationStatus.Queued,
+            configuration: {
+              type: { id: AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID },
+            },
+          },
+        ],
+      }),
+    );
+
+    expect(pullRequest.isFullyApproved).toBe(false);
     expect(canMergePullRequest(pullRequest)).toBe(false);
   });
 

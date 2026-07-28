@@ -99,9 +99,11 @@ and either errored or came back empty.
 
 ### Fix
 
-1. `api-version: "7.1"` added to the policy-evaluations request — it was the only
+1. `api-version` added to the policy-evaluations request — it was the only
    Azure call omitting it, and the newest of the endpoints used, so a `400` there
-   would have been invisible.
+   would have been invisible. ⚠️ The value used, `7.1`, was itself wrong and made
+   *every* policy lookup `400` — see [KI-6](#ki-6--azure-pr-with-a-2-approval-policy-shows-as-mergeable-after-one-approval).
+   Corrected to `7.1-preview.1` on 2026-07-28.
 2. Failed lookups and un-enriched PRs now yield `policyEvaluations: undefined`
    instead of `[]`, and the failure is logged rather than swallowed silently.
 3. `undefined` ⇒ `isApprovalRequired: true`. Unknown fails closed; an empty list
@@ -266,3 +268,164 @@ Silvan Belder as the author, not the signed-in user.
   connected account (note GitBar calls it on `dev.azure.com`, while Azure documents
   profiles under `vssps`), and whether `uniqueName` on `createdBy` is the better
   field to match against.
+
+---
+
+## KI-6 — Azure PR with a 2-approval policy shows as mergeable after one approval
+
+**Reported:** 2026-07-27
+**Area:** [Merge PRs](features/merge.md) · Azure DevOps provider
+**Status:** Fix applied 2026-07-27 — awaiting confirmation on the real Azure PR
+
+### What happens
+
+An Azure repo has a minimum-approvers branch policy requiring **two** approvals.
+One approval is given; GitBar already shows the PR as ready to merge (green
+**Merge** pill), while Azure still blocks completion until the second approval.
+
+### Notes
+
+- Fail-open fallback in `isFullyApproved`
+  ([azure-pull-request.ts:132](../src/core/transformers/azure/azure-pull-request.ts#L132)):
+  when no minimum-approvers policy evaluation is found, it falls back to
+  `reviewers.some(vote === Approved | ApprovedWithSuggestions)` — **any single
+  approval counts as fully approved**, regardless of the required count. Combined
+  with [KI-2](#ki-2--azure-mr-shown-as-ready-to-merge-but-it-isnt-mergeable)'s
+  `isApprovalRequired: true` on unknown policies, an un-enriched or failed-policy
+  PR with one approval passes the gate. This is the most likely path — it needs no
+  policy data at all, so the count is invisible.
+- Second candidate, if policies *were* present: `find` takes the **first**
+  minimum-approvers evaluation only. A repo with more than one such policy (e.g.
+  differently scoped) can have the first one `Approved` while another is still
+  pending, and the rest are ignored.
+- Not reproducible via the policy status alone when enrichment worked: at 1-of-2 the
+  evaluation status is not `Approved`, so the gate should close. So triage starts by
+  confirming whether `policyEvaluations` was populated for this PR — if it was empty
+  or undefined, that is candidate 1 and the fallback is the bug.
+- Nothing anywhere reads `minimumApproverCount` off the policy configuration; GitBar
+  only ever looks at the evaluation `status`. A count-aware check needs that field.
+- Same misleading-state-not-unsafe-merge caveat as KI-2: Azure enforces the policy
+  server-side, so the merge would be refused — see also
+  [KI-4](#ki-4--merging-an-azure-devops-mr-from-gitbar-does-nothing).
+
+### Root cause
+
+Two independent bugs, both of which made the approval policy invisible.
+
+**1. The policy request never succeeded.** Every lookup returned `400`:
+
+```
+GET …/_apis/policy/evaluations?artifactId=…&api-version=7.1 failed: 400 bad request
+```
+
+Policy *evaluations* is a preview-only endpoint — Microsoft's reference states the
+version "should be set to `7.1-preview.1`", and plain `7.1` is rejected. That value
+came in with KI-2's fix #1, whose whole point was that a `400` there had been
+invisible; the swallowing `catch` it replaced is why nobody noticed the request had
+never worked. So `policyEvaluations` was always `undefined`, and after the
+fail-closed change above that hid the Merge pill on *every* Azure PR — the second
+symptom reported on this issue.
+
+**2. Wrong policy type GUID.** `AZURE_MINIMUM_APPROVERS_POLICY_TYPE_ID` held
+`fa4e907d-c16b-452d-8106-7efa0cb84489`, which is Azure's *"Require a merge
+strategy"* policy. The real one is `fa4e907d-c16b-4a4c-9dfa-4906e5d171dd` — the
+two share their first two segments, which is how the mix-up survived review. A
+live `policy/evaluations` response for one of these PRs settled it: that id comes
+back with `displayName: "Minimum number of reviewers"`.
+
+So no approval policy was ever recognised. `isApprovalRequired` came out `false`
+whenever policies *were* fetched, and the merge gate passed on its
+`!isApprovalRequired` half no matter how many approvals were outstanding — one, two
+or zero. This is also the real cause of
+[KI-2](#ki-2--azure-mr-shown-as-ready-to-merge-but-it-isnt-mergeable), which was
+diagnosed as a missing-data fail-open; the data was usually there and simply never
+matched.
+
+The same response exposed a second gap: Azure returns **optional**
+(`isBlocking: false`), disabled and out-of-scope (`notApplicable`) policies in the
+same list. With the GUID corrected, an optional minimum-approvers policy would have
+blocked the pill on a PR Azure is happy to complete.
+
+Note the ordering: before the fail-closed change, bug 1 was *masked* by bug 2 —
+`undefined` policies made `isApprovalRequired` true, and the vote fallback made
+`isFullyApproved` true off a single approval, so the pill appeared anyway. That is
+exactly the 1-of-2 symptom this issue was filed for.
+
+### Fix
+
+1. `api-version: "7.1-preview.1"` on the evaluations request, so the lookup actually
+   returns data.
+2. Corrected the GUID. A test now pins it against the verbatim evaluation from that
+   live response, so a silent drift back fails.
+3. Only **blocking, enabled, applicable** minimum-approvers evaluations gate the
+   merge; a missing flag counts as blocking so unfamiliar shapes fail closed.
+4. All of them must be `approved`, not just the first one `find` returned — a branch
+   can carry several differently-scoped policies (candidate 2 in the notes).
+5. `policyEvaluations === undefined` ⇒ `isFullyApproved: false`. Reviewer votes can
+   only answer "somebody approved", never "enough people approved", so unknown fails
+   closed on *both* halves of the approval clause — KI-2 had fixed only one side.
+   The vote fallback survives for a *known*-empty policy list, where the value merely
+   drives the "approved" badge.
+
+`minimumApproverCount` stays unread and does not need reading: Azure reports the
+evaluation `approved` once the count is met and `queued` while it is short, so the
+status alone closes the gate at 1-of-2. See
+[merge.md](features/merge.md#unknown-approval-state-fails-closed).
+
+### Still to confirm
+
+Needs a run with no `Azure policy evaluations unavailable for PR …` warnings in the
+console — that warning means the lookup is still failing and *every* pill is
+suppressed by design, which masks whether the approval logic itself is right. Once
+the log is clean: no pill at 1-of-2, pill once the second approval lands.
+
+### Related
+
+The CI half of the gate has the same optional-policy blind spot: `isCiPassing`
+treats any failed build/status policy evaluation as blocking, including
+`isBlocking: false` ones. Not fixed here — a failing optional build is still worth
+badging, so the badge and the gate would need to diverge
+([azure-ci-status.ts](../src/core/transformers/azure/azure-ci-status.ts)).
+
+---
+
+## KI-7 — Permanent scrollbars in Settings (one user)
+
+**Reported:** 2026-07-27
+**Area:** [Settings](../src/pages/settings/settings.tsx)
+**Status:** Open — not fixed
+
+### What happens
+
+On one user's machine the Settings pane shows both a vertical **and** a horizontal
+scrollbar permanently — solid tracks, always drawn, not the fading overlay
+scrollbars. The horizontal one also confirms the content is wider than the popover:
+the right-hand controls (the "Repository" group-by value, the toggles) are clipped
+at the edge.
+
+![Settings with permanent vertical and horizontal scrollbars](known-issues/images/settings-permanent-scrollbars.png)
+
+### Notes
+
+- Two separate things here, worth splitting during triage:
+  1. **Always-drawn, not overlay** — macOS System Settings › Appearance ›
+     *Show scroll bars* set to **Always** (instead of "Automatically based on mouse
+     or trackpad"). That is a system preference, not app state, which fits "one of
+     my users". With `Always`, AppKit uses legacy non-overlay scrollers that take
+     real layout width, so this also *causes* clipping on the right.
+  2. **Horizontal overflow** — the settings rows are `flexDirection: "row"` with
+     `justifyContent: "space-between"`
+     ([settings.styles.ts](../src/pages/settings/settings.styles.ts)) and no
+     `flexShrink`/`minWidth: 0` on the label side, so a long label plus its control
+     pushes the row wider than the pane instead of wrapping or truncating. With
+     overlay scrollbars this stays hidden; with legacy scrollers the lost width
+     makes it visible.
+- The only `ScrollView` in the app is Settings
+  ([settings.tsx:133](../src/pages/settings/settings.tsx#L133)) and it passes no
+  indicator props, so both indicators default to `true`. `showsHorizontalScrollIndicator={false}`
+  would hide the horizontal bar but not the overflow it is reporting — fix the row
+  layout, don't just mute the symptom.
+- To confirm during triage: ask the user for their *Show scroll bars* setting, then
+  reproduce locally with it on `Always` and check whether the clipping matches the
+  screenshot. Also check the other panes (they are not scroll views) for the same
+  row overflow.

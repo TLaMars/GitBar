@@ -581,3 +581,61 @@ That the draft badge now shows on the reported Azure PR. Also worth a glance whi
 testing: threads and profile now resolve at `7.1` instead of Azure's default, so PR
 comment counts and the account name should be unchanged — if a connected Azure account
 suddenly reports invalid, that request is the place to look.
+
+---
+
+## KI-9 — Approved GitLab MR with open threads shows as mergeable
+
+**Reported:** 2026-07-29
+**Area:** [Merge PRs](features/merge.md) · GitLab provider
+**Status:** Fix applied 2026-08-16 — awaiting confirmation on a real GitLab MR
+
+### What happens
+
+A GitLab MR is approved but still has unresolved discussion threads. GitBar shows
+the green **Merge** pill, while GitLab itself refuses to merge until all threads
+are resolved.
+
+Confirmed in the wild a second way on 2026-08-16: a project with GitLab's
+"Required title format" setting showed the pill, and the accept came back with a
+title-does-not-comply error (`detailedMergeStatus: TITLE_NOT_MATCHING`). Same
+root cause — a server-side merge check the local gate cannot see. The rejection
+*did* surface as an error toast, answering the KI-4-style triage question below.
+
+### Notes
+
+- The merge gate ([can-merge-pull-request.ts](../src/utils/can-merge-pull-request.ts))
+  checks draft / approval / conflicts / CI / `mergeRef` — it never looks at open
+  threads. GitBar *has* the number: the GitLab transformer computes
+  `unresolvedThreadCount` from `resolvableDiscussionsCount - resolvedDiscussionsCount`
+  ([gitlab-pull-request.ts:105](../src/core/transformers/gitlab/gitlab-pull-request.ts#L105)),
+  but only `get-attention-reason` reads it.
+- Whether open threads block the merge is a **per-project GitLab setting** ("All
+  threads must be resolved", `onlyAllowMergeIfAllDiscussionsAreResolved`), so
+  `unresolvedThreadCount > 0` alone cannot drive the gate — that would wrongly
+  suppress the pill on projects without the setting.
+- Likely cleanest fix: query `detailedMergeStatus` on the MR fragment — GitLab
+  evaluates all of its own merge checks server-side and reports
+  `DISCUSSIONS_NOT_RESOLVED` (and `NOT_APPROVED`, `CI_STILL_RUNNING`, …) directly,
+  instead of GitBar replicating per-project settings.
+- Same misleading-state-not-unsafe-merge caveat as
+  [KI-2](#ki-2--azure-mr-shown-as-ready-to-merge-but-it-isnt-mergeable): GitLab
+  enforces the check server-side, so the merge attempt fails — GitBar just shows a
+  pill it shouldn't. Worth checking during triage whether that rejection surfaces
+  in the UI or vanishes like [KI-4](#ki-4--merging-an-azure-devops-mr-from-gitbar-does-nothing).
+
+### Fix
+
+The `detailedMergeStatus` route, as proposed above. The fragment now queries the
+field, and the transformer withholds the `mergeRef` — which the merge gate already
+requires — unless the status is `MERGEABLE`, a transient "still evaluating" state,
+or absent (old self-hosted GitLab). Unknown and future statuses fail closed
+([gitlab-pull-request.ts](../src/core/transformers/gitlab/gitlab-pull-request.ts)).
+Covers open threads, the title regex from the 2026-08-16 incident, and every other
+server-side merge check in one field.
+
+### What would confirm the fix
+
+The Merge pill no longer shows on an approved GitLab MR with unresolved threads
+(or a non-compliant title), and still shows on a plain mergeable MR. GitHub and
+Azure gates are untouched.

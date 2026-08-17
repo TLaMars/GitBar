@@ -43,6 +43,7 @@ const FragmentGitLabPullRequest = graphql(`
       approved
       approvalsRequired
       conflicts
+      detailedMergeStatus
       resolvableDiscussionsCount
       resolvedDiscussionsCount
       userNotesCount

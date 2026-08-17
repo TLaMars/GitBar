@@ -19,6 +19,16 @@ The pill only appears when *all* of these hold
 - CI is passing, or there is no CI
 - a `mergeRef` is available (the provider gave us everything needed to merge)
 
+On GitLab the `mergeRef` also encodes the server's own verdict: the transformer
+withholds it when `detailedMergeStatus` reports a definite blocker
+([gitlab-pull-request.ts](../../src/core/transformers/gitlab/gitlab-pull-request.ts)).
+GitLab evaluates *all* of a project's merge checks server-side — required title
+format (`TITLE_NOT_MATCHING`), unresolved threads, external status checks, and
+whatever it adds next — so GitBar takes that answer instead of replicating
+per-project settings. Unknown/new statuses fail closed; transient
+"still checking" states and a missing field (old self-hosted instances) fall
+through to the local gate above.
+
 This is the exact same gate that puts your own PRs in the "Ready to merge" bucket
 of the [Needs you tab](needs-you.md), so the pill and the section always agree.
 

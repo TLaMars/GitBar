@@ -1,5 +1,6 @@
 import { getFragmentData } from "gql/github/codegen";
 import {
+  DetailedMergeStatus,
   GetGitLabPullRequestsQuery,
   MergeRequestReviewState,
 } from "gql/gitlab/codegen/graphql";
@@ -12,6 +13,20 @@ import cleanPrTitle from "utils/clean-pr-title";
 import getColorForProject from "utils/get-project-color";
 
 import transformGitlabCiStatus from "./gitlab-ci-status";
+
+// GitLab evaluates every project merge check server-side (title regex, open
+// threads, external status checks, …) and reports the verdict in
+// detailedMergeStatus. These states don't veto the merge action: MERGEABLE is
+// the green light, the rest are transient "still evaluating" states the local
+// gate already covers. Every other value — including ones GitLab adds later —
+// is a definite blocker and fails closed (KI-9, TITLE_NOT_MATCHING incident).
+const nonBlockingMergeStatuses = new Set<DetailedMergeStatus>([
+  DetailedMergeStatus.Mergeable,
+  DetailedMergeStatus.Unchecked,
+  DetailedMergeStatus.Checking,
+  DetailedMergeStatus.ApprovalsSyncing,
+  DetailedMergeStatus.Preparing,
+]);
 
 const getVote = (vote: MergeRequestReviewState | undefined | null): Vote => {
   switch (vote) {
@@ -109,9 +124,14 @@ const transformGitLabPullRequest = ({
       ),
       ci: transformGitlabCiStatus(pr.headPipeline, domain),
       // The accept API requires the head sha as a staleness guard; without it
-      // (or a target project path) the merge action is unavailable.
+      // (or a target project path) the merge action is unavailable. A null
+      // status (field missing on old self-hosted instances) keeps the old
+      // local-gate-only behavior rather than hiding the action everywhere.
       mergeRef:
-        pr.diffHeadSha && pr.targetProject.fullPath
+        pr.diffHeadSha &&
+        pr.targetProject.fullPath &&
+        (pr.detailedMergeStatus == null ||
+          nonBlockingMergeStatuses.has(pr.detailedMergeStatus))
           ? {
               provider: AccountType.GitLab,
               projectPath: String(pr.targetProject.fullPath),

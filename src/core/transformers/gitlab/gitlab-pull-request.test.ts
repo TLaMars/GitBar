@@ -82,6 +82,38 @@ describe("transformGitLabPullRequest", () => {
     expect(pullRequest.mergeRef).toBeUndefined();
   });
 
+  it("omits the mergeRef when a server-side merge check blocks (title regex)", () => {
+    const [pullRequest] = transformGitLabPullRequest({
+      domain: "https://gitlab.com",
+      data: makeData([
+        makeMergeRequest({ detailedMergeStatus: "TITLE_NOT_MATCHING" }),
+      ]),
+      profile,
+    });
+
+    expect(pullRequest.mergeRef).toBeUndefined();
+  });
+
+  it("keeps the mergeRef while GitLab is still evaluating mergeability", () => {
+    const [pullRequest] = transformGitLabPullRequest({
+      domain: "https://gitlab.com",
+      data: makeData([makeMergeRequest({ detailedMergeStatus: "UNCHECKED" })]),
+      profile,
+    });
+
+    expect(pullRequest.mergeRef).toBeDefined();
+  });
+
+  it("keeps the mergeRef when GitLab reports the branch mergeable", () => {
+    const [pullRequest] = transformGitLabPullRequest({
+      domain: "https://gitlab.com",
+      data: makeData([makeMergeRequest({ detailedMergeStatus: "MERGEABLE" })]),
+      profile,
+    });
+
+    expect(pullRequest.mergeRef).toBeDefined();
+  });
+
   it("treats approval as required when the project mandates approvals", () => {
     const [pullRequest] = transformGitLabPullRequest({
       domain: "https://gitlab.com",

@@ -1,0 +1,27 @@
+diff --git a/Libraries/Components/Touchable/TouchableOpacity.js b/Libraries/Components/Touchable/TouchableOpacity.js
+index 81dd9f3dfc938b5de8736244b36f1004bc31d6ee..28a0b61ec6ea54c38941297708a59032a44f146b 100644
+--- a/Libraries/Components/Touchable/TouchableOpacity.js
++++ b/Libraries/Components/Touchable/TouchableOpacity.js
+@@ -239,7 +239,7 @@ class TouchableOpacity extends React.Component<
+       toValue,
+       duration,
+       easing: Easing.inOut(Easing.quad),
+-      useNativeDriver: true,
++      useNativeDriver: false,
+     }).start();
+   }
+ 
+diff --git a/React/Fabric/Mounting/ComponentViews/View/RCTViewComponentView.mm b/React/Fabric/Mounting/ComponentViews/View/RCTViewComponentView.mm
+index 0dd52234048f216a2caa7eb529a56d17994540a4..1ee1f4d517bc70f51b64495cd35219304bca6d47 100644
+--- a/React/Fabric/Mounting/ComponentViews/View/RCTViewComponentView.mm
++++ b/React/Fabric/Mounting/ComponentViews/View/RCTViewComponentView.mm
+@@ -766,6 +766,9 @@ - (void)prepareForRecycle
+     _allowsVibrancy = NO;
+     self.acceptsFirstMouse = NO;
+     self.mouseDownCanMoveWindow = YES;
++    // A view recycled while flagged as hovered would early-return in mouseEntered:,
++    // so the next view to reuse it never fires onHoverIn.
++    _hasMouseOver = NO;
+ #endif // macOS]
+ }
+ 

@@ -1,0 +1,18 @@
+diff --git a/apple/Elements/RNSVGSvgView.mm b/apple/Elements/RNSVGSvgView.mm
+index d03d5c0b6449696dccd966a85f44d0c5c780a47b..f9d90bbef479d22961edc1c01f12817d12947a4b 100644
+--- a/apple/Elements/RNSVGSvgView.mm
++++ b/apple/Elements/RNSVGSvgView.mm
+@@ -522,6 +522,13 @@ - (void)updateReactTransformInternal:(CATransform3D)transform
+ }
+ #endif // macOS]
+ 
++#if TARGET_OS_OSX && defined(RCT_NEW_ARCH_ENABLED)
++- (BOOL)wantsUpdateLayer
++{
++  return NO;
++}
++#endif
++
+ @end
+ 
+ #ifdef RCT_NEW_ARCH_ENABLED

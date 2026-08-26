@@ -29,7 +29,7 @@ Your new Pull Request tool for GitHub, GitLab and Azure.
 
 ## Release Process
 
-1. Bump the version with `npm run version:bump {major/minor/patch}`
+1. Bump the version with `pnpm version:bump {major/minor/patch}`
    1. This will bump the version.
    2. Commit the changes.
    3. Creates a new tag.

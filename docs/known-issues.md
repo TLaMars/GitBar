@@ -489,7 +489,7 @@ ever wanted back, that is the thread to pull: reproduce with
 `defaults write io.lamars.gitbar.debug AppleShowScrollBars Always` (scoped to the debug
 app, not the whole system) plus `pnpm mac`, and if the hypothesis holds, add a
 `[_scrollView tile]` after the init-path assignment to
-`patches/react-native-macos+0.81.7.patch` — native rebuild required.
+`patches/react-native-macos@0.81.7.patch` — native rebuild required.
 
 ### Still to confirm
 

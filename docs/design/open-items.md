@@ -18,15 +18,20 @@ alongside any change below.
 
 The D16 v1 notification pipeline is on `main` (engine `db06df8`, native
 `c70f7b0`, wiring `04e6ea5`; 115/115 jest, Swift verified by full xcodebuild)
-but the Swift runtime behavior is not verifiable headless. Checklist:
+but the Swift runtime behavior is not verifiable headless. Checklist, QA run
+2026-08-26 on the debug build (`main` @ `da7ea94`):
 
-- banner appears while the popover is closed
-- tapping the banner opens the PR in the browser
-- the dev TEST banner (no URL payload) opens the popover instead
-- a second event on the same PR replaces the earlier banner (shared identifier)
-- relaunch does not burst (silent first-poll seed)
+- ✅ banner appears while the popover is closed
+- ✅ tapping the banner opens the PR in the browser
+- ✅ the dev TEST banner (no URL payload) opens the popover instead
+- ✅ a second event on the same PR replaces the earlier banner (shared identifier)
+- ❌ relaunch does not burst (silent first-poll seed) — relaunching re-fired
+  banners for still-true, already-notified states. Filed as
+  [KI-10](../known-issues.md#ki-10--relaunch-re-fires-notification-banners-for-still-true-states)
+  with the wiring analysis (the null seed can be consumed on incomplete query
+  data); not fixed in the QA session by design.
 
-This is the only thing between the shipped v1 and "verified".
+Item stays open until KI-10 is triaged and the relaunch check passes.
 
 ### 2. `commented` notification event
 

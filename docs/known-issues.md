@@ -639,3 +639,66 @@ server-side merge check in one field.
 The Merge pill no longer shows on an approved GitLab MR with unresolved threads
 (or a non-compliant title), and still shows on a plain mergeable MR. GitHub and
 Azure gates are untouched.
+
+---
+
+## KI-10 — Relaunch re-fires notification banners for still-true states
+
+**Reported:** 2026-08-26 (found during the D16 v1 manual QA session)
+**Area:** [Notifications](features/notifications.md)
+**Status:** Open — not fixed
+
+### What happens
+
+Quitting and relaunching GitBar posts banners again for PR states that were
+already notified in the previous session and never changed. Observed on the
+debug build (`io.lamars.gitbar.debug`, built off `main` @ `da7ea94`, Metro
+attached) with a QA PR that had been conflicted — and notified as such —
+before the quit: after relaunch, banners reappeared.
+
+This is the exact burst the silent first-poll seed (D16.2) exists to prevent;
+[notifications.md](features/notifications.md#when-it-stays-quiet) documents "a
+(re)launch never bursts". The other four QA checklist items passed in the same
+session: banner with the popover closed, tap opens the PR in the browser, the
+no-url TEST banner opens the popover, and a second event on the same PR
+replaces the earlier banner without stacking.
+
+### Notes
+
+- **The pure engine cannot do this by construction.** `previous === null`
+  seeds silently and is unit-pinned
+  ([derive-notification-events.ts:65](../src/utils/derive-notification-events.ts#L65)).
+  So the wiring must have consumed the one-shot null seed on incomplete data:
+  once `snapshotRef.current` is non-null, every PR key absent from it counts
+  as brand-new, and "a PR never seen before starts all-false, so a brand-new
+  PR fires" — deliberate for genuinely new PRs — becomes the burst amplifier.
+- **The only completeness guard is `result.some((d) => d.isLoading)`**
+  ([use-data-context-helpers.ts:67](../src/hooks/context/use-data-context-helpers.ts#L67)),
+  and `filterPRQueryResult` silently drops queries that have no `data`
+  ([pull-request-filters.ts](../src/utils/pull-request-filters.ts)). In
+  react-query v5 `isLoading = isPending && isFetching`, which is **false** for
+  a query that is errored-out (retries exhausted), disabled, or paused — all
+  states with no data. Any invocation where every query is isLoading-false
+  but some lack data seeds a partial (or, with zero ready queries, empty)
+  baseline; the next successful fetch then fires that provider's entire
+  needs-you backlog as brand-new keys.
+- **Leading candidate:** one provider's first fetch fails fast during the
+  launch window (default retries exhaust in seconds), the seed proceeds
+  without it, and its next successful refetch (≤3 min,
+  [use-pull-requests-queries.ts](../src/hooks/queries/use-pull-requests-queries.ts))
+  delivers the burst. A second disabled-state source exists in the same hook:
+  `enabled: macState === MacState.UNLOCKED` — `useMacState` initializes
+  `UNLOCKED` so it should not trip at launch, but a native mac-state event
+  arriving early would disable every query at once (isLoading false, data
+  absent) with the same effect.
+- **Why the QA session's first launch looked clean:** events computed while
+  the popover is open are dropped (latches still advance). On the first
+  launch the popover auto-opened and stayed open ~12 s; on the failing
+  relaunch it was open only ~3.4 s. A launch burst that lands while the
+  popover happens to be open is swallowed silently — so this may occur on
+  far more launches than ever observed.
+- To capture on next repro: whether the burst lands seconds after launch
+  (empty/partial seed consumed immediately) or ~3 minutes in (errored
+  provider recovering on its first refetch); which providers' PRs burst; and
+  the per-query `status`/`fetchStatus` at the moment the seed is taken —
+  logging the size of the seeded snapshot would settle it in one run.

@@ -45,7 +45,10 @@ advance, so a shadowed signal only fires later if it drops and rises again.
 ## When it stays quiet
 
 - **The first poll after launch** — it seeds the baseline silently, so a
-  (re)launch never bursts with banners for pre-existing states.
+  (re)launch never bursts with banners for pre-existing states. ⚠️ Currently
+  broken in practice: relaunching has been observed re-firing banners for
+  still-true states — see
+  [KI-10](../known-issues.md#ki-10--relaunch-re-fires-notification-banners-for-still-true-states).
 - **The popover is open** — if you're already looking at the list, no ping.
 - **The PR is filtered out** — the engine only emits for the same filtered set
   that powers the tabs and menu-bar badge, so hidden, snoozed, bot, draft, and

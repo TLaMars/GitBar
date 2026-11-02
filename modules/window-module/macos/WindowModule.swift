@@ -76,7 +76,9 @@ public class WindowModule: Module {
             let rootView = rootViewFactory.superView(
                 withModuleName: moduleName,
                 initialProperties: [:],
-                launchOptions: [:]
+                launchOptions: [:],
+                // SDK 58 added this parameter; nil falls back to RCTDevMenuConfiguration.default().
+                devMenuConfiguration: nil
             )
             rootView.frame = NSRect(x: 0, y: 0, width: width, height: height)
             rootView.autoresizingMask = [.width, .height]

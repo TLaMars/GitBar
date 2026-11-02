@@ -22,10 +22,10 @@ const MODULE_RESOLVER = [
 ];
 
 module.exports = {
-  // rn-macos 0.81 ships the OLD hermesc (rejects ES6 classes, #fields, async arrow/generator
-  // funcs). SDK 56 defaults Hermes to the "hermes-stable" profile, which preserves that syntax
-  // for a modern hermesc. Force the legacy "hermes-v0" profile so the bundle is downleveled to
-  // what this hermesc accepts. Drop once rn-macos ships a modern hermesc.
+  // Expo SDK 58 defaults Hermes to the "hermes-stable" profile, which keeps class private
+  // fields (#x) for the Hermes that ships with RN 0.88. rn-macos 0.83 bundles hermes-engine
+  // 0.14.1, whose hermesc still rejects them ("private properties are not supported"), so
+  // force the legacy "hermes-v0" profile to downlevel the bundle. Re-test on each rn-macos bump.
   presets: [["babel-preset-expo", { unstable_transformProfile: "hermes-v0" }]],
   plugins: [MODULE_RESOLVER],
 };

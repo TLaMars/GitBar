@@ -204,7 +204,7 @@ reuse it never fired `onHoverIn`. Snooze and Hide unmount the card you are hover
 which made this reachable: snooze a PR, then hover other cards.
 
 Fixed with a one-line `_hasMouseOver = NO;` in `prepareForRecycle`'s macOS block via
-`patches/react-native-macos@0.81.7.patch` (applied at install via pnpm
+`patches/react-native-macos@0.83.0.patch` (applied at install via pnpm
 `patchedDependencies`).
 Native change — only builds made after the patch carry it. To verify: snooze a
 hovered PR, then hover the surrounding cards; every card must still reveal
@@ -573,7 +573,7 @@ ever wanted back, that is the thread to pull: reproduce with
 `defaults write io.lamars.gitbar.debug AppleShowScrollBars Always` (scoped to the debug
 app, not the whole system) plus `pnpm mac`, and if the hypothesis holds, add a
 `[_scrollView tile]` after the init-path assignment to
-`patches/react-native-macos@0.81.7.patch` — native rebuild required.
+`patches/react-native-macos@0.83.0.patch` — native rebuild required.
 
 ### Still to confirm
 

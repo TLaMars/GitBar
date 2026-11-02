@@ -30,6 +30,18 @@ const config = getSentryExpoConfig(__dirname);
 // only the (macOS-irrelevant) swipe gestures are no-ops.
 const expoResolveRequest = config.resolver.resolveRequest;
 config.resolver.resolveRequest = (context, moduleName, platform) => {
+  // Expo SDK 58 imports a react-native subpath export that only exists from RN 0.84 on;
+  // react-native-macos 0.83 lacks it, so serve our mirror (see metro-shims/).
+  if (
+    /^react-native(-macos)?\/unstable-internals-do-not-use$/.test(moduleName)
+  ) {
+    return {
+      type: "sourceFile",
+      filePath: require.resolve(
+        "./metro-shims/react-native-unstable-internals.js",
+      ),
+    };
+  }
   const resolved = expoResolveRequest
     ? expoResolveRequest(context, moduleName, platform)
     : context.resolveRequest(context, moduleName, platform);
@@ -54,6 +66,12 @@ config.resolver.resolveRequest = (context, moduleName, platform) => {
   return resolved;
 };
 
+// Expo SDK 58 targets RN 0.88, whose package exports a `react-native/asset-registry`
+// subpath. react-native-macos 0.83 has no such export, so every image import would fail to
+// resolve. Point the asset transformer at the classic registry module, which the
+// outOfTreePlatforms alias resolves inside react-native-macos. Drop once rn-macos >= 0.84.
+config.transformer.assetRegistryPath =
+  "react-native/Libraries/Image/AssetRegistry";
 config.transformer.babelTransformerPath = require.resolve(
   "react-native-svg-transformer/expo",
 );

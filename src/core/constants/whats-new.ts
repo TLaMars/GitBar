@@ -1,14 +1,18 @@
 import { ImageSourcePropType } from "react-native";
 
-import HowItWorksCIStatusImage from "assets/illustrations/onboarding/how-it-works-ci-status.jpg";
 import HowItWorksCompactImage from "assets/illustrations/onboarding/how-it-works-compact.jpg";
-import HowItWorksHideImage from "assets/illustrations/onboarding/how-it-works-hide.jpg";
-import HowItWorksMRStatusImage from "assets/illustrations/onboarding/how-it-works-mr-status.jpg";
-import HowItWorksTabsImage from "assets/illustrations/onboarding/how-it-works-tabs.jpg";
+import HowItWorksMergeImage from "assets/illustrations/onboarding/how-it-works-merge.jpg";
+import HowItWorksNeedsYouImage from "assets/illustrations/onboarding/how-it-works-needs-you.jpg";
+import HowItWorksSnoozeHideImage from "assets/illustrations/onboarding/how-it-works-snooze-hide.jpg";
+import HowItWorksStatusImage from "assets/illustrations/onboarding/how-it-works-status.jpg";
+import HowItWorksUrgencyDotImage from "assets/illustrations/onboarding/how-it-works-urgency-dot.jpg";
+import NotificationImage from "assets/illustrations/onboarding/notification.jpg";
 import { TranslationKey } from "contexts/intl";
 import AppModule from "modules/app-module";
 
 export const WHATS_NEW_ITEMS_PER_PAGE = 3;
+// The popover card is shorter than the onboarding window; three items clip the heading and button.
+export const WHATS_NEW_MODAL_ITEMS_PER_PAGE = 2;
 
 export type WhatsNewFeature = {
   image: ImageSourcePropType;
@@ -19,27 +23,39 @@ export type WhatsNewFeature = {
 
 export const whatsNewFeatures: WhatsNewFeature[] = [
   {
-    image: HowItWorksTabsImage,
-    headingKey: "Onboarding/HowItWorks/TabsHeading",
-    bodyKey: "Onboarding/HowItWorks/TabsBody",
-    sinceVersion: "1.15.0",
+    image: HowItWorksNeedsYouImage,
+    headingKey: "Onboarding/HowItWorks/NeedsYouHeading",
+    bodyKey: "Onboarding/HowItWorks/NeedsYouBody",
+    sinceVersion: "2.1.0",
   },
   {
-    image: HowItWorksHideImage,
-    headingKey: "Onboarding/HowItWorks/HidePRsHeading",
-    bodyKey: "Onboarding/HowItWorks/HidePRsBody",
-    sinceVersion: "1.15.0",
+    image: HowItWorksMergeImage,
+    headingKey: "Onboarding/HowItWorks/MergeHeading",
+    bodyKey: "Onboarding/HowItWorks/MergeBody",
+    sinceVersion: "2.1.0",
   },
   {
-    image: HowItWorksMRStatusImage,
-    headingKey: "Onboarding/HowItWorks/MRStatusHeading",
-    bodyKey: "Onboarding/HowItWorks/MRStatusBody",
-    sinceVersion: "2.0.0",
+    image: HowItWorksUrgencyDotImage,
+    headingKey: "Onboarding/HowItWorks/UrgencyDotHeading",
+    bodyKey: "Onboarding/HowItWorks/UrgencyDotBody",
+    sinceVersion: "2.1.0",
   },
   {
-    image: HowItWorksCIStatusImage,
-    headingKey: "Onboarding/HowItWorks/CIStatusHeading",
-    bodyKey: "Onboarding/HowItWorks/CIStatusBody",
+    image: HowItWorksSnoozeHideImage,
+    headingKey: "Onboarding/HowItWorks/SnoozeHideHeading",
+    bodyKey: "Onboarding/HowItWorks/SnoozeHideBody",
+    sinceVersion: "2.1.0",
+  },
+  {
+    image: NotificationImage,
+    headingKey: "Onboarding/HowItWorks/NotificationsHeading",
+    bodyKey: "Onboarding/HowItWorks/NotificationsBody",
+    sinceVersion: "2.1.0",
+  },
+  {
+    image: HowItWorksStatusImage,
+    headingKey: "Onboarding/HowItWorks/StatusHeading",
+    bodyKey: "Onboarding/HowItWorks/StatusBody",
     sinceVersion: "2.0.0",
   },
   {

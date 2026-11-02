@@ -8,7 +8,7 @@ import Heading from "components/heading/heading";
 import Spacer from "components/spacer/spacer";
 import {
   getUnseenWhatsNewFeatures,
-  WHATS_NEW_ITEMS_PER_PAGE,
+  WHATS_NEW_MODAL_ITEMS_PER_PAGE,
 } from "constants/whats-new";
 import useSelector from "hooks/use-selector";
 import useTranslation from "hooks/use-translation";
@@ -30,13 +30,13 @@ const WhatsNewModal: React.FC<Props> = ({ visible, onClose }) => {
   const [pageIndex, setPageIndex] = useState(0);
   const totalPages = Math.max(
     1,
-    Math.ceil(features.length / WHATS_NEW_ITEMS_PER_PAGE),
+    Math.ceil(features.length / WHATS_NEW_MODAL_ITEMS_PER_PAGE),
   );
   const isLastPage = pageIndex >= totalPages - 1;
 
   const visibleFeatures = features.slice(
-    pageIndex * WHATS_NEW_ITEMS_PER_PAGE,
-    pageIndex * WHATS_NEW_ITEMS_PER_PAGE + WHATS_NEW_ITEMS_PER_PAGE,
+    pageIndex * WHATS_NEW_MODAL_ITEMS_PER_PAGE,
+    pageIndex * WHATS_NEW_MODAL_ITEMS_PER_PAGE + WHATS_NEW_MODAL_ITEMS_PER_PAGE,
   );
 
   const onNextPress = () => {

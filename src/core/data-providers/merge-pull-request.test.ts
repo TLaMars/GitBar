@@ -203,6 +203,34 @@ describe("AzureProvider.mergePullRequest", () => {
     ).rejects.toThrow("failed with a 405");
   });
 
+  it("surfaces Azure's own reason for refusing the completion", async () => {
+    (azureApi.patch as jest.Mock).mockRejectedValue({
+      statusCode: 405,
+      message: "PATCH https://dev.azure.com/… failed: 405 Method Not Allowed",
+      apiMessage:
+        "The pull request cannot be completed until all required reviewers approve.",
+    });
+
+    await expect(
+      makeProvider().mergePullRequest(azureMergeRef),
+    ).rejects.toThrow(
+      "The pull request cannot be completed until all required reviewers approve.",
+    );
+  });
+
+  it("keeps the token-expired message even when a body message is present", async () => {
+    (azureApi.patch as jest.Mock).mockRejectedValue({
+      statusCode: 401,
+      message: "PATCH https://dev.azure.com/… failed: 401 Unauthorized",
+      apiMessage:
+        "TF400813: The user is not authorized to access this resource.",
+    });
+
+    await expect(
+      makeProvider().mergePullRequest(azureMergeRef),
+    ).rejects.toThrow("Your access token has expired");
+  });
+
   it("rejects a pull request from another provider", async () => {
     await expect(
       makeProvider().mergePullRequest(githubMergeRef),

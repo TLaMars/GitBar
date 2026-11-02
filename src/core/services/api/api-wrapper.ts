@@ -54,10 +54,22 @@ async function apiWrapper(
   }
 
   if (!response.ok) {
+    // The status alone rarely explains a refusal — providers put the reason in
+    // the body (Azure: "TF401179: …", "cannot be completed until all required
+    // reviewers approve"). Reading it must never fail the request harder than
+    // it already has, so any non-JSON/unreadable body just yields null.
+    const apiMessage: string | null = await response
+      .json()
+      .then((body: { message?: unknown } | null) =>
+        typeof body?.message === "string" ? body.message : null,
+      )
+      .catch(() => null);
+
     const err = new ApiRequestError(
       response.status,
       `${method} ${url} failed: ${response.status} ${response.statusText}`,
       null,
+      apiMessage,
     ) as any as ApiResponse<Error>;
     err[responseSymbol] = response;
     throw err;

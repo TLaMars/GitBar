@@ -133,7 +133,8 @@ instead of a stable handle (GitHub and GitLab use `profile.userName`), even thou
 
 **Reported:** 2026-07-20
 **Area:** PR list card hover actions ([Hide & snooze](features/hide-and-snooze.md))
-**Status:** Fixed 2026-07-25 — verified manually; one native follow-up open
+**Status:** Fixed 2026-07-25 — verified manually; native follow-up patched 2026-08-17,
+awaiting manual verification (snooze a PR, then hover other cards)
 
 ### What happens
 
@@ -194,17 +195,20 @@ different PR. See [hide-and-snooze.md](features/hide-and-snooze.md#where-card-ho
 Accepted cost: after a poll that moves cards, hover needs one pointer movement to
 re-arm. Fixing that requires the native side.
 
-### Open follow-up
+### Follow-up (patched 2026-08-17)
 
-`prepareForRecycle` in `RCTViewComponentView.mm` does not reset `_hasMouseOver`, so
-a native view recycled from a card that was unmounted *while hovered* stays flagged
+`prepareForRecycle` in `RCTViewComponentView.mm` did not reset `_hasMouseOver`, so
+a native view recycled from a card that was unmounted *while hovered* stayed flagged
 as hovered — and `mouseEntered:` early-returns on that flag, so the next card to
-reuse it never fires `onHoverIn`. Snooze and Hide unmount the card you are hovering,
-which makes this reachable: snooze a PR, then hover other cards.
+reuse it never fired `onHoverIn`. Snooze and Hide unmount the card you are hovering,
+which made this reachable: snooze a PR, then hover other cards.
 
-This repo already runs `patch-package` on postinstall and ships
-`patches/react-native-macos+0.81.7.patch`, so the fix is a one-line addition to that
-patch's macOS block. Needs a native rebuild to take effect.
+Fixed with a one-line `_hasMouseOver = NO;` in `prepareForRecycle`'s macOS block via
+`patches/react-native-macos@0.81.7.patch` (applied at install via pnpm
+`patchedDependencies`).
+Native change — only builds made after the patch carry it. To verify: snooze a
+hovered PR, then hover the surrounding cards; every card must still reveal
+Snooze/Hide.
 
 ---
 
@@ -212,7 +216,7 @@ patch's macOS block. Needs a native rebuild to take effect.
 
 **Reported:** 2026-07-25
 **Area:** [Merge PRs](features/merge.md) · Azure DevOps provider
-**Status:** Open — not fixed
+**Status:** Fix applied 2026-08-26 — awaiting confirmation on a real Azure PR
 
 ### What happens
 
@@ -236,6 +240,86 @@ it. The PR stays open on Azure.
   Azure would refuse the completion and GitBar would look like it did nothing.
   KI-2's fix makes the pill stop appearing on those PRs, so re-test KI-4 on a PR
   that really is mergeable before digging further.
+
+### Root cause
+
+"Does nothing" was almost certainly *not* a lost request — it was a server-side
+refusal whose reason GitBar threw away, so the click produced no visible outcome
+worth reading.
+
+The merge mutation already toasts on failure
+([use-merge-pull-request.ts](../src/hooks/mutations/use-merge-pull-request.ts)),
+but the toast could not say anything useful. Two layers cooperated to destroy the
+reason:
+
+1. `apiWrapper` never read the body of a non-`ok` response
+   ([api-wrapper.ts](../src/core/services/api/api-wrapper.ts)) — it only looked
+   for `data.error` on responses that *succeeded*. The `ApiRequestError` carried a
+   status code and nothing else.
+2. Azure's `#transformApiError` then flattened that to `failed with a 405`
+   ([azure-provider.ts](../src/core/data-providers/azure-provider.ts)).
+
+Azure puts the actual reason in the JSON body's `message` field — "The pull
+request cannot be completed until all required reviewers approve",
+"TF401179: … the source branch has been updated", and so on. A toast reading
+`Azure org: failed with a 405` is indistinguishable from nothing happening, which
+is how the issue got filed as "does nothing".
+
+The trigger for those refusals was most likely the false-positive Merge pill:
+[KI-2](#ki-2--azure-mr-shown-as-ready-to-merge-but-it-isnt-mergeable) and
+[KI-6](#ki-6--azure-pr-with-a-2-approval-policy-shows-as-mergeable-after-one-approval)
+showed the pill on Azure PRs with unmet approval policies, and Azure enforces those
+server-side. Those gating fixes should remove most of the refusals; this fix makes
+the remaining ones legible instead of silent.
+
+Not changed, deliberately: no retry, and no fresh `lastMergeSourceCommitId` fetch
+before the `PATCH`. A stale-commit rejection is the staleness guard doing its job,
+and the mutation's `onError` invalidate re-gates the pill against the PR's real
+state.
+
+### Fix
+
+1. On a non-`ok` response, `apiWrapper` parses the body as JSON and keeps a string
+   `message` from it in `ApiRequestError.apiMessage`. Parsing is wrapped so a
+   non-JSON or unreadable body yields `null` and can never replace the original
+   failure with a parse error. The existing `message` (method, URL, status,
+   status text) is untouched, so logs keep the request context.
+2. `#transformApiError` prefers `apiMessage` over the generic
+   `failed with a <status>`, which stays as the fallback. The 401/expired-token
+   message still wins first — it names a concrete next step ("reconnect your
+   account in Settings") that Azure's own 401 body does not.
+
+Azure-only by design; GitHub and GitLab merge through GraphQL clients and already
+surface their own payload errors.
+
+Tests: `apiMessage` populated from a JSON `message` body, `null` for a non-JSON
+body and for a non-string `message`
+([api-wrapper.test.ts](../src/core/services/api/api-wrapper.test.ts)); the server
+message preferred over the status, and the token-expired case pinned against a 401
+that *also* carries a body message
+([merge-pull-request.test.ts](../src/core/data-providers/merge-pull-request.test.ts)).
+
+### Still to confirm
+
+Not re-tested: no Azure account was connected to GitBar in the 2026-08-26 session,
+so nothing was merged and no refusal was observed. The whole diagnosis above is
+inferred from the code path, not from a captured Azure response — the original
+report predates any logging that would have kept one.
+
+Two things a real Azure PR would settle:
+
+- A genuinely mergeable PR: the merge succeeds, the card drops, the PR shows
+  **Completed** on Azure. That also confirms
+  [KI-2](#ki-2--azure-mr-shown-as-ready-to-merge-but-it-isnt-mergeable) and
+  [KI-6](#ki-6--azure-pr-with-a-2-approval-policy-shows-as-mergeable-after-one-approval)
+  gate correctly on the way through.
+- A PR Azure refuses (approvals pending, or a source branch updated after the
+  fetch): the toast shows Azure's own sentence, not `failed with a <status>`.
+
+If a refusal ever comes back `200` with an unchanged PR — the possibility raised in
+the notes above — this fix does nothing for it, because no error is thrown at all.
+That would need the `PATCH` response's `status` field to be checked against
+`"completed"`. No evidence either way yet, so it is not built.
 
 ---
 

@@ -110,5 +110,20 @@ action simply isn't offered.
 - **Failure**: the provider's error appears as a toast and the PR list re-syncs,
   so the pill re-gates against the PR's real remote state (e.g. a new commit
   invalidated the staleness guard).
+
+  The toast shows the reason the *server* gave, not just an HTTP status. Azure
+  returns it in the response body's `message` field ("The pull request cannot be
+  completed until all required reviewers approve", "TF401179: … the source branch
+  has been updated"), and that body is now read on failed responses
+  ([api-wrapper.ts](../../src/core/services/api/api-wrapper.ts)) and preferred
+  over the generic `failed with a <status>`
+  ([azure-provider.ts](../../src/core/data-providers/azure-provider.ts)). An
+  expired token keeps its own message, since it has a next step Azure's 401 body
+  does not mention. Discarding that reason is what made a refused Azure
+  completion look like a dead button (KI-4).
+
+  A rejected merge is never retried and the merge ref is never refreshed before
+  the request: a rejection *is* the answer, and the re-sync above re-gates the
+  pill against whatever the PR looks like now.
 - The pill is disabled while a merge is pending, with a double-click guard on
   top.

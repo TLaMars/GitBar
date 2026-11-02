@@ -5,15 +5,26 @@ export class ApiRequestError extends Error {
 
   apiErrorCode: string | null;
 
+  /**
+   * The reason the *server* gave, when the response body carried one. Kept
+   * apart from `message` (which embeds the method and URL for logs) so it can
+   * be shown to a user as-is — Azure returns e.g. "cannot be completed until
+   * all required reviewers approve" here, and a bare status code does not
+   * explain a refused merge (KI-4).
+   */
+  apiMessage: string | null;
+
   constructor(
     statusCode: number,
     message: string,
     apiErrorCode: string | null,
+    apiMessage: string | null = null,
   ) {
     super();
     this.statusCode = statusCode;
     this.message = message;
     this.apiErrorCode = apiErrorCode;
+    this.apiMessage = apiMessage;
   }
 }
 

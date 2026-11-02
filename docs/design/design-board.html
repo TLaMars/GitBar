@@ -224,13 +224,13 @@
   </div>
 </div>
 
-<h2>Menu bar icon states (D15)</h2>
-<p class="caption">Tint follows the most urgent state, red &gt; blue &gt; green &gt; default. Behind a "Colored menu bar icon" setting.</p>
+<h2>Menu bar icon states (D15) — as shipped in v2.1.0</h2>
+<p class="caption">The icon stays a monochrome template image (the GitBar glyph, appearance-adaptive); a small colored dot next to the count carries the most urgent state, red &gt; orange &gt; green, no dot otherwise (get-menu-bar-tint.ts, PopoverAppDelegateSubscriber.swift). Default-on behind the "Colored menu bar icon" setting. Orange outranking green is intended — see KI-1.</p>
 <div style="display: flex; flex-direction: column; gap: 6px;">
-  <div style="display: flex; align-items: center; gap: 10px;"><span style="background: #1C1C1E; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 4px 9px; display: inline-flex; align-items: center; gap: 5px;"><i class="ti ti-git-pull-request" style="font-size: 14px;"></i>5</span><span style="font-size: 12px; color: #9a9aa0;">Default — open PR count</span></div>
-  <div style="display: flex; align-items: center; gap: 10px;"><span style="background: #1C1C1E; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 4px 9px; color: #AFDFF3; display: inline-flex; align-items: center; gap: 5px;"><i class="ti ti-git-pull-request" style="font-size: 14px;"></i>2</span><span style="font-size: 12px; color: #9a9aa0;">Blocked on you</span></div>
-  <div style="display: flex; align-items: center; gap: 10px;"><span style="background: #1C1C1E; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 4px 9px; color: #F05069; display: inline-flex; align-items: center; gap: 5px;"><i class="ti ti-git-pull-request" style="font-size: 14px;"></i>1</span><span style="font-size: 12px; color: #9a9aa0;">Your CI failed or conflicts</span></div>
-  <div style="display: flex; align-items: center; gap: 10px;"><span style="background: #1C1C1E; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 4px 9px; color: #B4E080; display: inline-flex; align-items: center; gap: 5px;"><i class="ti ti-git-pull-request" style="font-size: 14px;"></i>1</span><span style="font-size: 12px; color: #9a9aa0;">Ready to merge</span></div>
+  <div style="display: flex; align-items: center; gap: 10px;"><span style="background: #1C1C1E; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 4px 9px; display: inline-flex; align-items: center; gap: 5px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.3333 15.658C15.8606 15.658 14.6667 16.8539 14.6667 18.329C14.6667 19.8042 15.8606 21 17.3333 21C18.8061 21 20 19.8042 20 18.329C20 16.8539 18.8061 15.658 17.3333 15.658ZM17.3333 15.658L17.3333 3.93332M6.6667 9.27532C5.1939 9.27532 4 8.07942 4 6.60432C4 5.12922 5.1939 3.93332 6.6667 3.93332C8.1394 3.93332 9.3333 5.12922 9.3333 6.60432C9.3333 8.07942 8.1394 9.27532 6.6667 9.27532ZM6.6667 9.27532L6.6667 15.6224C6.6667 17.0952 7.8606 18.2891 9.3333 18.2891H10.9333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>5</span><span style="font-size: 12px; color: #9a9aa0;">Default — open PR count, no dot</span></div>
+  <div style="display: flex; align-items: center; gap: 10px;"><span style="background: #1C1C1E; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 4px 9px; display: inline-flex; align-items: center; gap: 5px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.3333 15.658C15.8606 15.658 14.6667 16.8539 14.6667 18.329C14.6667 19.8042 15.8606 21 17.3333 21C18.8061 21 20 19.8042 20 18.329C20 16.8539 18.8061 15.658 17.3333 15.658ZM17.3333 15.658L17.3333 3.93332M6.6667 9.27532C5.1939 9.27532 4 8.07942 4 6.60432C4 5.12922 5.1939 3.93332 6.6667 3.93332C8.1394 3.93332 9.3333 5.12922 9.3333 6.60432C9.3333 8.07942 8.1394 9.27532 6.6667 9.27532ZM6.6667 9.27532L6.6667 15.6224C6.6667 17.0952 7.8606 18.2891 9.3333 18.2891H10.9333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="width: 8px; height: 8px; border-radius: 50%; background: #F05069; display: inline-block;"></span>1</span><span style="font-size: 12px; color: #9a9aa0;">Needs work — conflicts, CI failed, or changes requested on your PR</span></div>
+  <div style="display: flex; align-items: center; gap: 10px;"><span style="background: #1C1C1E; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 4px 9px; display: inline-flex; align-items: center; gap: 5px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.3333 15.658C15.8606 15.658 14.6667 16.8539 14.6667 18.329C14.6667 19.8042 15.8606 21 17.3333 21C18.8061 21 20 19.8042 20 18.329C20 16.8539 18.8061 15.658 17.3333 15.658ZM17.3333 15.658L17.3333 3.93332M6.6667 9.27532C5.1939 9.27532 4 8.07942 4 6.60432C4 5.12922 5.1939 3.93332 6.6667 3.93332C8.1394 3.93332 9.3333 5.12922 9.3333 6.60432C9.3333 8.07942 8.1394 9.27532 6.6667 9.27532ZM6.6667 9.27532L6.6667 15.6224C6.6667 17.0952 7.8606 18.2891 9.3333 18.2891H10.9333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="width: 8px; height: 8px; border-radius: 50%; background: #F59E0B; display: inline-block;"></span>2</span><span style="font-size: 12px; color: #9a9aa0;">Blocked on you — review pending from you</span></div>
+  <div style="display: flex; align-items: center; gap: 10px;"><span style="background: #1C1C1E; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 4px 9px; display: inline-flex; align-items: center; gap: 5px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.3333 15.658C15.8606 15.658 14.6667 16.8539 14.6667 18.329C14.6667 19.8042 15.8606 21 17.3333 21C18.8061 21 20 19.8042 20 18.329C20 16.8539 18.8061 15.658 17.3333 15.658ZM17.3333 15.658L17.3333 3.93332M6.6667 9.27532C5.1939 9.27532 4 8.07942 4 6.60432C4 5.12922 5.1939 3.93332 6.6667 3.93332C8.1394 3.93332 9.3333 5.12922 9.3333 6.60432C9.3333 8.07942 8.1394 9.27532 6.6667 9.27532ZM6.6667 9.27532L6.6667 15.6224C6.6667 17.0952 7.8606 18.2891 9.3333 18.2891H10.9333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="width: 8px; height: 8px; border-radius: 50%; background: #3FB950; display: inline-block;"></span>1</span><span style="font-size: 12px; color: #9a9aa0;">Ready to merge</span></div>
 </div>
 
 <h2>Notifications — system-rendered, actions via UNNotificationCategory (D16)</h2>
@@ -263,6 +263,178 @@
         <div style="padding: 5px 10px;">Snooze for 1 day</div>
         <div style="padding: 5px 10px;">Open in browser</div>
       </div>
+    </div>
+  </div>
+</div>
+<h2>Open item 3 — per-event notification settings (D16.5)</h2>
+<p class="caption">Settings › App. The master toggle stays the gate; sub-toggles filter events <em>before</em> the urgency collapse. "My PR needs work" bundles changesRequested / ciFailed / conflicts behind one switch. Defaults: all on. Master off dims the group.</p>
+<div class="grid">
+  <div>
+    <div class="statelabel">Master on — sub-toggles live</div>
+    <div style="background: #1C1C1E; border-radius: 18px; padding: 14px 18px; max-width: 340px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <span style="font-weight: 600;">Allow notifications</span>
+        <span style="width: 34px; height: 20px; border-radius: 999px; background: #3478F6; position: relative; display: inline-block; flex-shrink: 0;"><span style="position: absolute; top: 2px; right: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff;"></span></span>
+      </div>
+      <div style="font-size: 11px; color: #9a9aa0; padding: 10px 0 2px;">NOTIFY ME ABOUT</div>
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 9px 0 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <span>Reviews requested of me</span>
+        <span style="width: 34px; height: 20px; border-radius: 999px; background: #3478F6; position: relative; display: inline-block; flex-shrink: 0;"><span style="position: absolute; top: 2px; right: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff;"></span></span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 9px 0 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <span>My PR is ready to merge</span>
+        <span style="width: 34px; height: 20px; border-radius: 999px; background: #3478F6; position: relative; display: inline-block; flex-shrink: 0;"><span style="position: absolute; top: 2px; right: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff;"></span></span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 9px 0 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <span>My PR needs work<br><span style="font-size: 11px; color: #9a9aa0;">Changes requested · CI failed · conflicts</span></span>
+        <span style="width: 34px; height: 20px; border-radius: 999px; background: rgba(255,255,255,0.18); position: relative; display: inline-block; flex-shrink: 0;"><span style="position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff;"></span></span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 9px 0 9px 12px;">
+        <span>Comments on my PRs<br><span style="font-size: 11px; color: #9a9aa0;">New threads on PRs you authored</span></span>
+        <span style="width: 34px; height: 20px; border-radius: 999px; background: #3478F6; position: relative; display: inline-block; flex-shrink: 0;"><span style="position: absolute; top: 2px; right: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff;"></span></span>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="statelabel">Master off — group dims, choices remembered</div>
+    <div style="background: #1C1C1E; border-radius: 18px; padding: 14px 18px; max-width: 340px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <span style="font-weight: 600;">Allow notifications</span>
+        <span style="width: 34px; height: 20px; border-radius: 999px; background: rgba(255,255,255,0.18); position: relative; display: inline-block; flex-shrink: 0;"><span style="position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff;"></span></span>
+      </div>
+      <div style="opacity: 0.35;">
+        <div style="font-size: 11px; color: #9a9aa0; padding: 10px 0 2px;">NOTIFY ME ABOUT</div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 9px 0 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+          <span>Reviews requested of me</span>
+          <span style="width: 34px; height: 20px; border-radius: 999px; background: #3478F6; position: relative; display: inline-block; flex-shrink: 0;"><span style="position: absolute; top: 2px; right: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff;"></span></span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 9px 0 9px 12px;">
+          <span>My PR is ready to merge</span>
+          <span style="width: 34px; height: 20px; border-radius: 999px; background: #3478F6; position: relative; display: inline-block; flex-shrink: 0;"><span style="position: absolute; top: 2px; right: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff;"></span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>Open item 4 — snooze for 1 day, two candidate homes</h2>
+<p class="caption">The store already supports date-based snoozing; only until-updated is surfaced. Both options build on the shipped hover slot (Snooze · Hide text actions). Option A is the lazier build — one extra action, no new menu component; the right-click menu was dropped precisely because native menus need a new module.</p>
+<div class="grid">
+  <div>
+    <div class="statelabel">Option A — third action in the hover slot (recommended)</div>
+    <div style="background: #232326; border: 1px solid rgba(175,223,243,0.35); border-radius: 14px; padding: 10px 12px; display: flex; gap: 10px;">
+      <span style="width: 4px; border-radius: 999px; background: #62DDBD; flex-shrink: 0;"></span>
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="flex: 1; min-width: 0; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">feat: add rate limiter to API</span>
+          <span style="width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #B4E080; color: #B4E080; display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-check" style="font-size: 11px;"></i></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px; margin-top: 8px; height: 26px;">
+          <span style="width: 22px; height: 22px; border-radius: 50%; background: #3a3a3c; display: inline-flex; align-items: center; justify-content: center; font-size: 9px;">MJ</span>
+          <span style="display: inline-flex; gap: 12px; margin-left: auto; color: #CED8DF; font-size: 11px;">
+            <span style="display: inline-flex; align-items: center; gap: 4px;"><i class="ti ti-clock" style="font-size: 13px;"></i>Snooze</span>
+            <span style="display: inline-flex; align-items: center; gap: 4px;"><i class="ti ti-clock-pause" style="font-size: 13px;"></i>1&nbsp;day</span>
+            <span style="display: inline-flex; align-items: center; gap: 4px;"><i class="ti ti-ban" style="font-size: 13px;"></i>Hide</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="statelabel">Option B — "…" overflow, JS popover (not a native menu)</div>
+    <div style="position: relative;">
+      <div style="background: #232326; border: 1px solid rgba(175,223,243,0.35); border-radius: 14px; padding: 10px 12px; display: flex; gap: 10px;">
+        <span style="width: 4px; border-radius: 999px; background: #62DDBD; flex-shrink: 0;"></span>
+        <div style="flex: 1; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="flex: 1; min-width: 0; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">feat: add rate limiter to API</span>
+            <span style="width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #B4E080; color: #B4E080; display: inline-flex; align-items: center; justify-content: center;"><i class="ti ti-check" style="font-size: 11px;"></i></span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; margin-top: 8px; height: 26px;">
+            <span style="width: 22px; height: 22px; border-radius: 50%; background: #3a3a3c; display: inline-flex; align-items: center; justify-content: center; font-size: 9px;">MJ</span>
+            <span style="display: inline-flex; gap: 12px; margin-left: auto; color: #CED8DF; font-size: 11px;">
+              <span style="display: inline-flex; align-items: center; gap: 4px;"><i class="ti ti-clock" style="font-size: 13px;"></i>Snooze</span>
+              <span style="display: inline-flex; align-items: center; gap: 4px;"><i class="ti ti-ban" style="font-size: 13px;"></i>Hide</span>
+              <span style="display: inline-flex; align-items: center;"><i class="ti ti-dots" style="font-size: 13px;"></i></span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div style="position: absolute; right: 8px; top: 58px; background: #232325; border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 5px; width: 168px; font-size: 12px; z-index: 2;">
+        <div style="padding: 6px 10px; background: rgba(49,102,221,0.45); border-radius: 8px; display: flex; align-items: center; gap: 8px;"><i class="ti ti-clock-pause" style="font-size: 13px;"></i>Snooze for 1 day</div>
+      </div>
+      <div style="height: 44px;"></div>
+    </div>
+  </div>
+</div>
+
+<h2>Open item 2 — "commented" notification event</h2>
+<p class="caption">Own PRs only, lowest priority in the per-poll collapse, no fire on first sight. Trigger: a rise in unresolvedThreadCount (a new open thread is never you replying), raw comment-count rise only as fallback. Ships behind the "Comments on my PRs" toggle above.</p>
+<div style="background: rgba(44,44,46,0.98); border: 0.5px solid rgba(255,255,255,0.14); border-radius: 14px; padding: 11px 13px; max-width: 340px; display: flex; gap: 11px; align-items: center;">
+  <span style="width: 38px; height: 38px; border-radius: 9px; background: #111; border: 0.5px solid rgba(255,255,255,0.12); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ti ti-message-circle" style="font-size: 20px; color: #AFDFF3;"></i></span>
+  <div style="flex: 1; min-width: 0;">
+    <div style="display: flex; justify-content: space-between; gap: 8px;"><span style="font-weight: 600;">New comments on your PR</span><span style="font-size: 11px; color: rgba(245,248,250,0.55);">now</span></div>
+    <div style="font-size: 12px; color: rgba(245,248,250,0.75); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">gitbar · fix(GBAR-121): onboarding window flicker</div>
+  </div>
+</div>
+
+<h2>Open item 5 — notification action buttons (D16.4)</h2>
+<p class="caption">Two UNNotificationCategory sets. Supersedes the D16 options mock above: Approve and Reply were dropped with Phase 5 (no blind writes). Snooze routes to snooze-until-updated; Merge re-checks canMergePullRequest at tap time, then takes the card's merge path.</p>
+<div class="grid">
+  <div>
+    <div class="statelabel">Default category — Open, Snooze</div>
+    <div style="max-width: 340px;">
+      <div style="background: rgba(44,44,46,0.98); border: 0.5px solid rgba(255,255,255,0.14); border-radius: 14px; padding: 11px 13px; display: flex; gap: 11px; align-items: center;">
+        <span style="width: 38px; height: 38px; border-radius: 9px; background: #111; border: 0.5px solid rgba(255,255,255,0.12); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ti ti-git-pull-request" style="font-size: 20px; color: #62DDBD;"></i></span>
+        <div style="flex: 1; min-width: 0;">
+          <div style="font-weight: 600;">Review requested</div>
+          <div style="font-size: 12px; color: rgba(245,248,250,0.75); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">gitbar-api · feat: add rate limiter…</div>
+        </div>
+        <span style="display: inline-flex; align-items: center; gap: 3px; background: rgba(255,255,255,0.14); border-radius: 999px; padding: 4px 10px; font-size: 11px; flex-shrink: 0;">Options <i class="ti ti-chevron-down" style="font-size: 11px;"></i></span>
+      </div>
+      <div style="background: rgba(50,50,52,0.98); border: 0.5px solid rgba(255,255,255,0.14); border-radius: 10px; padding: 4px; width: 160px; margin: 4px 0 0 auto; font-size: 12px;">
+        <div style="padding: 5px 10px; background: #3166DD; border-radius: 6px;">Open</div>
+        <div style="padding: 5px 10px;">Snooze</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="statelabel">Mergeable category — Merge, Open, Snooze</div>
+    <div style="max-width: 340px;">
+      <div style="background: rgba(44,44,46,0.98); border: 0.5px solid rgba(255,255,255,0.14); border-radius: 14px; padding: 11px 13px; display: flex; gap: 11px; align-items: center;">
+        <span style="width: 38px; height: 38px; border-radius: 9px; background: #111; border: 0.5px solid rgba(255,255,255,0.12); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ti ti-git-merge" style="font-size: 20px; color: #B4E080;"></i></span>
+        <div style="flex: 1; min-width: 0;">
+          <div style="font-weight: 600;">Ready to merge</div>
+          <div style="font-size: 12px; color: rgba(245,248,250,0.75); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">gitbar · chore: bump expo sdk 56</div>
+        </div>
+        <span style="display: inline-flex; align-items: center; gap: 3px; background: rgba(255,255,255,0.14); border-radius: 999px; padding: 4px 10px; font-size: 11px; flex-shrink: 0;">Options <i class="ti ti-chevron-down" style="font-size: 11px;"></i></span>
+      </div>
+      <div style="background: rgba(50,50,52,0.98); border: 0.5px solid rgba(255,255,255,0.14); border-radius: 10px; padding: 4px; width: 160px; margin: 4px 0 0 auto; font-size: 12px;">
+        <div style="padding: 5px 10px; background: #3166DD; border-radius: 6px;">Merge</div>
+        <div style="padding: 5px 10px;">Open</div>
+        <div style="padding: 5px 10px;">Snooze</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>Open item 6 — banner retraction on the falling edge</h2>
+<p class="caption">No new UI — Notification Center just stops lying. When the signal behind a PR's last-sent banner goes false (the same falling edge that re-arms the latch), one native call removes the delivered notification by its accountId:id identifier.</p>
+<div class="grid">
+  <div>
+    <div class="statelabel">10:41 — ciFailed fires, banner delivered</div>
+    <div style="background: rgba(44,44,46,0.98); border: 0.5px solid rgba(255,255,255,0.14); border-radius: 14px; padding: 11px 13px; max-width: 340px; display: flex; gap: 11px; align-items: center;">
+      <span style="width: 38px; height: 38px; border-radius: 9px; background: #111; border: 0.5px solid rgba(255,255,255,0.12); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ti ti-x" style="font-size: 20px; color: #F05069;"></i></span>
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; justify-content: space-between; gap: 8px;"><span style="font-weight: 600;">CI failed</span><span style="font-size: 11px; color: rgba(245,248,250,0.55);">10:41</span></div>
+        <div style="font-size: 12px; color: rgba(245,248,250,0.75); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">gitbar-api · feat: bitbucket provider</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="statelabel">10:47 — CI green again: falling edge withdraws it</div>
+    <div style="border: 1.5px dashed rgba(255,255,255,0.18); border-radius: 14px; padding: 11px 13px; max-width: 340px; height: 60px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; color: #9a9aa0; font-size: 12px;">
+      banner removed from Notification Center
     </div>
   </div>
 </div>

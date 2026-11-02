@@ -27,16 +27,24 @@ class AzureProvider extends BaseProvider {
   }
 
   #transformApiError(error: unknown): never {
-    const err = error as { statusCode?: number; message?: string } | null;
+    const err = error as {
+      statusCode?: number;
+      message?: string;
+      apiMessage?: string | null;
+    } | null;
     const statusCode = err?.statusCode;
     const errMessage = err?.message ?? "";
     const isTokenExpired =
       statusCode === 401 ||
       errMessage.includes("401") ||
       errMessage.toLowerCase().includes("unauthorized");
+    // Azure explains its refusals in the response body, and that reason is the
+    // only thing that helps the user — "failed with a 405" told them nothing
+    // when a completion was rejected (KI-4). Token expiry still wins: it has a
+    // concrete next step, and Azure's own 401 body does not mention Settings.
     const message = isTokenExpired
       ? "Your access token has expired. Please reconnect your account in Settings."
-      : `failed with a ${statusCode ?? "unknown"}`;
+      : err?.apiMessage || `failed with a ${statusCode ?? "unknown"}`;
     throw new Error(`${this.accountType} ${this.userIdentifier}: ${message}`);
   }
 

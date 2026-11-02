@@ -97,7 +97,7 @@
   },
   "prettier": "eslint-config-triple/.prettierrc",
   "engines": {
-    "node": ">=18"
+    "node": ">=22.13"
   },
   "lint-staged": {
     "!(.*/**)*.(ts|tsx)": [
